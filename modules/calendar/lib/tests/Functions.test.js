@@ -6,6 +6,7 @@ import {
     getDateWithNoTimezoneOffset,
     getHourStringOnFormat,
     getMonthNameByMonthIndex,
+    getSelect2LanguageParameters,
     getWeekNumberByDate
 } from "../async-calendar/js/Functions";
 
@@ -411,4 +412,28 @@ test('getDateInstanceFromString', () => {
     expect(date.getHours()).toStrictEqual(0);
     expect(date.getMinutes()).toStrictEqual(0);
     expect(date.getSeconds()).toStrictEqual(0);
+})
+
+test('getSelect2LanguageParameters returns localized Select2 messages', () => {
+    const previousParams = global.publishpressCalendarParams;
+
+    global.publishpressCalendarParams = {
+        strings: {
+            noResults: 'Nessun risultato trovato',
+            searching: 'Ricerca in corso…'
+        }
+    };
+
+    try {
+        const language = getSelect2LanguageParameters();
+
+        expect(language.noResults()).toStrictEqual('Nessun risultato trovato');
+        expect(language.searching()).toStrictEqual('Ricerca in corso…');
+    } finally {
+        if (previousParams === undefined) {
+            delete global.publishpressCalendarParams;
+        } else {
+            global.publishpressCalendarParams = previousParams;
+        }
+    }
 })
