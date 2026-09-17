@@ -1235,6 +1235,8 @@ if (! class_exists('PP_Calendar_Methods')) {
                             'xWeeks' => esc_js(__('%d weeks', 'publishpress')),
                             'today' => esc_js(__('Today', 'publishpress')),
                             'noTerms' => esc_js(__('No terms', 'publishpress')),
+                            'noResults' => esc_js(__('No results found', 'publishpress')),
+                            'searching' => esc_js(__('Searching…', 'publishpress')),
                             'post_date_label'    => esc_html__('Post Date', 'publishpress'),
                             'edit_label'         => esc_html__('Edit', 'publishpress'),
                             'delete_label'       => esc_html__('Trash', 'publishpress'),

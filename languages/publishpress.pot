@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-15T04:56:25+00:00\n"
+"POT-Creation-Date: 2026-09-16T20:51:05+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress\n"
@@ -67,7 +67,7 @@ msgid "Pending Review"
 msgstr ""
 
 #: common/php/class-module.php:336
-#: modules/calendar/library/calendar-methods.php:1240
+#: modules/calendar/library/calendar-methods.php:1242
 #: modules/calendar/library/calendar-utilities.php:1104
 #: modules/content-board/content-board.php:1195
 #: modules/content-board/content-board.php:1290
@@ -154,7 +154,7 @@ msgstr ""
 #: common/php/class-module.php:1126
 #: modules/calendar/library/calendar-methods.php:424
 #: modules/calendar/library/calendar-methods.php:858
-#: modules/calendar/library/calendar-methods.php:1245
+#: modules/calendar/library/calendar-methods.php:1247
 #: modules/calendar/library/calendar-utilities.php:47
 #: modules/calendar/library/calendar-utilities.php:1070
 #: modules/calendar/library/calendar-utilities.php:1189
@@ -695,7 +695,7 @@ msgstr ""
 #: modules/calendar/calendar.php:988
 #: modules/calendar/calendar.php:1212
 #: modules/calendar/library/calendar-methods.php:875
-#: modules/calendar/library/calendar-methods.php:1248
+#: modules/calendar/library/calendar-methods.php:1250
 #: modules/calendar/library/calendar-utilities.php:115
 #: modules/calendar/library/calendar-utilities.php:1075
 #: modules/calendar/library/calendar-utilities.php:1191
@@ -893,7 +893,7 @@ msgid "Publish on"
 msgstr ""
 
 #: modules/calendar/library/calendar-methods.php:1195
-#: modules/notifications-log/notifications-log.php:210
+#: modules/notifications-log/notifications-log.php:213
 msgid "Loading..."
 msgstr ""
 
@@ -920,7 +920,7 @@ msgid "Show %s more"
 msgstr ""
 
 #: modules/calendar/library/calendar-methods.php:1201
-#: modules/calendar/library/calendar-methods.php:1704
+#: modules/calendar/library/calendar-methods.php:1706
 msgid "Untitled"
 msgstr ""
 
@@ -929,7 +929,7 @@ msgid "Close"
 msgstr ""
 
 #: modules/calendar/library/calendar-methods.php:1203
-#: modules/editorial-comments/lib/editorial-comments.js:349
+#: modules/editorial-comments/lib/editorial-comments.js:347
 msgid "Save"
 msgstr ""
 
@@ -1087,6 +1087,16 @@ msgid "No terms"
 msgstr ""
 
 #: modules/calendar/library/calendar-methods.php:1238
+#: modules/content-board/content-board.php:1268
+#: modules/content-overview/content-overview.php:1194
+msgid "No results found"
+msgstr ""
+
+#: modules/calendar/library/calendar-methods.php:1239
+msgid "Searching…"
+msgstr ""
+
+#: modules/calendar/library/calendar-methods.php:1240
 #: modules/content-board/content-board.php:1288
 #: modules/content-overview/content-overview.php:836
 #: modules/content-overview/content-overview.php:895
@@ -1094,7 +1104,7 @@ msgstr ""
 msgid "Post Date"
 msgstr ""
 
-#: modules/calendar/library/calendar-methods.php:1239
+#: modules/calendar/library/calendar-methods.php:1241
 #: modules/calendar/library/calendar-utilities.php:1097
 #: modules/content-board/content-board.php:1183
 #: modules/content-board/content-board.php:1289
@@ -1105,7 +1115,7 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: modules/calendar/library/calendar-methods.php:1241
+#: modules/calendar/library/calendar-methods.php:1243
 #: modules/calendar/library/calendar-utilities.php:1114
 #: modules/content-board/content-board.php:1224
 #: modules/content-board/content-board.php:1291
@@ -1114,7 +1124,7 @@ msgstr ""
 msgid "Preview"
 msgstr ""
 
-#: modules/calendar/library/calendar-methods.php:1242
+#: modules/calendar/library/calendar-methods.php:1244
 #: modules/calendar/library/calendar-utilities.php:1111
 #: modules/content-board/content-board.php:1211
 #: modules/content-board/content-board.php:1292
@@ -1123,51 +1133,51 @@ msgstr ""
 msgid "View"
 msgstr ""
 
-#: modules/calendar/library/calendar-methods.php:1243
+#: modules/calendar/library/calendar-methods.php:1245
 #: modules/content-board/content-board.php:1293
 #: modules/content-overview/content-overview.php:1224
 msgid "Previous Post"
 msgstr ""
 
-#: modules/calendar/library/calendar-methods.php:1244
+#: modules/calendar/library/calendar-methods.php:1246
 #: modules/content-board/content-board.php:1294
 #: modules/content-overview/content-overview.php:1225
 msgid "Next Post"
 msgstr ""
 
-#: modules/calendar/library/calendar-methods.php:1246
+#: modules/calendar/library/calendar-methods.php:1248
 #: modules/content-board/content-board.php:1296
 #: modules/content-overview/content-overview.php:1227
 msgid "Save Changes"
 msgstr ""
 
-#: modules/calendar/library/calendar-methods.php:1247
+#: modules/calendar/library/calendar-methods.php:1249
 #: modules/content-board/content-board.php:1297
 #: modules/content-overview/content-overview.php:1228
 msgid "Taxonomy not set."
 msgstr ""
 
-#: modules/calendar/library/calendar-methods.php:1687
+#: modules/calendar/library/calendar-methods.php:1689
 msgid "No date supplied."
 msgstr ""
 
-#: modules/calendar/library/calendar-methods.php:1698
+#: modules/calendar/library/calendar-methods.php:1700
 msgid "The selected post type is not enabled for the calendar."
 msgstr ""
 
-#: modules/calendar/library/calendar-methods.php:1728
+#: modules/calendar/library/calendar-methods.php:1730
 msgid "Invalid Status supplied."
 msgstr ""
 
-#: modules/calendar/library/calendar-methods.php:1752
+#: modules/calendar/library/calendar-methods.php:1754
 msgid "Invalid Publish Date supplied."
 msgstr ""
 
-#: modules/calendar/library/calendar-methods.php:1821
+#: modules/calendar/library/calendar-methods.php:1823
 msgid "Post created successfully"
 msgstr ""
 
-#: modules/calendar/library/calendar-methods.php:1828
+#: modules/calendar/library/calendar-methods.php:1830
 msgid "Post could not be created"
 msgstr ""
 
@@ -1620,11 +1630,6 @@ msgstr ""
 msgid "Preview &#8220;%s&#8221;"
 msgstr ""
 
-#: modules/content-board/content-board.php:1268
-#: modules/content-overview/content-overview.php:1194
-msgid "No results found"
-msgstr ""
-
 #: modules/content-board/content-board.php:1273
 #: modules/content-overview/content-overview.php:1199
 msgid "There are no posts in the range or filter specified."
@@ -1744,7 +1749,7 @@ msgstr ""
 #: modules/content-overview/library/content-overview-utilities.php:659
 #: modules/editorial-comments/editorial-comments.php:574
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:425
-#: modules/editorial-comments/lib/editorial-comments.js:350
+#: modules/editorial-comments/lib/editorial-comments.js:348
 msgid "Cancel"
 msgstr ""
 
@@ -1998,7 +2003,7 @@ msgstr ""
 
 #: modules/editorial-comments/editorial-comments.php:206
 #: modules/editorial-comments/library/EditorialCommentsTable.php:181
-#: modules/notifications-log/notifications-log.php:204
+#: modules/notifications-log/notifications-log.php:207
 msgid "All Posts"
 msgstr ""
 
@@ -2660,9 +2665,9 @@ msgstr ""
 
 #: modules/improved-notifications/improved-notifications.php:1088
 #: modules/notifications-log/notifications-log.php:75
-#: modules/notifications-log/notifications-log.php:263
-#: modules/notifications-log/notifications-log.php:489
-#: modules/notifications-log/notifications-log.php:490
+#: modules/notifications-log/notifications-log.php:266
+#: modules/notifications-log/notifications-log.php:492
+#: modules/notifications-log/notifications-log.php:493
 msgid "Notifications Log"
 msgstr ""
 
@@ -2872,60 +2877,60 @@ msgstr ""
 msgid "All Receivers"
 msgstr ""
 
-#: modules/notifications-log/notifications-log.php:205
+#: modules/notifications-log/notifications-log.php:208
 msgid "All Workflows"
 msgstr ""
 
-#: modules/notifications-log/notifications-log.php:206
+#: modules/notifications-log/notifications-log.php:209
 msgid "All Actions"
 msgstr ""
 
-#: modules/notifications-log/notifications-log.php:207
+#: modules/notifications-log/notifications-log.php:210
 msgid "All Channels"
 msgstr ""
 
-#: modules/notifications-log/notifications-log.php:208
+#: modules/notifications-log/notifications-log.php:211
 msgid "All Statuses"
 msgstr ""
 
-#: modules/notifications-log/notifications-log.php:209
-#: publishpress.php:1426
-#: publishpress.php:1431
+#: modules/notifications-log/notifications-log.php:212
+#: publishpress.php:1428
+#: publishpress.php:1433
 msgid "Notification"
 msgstr ""
 
-#: modules/notifications-log/notifications-log.php:272
+#: modules/notifications-log/notifications-log.php:275
 #, php-format
 msgid "%s notification found."
 msgid_plural "%s notifications found."
 msgstr[0] ""
 msgstr[1] ""
 
-#: modules/notifications-log/notifications-log.php:284
+#: modules/notifications-log/notifications-log.php:287
 msgid "No notifications found."
 msgstr ""
 
-#: modules/notifications-log/notifications-log.php:442
+#: modules/notifications-log/notifications-log.php:445
 #, php-format
 msgid "This notification is very similar to another one sent less than %d minutes ago for the same receiver"
 msgstr ""
 
-#: modules/notifications-log/notifications-log.php:817
+#: modules/notifications-log/notifications-log.php:820
 msgid "Subject:"
 msgstr ""
 
-#: modules/notifications-log/notifications-log.php:825
+#: modules/notifications-log/notifications-log.php:828
 msgid "Content:"
 msgstr ""
 
-#: modules/notifications-log/notifications-log.php:835
+#: modules/notifications-log/notifications-log.php:838
 msgid "This is a preview of the scheduled message. The content can still change until the notification is sent."
 msgstr ""
 
 #: modules/notifications/notifications.php:75
 #: modules/notifications/notifications.php:562
-#: publishpress.php:1425
-#: publishpress.php:1430
+#: publishpress.php:1427
+#: publishpress.php:1432
 msgid "Notifications"
 msgstr ""
 
@@ -3272,45 +3277,45 @@ msgstr ""
 msgid "Post does not exist"
 msgstr ""
 
-#: publishpress.php:1427
+#: publishpress.php:1429
 msgid "Add New Notification"
 msgstr ""
 
-#: publishpress.php:1428
+#: publishpress.php:1430
 msgid "Edit Notification"
 msgstr ""
 
-#: publishpress.php:1429
+#: publishpress.php:1431
 msgid "Search Notifications"
 msgstr ""
 
-#: publishpress.php:1432
-#: publishpress.php:1433
+#: publishpress.php:1434
+#: publishpress.php:1435
 msgid "No notification found"
 msgstr ""
 
-#: publishpress.php:1473
+#: publishpress.php:1475
 msgid "PublishPress Planner tried to load multiple times. Please, deactivate and remove other instances of PublishPress, specially if you are using PublishPress Pro."
 msgstr ""
 
-#: publishpress.php:1481
+#: publishpress.php:1483
 msgid "Warning"
 msgstr ""
 
 #: modules/editorial-comments/lib/editorial-comments.js:203
-#: modules/editorial-comments/lib/editorial-comments.js:371
+#: modules/editorial-comments/lib/editorial-comments.js:369
 msgid "Please enter a comment"
 msgstr ""
 
-#: modules/editorial-comments/lib/editorial-comments.js:377
+#: modules/editorial-comments/lib/editorial-comments.js:375
 msgid "Sending content..."
 msgstr ""
 
-#: modules/editorial-comments/lib/editorial-comments.js:434
+#: modules/editorial-comments/lib/editorial-comments.js:432
 msgid "This comment can't be deleted because it has one or more replies. Before deleting it make sure to delete all the replies first."
 msgstr ""
 
-#: modules/editorial-comments/lib/editorial-comments.js:438
+#: modules/editorial-comments/lib/editorial-comments.js:436
 msgid "Are you sure you want to delete this comment?"
 msgstr ""
 
