@@ -57,6 +57,10 @@ jQuery(document).ready(function ($) {
     if (self.hasClass('future-date')) {
       options.minDate = new Date();
     }
+    if (options.dateFormat) {
+      options.format = options.dateFormat;
+      delete options.dateFormat;
+    }
     self.datetimepicker(options);
   });
 
@@ -116,4 +120,3 @@ jQuery(document).ready(function ($) {
   }
   
 });
-
