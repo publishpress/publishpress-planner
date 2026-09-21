@@ -52,3 +52,27 @@ jobs:
       - name: Run Lint check
         run: |
           $GITHUB_WORKSPACE/dev-workspace/run composer check:lint
+
+  check-assets:
+    name: Check built assets
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@master
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build assets
+        run: npm run build
+
+      - name: Check for stale assets
+        run: git diff --exit-code
