@@ -1121,6 +1121,7 @@ if (! class_exists('PP_Calendar_Methods')) {
                         PUBLISHPRESS_VERSION,
                         true
                     );
+                    wp_set_script_translations('publishpress-async-calendar-js', 'publishpress');
 
                     /*
                      * Filters

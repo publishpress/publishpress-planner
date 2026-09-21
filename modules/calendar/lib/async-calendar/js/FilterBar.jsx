@@ -35,7 +35,7 @@ export default function FilterBar(props) {
     }
 
     const getWeeksFilterLabel = (numberOfWeeks) => {
-        return _n(props.strings.xWeek, props.strings.xWeeks, numberOfWeeks, 'publishpress')
+        return _n('%d week', '%d weeks', numberOfWeeks, 'publishpress')
             .replace('%d', numberOfWeeks);
     }
 
