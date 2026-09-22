@@ -1368,15 +1368,14 @@ add_action('plugins_loaded', function () {
 
                 $queryText = isset($_GET['q']) ? sanitize_text_field($_GET['q']) : '';
 
-                // If queryText is not empty, add a WHERE clause to filter meta_key
-                $whereClause = '';
-                if (!empty($queryText)) {
-                    $like = '%' . $wpdb->esc_like($queryText) . '%';
-                    $whereClause = $wpdb->prepare("AND meta_key LIKE %s", $like);
-                }
+                $like = '%' . $wpdb->esc_like($queryText) . '%';
 
-                // Updated query with conditional search
-                $queryResults = $wpdb->get_col("SELECT DISTINCT meta_key FROM $wpdb->postmeta WHERE 1=1 $whereClause ORDER BY meta_key ASC LIMIT 20");
+                $queryResults = $wpdb->get_col(
+                    $wpdb->prepare(
+                        "SELECT DISTINCT meta_key FROM {$wpdb->postmeta} WHERE meta_key LIKE %s ORDER BY meta_key ASC LIMIT 20",
+                        $like
+                    )
+                );
 
                 $results = [];
                 if (!empty($queryResults)) {
