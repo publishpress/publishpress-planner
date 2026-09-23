@@ -70,17 +70,34 @@
     }
 
     .publishpress-calendar-popup-close {
+      appearance: none;
       position: absolute;
       right: 14px;
       cursor: pointer;
-      border: 0;
-      background: transparent;
+      border: 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
       color: inherit;
+      min-height: 0;
       padding: 0;
+      text-shadow: none;
     }
   }
 
   .publishpress-calendar-popup-links {
+    > button {
+      appearance: none;
+      background: transparent !important;
+      border: 0 !important;
+      box-shadow: none !important;
+      color: inherit;
+      cursor: pointer;
+      font: inherit;
+      min-height: 0;
+      padding: 0;
+      text-shadow: none;
+    }
+
     > a,
     > button,
     > a + span,
@@ -124,13 +141,17 @@
   }
 
   .publishpress-calendar-popup-close {
+    appearance: none;
     position: absolute;
     right: 4px;
     cursor: pointer;
-    border: 0;
-    background: transparent;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
     color: inherit;
+    min-height: 0;
     padding: 0;
+    text-shadow: none;
   }
 
   .publishpress-calendar-popup-links {

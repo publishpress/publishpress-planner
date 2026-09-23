@@ -170,13 +170,29 @@
   color: #fff;
 }
 .publishpress-calendar-popup .publishpress-calendar-popup-title .publishpress-calendar-popup-close {
+  appearance: none;
   position: absolute;
   right: 14px;
   cursor: pointer;
-  border: 0;
-  background: transparent;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
   color: inherit;
+  min-height: 0;
   padding: 0;
+  text-shadow: none;
+}
+.publishpress-calendar-popup .publishpress-calendar-popup-links > button {
+  appearance: none;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  min-height: 0;
+  padding: 0;
+  text-shadow: none;
 }
 .publishpress-calendar-popup .publishpress-calendar-popup-links > a,
 .publishpress-calendar-popup .publishpress-calendar-popup-links > button,
@@ -214,13 +230,17 @@
   padding-left: 8px;
 }
 .publishpress-calendar-popup-form .publishpress-calendar-popup-close {
+  appearance: none;
   position: absolute;
   right: 4px;
   cursor: pointer;
-  border: 0;
-  background: transparent;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
   color: inherit;
+  min-height: 0;
   padding: 0;
+  text-shadow: none;
 }
 .publishpress-calendar-popup-form .publishpress-calendar-popup-links {
   position: absolute;
@@ -291,12 +311,18 @@
   line-height: 16px;
 }
 .publishpress-calendar .publishpress-calendar-cell-button {
-  border: 0;
-  background: transparent;
+  appearance: none;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
   color: inherit;
   cursor: pointer;
   font: inherit;
+  line-height: inherit;
+  min-height: 0;
   padding: 0;
+  text-align: left;
+  text-shadow: none;
 }
 .publishpress-calendar .publishpress-calendar-cell-button:focus-visible,
 .publishpress-calendar .publishpress-calendar-item:focus-visible {
@@ -342,13 +368,17 @@
 }
 .publishpress-calendar .publishpress-calendar-hide-items,
 .publishpress-calendar .publishpress-calendar-show-more {
-  border: 0;
-  background: transparent;
+  appearance: none;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
   font: inherit;
+  min-height: 0;
   padding-left: 3px;
   color: gray;
   font-size: 11px;
   cursor: pointer;
+  text-shadow: none;
 }
 .publishpress-calendar .publishpress-calendar-hide-items .dashicons,
 .publishpress-calendar .publishpress-calendar-show-more .dashicons {
@@ -382,7 +412,10 @@
   color: #717171;
 }
 .publishpress-calendar-button {
-  border: 0;
+  appearance: none;
+  background: transparent;
+  border: 0 !important;
+  box-shadow: none !important;
   cursor: pointer;
   text-decoration: none;
   -moz-border-radius: 5px;
@@ -394,6 +427,7 @@
   line-height: 35px;
   min-height: 28px;
   margin-left: 3px;
+  text-shadow: none;
   vertical-align: middle;
 }
 .publishpress-calendar-button .dashicons {
