@@ -1,8 +1,8 @@
 <table class="psppno_workflow_user_fields psppno_workflows">
     <tr>
-        <th class="psppno_workflow_column_header psppno_workflows"><?php echo esc_html($context['labels']['workflows']); ?></th>
-        <th class="psppno_workflow_column_header psppno_channels"><?php echo esc_html($context['labels']['channels']); ?></th>
-        <th class="psppno_workflow_column_header psppno_options"></th>
+        <th scope="col" class="psppno_workflow_column_header psppno_workflows"><?php echo esc_html($context['labels']['workflows']); ?></th>
+        <th scope="col" class="psppno_workflow_column_header psppno_channels"><?php echo esc_html($context['labels']['channels']); ?></th>
+        <th scope="col" class="psppno_workflow_column_header psppno_options"><span class="screen-reader-text"><?php esc_html_e('Options', 'publishpress'); ?></span></th>
     </tr>
 
     <?php foreach ($context['workflows'] as $workflow) : ?>
