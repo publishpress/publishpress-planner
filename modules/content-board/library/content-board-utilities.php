@@ -994,7 +994,7 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                             <tbody>
                                 <?php foreach ($post_fields as $field_key => $field_options) : ?>
                                     <tr>
-                                        <th>
+                                        <th scope="row">
                                             <label for="publishpress-content-board-field-<?php echo esc_attr($field_key); ?>">
                                                 <?php echo esc_html($field_options['label']); ?>
                                                 <?php if (!empty($field_options['required'])) : ?>

@@ -544,9 +544,10 @@ if (! class_exists('PP_Improved_Notifications')) {
                 // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
                 $posts = $wpdb->get_results(
                     $wpdb->prepare(
-                        "SELECT ID, post_name FROM $wpdb->posts WHERE post_type = %s AND post_status = 'publish' AND (post_name = %s OR post_name LIKE '$default_workflow_name-%') ORDER BY ID ASC",    //phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+                        "SELECT ID, post_name FROM $wpdb->posts WHERE post_type = %s AND post_status = 'publish' AND (post_name = %s OR post_name LIKE %s) ORDER BY ID ASC",
                         'psppnotif_workflow',
-                        $default_workflow_name
+                        $default_workflow_name,
+                        $wpdb->esc_like($default_workflow_name) . '-%'
                     )
                 );
 
@@ -798,11 +799,21 @@ if (! class_exists('PP_Improved_Notifications')) {
         {
             global $wpdb;
 
-            $query = "UPDATE {$wpdb->postmeta} SET meta_key = '_psppno_torole' WHERE meta_key = '_psppno_togroup'";
-            $wpdb->query($query);
+            $wpdb->update(
+                $wpdb->postmeta,
+                ['meta_key' => '_psppno_torole'],
+                ['meta_key' => '_psppno_togroup'],
+                ['%s'],
+                ['%s']
+            );
 
-            $query = "UPDATE {$wpdb->postmeta} SET meta_key = '_psppno_torolelist' WHERE meta_key = '_psppno_togrouplist'";
-            $wpdb->query($query);
+            $wpdb->update(
+                $wpdb->postmeta,
+                ['meta_key' => '_psppno_torolelist'],
+                ['meta_key' => '_psppno_togrouplist'],
+                ['%s'],
+                ['%s']
+            );
         }
 
 
