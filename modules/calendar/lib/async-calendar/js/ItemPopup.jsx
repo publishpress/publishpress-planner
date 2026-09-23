@@ -161,7 +161,7 @@ export default function ItemPopup(props) {
                 );
             } else if (linkData.action) {
                 links.push(
-                    <button type="button" key={`links-popup-${links.length}`} onClick={(e) => handleOnClick(e, linkData)}>{linkData.label}</button>
+                    <button type="button" className="publishpress-calendar-popup-action-button" key={`links-popup-${links.length}`} onClick={(e) => handleOnClick(e, linkData)}>{linkData.label}</button>
                 );
             }
 

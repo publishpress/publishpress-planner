@@ -182,7 +182,7 @@
   padding: 0;
   text-shadow: none;
 }
-.publishpress-calendar-popup .publishpress-calendar-popup-links > button:not(.button):not(.button-primary):not(.button-secondary) {
+.publishpress-calendar-popup .publishpress-calendar-popup-links > .publishpress-calendar-popup-action-button {
   appearance: none;
   background: transparent !important;
   border: 0 !important;
