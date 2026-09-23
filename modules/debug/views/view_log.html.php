@@ -10,7 +10,8 @@
 
 <div id="upstream-debug-data">
     <h2><?php echo esc_html($context['label']['debug_data']); ?></h2>
-    <textarea readonly><?php echo $context['debug_data']; ?></textarea>
+    <label class="screen-reader-text" for="upstream-debug-data-textarea"><?php echo esc_html($context['label']['debug_data']); ?></label>
+    <textarea id="upstream-debug-data-textarea" readonly><?php echo $context['debug_data']; ?></textarea>
 </div>
 
 <hr>

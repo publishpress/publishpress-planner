@@ -59,9 +59,9 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                             <span class="close">&times;</span>
                             <div>
                                 <div class="metadata-item-filter custom-filter">
-                                    <div class="filter-title">
+                                    <label class="filter-title" for="pp_posts_per_page">
                                         <?php esc_html_e('Maximum number of posts to display', 'publishpress'); ?>
-                                    </div>
+                                    </label>
                                     <div class="filter-content">
                                         <form method="POST">
                                             <input type="hidden" name="co_form_action" value="settings_form"/>
@@ -94,7 +94,7 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                     <?php endif; ?>
                     <div class="item">
                         <div class="search-bar">
-                            <input type="search" id="co-searchbox-search-input" name="s" value="<?php _admin_search_query(); ?>" placeholder="<?php esc_attr_e('Search box', 'publishpress'); ?>" />
+                            <input type="search" id="co-searchbox-search-input" name="s" value="<?php _admin_search_query(); ?>" placeholder="<?php esc_attr_e('Search box', 'publishpress'); ?>" aria-label="<?php esc_attr_e('Search content', 'publishpress'); ?>" />
                             <?php submit_button(esc_html__('Search', 'publishpress'), '', '', false, ['id' => 'co-searchbox-search-submit']); ?>
                         </div>
                     </div>
