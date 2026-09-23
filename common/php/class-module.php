@@ -859,32 +859,13 @@ if (!class_exists('PP_Module')) {
 
             $terms = get_terms($taxonomy, $args);
             foreach ($terms as $term) {
-                // If we can detect that this term already follows the new scheme, let's skip it
-                $maybe_json = json_decode(stripslashes(htmlspecialchars_decode($term->description)), true);
-                if (is_array($maybe_json)) {
+                // If the description already contains structured data, keep it as-is.
+                $unencoded_description = $this->get_unencoded_description($term->description);
+                if (is_array($unencoded_description)) {
                     continue;
                 }
 
-                $description_args = [];
-
-                // This description has been JSON-encoded, so let's decode it
-                if (0 === strpos($term->description, '{')) {
-                    $string_to_unencode = stripslashes(htmlspecialchars_decode($term->description));
-                    $unencoded_array    = json_decode($string_to_unencode, true);
-                    // Only continue processing if it actually was an array. Otherwise, set to the original string
-                    if (is_array($unencoded_array)) {
-                        foreach ($unencoded_array as $key => $value) {
-                            // html_entity_decode only works on strings but sometimes we store nested arrays
-                            if (!is_array($value)) {
-                                $description_args[$key] = html_entity_decode($value, ENT_QUOTES);
-                            } else {
-                                $description_args[$key] = $value;
-                            }
-                        }
-                    }
-                } else {
-                    $description_args['description'] = $term->description;
-                }
+                $description_args = ['description' => $term->description];
 
                 $new_description = $this->get_encoded_description($description_args);
                 wp_update_term(
