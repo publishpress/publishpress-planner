@@ -10,19 +10,21 @@ on:
         description: 'Enable "tmate" for debugging'
         required: false
         default: false
-permissions:
-  contents: write
-  packages: read
+
 jobs:
   code-check:
     name: Check the code
     uses: ./.github/workflows/code-check.yml
+    permissions:
+      contents: read
     secrets: inherit
 
   deploy-wp-org:
     name: Deploy the new tag
     needs: [code-check]
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Install linux packages
         run: |

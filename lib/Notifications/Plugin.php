@@ -88,13 +88,18 @@ class Plugin
     private function suppressInactiveNotifications($where, $inactive_default_names) {
         global $wpdb;
 
-        $post_name_csv = implode("','", array_map('sanitize_key', $inactive_default_names));
+        $inactive_default_names = array_map('sanitize_key', $inactive_default_names);
 
-        $where .= " AND $wpdb->posts.post_name NOT IN ('" . $post_name_csv . "')";                                  // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+        $where .= $wpdb->prepare(
+            ' AND ' . $wpdb->posts . '.post_name NOT IN (' . implode(', ', array_fill(0, count($inactive_default_names), '%s')) . ')',
+            $inactive_default_names
+        );
 
-        //phpcs:ignore Squiz.PHP.CommentedOutCode.Found
-        foreach ($inactive_default_names as $default_name) {  // note: $wpdb->prepare() breaks wildcards in LIKE statements
-            $where .= " AND $wpdb->posts.post_name NOT LIKE '" . sanitize_key($default_name) . "-%'";               // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+        foreach ($inactive_default_names as $default_name) {
+            $where .= $wpdb->prepare(
+                ' AND ' . $wpdb->posts . '.post_name NOT LIKE %s',
+                $wpdb->esc_like($default_name) . '-%'
+            );
         }
 
         return $where;
@@ -154,7 +159,10 @@ class Plugin
             ('psppnotif_workflow' == $type) && !empty($pagenow) && ('edit.php' == $pagenow)
             && (!defined('PUBLISHPRESS_REVISIONS_PRO_VERSION') || !defined('PUBLISHPRESS_STATUSES_PRO_VERSION'))
         ) {
-            $query = "SELECT post_status, COUNT(*) AS num_posts FROM {$wpdb->posts} WHERE post_type = %s";
+            $query = $wpdb->prepare(
+                "SELECT post_status, COUNT(*) AS num_posts FROM {$wpdb->posts} WHERE post_type = %s",
+                $type
+            );
 
             if (!defined('PUBLISHPRESS_REVISIONS_PRO_VERSION') && !defined('PUBLISHPRESS_INCLUDE_REVISION_NOTIFICATIONS')) {
                 $query = $this->suppressInactiveRevisionsNotifications($query);
@@ -166,7 +174,7 @@ class Plugin
 
             $query .= ' GROUP BY post_status';
         
-            $results = (array) $wpdb->get_results( $wpdb->prepare( $query, $type ), ARRAY_A );
+            $results = (array) $wpdb->get_results( $query, ARRAY_A );
             $counts  = array_fill_keys( get_post_stati(), 0 );
         
             foreach ( $results as $row ) {

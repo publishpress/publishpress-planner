@@ -67,13 +67,14 @@ export default function AsyncCalendar(props) {
     };
 
     const onMeModeClick = (event) => { 
+        const target = event.currentTarget;
         let new_value = '';
-        if (event.target.classList.contains('active-filter')) {
+        if (target.classList.contains('active-filter')) {
             new_value = 0;
-            event.target.classList.remove('active-filter');
+            target.classList.remove('active-filter');
         } else {
             new_value = 1;
-            event.target.classList.add('active-filter');
+            target.classList.add('active-filter');
         }
 
         onFilterEventCallback('me_mode', new_value);
@@ -84,14 +85,15 @@ export default function AsyncCalendar(props) {
 
     const onShowRevisionClick = (event) => { 
         event.preventDefault();
+        const target = event.currentTarget;
         let new_value = '';
         
-        if (event.target.classList.contains('active-filter')) {
+        if (target.classList.contains('active-filter')) {
             new_value = 1;
-            event.target.classList.remove('active-filter');
+            target.classList.remove('active-filter');
         } else {
             new_value = 0;
-            event.target.classList.add('active-filter');
+            target.classList.add('active-filter');
         }
 
         onFilterEventCallback('hide_revision', new_value);

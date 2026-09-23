@@ -264,7 +264,7 @@ export function updateModalPost(e, button, handleRefreshOnClick) {
             publishpressCalendarParams.PostData[post_index] = post;
 
             // update post title
-            target_post.find('.publishpress-calendar-item-title').html(post.post_title);
+            target_post.find('.publishpress-calendar-item-title').text(post.post_title);
 
             //refresh calendar
             if (typeof handleRefreshOnClick === 'function') {

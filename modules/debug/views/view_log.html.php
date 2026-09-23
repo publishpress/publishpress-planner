@@ -10,7 +10,8 @@
 
 <div id="upstream-debug-data">
     <h2><?php echo esc_html($context['label']['debug_data']); ?></h2>
-    <textarea readonly><?php echo $context['debug_data']; ?></textarea>
+    <label class="screen-reader-text" for="upstream-debug-data-textarea"><?php echo esc_html($context['label']['debug_data']); ?></label>
+    <textarea id="upstream-debug-data-textarea" readonly><?php echo $context['debug_data']; ?></textarea>
 </div>
 
 <hr>
@@ -22,18 +23,20 @@
         
         <h3><?php echo esc_html($context['label']['file_info']); ?></h3>
         <table id="upstream-debug-log-info">
+            <tbody>
             <tr>
-                <th><?php echo esc_html($context['label']['path']); ?>:</th>
+                <th scope="row"><?php echo esc_html($context['label']['path']); ?>:</th>
                 <td><?php echo esc_html($context['file']['path']); ?></td>
             </tr>
             <tr>
-                <th><?php echo esc_html($context['label']['size']); ?>:</th>
+                <th scope="row"><?php echo esc_html($context['label']['size']); ?>:</th>
                 <td><?php echo esc_html($context['file']['size']); ?> KB</td>
             </tr>
             <tr>
-                <th><?php echo esc_html($context['label']['modification_time']); ?>:</th>
+                <th scope="row"><?php echo esc_html($context['label']['modification_time']); ?>:</th>
                 <td><?php echo esc_html($context['file']['modification_time']); ?></td>
             </tr>
+            </tbody>
         </table>
 
         <p><?php echo esc_html($context['message']['click_to_delete']); ?></p>

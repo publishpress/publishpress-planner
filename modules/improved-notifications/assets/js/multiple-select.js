@@ -230,6 +230,7 @@
         options.single = $el.prop('multiple') ? false : true;
 
         this.options = options;
+        this.name = name;
 
         // hide select element
         this.$el = $el.attr('hidden', true);
@@ -237,28 +238,32 @@
         // label element
         this.$label = this.$el.closest('label');
         if (this.$label.length === 0 && this.$el.attr('id')) {
-            this.$label = $(sprintf('label[for="%s"]', this.$el.attr('id').replace(/:/g, '\\:')));
+            this.$label = $(sprintf('label[for="%s"]', this.$el.attr('id').replace(/([:\\])/g, '\\$1')));
         }
 
         // restore class and title from select element
-        this.$parent = $(sprintf(
-            '<div class="ms-parent %s" %s/>',
-            $el.attr('class') || '',
-            sprintf('title="%s"', $el.attr('title'))));
+        this.$parent = $('<div/>', {
+            'class': 'ms-parent ' + ($el.attr('class') || '')
+        }).attr('title', $el.attr('title') || '');
 
         // add placeholder to choice button
-        this.$choice = $(sprintf([
-                '<button type="button" class="ms-choice">',
-                '<span class="placeholder">%s</span>',
-                '<div></div>',
-                '</button>'
-            ].join(''),
-            this.options.placeholder));
+        this.$choice = $('<button/>', {
+            type: 'button',
+            'class': 'ms-choice'
+        }).append(
+            $('<span/>', {
+                'class': 'placeholder'
+            }).text(this.options.placeholder),
+            $('<div/>')
+        );
 
         // default position is bottom
-        this.$drop = $(sprintf('<div class="ms-drop %s"%s></div>',
-            this.options.position,
-            sprintf(' style="width: %s"', this.options.dropWidth)));
+        this.$drop = $('<div/>', {
+            'class': 'ms-drop ' + this.options.position
+        });
+        if (this.options.dropWidth) {
+            this.$drop.css('width', this.options.dropWidth);
+        }
 
         this.$el.after(this.$parent);
         this.$parent.append(this.$choice);
@@ -298,25 +303,38 @@
             this.$drop.html('');
 
             if (this.options.filter) {
-                this.$drop.append([
-                    '<div class="ms-search">',
-                    sprintf('<input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="%s">', this.options.filterPlaceholder),
-                    '</div>'].join('')
+                this.$drop.append(
+                    $('<div/>', {
+                        'class': 'ms-search'
+                    }).append($('<input/>', {
+                        type: 'text',
+                        autocomplete: 'off',
+                        autocorrect: 'off',
+                        autocapitalize: 'off',
+                        spellcheck: 'false',
+                        placeholder: this.options.filterPlaceholder
+                    }))
                 );
             }
 
             if (this.options.selectAll && !this.options.single) {
-                $ul.append([
-                    '<li class="ms-select-all">',
-                    '<label>',
-                    sprintf('<input type="checkbox" %s />', this.selectAllName),
-                    '<span class="ms-control-indicator"></span>',
-                    this.options.selectAllDelimiter[0],
-                    this.options.selectAllText,
-                    this.options.selectAllDelimiter[1],
-                    '</label>',
-                    '</li>'
-                ].join(''));
+                $ul.append(
+                    $('<li/>', {
+                        'class': 'ms-select-all'
+                    }).append(
+                        $('<label/>').append(
+                            $('<input/>', {
+                                type: 'checkbox'
+                            }).attr('data-name', 'selectAll' + this.name),
+                            $('<span/>', {
+                                'class': 'ms-control-indicator'
+                            }),
+                            document.createTextNode(this.options.selectAllDelimiter[0]),
+                            document.createTextNode(this.options.selectAllText),
+                            document.createTextNode(this.options.selectAllDelimiter[1])
+                        )
+                    )
+                );
             }
 
             var elems = [];
@@ -326,7 +344,9 @@
             $ul.append(elems);
 
             if (this.options.maxHeight) $ul.css('max-height', this.options.maxHeight + 'px');
-            $ul.append(sprintf('<li class="ms-no-results">%s</li>', this.options.noMatchesFound));
+            $ul.append($('<li/>', {
+                'class': 'ms-no-results'
+            }).text(this.options.noMatchesFound));
             this.$drop.append($ul);
 
             this.$drop.find('.multiple').css('width', this.options.multipleWidth + 'px');
@@ -371,7 +391,6 @@
             var that = this,
                 $elm = $(elm),
                 classes = $elm.attr('class') || '',
-                title = sprintf('title="%s"', $elm.attr('title')),
                 multiple = this.options.multiple ? 'multiple' : '',
                 disabled,
                 type = this.options.single ? 'radio' : 'checkbox';
@@ -382,36 +401,55 @@
                     dataAttributes = $elm.data() || '',
                     hidden = $elm.prop('hidden'),
                     selected = $elm.prop('selected'),
-                    style = this.options.styler(value) ? sprintf('style="%s"', this.options.styler(value)) : $elm.attr('style') ? sprintf('style="%s"', $elm.attr('style')) : '',
-                    $el,
+                    style = this.options.styler(value) || $elm.attr('style') || '',
+                    $li,
+                    $label,
+                    $text,
                     $input;
 
                 disabled = groupDisabled || $elm.prop('disabled');
 
-                $el = $([
-                    sprintf('<li class="%s %s" %s %s>', multiple, classes, title, style),
-                    sprintf('<label class="%s">', disabled ? 'disabled' : ''),
-                    sprintf('<input type="%s" %s%s%s%s%s>',
-                        type, this.selectItemName,
-                        hidden ? ' hidden="hidden"' : '',
-                        selected ? ' checked="checked"' : '',
-                        disabled ? ' disabled="disabled"' : '',
-                        sprintf(' data-group="%s"', group)),
-                    '<span class="ms-control-indicator"></span>',
-                    sprintf('<span>%s</span>', text),
-                    '</label>',
-                    '</li>'
-                ].join(''));
+                $li = $('<li/>', {
+                    'class': multiple + ' ' + classes
+                }).attr('title', $elm.attr('title') || '');
+                if (style) {
+                    $li.attr('style', style);
+                }
 
-                $input = $el.find('input');
+                $label = $('<label/>', {
+                    'class': disabled ? 'disabled' : ''
+                });
+                $input = $('<input/>', {
+                    type: type
+                }).attr('data-name', 'selectItem' + this.name);
+
+                if (hidden) {
+                    $input.attr('hidden', 'hidden');
+                }
+                if (selected) {
+                    $input.attr('checked', 'checked');
+                }
+                if (disabled) {
+                    $input.attr('disabled', 'disabled');
+                }
+                $input.attr('data-group', group || '');
                 $input.val(value);
+                $text = $('<span/>').text(text);
+                $label.append(
+                    $input,
+                    $('<span/>', {
+                        'class': 'ms-control-indicator'
+                    }),
+                    $text
+                );
+                $li.append($label);
 
                 if (dataAttributes) {
                     $.each(dataAttributes, function (key, value) {
                         $input.attr('data-' + key, value);
                     });
                 }
-                return $el;
+                return $li;
             }
             if ($elm.is('optgroup')) {
                 var label = that.options.labelTemplate($elm),
@@ -420,23 +458,30 @@
                 group = 'group_' + i;
                 disabled = $elm.prop('disabled');
 
-                $group.append([
-                    '<li class="group">',
-                    sprintf('<label class="optgroup %s %s" data-group="%s">', disabled ? 'disabled' : '', this.options.hideOptgroupCheckboxes || this.options.single ? 'hide-control' : '', group),
-                    this.options.hideOptgroupCheckboxes || this.options.single ? '' :
-                        sprintf('<input type="checkbox" %s %s>',
-                            this.selectGroupName, disabled ? 'disabled="disabled"' : ''),
-                    this.options.hideOptgroupCheckboxes || this.options.single ? '' :
-                        '<span class="ms-control-indicator"></span>',
-                    label,
-                    '</label>',
-                    '</li>'
-                ].join(''));
+                var $groupLabel = $('<label/>', {
+                    'class': 'optgroup ' + (disabled ? 'disabled' : '') + ' ' + (this.options.hideOptgroupCheckboxes || this.options.single ? 'hide-control' : '')
+                }).attr('data-group', group);
+
+                if (!this.options.hideOptgroupCheckboxes && !this.options.single) {
+                    $groupLabel.append(
+                        $('<input/>', {
+                            type: 'checkbox'
+                        }).attr('data-name', 'selectGroup' + this.name).prop('disabled', disabled),
+                        $('<span/>', {
+                            'class': 'ms-control-indicator'
+                        })
+                    );
+                }
+
+                $groupLabel.append(document.createTextNode(label));
+                $group.append($('<li/>', {
+                    'class': 'group'
+                }).append($groupLabel));
 
                 $.each($elm.children(), function (i, elm) {
                     $group.append(that.optionToHtml(i, elm, group, disabled));
                 });
-                return $group.html();
+                return $group.children();
             }
         },
 
@@ -651,16 +696,16 @@
                 sl = selects.length;
 
             if (sl === 0) {
-                $span.addClass('placeholder').html(this.options.placeholder);
+                $span.addClass('placeholder').text(this.options.placeholder);
             } else if (this.options.allSelected && sl === this.$selectItems.length + this.$disableItems.length) {
-                $span.removeClass('placeholder').html(sl === 1 ? this.getSelects('text') : this.options.allSelected);
+                $span.removeClass('placeholder').text(sl === 1 ? this.getSelects('text') : this.options.allSelected);
             } else if (this.options.ellipsis && sl > this.options.minimumCountSelected) {
                 $span.removeClass('placeholder').text(selects.slice(0, this.options.minimumCountSelected)
                     .join(this.options.delimiter) + '…');
             } else if (this.options.countSelected && sl > this.options.minimumCountSelected) {
-                $span.removeClass('placeholder').html(this.options.countSelected
-                    .replace('#', selects.length)
-                    .replace('%', this.$selectItems.length + this.$disableItems.length));
+                $span.removeClass('placeholder').text(this.options.countSelected
+                    .replace(/#/g, selects.length)
+                    .replace(/%/g, this.$selectItems.length + this.$disableItems.length));
             } else {
                 $span.removeClass('placeholder').text(selects.join(this.options.delimiter));
             }
@@ -943,7 +988,7 @@
             return false;
         },
         textTemplate: function ($elm) {
-            return $elm.html();
+            return $elm.text();
         },
         labelTemplate: function ($elm) {
             return $elm.attr('label');

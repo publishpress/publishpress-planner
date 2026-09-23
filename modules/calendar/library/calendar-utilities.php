@@ -482,7 +482,7 @@ if (! class_exists('PP_Calendar_Utilities')) {
                 <div class="right-items">
                     <div class="item">
                         <div class="search-bar">
-                            <input type="search" id="co-searchbox-search-input" name="s" value="<?php _admin_search_query(); ?>" placeholder="<?php esc_attr_e('Search box', 'publishpress'); ?>" />
+                            <input type="search" id="co-searchbox-search-input" name="s" value="<?php _admin_search_query(); ?>" placeholder="<?php esc_attr_e('Search box', 'publishpress'); ?>" aria-label="<?php esc_attr_e('Search content', 'publishpress'); ?>" />
                             <?php submit_button(esc_html__('Search', 'publishpress'), '', '', false, ['id' => 'co-searchbox-search-submit']); ?>
                         </div>
                     </div>

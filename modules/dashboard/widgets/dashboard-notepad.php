@@ -157,7 +157,8 @@ class PP_Dashboard_Notepad_Widget
             echo '<form id="dashboard-notepad">';
             echo '<input type="hidden" name="action" value="dashboard-notepad" />';
             echo '<input type="hidden" name="notepad-id" value="' . esc_attr($current_id) . '" />';
-            echo '<textarea style="width:100%" rows="10" name="note">';
+            echo '<label class="screen-reader-text" for="dashboard-notepad-note">' . esc_html__('Dashboard note', 'publishpress') . '</label>';
+            echo '<textarea id="dashboard-notepad-note" style="width:100%" rows="10" name="note">';
             echo esc_textarea(trim($current_note));
             echo '</textarea>';
             echo '<p class="submit">';
@@ -172,7 +173,8 @@ class PP_Dashboard_Notepad_Widget
             echo '</form>';
         } else {
             echo '<form id="dashboard-notepad">';
-            echo '<textarea style="width:100%" rows="10" name="note" disabled="disabled">';
+            echo '<label class="screen-reader-text" for="dashboard-notepad-note">' . esc_html__('Dashboard note', 'publishpress') . '</label>';
+            echo '<textarea id="dashboard-notepad-note" style="width:100%" rows="10" name="note" disabled="disabled">';
             echo esc_textarea(trim($current_note));
             echo '</textarea>';
             // phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped

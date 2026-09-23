@@ -23,6 +23,8 @@ jobs:
   check:
     name: Check the code
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Setup tmate session for Debugging, if inputs.tmate_enabled is true
         uses: mxschmitt/action-tmate@v3
@@ -50,4 +52,3 @@ jobs:
       - name: Run Lint check
         run: |
           $GITHUB_WORKSPACE/dev-workspace/run composer check:lint
-

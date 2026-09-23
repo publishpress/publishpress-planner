@@ -161,6 +161,8 @@ if (! class_exists('PP_Notifications_Log')) {
                 wp_enqueue_script('jquery-ui-dialog');
                 wp_enqueue_style('wp-jquery-ui-dialog');
 
+                $this->enqueue_datepicker_resources();
+
                 wp_enqueue_style(
                     'pressshack-admin-css',
                     PUBLISHPRESS_URL . 'common/css/pressshack-admin.css',
@@ -189,6 +191,7 @@ if (! class_exists('PP_Notifications_Log')) {
                     $this->module_url . 'assets/js/admin.js',
                     [
                         'jquery-ui-dialog',
+                        'jquery-ui-datepicker',
                         'publishpress-select2',
                     ],
                     PUBLISHPRESS_VERSION,

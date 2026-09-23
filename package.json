@@ -13,7 +13,7 @@
   },
   "homepage": "https://github.com/publishpress/PublishPress#readme",
   "devDependencies": {
-    "@babel/core": "^7.16.12",
+    "@babel/core": "^7.29.6",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.22.15",
     "@wordpress/babel-preset-default": "^3.0.2",
@@ -45,6 +45,6 @@
     "makepot": "wp i18n make-pot . ./languages/publishpress.pot --domain=publishpress"
   },
   "dependencies": {
-    "dompurify": "^3.4.0"
+    "dompurify": "^3.4.13"
   }
 }
