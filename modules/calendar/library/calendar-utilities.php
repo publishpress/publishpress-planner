@@ -1175,6 +1175,7 @@ if (! class_exists('PP_Calendar_Utilities')) {
         public static function get_content_calendar_form_filters($args)
         {
             $content_calendar_datas = $args['content_calendar_datas'];
+            $is_revisions_active = ! empty($args['is_revisions_active']);
             // custom filters
             $filters['custom'] = [
                 'title'     => esc_html__('Custom filters', 'publishpress'),
@@ -1183,14 +1184,20 @@ if (! class_exists('PP_Calendar_Utilities')) {
             ];
     
             // default filters
+            $default_filters = [
+                'post_status' => esc_html__('Post Status', 'publishpress'),
+            ];
+            if ($is_revisions_active) {
+                $default_filters['revision_status'] = esc_html__('Revision Status', 'publishpress');
+            }
+            $default_filters += [
+                'author' => esc_html__('Author', 'publishpress'),
+                'cpt' => esc_html__('Post Type', 'publishpress')
+            ];
+
             $filters['default'] = [
                 'title'     => esc_html__('Inbuilt filters', 'publishpress'),
-                'filters'   => [
-                    'post_status' => esc_html__('Post Status', 'publishpress'),
-                    'revision_status' => esc_html__('Revision Status', 'publishpress'),
-                    'author' => esc_html__('Author', 'publishpress'),
-                    'cpt' => esc_html__('Post Type', 'publishpress')
-                ]
+                'filters'   => $default_filters
             ];
             
             // editorial fields filters
