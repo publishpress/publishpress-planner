@@ -94,6 +94,14 @@
     user-select: none;
 }
 
+.pp-content-calendar-manage .item.action {
+    box-sizing: border-box;
+    gap: 4px;
+    height: 34px;
+    max-height: none;
+    padding: 0 10px;
+}
+
 .metadata-item-filter .filter-apply input[type=submit],
 .pp-content-calendar-manage .item.action.new-post {
     background-color: #655997;
