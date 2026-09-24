@@ -87,22 +87,16 @@ export default function DayCell(props) {
             <div>
                 <div className="publishpress-calendar-cell-header">
                     {props.canCreate ?
-                    <button type="button" className="publishpress-calendar-cell-button" onClick={createPost} aria-label={dayLabel}>
-                        {props.shouldDisplayMonthName &&
-                        <span className="publishpress-calendar-month-name">{getMonthNameByMonthIndex(props.date.getMonth())}</span>
-                        }
-                        <span className="publishpress-calendar-date">{props.date.getDate()}</span>
-                        {props.isHovering &&
-                        <span className="publishpress-calendar-cell-click-to-add">{props.strings.clickToAdd}</span>
-                        }
-                    </button>
+                    <button type="button" className="publishpress-calendar-cell-button" onClick={createPost} aria-label={dayLabel}></button>
                     :
-                    <>
-                        {props.shouldDisplayMonthName &&
-                        <span className="publishpress-calendar-month-name">{getMonthNameByMonthIndex(props.date.getMonth())}</span>
-                        }
-                        <span className="publishpress-calendar-date">{props.date.getDate()}</span>
-                    </>
+                    null
+                    }
+                    {props.shouldDisplayMonthName &&
+                    <span className="publishpress-calendar-month-name">{getMonthNameByMonthIndex(props.date.getMonth())}</span>
+                    }
+                    <span className="publishpress-calendar-date">{props.date.getDate()}</span>
+                    {props.canCreate && props.isHovering &&
+                    <span className="publishpress-calendar-cell-click-to-add">{props.strings.clickToAdd}</span>
                     }
                 </div>
 

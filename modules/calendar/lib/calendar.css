@@ -89,8 +89,16 @@
     font-size: .75rem;
     font-weight: 500;
     line-height: 1.334;
+    padding: 4px 8px 4px 6px;
     cursor: pointer;
     user-select: none;
+}
+
+.pp-content-calendar-manage .item.action {
+    box-sizing: border-box;
+    gap: 4px;
+    height: 34px;
+    max-height: none;
 }
 
 .metadata-item-filter .filter-apply input[type=submit],
