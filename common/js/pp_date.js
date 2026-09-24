@@ -47,6 +47,18 @@ jQuery(document).ready(function ($) {
     });
   }
 
+  function normalizeDateTimePickerOptions (options) {
+    var datetimepicker = $.fn.datetimepicker;
+    var isBootstrapDateTimePicker = datetimepicker && !$.timepicker && (datetimepicker.Constructor || datetimepicker.defaults);
+
+    if (isBootstrapDateTimePicker && options.dateFormat) {
+      options.format = options.dateFormat;
+      delete options.dateFormat;
+    }
+
+    return options;
+  }
+
   $('.date-time-pick').each(function () {
     var self = $(this);
     var options = getOptions(self, {
@@ -57,7 +69,7 @@ jQuery(document).ready(function ($) {
     if (self.hasClass('future-date')) {
       options.minDate = new Date();
     }
-    self.datetimepicker(options);
+    self.datetimepicker(normalizeDateTimePickerOptions(options));
   });
 
   $('.date-pick').each(function () {
@@ -116,4 +128,3 @@ jQuery(document).ready(function ($) {
   }
   
 });
-
