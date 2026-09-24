@@ -52,6 +52,9 @@
 
 .pp-content-calendar-manage .right-items .item,
 .pp-content-calendar-manage .left-items .item {
+    appearance: none;
+    background-image: none;
+    box-shadow: none;
     font-size: 14px;
     font-weight: 500;
     line-height: 16px;
@@ -68,6 +71,7 @@
     color: rgb(101, 111, 125);
     cursor: pointer;
     padding: 5px;
+    text-shadow: none;
 }
 
 .metadata-item-filter .filter-apply input[type=submit],
@@ -97,6 +101,9 @@
 
 .pp-content-calendar-filters button.clear-filter,
 .pp-content-calendar-filters button.co-filter {
+    appearance: none;
+    background-image: none;
+    box-shadow: none;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -109,6 +116,7 @@
     font-size: .75rem;
     font-weight: 500;
     cursor: pointer;
+    text-shadow: none;
     user-select: none;
 }
 
