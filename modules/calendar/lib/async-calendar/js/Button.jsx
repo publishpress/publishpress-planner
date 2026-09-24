@@ -8,6 +8,6 @@ export default function Button(props) {
     const className = 'publishpress-calendar-button ' + (props.className || '');
 
     return (
-        <a href={props.href || '#'} className={className} onClick={props.onClick}>{icon}{props.label}</a>
+        <button type="button" className={className} onClick={props.onClick} aria-label={props.ariaLabel || props.label}>{icon}{props.label}</button>
     )
 }

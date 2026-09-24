@@ -50,6 +50,27 @@
     line-height: 16px;
   }
 
+  .publishpress-calendar-cell-button {
+    appearance: none;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+    line-height: inherit;
+    min-height: 0;
+    padding: 0;
+    text-align: left;
+    text-shadow: none;
+  }
+
+  .publishpress-calendar-cell-button:focus-visible,
+  .publishpress-calendar-item:focus-visible {
+    outline: 2px solid #2271b1;
+    outline-offset: 1px;
+  }
+
   .publishpress-calendar-today .publishpress-calendar-date {
     border-radius: 50%;
     text-align: center;
@@ -97,10 +118,17 @@
 
   .publishpress-calendar-hide-items,
   .publishpress-calendar-show-more {
+    appearance: none;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    font: inherit;
+    min-height: 0;
     padding-left: 3px;
     color: gray;
     font-size: 11px;
     cursor: pointer;
+    text-shadow: none;
 
     .dashicons {
       font-size: 15px;
@@ -141,6 +169,11 @@
 }
 
 .publishpress-calendar-button {
+  appearance: none;
+  background: transparent;
+  border: 0 !important;
+  box-shadow: none !important;
+  cursor: pointer;
   text-decoration: none;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -151,6 +184,7 @@
   line-height: 35px;
   min-height: 28px;
   margin-left: 3px;
+  text-shadow: none;
   vertical-align: middle;
 }
 

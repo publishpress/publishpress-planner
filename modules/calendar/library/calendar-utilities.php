@@ -463,18 +463,18 @@ if (! class_exists('PP_Calendar_Utilities')) {
                             $me_mode = (int) $user_filters['me_mode'];
                             $active_me_mode = !empty($me_mode) ? 'active-filter' : '';
                         ?>
-                    <div class="item action me-mode-action <?php echo esc_attr($active_me_mode); ?>"
-                        data-label="<?php esc_html_e('Me Mode', 'publishpress'); ?>">
+                    <button type="button" class="item action me-mode-action <?php echo esc_attr($active_me_mode); ?>"
+                        data-label="<?php esc_attr_e('Me Mode', 'publishpress'); ?>">
                         <span class="dashicons dashicons-admin-users"></span> <?php esc_html_e('Me Mode', 'publishpress'); ?>
-                    </div>
+                    </button>
                     <?php do_action('pp_content_calendar_filter_after_me_mode', $user_filters); ?>
                     <?php $modal_id++; ?>
-                    <div class="item action co-filter" data-target="#content_calendar_modal_<?php echo esc_attr($modal_id); ?>">
+                    <button type="button" class="item action co-filter" data-target="#content_calendar_modal_<?php echo esc_attr($modal_id); ?>">
                         <span class="dashicons dashicons-filter"></span> <?php esc_html_e('Customize Filters', 'publishpress'); ?>
-                    </div>
+                    </button>
                     <div id="content_calendar_modal_<?php echo esc_attr($modal_id); ?>" class="customize-customize-item-modal content-calendar-modal" style="display: none;">
                         <div class="content-calendar-modal-content">
-                            <span class="close">&times;</span>
+                            <button type="button" class="close" aria-label="<?php esc_attr_e('Close', 'publishpress'); ?>">&times;</button>
                             <?php echo self::content_calendar_customize_filter_form($args); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                         </div>
                     </div>
@@ -504,7 +504,7 @@ if (! class_exists('PP_Calendar_Utilities')) {
                     </button>
                     <div id="content_calendar_modal_<?php echo esc_attr($modal_id); ?>" class="content-calendar-modal" style="display: none;">
                         <div class="content-calendar-modal-content">
-                            <span class="close">&times;</span>
+                            <button type="button" class="close" aria-label="<?php esc_attr_e('Close', 'publishpress'); ?>">&times;</button>
                             <div>
                                 <select name="weeks" id="weeks" class="calendar-weeks-filter">
                                     <?php 
