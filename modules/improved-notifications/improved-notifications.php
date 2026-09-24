@@ -900,6 +900,11 @@ if (! class_exists('PP_Improved_Notifications')) {
                 return;
             }
 
+            // Opening the editor creates an auto-draft without a content update.
+            if ('auto-draft' === $post->post_status) {
+                return;
+            }
+
             // Ignores trashed posts, we have the status transition event.
             if ('trash' === $post->post_status) {
                 return;
