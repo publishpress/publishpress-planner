@@ -573,6 +573,10 @@ class PP_Content_Overview extends PP_Module
             }
         }
 
+        if (! $this->is_revisions_active()) {
+            unset($user_filters['revision_status'], $user_filters['hide_revision']);
+        }
+
         if (! $user_filters['start_date']) {
             $user_filters['start_date'] = date('Y-m-d', strtotime('-5 weeks')); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
         }
@@ -841,14 +845,16 @@ class PP_Content_Overview extends PP_Module
 
         $default_content_overview_columns = [
             'post_status' => esc_html__('Status', 'publishpress'),
+        ];
+        if ($this->is_revisions_active()) {
+            $default_content_overview_columns['revision_status'] = esc_html__('Revision Status', 'publishpress');
+        }
+        $default_content_overview_columns += [
             'post_type' => esc_html__('Post Type', 'publishpress'),
             'post_author' => esc_html__('Author', 'publishpress'),
             'post_date' => esc_html__('Post Date', 'publishpress'),
             'post_modified' => esc_html__('Last Modified', 'publishpress'),
         ];
-        if ($this->is_revisions_active()) {
-            $default_content_overview_columns['revision_status'] = esc_html__('Revision Status', 'publishpress');
-        }
 
         $datas['content_overview_columns'] = is_array($content_overview_columns) ? $content_overview_columns : $default_content_overview_columns;
         if (! $this->is_revisions_active()) {
@@ -863,12 +869,14 @@ class PP_Content_Overview extends PP_Module
 
         $default_content_overview_filters = [
             'post_status' => esc_html__('Status', 'publishpress'),
-            'author' => esc_html__('Author', 'publishpress'),
-            'ptype' => esc_html__('Post Type', 'publishpress')
         ];
         if ($this->is_revisions_active()) {
             $default_content_overview_filters['revision_status'] = esc_html__('Revision Status', 'publishpress');
         }
+        $default_content_overview_filters += [
+            'author' => esc_html__('Author', 'publishpress'),
+            'ptype' => esc_html__('Post Type', 'publishpress')
+        ];
 
         $datas['content_overview_filters'] = is_array($content_overview_filters) ? $content_overview_filters : $default_content_overview_filters;
         if (! $this->is_revisions_active()) {
@@ -913,14 +921,16 @@ class PP_Content_Overview extends PP_Module
         // default columns
         $default_columns = [
             'post_status' => esc_html__('Status', 'publishpress'),
+        ];
+        if ($this->is_revisions_active()) {
+            $default_columns['revision_status'] = esc_html__('Revision Status', 'publishpress');
+        }
+        $default_columns += [
             'post_type' => esc_html__('Post Type', 'publishpress'),
             'post_author' => esc_html__('Author', 'publishpress'),
             'post_date' => esc_html__('Post Date', 'publishpress'),
             'post_modified' => esc_html__('Last Modified', 'publishpress')
         ];
-        if ($this->is_revisions_active()) {
-            $default_columns['revision_status'] = esc_html__('Revision Status', 'publishpress');
-        }
 
         $columns['default'] = [
             'title'     => esc_html__('Inbuilt Columns', 'publishpress'),
@@ -980,12 +990,14 @@ class PP_Content_Overview extends PP_Module
         // default filters
         $default_filters = [
             'post_status' => esc_html__('Post Status', 'publishpress'),
-            'author' => esc_html__('Author', 'publishpress'),
-            'ptype' => esc_html__('Post Type', 'publishpress')
         ];
         if ($this->is_revisions_active()) {
             $default_filters['revision_status'] = esc_html__('Revision Status', 'publishpress');
         }
+        $default_filters += [
+            'author' => esc_html__('Author', 'publishpress'),
+            'ptype' => esc_html__('Post Type', 'publishpress')
+        ];
 
         $filters['default'] = [
             'title'     => esc_html__('Inbuilt filters', 'publishpress'),
