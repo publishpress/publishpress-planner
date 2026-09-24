@@ -295,6 +295,7 @@
   display: block;
   width: 100%;
   height: 26px;
+  position: relative;
   text-align: left;
   padding-left: 2px;
   padding-top: 2px;
@@ -314,15 +315,28 @@
   appearance: none;
   background: transparent !important;
   border: 0 !important;
+  box-sizing: border-box;
   box-shadow: none !important;
   color: inherit;
   cursor: pointer;
+  display: block;
   font: inherit;
+  height: 100%;
   line-height: inherit;
   min-height: 0;
   padding: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
   text-align: left;
   text-shadow: none;
+  width: 100%;
+}
+.publishpress-calendar .publishpress-calendar-cell-header .publishpress-calendar-month-name,
+.publishpress-calendar .publishpress-calendar-cell-header .publishpress-calendar-date,
+.publishpress-calendar .publishpress-calendar-cell-header .publishpress-calendar-cell-click-to-add {
+  pointer-events: none;
+  position: relative;
 }
 .publishpress-calendar .publishpress-calendar-cell-button:focus-visible,
 .publishpress-calendar .publishpress-calendar-item:focus-visible {
@@ -402,6 +416,29 @@
 .publishpress-calendar .publishpress-calendar-navigation-bar {
   text-align: right;
 }
+.publishpress-calendar .publishpress-calendar-navigation-bar .publishpress-calendar-button {
+  align-items: center;
+  background: #fff !important;
+  border: 1px solid #dcdcde !important;
+  box-sizing: border-box;
+  color: #655997;
+  display: inline-flex;
+  height: 30px;
+  justify-content: center;
+  line-height: 1;
+  min-height: 30px;
+  padding: 0 10px;
+}
+.publishpress-calendar .publishpress-calendar-navigation-bar .publishpress-calendar-button.refresh-button {
+  padding: 0;
+  width: 34px;
+}
+.publishpress-calendar .publishpress-calendar-navigation-bar .publishpress-calendar-button .dashicons {
+  font-size: 16px;
+  height: 16px;
+  line-height: 1;
+  width: 16px;
+}
 .publishpress-calendar .publishpress-calendar-hovering .publishpress-calendar-cell-click-to-add {
   font-style: italic;
   color: #b0b0b0;
@@ -414,24 +451,24 @@
 .publishpress-calendar-button {
   appearance: none;
   background: transparent;
-  border: 0 !important;
+  border: 0;
   box-shadow: none !important;
   cursor: pointer;
   text-decoration: none;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
-  padding: 7px 10px;
+  padding: 3px 8px;
   font-weight: normal;
   font-size: 13px;
-  line-height: 35px;
-  min-height: 28px;
-  margin-left: 3px;
+  line-height: 20px;
+  min-height: 24px;
+  margin-left: 2px;
   text-shadow: none;
   vertical-align: middle;
 }
 .publishpress-calendar-button .dashicons {
-  line-height: 30px;
+  line-height: 20px;
 }
 .publishpress-calendar-category-filter,
 .publishpress-calendar-tag-filter {
