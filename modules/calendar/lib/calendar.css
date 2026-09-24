@@ -89,6 +89,7 @@
     font-size: .75rem;
     font-weight: 500;
     line-height: 1.334;
+    padding: 4px 8px 4px 6px;
     cursor: pointer;
     user-select: none;
 }

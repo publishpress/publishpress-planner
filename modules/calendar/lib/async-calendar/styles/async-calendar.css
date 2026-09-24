@@ -428,24 +428,24 @@
 .publishpress-calendar-button {
   appearance: none;
   background: transparent;
-  border: 0 !important;
+  border: 0;
   box-shadow: none !important;
   cursor: pointer;
   text-decoration: none;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
-  padding: 7px 10px;
+  padding: 3px 8px;
   font-weight: normal;
   font-size: 13px;
-  line-height: 35px;
-  min-height: 28px;
-  margin-left: 3px;
+  line-height: 20px;
+  min-height: 24px;
+  margin-left: 2px;
   text-shadow: none;
   vertical-align: middle;
 }
 .publishpress-calendar-button .dashicons {
-  line-height: 30px;
+  line-height: 20px;
 }
 .publishpress-calendar-category-filter,
 .publishpress-calendar-tag-filter {
