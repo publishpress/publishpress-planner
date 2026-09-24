@@ -1092,10 +1092,6 @@ msgstr ""
 msgid "No results found"
 msgstr ""
 
-#: modules/calendar/library/calendar-methods.php:1239
-msgid "Searching…"
-msgstr ""
-
 #: modules/calendar/library/calendar-methods.php:1240
 #: modules/content-board/content-board.php:1288
 #: modules/content-overview/content-overview.php:836

@@ -474,7 +474,7 @@ export function adjustTextareaHeight(event, textarea = false) {
 export function getSelect2LanguageParameters() {
     return {
         noResults: () => publishpressCalendarParams.strings.noResults,
-        searching: () => publishpressCalendarParams.strings.searching
+        searching: () => publishpressCalendarParams.strings.searching || publishpressCalendarParams.strings.loading
     };
 }
 
