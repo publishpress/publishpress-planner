@@ -161,7 +161,7 @@ export default function ItemPopup(props) {
                 );
             } else if (linkData.action) {
                 links.push(
-                    <a key={`links-popup-${links.length}`} onClick={(e) => handleOnClick(e, linkData)}>{linkData.label}</a>
+                    <button type="button" className="publishpress-calendar-popup-action-button" key={`links-popup-${links.length}`} onClick={(e) => handleOnClick(e, linkData)}>{linkData.label}</button>
                 );
             }
 
@@ -183,8 +183,8 @@ export default function ItemPopup(props) {
                 }
                 <span dangerouslySetInnerHTML={{__html: sanitizedTitle}}></span>
 
-                <span className={'dashicons dashicons-no publishpress-calendar-popup-close'}
-                      title={props.strings.close} onClick={closePopup}/>
+                <button type="button" className={'dashicons dashicons-no publishpress-calendar-popup-close'}
+                        aria-label={props.strings.close} onClick={closePopup}/>
             </div>
             <table>
                 <tbody>

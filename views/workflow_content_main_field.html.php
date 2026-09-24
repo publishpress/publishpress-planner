@@ -9,7 +9,7 @@
     </div>
 
     <div>
-        <label><?php echo esc_html($context['labels']['body']); ?></label>
+        <label for="<?php echo esc_attr($context['input_id']); ?>"><?php echo esc_html($context['labels']['body']); ?></label>
         <?php wp_editor($context['body'], $context['input_id'], ['textarea_name' => $context['input_name'] . '[body]']); ?>
     </div>
 </div>

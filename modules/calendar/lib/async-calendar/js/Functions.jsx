@@ -130,7 +130,8 @@ export function getPostLinksElement(linkData, handleOnClick) {
     if (linkData.url) {
         return (<a key={`link-${linkData.url}-${linkData.label}`} href={linkData.url} className={className}>{linkData.label}</a>);
     } else if (linkData.action) {
-        return (<a key={`link-${linkData.url}-${linkData.label}`} className={className} onClick={(e) => handleOnClick(e, linkData)}>{linkData.label}</a>);
+        className = className || 'publishpress-calendar-popup-action-button';
+        return (<button type="button" key={`link-${linkData.url}-${linkData.label}`} className={className} onClick={(e) => handleOnClick(e, linkData)}>{linkData.label}</button>);
     }
 }
 

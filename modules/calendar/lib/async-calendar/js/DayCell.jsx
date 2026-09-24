@@ -41,6 +41,17 @@ export default function DayCell(props) {
         setUncollapseItems(!uncollapseItems);
     };
 
+    const createPost = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        props.onCreatePostCallback(props.date);
+    };
+
+    const dayLabel = props.strings.addContentFor.replace(
+        '%s',
+        getMonthNameByMonthIndex(props.date.getMonth()) + ' ' + props.date.getDate() + ', ' + props.date.getFullYear()
+    );
+
     const uncollapseButton = () => {
         if (props.maxVisibleItems === -1) {
             return (<></>);
@@ -56,9 +67,9 @@ export default function DayCell(props) {
             const iconClass = uncollapseItems ? 'hidden' : 'visibility';
 
             return (
-                <a
+                <button type="button"
                     className={className}
-                    onClick={toggleUncollapseItems}><span className={'dashicons dashicons-' + iconClass}/> {label}</a>
+                    onClick={toggleUncollapseItems}><span className={'dashicons dashicons-' + iconClass}/> {label}</button>
             );
         }
 
@@ -75,14 +86,23 @@ export default function DayCell(props) {
             data-day={props.date.getDate()}>
             <div>
                 <div className="publishpress-calendar-cell-header">
-                    {props.shouldDisplayMonthName &&
-                    <span
-                        className="publishpress-calendar-month-name">{getMonthNameByMonthIndex(props.date.getMonth())}</span>
-                    }
-                    <span className="publishpress-calendar-date">{props.date.getDate()}</span>
-                    {props.isHovering &&
-                    <span
-                        className="publishpress-calendar-cell-click-to-add">{props.strings.clickToAdd}</span>
+                    {props.canCreate ?
+                    <button type="button" className="publishpress-calendar-cell-button" onClick={createPost} aria-label={dayLabel}>
+                        {props.shouldDisplayMonthName &&
+                        <span className="publishpress-calendar-month-name">{getMonthNameByMonthIndex(props.date.getMonth())}</span>
+                        }
+                        <span className="publishpress-calendar-date">{props.date.getDate()}</span>
+                        {props.isHovering &&
+                        <span className="publishpress-calendar-cell-click-to-add">{props.strings.clickToAdd}</span>
+                        }
+                    </button>
+                    :
+                    <>
+                        {props.shouldDisplayMonthName &&
+                        <span className="publishpress-calendar-month-name">{getMonthNameByMonthIndex(props.date.getMonth())}</span>
+                        }
+                        <span className="publishpress-calendar-date">{props.date.getDate()}</span>
+                    </>
                     }
                 </div>
 

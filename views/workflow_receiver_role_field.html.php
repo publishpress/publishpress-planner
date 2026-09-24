@@ -6,6 +6,7 @@
         class="<?php echo esc_attr($context['id']); ?>_filters publishpress-filter-checkbox-list">
 
     <?php if (! empty($context['roles'])) : ?>
+        <label class="screen-reader-text" for="<?php echo esc_attr($context['input_id']); ?>"><?php printf(esc_html__('Select %s', 'publishpress'), esc_html($context['label'])); ?></label>
         <select multiple="multiple" class="<?php echo esc_attr($context['list_class']); ?>"
                 name="<?php echo esc_attr($context['input_name']); ?>" id="<?php echo esc_attr($context['input_id']); ?>">
             <?php foreach ($context['roles'] as $role => $role_object) : ?>

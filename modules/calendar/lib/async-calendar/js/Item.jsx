@@ -44,6 +44,13 @@ export default function Item(props) {
         props.onClickItemCallback(props.id);
     }
 
+    const dispatchKeyboardEvent = (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            dispatchClickEvent(e);
+        }
+    }
+
     const iconElement = props.showIcon && props.icon ?
         <span className={'dashicons ' + props.icon}> </span> : null;
 
@@ -55,6 +62,7 @@ export default function Item(props) {
     const label = props.label || DEFAULT_LABEL;
 
     const sanitizedLabel = DOMPurify.sanitize(label);
+    const accessibleLabel = DOMPurify.sanitize(label, {ALLOWED_TAGS: []});
 
     return (
         <li
@@ -64,7 +72,12 @@ export default function Item(props) {
             data-index={props.index}
             data-id={props.id}
             data-datetime={props.timestamp}
-            onClick={dispatchClickEvent}>
+            onClick={dispatchClickEvent}
+            onKeyDown={dispatchKeyboardEvent}
+            role="button"
+            tabIndex="0"
+            aria-label={accessibleLabel}
+            aria-expanded={props.isPopupOpened}>
 
             {iconElement}{timeElement}
             <span className="publishpress-calendar-item-title" dangerouslySetInnerHTML={{__html: sanitizedLabel}}></span>
