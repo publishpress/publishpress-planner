@@ -470,10 +470,18 @@ export function adjustTextareaHeight(event, textarea = false) {
     // Set the height to the scroll height of the content
     textarea.css('height', textarea[0].scrollHeight + 'px');
 }
-    
+
+export function getSelect2LanguageParameters() {
+    return {
+        noResults: () => publishpressCalendarParams.strings.noResults,
+        searching: () => publishpressCalendarParams.strings.searching || publishpressCalendarParams.strings.loading
+    };
+}
+
 export function initFormSelect2() {
     jQuery('.pp-modal-form-author').pp_select2({
         allowClear: false,
+        language: getSelect2LanguageParameters(),
         ajax: {
             url: ajaxurl,
             dataType: 'json',
@@ -496,6 +504,7 @@ export function initFormSelect2() {
 
     jQuery('.pp-modal-form-post-taxonomy').pp_select2({
         allowClear: true,
+        language: getSelect2LanguageParameters(),
         ajax: {
             url: ajaxurl,
             dataType: 'json',
@@ -518,7 +527,8 @@ export function initFormSelect2() {
     });
 
     jQuery('.pp-modal-form-post-status').pp_select2({
-        allowClear: false
+        allowClear: false,
+        language: getSelect2LanguageParameters()
     });
 }
 
