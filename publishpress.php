@@ -1439,6 +1439,7 @@ add_action('plugins_loaded', function () {
                         'has_archive' => false,
                         'rewrite' => false,
                         'show_ui' => true,
+                        'show_in_rest' => true,
                         'query_var' => true,
                         'capability_type' => 'pp_notif_workflow',
                         'hierarchical' => false,
