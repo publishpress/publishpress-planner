@@ -43,6 +43,13 @@ if (!class_exists('PP_Module')) {
 
         public $options;
 
+        /**
+         * Public URL for the module assets.
+         *
+         * @var string
+         */
+        public $module_url = '';
+
         public $published_statuses = [
             'publish',
             // 'future',
