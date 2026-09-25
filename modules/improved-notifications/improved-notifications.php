@@ -1139,7 +1139,8 @@ if (! class_exists('PP_Improved_Notifications')) {
                 [$this, 'publishpress_notif_workflow_metabox'],
                 null,
                 'advanced',
-                'high'
+                'high',
+                ['__block_editor_compatible_meta_box' => true]
             );
 
             add_meta_box(
@@ -1148,7 +1149,8 @@ if (! class_exists('PP_Improved_Notifications')) {
                 [$this, 'publishpress_notif_workflow_options_metabox'],
                 null,
                 'side',
-                'high'
+                'high',
+                ['__block_editor_compatible_meta_box' => true]
             );
 
             add_meta_box(
@@ -1157,7 +1159,8 @@ if (! class_exists('PP_Improved_Notifications')) {
                 [$this, 'publishpress_notif_workflow_help_metabox'],
                 null,
                 'side',
-                'low'
+                'low',
+                ['__block_editor_compatible_meta_box' => true]
             );
         }
 
