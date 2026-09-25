@@ -10,18 +10,18 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-14T18:33:45+00:00\n"
-"PO-Revision-Date: 2026-04-15 14:14+0000\n"
+"PO-Revision-Date: 2026-09-25 19:50+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: hu-HU\n"
 
-#: publishpress.php
+#: publishpress.php, fuzzy
 #. Plugin Name of the plugin
 msgid "PublishPress Planner Free"
 msgstr "PublishPress Planner Free"
 
-#: publishpress.php, fuzzy
+#: publishpress.php
 #. Plugin URI of the plugin
 msgid "https://publishpress.com/"
 msgstr "https://publishpress.com/"
@@ -37,141 +37,144 @@ msgstr ""
 "és értesítések."
 
 #: publishpress.php
-#: modules/calendar/library/calendar-utilities.php:1227
-#: modules/settings/settings.php:61, fuzzy
+#: modules/calendar/library/calendar-utilities.php:1234
+#: modules/settings/settings.php:61
+#: modules/settings/views/footer-base.html.php:35
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: publishpress.php, fuzzy
+#: publishpress.php
 #. Author URI of the plugin
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
-#: common/php/class-module.php:331
-#: modules/calendar/calendar.php:1233
+#: common/php/class-module.php:338
+#: modules/calendar/calendar.php:1261
 msgid "Published"
 msgstr "Közzétéve"
 
-#: common/php/class-module.php:332
+#: common/php/class-module.php:339
 msgid "Draft"
 msgstr "Vázlat"
 
-#: common/php/class-module.php:333
-#: modules/calendar/calendar.php:1228
+#: common/php/class-module.php:340
+#: modules/calendar/calendar.php:1256
 #: modules/content-board/content-board.php:979
 #: modules/notifications-log/library/NotificationsLogTable.php:529
 msgid "Scheduled"
 msgstr "Ütemezve"
 
-#: common/php/class-module.php:334
+#: common/php/class-module.php:341
 #: modules/content-board/content-board.php:989
 msgid "Private"
 msgstr "Privát"
 
-#: common/php/class-module.php:335
+#: common/php/class-module.php:342
 msgid "Pending Review"
 msgstr "Várakozik a felülvizsgálatra"
 
-#: common/php/class-module.php:336
-#: modules/calendar/library/calendar-methods.php:1240
+#: common/php/class-module.php:343
+#: modules/calendar/library/calendar-methods.php:1252
 #: modules/calendar/library/calendar-utilities.php:1104
 #: modules/content-board/content-board.php:1195
 #: modules/content-board/content-board.php:1290
-#: modules/content-overview/content-overview.php:1221
-#: modules/content-overview/content-overview.php:1715
+#: modules/content-overview/content-overview.php:1267
+#: modules/content-overview/content-overview.php:1761
 msgid "Trash"
 msgstr "Lomtár"
 
-#: common/php/class-module.php:750
-#: lib/Notifications/Workflow/Step/Receiver/Role.php:31
+#: common/php/class-module.php:772
 msgid "Roles"
 msgstr "Szerepek"
 
-#: common/php/class-module.php:753
+#: common/php/class-module.php:775
 msgid "Role"
 msgstr "Szerep"
 
-#: common/php/class-module.php:761
+#: common/php/class-module.php:783
 msgid "Groups"
 msgstr "Csoportok"
 
-#: common/php/class-module.php:764
+#: common/php/class-module.php:786
 msgid "Group"
 msgstr "Csoport"
 
-#: common/php/class-module.php:772
-#: lib/Notifications/Workflow/Step/Receiver/User.php:26
+#: common/php/class-module.php:794
 msgid "Users"
 msgstr "Felhasználók"
 
-#: common/php/class-module.php:782
+#: common/php/class-module.php:804
 msgid "E-mails"
 msgstr "E-mailek"
 
-#: common/php/class-module.php:1048
+#: common/php/class-module.php:1051
 msgid "Equals (=)"
 msgstr "Egyenlő (=)"
 
-#: common/php/class-module.php:1049
+#: common/php/class-module.php:1052
 msgid "Does not equal (!=)"
 msgstr "Nem egyenlő (!=)"
 
-#: common/php/class-module.php:1050
+#: common/php/class-module.php:1053
 msgid "Greater than (>)"
 msgstr "Nagyobb mint (>)"
 
-#: common/php/class-module.php:1051
+#: common/php/class-module.php:1054
 msgid "Greater than or equals (>=)"
 msgstr "Nagyobb mint vagy egyenlő (>=)"
 
-#: common/php/class-module.php:1052
+#: common/php/class-module.php:1055
 msgid "Less than (<)"
 msgstr "Kisebb mint (<)"
 
-#: common/php/class-module.php:1053
+#: common/php/class-module.php:1056
 msgid "Less than or equals (<=)"
 msgstr "Kisebb mint vagy egyenlő (<=)"
 
-#: common/php/class-module.php:1054
+#: common/php/class-module.php:1057
 msgid "Like/Contains"
 msgstr "Hasonló/Tartalmazza"
 
-#: common/php/class-module.php:1055
+#: common/php/class-module.php:1058
 #, fuzzy
 msgid "Not Like"
 msgstr "Nincs beállítva"
 
-#: common/php/class-module.php:1056
+#: common/php/class-module.php:1059
 msgid "Not Exists/Empty"
 msgstr "Nem létezik/Üres"
 
-#: common/php/class-module.php:1109
+#: common/php/class-module.php:1112
+#: views/workflow_receiver_group_field.html.php:10
+#: views/workflow_receiver_role_field.html.php:9
+#: views/workflow_receiver_user_field.html.php:9
 #, php-format
 msgid "Select %s"
 msgstr "Válassza ki %s"
 
-#: common/php/class-module.php:1126
-#: modules/calendar/library/calendar-utilities.php:1190
-#: modules/content-overview/content-overview.php:833
-#: modules/content-overview/content-overview.php:848
-#: modules/content-overview/content-overview.php:955
+#: common/php/class-module.php:1129
+#: modules/calendar/library/calendar-utilities.php:1191
+#: modules/content-overview/content-overview.php:850
+#: modules/content-overview/content-overview.php:874
+#: modules/content-overview/content-overview.php:926
+#: modules/content-overview/content-overview.php:995
 msgid "Revision Status"
 msgstr "Revízió állapot"
 
-#: common/php/class-module.php:1126
+#: common/php/class-module.php:1129
 #: modules/calendar/library/calendar-methods.php:424
 #: modules/calendar/library/calendar-methods.php:858
-#: modules/calendar/library/calendar-methods.php:1245
+#: modules/calendar/library/calendar-methods.php:1257
 #: modules/calendar/library/calendar-utilities.php:47
 #: modules/calendar/library/calendar-utilities.php:1070
-#: modules/calendar/library/calendar-utilities.php:1189
+#: modules/calendar/library/calendar-utilities.php:1188
 #: modules/content-board/content-board.php:811
 #: modules/content-board/content-board.php:1295
 #: modules/content-board/library/content-board-utilities.php:594
 #: modules/content-board/library/content-board-utilities.php:1165
-#: modules/content-overview/content-overview.php:954
-#: modules/content-overview/content-overview.php:1226
+#: modules/content-overview/content-overview.php:992
+#: modules/content-overview/content-overview.php:1272
 #: modules/content-overview/library/content-overview-utilities.php:491
 #: modules/content-overview/library/content-overview-utilities.php:703
 msgid "Post Status"
@@ -204,407 +207,8 @@ msgstr ""
 "funkciót és támogatást kínál. %sFrissítés a Pro verzióra%s"
 
 #: includes.php:161
-#: lib/Legacy/Util.php:216
 msgid "Upgrade to Pro"
 msgstr "Frissítés a Pro-ra"
-
-#: lib/Legacy/Util.php:198
-msgid "Upgrade to PublishPress Planner Pro"
-msgstr "Frissítés a PublishPress Planner Pro-ra"
-
-#: lib/Legacy/Util.php:203
-msgid "Enhance the power of PublishPress Planner with the Pro version:"
-msgstr "Fokozza a PublishPress Planner erejét a Pro verzióval:"
-
-#: lib/Legacy/Util.php:206
-msgid "PublishPress Revisions integration"
-msgstr "PublishPress Revisions integráció"
-
-#: lib/Legacy/Util.php:207
-msgid "Slack integration for notifications"
-msgstr "Slack integráció az értesítésekhez"
-
-#: lib/Legacy/Util.php:208
-msgid "Send reminder notifications"
-msgstr "Emlékeztető értesítések küldése"
-
-#: lib/Legacy/Util.php:209
-msgid "Use post meta in notifications"
-msgstr "Használja a poszt metaadatokat az értesítésekben"
-
-#: lib/Legacy/Util.php:210
-msgid "Modals so you can edit posts without changing screen"
-msgstr ""
-"Modális ablakok, hogy szerkeszthesse a bejegyzéseket anélkül, hogy váltania "
-"kellene a képernyőn"
-
-#: lib/Legacy/Util.php:211
-msgid "Integration with SEO plugins"
-msgstr "Integráció SEO bővítményekkel"
-
-#: lib/Legacy/Util.php:212
-msgid "Remove PublishPress ads and branding"
-msgstr "A PublishPress hirdetéseinek és márkázásának eltávolítása"
-
-#: lib/Legacy/Util.php:213
-msgid "Fast, professional support"
-msgstr "Gyors, professzionális támogatás"
-
-#: lib/Legacy/Util.php:223
-msgid "Need PublishPress Planner Support?"
-msgstr "Szüksége van a PublishPress Planner támogatására?"
-
-#: lib/Legacy/Util.php:228
-msgid "If you need help or have a new feature request, let us know."
-msgstr "Ha segítségre van szüksége, vagy új funkciókérése van, tudassa velünk."
-
-#: lib/Legacy/Util.php:230
-msgid "Request Support"
-msgstr "Támogatás kérése"
-
-#: lib/Legacy/Util.php:239
-msgid "Detailed documentation is also available on the plugin website."
-msgstr "Részletes dokumentáció szintén elérhető a bővítmény weboldalán."
-
-#: lib/Legacy/Util.php:241
-msgid "View Knowledge Base"
-msgstr "Tudásbázis megtekintése"
-
-#: lib/Notifications/Plugin.php:65
-#: modules/improved-notifications/improved-notifications.php:1160
-#: modules/notifications-log/library/NotificationsLogTable.php:497
-msgid "When to notify?"
-msgstr "Mikor értesítsünk?"
-
-#: lib/Notifications/Plugin.php:66
-msgid "Filter the content?"
-msgstr "Szűrjük a tartalmat?"
-
-#: lib/Notifications/Plugin.php:67
-#: modules/improved-notifications/improved-notifications.php:1180
-#: modules/notifications-log/library/NotificationsLogTable.php:499
-msgid "Who to notify?"
-msgstr "Kit értesítsünk?"
-
-#: lib/Notifications/Plugin.php:209
-#: lib/Notifications/Plugin.php:210
-msgid "Notification workflow updated."
-msgstr "Értesítési munkafolyamat frissítve."
-
-#: lib/Notifications/Plugin.php:211
-msgid "Notification workflow published."
-msgstr "Értesítési munkafolyamat közzétéve."
-
-#: lib/Notifications/Plugin.php:212
-msgid "Notification workflow saved."
-msgstr "Értesítési munkafolyamat mentve."
-
-#: lib/Notifications/Plugin.php:213
-msgid "Notification workflow submitted."
-msgstr "Értesítési munkafolyamat benyújtva."
-
-#: lib/Notifications/Plugin.php:215
-#, php-format
-msgid "Notification workflow scheduled for: %s."
-msgstr "Értesítési munkafolyamat ütemezve: %s."
-
-#: lib/Notifications/Plugin.php:218
-msgid "Notification workflow draft updated."
-msgstr "Értesítési munkafolyamat piszkozat frissítve."
-
-#: lib/Notifications/Plugin.php:240
-#, php-format
-msgid "%s notification workflow updated."
-msgid_plural "%s notification workflows updated."
-msgstr[0] "%s értesítési munkafolyamat frissítve."
-msgstr[1] "%s értesítési munkafolyamat frissítve."
-
-#: lib/Notifications/Plugin.php:246
-msgid "1 notification workflow not updated, somebody is editing it."
-msgstr "1 értesítési munkafolyamat nem frissült, valaki szerkeszti."
-
-#: lib/Notifications/Plugin.php:250
-#, php-format
-msgid "%s notification workflow not updated, somebody is editing it."
-msgid_plural "%s notification workflows not updated, somebody is editing them."
-msgstr[0] "%s értesítési munkafolyamat nem frissült, valaki szerkeszti."
-msgstr[1] "%s értesítési munkafolyamat nem frissült, valaki szerkeszti őket."
-
-#: lib/Notifications/Plugin.php:256
-#, php-format
-msgid "%s notification workflow permanently deleted."
-msgid_plural "%s notification workflows permanently deleted."
-msgstr[0] "%s értesítési munkafolyamat véglegesen törölve."
-msgstr[1] "%s értesítési munkafolyamat véglegesen törölve."
-
-#: lib/Notifications/Plugin.php:262
-#, php-format
-msgid "%s notification workflow moved to the Trash."
-msgid_plural "%s notification workflows moved to the Trash."
-msgstr[0] "%s értesítési munkafolyamat a Lomtárba került."
-msgstr[1] "%s értesítési munkafolyamat a Lomtárba került."
-
-#: lib/Notifications/Plugin.php:268
-#, php-format
-msgid "%s notification workflow restored from the Trash."
-msgid_plural "%s notification workflows restored from the Trash."
-msgstr[0] "%s értesítési munkafolyamat visszaállítva a Lomtárból."
-msgstr[1] "%s értesítési munkafolyamat visszaállítva a Lomtárból."
-
-#: lib/Notifications/Plugin.php:302
-msgid "Please select at least one event"
-msgstr "Kérjük, válasszon ki legalább egy eseményt"
-
-#: lib/Notifications/Plugin.php:335
-msgid "Not filtered"
-msgstr "Nem szűrt"
-
-#: lib/Notifications/Table/Base.php:183
-msgid "Excerpt View"
-msgstr "Kivonat nézet"
-
-#: lib/Notifications/Table/Notifications.php:156
-#: lib/Notifications/Table/Workflows.php:142
-#: modules/calendar/library/calendar-methods.php:853
-#: modules/content-board/content-board.php:421
-#: modules/content-board/library/content-board-utilities.php:244
-#: modules/content-board/library/content-board-utilities.php:1159
-#: modules/content-overview/content-overview.php:418
-#: modules/content-overview/library/content-overview-utilities.php:485
-msgid "Title"
-msgstr "Cím"
-
-#: lib/Notifications/Table/Notifications.php:157
-msgid "Message"
-msgstr "Üzenet"
-
-#: lib/Notifications/Table/Notifications.php:158
-#: modules/calendar/library/calendar-utilities.php:1064
-#: modules/content-board/library/content-board-utilities.php:116
-#: modules/content-overview/library/content-overview-methods.php:341
-#: modules/editorial-metadata/editorial-metadata.php:290
-#: modules/notifications-log/library/NotificationsLogTable.php:496
-msgid "Date"
-msgstr "Dátum"
-
-#: lib/Notifications/Table/Notifications.php:159
-#: lib/Notifications/Table/Workflows.php:143
-#: modules/calendar/library/calendar-utilities.php:1059
-msgid "ID"
-msgstr "Azonosító"
-
-#: lib/Notifications/Table/Notifications.php:235
-msgid "You don't have any notifications"
-msgstr "Nincsenek értesítéseid"
-
-#: lib/Notifications/Table/Workflows.php:217
-msgid "No workflows found."
-msgstr "Nincsenek munkafolyamatok."
-
-#: lib/Notifications/Workflow/Option/SkipUser.php:26
-msgid "Skip current user"
-msgstr "Jelenlegi felhasználó kihagyása"
-
-#: lib/Notifications/Workflow/Option/SkipUser.php:31
-msgid "Skip notifications for the user who triggered the action"
-msgstr "Értesítések kihagyása az akciót kiváltó felhasználó számára"
-
-#: lib/Notifications/Workflow/Step/Channel/Email.php:31
-#: modules/editorial-comments/editorial-comments.php:1267
-msgid "Email"
-msgstr "E-mail"
-
-#: lib/Notifications/Workflow/Step/Content/Main.php:29
-#: modules/calendar/library/calendar-methods.php:902
-#: modules/content-board/library/content-board-utilities.php:1207
-#: modules/content-overview/library/content-overview-utilities.php:533
-#: modules/improved-notifications/improved-notifications.php:1318
-#: views/workflow_help.html.php:2
-msgid "Content"
-msgstr "Tartalom"
-
-#: lib/Notifications/Workflow/Step/Content/Main.php:53
-msgid "Subject"
-msgstr "Tárgy"
-
-#: lib/Notifications/Workflow/Step/Content/Main.php:54
-msgid "Body"
-msgstr "Törzs"
-
-#: lib/Notifications/Workflow/Step/Event/Editorial_Comment.php:24
-msgid "When an editorial comment is added"
-msgstr "Amikor szerkesztői megjegyzés kerül hozzáadásra"
-
-#: lib/Notifications/Workflow/Step/Event/Editorial_Comment.php:96
-#, php-format
-msgid "Comment: %s (%d)"
-msgstr "Megjegyzés: %s (%d)"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:34
-msgid "When the status is changed"
-msgstr "Amikor a státusz megváltozik"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:35
-msgid "Previous status"
-msgstr "Előző státusz"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:36
-msgid "New status"
-msgstr "Új státusz"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:37
-msgid "- any status -"
-msgstr "- bármilyen státusz -"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:59
-msgid "New"
-msgstr "Új"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:64
-msgid "Auto-draft"
-msgstr "Automatikus vázlat"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Taxonomies.php:34
-#: modules/calendar/library/calendar-utilities.php:1206
-#: modules/content-board/content-board.php:767
-#: modules/content-board/content-board.php:827
-#: modules/content-overview/content-overview.php:910
-#: modules/content-overview/content-overview.php:971
-msgid "Taxonomies"
-msgstr "Taxonómiák"
-
-#: lib/Notifications/Workflow/Step/Event/Post_StatusTransition.php:28
-msgid "When the content is moved to a new status"
-msgstr "Amikor a tartalom új státuszba kerül"
-
-#: lib/Notifications/Workflow/Step/Event/Post_StatusTransition.php:118
-#, php-format
-msgid "Old post status: %s"
-msgstr "Régi bejegyzés státusz: %s"
-
-#: lib/Notifications/Workflow/Step/Event/Post_StatusTransition.php:122
-#, php-format
-msgid "New post status: %s"
-msgstr "Új bejegyzés státusz: %s"
-
-#: lib/Notifications/Workflow/Step/Event/Post_TaxonomyUpdate.php:28
-msgid "When taxonomy is updated"
-msgstr "Amikor a taxonómia frissül"
-
-#: lib/Notifications/Workflow/Step/Event/Post_Update.php:26
-msgid "When the content is updated"
-msgstr "Amikor a tartalom frissül"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Category.php:24
-#: modules/calendar/library/calendar-utilities.php:1080
-msgid "Category"
-msgid_plural "Categories"
-msgstr[0] "Kategória"
-msgstr[1] "Kategóriák"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Filter/Category.php:34
-#: modules/calendar/library/calendar-methods.php:885
-#: modules/content-board/library/content-board-utilities.php:1190
-#: modules/content-overview/library/content-overview-utilities.php:516
-msgid "Categories"
-msgstr "Kategóriák"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Filter/Post_Type.php:34
-#: modules/editorial-metadata/library/editorial-metadata-list-table.php:46
-msgid "Post Types"
-msgstr "Bejegyzés típusok"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Filter/Term.php:33
-msgid "Terms"
-msgstr "Kifejezések"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Post_Type.php:24
-msgid "Post type"
-msgstr "Bejegyzés típus"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Taxonomy.php:24
-msgid "Taxonomy"
-msgstr "Taxonómia"
-
-#: lib/Notifications/Workflow/Step/Receiver/Author.php:26
-msgid "Authors of the content"
-msgstr "A tartalom szerzői"
-
-#: lib/Notifications/Workflow/Step/Receiver/Author.php:92
-msgid "Authors"
-msgstr "Szerzők"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:30
-msgid "Users who selected \"Notify me\" for the content"
-msgstr "Felhasználók, akik az \"Értesítsen\" lehetőséget választották a tartalomra"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:108
-#, php-format
-msgid "role:%s"
-msgstr "szerep:%s"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:132
-#, php-format
-msgid "group %d: %s"
-msgstr "csoport %d: %s"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:153
-msgid "user"
-msgstr "felhasználó"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:168, fuzzy
-msgid "email"
-msgstr "email"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:210
-msgid "\"Notify me\""
-msgstr "\"Értesítsen\""
-
-#: lib/Notifications/Workflow/Step/Receiver/Group.php:31
-msgid "Permission Groups"
-msgstr "Engedélyezési csoportok"
-
-#: lib/Notifications/Workflow/Step/Receiver/Group.php:222
-#, php-format
-msgid "%d Group"
-msgid_plural "%d Groups"
-msgstr[0] "%d Csoport"
-msgstr[1] "%d Csoportok"
-
-#: lib/Notifications/Workflow/Step/Receiver/ParentAuthor.php:26
-msgid "Authors of the parent page"
-msgstr "A szülő oldal szerzői"
-
-#: lib/Notifications/Workflow/Step/Receiver/ParentAuthor.php:106
-msgid "Parent Page Authors"
-msgstr "Szülő Oldal Szerzői"
-
-#: lib/Notifications/Workflow/Step/Receiver/RevisionAuthor.php:39
-msgid "Author of the revision"
-msgstr "A revízió szerzője"
-
-#: lib/Notifications/Workflow/Step/Receiver/RevisionAuthor.php:105
-msgid "Revision Author"
-msgstr "Revízió Szerző"
-
-#: lib/Notifications/Workflow/Step/Receiver/Role.php:173
-#, php-format
-msgid "%d Role"
-msgid_plural "%d Roles"
-msgstr[0] "%d Szerep"
-msgstr[1] "%d Szerepek"
-
-#: lib/Notifications/Workflow/Step/Receiver/Site_Admin.php:24
-#: lib/Notifications/Workflow/Step/Receiver/Site_Admin.php:73
-msgid "Site Administrator"
-msgstr "Webhelyadminisztrátor"
-
-#: lib/Notifications/Workflow/Step/Receiver/User.php:152
-#, php-format
-msgid "%d User"
-msgid_plural "%d Users"
-msgstr[0] "%d Felhasználó"
-msgstr[1] "%d Felhasználók"
 
 #: modules/async-notifications/async-notifications.php:71
 msgid "Async Notifications"
@@ -615,26 +219,26 @@ msgstr "Aszinkron értesítések"
 msgid "Event: %s, Workflow ID: %s, Post ID: %s, User ID: %s"
 msgstr "Esemény: %s, Munkafolyamat ID: %s, Bejegyzés ID: %s, Felhasználó ID: %s"
 
-#: modules/calendar/calendar.php:216
-#: modules/calendar/calendar.php:415
-#: modules/calendar/calendar.php:432
-#: modules/calendar/calendar.php:433
+#: modules/calendar/calendar.php:228
+#: modules/calendar/calendar.php:427
+#: modules/calendar/calendar.php:444
+#: modules/calendar/calendar.php:445
 msgid "Content Calendar"
 msgstr "Tartalomnaptár"
 
-#: modules/calendar/calendar.php:241
+#: modules/calendar/calendar.php:253
 msgid "Post date updated."
 msgstr "A bejegyzés dátuma frissítve."
 
-#: modules/calendar/calendar.php:242
+#: modules/calendar/calendar.php:254
 msgid "Post status updated."
 msgstr "A bejegyzés állapota frissítve."
 
-#: modules/calendar/calendar.php:243
+#: modules/calendar/calendar.php:255
 msgid "There was an error updating the post. Please try again."
 msgstr "Hiba történt a bejegyzés frissítésekor. Kérjük, próbálja meg újra."
 
-#: modules/calendar/calendar.php:247
+#: modules/calendar/calendar.php:259
 #, php-format
 msgid ""
 "Updating the post date dynamically doesn't work for published content. "
@@ -643,7 +247,7 @@ msgstr ""
 "A közzétett tartalom esetén a közzétételi dátum dinamikus frissítése nem "
 "működik. Kérjük, <a href='%s'>szerkessze a bejegyzést</a>."
 
-#: modules/calendar/calendar.php:251
+#: modules/calendar/calendar.php:263
 msgid ""
 "iCal secret key regenerated. Please inform all users they will need to "
 "resubscribe."
@@ -651,14 +255,14 @@ msgstr ""
 "Az iCal titkos kulcs újragenerálva. Kérjük, tájékoztassa az összes "
 "felhasználót, hogy újra kell iratkozniuk."
 
-#: modules/calendar/calendar.php:259
+#: modules/calendar/calendar.php:271
 #: modules/editorial-comments/editorial-comments.php:82
 #: modules/editorial-metadata/editorial-metadata.php:119
 #: modules/notifications/notifications.php:96
 msgid "Overview"
 msgstr "Áttekintés"
 
-#: modules/calendar/calendar.php:260
+#: modules/calendar/calendar.php:272
 msgid ""
 "<p>The calendar is a convenient week-by-week or month-by-month view into "
 "your content. Quickly see which stories are on track to being published on "
@@ -668,7 +272,7 @@ msgstr ""
 "Gyorsan láthatja, hogy mely történetek haladnak időben a közzététel felé, "
 "és melyek igényelnek extra erőfeszítést.</p>"
 
-#: modules/calendar/calendar.php:265
+#: modules/calendar/calendar.php:277
 msgid ""
 "<p><strong>For more information:</strong></p><p><a "
 "href=\"https://publishpress.com/features/calendar/\">Calendar "
@@ -682,17 +286,17 @@ msgstr ""
 "href=\"https://github.com/ostraining/PublishPress\">PublishPress a "
 "Github-on</a></p>"
 
-#: modules/calendar/calendar.php:734
-#: modules/calendar/library/calendar-utilities.php:1259
+#: modules/calendar/calendar.php:746
+#: modules/calendar/library/calendar-utilities.php:1266
 #: modules/content-board/content-board.php:1043
 msgid "Weeks"
 msgstr "Hetek"
 
-#: modules/calendar/calendar.php:735
+#: modules/calendar/calendar.php:747
 msgid "Start Date"
 msgstr "Kezdő dátum"
 
-#: modules/calendar/calendar.php:736
+#: modules/calendar/calendar.php:748
 #: modules/calendar/library/calendar-utilities.php:467
 #: modules/calendar/library/calendar-utilities.php:468
 #: modules/content-board/library/content-board-utilities.php:28
@@ -700,105 +304,105 @@ msgstr "Kezdő dátum"
 msgid "Me Mode"
 msgstr "Én üzemmód"
 
-#: modules/calendar/calendar.php:737
+#: modules/calendar/calendar.php:749
 msgid "Show Revision"
 msgstr "Revízió megjelenítése"
 
-#: modules/calendar/calendar.php:738
+#: modules/calendar/calendar.php:750
 #: modules/calendar/library/calendar-utilities.php:486
 #: modules/content-board/library/content-board-utilities.php:98
 #: modules/content-overview/library/content-overview-methods.php:323
 msgid "Search"
 msgstr "Keresés"
 
-#: modules/calendar/calendar.php:912
-#: modules/content-board/library/content-board-methods.php:164
-#: modules/content-overview/content-overview.php:668
+#: modules/calendar/calendar.php:928
+#: modules/content-board/library/content-board-methods.php:166
+#: modules/content-overview/content-overview.php:684
 msgid "Filter updated successfully."
 msgstr "Szűrés sikeresen frissítve."
 
-#: modules/calendar/calendar.php:919
+#: modules/calendar/calendar.php:935
 msgid "Filter reset successfully."
 msgstr "Szűrés sikeresen visszaállítva."
 
-#: modules/calendar/calendar.php:987
+#: modules/calendar/calendar.php:1008
 #: modules/content-board/content-board.php:709
-#: modules/content-overview/content-overview.php:832
 #: modules/content-overview/content-overview.php:847
-#: modules/content-overview/content-overview.php:892
+#: modules/content-overview/content-overview.php:871
+#: modules/content-overview/content-overview.php:923
 #: modules/notifications-log/library/NotificationsLogTable.php:500
 msgid "Status"
 msgstr "Állapot"
 
-#: modules/calendar/calendar.php:988
-#: modules/calendar/calendar.php:1212
+#: modules/calendar/calendar.php:1009
+#: modules/calendar/calendar.php:1240
 #: modules/calendar/library/calendar-methods.php:875
-#: modules/calendar/library/calendar-methods.php:1248
+#: modules/calendar/library/calendar-methods.php:1260
 #: modules/calendar/library/calendar-utilities.php:115
 #: modules/calendar/library/calendar-utilities.php:1075
-#: modules/calendar/library/calendar-utilities.php:1191
+#: modules/calendar/library/calendar-utilities.php:1194
 #: modules/content-board/content-board.php:699
 #: modules/content-board/content-board.php:710
 #: modules/content-board/content-board.php:753
 #: modules/content-board/content-board.php:812
 #: modules/content-board/library/content-board-utilities.php:647
 #: modules/content-board/library/content-board-utilities.php:1180
-#: modules/content-overview/content-overview.php:835
-#: modules/content-overview/content-overview.php:849
-#: modules/content-overview/content-overview.php:894
-#: modules/content-overview/content-overview.php:956
-#: modules/content-overview/content-overview.php:1218
+#: modules/content-overview/content-overview.php:854
+#: modules/content-overview/content-overview.php:877
+#: modules/content-overview/content-overview.php:930
+#: modules/content-overview/content-overview.php:998
+#: modules/content-overview/content-overview.php:1264
 #: modules/content-overview/library/content-overview-utilities.php:506
 #: modules/content-overview/library/content-overview-utilities.php:769
-#: modules/editorial-comments/library/EditorialCommentsTable.php:228
+#: modules/editorial-comments/library/EditorialCommentsTable.php:230
 msgid "Author"
 msgid_plural "Authors"
 msgstr[0] "Szerző"
 msgstr[1] "Szerzők"
 
-#: modules/calendar/calendar.php:989
-#: modules/calendar/calendar.php:1220
+#: modules/calendar/calendar.php:1010
+#: modules/calendar/calendar.php:1248
 #: modules/calendar/library/calendar-utilities.php:146
 #: modules/calendar/library/calendar-utilities.php:1054
-#: modules/calendar/library/calendar-utilities.php:1192
+#: modules/calendar/library/calendar-utilities.php:1195
 #: modules/content-board/content-board.php:698
 #: modules/content-board/content-board.php:711
 #: modules/content-board/content-board.php:752
 #: modules/content-board/content-board.php:813
 #: modules/content-board/library/content-board-utilities.php:677
 #: modules/content-board/library/content-board-utilities.php:1153
-#: modules/content-overview/content-overview.php:834
-#: modules/content-overview/content-overview.php:850
-#: modules/content-overview/content-overview.php:893
-#: modules/content-overview/content-overview.php:957
+#: modules/content-overview/content-overview.php:853
+#: modules/content-overview/content-overview.php:878
+#: modules/content-overview/content-overview.php:929
+#: modules/content-overview/content-overview.php:999
 #: modules/content-overview/library/content-overview-utilities.php:479
 #: modules/content-overview/library/content-overview-utilities.php:799
 msgid "Post Type"
 msgstr "Bejegyzés típusa"
 
-#: modules/calendar/calendar.php:1103
+#: modules/calendar/calendar.php:1131
 msgid "Post moved to the trash."
 msgid_plural "%d posts moved to the trash."
 msgstr[0] "Bejegyzés a kukába került."
 msgstr[1] "%d bejegyzés a kukába került."
 
-#: modules/calendar/calendar.php:1119
+#: modules/calendar/calendar.php:1147
 #: modules/content-board/content-board.php:614
 #: modules/content-overview/library/content-overview-methods.php:214
 msgid "Undo"
 msgstr "Visszavonás"
 
-#: modules/calendar/calendar.php:1129
+#: modules/calendar/calendar.php:1157
 msgid "Post restored from the Trash."
 msgid_plural "%d posts restored from the Trash."
 msgstr[0] "Bejegyzés visszaállítva a kukából."
 msgstr[1] "%d bejegyzés állítva vissza a kukából."
 
-#: modules/calendar/calendar.php:1161
+#: modules/calendar/calendar.php:1189
 msgid "Initializing the calendar. Please wait..."
 msgstr "A naptár inicializálása. Kérem, várjon..."
 
-#: modules/calendar/calendar.php:1165
+#: modules/calendar/calendar.php:1193
 msgid ""
 "It seems like it is taking too long. Please, try reloading the page again "
 "and check the browser console looking for errors."
@@ -806,7 +410,7 @@ msgstr ""
 "Úgy tűnik, hogy túl sokáig tart. Kérjük, próbálja meg újratölteni az "
 "oldalt, és ellenőrizze a böngésző konzolt hibákért."
 
-#: modules/calendar/calendar.php:1809
+#: modules/calendar/calendar.php:1837
 msgid ""
 "The selected user doesn't have enough permissions to be set as the post "
 "author."
@@ -940,9 +544,24 @@ msgstr "Nincs elegendő jogosultság"
 msgid "Invalid date"
 msgstr "Érvénytelen dátum"
 
+#: modules/calendar/library/calendar-methods.php:853
+#: modules/content-board/content-board.php:421
+#: modules/content-board/library/content-board-utilities.php:244
+#: modules/content-board/library/content-board-utilities.php:1159
+#: modules/content-overview/content-overview.php:430
+#: modules/content-overview/library/content-overview-utilities.php:485
+msgid "Title"
+msgstr "Cím"
+
 #: modules/calendar/library/calendar-methods.php:864
 msgid "Publish Time"
 msgstr "Közzététel ideje"
+
+#: modules/calendar/library/calendar-methods.php:885
+#: modules/content-board/library/content-board-utilities.php:1190
+#: modules/content-overview/library/content-overview-utilities.php:516
+msgid "Categories"
+msgstr "Kategóriák"
 
 #: modules/calendar/library/calendar-methods.php:894
 #: modules/content-board/library/content-board-utilities.php:1199
@@ -950,170 +569,200 @@ msgstr "Közzététel ideje"
 msgid "Tags"
 msgstr "Címkék"
 
+#: modules/calendar/library/calendar-methods.php:902
+#: modules/content-board/library/content-board-utilities.php:1207
+#: modules/content-overview/library/content-overview-utilities.php:533
+#: modules/improved-notifications/improved-notifications.php:1337
+#: views/workflow_help.html.php:2
+msgid "Content"
+msgstr "Tartalom"
+
 #: modules/calendar/library/calendar-methods.php:1001
 msgid "Publish on"
 msgstr "Közzététel időpontja"
 
-#: modules/calendar/library/calendar-methods.php:1195
-#: modules/notifications-log/notifications-log.php:210
+#: modules/calendar/library/calendar-methods.php:1200
+#: modules/calendar/library/calendar-methods.php:1249
+#: modules/notifications-log/notifications-log.php:213
 msgid "Loading..."
 msgstr "Betöltés..."
 
-#: modules/calendar/library/calendar-methods.php:1196
+#: modules/calendar/library/calendar-methods.php:1201
 msgid "Loading item..."
 msgstr "Elem betöltése..."
 
-#: modules/calendar/library/calendar-methods.php:1197
+#: modules/calendar/library/calendar-methods.php:1202
 msgid "Click to add"
 msgstr "Kattintson a hozzáadáshoz"
 
-#: modules/calendar/library/calendar-methods.php:1198
+#: modules/calendar/library/calendar-methods.php:1203
 msgid "Moving the item..."
 msgstr "Az elem áthelyezése..."
 
-#: modules/calendar/library/calendar-methods.php:1199
+#: modules/calendar/library/calendar-methods.php:1204
 #, php-format
 msgid "Hide the %s last items"
 msgstr "Az utolsó %s elem elrejtése"
 
-#: modules/calendar/library/calendar-methods.php:1200
+#: modules/calendar/library/calendar-methods.php:1205
 #, php-format
 msgid "Show %s more"
 msgstr "További %s megjelenítése"
 
-#: modules/calendar/library/calendar-methods.php:1201
-#: modules/calendar/library/calendar-methods.php:1704
+#: modules/calendar/library/calendar-methods.php:1206
+#: modules/calendar/library/calendar-methods.php:1716
 msgid "Untitled"
 msgstr "Név nélküli"
 
-#: modules/calendar/library/calendar-methods.php:1202
+#: modules/calendar/library/calendar-methods.php:1207
+msgid "Refresh"
+msgstr "Frissítés"
+
+#: modules/calendar/library/calendar-methods.php:1208
+msgid "Previous page"
+msgstr "Előző oldal"
+
+#: modules/calendar/library/calendar-methods.php:1209
+msgid "Previous week"
+msgstr "Előző hét"
+
+#: modules/calendar/library/calendar-methods.php:1210
+msgid "Next week"
+msgstr "Következő hét"
+
+#: modules/calendar/library/calendar-methods.php:1211
+msgid "Next page"
+msgstr "Következő oldal"
+
+#: modules/calendar/library/calendar-methods.php:1212
+#: modules/calendar/library/calendar-utilities.php:477
+#: modules/calendar/library/calendar-utilities.php:507
 msgid "Close"
 msgstr "Bezárás"
 
-#: modules/calendar/library/calendar-methods.php:1203
-#: modules/editorial-comments/lib/editorial-comments.js:349
+#: modules/calendar/library/calendar-methods.php:1213
 msgid "Save"
 msgstr "Mentés"
 
-#: modules/calendar/library/calendar-methods.php:1204
+#: modules/calendar/library/calendar-methods.php:1214
 msgid "Saving..."
 msgstr "Mentés..."
 
-#: modules/calendar/library/calendar-methods.php:1205
+#: modules/calendar/library/calendar-methods.php:1215
 msgid "Save and edit"
 msgstr "Mentés és szerkesztés"
 
-#: modules/calendar/library/calendar-methods.php:1206
+#: modules/calendar/library/calendar-methods.php:1216
 #, php-format
 msgid "Add content for %s"
 msgstr "Tartalom hozzáadása a(z) %s-hoz"
 
-#: modules/calendar/library/calendar-methods.php:1207
+#: modules/calendar/library/calendar-methods.php:1217
 msgid "Post type not found"
 msgstr "Bejegyzéstípus nem található"
 
-#: modules/calendar/library/calendar-methods.php:1208
+#: modules/calendar/library/calendar-methods.php:1218
 msgid "Post type:"
 msgstr "Bejegyzéstípus:"
 
-#: modules/calendar/library/calendar-methods.php:1209
+#: modules/calendar/library/calendar-methods.php:1219
 #: modules/content-board/library/content-board-utilities.php:1130
 #: modules/content-overview/library/content-overview-utilities.php:456
 msgid "Please, wait! Loading the form fields..."
 msgstr "Kérem, várjon! A űrlapmezők betöltése..."
 
-#: modules/calendar/library/calendar-methods.php:1210
+#: modules/calendar/library/calendar-methods.php:1220
 msgid "Sun"
 msgstr "Vasárnap"
 
-#: modules/calendar/library/calendar-methods.php:1211
+#: modules/calendar/library/calendar-methods.php:1221
 msgid "Mon"
 msgstr "Hétfő"
 
-#: modules/calendar/library/calendar-methods.php:1212
+#: modules/calendar/library/calendar-methods.php:1222
 msgid "Tue"
 msgstr "Kedd"
 
-#: modules/calendar/library/calendar-methods.php:1213
+#: modules/calendar/library/calendar-methods.php:1223
 msgid "Wed"
 msgstr "Szerda"
 
-#: modules/calendar/library/calendar-methods.php:1214
+#: modules/calendar/library/calendar-methods.php:1224
 msgid "Thu"
 msgstr "Csütörtök"
 
-#: modules/calendar/library/calendar-methods.php:1215
+#: modules/calendar/library/calendar-methods.php:1225
 msgid "Fri"
 msgstr "Péntek"
 
-#: modules/calendar/library/calendar-methods.php:1216
+#: modules/calendar/library/calendar-methods.php:1226
 msgid "Sat"
 msgstr "Szombat"
 
-#: modules/calendar/library/calendar-methods.php:1217
+#: modules/calendar/library/calendar-methods.php:1227
 msgid "Jan"
 msgstr "Január"
 
-#: modules/calendar/library/calendar-methods.php:1218
+#: modules/calendar/library/calendar-methods.php:1228
 msgid "Feb"
 msgstr "Február"
 
-#: modules/calendar/library/calendar-methods.php:1219
+#: modules/calendar/library/calendar-methods.php:1229
 msgid "Mar"
 msgstr "Március"
 
-#: modules/calendar/library/calendar-methods.php:1220
+#: modules/calendar/library/calendar-methods.php:1230
 msgid "Apr"
 msgstr "Április"
 
-#: modules/calendar/library/calendar-methods.php:1221
+#: modules/calendar/library/calendar-methods.php:1231
 msgid "May"
 msgstr "Május"
 
-#: modules/calendar/library/calendar-methods.php:1222
+#: modules/calendar/library/calendar-methods.php:1232
 msgid "Jun"
 msgstr "Június"
 
-#: modules/calendar/library/calendar-methods.php:1223
+#: modules/calendar/library/calendar-methods.php:1233
 msgid "Jul"
 msgstr "Július"
 
-#: modules/calendar/library/calendar-methods.php:1224
+#: modules/calendar/library/calendar-methods.php:1234
 msgid "Aug"
 msgstr "Augusztus"
 
-#: modules/calendar/library/calendar-methods.php:1225
+#: modules/calendar/library/calendar-methods.php:1235
 msgid "Sep"
 msgstr "Szeptember"
 
-#: modules/calendar/library/calendar-methods.php:1226
+#: modules/calendar/library/calendar-methods.php:1236
 msgid "Oct"
 msgstr "Október"
 
-#: modules/calendar/library/calendar-methods.php:1227
+#: modules/calendar/library/calendar-methods.php:1237
 msgid "Nov"
 msgstr "November"
 
-#: modules/calendar/library/calendar-methods.php:1228
+#: modules/calendar/library/calendar-methods.php:1238
 msgid "Dec"
 msgstr "December"
 
-#: modules/calendar/library/calendar-methods.php:1229
+#: modules/calendar/library/calendar-methods.php:1239
 #: modules/calendar/library/calendar-utilities.php:51
 #: modules/content-board/library/content-board-utilities.php:598
 #: modules/content-overview/library/content-overview-utilities.php:707
 msgid "All statuses"
 msgstr "Összes státusz"
 
-#: modules/calendar/library/calendar-methods.php:1230
+#: modules/calendar/library/calendar-methods.php:1240
 msgid "All categories"
 msgstr "Összes kategória"
 
-#: modules/calendar/library/calendar-methods.php:1231
+#: modules/calendar/library/calendar-methods.php:1241
 msgid "All tags"
 msgstr "Összes címke"
 
-#: modules/calendar/library/calendar-methods.php:1232
+#: modules/calendar/library/calendar-methods.php:1242
 #: modules/calendar/library/calendar-utilities.php:117
 #: modules/calendar/library/calendar-utilities.php:120
 #: modules/content-board/library/content-board-utilities.php:649
@@ -1123,11 +772,11 @@ msgstr "Összes címke"
 msgid "All authors"
 msgstr "Minden szerző"
 
-#: modules/calendar/library/calendar-methods.php:1233
+#: modules/calendar/library/calendar-methods.php:1243
 msgid "All types"
 msgstr "Minden típus"
 
-#: modules/calendar/library/calendar-methods.php:1234
+#: modules/calendar/library/calendar-methods.php:1244
 #: modules/calendar/library/calendar-utilities.php:513
 #, php-format
 msgid "%d week"
@@ -1135,101 +784,107 @@ msgid_plural "%d weeks"
 msgstr[0] "%d hét"
 msgstr[1] "%d hét"
 
-#: modules/calendar/library/calendar-methods.php:1235
+#: modules/calendar/library/calendar-methods.php:1245
 #, php-format
 msgid "%d weeks"
 msgstr "%d hét"
 
-#: modules/calendar/library/calendar-methods.php:1236
+#: modules/calendar/library/calendar-methods.php:1246
 msgid "Today"
 msgstr "Ma"
 
-#: modules/calendar/library/calendar-methods.php:1237
+#: modules/calendar/library/calendar-methods.php:1247
 msgid "No terms"
 msgstr "Nincsenek kifejezések"
 
-#: modules/calendar/library/calendar-methods.php:1238
+#: modules/calendar/library/calendar-methods.php:1248
+#: modules/content-board/content-board.php:1268
+#: modules/content-overview/content-overview.php:1240
+msgid "No results found"
+msgstr "Nincs találat"
+
+#: modules/calendar/library/calendar-methods.php:1250
 #: modules/content-board/content-board.php:1288
-#: modules/content-overview/content-overview.php:836
-#: modules/content-overview/content-overview.php:895
-#: modules/content-overview/content-overview.php:1219
+#: modules/content-overview/content-overview.php:855
+#: modules/content-overview/content-overview.php:931
+#: modules/content-overview/content-overview.php:1265
 msgid "Post Date"
 msgstr "Bejegyzés dátuma"
 
-#: modules/calendar/library/calendar-methods.php:1239
+#: modules/calendar/library/calendar-methods.php:1251
 #: modules/calendar/library/calendar-utilities.php:1097
 #: modules/content-board/content-board.php:1183
 #: modules/content-board/content-board.php:1289
-#: modules/content-overview/content-overview.php:1220
-#: modules/content-overview/content-overview.php:1703
+#: modules/content-overview/content-overview.php:1266
+#: modules/content-overview/content-overview.php:1749
 #: modules/editorial-comments/editorial-comments.php:628
 #: modules/editorial-metadata/library/editorial-metadata-list-table.php:159
 msgid "Edit"
 msgstr "Szerkesztés"
 
-#: modules/calendar/library/calendar-methods.php:1241
+#: modules/calendar/library/calendar-methods.php:1253
 #: modules/calendar/library/calendar-utilities.php:1114
 #: modules/content-board/content-board.php:1224
 #: modules/content-board/content-board.php:1291
-#: modules/content-overview/content-overview.php:1222
-#: modules/content-overview/content-overview.php:1744
+#: modules/content-overview/content-overview.php:1268
+#: modules/content-overview/content-overview.php:1790
 msgid "Preview"
 msgstr "Előnézet"
 
-#: modules/calendar/library/calendar-methods.php:1242
+#: modules/calendar/library/calendar-methods.php:1254
 #: modules/calendar/library/calendar-utilities.php:1111
 #: modules/content-board/content-board.php:1211
 #: modules/content-board/content-board.php:1292
-#: modules/content-overview/content-overview.php:1223
-#: modules/content-overview/content-overview.php:1731
+#: modules/content-overview/content-overview.php:1269
+#: modules/content-overview/content-overview.php:1777
 msgid "View"
 msgstr "Megtekintés"
 
-#: modules/calendar/library/calendar-methods.php:1243
+#: modules/calendar/library/calendar-methods.php:1255
 #: modules/content-board/content-board.php:1293
-#: modules/content-overview/content-overview.php:1224
+#: modules/content-overview/content-overview.php:1270
 msgid "Previous Post"
 msgstr "Előző bejegyzés"
 
-#: modules/calendar/library/calendar-methods.php:1244
+#: modules/calendar/library/calendar-methods.php:1256
 #: modules/content-board/content-board.php:1294
-#: modules/content-overview/content-overview.php:1225
+#: modules/content-overview/content-overview.php:1271
 msgid "Next Post"
 msgstr "Következő bejegyzés"
 
-#: modules/calendar/library/calendar-methods.php:1246
+#: modules/calendar/library/calendar-methods.php:1258
 #: modules/content-board/content-board.php:1296
-#: modules/content-overview/content-overview.php:1227
+#: modules/content-overview/content-overview.php:1273
 msgid "Save Changes"
 msgstr "Változtatások mentése"
 
-#: modules/calendar/library/calendar-methods.php:1247
+#: modules/calendar/library/calendar-methods.php:1259
 #: modules/content-board/content-board.php:1297
-#: modules/content-overview/content-overview.php:1228
+#: modules/content-overview/content-overview.php:1274
 msgid "Taxonomy not set."
 msgstr "A taxonómia nincs beállítva."
 
-#: modules/calendar/library/calendar-methods.php:1687
+#: modules/calendar/library/calendar-methods.php:1699
 msgid "No date supplied."
 msgstr "Nincs megadva dátum."
 
-#: modules/calendar/library/calendar-methods.php:1698
+#: modules/calendar/library/calendar-methods.php:1710
 msgid "The selected post type is not enabled for the calendar."
 msgstr "A kiválasztott bejegyzéstípus nincs engedélyezve a naptárhoz."
 
-#: modules/calendar/library/calendar-methods.php:1728
+#: modules/calendar/library/calendar-methods.php:1740
 msgid "Invalid Status supplied."
 msgstr "Érvénytelen státusz megadva."
 
-#: modules/calendar/library/calendar-methods.php:1752
+#: modules/calendar/library/calendar-methods.php:1764
 msgid "Invalid Publish Date supplied."
 msgstr "Érvénytelen közzétételi dátum megadva."
 
-#: modules/calendar/library/calendar-methods.php:1821
+#: modules/calendar/library/calendar-methods.php:1833
 msgid "Post created successfully"
 msgstr "A bejegyzés sikeresen létrejött"
 
-#: modules/calendar/library/calendar-methods.php:1828
+#: modules/calendar/library/calendar-methods.php:1840
 msgid "Post could not be created"
 msgstr "A bejegyzést nem sikerült létrehozni"
 
@@ -1332,6 +987,12 @@ msgstr "Nem felelt meg"
 msgid "Customize Filters"
 msgstr "Szűrők testreszabása"
 
+#: modules/calendar/library/calendar-utilities.php:485
+#: modules/content-board/library/content-board-utilities.php:97
+#: modules/content-overview/library/content-overview-methods.php:322
+msgid "Search content"
+msgstr "Tartalom keresése"
+
 #: modules/calendar/library/calendar-utilities.php:502
 #: modules/calendar/library/calendar-utilities.php:503
 msgid "Period"
@@ -1416,35 +1077,53 @@ msgstr "Húzza az engedélyezett szűrők sorrendjének megváltoztatásához."
 msgid "Apply Changes"
 msgstr "Változtatások alkalmazása"
 
+#: modules/calendar/library/calendar-utilities.php:1059
+msgid "ID"
+msgstr "Azonosító"
+
+#: modules/calendar/library/calendar-utilities.php:1064
+#: modules/content-board/library/content-board-utilities.php:116
+#: modules/content-overview/library/content-overview-methods.php:341
+#: modules/editorial-metadata/editorial-metadata.php:290
+#: modules/notifications-log/library/NotificationsLogTable.php:496
+msgid "Date"
+msgstr "Dátum"
+
+#: modules/calendar/library/calendar-utilities.php:1080
+msgid "Category"
+msgid_plural "Categories"
+msgstr[0] "Kategória"
+msgstr[1] "Kategóriák"
+
 #: modules/calendar/library/calendar-utilities.php:1085
 msgid "Tag"
 msgid_plural "Tags"
 msgstr[0] "Címke"
 msgstr[1] "Címkék"
 
-#: modules/calendar/library/calendar-utilities.php:1180
+#: modules/calendar/library/calendar-utilities.php:1181
 #: modules/content-board/content-board.php:802
-#: modules/content-overview/content-overview.php:945
+#: modules/content-overview/content-overview.php:985
 msgid "Custom filters"
 msgstr "Egyedi szűrők"
 
-#: modules/calendar/library/calendar-utilities.php:1181
+#: modules/calendar/library/calendar-utilities.php:1182
 #: modules/content-board/content-board.php:803
-#: modules/content-overview/content-overview.php:946
+#: modules/content-overview/content-overview.php:986
 msgid "Click the \"Add New\" button to create new filters."
 msgstr "Kattintson az \"Új hozzáadása\" gombra új szűrők létrehozásához."
 
-#: modules/calendar/library/calendar-utilities.php:1187
+#: modules/calendar/library/calendar-utilities.php:1199
 #: modules/content-board/content-board.php:809
-#: modules/content-overview/content-overview.php:952
+#: modules/content-overview/content-overview.php:1003
 msgid "Inbuilt filters"
 msgstr "Beépített szűrők"
 
-#: modules/calendar/library/calendar-utilities.php:1199
+#: modules/calendar/library/calendar-utilities.php:1206
 #: modules/content-board/content-board.php:760
 #: modules/content-board/content-board.php:820
-#: modules/content-overview/content-overview.php:903
-#: modules/content-overview/content-overview.php:964
+#: modules/content-overview/content-overview.php:943
+#: modules/content-overview/content-overview.php:1010
 #: modules/editorial-metadata/editorial-metadata.php:95
 #: modules/editorial-metadata/editorial-metadata.php:511
 #: modules/editorial-metadata/editorial-metadata.php:1720
@@ -1452,140 +1131,148 @@ msgstr "Beépített szűrők"
 msgid "Editorial Fields"
 msgstr "Szerkesztési mezők"
 
-#: modules/calendar/library/calendar-utilities.php:1200
+#: modules/calendar/library/calendar-utilities.php:1207
 #: modules/content-board/content-board.php:761
 #: modules/content-board/content-board.php:821
-#: modules/content-overview/content-overview.php:904
-#: modules/content-overview/content-overview.php:965
+#: modules/content-overview/content-overview.php:944
+#: modules/content-overview/content-overview.php:1011
 msgid "You do not have any editorial fields enabled"
 msgstr "Nincsenek engedélyezett szerkesztési mezőid"
 
-#: modules/calendar/library/calendar-utilities.php:1207
+#: modules/calendar/library/calendar-utilities.php:1213
+#: modules/content-board/content-board.php:767
+#: modules/content-board/content-board.php:827
+#: modules/content-overview/content-overview.php:950
+#: modules/content-overview/content-overview.php:1017
+msgid "Taxonomies"
+msgstr "Taxonómiák"
+
+#: modules/calendar/library/calendar-utilities.php:1214
 #: modules/content-board/content-board.php:768
 #: modules/content-board/content-board.php:828
-#: modules/content-overview/content-overview.php:911
-#: modules/content-overview/content-overview.php:972
+#: modules/content-overview/content-overview.php:951
+#: modules/content-overview/content-overview.php:1018
 msgid "You do not have any public taxonomies"
 msgstr "Nincsenek nyilvános taxonómiáid"
 
-#: modules/calendar/library/calendar-utilities.php:1229
+#: modules/calendar/library/calendar-utilities.php:1236
 msgid "Subscribe in iCal or Google Calendar"
 msgstr "Feliratkozás iCal vagy Google Naptárba"
 
-#: modules/calendar/library/calendar-utilities.php:1234
+#: modules/calendar/library/calendar-utilities.php:1241
 msgid "Start date"
 msgstr "Kezdő dátum"
 
-#: modules/calendar/library/calendar-utilities.php:1238
+#: modules/calendar/library/calendar-utilities.php:1245
 msgid "Current week"
 msgstr "Aktuális hét"
 
-#: modules/calendar/library/calendar-utilities.php:1240
+#: modules/calendar/library/calendar-utilities.php:1247
 msgid "One month ago"
 msgstr "Egy hónappal ezelőtt"
 
-#: modules/calendar/library/calendar-utilities.php:1242
+#: modules/calendar/library/calendar-utilities.php:1249
 msgid "Two months ago"
 msgstr "Két hónappal ezelőtt"
 
-#: modules/calendar/library/calendar-utilities.php:1244
+#: modules/calendar/library/calendar-utilities.php:1251
 msgid "Three months ago"
 msgstr "Három hónappal ezelőtt"
 
-#: modules/calendar/library/calendar-utilities.php:1246
+#: modules/calendar/library/calendar-utilities.php:1253
 msgid "Four months ago"
 msgstr "Négy hónappal ezelőtt"
 
-#: modules/calendar/library/calendar-utilities.php:1248
+#: modules/calendar/library/calendar-utilities.php:1255
 msgid "Five months ago"
 msgstr "Öt hónappal ezelőtt"
 
-#: modules/calendar/library/calendar-utilities.php:1250
+#: modules/calendar/library/calendar-utilities.php:1257
 msgid "Six months ago"
 msgstr "Hat hónappal ezelőtt"
 
-#: modules/calendar/library/calendar-utilities.php:1256
+#: modules/calendar/library/calendar-utilities.php:1263
 msgid "End date"
 msgstr "Befejező dátum"
 
-#: modules/calendar/library/calendar-utilities.php:1261
+#: modules/calendar/library/calendar-utilities.php:1268
 msgid "One week"
 msgstr "Egy hét"
 
-#: modules/calendar/library/calendar-utilities.php:1263
+#: modules/calendar/library/calendar-utilities.php:1270
 msgid "Two weeks"
 msgstr "Két hét"
 
-#: modules/calendar/library/calendar-utilities.php:1265
+#: modules/calendar/library/calendar-utilities.php:1272
 msgid "Three weeks"
 msgstr "Három hét"
 
-#: modules/calendar/library/calendar-utilities.php:1267
+#: modules/calendar/library/calendar-utilities.php:1274
 msgid "Four weeks"
 msgstr "Négy hét"
 
-#: modules/calendar/library/calendar-utilities.php:1271
+#: modules/calendar/library/calendar-utilities.php:1278
 #: modules/content-board/content-board.php:1044
 msgid "Months"
 msgstr "Hónapok"
 
-#: modules/calendar/library/calendar-utilities.php:1273
+#: modules/calendar/library/calendar-utilities.php:1280
 msgid "One month"
 msgstr "Egy hónap"
 
-#: modules/calendar/library/calendar-utilities.php:1276
+#: modules/calendar/library/calendar-utilities.php:1283
 msgid "Two months"
 msgstr "Két hónap"
 
-#: modules/calendar/library/calendar-utilities.php:1278
+#: modules/calendar/library/calendar-utilities.php:1285
 msgid "Three months"
 msgstr "Három hónap"
 
-#: modules/calendar/library/calendar-utilities.php:1280
+#: modules/calendar/library/calendar-utilities.php:1287
 msgid "Four months"
 msgstr "Négy hónap"
 
-#: modules/calendar/library/calendar-utilities.php:1282
+#: modules/calendar/library/calendar-utilities.php:1289
 msgid "Five months"
 msgstr "Öt hónap"
 
-#: modules/calendar/library/calendar-utilities.php:1284
+#: modules/calendar/library/calendar-utilities.php:1291
 msgid "Six months"
 msgstr "Hat hónap"
 
-#: modules/calendar/library/calendar-utilities.php:1286
+#: modules/calendar/library/calendar-utilities.php:1293
 msgid "Seven months"
 msgstr "Hét hónap"
 
-#: modules/calendar/library/calendar-utilities.php:1288
+#: modules/calendar/library/calendar-utilities.php:1295
 msgid "Eight months"
 msgstr "Nyolc hónap"
 
-#: modules/calendar/library/calendar-utilities.php:1290
+#: modules/calendar/library/calendar-utilities.php:1297
 msgid "Nine months"
 msgstr "Kilenc hónap"
 
-#: modules/calendar/library/calendar-utilities.php:1292
+#: modules/calendar/library/calendar-utilities.php:1299
 msgid "Ten months"
 msgstr "Tíz hónap"
 
-#: modules/calendar/library/calendar-utilities.php:1294
+#: modules/calendar/library/calendar-utilities.php:1301
 msgid "Eleven months"
 msgstr "Tizenegy hónap"
 
-#: modules/calendar/library/calendar-utilities.php:1296
+#: modules/calendar/library/calendar-utilities.php:1303
 msgid "Twelve months"
 msgstr "Tizenkét hónap"
 
-#: modules/calendar/library/calendar-utilities.php:1308
+#: modules/calendar/library/calendar-utilities.php:1315
 msgid "Download .ics file"
 msgstr ".ics fájl letöltése"
 
-#: modules/calendar/library/calendar-utilities.php:1315
+#: modules/calendar/library/calendar-utilities.php:1322
 msgid "Copy to the clipboard"
 msgstr "Másolás a vágólapra"
 
-#: modules/calendar/library/calendar-utilities.php:1321
+#: modules/calendar/library/calendar-utilities.php:1328
 msgid "Click here to subscribe in iCal or Google Calendar"
 msgstr "Kattints ide az iCal vagy Google Naptár előfizetéséhez"
 
@@ -1611,14 +1298,14 @@ msgstr "Beépített Kártyaadatok"
 #: modules/content-board/content-board.php:847
 #: modules/content-board/library/content-board-methods.php:39
 #: modules/content-board/library/content-board-methods.php:107
-#: modules/content-overview/content-overview.php:991
+#: modules/content-overview/content-overview.php:1037
 msgid "An error occured"
 msgstr "Hiba történt"
 
 #: modules/content-board/content-board.php:851
 #: modules/content-board/library/content-board-methods.php:43
 #: modules/content-board/library/content-board-methods.php:111
-#: modules/content-overview/content-overview.php:995
+#: modules/content-overview/content-overview.php:1041
 msgid "Error validating nonce. Please reload this page and try again."
 msgstr ""
 "Hiba a nonce érvényesítése során. Kérlek, töltsd újra ezt az oldalt, és "
@@ -1626,8 +1313,8 @@ msgstr ""
 
 #: modules/content-board/content-board.php:853
 #: modules/content-board/library/content-board-methods.php:45
-#: modules/content-board/library/content-board-methods.php:113
-#: modules/content-overview/content-overview.php:997
+#: modules/content-board/library/content-board-methods.php:115
+#: modules/content-overview/content-overview.php:1043
 msgid "Invalid form request."
 msgstr "Érvénytelen űrlap kérés."
 
@@ -1666,40 +1353,35 @@ msgid "Only editable posts will be moveable."
 msgstr "Csak a szerkeszthető bejegyzések lesznek áthelyezhetők."
 
 #: modules/content-board/content-board.php:1179
-#: modules/content-overview/content-overview.php:1699
+#: modules/content-overview/content-overview.php:1745
 #: modules/dashboard/dashboard.php:299
 msgid "Edit this post"
 msgstr "E bejegyzés szerkesztése"
 
 #: modules/content-board/content-board.php:1191
-#: modules/content-overview/content-overview.php:1711
+#: modules/content-overview/content-overview.php:1757
 msgid "Move this item to the Trash"
 msgstr "Húzd ezt az elemet a Kukába"
 
 #: modules/content-board/content-board.php:1205
-#: modules/content-overview/content-overview.php:1725
+#: modules/content-overview/content-overview.php:1771
 #, php-format
 msgid "View &#8220;%s&#8221;"
 msgstr "Megtekintés &#8220;%s&#8221;"
 
 #: modules/content-board/content-board.php:1221
-#: modules/content-overview/content-overview.php:1741
+#: modules/content-overview/content-overview.php:1787
 #, php-format
 msgid "Preview &#8220;%s&#8221;"
 msgstr "Előnézet &#8220;%s&#8221;"
 
-#: modules/content-board/content-board.php:1268
-#: modules/content-overview/content-overview.php:1194
-msgid "No results found"
-msgstr "Nincs találat"
-
 #: modules/content-board/content-board.php:1273
-#: modules/content-overview/content-overview.php:1199
+#: modules/content-overview/content-overview.php:1245
 msgid "There are no posts in the range or filter specified."
 msgstr "Nincsenek bejegyzések a megadott tartományban vagy szűrőben."
 
 #: modules/content-board/content-board.php:1605
-#: modules/content-overview/content-overview.php:1579
+#: modules/content-overview/content-overview.php:1625
 msgid "None"
 msgstr "Egyik sem"
 
@@ -1718,38 +1400,42 @@ msgstr ""
 "állapotba."
 
 #: modules/content-board/library/content-board-methods.php:95
-#: modules/content-board/library/content-board-methods.php:123
+#: modules/content-board/library/content-board-methods.php:125
 msgid "Changes saved!"
 msgstr "A változtatások mentve!"
 
-#: modules/content-board/library/content-board-methods.php:150
+#: modules/content-board/library/content-board-methods.php:113
+msgid "You do not have permission to update schedule settings."
+msgstr "Nincs jogosultsága a menetrend beállításainak frissítésére."
+
+#: modules/content-board/library/content-board-methods.php:152
 msgid "Card Data updated successfully."
 msgstr "A kártyaadatok sikeresen frissítve."
 
-#: modules/content-board/library/content-board-methods.php:172
-#: modules/content-overview/content-overview.php:676
+#: modules/content-board/library/content-board-methods.php:174
+#: modules/content-overview/content-overview.php:692
 msgid "Settings updated successfully."
 msgstr "A beállítások sikeresen frissítve."
 
-#: modules/content-board/library/content-board-methods.php:250
-#: modules/content-overview/content-overview.php:754
+#: modules/content-board/library/content-board-methods.php:252
+#: modules/content-overview/content-overview.php:770
 #, php-format
 msgid "%s created successfully. <a href=\"%s\" target=\"_blank\">Edit %s</a>"
 msgstr "%s sikeresen létrehozva. <a href=\"%s\" target=\"_blank\">Szerkeszd %s</a>"
 
-#: modules/content-board/library/content-board-methods.php:253
-#: modules/content-overview/content-overview.php:757
+#: modules/content-board/library/content-board-methods.php:255
+#: modules/content-overview/content-overview.php:773
 #, php-format
 msgid "%s could not be created"
 msgstr "%s nem hozható létre"
 
-#: modules/content-board/library/content-board-methods.php:258
-#: modules/content-overview/content-overview.php:762
+#: modules/content-board/library/content-board-methods.php:260
+#: modules/content-overview/content-overview.php:778
 #, php-format
 msgid "You do not have permission to add new %s"
 msgstr "Nincs jogosultságod új %s hozzáadására"
 
-#: modules/content-board/library/content-board-methods.php:437
+#: modules/content-board/library/content-board-methods.php:439
 #: modules/content-overview/library/content-overview-methods.php:160
 msgid "Post types to show:"
 msgstr "Megjelenítendő bejegyzéstípusok:"
@@ -1807,7 +1493,6 @@ msgstr "Tartalom megjelenítése innen"
 #: modules/content-overview/library/content-overview-utilities.php:659
 #: modules/editorial-comments/editorial-comments.php:574
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:425
-#: modules/editorial-comments/lib/editorial-comments.js:350
 msgid "Cancel"
 msgstr "Mégse"
 
@@ -1838,31 +1523,31 @@ msgstr "Elküldés"
 msgid "Publish Date"
 msgstr "Kiadás dátuma"
 
-#: modules/content-overview/content-overview.php:156
-#: modules/content-overview/content-overview.php:376
-#: modules/content-overview/content-overview.php:393
-#: modules/content-overview/content-overview.php:394
+#: modules/content-overview/content-overview.php:168
+#: modules/content-overview/content-overview.php:388
+#: modules/content-overview/content-overview.php:405
+#: modules/content-overview/content-overview.php:406
 msgid "Content Overview"
 msgstr "Tartalom áttekintés"
 
-#: modules/content-overview/content-overview.php:654
+#: modules/content-overview/content-overview.php:670
 msgid "Column updated successfully."
 msgstr "Az oszlop sikeresen frissítve."
 
-#: modules/content-overview/content-overview.php:837
-#: modules/content-overview/content-overview.php:896
+#: modules/content-overview/content-overview.php:856
+#: modules/content-overview/content-overview.php:932
 msgid "Last Modified"
 msgstr "Utolsó módosítás"
 
-#: modules/content-overview/content-overview.php:883
+#: modules/content-overview/content-overview.php:916
 msgid "Custom Columns"
 msgstr "Egyedi oszlopok"
 
-#: modules/content-overview/content-overview.php:884
+#: modules/content-overview/content-overview.php:917
 msgid "Click the \"Add New\" button to create new columns."
 msgstr "Kattintson az \"Új hozzáadása\" gombra új oszlopok létrehozásához."
 
-#: modules/content-overview/content-overview.php:890
+#: modules/content-overview/content-overview.php:936
 msgid "Inbuilt Columns"
 msgstr "Beépített oszlopok"
 
@@ -1961,7 +1646,12 @@ msgstr "Irányítópult megjegyzés"
 msgid "%1$s last updated on %2$s"
 msgstr "%1$s utoljára frissítve: %2$s"
 
-#: modules/dashboard/widgets/dashboard-notepad.php:168
+#: modules/dashboard/widgets/dashboard-notepad.php:160
+#: modules/dashboard/widgets/dashboard-notepad.php:176
+msgid "Dashboard note"
+msgstr "Dashboard megjegyzés"
+
+#: modules/dashboard/widgets/dashboard-notepad.php:169
 msgid "Update Note"
 msgstr "Megjegyzés frissítése"
 
@@ -2042,8 +1732,8 @@ msgid "Invalid action nonce."
 msgstr "Érvénytelen művelet nonce."
 
 #: modules/editorial-comments/editorial-comments.php:63
-#: modules/editorial-comments/editorial-comments.php:231
-#: modules/editorial-comments/editorial-comments.php:232
+#: modules/editorial-comments/editorial-comments.php:235
+#: modules/editorial-comments/editorial-comments.php:236
 #: modules/editorial-comments/editorial-comments.php:453
 msgid "Editorial Comments"
 msgstr "Szerkesztői megjegyzések"
@@ -2093,23 +1783,23 @@ msgid "Remove"
 msgstr "Eltávolítás"
 
 #: modules/editorial-comments/editorial-comments.php:206
-#: modules/editorial-comments/library/EditorialCommentsTable.php:181
-#: modules/notifications-log/notifications-log.php:204
+#: modules/editorial-comments/library/EditorialCommentsTable.php:182
+#: modules/notifications-log/notifications-log.php:207
 msgid "All Posts"
 msgstr "Összes bejegyzés"
 
 #: modules/editorial-comments/editorial-comments.php:207
-#: modules/editorial-comments/library/EditorialCommentsTable.php:196
+#: modules/editorial-comments/library/EditorialCommentsTable.php:198
 msgid "All Users"
 msgstr "Minden felhasználó"
 
-#: modules/editorial-comments/editorial-comments.php:272
+#: modules/editorial-comments/editorial-comments.php:276
 #. translators: %s: search keywords
 #, php-format
 msgid "Search results for &#8220;%s&#8221;"
 msgstr "Keresési eredmények a(z) &#8220;%s&#8221; kifejezésre"
 
-#: modules/editorial-comments/editorial-comments.php:285
+#: modules/editorial-comments/editorial-comments.php:289
 msgid "Search Comments"
 msgstr "Keresés hozzászólásokra"
 
@@ -2143,7 +1833,7 @@ msgid "Reply"
 msgstr "Válasz"
 
 #: modules/editorial-comments/editorial-comments.php:639
-#: modules/editorial-comments/library/EditorialCommentsTable.php:434
+#: modules/editorial-comments/library/EditorialCommentsTable.php:436
 #: modules/editorial-metadata/library/editorial-metadata-list-table.php:161
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:303
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:333
@@ -2270,6 +1960,10 @@ msgstr "Keresztnév"
 msgid "Last Name"
 msgstr "Vezetéknév"
 
+#: modules/editorial-comments/editorial-comments.php:1267
+msgid "Email"
+msgstr "E-mail"
+
 #: modules/editorial-comments/editorial-comments.php:1268
 msgid "User Url"
 msgstr "Felhasználói URL"
@@ -2278,24 +1972,33 @@ msgstr "Felhasználói URL"
 msgid "No editorial comments."
 msgstr "Nincs szerkesztői megjegyzés."
 
-#: modules/editorial-comments/library/EditorialCommentsTable.php:210
-#: modules/notifications-log/library/NotificationsLogTable.php:646
+#: modules/editorial-comments/library/EditorialCommentsTable.php:180
+#: modules/notifications-log/library/NotificationsLogTable.php:566
+msgid "Filter by post"
+msgstr "Szűrés bejegyzés szerint"
+
+#: modules/editorial-comments/library/EditorialCommentsTable.php:196
+msgid "Filter by user"
+msgstr "Szűrés felhasználó szerint"
+
+#: modules/editorial-comments/library/EditorialCommentsTable.php:212
+#: modules/notifications-log/library/NotificationsLogTable.php:653
 msgid "Filter"
 msgstr "Szűrő"
 
-#: modules/editorial-comments/library/EditorialCommentsTable.php:229
+#: modules/editorial-comments/library/EditorialCommentsTable.php:231
 msgid "Comment"
 msgstr "Megjegyzés"
 
-#: modules/editorial-comments/library/EditorialCommentsTable.php:231
+#: modules/editorial-comments/library/EditorialCommentsTable.php:233
 msgid "Post"
 msgstr "Bejegyzés"
 
-#: modules/editorial-comments/library/EditorialCommentsTable.php:233
+#: modules/editorial-comments/library/EditorialCommentsTable.php:235
 msgid "Submitted on"
 msgstr "Beküldve:"
 
-#: modules/editorial-comments/library/EditorialCommentsTable.php:336
+#: modules/editorial-comments/library/EditorialCommentsTable.php:338
 #: modules/editorial-metadata/input-handlers/editorial-metadata-input-date-handler.php:201
 #: modules/notifications/notifications.php:1974
 #. translators: 1: Comment date, 2: Comment time.
@@ -2586,6 +2289,10 @@ msgstr "Pozíció"
 msgid "Name"
 msgstr "Név"
 
+#: modules/editorial-metadata/library/editorial-metadata-list-table.php:46
+msgid "Post Types"
+msgstr "Bejegyzés típusok"
+
 #: modules/editorial-metadata/library/editorial-metadata-list-table.php:47
 msgid "Field Type"
 msgstr "Mező típusa"
@@ -2812,11 +2519,11 @@ msgstr "Új bejegyzés közzétéve"
 msgid "Notify on editorial comments"
 msgstr "Értesítés szerkesztői megjegyzésekről"
 
-#: modules/improved-notifications/improved-notifications.php:606
+#: modules/improved-notifications/improved-notifications.php:607
 msgid "minutes"
 msgstr "perc"
 
-#: modules/improved-notifications/improved-notifications.php:610
+#: modules/improved-notifications/improved-notifications.php:611
 msgid ""
 "This will prevent too many notifications being sent for the same or similar "
 "events. Set this to a higher number if you are receiving duplicate emails."
@@ -2825,72 +2532,84 @@ msgstr ""
 "hasonló eseményekért. Állítsd be egy magasabb számra, ha duplikált "
 "e-maileket kapsz."
 
-#: modules/improved-notifications/improved-notifications.php:656
-#: modules/improved-notifications/improved-notifications.php:1495
+#: modules/improved-notifications/improved-notifications.php:657
+#: modules/improved-notifications/improved-notifications.php:1514
 #: views/user_profile_notification_channels.html.php:1
 msgid "Editorial Notifications"
 msgstr "Szerkesztői értesítések"
 
-#: modules/improved-notifications/improved-notifications.php:657
-#: modules/improved-notifications/improved-notifications.php:1496
+#: modules/improved-notifications/improved-notifications.php:658
+#: modules/improved-notifications/improved-notifications.php:1515
 #: views/user_profile_notification_channels.html.php:6
 msgid "Choose the channels where each workflow will send notifications to:"
 msgstr ""
 "Válaszd ki azokat a csatornákat, ahová minden munkafolyamat értesítéseket "
 "küld:"
 
-#: modules/improved-notifications/improved-notifications.php:661
-#: modules/improved-notifications/improved-notifications.php:1483
-#: modules/improved-notifications/improved-notifications.php:1500
+#: modules/improved-notifications/improved-notifications.php:662
+#: modules/improved-notifications/improved-notifications.php:1502
+#: modules/improved-notifications/improved-notifications.php:1519
 msgid "Muted"
 msgstr "Némítva"
 
-#: modules/improved-notifications/improved-notifications.php:662
-#: modules/improved-notifications/improved-notifications.php:1501
+#: modules/improved-notifications/improved-notifications.php:663
+#: modules/improved-notifications/improved-notifications.php:1520
 #: views/user_profile_notification_channels.html.php:14
 msgid "Workflows"
 msgstr "Munkafolyamatok"
 
-#: modules/improved-notifications/improved-notifications.php:663
-#: modules/improved-notifications/improved-notifications.php:1502
+#: modules/improved-notifications/improved-notifications.php:664
+#: modules/improved-notifications/improved-notifications.php:1521
 #: views/user_profile_notification_channels.html.php:15
 msgid "Channels"
 msgstr "Csatornák"
 
-#: modules/improved-notifications/improved-notifications.php:1088
+#: modules/improved-notifications/improved-notifications.php:1104
 #: modules/notifications-log/notifications-log.php:75
-#: modules/notifications-log/notifications-log.php:263
-#: modules/notifications-log/notifications-log.php:489
-#: modules/notifications-log/notifications-log.php:490
+#: modules/notifications-log/notifications-log.php:266
+#: modules/notifications-log/notifications-log.php:492
+#: modules/notifications-log/notifications-log.php:493
 msgid "Notifications Log"
 msgstr "Értesítések naplója"
 
-#: modules/improved-notifications/improved-notifications.php:1122
+#: modules/improved-notifications/improved-notifications.php:1138
 msgid "Workflow Settings"
 msgstr "Munkafolyamat beállítások"
 
-#: modules/improved-notifications/improved-notifications.php:1131
+#: modules/improved-notifications/improved-notifications.php:1148
+#: views/settings_notification_channels.html.php:5
+#: views/user_profile_notification_channels.html.php:16
 msgid "Options"
 msgstr "Beállítások"
 
-#: modules/improved-notifications/improved-notifications.php:1140
+#: modules/improved-notifications/improved-notifications.php:1158
 msgid "Help"
 msgstr "Segítség"
 
-#: modules/improved-notifications/improved-notifications.php:1170
+#: modules/improved-notifications/improved-notifications.php:1179
+#: modules/notifications-log/library/NotificationsLogTable.php:497
+msgid "When to notify?"
+msgstr "Mikor értesítsünk?"
+
+#: modules/improved-notifications/improved-notifications.php:1189
 #: modules/notifications-log/library/NotificationsLogTable.php:498
 msgid "For which content?"
 msgstr "Melyik tartalomhoz?"
 
-#: modules/improved-notifications/improved-notifications.php:1190
+#: modules/improved-notifications/improved-notifications.php:1199
+#: modules/notifications-log/library/NotificationsLogTable.php:499
+msgid "Who to notify?"
+msgstr "Kit értesítsünk?"
+
+#: modules/improved-notifications/improved-notifications.php:1209
 msgid "What to say?"
 msgstr "Mit mondjak?"
 
-#: modules/improved-notifications/improved-notifications.php:1310
+#: modules/improved-notifications/improved-notifications.php:1329
 msgid "Select at least one option for each section."
 msgstr "Kérjük, válasszon legalább egy lehetőséget minden szekcióhoz."
 
-#: modules/improved-notifications/improved-notifications.php:1314
+#: modules/improved-notifications/improved-notifications.php:1333
 msgid ""
 "You can add dynamic information to the Subject or Body text using the "
 "following shortcodes:"
@@ -2898,35 +2617,35 @@ msgstr ""
 "Dinamikus információt adhatsz a Tárgy vagy Üzenet szöveghez a következő "
 "rövidkódok segítségével:"
 
-#: modules/improved-notifications/improved-notifications.php:1319
+#: modules/improved-notifications/improved-notifications.php:1338
 msgid "Editorial Comment"
 msgstr "Szerkesztői megjegyzés"
 
-#: modules/improved-notifications/improved-notifications.php:1320
+#: modules/improved-notifications/improved-notifications.php:1339
 msgid "User making changes or comments"
 msgstr "Felhasználó, aki módosításokat vagy megjegyzéseket tesz"
 
-#: modules/improved-notifications/improved-notifications.php:1321
+#: modules/improved-notifications/improved-notifications.php:1340
 msgid "Workflow"
 msgstr "Munkafolyamat"
 
-#: modules/improved-notifications/improved-notifications.php:1322
+#: modules/improved-notifications/improved-notifications.php:1341
 msgid "Format"
 msgstr "Formátum"
 
-#: modules/improved-notifications/improved-notifications.php:1323
+#: modules/improved-notifications/improved-notifications.php:1342
 msgid "Receiver"
 msgstr "Címzett"
 
-#: modules/improved-notifications/improved-notifications.php:1324
+#: modules/improved-notifications/improved-notifications.php:1343
 msgid "shortcode"
 msgstr "rövidkód"
 
-#: modules/improved-notifications/improved-notifications.php:1325
+#: modules/improved-notifications/improved-notifications.php:1344
 msgid "field"
 msgstr "mező"
 
-#: modules/improved-notifications/improved-notifications.php:1326
+#: modules/improved-notifications/improved-notifications.php:1345
 msgid ""
 "On each shortcode, you can select one or more fields. If more than one, "
 "they will be displayed separated by \", \"."
@@ -2934,15 +2653,15 @@ msgstr ""
 "Minden rövidkódnál választhatsz egy vagy több mezőt. Ha több, akkor azokat "
 "\", \" karakterrel elválasztva jelenítjük meg."
 
-#: modules/improved-notifications/improved-notifications.php:1330
+#: modules/improved-notifications/improved-notifications.php:1349
 msgid "Available fields"
 msgstr "Elérhető mezők"
 
-#: modules/improved-notifications/improved-notifications.php:1331
+#: modules/improved-notifications/improved-notifications.php:1350
 msgid "Meta fields"
 msgstr "Meta mezők"
 
-#: modules/improved-notifications/improved-notifications.php:1332
+#: modules/improved-notifications/improved-notifications.php:1351
 msgid "Click here to read more about shortcode options..."
 msgstr "Kattintson ide, hogy többet olvasson a rövidkód lehetőségekről..."
 
@@ -3061,60 +2780,78 @@ msgstr "Összes"
 msgid "Success"
 msgstr "Siker"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:590
+#: modules/notifications-log/library/NotificationsLogTable.php:582
+msgid "Filter by workflow"
+msgstr "Szűrés munkafolyamat szerint"
+
+#: modules/notifications-log/library/NotificationsLogTable.php:589
+msgid "Filter by event"
+msgstr "Szűrés esemény szerint"
+
+#: modules/notifications-log/library/NotificationsLogTable.php:593
 msgid "All events"
 msgstr "Összes esemény"
 
 #: modules/notifications-log/library/NotificationsLogTable.php:607
+msgid "Filter by channel"
+msgstr "Szűrés csatorna szerint"
+
+#: modules/notifications-log/library/NotificationsLogTable.php:611
 msgid "All channels"
 msgstr "Összes csatorna"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:626
+#: modules/notifications-log/library/NotificationsLogTable.php:628
+#: modules/notifications-log/library/NotificationsLogTable.php:631
 msgid "From date"
 msgstr "Dátumtól"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:632
+#: modules/notifications-log/library/NotificationsLogTable.php:635
+#: modules/notifications-log/library/NotificationsLogTable.php:638
 msgid "To date"
 msgstr "Dátumig"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:640
+#: modules/notifications-log/library/NotificationsLogTable.php:646
+msgid "Filter by receiver"
+msgstr "Szűrés címzett szerint"
+
+#: modules/notifications-log/library/NotificationsLogTable.php:647
 msgid "All Receivers"
 msgstr "Összes vevő"
 
-#: modules/notifications-log/notifications-log.php:205
+#: modules/notifications-log/notifications-log.php:208
 msgid "All Workflows"
 msgstr "Összes munkafolyamat"
 
-#: modules/notifications-log/notifications-log.php:206
+#: modules/notifications-log/notifications-log.php:209
 msgid "All Actions"
 msgstr "Összes művelet"
 
-#: modules/notifications-log/notifications-log.php:207
+#: modules/notifications-log/notifications-log.php:210
 msgid "All Channels"
 msgstr "Összes csatorna"
 
-#: modules/notifications-log/notifications-log.php:208
+#: modules/notifications-log/notifications-log.php:211
 msgid "All Statuses"
 msgstr "Összes állapot"
 
-#: modules/notifications-log/notifications-log.php:209
-#: publishpress.php:1426
-#: publishpress.php:1431
+#: modules/notifications-log/notifications-log.php:212
+#: publishpress.php:1441
+#: publishpress.php:1446
 msgid "Notification"
 msgstr "Értesítés"
 
-#: modules/notifications-log/notifications-log.php:272
+#: modules/notifications-log/notifications-log.php:275
 #, php-format
 msgid "%s notification found."
 msgid_plural "%s notifications found."
-msgstr[0] "%s értesítés található.|%s értesítés található."
-msgstr[1] "%s értesítés található.|%s értesítés található."
+msgstr[0] "%s értesítés található."
+msgstr[1] "%s értesítés található."
 
-#: modules/notifications-log/notifications-log.php:284
+#: modules/notifications-log/notifications-log.php:287
 msgid "No notifications found."
 msgstr "Nincs értesítés található."
 
-#: modules/notifications-log/notifications-log.php:442
+#: modules/notifications-log/notifications-log.php:445
 #, php-format
 msgid ""
 "This notification is very similar to another one sent less than %d minutes "
@@ -3123,15 +2860,15 @@ msgstr ""
 "Ez az értesítés nagyon hasonló egy másikhoz, amelyet kevesebb mint %d perce "
 "küldtek azonos címzettnek"
 
-#: modules/notifications-log/notifications-log.php:817
+#: modules/notifications-log/notifications-log.php:820
 msgid "Subject:"
 msgstr "Tárgy:"
 
-#: modules/notifications-log/notifications-log.php:825
+#: modules/notifications-log/notifications-log.php:828
 msgid "Content:"
 msgstr "Tartalom:"
 
-#: modules/notifications-log/notifications-log.php:835
+#: modules/notifications-log/notifications-log.php:838
 msgid ""
 "This is a preview of the scheduled message. The content can still change "
 "until the notification is sent."
@@ -3141,8 +2878,8 @@ msgstr ""
 
 #: modules/notifications/notifications.php:75
 #: modules/notifications/notifications.php:562
-#: publishpress.php:1425
-#: publishpress.php:1430
+#: publishpress.php:1440
+#: publishpress.php:1445
 msgid "Notifications"
 msgstr "Értesítések"
 
@@ -3486,7 +3223,7 @@ msgstr ""
 "betöltött fájlban."
 
 #: modules/settings/settings.php:404
-#: publishpress.php:675
+#: publishpress.php:689
 msgid "Cheatin&#8217; uh?"
 msgstr "Csalás, mi?"
 
@@ -3510,44 +3247,44 @@ msgstr "Az Események Naptárának Integrációja"
 msgid "Integrate with the The Events Calendar plugin"
 msgstr "Integráció az Események Naptár plugin-nal"
 
-#: publishpress.php:590
+#: publishpress.php:604
 msgid "Planner"
 msgstr "Tervező"
 
-#: publishpress.php:671
+#: publishpress.php:685
 msgid "Configure"
 msgstr "Beállítás"
 
-#: publishpress.php:674
+#: publishpress.php:688
 msgid "Please correct your form errors below and try again."
 msgstr "Kérjük, javítsa ki az alábbi űrlap hibáit, és próbálja újra."
 
-#: publishpress.php:676
+#: publishpress.php:690
 msgid "You do not have necessary permissions to complete this action."
 msgstr "Nincsenek megfelelő jogosultságai ennek a műveletnek a végrehajtásához."
 
-#: publishpress.php:680
+#: publishpress.php:694
 msgid "Post does not exist"
 msgstr "A bejegyzés nem létezik"
 
-#: publishpress.php:1427
+#: publishpress.php:1442
 msgid "Add New Notification"
 msgstr "Új Értesítés Hozzáadása"
 
-#: publishpress.php:1428
+#: publishpress.php:1443
 msgid "Edit Notification"
 msgstr "Értesítés Szerkesztése"
 
-#: publishpress.php:1429
+#: publishpress.php:1444
 msgid "Search Notifications"
 msgstr "Értesítések Keresése"
 
-#: publishpress.php:1432
-#: publishpress.php:1433
+#: publishpress.php:1447
+#: publishpress.php:1448
 msgid "No notification found"
 msgstr "Nincs található értesítés"
 
-#: publishpress.php:1473
+#: publishpress.php:1489
 msgid ""
 "PublishPress Planner tried to load multiple times. Please, deactivate and "
 "remove other instances of PublishPress, specially if you are using "
@@ -3557,38 +3294,9 @@ msgstr ""
 "távolítsa el a PublishPress más példányait, különösen, ha a PublishPress "
 "Pro-t használja."
 
-#: publishpress.php:1481
+#: publishpress.php:1497
 msgid "Warning"
 msgstr "Figyelmeztetés"
-
-#: modules/editorial-comments/lib/editorial-comments.js:203
-#: modules/editorial-comments/lib/editorial-comments.js:371
-msgid "Please enter a comment"
-msgstr "Kérjük, írjon be egy megjegyzést"
-
-#: modules/editorial-comments/lib/editorial-comments.js:377
-msgid "Sending content..."
-msgstr "Tartalom küldése..."
-
-#: modules/editorial-comments/lib/editorial-comments.js:434
-msgid ""
-"This comment can't be deleted because it has one or more replies. Before "
-"deleting it make sure to delete all the replies first."
-msgstr ""
-"Ezt a megjegyzést nem lehet törölni, mert van egy vagy több válasza. Törlés "
-"előtt győződjön meg róla, hogy először törli az összes választ."
-
-#: modules/editorial-comments/lib/editorial-comments.js:438
-msgid "Are you sure you want to delete this comment?"
-msgstr "Biztosan törölni szeretné ezt a megjegyzést?"
-
-#: modules/notifications-log/assets/js/admin.js:73
-msgid "for"
-msgstr "a"
-
-#: modules/notifications-log/assets/js/admin.js:73
-msgid "by"
-msgstr "által"
 
 #: modules/content-board/library/content-board-utilities.php:538
 #: modules/content-overview/library/content-overview-utilities.php:643

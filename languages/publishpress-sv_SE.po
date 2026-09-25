@@ -10,18 +10,18 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-14T18:33:45+00:00\n"
-"PO-Revision-Date: 2026-04-15 14:14+0000\n"
+"PO-Revision-Date: 2026-09-25 19:49+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: publishpress\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: sv-SE\n"
 
-#: publishpress.php
+#: publishpress.php, fuzzy
 #. Plugin Name of the plugin
 msgid "PublishPress Planner Free"
 msgstr "PublishPress Planner Free"
 
-#: publishpress.php, fuzzy
+#: publishpress.php
 #. Plugin URI of the plugin
 msgid "https://publishpress.com/"
 msgstr "https://publishpress.com/"
@@ -37,141 +37,144 @@ msgstr ""
 "aviseringar."
 
 #: publishpress.php
-#: modules/calendar/library/calendar-utilities.php:1227
-#: modules/settings/settings.php:61, fuzzy
+#: modules/calendar/library/calendar-utilities.php:1234
+#: modules/settings/settings.php:61
+#: modules/settings/views/footer-base.html.php:35
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: publishpress.php, fuzzy
+#: publishpress.php
 #. Author URI of the plugin
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
-#: common/php/class-module.php:331
-#: modules/calendar/calendar.php:1233
+#: common/php/class-module.php:338
+#: modules/calendar/calendar.php:1261
 msgid "Published"
 msgstr "Publicerad"
 
-#: common/php/class-module.php:332
+#: common/php/class-module.php:339
 msgid "Draft"
 msgstr "Utkast"
 
-#: common/php/class-module.php:333
-#: modules/calendar/calendar.php:1228
+#: common/php/class-module.php:340
+#: modules/calendar/calendar.php:1256
 #: modules/content-board/content-board.php:979
 #: modules/notifications-log/library/NotificationsLogTable.php:529
 msgid "Scheduled"
 msgstr "Schemalagd"
 
-#: common/php/class-module.php:334
+#: common/php/class-module.php:341
 #: modules/content-board/content-board.php:989
 msgid "Private"
 msgstr "Privat"
 
-#: common/php/class-module.php:335
+#: common/php/class-module.php:342
 msgid "Pending Review"
 msgstr "Väntar på granskning"
 
-#: common/php/class-module.php:336
-#: modules/calendar/library/calendar-methods.php:1240
+#: common/php/class-module.php:343
+#: modules/calendar/library/calendar-methods.php:1252
 #: modules/calendar/library/calendar-utilities.php:1104
 #: modules/content-board/content-board.php:1195
 #: modules/content-board/content-board.php:1290
-#: modules/content-overview/content-overview.php:1221
-#: modules/content-overview/content-overview.php:1715
+#: modules/content-overview/content-overview.php:1267
+#: modules/content-overview/content-overview.php:1761
 msgid "Trash"
-msgstr "Papperskorgen"
+msgstr "Kasta"
 
-#: common/php/class-module.php:750
-#: lib/Notifications/Workflow/Step/Receiver/Role.php:31
+#: common/php/class-module.php:772
 msgid "Roles"
 msgstr "Roller"
 
-#: common/php/class-module.php:753
+#: common/php/class-module.php:775
 msgid "Role"
 msgstr "Roll"
 
-#: common/php/class-module.php:761
+#: common/php/class-module.php:783
 msgid "Groups"
 msgstr "Grupper"
 
-#: common/php/class-module.php:764
+#: common/php/class-module.php:786
 msgid "Group"
 msgstr "Grupp"
 
-#: common/php/class-module.php:772
-#: lib/Notifications/Workflow/Step/Receiver/User.php:26
+#: common/php/class-module.php:794
 msgid "Users"
 msgstr "Användare"
 
-#: common/php/class-module.php:782
+#: common/php/class-module.php:804
 msgid "E-mails"
 msgstr "E-post"
 
-#: common/php/class-module.php:1048
+#: common/php/class-module.php:1051
 msgid "Equals (=)"
 msgstr "Lika (=)"
 
-#: common/php/class-module.php:1049
+#: common/php/class-module.php:1052
 msgid "Does not equal (!=)"
 msgstr "Är inte lika (!=)"
 
-#: common/php/class-module.php:1050
+#: common/php/class-module.php:1053
 msgid "Greater than (>)"
 msgstr "Större än (>)"
 
-#: common/php/class-module.php:1051
+#: common/php/class-module.php:1054
 msgid "Greater than or equals (>=)"
 msgstr "Större än eller lika med (>=)"
 
-#: common/php/class-module.php:1052
+#: common/php/class-module.php:1055
 msgid "Less than (<)"
 msgstr "Mindre än (<)"
 
-#: common/php/class-module.php:1053
+#: common/php/class-module.php:1056
 msgid "Less than or equals (<=)"
 msgstr "Mindre än eller lika med (<=)"
 
-#: common/php/class-module.php:1054
+#: common/php/class-module.php:1057
 msgid "Like/Contains"
 msgstr "Som/Innehåller"
 
-#: common/php/class-module.php:1055
+#: common/php/class-module.php:1058
 #, fuzzy
 msgid "Not Like"
 msgstr "Inte angivet"
 
-#: common/php/class-module.php:1056
+#: common/php/class-module.php:1059
 msgid "Not Exists/Empty"
 msgstr "Finns inte/Tom"
 
-#: common/php/class-module.php:1109
+#: common/php/class-module.php:1112
+#: views/workflow_receiver_group_field.html.php:10
+#: views/workflow_receiver_role_field.html.php:9
+#: views/workflow_receiver_user_field.html.php:9
 #, php-format
 msgid "Select %s"
 msgstr "Välj %s"
 
-#: common/php/class-module.php:1126
-#: modules/calendar/library/calendar-utilities.php:1190
-#: modules/content-overview/content-overview.php:833
-#: modules/content-overview/content-overview.php:848
-#: modules/content-overview/content-overview.php:955
+#: common/php/class-module.php:1129
+#: modules/calendar/library/calendar-utilities.php:1191
+#: modules/content-overview/content-overview.php:850
+#: modules/content-overview/content-overview.php:874
+#: modules/content-overview/content-overview.php:926
+#: modules/content-overview/content-overview.php:995
 msgid "Revision Status"
 msgstr "Revisionsstatus"
 
-#: common/php/class-module.php:1126
+#: common/php/class-module.php:1129
 #: modules/calendar/library/calendar-methods.php:424
 #: modules/calendar/library/calendar-methods.php:858
-#: modules/calendar/library/calendar-methods.php:1245
+#: modules/calendar/library/calendar-methods.php:1257
 #: modules/calendar/library/calendar-utilities.php:47
 #: modules/calendar/library/calendar-utilities.php:1070
-#: modules/calendar/library/calendar-utilities.php:1189
+#: modules/calendar/library/calendar-utilities.php:1188
 #: modules/content-board/content-board.php:811
 #: modules/content-board/content-board.php:1295
 #: modules/content-board/library/content-board-utilities.php:594
 #: modules/content-board/library/content-board-utilities.php:1165
-#: modules/content-overview/content-overview.php:954
-#: modules/content-overview/content-overview.php:1226
+#: modules/content-overview/content-overview.php:992
+#: modules/content-overview/content-overview.php:1272
 #: modules/content-overview/library/content-overview-utilities.php:491
 #: modules/content-overview/library/content-overview-utilities.php:703
 msgid "Post Status"
@@ -179,16 +182,16 @@ msgstr "Inläggsstatus"
 
 #: common/php/util.php:46
 msgid "(no title)"
-msgstr "(ingen titel)"
+msgstr "(ingen rubrik)"
 
 #: core/Error.php:79
 msgid "Undefined error found"
-msgstr "Odefinierad fel hittades"
+msgstr "Odefinierat fel hittades"
 
 #: core/Error.php:80
 #: modules/calendar/library/calendar-methods.php:779
 msgid "Invalid nonce"
-msgstr "Ogiltig nonce"
+msgstr "Ogiltig engångskod"
 
 #: core/Error.php:81
 msgid "Access denied"
@@ -204,405 +207,8 @@ msgstr ""
 "och support. %sUppgradera till Pro%s"
 
 #: includes.php:161
-#: lib/Legacy/Util.php:216
 msgid "Upgrade to Pro"
 msgstr "Uppgradera till Pro"
-
-#: lib/Legacy/Util.php:198
-msgid "Upgrade to PublishPress Planner Pro"
-msgstr "Uppgradera till PublishPress Planner Pro"
-
-#: lib/Legacy/Util.php:203
-msgid "Enhance the power of PublishPress Planner with the Pro version:"
-msgstr "Förbättra kraften i PublishPress Planner med Pro-versionen:"
-
-#: lib/Legacy/Util.php:206
-msgid "PublishPress Revisions integration"
-msgstr "PublishPress Revisionsintegration"
-
-#: lib/Legacy/Util.php:207
-msgid "Slack integration for notifications"
-msgstr "Slack-integration för meddelanden"
-
-#: lib/Legacy/Util.php:208
-msgid "Send reminder notifications"
-msgstr "Skicka påminnelsemeddelanden"
-
-#: lib/Legacy/Util.php:209
-msgid "Use post meta in notifications"
-msgstr "Använd inläggsmeta i meddelanden"
-
-#: lib/Legacy/Util.php:210
-msgid "Modals so you can edit posts without changing screen"
-msgstr "Modaler så att du kan redigera inlägg utan att byta skärm"
-
-#: lib/Legacy/Util.php:211
-msgid "Integration with SEO plugins"
-msgstr "Integration med SEO-plugins"
-
-#: lib/Legacy/Util.php:212
-msgid "Remove PublishPress ads and branding"
-msgstr "Ta bort PublishPress-annonser och varumärkning"
-
-#: lib/Legacy/Util.php:213
-msgid "Fast, professional support"
-msgstr "Snabb, professionell support"
-
-#: lib/Legacy/Util.php:223
-msgid "Need PublishPress Planner Support?"
-msgstr "Behöver du PublishPress Planner-support?"
-
-#: lib/Legacy/Util.php:228
-msgid "If you need help or have a new feature request, let us know."
-msgstr "Om du behöver hjälp eller har en ny funktionsförfrågan, låt oss veta."
-
-#: lib/Legacy/Util.php:230
-msgid "Request Support"
-msgstr "Begär support"
-
-#: lib/Legacy/Util.php:239
-msgid "Detailed documentation is also available on the plugin website."
-msgstr "Detaljerad dokumentation finns också på plugin-webbplatsen."
-
-#: lib/Legacy/Util.php:241
-msgid "View Knowledge Base"
-msgstr "Visa kunskapsbas"
-
-#: lib/Notifications/Plugin.php:65
-#: modules/improved-notifications/improved-notifications.php:1160
-#: modules/notifications-log/library/NotificationsLogTable.php:497
-msgid "When to notify?"
-msgstr "När ska du meddela?"
-
-#: lib/Notifications/Plugin.php:66
-msgid "Filter the content?"
-msgstr "Filtrera innehållet?"
-
-#: lib/Notifications/Plugin.php:67
-#: modules/improved-notifications/improved-notifications.php:1180
-#: modules/notifications-log/library/NotificationsLogTable.php:499
-msgid "Who to notify?"
-msgstr "Vem ska meddelas?"
-
-#: lib/Notifications/Plugin.php:209
-#: lib/Notifications/Plugin.php:210
-msgid "Notification workflow updated."
-msgstr "Meddelandearbetsflöde uppdaterat."
-
-#: lib/Notifications/Plugin.php:211
-msgid "Notification workflow published."
-msgstr "Meddelandearbetsflöde publicerat."
-
-#: lib/Notifications/Plugin.php:212
-msgid "Notification workflow saved."
-msgstr "Meddelandearbetsflöde sparat."
-
-#: lib/Notifications/Plugin.php:213
-msgid "Notification workflow submitted."
-msgstr "Meddelandearbetsflöde skickat."
-
-#: lib/Notifications/Plugin.php:215
-#, php-format
-msgid "Notification workflow scheduled for: %s."
-msgstr "Meddelandearbetsflöde schemalagt för: %s."
-
-#: lib/Notifications/Plugin.php:218
-msgid "Notification workflow draft updated."
-msgstr "Meddelandearbetsflöde utkast uppdaterat."
-
-#: lib/Notifications/Plugin.php:240
-#, php-format
-msgid "%s notification workflow updated."
-msgid_plural "%s notification workflows updated."
-msgstr[0] "%s meddelandearbetsflöde uppdaterat."
-msgstr[1] "%s meddelandearbetsflöden uppdaterade."
-
-#: lib/Notifications/Plugin.php:246
-msgid "1 notification workflow not updated, somebody is editing it."
-msgstr "1 meddelandearbetsflöde uppdaterades inte, någon redigerar det."
-
-#: lib/Notifications/Plugin.php:250
-#, php-format
-msgid "%s notification workflow not updated, somebody is editing it."
-msgid_plural "%s notification workflows not updated, somebody is editing them."
-msgstr[0] "%s meddelandearbetsflöde uppdaterades inte, någon redigerar det."
-msgstr[1] "%s meddelandearbetsflöden uppdaterades inte, någon redigerar dem."
-
-#: lib/Notifications/Plugin.php:256
-#, php-format
-msgid "%s notification workflow permanently deleted."
-msgid_plural "%s notification workflows permanently deleted."
-msgstr[0] "%s meddelandearbetsflöde har permanent raderats."
-msgstr[1] "%s meddelandearbetsflöden har permanent raderats."
-
-#: lib/Notifications/Plugin.php:262
-#, php-format
-msgid "%s notification workflow moved to the Trash."
-msgid_plural "%s notification workflows moved to the Trash."
-msgstr[0] "%s meddelandearbetsflöde flyttat till papperskorgen."
-msgstr[1] "%s meddelandearbetsflöden flyttade till papperskorgen."
-
-#: lib/Notifications/Plugin.php:268
-#, php-format
-msgid "%s notification workflow restored from the Trash."
-msgid_plural "%s notification workflows restored from the Trash."
-msgstr[0] "%s meddelandearbetsflöde återställt från papperskorgen."
-msgstr[1] "%s meddelandearbetsflöden återställda från papperskorgen."
-
-#: lib/Notifications/Plugin.php:302
-msgid "Please select at least one event"
-msgstr "Vänligen välj minst en händelse"
-
-#: lib/Notifications/Plugin.php:335
-msgid "Not filtered"
-msgstr "Ej filtrerat"
-
-#: lib/Notifications/Table/Base.php:183
-msgid "Excerpt View"
-msgstr "Utdrag Vy"
-
-#: lib/Notifications/Table/Notifications.php:156
-#: lib/Notifications/Table/Workflows.php:142
-#: modules/calendar/library/calendar-methods.php:853
-#: modules/content-board/content-board.php:421
-#: modules/content-board/library/content-board-utilities.php:244
-#: modules/content-board/library/content-board-utilities.php:1159
-#: modules/content-overview/content-overview.php:418
-#: modules/content-overview/library/content-overview-utilities.php:485
-msgid "Title"
-msgstr "Titel"
-
-#: lib/Notifications/Table/Notifications.php:157
-msgid "Message"
-msgstr "Meddelande"
-
-#: lib/Notifications/Table/Notifications.php:158
-#: modules/calendar/library/calendar-utilities.php:1064
-#: modules/content-board/library/content-board-utilities.php:116
-#: modules/content-overview/library/content-overview-methods.php:341
-#: modules/editorial-metadata/editorial-metadata.php:290
-#: modules/notifications-log/library/NotificationsLogTable.php:496
-msgid "Date"
-msgstr "Datum"
-
-#: lib/Notifications/Table/Notifications.php:159
-#: lib/Notifications/Table/Workflows.php:143
-#: modules/calendar/library/calendar-utilities.php:1059, fuzzy
-msgid "ID"
-msgstr "ID"
-
-#: lib/Notifications/Table/Notifications.php:235
-msgid "You don't have any notifications"
-msgstr "Du har inga meddelanden"
-
-#: lib/Notifications/Table/Workflows.php:217
-msgid "No workflows found."
-msgstr "Inga arbetsflöden hittades."
-
-#: lib/Notifications/Workflow/Option/SkipUser.php:26
-msgid "Skip current user"
-msgstr "Hoppa över nuvarande användare"
-
-#: lib/Notifications/Workflow/Option/SkipUser.php:31
-msgid "Skip notifications for the user who triggered the action"
-msgstr "Hoppa över meddelanden för användaren som utlöste åtgärden"
-
-#: lib/Notifications/Workflow/Step/Channel/Email.php:31
-#: modules/editorial-comments/editorial-comments.php:1267
-msgid "Email"
-msgstr "E-post"
-
-#: lib/Notifications/Workflow/Step/Content/Main.php:29
-#: modules/calendar/library/calendar-methods.php:902
-#: modules/content-board/library/content-board-utilities.php:1207
-#: modules/content-overview/library/content-overview-utilities.php:533
-#: modules/improved-notifications/improved-notifications.php:1318
-#: views/workflow_help.html.php:2
-msgid "Content"
-msgstr "Innehåll"
-
-#: lib/Notifications/Workflow/Step/Content/Main.php:53
-msgid "Subject"
-msgstr "Ämne"
-
-#: lib/Notifications/Workflow/Step/Content/Main.php:54
-msgid "Body"
-msgstr "Text"
-
-#: lib/Notifications/Workflow/Step/Event/Editorial_Comment.php:24
-msgid "When an editorial comment is added"
-msgstr "När en redaktionell kommentar läggs till"
-
-#: lib/Notifications/Workflow/Step/Event/Editorial_Comment.php:96
-#, php-format
-msgid "Comment: %s (%d)"
-msgstr "Kommentar: %s (%d)"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:34
-msgid "When the status is changed"
-msgstr "När status ändras"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:35
-msgid "Previous status"
-msgstr "Tidigare status"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:36
-msgid "New status"
-msgstr "Ny status"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:37
-msgid "- any status -"
-msgstr "- vilken status som helst -"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:59
-msgid "New"
-msgstr "Ny"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:64
-msgid "Auto-draft"
-msgstr "Auto-utkast"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Taxonomies.php:34
-#: modules/calendar/library/calendar-utilities.php:1206
-#: modules/content-board/content-board.php:767
-#: modules/content-board/content-board.php:827
-#: modules/content-overview/content-overview.php:910
-#: modules/content-overview/content-overview.php:971
-msgid "Taxonomies"
-msgstr "Taxonomier"
-
-#: lib/Notifications/Workflow/Step/Event/Post_StatusTransition.php:28
-msgid "When the content is moved to a new status"
-msgstr "När innehållet flyttas till en ny status"
-
-#: lib/Notifications/Workflow/Step/Event/Post_StatusTransition.php:118
-#, php-format
-msgid "Old post status: %s"
-msgstr "Gammal inläggsstatus: %s"
-
-#: lib/Notifications/Workflow/Step/Event/Post_StatusTransition.php:122
-#, php-format
-msgid "New post status: %s"
-msgstr "Ny inläggsstatus: %s"
-
-#: lib/Notifications/Workflow/Step/Event/Post_TaxonomyUpdate.php:28
-msgid "When taxonomy is updated"
-msgstr "När taksonomi uppdateras"
-
-#: lib/Notifications/Workflow/Step/Event/Post_Update.php:26
-msgid "When the content is updated"
-msgstr "När innehållet uppdateras"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Category.php:24
-#: modules/calendar/library/calendar-utilities.php:1080
-msgid "Category"
-msgid_plural "Categories"
-msgstr[0] "Kategori"
-msgstr[1] "Kategorier"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Filter/Category.php:34
-#: modules/calendar/library/calendar-methods.php:885
-#: modules/content-board/library/content-board-utilities.php:1190
-#: modules/content-overview/library/content-overview-utilities.php:516
-msgid "Categories"
-msgstr "Kategorier"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Filter/Post_Type.php:34
-#: modules/editorial-metadata/library/editorial-metadata-list-table.php:46
-msgid "Post Types"
-msgstr "Inläggstyper"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Filter/Term.php:33
-msgid "Terms"
-msgstr "Termer"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Post_Type.php:24
-msgid "Post type"
-msgstr "Inläggstyp"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Taxonomy.php:24
-msgid "Taxonomy"
-msgstr "Taksonomi"
-
-#: lib/Notifications/Workflow/Step/Receiver/Author.php:26
-msgid "Authors of the content"
-msgstr "Författare av innehållet"
-
-#: lib/Notifications/Workflow/Step/Receiver/Author.php:92
-msgid "Authors"
-msgstr "Författare"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:30
-msgid "Users who selected \"Notify me\" for the content"
-msgstr "Användare som valt \"Meddela mig\" för innehållet"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:108
-#, php-format
-msgid "role:%s"
-msgstr "roll:%s"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:132
-#, php-format
-msgid "group %d: %s"
-msgstr "grupp %d: %s"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:153
-msgid "user"
-msgstr "användare"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:168
-msgid "email"
-msgstr "e-post"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:210
-msgid "\"Notify me\""
-msgstr "\"Meddela mig\""
-
-#: lib/Notifications/Workflow/Step/Receiver/Group.php:31
-msgid "Permission Groups"
-msgstr "Behörighetsgrupper"
-
-#: lib/Notifications/Workflow/Step/Receiver/Group.php:222
-#, php-format
-msgid "%d Group"
-msgid_plural "%d Groups"
-msgstr[0] "%d Grupp"
-msgstr[1] "%d Grupper"
-
-#: lib/Notifications/Workflow/Step/Receiver/ParentAuthor.php:26
-msgid "Authors of the parent page"
-msgstr "Författare till föräldrasidan"
-
-#: lib/Notifications/Workflow/Step/Receiver/ParentAuthor.php:106
-msgid "Parent Page Authors"
-msgstr "Föräldrasidans författare"
-
-#: lib/Notifications/Workflow/Step/Receiver/RevisionAuthor.php:39
-msgid "Author of the revision"
-msgstr "Författare till revisionen"
-
-#: lib/Notifications/Workflow/Step/Receiver/RevisionAuthor.php:105
-msgid "Revision Author"
-msgstr "Revisionsförfattare"
-
-#: lib/Notifications/Workflow/Step/Receiver/Role.php:173
-#, php-format
-msgid "%d Role"
-msgid_plural "%d Roles"
-msgstr[0] "%d Roll"
-msgstr[1] "%d Roller"
-
-#: lib/Notifications/Workflow/Step/Receiver/Site_Admin.php:24
-#: lib/Notifications/Workflow/Step/Receiver/Site_Admin.php:73
-msgid "Site Administrator"
-msgstr "Webbplatsadministratör"
-
-#: lib/Notifications/Workflow/Step/Receiver/User.php:152
-#, php-format
-msgid "%d User"
-msgid_plural "%d Users"
-msgstr[0] "%d Användare"
-msgstr[1] "%d Användare"
 
 #: modules/async-notifications/async-notifications.php:71
 msgid "Async Notifications"
@@ -613,60 +219,60 @@ msgstr "Asynkrona meddelanden"
 msgid "Event: %s, Workflow ID: %s, Post ID: %s, User ID: %s"
 msgstr "Händelse: %s, Arbetsflödes-ID: %s, Inläggs-ID: %s, Användar-ID: %s"
 
-#: modules/calendar/calendar.php:216
-#: modules/calendar/calendar.php:415
-#: modules/calendar/calendar.php:432
-#: modules/calendar/calendar.php:433
+#: modules/calendar/calendar.php:228
+#: modules/calendar/calendar.php:427
+#: modules/calendar/calendar.php:444
+#: modules/calendar/calendar.php:445
 msgid "Content Calendar"
 msgstr "Innehållskalender"
 
-#: modules/calendar/calendar.php:241
+#: modules/calendar/calendar.php:253
 msgid "Post date updated."
-msgstr "Inläggsdatum uppdaterat."
+msgstr "Uppdaterat inläggsdatum."
 
-#: modules/calendar/calendar.php:242
+#: modules/calendar/calendar.php:254
 msgid "Post status updated."
-msgstr "Inläggsstatus uppdaterad."
+msgstr "Inläggsstatusen uppdaterad."
 
-#: modules/calendar/calendar.php:243
+#: modules/calendar/calendar.php:255
 msgid "There was an error updating the post. Please try again."
-msgstr "Det uppstod ett fel vid uppdatering av inlägget. Vänligen försök igen."
+msgstr "Det gick inte att uppdatera inlägget. Försök igen."
 
-#: modules/calendar/calendar.php:247
+#: modules/calendar/calendar.php:259
 #, php-format
 msgid ""
 "Updating the post date dynamically doesn't work for published content. "
 "Please <a href='%s'>edit the post</a>."
 msgstr ""
-"Att dynamiskt uppdatera publiceringsdatum fungerar inte för publicerat "
-"innehåll. Vänligen <a href='%s'>redigera inlägget</a>."
+"Dynamisk uppdatering av publiceringsdatum fungerar inte för publicerat "
+"innehåll. <a href='%s'>Redigera inlägget</a> istället."
 
-#: modules/calendar/calendar.php:251
+#: modules/calendar/calendar.php:263
 msgid ""
 "iCal secret key regenerated. Please inform all users they will need to "
 "resubscribe."
 msgstr ""
-"iCal hemlig nyckel regenererad. Vänligen informera alla användare att de "
-"behöver prenumerera igen."
+"iCal secret key har skapats. Informera alla användare att de behöver förnya "
+"sina prenumerationer."
 
-#: modules/calendar/calendar.php:259
+#: modules/calendar/calendar.php:271
 #: modules/editorial-comments/editorial-comments.php:82
 #: modules/editorial-metadata/editorial-metadata.php:119
 #: modules/notifications/notifications.php:96
 msgid "Overview"
 msgstr "Översikt"
 
-#: modules/calendar/calendar.php:260
+#: modules/calendar/calendar.php:272
 msgid ""
 "<p>The calendar is a convenient week-by-week or month-by-month view into "
 "your content. Quickly see which stories are on track to being published on "
 "time, and which will need extra effort.</p>"
 msgstr ""
-"<p>Kalendern är en praktisk vy vecka för vecka eller månad för månad över "
-"ditt innehåll. Se snabbt vilka berättelser som är på väg att publiceras i "
-"tid, och vilka som kommer att behöva extra insats.</p>"
+"<p>Kalendern ger en tydlig översikt av ditt innehåll, vecko- eller "
+"månadsvis. Det ger dig bra överblick över vilka inlägg som ser ut att bli "
+"klara i tid och vilka som kan behöva en kraftansamling.</p>"
 
-#: modules/calendar/calendar.php:265
+#: modules/calendar/calendar.php:277
 msgid ""
 "<p><strong>For more information:</strong></p><p><a "
 "href=\"https://publishpress.com/features/calendar/\">Calendar "
@@ -674,23 +280,23 @@ msgid ""
 "href=\"https://github.com/ostraining/PublishPress\">PublishPress on "
 "Github</a></p>"
 msgstr ""
-"<p><strong>För mer information:</strong></p><p><a "
-"href=\"https://publishpress.com/features/calendar/\">Kalenderdokumentation</"
-"a></p><p><a "
+"<p><strong>Mer information:</strong></p><p><a "
+"href=\"https://publishpress.com/features/calendar/\">Dokumentation för "
+"kalendern</a></p><p><a "
 "href=\"https://github.com/ostraining/PublishPress\">PublishPress på "
 "Github</a></p>"
 
-#: modules/calendar/calendar.php:734
-#: modules/calendar/library/calendar-utilities.php:1259
+#: modules/calendar/calendar.php:746
+#: modules/calendar/library/calendar-utilities.php:1266
 #: modules/content-board/content-board.php:1043
 msgid "Weeks"
 msgstr "Veckor"
 
-#: modules/calendar/calendar.php:735
+#: modules/calendar/calendar.php:747
 msgid "Start Date"
 msgstr "Startdatum"
 
-#: modules/calendar/calendar.php:736
+#: modules/calendar/calendar.php:748
 #: modules/calendar/library/calendar-utilities.php:467
 #: modules/calendar/library/calendar-utilities.php:468
 #: modules/content-board/library/content-board-utilities.php:28
@@ -698,105 +304,105 @@ msgstr "Startdatum"
 msgid "Me Mode"
 msgstr "Jag-läge"
 
-#: modules/calendar/calendar.php:737
+#: modules/calendar/calendar.php:749
 msgid "Show Revision"
-msgstr "Visa revision"
+msgstr "Visa version"
 
-#: modules/calendar/calendar.php:738
+#: modules/calendar/calendar.php:750
 #: modules/calendar/library/calendar-utilities.php:486
 #: modules/content-board/library/content-board-utilities.php:98
 #: modules/content-overview/library/content-overview-methods.php:323
 msgid "Search"
 msgstr "Sök"
 
-#: modules/calendar/calendar.php:912
-#: modules/content-board/library/content-board-methods.php:164
-#: modules/content-overview/content-overview.php:668
+#: modules/calendar/calendar.php:928
+#: modules/content-board/library/content-board-methods.php:166
+#: modules/content-overview/content-overview.php:684
 msgid "Filter updated successfully."
-msgstr "Filtrering uppdaterades framgångsrikt."
+msgstr "Filter uppdaterades."
 
-#: modules/calendar/calendar.php:919
+#: modules/calendar/calendar.php:935
 msgid "Filter reset successfully."
-msgstr "Filtrering återställdes framgångsrikt."
+msgstr "Filtret återställt."
 
-#: modules/calendar/calendar.php:987
+#: modules/calendar/calendar.php:1008
 #: modules/content-board/content-board.php:709
-#: modules/content-overview/content-overview.php:832
 #: modules/content-overview/content-overview.php:847
-#: modules/content-overview/content-overview.php:892
+#: modules/content-overview/content-overview.php:871
+#: modules/content-overview/content-overview.php:923
 #: modules/notifications-log/library/NotificationsLogTable.php:500, fuzzy
 msgid "Status"
 msgstr "Status"
 
-#: modules/calendar/calendar.php:988
-#: modules/calendar/calendar.php:1212
+#: modules/calendar/calendar.php:1009
+#: modules/calendar/calendar.php:1240
 #: modules/calendar/library/calendar-methods.php:875
-#: modules/calendar/library/calendar-methods.php:1248
+#: modules/calendar/library/calendar-methods.php:1260
 #: modules/calendar/library/calendar-utilities.php:115
 #: modules/calendar/library/calendar-utilities.php:1075
-#: modules/calendar/library/calendar-utilities.php:1191
+#: modules/calendar/library/calendar-utilities.php:1194
 #: modules/content-board/content-board.php:699
 #: modules/content-board/content-board.php:710
 #: modules/content-board/content-board.php:753
 #: modules/content-board/content-board.php:812
 #: modules/content-board/library/content-board-utilities.php:647
 #: modules/content-board/library/content-board-utilities.php:1180
-#: modules/content-overview/content-overview.php:835
-#: modules/content-overview/content-overview.php:849
-#: modules/content-overview/content-overview.php:894
-#: modules/content-overview/content-overview.php:956
-#: modules/content-overview/content-overview.php:1218
+#: modules/content-overview/content-overview.php:854
+#: modules/content-overview/content-overview.php:877
+#: modules/content-overview/content-overview.php:930
+#: modules/content-overview/content-overview.php:998
+#: modules/content-overview/content-overview.php:1264
 #: modules/content-overview/library/content-overview-utilities.php:506
 #: modules/content-overview/library/content-overview-utilities.php:769
-#: modules/editorial-comments/library/EditorialCommentsTable.php:228
+#: modules/editorial-comments/library/EditorialCommentsTable.php:230
 msgid "Author"
 msgid_plural "Authors"
 msgstr[0] "Författare"
 msgstr[1] "Författare"
 
-#: modules/calendar/calendar.php:989
-#: modules/calendar/calendar.php:1220
+#: modules/calendar/calendar.php:1010
+#: modules/calendar/calendar.php:1248
 #: modules/calendar/library/calendar-utilities.php:146
 #: modules/calendar/library/calendar-utilities.php:1054
-#: modules/calendar/library/calendar-utilities.php:1192
+#: modules/calendar/library/calendar-utilities.php:1195
 #: modules/content-board/content-board.php:698
 #: modules/content-board/content-board.php:711
 #: modules/content-board/content-board.php:752
 #: modules/content-board/content-board.php:813
 #: modules/content-board/library/content-board-utilities.php:677
 #: modules/content-board/library/content-board-utilities.php:1153
-#: modules/content-overview/content-overview.php:834
-#: modules/content-overview/content-overview.php:850
-#: modules/content-overview/content-overview.php:893
-#: modules/content-overview/content-overview.php:957
+#: modules/content-overview/content-overview.php:853
+#: modules/content-overview/content-overview.php:878
+#: modules/content-overview/content-overview.php:929
+#: modules/content-overview/content-overview.php:999
 #: modules/content-overview/library/content-overview-utilities.php:479
 #: modules/content-overview/library/content-overview-utilities.php:799
 msgid "Post Type"
 msgstr "Inläggstyp"
 
-#: modules/calendar/calendar.php:1103
+#: modules/calendar/calendar.php:1131
 msgid "Post moved to the trash."
 msgid_plural "%d posts moved to the trash."
 msgstr[0] "Inlägget flyttades till papperskorgen."
 msgstr[1] "%d inlägg flyttades till papperskorgen."
 
-#: modules/calendar/calendar.php:1119
+#: modules/calendar/calendar.php:1147
 #: modules/content-board/content-board.php:614
 #: modules/content-overview/library/content-overview-methods.php:214
 msgid "Undo"
 msgstr "Ångra"
 
-#: modules/calendar/calendar.php:1129
+#: modules/calendar/calendar.php:1157
 msgid "Post restored from the Trash."
 msgid_plural "%d posts restored from the Trash."
 msgstr[0] "Inlägget återställdes från papperskorgen."
 msgstr[1] "%d inlägg återställdes från papperskorgen."
 
-#: modules/calendar/calendar.php:1161
+#: modules/calendar/calendar.php:1189
 msgid "Initializing the calendar. Please wait..."
 msgstr "Initierar kalendern. Vänligen vänta..."
 
-#: modules/calendar/calendar.php:1165
+#: modules/calendar/calendar.php:1193
 msgid ""
 "It seems like it is taking too long. Please, try reloading the page again "
 "and check the browser console looking for errors."
@@ -804,7 +410,7 @@ msgstr ""
 "Det verkar som om det tar för lång tid. Vänligen, försök att ladda om sidan "
 "igen och kontrollera webbläsarens konsol efter fel."
 
-#: modules/calendar/calendar.php:1809
+#: modules/calendar/calendar.php:1837
 msgid ""
 "The selected user doesn't have enough permissions to be set as the post "
 "author."
@@ -822,7 +428,7 @@ msgstr "Visa dagens datum i den första raden"
 
 #: modules/calendar/library/calendar-methods.php:103
 msgid "Enable subscriptions in iCal or Google Calendar"
-msgstr "Aktivera prenumerationer i iCal eller Google Kalender"
+msgstr "Aktivera prenumerationer i iCal eller Google-kalender"
 
 #: modules/calendar/library/calendar-methods.php:111
 msgid "Allow public access to subscriptions in iCal or Google Calendar"
@@ -834,7 +440,7 @@ msgstr "Statusar för att visa publiceringstid"
 
 #: modules/calendar/library/calendar-methods.php:127
 msgid "Posts publish time format"
-msgstr "Inläggs publiceringstid format"
+msgstr "Inläggens publiceringstidsformat"
 
 #: modules/calendar/library/calendar-methods.php:135
 msgid "Default publish time for items created in the calendar"
@@ -846,11 +452,11 @@ msgstr "Fält som används för att sortera kalenderobjekt i en dagscell"
 
 #: modules/calendar/library/calendar-methods.php:151
 msgid "Max visible posts per date"
-msgstr "Max antal synliga inlägg per datum"
+msgstr "Max synliga inlägg per datum"
 
 #: modules/calendar/library/calendar-methods.php:159
 msgid "Always show complete post titles"
-msgstr "Visa alltid fullständiga inläggstitlar"
+msgstr "Visa alltid fullständiga innehållsrubriker"
 
 #: modules/calendar/library/calendar-methods.php:179
 msgid "At least one post type must be selected"
@@ -907,7 +513,7 @@ msgstr "Alla inlägg"
 #: modules/dashboard/dashboard.php:391
 #: modules/dashboard/dashboard.php:425
 msgid "Disabled"
-msgstr "Inaktiverad"
+msgstr "Inaktiverat"
 
 #: modules/calendar/library/calendar-methods.php:528
 #: modules/dashboard/dashboard.php:369
@@ -918,7 +524,7 @@ msgstr "Aktiverad"
 
 #: modules/calendar/library/calendar-methods.php:546
 msgid "Regenerate calendar feed secret"
-msgstr "Regenerera kalenderflödeshemlighet"
+msgstr "Återskapa kalenderflödets hemliga kod"
 
 #: modules/calendar/library/calendar-methods.php:788
 msgid "Invalid input"
@@ -926,7 +532,7 @@ msgstr "Ogiltig inmatning"
 
 #: modules/calendar/library/calendar-methods.php:794
 msgid "Post not found"
-msgstr "Inlägget hittades inte"
+msgstr "Inlägg hittades inte"
 
 #: modules/calendar/library/calendar-methods.php:799
 msgid "No enough permissions"
@@ -936,180 +542,225 @@ msgstr "Inte tillräckliga behörigheter"
 msgid "Invalid date"
 msgstr "Ogiltigt datum"
 
+#: modules/calendar/library/calendar-methods.php:853
+#: modules/content-board/content-board.php:421
+#: modules/content-board/library/content-board-utilities.php:244
+#: modules/content-board/library/content-board-utilities.php:1159
+#: modules/content-overview/content-overview.php:430
+#: modules/content-overview/library/content-overview-utilities.php:485
+msgid "Title"
+msgstr "Rubrik"
+
 #: modules/calendar/library/calendar-methods.php:864
 msgid "Publish Time"
 msgstr "Publiceringstid"
+
+#: modules/calendar/library/calendar-methods.php:885
+#: modules/content-board/library/content-board-utilities.php:1190
+#: modules/content-overview/library/content-overview-utilities.php:516
+msgid "Categories"
+msgstr "Kategorier"
 
 #: modules/calendar/library/calendar-methods.php:894
 #: modules/content-board/library/content-board-utilities.php:1199
 #: modules/content-overview/library/content-overview-utilities.php:525
 msgid "Tags"
-msgstr "Taggar"
+msgstr "Etiketter"
+
+#: modules/calendar/library/calendar-methods.php:902
+#: modules/content-board/library/content-board-utilities.php:1207
+#: modules/content-overview/library/content-overview-utilities.php:533
+#: modules/improved-notifications/improved-notifications.php:1337
+#: views/workflow_help.html.php:2
+msgid "Content"
+msgstr "Innehåll"
 
 #: modules/calendar/library/calendar-methods.php:1001
 msgid "Publish on"
-msgstr "Publicera på"
+msgstr "Publicera den"
 
-#: modules/calendar/library/calendar-methods.php:1195
-#: modules/notifications-log/notifications-log.php:210
+#: modules/calendar/library/calendar-methods.php:1200
+#: modules/calendar/library/calendar-methods.php:1249
+#: modules/notifications-log/notifications-log.php:213
 msgid "Loading..."
-msgstr "Laddar..."
+msgstr "Laddar in …"
 
-#: modules/calendar/library/calendar-methods.php:1196
+#: modules/calendar/library/calendar-methods.php:1201
 msgid "Loading item..."
 msgstr "Laddar objekt..."
 
-#: modules/calendar/library/calendar-methods.php:1197
+#: modules/calendar/library/calendar-methods.php:1202
 msgid "Click to add"
 msgstr "Klicka för att lägga till"
 
-#: modules/calendar/library/calendar-methods.php:1198
+#: modules/calendar/library/calendar-methods.php:1203
 msgid "Moving the item..."
 msgstr "Flyttar objektet..."
 
-#: modules/calendar/library/calendar-methods.php:1199
+#: modules/calendar/library/calendar-methods.php:1204
 #, php-format
 msgid "Hide the %s last items"
 msgstr "Dölj de %s senaste objekten"
 
-#: modules/calendar/library/calendar-methods.php:1200
+#: modules/calendar/library/calendar-methods.php:1205
 #, php-format
 msgid "Show %s more"
-msgstr "Visa %s fler"
+msgstr "Visa %s till"
 
-#: modules/calendar/library/calendar-methods.php:1201
-#: modules/calendar/library/calendar-methods.php:1704
+#: modules/calendar/library/calendar-methods.php:1206
+#: modules/calendar/library/calendar-methods.php:1716
 msgid "Untitled"
-msgstr "Utan titel"
+msgstr "Namnlös"
 
-#: modules/calendar/library/calendar-methods.php:1202
+#: modules/calendar/library/calendar-methods.php:1207
+msgid "Refresh"
+msgstr "Uppdatera"
+
+#: modules/calendar/library/calendar-methods.php:1208
+msgid "Previous page"
+msgstr "Föregående sida"
+
+#: modules/calendar/library/calendar-methods.php:1209
+msgid "Previous week"
+msgstr "Föregående vecka"
+
+#: modules/calendar/library/calendar-methods.php:1210
+msgid "Next week"
+msgstr "Nästa vecka"
+
+#: modules/calendar/library/calendar-methods.php:1211
+msgid "Next page"
+msgstr "Nästa sida"
+
+#: modules/calendar/library/calendar-methods.php:1212
+#: modules/calendar/library/calendar-utilities.php:477
+#: modules/calendar/library/calendar-utilities.php:507
 msgid "Close"
 msgstr "Stäng"
 
-#: modules/calendar/library/calendar-methods.php:1203
-#: modules/editorial-comments/lib/editorial-comments.js:349
+#: modules/calendar/library/calendar-methods.php:1213
 msgid "Save"
 msgstr "Spara"
 
-#: modules/calendar/library/calendar-methods.php:1204
+#: modules/calendar/library/calendar-methods.php:1214
 msgid "Saving..."
-msgstr "Sparar..."
+msgstr "Sparar …"
 
-#: modules/calendar/library/calendar-methods.php:1205
+#: modules/calendar/library/calendar-methods.php:1215
 msgid "Save and edit"
 msgstr "Spara och redigera"
 
-#: modules/calendar/library/calendar-methods.php:1206
+#: modules/calendar/library/calendar-methods.php:1216
 #, php-format
 msgid "Add content for %s"
 msgstr "Lägg till innehåll för %s"
 
-#: modules/calendar/library/calendar-methods.php:1207
+#: modules/calendar/library/calendar-methods.php:1217
 msgid "Post type not found"
-msgstr "Inläggstyp hittades inte"
+msgstr "Inläggstypen hittades inte"
 
-#: modules/calendar/library/calendar-methods.php:1208
+#: modules/calendar/library/calendar-methods.php:1218
 msgid "Post type:"
 msgstr "Inläggstyp:"
 
-#: modules/calendar/library/calendar-methods.php:1209
+#: modules/calendar/library/calendar-methods.php:1219
 #: modules/content-board/library/content-board-utilities.php:1130
 #: modules/content-overview/library/content-overview-utilities.php:456
 msgid "Please, wait! Loading the form fields..."
-msgstr "Vänligen vänta! Laddar formulärfält..."
+msgstr "Vänta! Laddar in formulärfält …"
 
-#: modules/calendar/library/calendar-methods.php:1210
+#: modules/calendar/library/calendar-methods.php:1220
 msgid "Sun"
 msgstr "Sön"
 
-#: modules/calendar/library/calendar-methods.php:1211
+#: modules/calendar/library/calendar-methods.php:1221
 msgid "Mon"
 msgstr "Mån"
 
-#: modules/calendar/library/calendar-methods.php:1212
+#: modules/calendar/library/calendar-methods.php:1222
 msgid "Tue"
 msgstr "Tis"
 
-#: modules/calendar/library/calendar-methods.php:1213
+#: modules/calendar/library/calendar-methods.php:1223
 msgid "Wed"
 msgstr "Ons"
 
-#: modules/calendar/library/calendar-methods.php:1214
+#: modules/calendar/library/calendar-methods.php:1224
 msgid "Thu"
 msgstr "Tor"
 
-#: modules/calendar/library/calendar-methods.php:1215
+#: modules/calendar/library/calendar-methods.php:1225
 msgid "Fri"
 msgstr "Fre"
 
-#: modules/calendar/library/calendar-methods.php:1216
+#: modules/calendar/library/calendar-methods.php:1226
 msgid "Sat"
 msgstr "Lör"
 
-#: modules/calendar/library/calendar-methods.php:1217, fuzzy
+#: modules/calendar/library/calendar-methods.php:1227, fuzzy
 msgid "Jan"
 msgstr "Jan"
 
-#: modules/calendar/library/calendar-methods.php:1218, fuzzy
+#: modules/calendar/library/calendar-methods.php:1228, fuzzy
 msgid "Feb"
 msgstr "Feb"
 
-#: modules/calendar/library/calendar-methods.php:1219, fuzzy
+#: modules/calendar/library/calendar-methods.php:1229, fuzzy
 msgid "Mar"
 msgstr "Mar"
 
-#: modules/calendar/library/calendar-methods.php:1220, fuzzy
+#: modules/calendar/library/calendar-methods.php:1230, fuzzy
 msgid "Apr"
 msgstr "Apr"
 
-#: modules/calendar/library/calendar-methods.php:1221
+#: modules/calendar/library/calendar-methods.php:1231
 msgid "May"
 msgstr "Maj"
 
-#: modules/calendar/library/calendar-methods.php:1222, fuzzy
+#: modules/calendar/library/calendar-methods.php:1232, fuzzy
 msgid "Jun"
 msgstr "Jun"
 
-#: modules/calendar/library/calendar-methods.php:1223, fuzzy
+#: modules/calendar/library/calendar-methods.php:1233, fuzzy
 msgid "Jul"
 msgstr "Jul"
 
-#: modules/calendar/library/calendar-methods.php:1224, fuzzy
+#: modules/calendar/library/calendar-methods.php:1234, fuzzy
 msgid "Aug"
 msgstr "Aug"
 
-#: modules/calendar/library/calendar-methods.php:1225, fuzzy
+#: modules/calendar/library/calendar-methods.php:1235, fuzzy
 msgid "Sep"
 msgstr "Sep"
 
-#: modules/calendar/library/calendar-methods.php:1226
+#: modules/calendar/library/calendar-methods.php:1236
 msgid "Oct"
 msgstr "Okt"
 
-#: modules/calendar/library/calendar-methods.php:1227, fuzzy
+#: modules/calendar/library/calendar-methods.php:1237, fuzzy
 msgid "Nov"
 msgstr "Nov"
 
-#: modules/calendar/library/calendar-methods.php:1228, fuzzy
+#: modules/calendar/library/calendar-methods.php:1238, fuzzy
 msgid "Dec"
 msgstr "Dec"
 
-#: modules/calendar/library/calendar-methods.php:1229
+#: modules/calendar/library/calendar-methods.php:1239
 #: modules/calendar/library/calendar-utilities.php:51
 #: modules/content-board/library/content-board-utilities.php:598
 #: modules/content-overview/library/content-overview-utilities.php:707
 msgid "All statuses"
 msgstr "Alla statusar"
 
-#: modules/calendar/library/calendar-methods.php:1230
+#: modules/calendar/library/calendar-methods.php:1240
 msgid "All categories"
 msgstr "Alla kategorier"
 
-#: modules/calendar/library/calendar-methods.php:1231
+#: modules/calendar/library/calendar-methods.php:1241
 msgid "All tags"
-msgstr "Alla taggar"
+msgstr "Alla etiketter"
 
-#: modules/calendar/library/calendar-methods.php:1232
+#: modules/calendar/library/calendar-methods.php:1242
 #: modules/calendar/library/calendar-utilities.php:117
 #: modules/calendar/library/calendar-utilities.php:120
 #: modules/content-board/library/content-board-utilities.php:649
@@ -1119,11 +770,11 @@ msgstr "Alla taggar"
 msgid "All authors"
 msgstr "Alla författare"
 
-#: modules/calendar/library/calendar-methods.php:1233
+#: modules/calendar/library/calendar-methods.php:1243
 msgid "All types"
 msgstr "Alla typer"
 
-#: modules/calendar/library/calendar-methods.php:1234
+#: modules/calendar/library/calendar-methods.php:1244
 #: modules/calendar/library/calendar-utilities.php:513
 #, php-format
 msgid "%d week"
@@ -1131,101 +782,107 @@ msgid_plural "%d weeks"
 msgstr[0] "%d vecka"
 msgstr[1] "%d veckor"
 
-#: modules/calendar/library/calendar-methods.php:1235
+#: modules/calendar/library/calendar-methods.php:1245
 #, php-format
 msgid "%d weeks"
 msgstr "%d veckor"
 
-#: modules/calendar/library/calendar-methods.php:1236
+#: modules/calendar/library/calendar-methods.php:1246
 msgid "Today"
 msgstr "Idag"
 
-#: modules/calendar/library/calendar-methods.php:1237
+#: modules/calendar/library/calendar-methods.php:1247
 msgid "No terms"
 msgstr "Inga termer"
 
-#: modules/calendar/library/calendar-methods.php:1238
+#: modules/calendar/library/calendar-methods.php:1248
+#: modules/content-board/content-board.php:1268
+#: modules/content-overview/content-overview.php:1240
+msgid "No results found"
+msgstr "Inga resultat hittades"
+
+#: modules/calendar/library/calendar-methods.php:1250
 #: modules/content-board/content-board.php:1288
-#: modules/content-overview/content-overview.php:836
-#: modules/content-overview/content-overview.php:895
-#: modules/content-overview/content-overview.php:1219
+#: modules/content-overview/content-overview.php:855
+#: modules/content-overview/content-overview.php:931
+#: modules/content-overview/content-overview.php:1265
 msgid "Post Date"
 msgstr "Inläggsdatum"
 
-#: modules/calendar/library/calendar-methods.php:1239
+#: modules/calendar/library/calendar-methods.php:1251
 #: modules/calendar/library/calendar-utilities.php:1097
 #: modules/content-board/content-board.php:1183
 #: modules/content-board/content-board.php:1289
-#: modules/content-overview/content-overview.php:1220
-#: modules/content-overview/content-overview.php:1703
+#: modules/content-overview/content-overview.php:1266
+#: modules/content-overview/content-overview.php:1749
 #: modules/editorial-comments/editorial-comments.php:628
 #: modules/editorial-metadata/library/editorial-metadata-list-table.php:159
 msgid "Edit"
 msgstr "Redigera"
 
-#: modules/calendar/library/calendar-methods.php:1241
+#: modules/calendar/library/calendar-methods.php:1253
 #: modules/calendar/library/calendar-utilities.php:1114
 #: modules/content-board/content-board.php:1224
 #: modules/content-board/content-board.php:1291
-#: modules/content-overview/content-overview.php:1222
-#: modules/content-overview/content-overview.php:1744
+#: modules/content-overview/content-overview.php:1268
+#: modules/content-overview/content-overview.php:1790
 msgid "Preview"
 msgstr "Förhandsgranska"
 
-#: modules/calendar/library/calendar-methods.php:1242
+#: modules/calendar/library/calendar-methods.php:1254
 #: modules/calendar/library/calendar-utilities.php:1111
 #: modules/content-board/content-board.php:1211
 #: modules/content-board/content-board.php:1292
-#: modules/content-overview/content-overview.php:1223
-#: modules/content-overview/content-overview.php:1731
+#: modules/content-overview/content-overview.php:1269
+#: modules/content-overview/content-overview.php:1777
 msgid "View"
 msgstr "Visa"
 
-#: modules/calendar/library/calendar-methods.php:1243
+#: modules/calendar/library/calendar-methods.php:1255
 #: modules/content-board/content-board.php:1293
-#: modules/content-overview/content-overview.php:1224
+#: modules/content-overview/content-overview.php:1270
 msgid "Previous Post"
 msgstr "Föregående inlägg"
 
-#: modules/calendar/library/calendar-methods.php:1244
+#: modules/calendar/library/calendar-methods.php:1256
 #: modules/content-board/content-board.php:1294
-#: modules/content-overview/content-overview.php:1225
+#: modules/content-overview/content-overview.php:1271
 msgid "Next Post"
 msgstr "Nästa inlägg"
 
-#: modules/calendar/library/calendar-methods.php:1246
+#: modules/calendar/library/calendar-methods.php:1258
 #: modules/content-board/content-board.php:1296
-#: modules/content-overview/content-overview.php:1227
+#: modules/content-overview/content-overview.php:1273
 msgid "Save Changes"
 msgstr "Spara ändringar"
 
-#: modules/calendar/library/calendar-methods.php:1247
+#: modules/calendar/library/calendar-methods.php:1259
 #: modules/content-board/content-board.php:1297
-#: modules/content-overview/content-overview.php:1228
+#: modules/content-overview/content-overview.php:1274
 msgid "Taxonomy not set."
 msgstr "Taxonomi är inte inställd."
 
-#: modules/calendar/library/calendar-methods.php:1687
+#: modules/calendar/library/calendar-methods.php:1699
 msgid "No date supplied."
-msgstr "Inget datum angivet."
+msgstr "Inget datum har angivits."
 
-#: modules/calendar/library/calendar-methods.php:1698
+#: modules/calendar/library/calendar-methods.php:1710
 msgid "The selected post type is not enabled for the calendar."
 msgstr "Den valda inläggstypen är inte aktiverad för kalendern."
 
-#: modules/calendar/library/calendar-methods.php:1728
+#: modules/calendar/library/calendar-methods.php:1740
 msgid "Invalid Status supplied."
 msgstr "Ogiltig status angiven."
 
-#: modules/calendar/library/calendar-methods.php:1752
+#: modules/calendar/library/calendar-methods.php:1764
 msgid "Invalid Publish Date supplied."
 msgstr "Ogiltigt publiceringsdatum angivet."
 
-#: modules/calendar/library/calendar-methods.php:1821
+#: modules/calendar/library/calendar-methods.php:1833
 msgid "Post created successfully"
 msgstr "Inlägget skapades framgångsrikt"
 
-#: modules/calendar/library/calendar-methods.php:1828
+#: modules/calendar/library/calendar-methods.php:1840
 msgid "Post could not be created"
 msgstr "Inlägget kunde inte skapas"
 
@@ -1248,7 +905,7 @@ msgstr "Alla %s"
 #: modules/content-board/library/content-board-utilities.php:681
 #: modules/content-overview/library/content-overview-utilities.php:803
 msgid "All post types"
-msgstr "Alla posttyper"
+msgstr "Alla inläggstyper"
 
 #: modules/calendar/library/calendar-utilities.php:169
 #: modules/calendar/library/calendar-utilities.php:485
@@ -1257,7 +914,7 @@ msgstr "Alla posttyper"
 #: modules/content-overview/library/content-overview-methods.php:322
 #: modules/content-overview/library/content-overview-utilities.php:822
 msgid "Search box"
-msgstr "Sökfält"
+msgstr "Sökruta"
 
 #: modules/calendar/library/calendar-utilities.php:198
 #: modules/calendar/library/calendar-utilities.php:309
@@ -1277,13 +934,13 @@ msgstr "Sökfält"
 #: modules/content-overview/library/content-overview-utilities.php:1000
 #: modules/content-overview/library/content-overview-utilities.php:1086
 msgid "Apply"
-msgstr "Tillämpa"
+msgstr "Verkställ"
 
 #: modules/calendar/library/calendar-utilities.php:211
 #: modules/content-board/library/content-board-utilities.php:742
 #: modules/content-overview/library/content-overview-utilities.php:864
 msgid "Select option..."
-msgstr "Välj alternativ..."
+msgstr "Välj alternativ …"
 
 #: modules/calendar/library/calendar-utilities.php:245
 #: modules/calendar/library/calendar-utilities.php:279
@@ -1300,7 +957,7 @@ msgstr "till"
 #: modules/content-board/library/content-board-utilities.php:860
 #: modules/content-overview/library/content-overview-utilities.php:982
 msgid "Checked"
-msgstr "Markerad"
+msgstr "Ikryssad"
 
 #: modules/calendar/library/calendar-utilities.php:370
 #: modules/content-board/library/content-board-utilities.php:895
@@ -1326,7 +983,13 @@ msgstr "Misslyckades"
 #: modules/content-board/library/content-board-utilities.php:42
 #: modules/content-overview/library/content-overview-methods.php:267
 msgid "Customize Filters"
-msgstr "Anpassa Filter"
+msgstr "Anpassa filter"
+
+#: modules/calendar/library/calendar-utilities.php:485
+#: modules/content-board/library/content-board-utilities.php:97
+#: modules/content-overview/library/content-overview-methods.php:322
+msgid "Search content"
+msgstr "Sök innehåll"
 
 #: modules/calendar/library/calendar-utilities.php:502
 #: modules/calendar/library/calendar-utilities.php:503, fuzzy
@@ -1336,13 +999,13 @@ msgstr "Period"
 #: modules/calendar/library/calendar-utilities.php:503
 #, php-format
 msgid "%1s weeks"
-msgstr "%1$s veckor"
+msgstr "%1s veckor"
 
 #: modules/calendar/library/calendar-utilities.php:553
 #: modules/content-board/library/content-board-utilities.php:152
 #: modules/content-overview/library/content-overview-methods.php:377
 msgid "Reset Filters"
-msgstr "Återställ Filter"
+msgstr "Återställ filter"
 
 #: modules/calendar/library/calendar-utilities.php:554
 #: modules/content-board/library/content-board-utilities.php:153
@@ -1356,17 +1019,17 @@ msgstr "Återställ"
 #: modules/content-board/library/content-board-utilities.php:363
 #: modules/content-overview/library/content-overview-utilities.php:171
 msgid "Enable Filters"
-msgstr "Aktivera Filter"
+msgstr "Aktivera filter"
 
 #: modules/calendar/library/calendar-utilities.php:583
 #: modules/content-board/library/content-board-utilities.php:364
 #: modules/content-overview/library/content-overview-utilities.php:172
 msgid "Reorder Filters"
-msgstr "Omordna Filter"
+msgstr "Sortera om filter"
 
 #: modules/calendar/library/calendar-utilities.php:588
 msgid "Enable or Disable Content calendar filter."
-msgstr "Aktivera eller inaktivera filter för innehållskalender."
+msgstr "Aktivera eller inaktivera innehållskalendersfilter."
 
 #: modules/calendar/library/calendar-utilities.php:601
 #: modules/content-board/library/content-board-utilities.php:236
@@ -1376,13 +1039,13 @@ msgstr "Aktivera eller inaktivera filter för innehållskalender."
 #: modules/content-overview/library/content-overview-utilities.php:190
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:68
 msgid "Add New"
-msgstr "Lägg till Ny"
+msgstr "Lägg till ny"
 
 #: modules/calendar/library/calendar-utilities.php:609
 #: modules/content-board/library/content-board-utilities.php:390
 #: modules/content-overview/library/content-overview-utilities.php:198
 msgid "Filter Title"
-msgstr "Filter Titel"
+msgstr "Filterrubrik"
 
 #: modules/calendar/library/calendar-utilities.php:613
 #: modules/content-board/library/content-board-utilities.php:248
@@ -1394,7 +1057,7 @@ msgstr "Sök Metanyckel"
 #: modules/content-board/library/content-board-utilities.php:399
 #: modules/content-overview/library/content-overview-utilities.php:207
 msgid "Add Filter"
-msgstr "Lägg till Filter"
+msgstr "Lägg till filter"
 
 #: modules/calendar/library/calendar-utilities.php:661
 #: modules/content-board/library/content-board-utilities.php:442
@@ -1410,7 +1073,25 @@ msgstr "Dra för att ändra ordningen på aktiverade filter."
 #: modules/content-overview/library/content-overview-utilities.php:145
 #: modules/content-overview/library/content-overview-utilities.php:291
 msgid "Apply Changes"
-msgstr "Tillämpa Ändringar"
+msgstr "Tillämpa ändringar"
+
+#: modules/calendar/library/calendar-utilities.php:1059, fuzzy
+msgid "ID"
+msgstr "ID"
+
+#: modules/calendar/library/calendar-utilities.php:1064
+#: modules/content-board/library/content-board-utilities.php:116
+#: modules/content-overview/library/content-overview-methods.php:341
+#: modules/editorial-metadata/editorial-metadata.php:290
+#: modules/notifications-log/library/NotificationsLogTable.php:496
+msgid "Date"
+msgstr "Datum"
+
+#: modules/calendar/library/calendar-utilities.php:1080
+msgid "Category"
+msgid_plural "Categories"
+msgstr[0] "Kategori"
+msgstr[1] "Kategorier"
 
 #: modules/calendar/library/calendar-utilities.php:1085
 msgid "Tag"
@@ -1418,172 +1099,180 @@ msgid_plural "Tags"
 msgstr[0] "Tagg"
 msgstr[1] "Taggar"
 
-#: modules/calendar/library/calendar-utilities.php:1180
+#: modules/calendar/library/calendar-utilities.php:1181
 #: modules/content-board/content-board.php:802
-#: modules/content-overview/content-overview.php:945
+#: modules/content-overview/content-overview.php:985
 msgid "Custom filters"
 msgstr "Anpassade filter"
 
-#: modules/calendar/library/calendar-utilities.php:1181
+#: modules/calendar/library/calendar-utilities.php:1182
 #: modules/content-board/content-board.php:803
-#: modules/content-overview/content-overview.php:946
+#: modules/content-overview/content-overview.php:986
 msgid "Click the \"Add New\" button to create new filters."
 msgstr "Klicka på \"Lägg till Ny\" knappen för att skapa nya filter."
 
-#: modules/calendar/library/calendar-utilities.php:1187
+#: modules/calendar/library/calendar-utilities.php:1199
 #: modules/content-board/content-board.php:809
-#: modules/content-overview/content-overview.php:952
+#: modules/content-overview/content-overview.php:1003
 msgid "Inbuilt filters"
 msgstr "Inbyggda filter"
 
-#: modules/calendar/library/calendar-utilities.php:1199
+#: modules/calendar/library/calendar-utilities.php:1206
 #: modules/content-board/content-board.php:760
 #: modules/content-board/content-board.php:820
-#: modules/content-overview/content-overview.php:903
-#: modules/content-overview/content-overview.php:964
+#: modules/content-overview/content-overview.php:943
+#: modules/content-overview/content-overview.php:1010
 #: modules/editorial-metadata/editorial-metadata.php:95
 #: modules/editorial-metadata/editorial-metadata.php:511
 #: modules/editorial-metadata/editorial-metadata.php:1720
 #: modules/editorial-metadata/editorial-metadata.php:1721
 msgid "Editorial Fields"
-msgstr "Redaktionella Fält"
-
-#: modules/calendar/library/calendar-utilities.php:1200
-#: modules/content-board/content-board.php:761
-#: modules/content-board/content-board.php:821
-#: modules/content-overview/content-overview.php:904
-#: modules/content-overview/content-overview.php:965
-msgid "You do not have any editorial fields enabled"
-msgstr "Du har inga aktiverade redaktionella fält"
+msgstr "Redaktionella fält"
 
 #: modules/calendar/library/calendar-utilities.php:1207
+#: modules/content-board/content-board.php:761
+#: modules/content-board/content-board.php:821
+#: modules/content-overview/content-overview.php:944
+#: modules/content-overview/content-overview.php:1011
+msgid "You do not have any editorial fields enabled"
+msgstr "Du har inga redaktionella fält aktiverade"
+
+#: modules/calendar/library/calendar-utilities.php:1213
+#: modules/content-board/content-board.php:767
+#: modules/content-board/content-board.php:827
+#: modules/content-overview/content-overview.php:950
+#: modules/content-overview/content-overview.php:1017
+msgid "Taxonomies"
+msgstr "Taxonomier"
+
+#: modules/calendar/library/calendar-utilities.php:1214
 #: modules/content-board/content-board.php:768
 #: modules/content-board/content-board.php:828
-#: modules/content-overview/content-overview.php:911
-#: modules/content-overview/content-overview.php:972
+#: modules/content-overview/content-overview.php:951
+#: modules/content-overview/content-overview.php:1018
 msgid "You do not have any public taxonomies"
 msgstr "Du har inga offentliga taxonomier"
 
-#: modules/calendar/library/calendar-utilities.php:1229
+#: modules/calendar/library/calendar-utilities.php:1236
 msgid "Subscribe in iCal or Google Calendar"
-msgstr "Prenumerera i iCal eller Google Kalender"
+msgstr "Prenumerera via iCal eller Google Kalender."
 
-#: modules/calendar/library/calendar-utilities.php:1234
+#: modules/calendar/library/calendar-utilities.php:1241
 msgid "Start date"
 msgstr "Startdatum"
 
-#: modules/calendar/library/calendar-utilities.php:1238
+#: modules/calendar/library/calendar-utilities.php:1245
 msgid "Current week"
-msgstr "Aktuell vecka"
+msgstr "Nuvarande vecka"
 
-#: modules/calendar/library/calendar-utilities.php:1240
+#: modules/calendar/library/calendar-utilities.php:1247
 msgid "One month ago"
-msgstr "För en månad sedan"
+msgstr "En månad sedan"
 
-#: modules/calendar/library/calendar-utilities.php:1242
+#: modules/calendar/library/calendar-utilities.php:1249
 msgid "Two months ago"
-msgstr "För två månader sedan"
+msgstr "Två månader sedan"
 
-#: modules/calendar/library/calendar-utilities.php:1244
+#: modules/calendar/library/calendar-utilities.php:1251
 msgid "Three months ago"
-msgstr "För tre månader sedan"
+msgstr "Tre månader sedan"
 
-#: modules/calendar/library/calendar-utilities.php:1246
+#: modules/calendar/library/calendar-utilities.php:1253
 msgid "Four months ago"
-msgstr "För fyra månader sedan"
+msgstr "Fyra månader sedan"
 
-#: modules/calendar/library/calendar-utilities.php:1248
+#: modules/calendar/library/calendar-utilities.php:1255
 msgid "Five months ago"
-msgstr "För fem månader sedan"
+msgstr "Fem månader sedan"
 
-#: modules/calendar/library/calendar-utilities.php:1250
+#: modules/calendar/library/calendar-utilities.php:1257
 msgid "Six months ago"
-msgstr "För sex månader sedan"
+msgstr "Sex månader sedan"
 
-#: modules/calendar/library/calendar-utilities.php:1256
+#: modules/calendar/library/calendar-utilities.php:1263
 msgid "End date"
 msgstr "Slutdatum"
 
-#: modules/calendar/library/calendar-utilities.php:1261
+#: modules/calendar/library/calendar-utilities.php:1268
 msgid "One week"
 msgstr "En vecka"
 
-#: modules/calendar/library/calendar-utilities.php:1263
+#: modules/calendar/library/calendar-utilities.php:1270
 msgid "Two weeks"
 msgstr "Två veckor"
 
-#: modules/calendar/library/calendar-utilities.php:1265
+#: modules/calendar/library/calendar-utilities.php:1272
 msgid "Three weeks"
 msgstr "Tre veckor"
 
-#: modules/calendar/library/calendar-utilities.php:1267
+#: modules/calendar/library/calendar-utilities.php:1274
 msgid "Four weeks"
 msgstr "Fyra veckor"
 
-#: modules/calendar/library/calendar-utilities.php:1271
+#: modules/calendar/library/calendar-utilities.php:1278
 #: modules/content-board/content-board.php:1044
 msgid "Months"
 msgstr "Månader"
 
-#: modules/calendar/library/calendar-utilities.php:1273
+#: modules/calendar/library/calendar-utilities.php:1280
 msgid "One month"
 msgstr "En månad"
 
-#: modules/calendar/library/calendar-utilities.php:1276
+#: modules/calendar/library/calendar-utilities.php:1283
 msgid "Two months"
 msgstr "Två månader"
 
-#: modules/calendar/library/calendar-utilities.php:1278
+#: modules/calendar/library/calendar-utilities.php:1285
 msgid "Three months"
 msgstr "Tre månader"
 
-#: modules/calendar/library/calendar-utilities.php:1280
+#: modules/calendar/library/calendar-utilities.php:1287
 msgid "Four months"
 msgstr "Fyra månader"
 
-#: modules/calendar/library/calendar-utilities.php:1282
+#: modules/calendar/library/calendar-utilities.php:1289
 msgid "Five months"
 msgstr "Fem månader"
 
-#: modules/calendar/library/calendar-utilities.php:1284
+#: modules/calendar/library/calendar-utilities.php:1291
 msgid "Six months"
 msgstr "Sex månader"
 
-#: modules/calendar/library/calendar-utilities.php:1286
+#: modules/calendar/library/calendar-utilities.php:1293
 msgid "Seven months"
 msgstr "Sju månader"
 
-#: modules/calendar/library/calendar-utilities.php:1288
+#: modules/calendar/library/calendar-utilities.php:1295
 msgid "Eight months"
 msgstr "Åtta månader"
 
-#: modules/calendar/library/calendar-utilities.php:1290
+#: modules/calendar/library/calendar-utilities.php:1297
 msgid "Nine months"
 msgstr "Nio månader"
 
-#: modules/calendar/library/calendar-utilities.php:1292
+#: modules/calendar/library/calendar-utilities.php:1299
 msgid "Ten months"
 msgstr "Tio månader"
 
-#: modules/calendar/library/calendar-utilities.php:1294
+#: modules/calendar/library/calendar-utilities.php:1301
 msgid "Eleven months"
 msgstr "Elva månader"
 
-#: modules/calendar/library/calendar-utilities.php:1296
+#: modules/calendar/library/calendar-utilities.php:1303
 msgid "Twelve months"
 msgstr "Tolv månader"
 
-#: modules/calendar/library/calendar-utilities.php:1308
+#: modules/calendar/library/calendar-utilities.php:1315
 msgid "Download .ics file"
 msgstr "Ladda ner .ics-fil"
 
-#: modules/calendar/library/calendar-utilities.php:1315
+#: modules/calendar/library/calendar-utilities.php:1322
 msgid "Copy to the clipboard"
 msgstr "Kopiera till urklipp"
 
-#: modules/calendar/library/calendar-utilities.php:1321
+#: modules/calendar/library/calendar-utilities.php:1328
 msgid "Click here to subscribe in iCal or Google Calendar"
-msgstr "Klicka här för att prenumerera i iCal eller Google Kalender"
+msgstr "Klicka här för att prenumerera på iCal eller Google Kalender"
 
 #: modules/content-board/content-board.php:142
 #: modules/content-board/content-board.php:379
@@ -1607,21 +1296,21 @@ msgstr "Inbyggd kortdata"
 #: modules/content-board/content-board.php:847
 #: modules/content-board/library/content-board-methods.php:39
 #: modules/content-board/library/content-board-methods.php:107
-#: modules/content-overview/content-overview.php:991
+#: modules/content-overview/content-overview.php:1037
 msgid "An error occured"
-msgstr "Ett fel inträffade"
+msgstr "Ett fel uppstod"
 
 #: modules/content-board/content-board.php:851
 #: modules/content-board/library/content-board-methods.php:43
 #: modules/content-board/library/content-board-methods.php:111
-#: modules/content-overview/content-overview.php:995
+#: modules/content-overview/content-overview.php:1041
 msgid "Error validating nonce. Please reload this page and try again."
 msgstr "Fel vid validering av nonce. Vänligen ladda om denna sida och försök igen."
 
 #: modules/content-board/content-board.php:853
 #: modules/content-board/library/content-board-methods.php:45
-#: modules/content-board/library/content-board-methods.php:113
-#: modules/content-overview/content-overview.php:997
+#: modules/content-board/library/content-board-methods.php:115
+#: modules/content-overview/content-overview.php:1043
 msgid "Invalid form request."
 msgstr "Ogiltig formulärförfrågan."
 
@@ -1657,43 +1346,38 @@ msgstr ""
 #: modules/content-board/content-board.php:1105
 #: modules/content-board/content-board.php:1247
 msgid "Only editable posts will be moveable."
-msgstr "Endast redigerbara inlägg kommer att kunna flyttas."
+msgstr "Bara redigerbara inlägg kommer att kunna flyttas."
 
 #: modules/content-board/content-board.php:1179
-#: modules/content-overview/content-overview.php:1699
+#: modules/content-overview/content-overview.php:1745
 #: modules/dashboard/dashboard.php:299
 msgid "Edit this post"
 msgstr "Redigera detta inlägg"
 
 #: modules/content-board/content-board.php:1191
-#: modules/content-overview/content-overview.php:1711
+#: modules/content-overview/content-overview.php:1757
 msgid "Move this item to the Trash"
 msgstr "Flytta detta objekt till papperskorgen"
 
 #: modules/content-board/content-board.php:1205
-#: modules/content-overview/content-overview.php:1725
+#: modules/content-overview/content-overview.php:1771
 #, php-format
 msgid "View &#8220;%s&#8221;"
-msgstr "Visa &#8220;%s&#8221;"
+msgstr "Visa &#8221;%s&#8221;"
 
 #: modules/content-board/content-board.php:1221
-#: modules/content-overview/content-overview.php:1741
+#: modules/content-overview/content-overview.php:1787
 #, php-format
 msgid "Preview &#8220;%s&#8221;"
-msgstr "Förhandsgranska &#8220;%s&#8221;"
-
-#: modules/content-board/content-board.php:1268
-#: modules/content-overview/content-overview.php:1194
-msgid "No results found"
-msgstr "Inga resultat hittades"
+msgstr "Förhandsgranska &#8221;%s&#8221;"
 
 #: modules/content-board/content-board.php:1273
-#: modules/content-overview/content-overview.php:1199
+#: modules/content-overview/content-overview.php:1245
 msgid "There are no posts in the range or filter specified."
 msgstr "Det finns inga inlägg inom det angivna intervallet eller filtret."
 
 #: modules/content-board/content-board.php:1605
-#: modules/content-overview/content-overview.php:1579
+#: modules/content-overview/content-overview.php:1625
 msgid "None"
 msgstr "Ingen"
 
@@ -1710,38 +1394,42 @@ msgid "You do not have permission to move post to selected post status."
 msgstr "Du har inte behörighet att flytta inlägget till valt inläggsstatus."
 
 #: modules/content-board/library/content-board-methods.php:95
-#: modules/content-board/library/content-board-methods.php:123
+#: modules/content-board/library/content-board-methods.php:125
 msgid "Changes saved!"
 msgstr "Ändringar sparade!"
 
-#: modules/content-board/library/content-board-methods.php:150
+#: modules/content-board/library/content-board-methods.php:113
+msgid "You do not have permission to update schedule settings."
+msgstr "Du har inte behörighet att uppdatera schemainsställningar."
+
+#: modules/content-board/library/content-board-methods.php:152
 msgid "Card Data updated successfully."
 msgstr "Kortdata uppdaterades framgångsrikt."
 
-#: modules/content-board/library/content-board-methods.php:172
-#: modules/content-overview/content-overview.php:676
+#: modules/content-board/library/content-board-methods.php:174
+#: modules/content-overview/content-overview.php:692
 msgid "Settings updated successfully."
-msgstr "Inställningar uppdaterades framgångsrikt."
+msgstr "Inställningarna uppdaterade."
 
-#: modules/content-board/library/content-board-methods.php:250
-#: modules/content-overview/content-overview.php:754
+#: modules/content-board/library/content-board-methods.php:252
+#: modules/content-overview/content-overview.php:770
 #, php-format
 msgid "%s created successfully. <a href=\"%s\" target=\"_blank\">Edit %s</a>"
-msgstr "%s skapades framgångsrikt. <a href=\"%s\" target=\"_blank\">Redigera %s</a>"
+msgstr "%s skapades. <a href=\"%s\" target=\"_blank\">Redigera %s</a>"
 
-#: modules/content-board/library/content-board-methods.php:253
-#: modules/content-overview/content-overview.php:757
+#: modules/content-board/library/content-board-methods.php:255
+#: modules/content-overview/content-overview.php:773
 #, php-format
 msgid "%s could not be created"
 msgstr "%s kunde inte skapas"
 
-#: modules/content-board/library/content-board-methods.php:258
-#: modules/content-overview/content-overview.php:762
+#: modules/content-board/library/content-board-methods.php:260
+#: modules/content-overview/content-overview.php:778
 #, php-format
 msgid "You do not have permission to add new %s"
-msgstr "Du har inte behörighet att lägga till ny %s"
+msgstr "Du har inte behörighet att lägga till nya %s"
 
-#: modules/content-board/library/content-board-methods.php:437
+#: modules/content-board/library/content-board-methods.php:439
 #: modules/content-overview/library/content-overview-methods.php:160
 msgid "Post types to show:"
 msgstr "Inläggstyper att visa:"
@@ -1799,7 +1487,6 @@ msgstr "Visa innehåll från"
 #: modules/content-overview/library/content-overview-utilities.php:659
 #: modules/editorial-comments/editorial-comments.php:574
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:425
-#: modules/editorial-comments/lib/editorial-comments.js:350
 msgid "Cancel"
 msgstr "Avbryt"
 
@@ -1812,7 +1499,7 @@ msgstr "Ändra"
 #: modules/content-overview/library/content-overview-utilities.php:314
 #, php-format
 msgid "Add New %s"
-msgstr "Lägg till Ny %s"
+msgstr "Lägg till ny %s"
 
 #: modules/content-board/library/content-board-utilities.php:1121
 #: modules/content-overview/library/content-overview-utilities.php:447
@@ -1823,38 +1510,38 @@ msgstr "Skapa %s"
 #: modules/content-board/library/content-board-utilities.php:1123
 #: modules/content-overview/library/content-overview-utilities.php:449
 msgid "Submit"
-msgstr "Skicka in"
+msgstr "Skicka"
 
 #: modules/content-board/library/content-board-utilities.php:1171
 #: modules/content-overview/library/content-overview-utilities.php:497
 msgid "Publish Date"
 msgstr "Publiceringsdatum"
 
-#: modules/content-overview/content-overview.php:156
-#: modules/content-overview/content-overview.php:376
-#: modules/content-overview/content-overview.php:393
-#: modules/content-overview/content-overview.php:394
+#: modules/content-overview/content-overview.php:168
+#: modules/content-overview/content-overview.php:388
+#: modules/content-overview/content-overview.php:405
+#: modules/content-overview/content-overview.php:406
 msgid "Content Overview"
 msgstr "Innehållsöversikt"
 
-#: modules/content-overview/content-overview.php:654
+#: modules/content-overview/content-overview.php:670
 msgid "Column updated successfully."
-msgstr "Kolumn uppdaterad framgångsrikt."
+msgstr "Kolumnen uppdaterades."
 
-#: modules/content-overview/content-overview.php:837
-#: modules/content-overview/content-overview.php:896
+#: modules/content-overview/content-overview.php:856
+#: modules/content-overview/content-overview.php:932
 msgid "Last Modified"
 msgstr "Senast ändrad"
 
-#: modules/content-overview/content-overview.php:883
+#: modules/content-overview/content-overview.php:916
 msgid "Custom Columns"
 msgstr "Anpassade kolumner"
 
-#: modules/content-overview/content-overview.php:884
+#: modules/content-overview/content-overview.php:917
 msgid "Click the \"Add New\" button to create new columns."
-msgstr "Klicka på knappen \"Lägg till ny\" för att skapa nya kolumner."
+msgstr "Klicka på knappen ”Lägg till ny” för att skapa nya kolumner."
 
-#: modules/content-overview/content-overview.php:890
+#: modules/content-overview/content-overview.php:936
 msgid "Inbuilt Columns"
 msgstr "Inbyggda kolumner"
 
@@ -1880,7 +1567,7 @@ msgstr "Aktivera kolumner"
 
 #: modules/content-overview/library/content-overview-utilities.php:26
 msgid "Reorder Columns"
-msgstr "Ändra ordning på kolumner"
+msgstr "Sortera om kolumner"
 
 #: modules/content-overview/library/content-overview-utilities.php:31
 msgid "Enable or Disable Content Overview table column."
@@ -1888,7 +1575,7 @@ msgstr "Aktivera eller inaktivera innehållsöversiktstabellkolumn."
 
 #: modules/content-overview/library/content-overview-utilities.php:52
 msgid "Column Title"
-msgstr "Kolumntitel"
+msgstr "Kolumnrubrik"
 
 #: modules/content-overview/library/content-overview-utilities.php:61
 msgid "Add Column"
@@ -1904,62 +1591,67 @@ msgstr "Aktivera eller inaktivera filter för innehållsöversikt."
 
 #: modules/dashboard/dashboard.php:56
 msgid "Dashboard Widgets"
-msgstr "Instrumentpanel Widgets"
+msgstr "Adminpanel-widgetar"
 
 #: modules/dashboard/dashboard.php:70
 msgid "Widget Options"
-msgstr "Widgetalternativ"
+msgstr "Widget-alternativ"
 
 #: modules/dashboard/dashboard.php:165
 msgid "Unpublished Content"
-msgstr "Opublikerat innehåll"
+msgstr "Opublicerat innehåll"
 
 #: modules/dashboard/dashboard.php:174
 #: modules/dashboard/dashboard.php:353
 msgid "Notepad"
-msgstr "Anteckningsblock"
+msgstr "Anteckningar"
 
 #: modules/dashboard/dashboard.php:183
 #: modules/dashboard/dashboard.php:346
 msgid "My Content Notifications"
-msgstr "Mina innehållsnotifikationer"
+msgstr "Mina innehållsmeddelanden"
 
 #: modules/dashboard/dashboard.php:211
 msgid "Posts at a Glance"
-msgstr "Inlägg på en blick"
+msgstr "Snabböversikt över inlägg"
 
 #: modules/dashboard/dashboard.php:305
 msgid "This post was last updated on "
-msgstr "Detta inlägg uppdaterades senast den "
+msgstr "Detta inlägg uppdaterades senast den"
 
 #: modules/dashboard/dashboard.php:316
 msgid "Sorry! You're not subscribed to any posts!"
-msgstr "Förlåt! Du är inte prenumererad på några inlägg!"
+msgstr "Beklagar! Du prenumererar inte på några inlägg!"
 
 #: modules/dashboard/dashboard.php:339
 msgid "Post Status Widget"
-msgstr "Inläggsstatus-widget"
+msgstr "Widget för inläggsstatus"
 
 #: modules/dashboard/dashboard.php:410
 msgid "The notifications module will need to be enabled for this widget to display."
-msgstr "Notifikationsmodulen måste aktiveras för att denna widget ska visas."
+msgstr "Meddelande-modulen måste vara aktiverad för att den här widgeten ska visas."
 
 #: modules/dashboard/widgets/dashboard-notepad.php:50
 msgid "Dashboard Note"
-msgstr "Anteckning på instrumentpanelen"
+msgstr "Panel-anteckning"
 
 #: modules/dashboard/widgets/dashboard-notepad.php:140
 #, php-format
 msgid "%1$s last updated on %2$s"
-msgstr "%1$s senast uppdaterad den %2$s"
+msgstr "%1$s uppdaterades senast %2$s"
 
-#: modules/dashboard/widgets/dashboard-notepad.php:168
+#: modules/dashboard/widgets/dashboard-notepad.php:160
+#: modules/dashboard/widgets/dashboard-notepad.php:176
+msgid "Dashboard note"
+msgstr "Dashboardnot"
+
+#: modules/dashboard/widgets/dashboard-notepad.php:169
 msgid "Update Note"
 msgstr "Uppdatera anteckning"
 
 #: modules/debug/debug.php:68
 msgid "Debug"
-msgstr "Felsökning"
+msgstr "Felsök"
 
 #: modules/debug/debug.php:228
 #: modules/debug/debug.php:291
@@ -1981,7 +1673,7 @@ msgstr "Sökväg"
 
 #: modules/debug/debug.php:294
 msgid "Log content"
-msgstr "Logginnehåll"
+msgstr "Logga innehåll"
 
 #: modules/debug/debug.php:295
 msgid "Size"
@@ -1993,11 +1685,11 @@ msgstr "Skapad den"
 
 #: modules/debug/debug.php:297
 msgid "Modified on"
-msgstr "Ändrad den"
+msgstr "Ändrat den"
 
 #: modules/debug/debug.php:298
 msgid "Delete file"
-msgstr "Radera fil"
+msgstr "Ta bort fil"
 
 #: modules/debug/debug.php:299
 msgid "Debug data"
@@ -2009,7 +1701,7 @@ msgstr "Loggfil"
 
 #: modules/debug/debug.php:303
 msgid "Log file not found."
-msgstr "Loggfilen hittades inte."
+msgstr "Logfil hittades inte."
 
 #: modules/debug/debug.php:304
 msgid ""
@@ -2034,8 +1726,8 @@ msgid "Invalid action nonce."
 msgstr "Ogiltig åtgärdsnonce."
 
 #: modules/editorial-comments/editorial-comments.php:63
-#: modules/editorial-comments/editorial-comments.php:231
-#: modules/editorial-comments/editorial-comments.php:232
+#: modules/editorial-comments/editorial-comments.php:235
+#: modules/editorial-comments/editorial-comments.php:236
 #: modules/editorial-comments/editorial-comments.php:453
 msgid "Editorial Comments"
 msgstr "Redaktionella kommentarer"
@@ -2055,14 +1747,13 @@ msgid ""
 "notifications enabled, those following the post will receive an email every "
 "time a comment is left.</p>"
 msgstr ""
-"<p>Redaktionella kommentarer hjälper dig att minska e-postöverbelastning "
-"och hålla konversationen nära där den betyder mest: ditt innehåll. Trådad "
-"kommentering i admin, liknande det du finner i slutet av ett blogginlägg, "
-"gör att skribenter och redaktörer kan lämna feedback och diskutera vad som "
-"behöver ändras innan publicering.</p><p>Alla som har tillgång att se "
-"berättelsen under arbete kommer också att ha möjlighet att kommentera den. "
-"Om du har aktiverat aviseringar, kommer de som följer inlägget att få ett "
-"e-postmeddelande varje gång en kommentar lämnas.</p>"
+"<p>Redaktionella kommentarer hjälper dig hålla antalet e-brev nere genom "
+"att flytta konversationen till vad som är viktigt, nämligen ditt innehåll. "
+"Trådade kommentarer i admin, likt på en bloggpost, låter författare och "
+"redaktörer lämna respons och diskutera innehållet innan "
+"publicering.</p><p>Alla som har åtkomst till en story kan kommentera på "
+"den. Om du har meddelanden aktiverade så får de som följer ett inlägg ett "
+"e-brev när det kommit en ny redaktionell kommentar.</p>"
 
 #: modules/editorial-comments/editorial-comments.php:88
 msgid ""
@@ -2072,7 +1763,7 @@ msgid ""
 "href=\"https://github.com/ostraining/PublishPress\">PublishPress on "
 "Github</a></p>"
 msgstr ""
-"<p><strong>För mer information:</strong></p><p><a "
+"<p><strong>Mer information:</strong></p><p><a "
 "href=\"https://publishpress.com/features/editorial-comments/\""
 ">Dokumentation för redaktionella kommentarer</a></p><p><a "
 "href=\"https://github.com/ostraining/PublishPress\">PublishPress på "
@@ -2084,23 +1775,23 @@ msgid "Remove"
 msgstr "Ta bort"
 
 #: modules/editorial-comments/editorial-comments.php:206
-#: modules/editorial-comments/library/EditorialCommentsTable.php:181
-#: modules/notifications-log/notifications-log.php:204
+#: modules/editorial-comments/library/EditorialCommentsTable.php:182
+#: modules/notifications-log/notifications-log.php:207
 msgid "All Posts"
 msgstr "Alla inlägg"
 
 #: modules/editorial-comments/editorial-comments.php:207
-#: modules/editorial-comments/library/EditorialCommentsTable.php:196
+#: modules/editorial-comments/library/EditorialCommentsTable.php:198
 msgid "All Users"
 msgstr "Alla användare"
 
-#: modules/editorial-comments/editorial-comments.php:272
+#: modules/editorial-comments/editorial-comments.php:276
 #. translators: %s: search keywords
 #, php-format
 msgid "Search results for &#8220;%s&#8221;"
-msgstr "Sökresultat för &#8220;%s&#8221;"
+msgstr "Sökresultat för ”%s”"
 
-#: modules/editorial-comments/editorial-comments.php:285
+#: modules/editorial-comments/editorial-comments.php:289
 msgid "Search Comments"
 msgstr "Sök kommentarer"
 
@@ -2109,13 +1800,13 @@ msgid ""
 "You can add editorial comments to a post once you've saved it for the first "
 "time."
 msgstr ""
-"Du kan lägga till redaktionella kommentarer till ett inlägg när du har "
-"sparat det för första gången."
+"Du kan lägga till redaktionella kommentarer när du sparat ett inlägg för "
+"första gången."
 
 #: modules/editorial-comments/editorial-comments.php:548
 #: modules/editorial-comments/editorial-comments.php:552
 msgid "Add an editorial comment"
-msgstr "Lägg till en redaktionell kommentar"
+msgstr "Lägg till redaktionell kommentar"
 
 #: modules/editorial-comments/editorial-comments.php:558
 msgid "Attach file"
@@ -2134,7 +1825,7 @@ msgid "Reply"
 msgstr "Svara"
 
 #: modules/editorial-comments/editorial-comments.php:639
-#: modules/editorial-comments/library/EditorialCommentsTable.php:434
+#: modules/editorial-comments/library/EditorialCommentsTable.php:436
 #: modules/editorial-metadata/library/editorial-metadata-list-table.php:161
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:303
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:333
@@ -2155,7 +1846,7 @@ msgid ""
 "Nonce check failed. Please ensure you're supposed to be adding editorial "
 "comments."
 msgstr ""
-"Nonce-kontroll misslyckades. Vänligen säkerställ att du ska lägga till "
+"Nonce-testet misslyckades. Vänligen försäkra dig om att du kan lägga till "
 "redaktionella kommentarer."
 
 #: modules/editorial-comments/editorial-comments.php:753
@@ -2170,22 +1861,20 @@ msgid ""
 "Sorry, you don't have the privileges to add editorial comments. Please talk "
 "to your Administrator."
 msgstr ""
-"Tyvärr har du inte behörighet att lägga till redaktionella kommentarer. "
-"Vänligen prata med din administratör."
+"Du saknar behörighet att lägga till redaktionella kommentarer. Om detta är "
+"fel, vänligen kontakta din administratör."
 
 #: modules/editorial-comments/editorial-comments.php:776
 #: modules/editorial-comments/editorial-comments.php:940
 msgid "Please enter a comment."
-msgstr "Vänligen ange en kommentar."
+msgstr "Skriv en kommentar."
 
 #: modules/editorial-comments/editorial-comments.php:863
 #: modules/editorial-comments/editorial-comments.php:993
 #: modules/editorial-comments/editorial-comments.php:1103
 #: modules/editorial-comments/editorial-comments.php:1187
 msgid "There was a problem of some sort. Try again or contact your administrator."
-msgstr ""
-"Det uppstod ett problem av något slag. Försök igen eller kontakta din "
-"administratör."
+msgstr "Någon sorts problem uppstod. Försök igen eller kontakta din administratör."
 
 #: modules/editorial-comments/editorial-comments.php:883
 #: modules/editorial-comments/editorial-comments.php:1015
@@ -2231,7 +1920,7 @@ msgstr ""
 
 #: modules/editorial-comments/editorial-comments.php:1179
 msgid "Comment deleted successfully."
-msgstr "Kommentar borttagen framgångsrikt."
+msgstr "Kommentar borttagen."
 
 #: modules/editorial-comments/editorial-comments.php:1230
 msgid "Enable for these post types:"
@@ -2261,6 +1950,10 @@ msgstr "Förnamn"
 msgid "Last Name"
 msgstr "Efternamn"
 
+#: modules/editorial-comments/editorial-comments.php:1267
+msgid "Email"
+msgstr "E-post"
+
 #: modules/editorial-comments/editorial-comments.php:1268
 msgid "User Url"
 msgstr "Användar-URL"
@@ -2269,30 +1962,39 @@ msgstr "Användar-URL"
 msgid "No editorial comments."
 msgstr "Inga redaktionella kommentarer."
 
-#: modules/editorial-comments/library/EditorialCommentsTable.php:210
-#: modules/notifications-log/library/NotificationsLogTable.php:646
+#: modules/editorial-comments/library/EditorialCommentsTable.php:180
+#: modules/notifications-log/library/NotificationsLogTable.php:566
+msgid "Filter by post"
+msgstr "Filtrera efter inlägg"
+
+#: modules/editorial-comments/library/EditorialCommentsTable.php:196
+msgid "Filter by user"
+msgstr "Filtrera efter användare"
+
+#: modules/editorial-comments/library/EditorialCommentsTable.php:212
+#: modules/notifications-log/library/NotificationsLogTable.php:653
 msgid "Filter"
 msgstr "Filtrera"
 
-#: modules/editorial-comments/library/EditorialCommentsTable.php:229
-msgid "Comment"
-msgstr "Kommentar"
-
 #: modules/editorial-comments/library/EditorialCommentsTable.php:231
-msgid "Post"
-msgstr "Inlägg"
+msgid "Comment"
+msgstr "Kommentera"
 
 #: modules/editorial-comments/library/EditorialCommentsTable.php:233
+msgid "Post"
+msgstr "Publicera"
+
+#: modules/editorial-comments/library/EditorialCommentsTable.php:235
 msgid "Submitted on"
 msgstr "Inskickad den"
 
-#: modules/editorial-comments/library/EditorialCommentsTable.php:336
+#: modules/editorial-comments/library/EditorialCommentsTable.php:338
 #: modules/editorial-metadata/input-handlers/editorial-metadata-input-date-handler.php:201
 #: modules/notifications/notifications.php:1974
 #. translators: 1: Comment date, 2: Comment time.
 #, php-format
 msgid "%1$s at %2$s"
-msgstr "%1$s kl %2$s"
+msgstr "%1$s kl. %2$s"
 
 #: modules/editorial-metadata/editorial-metadata.php:109
 msgid "Editorial fields term added."
@@ -2354,11 +2056,11 @@ msgstr ""
 
 #: modules/editorial-metadata/editorial-metadata.php:212
 msgid "First Draft Date"
-msgstr "Första utkastdatum"
+msgstr "Datum för första utkast"
 
 #: modules/editorial-metadata/editorial-metadata.php:215
 msgid "When the first draft needs to be ready."
-msgstr "När det första utkastet behöver vara klart."
+msgstr "När första utkastet måste vara klart."
 
 #: modules/editorial-metadata/editorial-metadata.php:220
 msgid "Assignment"
@@ -2366,7 +2068,7 @@ msgstr "Uppdrag"
 
 #: modules/editorial-metadata/editorial-metadata.php:223
 msgid "What the post needs to cover."
-msgstr "Vad inlägget behöver täcka."
+msgstr "Vad inlägget ska täcka."
 
 #: modules/editorial-metadata/editorial-metadata.php:288
 msgid "Checkbox"
@@ -2382,7 +2084,7 @@ msgstr "Plats"
 
 #: modules/editorial-metadata/editorial-metadata.php:292
 msgid "Number"
-msgstr "Nummer"
+msgstr "Antal"
 
 #: modules/editorial-metadata/editorial-metadata.php:293
 msgid "Paragraph"
@@ -2401,9 +2103,8 @@ msgid ""
 "Are you sure you want to delete this term? Any metadata for this term will "
 "remain but will not be visible unless this term is re-added."
 msgstr ""
-"Är du säker på att du vill radera denna term? All metadata för denna term "
-"kommer att finnas kvar men kommer inte att vara synlig såvida inte denna "
-"term läggs till igen."
+"Är du säker på att du vill radera den här termen? All metadata för termer "
+"kommer finnas kvar men kommer inte visas såvida termen inte läggs till igen."
 
 #: modules/editorial-metadata/editorial-metadata.php:453
 msgid "Search Editorial Fields"
@@ -2465,26 +2166,26 @@ msgstr "Vänligen ange en slug för de redaktionella fälten."
 
 #: modules/editorial-metadata/editorial-metadata.php:1266
 msgid "Name conflicts with existing term. Please choose another."
-msgstr "Namnet krockar med befintlig term. Vänligen välj ett annat."
+msgstr "Namnkonflikt med existerande term. Välj ett annat namn."
 
 #: modules/editorial-metadata/editorial-metadata.php:1273
 #: modules/editorial-metadata/editorial-metadata.php:1433
 msgid "Name already in use. Please choose another."
-msgstr "Namnet är redan i bruk. Vänligen välj ett annat."
+msgstr "Namnet används redan. Vänligen välj ett annat."
 
 #: modules/editorial-metadata/editorial-metadata.php:1277
 msgid "Slug already in use. Please choose another."
-msgstr "Sluggen är redan i bruk. Vänligen välj en annan."
+msgstr "Permalänken används redan. Vänligen välj en annan."
 
 #: modules/editorial-metadata/editorial-metadata.php:1283
 #: modules/editorial-metadata/editorial-metadata.php:1290
 #: modules/editorial-metadata/editorial-metadata.php:1446
 msgid "Name cannot exceed 200 characters. Please try a shorter name."
-msgstr "Namnet får inte överstiga 200 tecken. Försök med ett kortare namn."
+msgstr "Namnet kan inte vara längre än 200 tecken. Vänligen prova ett kortare namn."
 
 #: modules/editorial-metadata/editorial-metadata.php:1300
 msgid "Please select a valid metadata type."
-msgstr "Vänligen välj en giltig metadatatyp."
+msgstr "Välj en giltig metadata-typ."
 
 #: modules/editorial-metadata/editorial-metadata.php:1332
 msgid "Error adding term."
@@ -2500,11 +2201,13 @@ msgstr "Vänligen ange ett giltigt, icke-numeriskt namn för de redaktionella f�
 
 #: modules/editorial-metadata/editorial-metadata.php:1424
 msgid "Metadata name conflicts with existing term. Please choose another."
-msgstr "Metadata-namnet krockar med befintlig term. Vänligen välj ett annat."
+msgstr ""
+"Denna metadata har en namnkonflikt med en existerande term. Välj ett annat "
+"namn."
 
 #: modules/editorial-metadata/editorial-metadata.php:1438
 msgid "Name conflicts with slug for another term. Please choose something else."
-msgstr "Namnet krockar med sluggen för en annan term. Vänligen välj något annat."
+msgstr "Namnkonflikt med permalänken för en annan term. Välj ett annat namn."
 
 #: modules/editorial-metadata/editorial-metadata.php:1482
 #: modules/editorial-metadata/editorial-metadata.php:1525
@@ -2513,11 +2216,11 @@ msgstr "Fel vid uppdatering av term."
 
 #: modules/editorial-metadata/editorial-metadata.php:1550
 msgid "Terms not set."
-msgstr "Villkor är inte angivna."
+msgstr "Termer har inte angetts."
 
 #: modules/editorial-metadata/editorial-metadata.php:1591
 msgid "Error deleting term."
-msgstr "Fel vid radering av villkor."
+msgstr "Fel vid radering av term."
 
 #: modules/editorial-metadata/editorial-metadata.php:1638
 msgid "Register editorial fields for these post types:"
@@ -2545,12 +2248,12 @@ msgstr "Denna typ av redaktionella fält stöds ännu inte."
 
 #: modules/editorial-metadata/input-handlers/editorial-metadata-input-handler.php:223
 msgid "Not set"
-msgstr "Inte angivet"
+msgstr "Inte angiven"
 
 #: modules/editorial-metadata/input-handlers/editorial-metadata-input-location-handler.php:82
 #, php-format
 msgid "View &#8220;%s&#8221; on Google Maps"
-msgstr "Visa &#8220;%s&#8221; på Google Maps"
+msgstr "Visa &#8221;%s&#8221; på Google Maps"
 
 #: modules/editorial-metadata/input-handlers/editorial-metadata-input-select-handler.php:255
 #, php-format
@@ -2569,6 +2272,10 @@ msgstr "Position"
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:443
 msgid "Name"
 msgstr "Namn"
+
+#: modules/editorial-metadata/library/editorial-metadata-list-table.php:46
+msgid "Post Types"
+msgstr "Inläggstyper"
 
 #: modules/editorial-metadata/library/editorial-metadata-list-table.php:47
 msgid "Field Type"
@@ -2596,7 +2303,7 @@ msgstr "Slug"
 
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:168
 msgid "The slug cannot be changed once the term has been created."
-msgstr "Sluggen kan inte ändras när termen har skapats."
+msgstr "Slugen kan inte ändras när termen väl har skapats."
 
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:184
 msgid ""
@@ -2623,7 +2330,7 @@ msgstr "Användarroll"
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:211
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:523
 msgid "Select roles..."
-msgstr "Välj roller..."
+msgstr "Välj roller …"
 
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:223
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:537
@@ -2647,7 +2354,7 @@ msgstr "Enkelval"
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:234
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:546
 msgid "Multiple Select"
-msgstr "Flera val"
+msgstr "Flerval"
 
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:251
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:566
@@ -2657,7 +2364,7 @@ msgstr "Ange valtypen."
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:258
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:571
 msgid "Dropdown Option"
-msgstr "Rullgardinsalternativ"
+msgstr "Alternativ för rullgardinsmeny"
 
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:263
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:574
@@ -2673,14 +2380,14 @@ msgstr ""
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:596
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:627
 msgid "Meta Value"
-msgstr "Metavärde"
+msgstr "Meta-värde"
 
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:291
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:322
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:602
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:633
 msgid "Display Label"
-msgstr "Visningsetikett"
+msgstr "Visa etikett"
 
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:300
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:330
@@ -2711,7 +2418,7 @@ msgstr ""
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:370
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:682
 msgid "Add to post types"
-msgstr "Lägg till i inläggstyper"
+msgstr "Lägg till till inläggstyper"
 
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:375
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:686
@@ -2721,7 +2428,7 @@ msgstr "Detta fält kommer att vara tillgängligt för dessa inläggstyper."
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:394
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:704
 msgid "Show on Post Types screen"
-msgstr "Visa på skärmen för inläggstyper"
+msgstr "Visa på vyn för inläggstyper"
 
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:399
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:708
@@ -2739,16 +2446,17 @@ msgid ""
 "The \"slug\" is the URL-friendly version of the name. It is usually all "
 "lowercase and contains only letters, numbers, and hyphens."
 msgstr ""
-"”Slug” är den URL-vänliga versionen av namnet. Den är vanligtvis helt med "
-"små bokstäver och innehåller endast bokstäver, siffror och bindestreck."
+"En ”slug” (del av permalänken) är den URL-vänliga versionen av ett namn. "
+"Den innehåller vanligtvis inga stora bokstäver och innehåller bara "
+"bokstäver, siffror och bindestreck."
 
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:483
 msgid ""
 "The description can be used to communicate with your team about what the "
 "metadata is for."
 msgstr ""
-"Beskrivningen kan användas för att kommunicera med ditt team om vad "
-"metadata är till för."
+"Beskrivningen kan användas för att förklara för dina medarbetare hur denna "
+"metadatan används."
 
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:511
 msgid "Indicate the type of editorial fields."
@@ -2770,7 +2478,7 @@ msgstr ""
 
 #: modules/improved-notifications/improved-notifications.php:102
 msgid "Advanced Notifications"
-msgstr "Avancerade meddelanden"
+msgstr "Avancerade aviseringar"
 
 #: modules/improved-notifications/improved-notifications.php:257
 msgid "Duplicated notification threshold:"
@@ -2782,25 +2490,25 @@ msgstr "Standard meddelandekanaler:"
 
 #: modules/improved-notifications/improved-notifications.php:363
 msgid "Existing Post is updated"
-msgstr "Befintligt inlägg har uppdaterats"
+msgstr "Befintligt inlägg uppdaterades"
 
 #: modules/improved-notifications/improved-notifications.php:409
 msgid "New Post is created in Draft status"
-msgstr "Nytt inlägg har skapats i utkaststatus"
+msgstr "Nytt inlägg är skapat med status utkast"
 
 #: modules/improved-notifications/improved-notifications.php:462
 msgid "New Post is Published"
-msgstr "Nytt inlägg har publicerats"
+msgstr "Nytt inlägg är publicerat"
 
 #: modules/improved-notifications/improved-notifications.php:501
 msgid "Notify on editorial comments"
-msgstr "Meddela om redaktionella kommentarer"
+msgstr "Meddela vid redaktionella kommentarer"
 
-#: modules/improved-notifications/improved-notifications.php:606
+#: modules/improved-notifications/improved-notifications.php:607
 msgid "minutes"
 msgstr "minuter"
 
-#: modules/improved-notifications/improved-notifications.php:610
+#: modules/improved-notifications/improved-notifications.php:611
 msgid ""
 "This will prevent too many notifications being sent for the same or similar "
 "events. Set this to a higher number if you are receiving duplicate emails."
@@ -2809,122 +2517,134 @@ msgstr ""
 "eller liknande händelser. Ställ in detta på ett högre nummer om du får "
 "duplicerade e-postmeddelanden."
 
-#: modules/improved-notifications/improved-notifications.php:656
-#: modules/improved-notifications/improved-notifications.php:1495
+#: modules/improved-notifications/improved-notifications.php:657
+#: modules/improved-notifications/improved-notifications.php:1514
 #: views/user_profile_notification_channels.html.php:1
 msgid "Editorial Notifications"
 msgstr "Redaktionella meddelanden"
 
-#: modules/improved-notifications/improved-notifications.php:657
-#: modules/improved-notifications/improved-notifications.php:1496
+#: modules/improved-notifications/improved-notifications.php:658
+#: modules/improved-notifications/improved-notifications.php:1515
 #: views/user_profile_notification_channels.html.php:6
 msgid "Choose the channels where each workflow will send notifications to:"
-msgstr "Välj kanaler där varje arbetsflöde kommer att skicka meddelanden till:"
-
-#: modules/improved-notifications/improved-notifications.php:661
-#: modules/improved-notifications/improved-notifications.php:1483
-#: modules/improved-notifications/improved-notifications.php:1500
-msgid "Muted"
-msgstr "Tystad"
+msgstr "Välj till vilka kanaler varje arbetsflöde ska sända notifikationer:"
 
 #: modules/improved-notifications/improved-notifications.php:662
-#: modules/improved-notifications/improved-notifications.php:1501
+#: modules/improved-notifications/improved-notifications.php:1502
+#: modules/improved-notifications/improved-notifications.php:1519
+msgid "Muted"
+msgstr "Tystat"
+
+#: modules/improved-notifications/improved-notifications.php:663
+#: modules/improved-notifications/improved-notifications.php:1520
 #: views/user_profile_notification_channels.html.php:14
 msgid "Workflows"
 msgstr "Arbetsflöden"
 
-#: modules/improved-notifications/improved-notifications.php:663
-#: modules/improved-notifications/improved-notifications.php:1502
+#: modules/improved-notifications/improved-notifications.php:664
+#: modules/improved-notifications/improved-notifications.php:1521
 #: views/user_profile_notification_channels.html.php:15
 msgid "Channels"
 msgstr "Kanaler"
 
-#: modules/improved-notifications/improved-notifications.php:1088
+#: modules/improved-notifications/improved-notifications.php:1104
 #: modules/notifications-log/notifications-log.php:75
-#: modules/notifications-log/notifications-log.php:263
-#: modules/notifications-log/notifications-log.php:489
-#: modules/notifications-log/notifications-log.php:490
+#: modules/notifications-log/notifications-log.php:266
+#: modules/notifications-log/notifications-log.php:492
+#: modules/notifications-log/notifications-log.php:493
 msgid "Notifications Log"
-msgstr "Notifieringslogg"
+msgstr "Aviseringslogg"
 
-#: modules/improved-notifications/improved-notifications.php:1122
+#: modules/improved-notifications/improved-notifications.php:1138
 msgid "Workflow Settings"
-msgstr "Arbetsflödesinställningar"
+msgstr "Inställningar för arbetsflöde"
 
-#: modules/improved-notifications/improved-notifications.php:1131
+#: modules/improved-notifications/improved-notifications.php:1148
+#: views/settings_notification_channels.html.php:5
+#: views/user_profile_notification_channels.html.php:16
 msgid "Options"
 msgstr "Alternativ"
 
-#: modules/improved-notifications/improved-notifications.php:1140
+#: modules/improved-notifications/improved-notifications.php:1158
 msgid "Help"
 msgstr "Hjälp"
 
-#: modules/improved-notifications/improved-notifications.php:1170
+#: modules/improved-notifications/improved-notifications.php:1179
+#: modules/notifications-log/library/NotificationsLogTable.php:497
+msgid "When to notify?"
+msgstr "När ska meddelandet skickas?"
+
+#: modules/improved-notifications/improved-notifications.php:1189
 #: modules/notifications-log/library/NotificationsLogTable.php:498
 msgid "For which content?"
 msgstr "För vilket innehåll?"
 
-#: modules/improved-notifications/improved-notifications.php:1190
-msgid "What to say?"
-msgstr "Vad ska sägas?"
+#: modules/improved-notifications/improved-notifications.php:1199
+#: modules/notifications-log/library/NotificationsLogTable.php:499
+msgid "Who to notify?"
+msgstr "Vem ska meddelas?"
 
-#: modules/improved-notifications/improved-notifications.php:1310
+#: modules/improved-notifications/improved-notifications.php:1209
+msgid "What to say?"
+msgstr "Vad vill du säga?"
+
+#: modules/improved-notifications/improved-notifications.php:1329
 msgid "Select at least one option for each section."
 msgstr "Välj minst ett alternativ för varje sektion."
 
-#: modules/improved-notifications/improved-notifications.php:1314
+#: modules/improved-notifications/improved-notifications.php:1333
 msgid ""
 "You can add dynamic information to the Subject or Body text using the "
 "following shortcodes:"
 msgstr ""
-"Du kan lägga till dynamisk information i ämnet eller texten i meddelandet "
-"med hjälp av följande kortkoder:"
+"Du kan lägga till dynamisk information i ämnesraden eller meddelandetexten "
+"med följande kortkoder:"
 
-#: modules/improved-notifications/improved-notifications.php:1319
+#: modules/improved-notifications/improved-notifications.php:1338
 msgid "Editorial Comment"
 msgstr "Redaktionell kommentar"
 
-#: modules/improved-notifications/improved-notifications.php:1320
+#: modules/improved-notifications/improved-notifications.php:1339
 msgid "User making changes or comments"
-msgstr "Användare som gör ändringar eller kommentarer"
+msgstr "Användare gör ändringar eller kommenterar"
 
-#: modules/improved-notifications/improved-notifications.php:1321
+#: modules/improved-notifications/improved-notifications.php:1340
 msgid "Workflow"
 msgstr "Arbetsflöde"
 
-#: modules/improved-notifications/improved-notifications.php:1322, fuzzy
+#: modules/improved-notifications/improved-notifications.php:1341, fuzzy
 msgid "Format"
 msgstr "Format"
 
-#: modules/improved-notifications/improved-notifications.php:1323
+#: modules/improved-notifications/improved-notifications.php:1342
 msgid "Receiver"
 msgstr "Mottagare"
 
-#: modules/improved-notifications/improved-notifications.php:1324
+#: modules/improved-notifications/improved-notifications.php:1343
 msgid "shortcode"
 msgstr "kortkod"
 
-#: modules/improved-notifications/improved-notifications.php:1325
+#: modules/improved-notifications/improved-notifications.php:1344
 msgid "field"
 msgstr "fält"
 
-#: modules/improved-notifications/improved-notifications.php:1326
+#: modules/improved-notifications/improved-notifications.php:1345
 msgid ""
 "On each shortcode, you can select one or more fields. If more than one, "
 "they will be displayed separated by \", \"."
 msgstr ""
-"För varje kortkod kan du välja ett eller flera fält. Om mer än ett, kommer "
-"de att visas åtskilda med \", \"."
+"För varje kortkod kan du välja ett eller flera fält. Om fler än ett fält "
+"valts kommer de att separeras med ”, ”."
 
-#: modules/improved-notifications/improved-notifications.php:1330
+#: modules/improved-notifications/improved-notifications.php:1349
 msgid "Available fields"
 msgstr "Tillgängliga fält"
 
-#: modules/improved-notifications/improved-notifications.php:1331
+#: modules/improved-notifications/improved-notifications.php:1350
 msgid "Meta fields"
-msgstr "Metafält"
+msgstr "Metadatafält"
 
-#: modules/improved-notifications/improved-notifications.php:1332
+#: modules/improved-notifications/improved-notifications.php:1351
 msgid "Click here to read more about shortcode options..."
 msgstr "Klicka här för att läsa mer om kortkodsalternativ..."
 
@@ -2934,7 +2654,7 @@ msgstr "Funktioner"
 
 #: modules/modules-settings/modules-settings.php:236
 msgid "Feel free to select only the features you need."
-msgstr "Känn dig fri att välja endast de funktioner du behöver."
+msgstr "Det är OK att endast välja de funktioner du behöver."
 
 #: modules/modules-settings/modules-settings.php:242
 msgid "Enabled features"
@@ -2942,11 +2662,11 @@ msgstr "Aktiverade funktioner"
 
 #: modules/notifications-log/library/ModuleErrors.php:54
 msgid "Invalid receiver for the notification"
-msgstr "Ogiltig mottagare för meddelandet"
+msgstr "Ogiltig mottagare för aviseringen"
 
 #: modules/notifications-log/library/ModuleErrors.php:55
 msgid "Invalid channel for the notification"
-msgstr "Ogiltig kanal för meddelandet"
+msgstr "Ogiltig kanal för aviseringen"
 
 #: modules/notifications-log/library/ModuleErrors.php:56
 msgid "Notification log not found"
@@ -2992,7 +2712,7 @@ msgstr " Schemalagd, men sen"
 
 #: modules/notifications-log/library/NotificationsLogTable.php:263
 msgid " Scheduled"
-msgstr " Schemalagd"
+msgstr " Schemalagt"
 
 #: modules/notifications-log/library/NotificationsLogTable.php:282
 #: modules/notifications-log/library/NotificationsLogTable.php:533
@@ -3005,12 +2725,12 @@ msgstr "Meddelandet var inställt som \"Schemalagd\" men cron-uppgiften hittades
 
 #: modules/notifications-log/library/NotificationsLogTable.php:288
 msgid "Sent"
-msgstr "Skickad"
+msgstr "Skickat"
 
 #: modules/notifications-log/library/NotificationsLogTable.php:291
 #: modules/notifications-log/library/NotificationsLogTable.php:525
 msgid "Skipped"
-msgstr "Hoppa över"
+msgstr "Överhoppat"
 
 #: modules/notifications-log/library/NotificationsLogTable.php:304
 msgid "asynchronous"
@@ -3023,7 +2743,7 @@ msgstr "synkron"
 #: modules/notifications-log/library/NotificationsLogTable.php:361
 #: modules/notifications-log/library/NotificationsLogTable.php:406
 msgid "Reschedule"
-msgstr "Omplanera"
+msgstr "Planera om"
 
 #: modules/notifications-log/library/NotificationsLogTable.php:383
 msgid "Blog: "
@@ -3031,7 +2751,7 @@ msgstr "Blogg: "
 
 #: modules/notifications-log/library/NotificationsLogTable.php:408
 msgid "Delete All"
-msgstr "Radera alla"
+msgstr "Ta bort allt"
 
 #: modules/notifications-log/library/NotificationsLogTable.php:517
 msgid "All"
@@ -3039,62 +2759,80 @@ msgstr "Alla"
 
 #: modules/notifications-log/library/NotificationsLogTable.php:521
 msgid "Success"
-msgstr "Framgång"
+msgstr "Lyckades"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:590
+#: modules/notifications-log/library/NotificationsLogTable.php:582
+msgid "Filter by workflow"
+msgstr "Filtrera efter arbetsflöde"
+
+#: modules/notifications-log/library/NotificationsLogTable.php:589
+msgid "Filter by event"
+msgstr "Filtrera efter händelse"
+
+#: modules/notifications-log/library/NotificationsLogTable.php:593
 msgid "All events"
 msgstr "Alla händelser"
 
 #: modules/notifications-log/library/NotificationsLogTable.php:607
+msgid "Filter by channel"
+msgstr "Filtrera efter kanal"
+
+#: modules/notifications-log/library/NotificationsLogTable.php:611
 msgid "All channels"
 msgstr "Alla kanaler"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:626
+#: modules/notifications-log/library/NotificationsLogTable.php:628
+#: modules/notifications-log/library/NotificationsLogTable.php:631
 msgid "From date"
 msgstr "Från datum"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:632
+#: modules/notifications-log/library/NotificationsLogTable.php:635
+#: modules/notifications-log/library/NotificationsLogTable.php:638
 msgid "To date"
 msgstr "Till datum"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:640
+#: modules/notifications-log/library/NotificationsLogTable.php:646
+msgid "Filter by receiver"
+msgstr "Filtrera efter mottagare"
+
+#: modules/notifications-log/library/NotificationsLogTable.php:647
 msgid "All Receivers"
 msgstr "Alla mottagare"
 
-#: modules/notifications-log/notifications-log.php:205
+#: modules/notifications-log/notifications-log.php:208
 msgid "All Workflows"
 msgstr "Alla arbetsflöden"
 
-#: modules/notifications-log/notifications-log.php:206
+#: modules/notifications-log/notifications-log.php:209
 msgid "All Actions"
 msgstr "Alla åtgärder"
 
-#: modules/notifications-log/notifications-log.php:207
+#: modules/notifications-log/notifications-log.php:210
 msgid "All Channels"
 msgstr "Alla kanaler"
 
-#: modules/notifications-log/notifications-log.php:208
+#: modules/notifications-log/notifications-log.php:211
 msgid "All Statuses"
 msgstr "Alla statusar"
 
-#: modules/notifications-log/notifications-log.php:209
-#: publishpress.php:1426
-#: publishpress.php:1431
+#: modules/notifications-log/notifications-log.php:212
+#: publishpress.php:1441
+#: publishpress.php:1446
 msgid "Notification"
-msgstr "Notifikation"
+msgstr "Meddelande"
 
-#: modules/notifications-log/notifications-log.php:272
+#: modules/notifications-log/notifications-log.php:275
 #, php-format
 msgid "%s notification found."
 msgid_plural "%s notifications found."
-msgstr[0] "%s notifikation hittad.|%s notifikationer hittade."
-msgstr[1] "%s notifikationer hittade.|%s notifikation hittad."
+msgstr[0] "%s notifikation hittad."
+msgstr[1] "%s notifikationer hittade."
 
-#: modules/notifications-log/notifications-log.php:284
+#: modules/notifications-log/notifications-log.php:287
 msgid "No notifications found."
-msgstr "Inga notifikationer hittades."
+msgstr "Inga aviseringar hittades."
 
-#: modules/notifications-log/notifications-log.php:442
+#: modules/notifications-log/notifications-log.php:445
 #, php-format
 msgid ""
 "This notification is very similar to another one sent less than %d minutes "
@@ -3103,15 +2841,15 @@ msgstr ""
 "Detta meddelande är mycket likt ett annat som skickades för mindre än %d "
 "minuter sedan till samma mottagare"
 
-#: modules/notifications-log/notifications-log.php:817
+#: modules/notifications-log/notifications-log.php:820
 msgid "Subject:"
 msgstr "Ämne:"
 
-#: modules/notifications-log/notifications-log.php:825
+#: modules/notifications-log/notifications-log.php:828
 msgid "Content:"
 msgstr "Innehåll:"
 
-#: modules/notifications-log/notifications-log.php:835
+#: modules/notifications-log/notifications-log.php:838
 msgid ""
 "This is a preview of the scheduled message. The content can still change "
 "until the notification is sent."
@@ -3121,8 +2859,8 @@ msgstr ""
 
 #: modules/notifications/notifications.php:75
 #: modules/notifications/notifications.php:562
-#: publishpress.php:1425
-#: publishpress.php:1430
+#: publishpress.php:1440
+#: publishpress.php:1445
 msgid "Notifications"
 msgstr "Meddelanden"
 
@@ -3157,20 +2895,20 @@ msgstr ""
 #: modules/notifications/notifications.php:303
 #: modules/notifications/notifications.php:306
 msgid "Notify User"
-msgstr "Meddela Användare"
+msgstr "Avisera användare"
 
 #: modules/notifications/notifications.php:305
 msgid "Notify Users"
-msgstr "Meddela Användare"
+msgstr "Avisera användare"
 
 #: modules/notifications/notifications.php:318
 #: modules/notifications/notifications.php:321
 msgid "Notify Role"
-msgstr "Meddela Roll"
+msgstr "Aviseringsroll"
 
 #: modules/notifications/notifications.php:320
 msgid "Notify Roles"
-msgstr "Meddela Roller"
+msgstr "Aviseringsroller"
 
 #: modules/notifications/notifications.php:334
 #: modules/notifications/notifications.php:337
@@ -3193,7 +2931,7 @@ msgstr "Meddela E-postadresser"
 #: modules/notifications/notifications.php:530
 #: modules/notifications/notifications.php:940
 msgid "Click to stop being notified on updates for this post"
-msgstr "Klicka för att sluta få meddelanden om uppdateringar för detta inlägg"
+msgstr "Klicka för att sluta bli meddelad om uppdateringar för det här inlägget"
 
 #: modules/notifications/notifications.php:531
 #: modules/notifications/notifications.php:939
@@ -3203,7 +2941,7 @@ msgstr "Sluta meddela mig"
 #: modules/notifications/notifications.php:534
 #: modules/notifications/notifications.php:946
 msgid "Click to start being notified on updates for this post"
-msgstr "Klicka för att börja få meddelanden om uppdateringar för detta inlägg"
+msgstr "Klicka för att bli meddelad om uppdateringar för det här inlägget"
 
 #: modules/notifications/notifications.php:535
 #: modules/notifications/notifications.php:945
@@ -3233,7 +2971,7 @@ msgstr ""
 
 #: modules/notifications/notifications.php:656
 msgid "Active Notifications"
-msgstr "Aktiva Meddelanden"
+msgstr "Aktiva aviseringar"
 
 #: modules/notifications/notifications.php:684
 msgid "Workflow has users enrolled"
@@ -3247,17 +2985,17 @@ msgstr "Inga aktiva meddelanden hittades för denna %s."
 #: modules/notifications/notifications.php:1054
 #, php-format
 msgid "You are receiving this email because you are subscribed to \"%s\"."
-msgstr "Du får detta e-postmeddelande eftersom du är prenumererad på \"%s\"."
+msgstr "Du får det här e-brevet för att du prenumerera på ”%s”."
 
 #: modules/notifications/notifications.php:1059
 #, php-format
 msgid "This email was sent %s."
-msgstr "Detta e-postmeddelande skickades %s."
+msgstr "Det här e-brevet skickades %s."
 
 #: modules/notifications/notifications.php:1715
 msgid "Show the \"Notify me\" and \"Stop notifying me\" links for these post types:"
 msgstr ""
-"Visa länkarna \"Meddela mig\" och \"Sluta meddela mig\" för dessa "
+"Visa länkarna ”Meddela mig” och ”Sluta meddela mig” för följande "
 "inläggstyper:"
 
 #: modules/notifications/notifications.php:1723
@@ -3266,7 +3004,7 @@ msgstr "E-post från:"
 
 #: modules/notifications/notifications.php:1731
 msgid "Always notify the author of the content:"
-msgstr "Meddela alltid författaren av innehållet:"
+msgstr "Meddela alltid författaren till innehållet:"
 
 #: modules/notifications/notifications.php:1739
 msgid "Always notify users who have edited the content:"
@@ -3276,9 +3014,9 @@ msgstr "Meddela alltid användare som har redigerat innehållet:"
 msgid "Blacklisted taxonomies for Notifications"
 msgstr "Svartlistade taksonomier för meddelanden"
 
-#: modules/notifications/notifications.php:1861, fuzzy
+#: modules/notifications/notifications.php:1861
 msgid "slug1,slug2"
-msgstr "slug1,slug2"
+msgstr "slug1, slug2"
 
 #: modules/notifications/notifications.php:1867
 msgid ""
@@ -3291,12 +3029,12 @@ msgstr ""
 
 #: modules/notifications/notifications.php:2003
 msgid "WordPress Scheduler"
-msgstr "WordPress Schemaläggare"
+msgstr "WordPress schemaläggare"
 
 #: modules/notifications/notifications.php:2012
 #, php-format
 msgid "[%1$s] New %2$s Created: \"%3$s\""
-msgstr "[%1$s] Ny %2$s Skapad: \"%3$s\""
+msgstr "[%1$s] Ny %2$s skapad: ”%3$s”"
 
 #: modules/notifications/notifications.php:2019
 #, php-format
@@ -3306,17 +3044,17 @@ msgstr "En ny %1$s (#%2$s \"%3$s\") skapades av %4$s %5$s"
 #: modules/notifications/notifications.php:2029
 #, php-format
 msgid "[%1$s] %2$s Trashed: \"%3$s\""
-msgstr "[%1$s] %2$s Slängd: \"%3$s\""
+msgstr "[%1$s] %2$s kastades: ”%3$s”"
 
 #: modules/notifications/notifications.php:2036
 #, php-format
 msgid "%1$s #%2$s \"%3$s\" was moved to the trash by %4$s %5$s"
-msgstr "%1$s #%2$s \"%3$s\" flyttades till papperskorgen av %4$s %5$s"
+msgstr "%1$s #%2$s ”%3$s” har lagts i Papperskorgen av %4$s %5$s"
 
 #: modules/notifications/notifications.php:2046
 #, php-format
 msgid "[%1$s] %2$s Restored (from Trash ): \"%3$s\""
-msgstr "[%1$s] %2$s Återställd (från Papperskorgen): \"%3$s\""
+msgstr "[%1$s] %2$s Återställt (från papperskorgen): ”%3$s”"
 
 #: modules/notifications/notifications.php:2053
 #, php-format
@@ -3326,37 +3064,37 @@ msgstr "%1$s #%2$s \"%3$s\" återställdes från papperskorgen av %4$s %5$s"
 #: modules/notifications/notifications.php:2076
 #, php-format
 msgid "[%1$s] %2$s Published: \"%3$s\""
-msgstr "[%1$s] %2$s Publicerad: \"%3$s\""
+msgstr "[%1$s] %2$s Publicerad: ”%3$s”"
 
 #: modules/notifications/notifications.php:2083
 #, php-format
 msgid "%1$s #%2$s \"%3$s\" was published by %4$s %5$s"
-msgstr "%1$s #%2$s \"%3$s\" publicerades av %4$s %5$s"
+msgstr "%1$s #%2$s ”%3$s” publicerades av %4$s %5$s"
 
 #: modules/notifications/notifications.php:2093
 #, php-format
 msgid "[%1$s] %2$s Unpublished: \"%3$s\""
-msgstr "[%1$s] %2$s Opublicerad: \"%3$s\""
+msgstr "[%1$s] %2$s avpublicerat: ”%3$s”"
 
 #: modules/notifications/notifications.php:2100
 #, php-format
 msgid "%1$s #%2$s \"%3$s\" was unpublished by %4$s %5$s"
-msgstr "%1$s #%2$s \"%3$s\" togs bort av %4$s %5$s"
+msgstr "%1$s #%2$s ”%3$s” avpublicerades av %4$s %5$s"
 
 #: modules/notifications/notifications.php:2110
 #, php-format
 msgid "[%1$s] %2$s Status Changed for \"%3$s\""
-msgstr "[%1$s] %2$s Status Ändrad för \"%3$s\""
+msgstr "[%1$s] %2$s Status ändrad för ”%3$s”"
 
 #: modules/notifications/notifications.php:2117
 #, php-format
 msgid "Status was changed for %1$s #%2$s \"%3$s\" by %4$s %5$s"
-msgstr "Status ändrades för %1$s #%2$s \"%3$s\" av %4$s %5$s"
+msgstr "Status ändrades för %1$s #%2$s ”%3$s” av %4$s %5$s"
 
 #: modules/notifications/notifications.php:2128
 #, php-format
 msgid "This action was taken on %1$s at %2$s %3$s"
-msgstr "Denna åtgärd togs den %1$s klockan %2$s %3$s"
+msgstr "Denna åtgärd vidtogs den %1$s kl. %2$s %3$s"
 
 #: modules/notifications/notifications.php:2141
 #, fuzzy, php-format
@@ -3366,17 +3104,17 @@ msgstr "%1$s => %2$s"
 #: modules/notifications/notifications.php:2149
 #, php-format
 msgid "== %s Details =="
-msgstr "== %s Detaljer =="
+msgstr "== %s detaljer =="
 
 #: modules/notifications/notifications.php:2150
 #, php-format
 msgid "Title: %s"
-msgstr "Titel: %s"
+msgstr "Rubrik: %s"
 
 #: modules/notifications/notifications.php:2154
 #, php-format
 msgid "Author: %1$s (%2$s )"
-msgstr "Författare: %1$s (%2$s )"
+msgstr "Författare: %1$s (%2$s)"
 
 #: modules/notifications/notifications.php:2168
 #: modules/notifications/notifications.php:2221
@@ -3404,27 +3142,27 @@ msgstr "Visa: %s"
 #: modules/notifications/notifications.php:2185
 #, php-format
 msgid "[%1$s] New Editorial Comment: \"%2$s\""
-msgstr "[%1$s] Ny redaktionell kommentar: \"%2$s\""
+msgstr "[%1$s] Ny redaktionell kommentar: ”%2$s”"
 
 #: modules/notifications/notifications.php:2192
 #, php-format
 msgid "A new editorial comment was added to %3$s #%1$s \"%2$s\""
-msgstr "En ny redaktionell kommentar lades till %3$s #%1$s \"%2$s\""
+msgstr "En ny redaktionell kommentar lades till på %3$s #%1$s ”%2$s”"
 
 #: modules/notifications/notifications.php:2199
 #, php-format
 msgid "%1$s (%2$s ) said on %3$s at %4$s:"
-msgstr "%1$s (%2$s ) sade den %3$s klockan %4$s:"
+msgstr "%1$s (%2$s ) sa %3$s klockan %4$s:"
 
 #: modules/notifications/notifications.php:2223
 #, php-format
 msgid "Reply: %s"
-msgstr "Svar: %s"
+msgstr "Svara: %s"
 
 #: modules/notifications/notifications.php:2234
 #, php-format
 msgid "You can see all editorial comments on this %s here: "
-msgstr "Du kan se alla redaktionella kommentarer på denna %s här: "
+msgstr "Du kan se alla redaktionella kommentarer på %s här:"
 
 #: modules/reviews/reviews.php:66
 msgid "Reviews"
@@ -3436,7 +3174,7 @@ msgstr "inställningar"
 
 #: modules/settings/settings.php:141
 msgid "PublishPress Settings"
-msgstr "PublishPress-inställningar"
+msgstr "Inställningar för PublishPress"
 
 #: modules/settings/settings.php:142
 msgid "Settings"
@@ -3449,7 +3187,7 @@ msgstr "PublishPress Planner"
 #: modules/settings/settings.php:269
 #, php-format
 msgid "If you like %s please leave us a %s rating. Thank you!"
-msgstr "Om du gillar %s, vänligen ge oss en %s betyg. Tack!"
+msgstr "Om du gillar %s vänligen ge oss en %s betyg. Tack!"
 
 #: modules/settings/settings.php:289
 msgid "There are no PublishPress modules registered"
@@ -3461,13 +3199,13 @@ msgid ""
 "Disabled because add_post_type_support('%1$s', '%2$s') is included in a "
 "loaded file."
 msgstr ""
-"Inaktiverad eftersom add_post_type_support('%1$s', '%2$s') ingår i en "
+"Avaktiverat därför att add_post_type_support('%1$s', '%2$s') ingår i en "
 "laddad fil."
 
 #: modules/settings/settings.php:404
-#: publishpress.php:675
+#: publishpress.php:689
 msgid "Cheatin&#8217; uh?"
-msgstr "Fuskar du, va?"
+msgstr "Fuskar du eller?"
 
 #: modules/settings/views/footer-base.html.php:21
 msgid "About"
@@ -3479,7 +3217,7 @@ msgstr "Dokumentation"
 
 #: modules/settings/views/footer-base.html.php:29
 msgid "Contact"
-msgstr "Kontakta oss"
+msgstr "Kontakt"
 
 #: modules/theeventscalendar-integration/theeventscalendar-integration.php:52
 msgid "The Events Calendar Integration"
@@ -3489,44 +3227,44 @@ msgstr "Integration med The Events Calendar"
 msgid "Integrate with the The Events Calendar plugin"
 msgstr "Integrera med The Events Calendar-pluginet"
 
-#: publishpress.php:590
+#: publishpress.php:604
 msgid "Planner"
 msgstr "Planerare"
 
-#: publishpress.php:671
+#: publishpress.php:685
 msgid "Configure"
 msgstr "Konfigurera"
 
-#: publishpress.php:674
+#: publishpress.php:688
 msgid "Please correct your form errors below and try again."
-msgstr "Vänligen rätta dina formulärfel nedan och försök igen."
+msgstr "Vänligen korrigera dina formulärfel nedan och försök igen."
 
-#: publishpress.php:676
+#: publishpress.php:690
 msgid "You do not have necessary permissions to complete this action."
-msgstr "Du har inte nödvändiga behörigheter för att slutföra denna åtgärd."
+msgstr "Du har inte den nödvändiga behörigheter för att slutföra den här åtgärden."
 
-#: publishpress.php:680
+#: publishpress.php:694
 msgid "Post does not exist"
 msgstr "Inlägget finns inte"
 
-#: publishpress.php:1427
+#: publishpress.php:1442
 msgid "Add New Notification"
 msgstr "Lägg till ny avisering"
 
-#: publishpress.php:1428
+#: publishpress.php:1443
 msgid "Edit Notification"
 msgstr "Redigera avisering"
 
-#: publishpress.php:1429
+#: publishpress.php:1444
 msgid "Search Notifications"
 msgstr "Sök aviseringar"
 
-#: publishpress.php:1432
-#: publishpress.php:1433
+#: publishpress.php:1447
+#: publishpress.php:1448
 msgid "No notification found"
-msgstr "Ingen avisering hittades"
+msgstr "Inga notiser hittades"
 
-#: publishpress.php:1473
+#: publishpress.php:1489
 msgid ""
 "PublishPress Planner tried to load multiple times. Please, deactivate and "
 "remove other instances of PublishPress, specially if you are using "
@@ -3536,38 +3274,9 @@ msgstr ""
 "ta bort andra instanser av PublishPress, särskilt om du använder "
 "PublishPress Pro."
 
-#: publishpress.php:1481
+#: publishpress.php:1497
 msgid "Warning"
 msgstr "Varning"
-
-#: modules/editorial-comments/lib/editorial-comments.js:203
-#: modules/editorial-comments/lib/editorial-comments.js:371
-msgid "Please enter a comment"
-msgstr "Vänligen ange en kommentar"
-
-#: modules/editorial-comments/lib/editorial-comments.js:377
-msgid "Sending content..."
-msgstr "Skickar innehåll..."
-
-#: modules/editorial-comments/lib/editorial-comments.js:434
-msgid ""
-"This comment can't be deleted because it has one or more replies. Before "
-"deleting it make sure to delete all the replies first."
-msgstr ""
-"Denna kommentar kan inte raderas eftersom den har ett eller flera svar. Se "
-"till att ta bort alla svar först innan du raderar den."
-
-#: modules/editorial-comments/lib/editorial-comments.js:438
-msgid "Are you sure you want to delete this comment?"
-msgstr "Är du säker på att du vill radera denna kommentar?"
-
-#: modules/notifications-log/assets/js/admin.js:73
-msgid "for"
-msgstr "för"
-
-#: modules/notifications-log/assets/js/admin.js:73
-msgid "by"
-msgstr "av"
 
 #: modules/content-board/library/content-board-utilities.php:538
 #: modules/content-overview/library/content-overview-utilities.php:643
@@ -3579,9 +3288,9 @@ msgstr " %1$s <div class=\"input-divider\">till</div> %2$s"
 #: modules/editorial-metadata/editorial-metadata.php:451
 msgctxt "taxonomy general name"
 msgid "Editorial Field"
-msgstr "Redaktionellt Fält"
+msgstr "Redaktionella fält"
 
 #: modules/editorial-metadata/editorial-metadata.php:452
 msgctxt "taxonomy singular name"
 msgid "Editorial Field"
-msgstr "Redaktionellt fält"
+msgstr "Redaktionella fält"

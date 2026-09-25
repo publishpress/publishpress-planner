@@ -21,6 +21,7 @@
     "publishpress/wordpress-reviews": "^1.1",
     "publishpress/psr-container": "^2.0.1.9",
     "publishpress/instance-protection": "^2.0",
-    "sabre/vobject": "^3.4"
+    "sabre/vobject": "^3.4",
+    "publishpress/bundled-translations": "^1.0"
   }
 }

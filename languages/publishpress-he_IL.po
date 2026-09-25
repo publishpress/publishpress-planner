@@ -10,18 +10,19 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-14T18:33:45+00:00\n"
-"PO-Revision-Date: 2026-04-15 14:14+0000\n"
+"PO-Revision-Date: 2026-09-25 19:50+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress\n"
+"% 10 == 0) ? 2 : 3)));\n"
 "Language: he_IL\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 ? 0 : (n == 2 ? 1 : ((n > 10 && n % 10 == 0) ? 2 : 3)));\n"
 
-#: publishpress.php
+#: publishpress.php, fuzzy
 #. Plugin Name of the plugin
 msgid "PublishPress Planner Free"
 msgstr "PublishPress Planner Free"
 
-#: publishpress.php, fuzzy
+#: publishpress.php
 #. Plugin URI of the plugin
 msgid "https://publishpress.com/"
 msgstr "https://publishpress.com/"
@@ -36,141 +37,144 @@ msgstr ""
 "כוללות לוח שנה לתוכן, לוח קנבן, והודעות."
 
 #: publishpress.php
-#: modules/calendar/library/calendar-utilities.php:1227
-#: modules/settings/settings.php:61, fuzzy
+#: modules/calendar/library/calendar-utilities.php:1234
+#: modules/settings/settings.php:61
+#: modules/settings/views/footer-base.html.php:35
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: publishpress.php, fuzzy
+#: publishpress.php
 #. Author URI of the plugin
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
-#: common/php/class-module.php:331
-#: modules/calendar/calendar.php:1233
+#: common/php/class-module.php:338
+#: modules/calendar/calendar.php:1261
 msgid "Published"
 msgstr "פורסם"
 
-#: common/php/class-module.php:332
+#: common/php/class-module.php:339
 msgid "Draft"
 msgstr "טיוטה"
 
-#: common/php/class-module.php:333
-#: modules/calendar/calendar.php:1228
+#: common/php/class-module.php:340
+#: modules/calendar/calendar.php:1256
 #: modules/content-board/content-board.php:979
 #: modules/notifications-log/library/NotificationsLogTable.php:529
 msgid "Scheduled"
 msgstr "מתוזמן"
 
-#: common/php/class-module.php:334
+#: common/php/class-module.php:341
 #: modules/content-board/content-board.php:989
 msgid "Private"
 msgstr "פרטי"
 
-#: common/php/class-module.php:335
+#: common/php/class-module.php:342
 msgid "Pending Review"
 msgstr "ממתין לבדיקה"
 
-#: common/php/class-module.php:336
-#: modules/calendar/library/calendar-methods.php:1240
+#: common/php/class-module.php:343
+#: modules/calendar/library/calendar-methods.php:1252
 #: modules/calendar/library/calendar-utilities.php:1104
 #: modules/content-board/content-board.php:1195
 #: modules/content-board/content-board.php:1290
-#: modules/content-overview/content-overview.php:1221
-#: modules/content-overview/content-overview.php:1715
+#: modules/content-overview/content-overview.php:1267
+#: modules/content-overview/content-overview.php:1761
 msgid "Trash"
 msgstr "מיחזור"
 
-#: common/php/class-module.php:750
-#: lib/Notifications/Workflow/Step/Receiver/Role.php:31
+#: common/php/class-module.php:772
 msgid "Roles"
 msgstr "תפקידים"
 
-#: common/php/class-module.php:753
+#: common/php/class-module.php:775
 msgid "Role"
 msgstr "תפקיד"
 
-#: common/php/class-module.php:761
+#: common/php/class-module.php:783
 msgid "Groups"
 msgstr "קבוצות"
 
-#: common/php/class-module.php:764
+#: common/php/class-module.php:786
 msgid "Group"
 msgstr "קבוצה"
 
-#: common/php/class-module.php:772
-#: lib/Notifications/Workflow/Step/Receiver/User.php:26
+#: common/php/class-module.php:794
 msgid "Users"
 msgstr "משתמשים"
 
-#: common/php/class-module.php:782
+#: common/php/class-module.php:804
 msgid "E-mails"
 msgstr "דוא\"ל"
 
-#: common/php/class-module.php:1048
+#: common/php/class-module.php:1051
 msgid "Equals (=)"
 msgstr "שווה (=)"
 
-#: common/php/class-module.php:1049
+#: common/php/class-module.php:1052
 msgid "Does not equal (!=)"
 msgstr "לא שווה (!=)"
 
-#: common/php/class-module.php:1050
+#: common/php/class-module.php:1053
 msgid "Greater than (>)"
 msgstr "גדול מ (>)"
 
-#: common/php/class-module.php:1051
+#: common/php/class-module.php:1054
 msgid "Greater than or equals (>=)"
 msgstr "גדול או שווה (>=)"
 
-#: common/php/class-module.php:1052
+#: common/php/class-module.php:1055
 msgid "Less than (<)"
 msgstr "קטן מ (<)"
 
-#: common/php/class-module.php:1053
+#: common/php/class-module.php:1056
 msgid "Less than or equals (<=)"
 msgstr "קטן או שווה (<=)"
 
-#: common/php/class-module.php:1054
+#: common/php/class-module.php:1057
 msgid "Like/Contains"
 msgstr "כמו/מכיל"
 
-#: common/php/class-module.php:1055
+#: common/php/class-module.php:1058
 #, fuzzy
 msgid "Not Like"
 msgstr "לא הוגדר"
 
-#: common/php/class-module.php:1056
+#: common/php/class-module.php:1059
 msgid "Not Exists/Empty"
 msgstr "לא קיים/ריק"
 
-#: common/php/class-module.php:1109
+#: common/php/class-module.php:1112
+#: views/workflow_receiver_group_field.html.php:10
+#: views/workflow_receiver_role_field.html.php:9
+#: views/workflow_receiver_user_field.html.php:9
 #, php-format
 msgid "Select %s"
 msgstr "בחר %s"
 
-#: common/php/class-module.php:1126
-#: modules/calendar/library/calendar-utilities.php:1190
-#: modules/content-overview/content-overview.php:833
-#: modules/content-overview/content-overview.php:848
-#: modules/content-overview/content-overview.php:955
+#: common/php/class-module.php:1129
+#: modules/calendar/library/calendar-utilities.php:1191
+#: modules/content-overview/content-overview.php:850
+#: modules/content-overview/content-overview.php:874
+#: modules/content-overview/content-overview.php:926
+#: modules/content-overview/content-overview.php:995
 msgid "Revision Status"
 msgstr "סטטוס גרסה"
 
-#: common/php/class-module.php:1126
+#: common/php/class-module.php:1129
 #: modules/calendar/library/calendar-methods.php:424
 #: modules/calendar/library/calendar-methods.php:858
-#: modules/calendar/library/calendar-methods.php:1245
+#: modules/calendar/library/calendar-methods.php:1257
 #: modules/calendar/library/calendar-utilities.php:47
 #: modules/calendar/library/calendar-utilities.php:1070
-#: modules/calendar/library/calendar-utilities.php:1189
+#: modules/calendar/library/calendar-utilities.php:1188
 #: modules/content-board/content-board.php:811
 #: modules/content-board/content-board.php:1295
 #: modules/content-board/library/content-board-utilities.php:594
 #: modules/content-board/library/content-board-utilities.php:1165
-#: modules/content-overview/content-overview.php:954
-#: modules/content-overview/content-overview.php:1226
+#: modules/content-overview/content-overview.php:992
+#: modules/content-overview/content-overview.php:1272
 #: modules/content-overview/library/content-overview-utilities.php:491
 #: modules/content-overview/library/content-overview-utilities.php:703
 msgid "Post Status"
@@ -203,423 +207,8 @@ msgstr ""
 "%sשדרגו ל-Pro%s"
 
 #: includes.php:161
-#: lib/Legacy/Util.php:216
 msgid "Upgrade to Pro"
 msgstr "שדרג לגרסה מקצועית"
-
-#: lib/Legacy/Util.php:198
-msgid "Upgrade to PublishPress Planner Pro"
-msgstr "שדרג ל-PublishPress Planner Pro"
-
-#: lib/Legacy/Util.php:203
-msgid "Enhance the power of PublishPress Planner with the Pro version:"
-msgstr "שפר את כוחו של PublishPress Planner עם הגרסה המקצועית:"
-
-#: lib/Legacy/Util.php:206
-msgid "PublishPress Revisions integration"
-msgstr "שילוב עם PublishPress Revisions"
-
-#: lib/Legacy/Util.php:207
-msgid "Slack integration for notifications"
-msgstr "שילוב עם Slack עבור התראות"
-
-#: lib/Legacy/Util.php:208
-msgid "Send reminder notifications"
-msgstr "שלח התראות תזכורת"
-
-#: lib/Legacy/Util.php:209
-msgid "Use post meta in notifications"
-msgstr "שימוש במטא פוסט בהודעות"
-
-#: lib/Legacy/Util.php:210
-msgid "Modals so you can edit posts without changing screen"
-msgstr "מודלים כך שתוכל לערוך פוסטים מבלי לשנות מסך"
-
-#: lib/Legacy/Util.php:211
-msgid "Integration with SEO plugins"
-msgstr "שילוב עם תוספי SEO"
-
-#: lib/Legacy/Util.php:212
-msgid "Remove PublishPress ads and branding"
-msgstr "הסר את המודעות והמותג של PublishPress"
-
-#: lib/Legacy/Util.php:213
-msgid "Fast, professional support"
-msgstr "תמיכה מהירה ומקצועית"
-
-#: lib/Legacy/Util.php:223
-msgid "Need PublishPress Planner Support?"
-msgstr "צריך תמיכה ב-PublishPress Planner?"
-
-#: lib/Legacy/Util.php:228
-msgid "If you need help or have a new feature request, let us know."
-msgstr "אם אתה זקוק לעזרה או יש לך בקשת תכונה חדשה, הודע לנו."
-
-#: lib/Legacy/Util.php:230
-msgid "Request Support"
-msgstr "בקש תמיכה"
-
-#: lib/Legacy/Util.php:239
-msgid "Detailed documentation is also available on the plugin website."
-msgstr "תיעוד מפורט זמין גם באתר התוסף."
-
-#: lib/Legacy/Util.php:241
-msgid "View Knowledge Base"
-msgstr "צפה בבסיס הידע"
-
-#: lib/Notifications/Plugin.php:65
-#: modules/improved-notifications/improved-notifications.php:1160
-#: modules/notifications-log/library/NotificationsLogTable.php:497
-msgid "When to notify?"
-msgstr "מתי להודיע?"
-
-#: lib/Notifications/Plugin.php:66
-msgid "Filter the content?"
-msgstr "לסנן את התוכן?"
-
-#: lib/Notifications/Plugin.php:67
-#: modules/improved-notifications/improved-notifications.php:1180
-#: modules/notifications-log/library/NotificationsLogTable.php:499
-msgid "Who to notify?"
-msgstr "מי להודיע?"
-
-#: lib/Notifications/Plugin.php:209
-#: lib/Notifications/Plugin.php:210
-msgid "Notification workflow updated."
-msgstr "זרימת העבודה של ההודעה עודכנה."
-
-#: lib/Notifications/Plugin.php:211
-msgid "Notification workflow published."
-msgstr "זרימת העבודה של ההודעה פורסמה."
-
-#: lib/Notifications/Plugin.php:212
-msgid "Notification workflow saved."
-msgstr "זרימת העבודה של ההודעה נשמרה."
-
-#: lib/Notifications/Plugin.php:213
-msgid "Notification workflow submitted."
-msgstr "זרימת העבודה של ההודעה הוגשה."
-
-#: lib/Notifications/Plugin.php:215
-#, php-format
-msgid "Notification workflow scheduled for: %s."
-msgstr "זרימת העבודה של ההודעה מתוזמנת ל: %s."
-
-#: lib/Notifications/Plugin.php:218
-msgid "Notification workflow draft updated."
-msgstr "טיוטת זרימת העבודה של ההודעה עודכנה."
-
-#: lib/Notifications/Plugin.php:240
-#, php-format
-msgid "%s notification workflow updated."
-msgid_plural "%s notification workflows updated."
-msgstr[0] "%s זרימת העבודה של ההודעה עודכנה."
-msgstr[1] "%s זרימות העבודה של ההודעהעודכנו."
-msgstr[2] ""
-msgstr[3] ""
-
-#: lib/Notifications/Plugin.php:246
-msgid "1 notification workflow not updated, somebody is editing it."
-msgstr "1 זרימת עבודה של הודעה לא עודכנה, מישהו עורך אותה."
-
-#: lib/Notifications/Plugin.php:250
-#, php-format
-msgid "%s notification workflow not updated, somebody is editing it."
-msgid_plural "%s notification workflows not updated, somebody is editing them."
-msgstr[0] "%s זרימת העבודה של ההודעה לא עודכנה, מישהו עורך אותה."
-msgstr[1] "%s זרימות העבודה של ההודעה לא עודכנו, מישהו עורך אותן."
-msgstr[2] ""
-msgstr[3] ""
-
-#: lib/Notifications/Plugin.php:256
-#, php-format
-msgid "%s notification workflow permanently deleted."
-msgid_plural "%s notification workflows permanently deleted."
-msgstr[0] "%s זרימת העבודה של ההודעה נמחקה לצמיתות."
-msgstr[1] "%s זרימות העבודה של ההודעה נמחקו לצמיתות."
-msgstr[2] ""
-msgstr[3] ""
-
-#: lib/Notifications/Plugin.php:262
-#, php-format
-msgid "%s notification workflow moved to the Trash."
-msgid_plural "%s notification workflows moved to the Trash."
-msgstr[0] "%s זרימת העבודה של ההודעה הועברה לסל המחזור."
-msgstr[1] "%s זרימות העבודה של ההודעה הועברו לסל המחזור."
-msgstr[2] ""
-msgstr[3] ""
-
-#: lib/Notifications/Plugin.php:268
-#, php-format
-msgid "%s notification workflow restored from the Trash."
-msgid_plural "%s notification workflows restored from the Trash."
-msgstr[0] "%s זרימת העבודה של ההודעה שוחזרה מסל המחזור."
-msgstr[1] "%s זרימות העבודה של ההודעה שוחזרו מסל המחזור."
-msgstr[2] ""
-msgstr[3] ""
-
-#: lib/Notifications/Plugin.php:302
-msgid "Please select at least one event"
-msgstr "אנא בחר לפחות אירוע אחד"
-
-#: lib/Notifications/Plugin.php:335
-msgid "Not filtered"
-msgstr "לא סונן"
-
-#: lib/Notifications/Table/Base.php:183
-msgid "Excerpt View"
-msgstr "תצוגת תמצית"
-
-#: lib/Notifications/Table/Notifications.php:156
-#: lib/Notifications/Table/Workflows.php:142
-#: modules/calendar/library/calendar-methods.php:853
-#: modules/content-board/content-board.php:421
-#: modules/content-board/library/content-board-utilities.php:244
-#: modules/content-board/library/content-board-utilities.php:1159
-#: modules/content-overview/content-overview.php:418
-#: modules/content-overview/library/content-overview-utilities.php:485
-msgid "Title"
-msgstr "כותרת"
-
-#: lib/Notifications/Table/Notifications.php:157
-msgid "Message"
-msgstr "הודעה"
-
-#: lib/Notifications/Table/Notifications.php:158
-#: modules/calendar/library/calendar-utilities.php:1064
-#: modules/content-board/library/content-board-utilities.php:116
-#: modules/content-overview/library/content-overview-methods.php:341
-#: modules/editorial-metadata/editorial-metadata.php:290
-#: modules/notifications-log/library/NotificationsLogTable.php:496
-msgid "Date"
-msgstr "תאריך"
-
-#: lib/Notifications/Table/Notifications.php:159
-#: lib/Notifications/Table/Workflows.php:143
-#: modules/calendar/library/calendar-utilities.php:1059
-msgid "ID"
-msgstr "מזהה"
-
-#: lib/Notifications/Table/Notifications.php:235
-msgid "You don't have any notifications"
-msgstr "אין לך התראות"
-
-#: lib/Notifications/Table/Workflows.php:217
-msgid "No workflows found."
-msgstr "לא נמצאו תהליכי עבודה."
-
-#: lib/Notifications/Workflow/Option/SkipUser.php:26
-msgid "Skip current user"
-msgstr "דלג על המשתמש הנוכחי"
-
-#: lib/Notifications/Workflow/Option/SkipUser.php:31
-msgid "Skip notifications for the user who triggered the action"
-msgstr "דלג על התראות עבור המשתמש שגרם לפעולה"
-
-#: lib/Notifications/Workflow/Step/Channel/Email.php:31
-#: modules/editorial-comments/editorial-comments.php:1267
-msgid "Email"
-msgstr "דוא\"ל"
-
-#: lib/Notifications/Workflow/Step/Content/Main.php:29
-#: modules/calendar/library/calendar-methods.php:902
-#: modules/content-board/library/content-board-utilities.php:1207
-#: modules/content-overview/library/content-overview-utilities.php:533
-#: modules/improved-notifications/improved-notifications.php:1318
-#: views/workflow_help.html.php:2
-msgid "Content"
-msgstr "תוכן"
-
-#: lib/Notifications/Workflow/Step/Content/Main.php:53
-msgid "Subject"
-msgstr "נושא"
-
-#: lib/Notifications/Workflow/Step/Content/Main.php:54
-msgid "Body"
-msgstr "גוף"
-
-#: lib/Notifications/Workflow/Step/Event/Editorial_Comment.php:24
-msgid "When an editorial comment is added"
-msgstr "כאשר מתווסף תגובה מערכתית"
-
-#: lib/Notifications/Workflow/Step/Event/Editorial_Comment.php:96
-#, php-format
-msgid "Comment: %s (%d)"
-msgstr "תגובה: %s (%d)"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:34
-msgid "When the status is changed"
-msgstr "כאשר הסטטוס משתנה"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:35
-msgid "Previous status"
-msgstr "סטטוס קודם"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:36
-msgid "New status"
-msgstr "סטטוס חדש"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:37
-msgid "- any status -"
-msgstr "- כל סטטוס -"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:59
-msgid "New"
-msgstr "חדש"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:64
-msgid "Auto-draft"
-msgstr "טיוטה אוטומטית"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Taxonomies.php:34
-#: modules/calendar/library/calendar-utilities.php:1206
-#: modules/content-board/content-board.php:767
-#: modules/content-board/content-board.php:827
-#: modules/content-overview/content-overview.php:910
-#: modules/content-overview/content-overview.php:971
-msgid "Taxonomies"
-msgstr "קטגוריות"
-
-#: lib/Notifications/Workflow/Step/Event/Post_StatusTransition.php:28
-msgid "When the content is moved to a new status"
-msgstr "כאשר התוכן מועבר למצב חדש"
-
-#: lib/Notifications/Workflow/Step/Event/Post_StatusTransition.php:118
-#, php-format
-msgid "Old post status: %s"
-msgstr "מצב הפוסט הישן: %s"
-
-#: lib/Notifications/Workflow/Step/Event/Post_StatusTransition.php:122
-#, php-format
-msgid "New post status: %s"
-msgstr "מצב הפוסט החדש: %s"
-
-#: lib/Notifications/Workflow/Step/Event/Post_TaxonomyUpdate.php:28
-msgid "When taxonomy is updated"
-msgstr "כאשר הטקסונומיה מתעדכנת"
-
-#: lib/Notifications/Workflow/Step/Event/Post_Update.php:26
-msgid "When the content is updated"
-msgstr "כאשר התוכן מתעדכן"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Category.php:24
-#: modules/calendar/library/calendar-utilities.php:1080
-msgid "Category"
-msgid_plural "Categories"
-msgstr[0] "קטגוריה"
-msgstr[1] "קטגוריות"
-msgstr[2] ""
-msgstr[3] ""
-
-#: lib/Notifications/Workflow/Step/Event_Content/Filter/Category.php:34
-#: modules/calendar/library/calendar-methods.php:885
-#: modules/content-board/library/content-board-utilities.php:1190
-#: modules/content-overview/library/content-overview-utilities.php:516
-msgid "Categories"
-msgstr "קטגוריות"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Filter/Post_Type.php:34
-#: modules/editorial-metadata/library/editorial-metadata-list-table.php:46
-msgid "Post Types"
-msgstr "סוגי פוסטים"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Filter/Term.php:33
-msgid "Terms"
-msgstr "מונחים"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Post_Type.php:24
-msgid "Post type"
-msgstr "סוג פוסט"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Taxonomy.php:24
-msgid "Taxonomy"
-msgstr "טקסונומיה"
-
-#: lib/Notifications/Workflow/Step/Receiver/Author.php:26
-msgid "Authors of the content"
-msgstr "מחברי התוכן"
-
-#: lib/Notifications/Workflow/Step/Receiver/Author.php:92
-msgid "Authors"
-msgstr "מחברים"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:30
-msgid "Users who selected \"Notify me\" for the content"
-msgstr "משתמשים שבחרו \"עדכן אותי\" עבור התוכן"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:108
-#, php-format
-msgid "role:%s"
-msgstr "תפקיד:%s"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:132
-#, php-format
-msgid "group %d: %s"
-msgstr "קבוצה %d: %s"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:153
-msgid "user"
-msgstr "משתמש"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:168
-msgid "email"
-msgstr "אימייל"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:210
-msgid "\"Notify me\""
-msgstr "\"עדכן אותי\""
-
-#: lib/Notifications/Workflow/Step/Receiver/Group.php:31
-msgid "Permission Groups"
-msgstr "קבוצות הרשאה"
-
-#: lib/Notifications/Workflow/Step/Receiver/Group.php:222
-#, php-format
-msgid "%d Group"
-msgid_plural "%d Groups"
-msgstr[0] "%d קבוצת"
-msgstr[1] "%d קבוצות"
-msgstr[2] ""
-msgstr[3] ""
-
-#: lib/Notifications/Workflow/Step/Receiver/ParentAuthor.php:26
-msgid "Authors of the parent page"
-msgstr "מחברים של הדף ההורי"
-
-#: lib/Notifications/Workflow/Step/Receiver/ParentAuthor.php:106
-msgid "Parent Page Authors"
-msgstr "מחברי הדף ההורי"
-
-#: lib/Notifications/Workflow/Step/Receiver/RevisionAuthor.php:39
-msgid "Author of the revision"
-msgstr "מחבר הגרסה"
-
-#: lib/Notifications/Workflow/Step/Receiver/RevisionAuthor.php:105
-msgid "Revision Author"
-msgstr "מחבר הגרסה"
-
-#: lib/Notifications/Workflow/Step/Receiver/Role.php:173
-#, php-format
-msgid "%d Role"
-msgid_plural "%d Roles"
-msgstr[0] "%d תפקיד"
-msgstr[1] "%d תפקידים"
-msgstr[2] ""
-msgstr[3] ""
-
-#: lib/Notifications/Workflow/Step/Receiver/Site_Admin.php:24
-#: lib/Notifications/Workflow/Step/Receiver/Site_Admin.php:73
-msgid "Site Administrator"
-msgstr "מנהל אתר"
-
-#: lib/Notifications/Workflow/Step/Receiver/User.php:152
-#, php-format
-msgid "%d User"
-msgid_plural "%d Users"
-msgstr[0] "%d משתמש"
-msgstr[1] "%d משתמשים"
-msgstr[2] ""
-msgstr[3] ""
 
 #: modules/async-notifications/async-notifications.php:71
 msgid "Async Notifications"
@@ -630,26 +219,26 @@ msgstr "התראות אסינכרוניות"
 msgid "Event: %s, Workflow ID: %s, Post ID: %s, User ID: %s"
 msgstr "אירוע: %s, מזהה תהליך עבודה: %s, מזהה פוסט: %s, מזהה משתמש: %s"
 
-#: modules/calendar/calendar.php:216
-#: modules/calendar/calendar.php:415
-#: modules/calendar/calendar.php:432
-#: modules/calendar/calendar.php:433
+#: modules/calendar/calendar.php:228
+#: modules/calendar/calendar.php:427
+#: modules/calendar/calendar.php:444
+#: modules/calendar/calendar.php:445
 msgid "Content Calendar"
 msgstr "לוח שנה לתוכן"
 
-#: modules/calendar/calendar.php:241
+#: modules/calendar/calendar.php:253
 msgid "Post date updated."
 msgstr "תאריך הפוסט עודכן."
 
-#: modules/calendar/calendar.php:242
+#: modules/calendar/calendar.php:254
 msgid "Post status updated."
 msgstr "סטטוס הפוסט עודכן."
 
-#: modules/calendar/calendar.php:243
+#: modules/calendar/calendar.php:255
 msgid "There was an error updating the post. Please try again."
 msgstr "אירעה שגיאה בעת עדכון הפוסט. אנא נסה שוב."
 
-#: modules/calendar/calendar.php:247
+#: modules/calendar/calendar.php:259
 #, php-format
 msgid ""
 "Updating the post date dynamically doesn't work for published content. "
@@ -658,20 +247,20 @@ msgstr ""
 "עדכון תאריך הפוסט באופן דינמי לא עובד עבור תוכן שפורסם. אנא <a "
 "href='%s'>ערוך את הפוסט</a>."
 
-#: modules/calendar/calendar.php:251
+#: modules/calendar/calendar.php:263
 msgid ""
 "iCal secret key regenerated. Please inform all users they will need to "
 "resubscribe."
 msgstr "מפתח סודי iCal נוצר מחדש. אנא הודע לכל המשתמשים שהם יצטרכו להירשם מחדש."
 
-#: modules/calendar/calendar.php:259
+#: modules/calendar/calendar.php:271
 #: modules/editorial-comments/editorial-comments.php:82
 #: modules/editorial-metadata/editorial-metadata.php:119
 #: modules/notifications/notifications.php:96
 msgid "Overview"
 msgstr "סקירה כללית"
 
-#: modules/calendar/calendar.php:260
+#: modules/calendar/calendar.php:272
 msgid ""
 "<p>The calendar is a convenient week-by-week or month-by-month view into "
 "your content. Quickly see which stories are on track to being published on "
@@ -680,7 +269,7 @@ msgstr ""
 "<p>הלוח שנה הוא תצוגה נוחה שבוע אחר שבוע או חודש אחר חודש על התוכן שלך. ראה "
 "במהירות אילו סיפורים מתוכננים להתפרסם בזמן, ואילו ידרשו מאמץ נוסף.</p>"
 
-#: modules/calendar/calendar.php:265
+#: modules/calendar/calendar.php:277
 msgid ""
 "<p><strong>For more information:</strong></p><p><a "
 "href=\"https://publishpress.com/features/calendar/\">Calendar "
@@ -694,17 +283,17 @@ msgstr ""
 "href=\"https://github.com/ostraining/PublishPress\">PublishPress "
 "ב-Github</a></p>"
 
-#: modules/calendar/calendar.php:734
-#: modules/calendar/library/calendar-utilities.php:1259
+#: modules/calendar/calendar.php:746
+#: modules/calendar/library/calendar-utilities.php:1266
 #: modules/content-board/content-board.php:1043
 msgid "Weeks"
 msgstr "שבועות"
 
-#: modules/calendar/calendar.php:735
+#: modules/calendar/calendar.php:747
 msgid "Start Date"
 msgstr "תאריך התחלה"
 
-#: modules/calendar/calendar.php:736
+#: modules/calendar/calendar.php:748
 #: modules/calendar/library/calendar-utilities.php:467
 #: modules/calendar/library/calendar-utilities.php:468
 #: modules/content-board/library/content-board-utilities.php:28
@@ -712,57 +301,57 @@ msgstr "תאריך התחלה"
 msgid "Me Mode"
 msgstr "מצב אני"
 
-#: modules/calendar/calendar.php:737
+#: modules/calendar/calendar.php:749
 msgid "Show Revision"
 msgstr "הצג גרסה"
 
-#: modules/calendar/calendar.php:738
+#: modules/calendar/calendar.php:750
 #: modules/calendar/library/calendar-utilities.php:486
 #: modules/content-board/library/content-board-utilities.php:98
 #: modules/content-overview/library/content-overview-methods.php:323
 msgid "Search"
 msgstr "חפש"
 
-#: modules/calendar/calendar.php:912
-#: modules/content-board/library/content-board-methods.php:164
-#: modules/content-overview/content-overview.php:668
+#: modules/calendar/calendar.php:928
+#: modules/content-board/library/content-board-methods.php:166
+#: modules/content-overview/content-overview.php:684
 msgid "Filter updated successfully."
 msgstr "המסנן עודכן בהצלחה."
 
-#: modules/calendar/calendar.php:919
+#: modules/calendar/calendar.php:935
 msgid "Filter reset successfully."
 msgstr "המסנן אופס בהצלחה."
 
-#: modules/calendar/calendar.php:987
+#: modules/calendar/calendar.php:1008
 #: modules/content-board/content-board.php:709
-#: modules/content-overview/content-overview.php:832
 #: modules/content-overview/content-overview.php:847
-#: modules/content-overview/content-overview.php:892
+#: modules/content-overview/content-overview.php:871
+#: modules/content-overview/content-overview.php:923
 #: modules/notifications-log/library/NotificationsLogTable.php:500
 msgid "Status"
 msgstr "סטטוס"
 
-#: modules/calendar/calendar.php:988
-#: modules/calendar/calendar.php:1212
+#: modules/calendar/calendar.php:1009
+#: modules/calendar/calendar.php:1240
 #: modules/calendar/library/calendar-methods.php:875
-#: modules/calendar/library/calendar-methods.php:1248
+#: modules/calendar/library/calendar-methods.php:1260
 #: modules/calendar/library/calendar-utilities.php:115
 #: modules/calendar/library/calendar-utilities.php:1075
-#: modules/calendar/library/calendar-utilities.php:1191
+#: modules/calendar/library/calendar-utilities.php:1194
 #: modules/content-board/content-board.php:699
 #: modules/content-board/content-board.php:710
 #: modules/content-board/content-board.php:753
 #: modules/content-board/content-board.php:812
 #: modules/content-board/library/content-board-utilities.php:647
 #: modules/content-board/library/content-board-utilities.php:1180
-#: modules/content-overview/content-overview.php:835
-#: modules/content-overview/content-overview.php:849
-#: modules/content-overview/content-overview.php:894
-#: modules/content-overview/content-overview.php:956
-#: modules/content-overview/content-overview.php:1218
+#: modules/content-overview/content-overview.php:854
+#: modules/content-overview/content-overview.php:877
+#: modules/content-overview/content-overview.php:930
+#: modules/content-overview/content-overview.php:998
+#: modules/content-overview/content-overview.php:1264
 #: modules/content-overview/library/content-overview-utilities.php:506
 #: modules/content-overview/library/content-overview-utilities.php:769
-#: modules/editorial-comments/library/EditorialCommentsTable.php:228
+#: modules/editorial-comments/library/EditorialCommentsTable.php:230
 msgid "Author"
 msgid_plural "Authors"
 msgstr[0] "מחבר"
@@ -770,27 +359,27 @@ msgstr[1] "מחברים"
 msgstr[2] ""
 msgstr[3] ""
 
-#: modules/calendar/calendar.php:989
-#: modules/calendar/calendar.php:1220
+#: modules/calendar/calendar.php:1010
+#: modules/calendar/calendar.php:1248
 #: modules/calendar/library/calendar-utilities.php:146
 #: modules/calendar/library/calendar-utilities.php:1054
-#: modules/calendar/library/calendar-utilities.php:1192
+#: modules/calendar/library/calendar-utilities.php:1195
 #: modules/content-board/content-board.php:698
 #: modules/content-board/content-board.php:711
 #: modules/content-board/content-board.php:752
 #: modules/content-board/content-board.php:813
 #: modules/content-board/library/content-board-utilities.php:677
 #: modules/content-board/library/content-board-utilities.php:1153
-#: modules/content-overview/content-overview.php:834
-#: modules/content-overview/content-overview.php:850
-#: modules/content-overview/content-overview.php:893
-#: modules/content-overview/content-overview.php:957
+#: modules/content-overview/content-overview.php:853
+#: modules/content-overview/content-overview.php:878
+#: modules/content-overview/content-overview.php:929
+#: modules/content-overview/content-overview.php:999
 #: modules/content-overview/library/content-overview-utilities.php:479
 #: modules/content-overview/library/content-overview-utilities.php:799
 msgid "Post Type"
 msgstr "סוג פוסט"
 
-#: modules/calendar/calendar.php:1103
+#: modules/calendar/calendar.php:1131
 msgid "Post moved to the trash."
 msgid_plural "%d posts moved to the trash."
 msgstr[0] "הפוסט הועבר לפח."
@@ -798,13 +387,13 @@ msgstr[1] "%d פוסטים הועברו לפח."
 msgstr[2] ""
 msgstr[3] ""
 
-#: modules/calendar/calendar.php:1119
+#: modules/calendar/calendar.php:1147
 #: modules/content-board/content-board.php:614
 #: modules/content-overview/library/content-overview-methods.php:214
 msgid "Undo"
 msgstr "בטל"
 
-#: modules/calendar/calendar.php:1129
+#: modules/calendar/calendar.php:1157
 msgid "Post restored from the Trash."
 msgid_plural "%d posts restored from the Trash."
 msgstr[0] "הפוסט שוחזר מהפח."
@@ -812,11 +401,11 @@ msgstr[1] "%d פוסטים שוחזרו מהפח."
 msgstr[2] ""
 msgstr[3] ""
 
-#: modules/calendar/calendar.php:1161
+#: modules/calendar/calendar.php:1189
 msgid "Initializing the calendar. Please wait..."
 msgstr "מאתחל את הקלנדר. אנא המתן..."
 
-#: modules/calendar/calendar.php:1165
+#: modules/calendar/calendar.php:1193
 msgid ""
 "It seems like it is taking too long. Please, try reloading the page again "
 "and check the browser console looking for errors."
@@ -824,7 +413,7 @@ msgstr ""
 "נראה שזה לוקח יותר מדי זמן. אנא, נסה לטעון את הדף שוב ובדוק את קונסולת "
 "הדפדפן לחיפוש שגיאות."
 
-#: modules/calendar/calendar.php:1809
+#: modules/calendar/calendar.php:1837
 msgid ""
 "The selected user doesn't have enough permissions to be set as the post "
 "author."
@@ -952,9 +541,24 @@ msgstr "אין מספיק הרשאות"
 msgid "Invalid date"
 msgstr "תאריך לא תקין"
 
+#: modules/calendar/library/calendar-methods.php:853
+#: modules/content-board/content-board.php:421
+#: modules/content-board/library/content-board-utilities.php:244
+#: modules/content-board/library/content-board-utilities.php:1159
+#: modules/content-overview/content-overview.php:430
+#: modules/content-overview/library/content-overview-utilities.php:485
+msgid "Title"
+msgstr "כותרת"
+
 #: modules/calendar/library/calendar-methods.php:864
 msgid "Publish Time"
 msgstr "זמן פרסום"
+
+#: modules/calendar/library/calendar-methods.php:885
+#: modules/content-board/library/content-board-utilities.php:1190
+#: modules/content-overview/library/content-overview-utilities.php:516
+msgid "Categories"
+msgstr "קטגוריות"
 
 #: modules/calendar/library/calendar-methods.php:894
 #: modules/content-board/library/content-board-utilities.php:1199
@@ -962,170 +566,200 @@ msgstr "זמן פרסום"
 msgid "Tags"
 msgstr "תיוגים"
 
+#: modules/calendar/library/calendar-methods.php:902
+#: modules/content-board/library/content-board-utilities.php:1207
+#: modules/content-overview/library/content-overview-utilities.php:533
+#: modules/improved-notifications/improved-notifications.php:1337
+#: views/workflow_help.html.php:2
+msgid "Content"
+msgstr "תוכן"
+
 #: modules/calendar/library/calendar-methods.php:1001
 msgid "Publish on"
 msgstr "פרסם ב"
 
-#: modules/calendar/library/calendar-methods.php:1195
-#: modules/notifications-log/notifications-log.php:210
+#: modules/calendar/library/calendar-methods.php:1200
+#: modules/calendar/library/calendar-methods.php:1249
+#: modules/notifications-log/notifications-log.php:213
 msgid "Loading..."
 msgstr "טוען..."
 
-#: modules/calendar/library/calendar-methods.php:1196
+#: modules/calendar/library/calendar-methods.php:1201
 msgid "Loading item..."
 msgstr "טוען פריט..."
 
-#: modules/calendar/library/calendar-methods.php:1197
+#: modules/calendar/library/calendar-methods.php:1202
 msgid "Click to add"
 msgstr "לחץ כדי להוסיף"
 
-#: modules/calendar/library/calendar-methods.php:1198
+#: modules/calendar/library/calendar-methods.php:1203
 msgid "Moving the item..."
 msgstr "מעביר את הפריט..."
 
-#: modules/calendar/library/calendar-methods.php:1199
+#: modules/calendar/library/calendar-methods.php:1204
 #, php-format
 msgid "Hide the %s last items"
 msgstr "הסתר את %s הפריטים האחרונים"
 
-#: modules/calendar/library/calendar-methods.php:1200
+#: modules/calendar/library/calendar-methods.php:1205
 #, php-format
 msgid "Show %s more"
 msgstr "הצג %s נוספים"
 
-#: modules/calendar/library/calendar-methods.php:1201
-#: modules/calendar/library/calendar-methods.php:1704
+#: modules/calendar/library/calendar-methods.php:1206
+#: modules/calendar/library/calendar-methods.php:1716
 msgid "Untitled"
 msgstr "בלי כותרת"
 
-#: modules/calendar/library/calendar-methods.php:1202
+#: modules/calendar/library/calendar-methods.php:1207
+msgid "Refresh"
+msgstr "רענן"
+
+#: modules/calendar/library/calendar-methods.php:1208
+msgid "Previous page"
+msgstr "עמוד קודם"
+
+#: modules/calendar/library/calendar-methods.php:1209
+msgid "Previous week"
+msgstr "שבוע קודם"
+
+#: modules/calendar/library/calendar-methods.php:1210
+msgid "Next week"
+msgstr "שבוע הבא"
+
+#: modules/calendar/library/calendar-methods.php:1211
+msgid "Next page"
+msgstr "עמוד הבא"
+
+#: modules/calendar/library/calendar-methods.php:1212
+#: modules/calendar/library/calendar-utilities.php:477
+#: modules/calendar/library/calendar-utilities.php:507
 msgid "Close"
 msgstr "סגור"
 
-#: modules/calendar/library/calendar-methods.php:1203
-#: modules/editorial-comments/lib/editorial-comments.js:349
+#: modules/calendar/library/calendar-methods.php:1213
 msgid "Save"
 msgstr "שמור"
 
-#: modules/calendar/library/calendar-methods.php:1204
+#: modules/calendar/library/calendar-methods.php:1214
 msgid "Saving..."
 msgstr "שומר..."
 
-#: modules/calendar/library/calendar-methods.php:1205
+#: modules/calendar/library/calendar-methods.php:1215
 msgid "Save and edit"
 msgstr "שמור וערוך"
 
-#: modules/calendar/library/calendar-methods.php:1206
+#: modules/calendar/library/calendar-methods.php:1216
 #, php-format
 msgid "Add content for %s"
 msgstr "הוסף תוכן עבור %s"
 
-#: modules/calendar/library/calendar-methods.php:1207
+#: modules/calendar/library/calendar-methods.php:1217
 msgid "Post type not found"
 msgstr "סוג פוסט לא נמצא"
 
-#: modules/calendar/library/calendar-methods.php:1208
+#: modules/calendar/library/calendar-methods.php:1218
 msgid "Post type:"
 msgstr "סוג פוסט:"
 
-#: modules/calendar/library/calendar-methods.php:1209
+#: modules/calendar/library/calendar-methods.php:1219
 #: modules/content-board/library/content-board-utilities.php:1130
 #: modules/content-overview/library/content-overview-utilities.php:456
 msgid "Please, wait! Loading the form fields..."
 msgstr "בבקשה, המתן! טוען את שדות הטופס..."
 
-#: modules/calendar/library/calendar-methods.php:1210
+#: modules/calendar/library/calendar-methods.php:1220
 msgid "Sun"
 msgstr "שמש"
 
-#: modules/calendar/library/calendar-methods.php:1211
+#: modules/calendar/library/calendar-methods.php:1221
 msgid "Mon"
 msgstr "שני"
 
-#: modules/calendar/library/calendar-methods.php:1212
+#: modules/calendar/library/calendar-methods.php:1222
 msgid "Tue"
 msgstr "ג'"
 
-#: modules/calendar/library/calendar-methods.php:1213
+#: modules/calendar/library/calendar-methods.php:1223
 msgid "Wed"
 msgstr "ד'"
 
-#: modules/calendar/library/calendar-methods.php:1214
+#: modules/calendar/library/calendar-methods.php:1224
 msgid "Thu"
 msgstr "ה'"
 
-#: modules/calendar/library/calendar-methods.php:1215
+#: modules/calendar/library/calendar-methods.php:1225
 msgid "Fri"
 msgstr "ו'"
 
-#: modules/calendar/library/calendar-methods.php:1216
+#: modules/calendar/library/calendar-methods.php:1226
 msgid "Sat"
 msgstr "ש'"
 
-#: modules/calendar/library/calendar-methods.php:1217
+#: modules/calendar/library/calendar-methods.php:1227
 msgid "Jan"
 msgstr "ינו"
 
-#: modules/calendar/library/calendar-methods.php:1218
+#: modules/calendar/library/calendar-methods.php:1228
 msgid "Feb"
 msgstr "פבר"
 
-#: modules/calendar/library/calendar-methods.php:1219
+#: modules/calendar/library/calendar-methods.php:1229
 msgid "Mar"
 msgstr "מרץ"
 
-#: modules/calendar/library/calendar-methods.php:1220
+#: modules/calendar/library/calendar-methods.php:1230
 msgid "Apr"
 msgstr "אפר"
 
-#: modules/calendar/library/calendar-methods.php:1221
+#: modules/calendar/library/calendar-methods.php:1231
 msgid "May"
 msgstr "מאי"
 
-#: modules/calendar/library/calendar-methods.php:1222
+#: modules/calendar/library/calendar-methods.php:1232
 msgid "Jun"
 msgstr "יונ"
 
-#: modules/calendar/library/calendar-methods.php:1223
+#: modules/calendar/library/calendar-methods.php:1233
 msgid "Jul"
 msgstr "יול"
 
-#: modules/calendar/library/calendar-methods.php:1224
+#: modules/calendar/library/calendar-methods.php:1234
 msgid "Aug"
 msgstr "אוג"
 
-#: modules/calendar/library/calendar-methods.php:1225
+#: modules/calendar/library/calendar-methods.php:1235
 msgid "Sep"
 msgstr "ספט"
 
-#: modules/calendar/library/calendar-methods.php:1226
+#: modules/calendar/library/calendar-methods.php:1236
 msgid "Oct"
 msgstr "אוקט"
 
-#: modules/calendar/library/calendar-methods.php:1227
+#: modules/calendar/library/calendar-methods.php:1237
 msgid "Nov"
 msgstr "נוב"
 
-#: modules/calendar/library/calendar-methods.php:1228
+#: modules/calendar/library/calendar-methods.php:1238
 msgid "Dec"
 msgstr "דצמ"
 
-#: modules/calendar/library/calendar-methods.php:1229
+#: modules/calendar/library/calendar-methods.php:1239
 #: modules/calendar/library/calendar-utilities.php:51
 #: modules/content-board/library/content-board-utilities.php:598
 #: modules/content-overview/library/content-overview-utilities.php:707
 msgid "All statuses"
 msgstr "כל הסטטוסים"
 
-#: modules/calendar/library/calendar-methods.php:1230
+#: modules/calendar/library/calendar-methods.php:1240
 msgid "All categories"
 msgstr "כל הקטגוריות"
 
-#: modules/calendar/library/calendar-methods.php:1231
+#: modules/calendar/library/calendar-methods.php:1241
 msgid "All tags"
 msgstr "כל התגים"
 
-#: modules/calendar/library/calendar-methods.php:1232
+#: modules/calendar/library/calendar-methods.php:1242
 #: modules/calendar/library/calendar-utilities.php:117
 #: modules/calendar/library/calendar-utilities.php:120
 #: modules/content-board/library/content-board-utilities.php:649
@@ -1135,11 +769,11 @@ msgstr "כל התגים"
 msgid "All authors"
 msgstr "כל המחברים"
 
-#: modules/calendar/library/calendar-methods.php:1233
+#: modules/calendar/library/calendar-methods.php:1243
 msgid "All types"
 msgstr "כל הסוגים"
 
-#: modules/calendar/library/calendar-methods.php:1234
+#: modules/calendar/library/calendar-methods.php:1244
 #: modules/calendar/library/calendar-utilities.php:513
 #, php-format
 msgid "%d week"
@@ -1149,101 +783,107 @@ msgstr[1] "%d שבועות"
 msgstr[2] ""
 msgstr[3] ""
 
-#: modules/calendar/library/calendar-methods.php:1235
+#: modules/calendar/library/calendar-methods.php:1245
 #, php-format
 msgid "%d weeks"
 msgstr "%d שבועות"
 
-#: modules/calendar/library/calendar-methods.php:1236
+#: modules/calendar/library/calendar-methods.php:1246
 msgid "Today"
 msgstr "היום"
 
-#: modules/calendar/library/calendar-methods.php:1237
+#: modules/calendar/library/calendar-methods.php:1247
 msgid "No terms"
 msgstr "אין מונחים"
 
-#: modules/calendar/library/calendar-methods.php:1238
+#: modules/calendar/library/calendar-methods.php:1248
+#: modules/content-board/content-board.php:1268
+#: modules/content-overview/content-overview.php:1240
+msgid "No results found"
+msgstr "לא נמצאו תוצאות"
+
+#: modules/calendar/library/calendar-methods.php:1250
 #: modules/content-board/content-board.php:1288
-#: modules/content-overview/content-overview.php:836
-#: modules/content-overview/content-overview.php:895
-#: modules/content-overview/content-overview.php:1219
+#: modules/content-overview/content-overview.php:855
+#: modules/content-overview/content-overview.php:931
+#: modules/content-overview/content-overview.php:1265
 msgid "Post Date"
 msgstr "תאריך פוסט"
 
-#: modules/calendar/library/calendar-methods.php:1239
+#: modules/calendar/library/calendar-methods.php:1251
 #: modules/calendar/library/calendar-utilities.php:1097
 #: modules/content-board/content-board.php:1183
 #: modules/content-board/content-board.php:1289
-#: modules/content-overview/content-overview.php:1220
-#: modules/content-overview/content-overview.php:1703
+#: modules/content-overview/content-overview.php:1266
+#: modules/content-overview/content-overview.php:1749
 #: modules/editorial-comments/editorial-comments.php:628
 #: modules/editorial-metadata/library/editorial-metadata-list-table.php:159
 msgid "Edit"
 msgstr "עריכה"
 
-#: modules/calendar/library/calendar-methods.php:1241
+#: modules/calendar/library/calendar-methods.php:1253
 #: modules/calendar/library/calendar-utilities.php:1114
 #: modules/content-board/content-board.php:1224
 #: modules/content-board/content-board.php:1291
-#: modules/content-overview/content-overview.php:1222
-#: modules/content-overview/content-overview.php:1744
+#: modules/content-overview/content-overview.php:1268
+#: modules/content-overview/content-overview.php:1790
 msgid "Preview"
 msgstr "תצוגה מקדימה"
 
-#: modules/calendar/library/calendar-methods.php:1242
+#: modules/calendar/library/calendar-methods.php:1254
 #: modules/calendar/library/calendar-utilities.php:1111
 #: modules/content-board/content-board.php:1211
 #: modules/content-board/content-board.php:1292
-#: modules/content-overview/content-overview.php:1223
-#: modules/content-overview/content-overview.php:1731
+#: modules/content-overview/content-overview.php:1269
+#: modules/content-overview/content-overview.php:1777
 msgid "View"
 msgstr "צפה"
 
-#: modules/calendar/library/calendar-methods.php:1243
+#: modules/calendar/library/calendar-methods.php:1255
 #: modules/content-board/content-board.php:1293
-#: modules/content-overview/content-overview.php:1224
+#: modules/content-overview/content-overview.php:1270
 msgid "Previous Post"
 msgstr "פוסט קודם"
 
-#: modules/calendar/library/calendar-methods.php:1244
+#: modules/calendar/library/calendar-methods.php:1256
 #: modules/content-board/content-board.php:1294
-#: modules/content-overview/content-overview.php:1225
+#: modules/content-overview/content-overview.php:1271
 msgid "Next Post"
 msgstr "פוסט הבא"
 
-#: modules/calendar/library/calendar-methods.php:1246
+#: modules/calendar/library/calendar-methods.php:1258
 #: modules/content-board/content-board.php:1296
-#: modules/content-overview/content-overview.php:1227
+#: modules/content-overview/content-overview.php:1273
 msgid "Save Changes"
 msgstr "שמור שינויים"
 
-#: modules/calendar/library/calendar-methods.php:1247
+#: modules/calendar/library/calendar-methods.php:1259
 #: modules/content-board/content-board.php:1297
-#: modules/content-overview/content-overview.php:1228
+#: modules/content-overview/content-overview.php:1274
 msgid "Taxonomy not set."
 msgstr "המיסוד לא נקבע."
 
-#: modules/calendar/library/calendar-methods.php:1687
+#: modules/calendar/library/calendar-methods.php:1699
 msgid "No date supplied."
 msgstr "לא סופק תאריך."
 
-#: modules/calendar/library/calendar-methods.php:1698
+#: modules/calendar/library/calendar-methods.php:1710
 msgid "The selected post type is not enabled for the calendar."
 msgstr "סוג הפוסט שנבחר לא מופעל עבור לוח השנה."
 
-#: modules/calendar/library/calendar-methods.php:1728
+#: modules/calendar/library/calendar-methods.php:1740
 msgid "Invalid Status supplied."
 msgstr "סטטוס שסופק אינו תקין."
 
-#: modules/calendar/library/calendar-methods.php:1752
+#: modules/calendar/library/calendar-methods.php:1764
 msgid "Invalid Publish Date supplied."
 msgstr "תאריך פרסום שסופק אינו תקין."
 
-#: modules/calendar/library/calendar-methods.php:1821
+#: modules/calendar/library/calendar-methods.php:1833
 msgid "Post created successfully"
 msgstr "הפוסט נוצר בהצלחה"
 
-#: modules/calendar/library/calendar-methods.php:1828
+#: modules/calendar/library/calendar-methods.php:1840
 msgid "Post could not be created"
 msgstr "לא ניתן היה ליצור את הפוסט"
 
@@ -1346,6 +986,12 @@ msgstr "נכשל"
 msgid "Customize Filters"
 msgstr "התאמת מסננים"
 
+#: modules/calendar/library/calendar-utilities.php:485
+#: modules/content-board/library/content-board-utilities.php:97
+#: modules/content-overview/library/content-overview-methods.php:322
+msgid "Search content"
+msgstr "חפש תוכן"
+
 #: modules/calendar/library/calendar-utilities.php:502
 #: modules/calendar/library/calendar-utilities.php:503
 msgid "Period"
@@ -1430,6 +1076,26 @@ msgstr "גרור כדי לשנות את סדר המסננים המופעלים."
 msgid "Apply Changes"
 msgstr "החל שינויים"
 
+#: modules/calendar/library/calendar-utilities.php:1059
+msgid "ID"
+msgstr "מזהה"
+
+#: modules/calendar/library/calendar-utilities.php:1064
+#: modules/content-board/library/content-board-utilities.php:116
+#: modules/content-overview/library/content-overview-methods.php:341
+#: modules/editorial-metadata/editorial-metadata.php:290
+#: modules/notifications-log/library/NotificationsLogTable.php:496
+msgid "Date"
+msgstr "תאריך"
+
+#: modules/calendar/library/calendar-utilities.php:1080
+msgid "Category"
+msgid_plural "Categories"
+msgstr[0] "קטגוריה"
+msgstr[1] "קטגוריות"
+msgstr[2] ""
+msgstr[3] ""
+
 #: modules/calendar/library/calendar-utilities.php:1085
 msgid "Tag"
 msgid_plural "Tags"
@@ -1438,29 +1104,29 @@ msgstr[1] "תגים"
 msgstr[2] ""
 msgstr[3] ""
 
-#: modules/calendar/library/calendar-utilities.php:1180
+#: modules/calendar/library/calendar-utilities.php:1181
 #: modules/content-board/content-board.php:802
-#: modules/content-overview/content-overview.php:945
+#: modules/content-overview/content-overview.php:985
 msgid "Custom filters"
 msgstr "מסננים מותאמים אישית"
 
-#: modules/calendar/library/calendar-utilities.php:1181
+#: modules/calendar/library/calendar-utilities.php:1182
 #: modules/content-board/content-board.php:803
-#: modules/content-overview/content-overview.php:946
+#: modules/content-overview/content-overview.php:986
 msgid "Click the \"Add New\" button to create new filters."
 msgstr "לחץ על כפתור \"הוסף חדש\" כדי ליצור מסננים חדשים."
 
-#: modules/calendar/library/calendar-utilities.php:1187
+#: modules/calendar/library/calendar-utilities.php:1199
 #: modules/content-board/content-board.php:809
-#: modules/content-overview/content-overview.php:952
+#: modules/content-overview/content-overview.php:1003
 msgid "Inbuilt filters"
 msgstr "מסננים מובנים"
 
-#: modules/calendar/library/calendar-utilities.php:1199
+#: modules/calendar/library/calendar-utilities.php:1206
 #: modules/content-board/content-board.php:760
 #: modules/content-board/content-board.php:820
-#: modules/content-overview/content-overview.php:903
-#: modules/content-overview/content-overview.php:964
+#: modules/content-overview/content-overview.php:943
+#: modules/content-overview/content-overview.php:1010
 #: modules/editorial-metadata/editorial-metadata.php:95
 #: modules/editorial-metadata/editorial-metadata.php:511
 #: modules/editorial-metadata/editorial-metadata.php:1720
@@ -1468,140 +1134,148 @@ msgstr "מסננים מובנים"
 msgid "Editorial Fields"
 msgstr "שדות עיתונאיים"
 
-#: modules/calendar/library/calendar-utilities.php:1200
+#: modules/calendar/library/calendar-utilities.php:1207
 #: modules/content-board/content-board.php:761
 #: modules/content-board/content-board.php:821
-#: modules/content-overview/content-overview.php:904
-#: modules/content-overview/content-overview.php:965
+#: modules/content-overview/content-overview.php:944
+#: modules/content-overview/content-overview.php:1011
 msgid "You do not have any editorial fields enabled"
 msgstr "אין לך שדות עיתונאיים מופעלים"
 
-#: modules/calendar/library/calendar-utilities.php:1207
+#: modules/calendar/library/calendar-utilities.php:1213
+#: modules/content-board/content-board.php:767
+#: modules/content-board/content-board.php:827
+#: modules/content-overview/content-overview.php:950
+#: modules/content-overview/content-overview.php:1017
+msgid "Taxonomies"
+msgstr "קטגוריות"
+
+#: modules/calendar/library/calendar-utilities.php:1214
 #: modules/content-board/content-board.php:768
 #: modules/content-board/content-board.php:828
-#: modules/content-overview/content-overview.php:911
-#: modules/content-overview/content-overview.php:972
+#: modules/content-overview/content-overview.php:951
+#: modules/content-overview/content-overview.php:1018
 msgid "You do not have any public taxonomies"
 msgstr "אין לך טקסונומיות ציבוריות"
 
-#: modules/calendar/library/calendar-utilities.php:1229
+#: modules/calendar/library/calendar-utilities.php:1236
 msgid "Subscribe in iCal or Google Calendar"
 msgstr "הירשם ב-iCal או בגוגל קלנדר"
 
-#: modules/calendar/library/calendar-utilities.php:1234
+#: modules/calendar/library/calendar-utilities.php:1241
 msgid "Start date"
 msgstr "תאריך התחלה"
 
-#: modules/calendar/library/calendar-utilities.php:1238
+#: modules/calendar/library/calendar-utilities.php:1245
 msgid "Current week"
 msgstr "שבוע נוכחי"
 
-#: modules/calendar/library/calendar-utilities.php:1240
+#: modules/calendar/library/calendar-utilities.php:1247
 msgid "One month ago"
 msgstr "לפני חודש אחד"
 
-#: modules/calendar/library/calendar-utilities.php:1242
+#: modules/calendar/library/calendar-utilities.php:1249
 msgid "Two months ago"
 msgstr "לפני חודשיים"
 
-#: modules/calendar/library/calendar-utilities.php:1244
+#: modules/calendar/library/calendar-utilities.php:1251
 msgid "Three months ago"
 msgstr "לפני שלושה חודשים"
 
-#: modules/calendar/library/calendar-utilities.php:1246
+#: modules/calendar/library/calendar-utilities.php:1253
 msgid "Four months ago"
 msgstr "לפני ארבעה חודשים"
 
-#: modules/calendar/library/calendar-utilities.php:1248
+#: modules/calendar/library/calendar-utilities.php:1255
 msgid "Five months ago"
 msgstr "לפני חמישה חודשים"
 
-#: modules/calendar/library/calendar-utilities.php:1250
+#: modules/calendar/library/calendar-utilities.php:1257
 msgid "Six months ago"
 msgstr "שישה חודשים לפני"
 
-#: modules/calendar/library/calendar-utilities.php:1256
+#: modules/calendar/library/calendar-utilities.php:1263
 msgid "End date"
 msgstr "תאריך סיום"
 
-#: modules/calendar/library/calendar-utilities.php:1261
+#: modules/calendar/library/calendar-utilities.php:1268
 msgid "One week"
 msgstr "שבוע אחד"
 
-#: modules/calendar/library/calendar-utilities.php:1263
+#: modules/calendar/library/calendar-utilities.php:1270
 msgid "Two weeks"
 msgstr "שבועיים"
 
-#: modules/calendar/library/calendar-utilities.php:1265
+#: modules/calendar/library/calendar-utilities.php:1272
 msgid "Three weeks"
 msgstr "שלושה שבועות"
 
-#: modules/calendar/library/calendar-utilities.php:1267
+#: modules/calendar/library/calendar-utilities.php:1274
 msgid "Four weeks"
 msgstr "ארבעה שבועות"
 
-#: modules/calendar/library/calendar-utilities.php:1271
+#: modules/calendar/library/calendar-utilities.php:1278
 #: modules/content-board/content-board.php:1044
 msgid "Months"
 msgstr "חודשים"
 
-#: modules/calendar/library/calendar-utilities.php:1273
+#: modules/calendar/library/calendar-utilities.php:1280
 msgid "One month"
 msgstr "חודש אחד"
 
-#: modules/calendar/library/calendar-utilities.php:1276
+#: modules/calendar/library/calendar-utilities.php:1283
 msgid "Two months"
 msgstr "שניים חודשים"
 
-#: modules/calendar/library/calendar-utilities.php:1278
+#: modules/calendar/library/calendar-utilities.php:1285
 msgid "Three months"
 msgstr "שלושה חודשים"
 
-#: modules/calendar/library/calendar-utilities.php:1280
+#: modules/calendar/library/calendar-utilities.php:1287
 msgid "Four months"
 msgstr "ארבעה חודשים"
 
-#: modules/calendar/library/calendar-utilities.php:1282
+#: modules/calendar/library/calendar-utilities.php:1289
 msgid "Five months"
 msgstr "חמישה חודשים"
 
-#: modules/calendar/library/calendar-utilities.php:1284
+#: modules/calendar/library/calendar-utilities.php:1291
 msgid "Six months"
 msgstr "שישה חודשים"
 
-#: modules/calendar/library/calendar-utilities.php:1286
+#: modules/calendar/library/calendar-utilities.php:1293
 msgid "Seven months"
 msgstr "שבעה חודשים"
 
-#: modules/calendar/library/calendar-utilities.php:1288
+#: modules/calendar/library/calendar-utilities.php:1295
 msgid "Eight months"
 msgstr "שמונה חודשים"
 
-#: modules/calendar/library/calendar-utilities.php:1290
+#: modules/calendar/library/calendar-utilities.php:1297
 msgid "Nine months"
 msgstr "תשעה חודשים"
 
-#: modules/calendar/library/calendar-utilities.php:1292
+#: modules/calendar/library/calendar-utilities.php:1299
 msgid "Ten months"
 msgstr "עשרה חודשים"
 
-#: modules/calendar/library/calendar-utilities.php:1294
+#: modules/calendar/library/calendar-utilities.php:1301
 msgid "Eleven months"
 msgstr "אחד עשר חודשים"
 
-#: modules/calendar/library/calendar-utilities.php:1296
+#: modules/calendar/library/calendar-utilities.php:1303
 msgid "Twelve months"
 msgstr "שניים עשר חודשים"
 
-#: modules/calendar/library/calendar-utilities.php:1308
+#: modules/calendar/library/calendar-utilities.php:1315
 msgid "Download .ics file"
 msgstr "הורד קובץ .ics"
 
-#: modules/calendar/library/calendar-utilities.php:1315
+#: modules/calendar/library/calendar-utilities.php:1322
 msgid "Copy to the clipboard"
 msgstr "העתק ללוח"
 
-#: modules/calendar/library/calendar-utilities.php:1321
+#: modules/calendar/library/calendar-utilities.php:1328
 msgid "Click here to subscribe in iCal or Google Calendar"
 msgstr "לחץ כאן כדי להירשם ב-iCal או ב-Google Calendar"
 
@@ -1627,21 +1301,21 @@ msgstr "נתוני כרטיס מובנים"
 #: modules/content-board/content-board.php:847
 #: modules/content-board/library/content-board-methods.php:39
 #: modules/content-board/library/content-board-methods.php:107
-#: modules/content-overview/content-overview.php:991
+#: modules/content-overview/content-overview.php:1037
 msgid "An error occured"
 msgstr "אירעה שגיאה"
 
 #: modules/content-board/content-board.php:851
 #: modules/content-board/library/content-board-methods.php:43
 #: modules/content-board/library/content-board-methods.php:111
-#: modules/content-overview/content-overview.php:995
+#: modules/content-overview/content-overview.php:1041
 msgid "Error validating nonce. Please reload this page and try again."
 msgstr "שגיאה באימות nonce. אנא רענן את הדף הזה ונסה שוב."
 
 #: modules/content-board/content-board.php:853
 #: modules/content-board/library/content-board-methods.php:45
-#: modules/content-board/library/content-board-methods.php:113
-#: modules/content-overview/content-overview.php:997
+#: modules/content-board/library/content-board-methods.php:115
+#: modules/content-overview/content-overview.php:1043
 msgid "Invalid form request."
 msgstr "בקשת טופס לא תקפה."
 
@@ -1678,40 +1352,35 @@ msgid "Only editable posts will be moveable."
 msgstr "רק פוסטים ניתנים לעריכה יהיו ניתנים להעברה."
 
 #: modules/content-board/content-board.php:1179
-#: modules/content-overview/content-overview.php:1699
+#: modules/content-overview/content-overview.php:1745
 #: modules/dashboard/dashboard.php:299
 msgid "Edit this post"
 msgstr "ערוך פוסט זה"
 
 #: modules/content-board/content-board.php:1191
-#: modules/content-overview/content-overview.php:1711
+#: modules/content-overview/content-overview.php:1757
 msgid "Move this item to the Trash"
 msgstr "העבר פריט זה לפח"
 
 #: modules/content-board/content-board.php:1205
-#: modules/content-overview/content-overview.php:1725
+#: modules/content-overview/content-overview.php:1771
 #, php-format
 msgid "View &#8220;%s&#8221;"
 msgstr "הצג &#8220;%s&#8221;"
 
 #: modules/content-board/content-board.php:1221
-#: modules/content-overview/content-overview.php:1741
+#: modules/content-overview/content-overview.php:1787
 #, php-format
 msgid "Preview &#8220;%s&#8221;"
 msgstr "תצוגה מקדימה &#8220;%s&#8221;"
 
-#: modules/content-board/content-board.php:1268
-#: modules/content-overview/content-overview.php:1194
-msgid "No results found"
-msgstr "לא נמצאו תוצאות"
-
 #: modules/content-board/content-board.php:1273
-#: modules/content-overview/content-overview.php:1199
+#: modules/content-overview/content-overview.php:1245
 msgid "There are no posts in the range or filter specified."
 msgstr "אין פוסטים בטווח או במסנן שנבחר."
 
 #: modules/content-board/content-board.php:1605
-#: modules/content-overview/content-overview.php:1579
+#: modules/content-overview/content-overview.php:1625
 msgid "None"
 msgstr "אף אחד"
 
@@ -1728,38 +1397,42 @@ msgid "You do not have permission to move post to selected post status."
 msgstr "אין לך הרשאה להעביר את הפוסט לסטטוס הפוסט הנבחר."
 
 #: modules/content-board/library/content-board-methods.php:95
-#: modules/content-board/library/content-board-methods.php:123
+#: modules/content-board/library/content-board-methods.php:125
 msgid "Changes saved!"
 msgstr "השינויים נשמרו!"
 
-#: modules/content-board/library/content-board-methods.php:150
+#: modules/content-board/library/content-board-methods.php:113
+msgid "You do not have permission to update schedule settings."
+msgstr "אין לך הרשאה לעדכן את הגדרות לוח הזמנים."
+
+#: modules/content-board/library/content-board-methods.php:152
 msgid "Card Data updated successfully."
 msgstr "נתוני הכרטיס עודכנו בהצלחה."
 
-#: modules/content-board/library/content-board-methods.php:172
-#: modules/content-overview/content-overview.php:676
+#: modules/content-board/library/content-board-methods.php:174
+#: modules/content-overview/content-overview.php:692
 msgid "Settings updated successfully."
 msgstr "ההגדרות עודכנו בהצלחה."
 
-#: modules/content-board/library/content-board-methods.php:250
-#: modules/content-overview/content-overview.php:754
+#: modules/content-board/library/content-board-methods.php:252
+#: modules/content-overview/content-overview.php:770
 #, php-format
 msgid "%s created successfully. <a href=\"%s\" target=\"_blank\">Edit %s</a>"
 msgstr "%s נוצר בהצלחה. <a href=\"%s\" target=\"_blank\">ערוך %s</a>"
 
-#: modules/content-board/library/content-board-methods.php:253
-#: modules/content-overview/content-overview.php:757
+#: modules/content-board/library/content-board-methods.php:255
+#: modules/content-overview/content-overview.php:773
 #, php-format
 msgid "%s could not be created"
 msgstr "%s לא יכול היה להיות נוצר"
 
-#: modules/content-board/library/content-board-methods.php:258
-#: modules/content-overview/content-overview.php:762
+#: modules/content-board/library/content-board-methods.php:260
+#: modules/content-overview/content-overview.php:778
 #, php-format
 msgid "You do not have permission to add new %s"
 msgstr "אין לך הרשאה להוסיף %s חדש"
 
-#: modules/content-board/library/content-board-methods.php:437
+#: modules/content-board/library/content-board-methods.php:439
 #: modules/content-overview/library/content-overview-methods.php:160
 msgid "Post types to show:"
 msgstr "סוגי פוסטים להציג:"
@@ -1817,7 +1490,6 @@ msgstr "הצג תוכן מ"
 #: modules/content-overview/library/content-overview-utilities.php:659
 #: modules/editorial-comments/editorial-comments.php:574
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:425
-#: modules/editorial-comments/lib/editorial-comments.js:350
 msgid "Cancel"
 msgstr "ביטול"
 
@@ -1848,31 +1520,31 @@ msgstr "שלח"
 msgid "Publish Date"
 msgstr "תאריך פרסום"
 
-#: modules/content-overview/content-overview.php:156
-#: modules/content-overview/content-overview.php:376
-#: modules/content-overview/content-overview.php:393
-#: modules/content-overview/content-overview.php:394
+#: modules/content-overview/content-overview.php:168
+#: modules/content-overview/content-overview.php:388
+#: modules/content-overview/content-overview.php:405
+#: modules/content-overview/content-overview.php:406
 msgid "Content Overview"
 msgstr "סקירת תוכן"
 
-#: modules/content-overview/content-overview.php:654
+#: modules/content-overview/content-overview.php:670
 msgid "Column updated successfully."
 msgstr "העמודה עודכנה בהצלחה."
 
-#: modules/content-overview/content-overview.php:837
-#: modules/content-overview/content-overview.php:896
+#: modules/content-overview/content-overview.php:856
+#: modules/content-overview/content-overview.php:932
 msgid "Last Modified"
 msgstr "שונה לאחרונה"
 
-#: modules/content-overview/content-overview.php:883
+#: modules/content-overview/content-overview.php:916
 msgid "Custom Columns"
 msgstr "עמודות מותאמות אישית"
 
-#: modules/content-overview/content-overview.php:884
+#: modules/content-overview/content-overview.php:917
 msgid "Click the \"Add New\" button to create new columns."
 msgstr "לחץ על כפתור \"הוסף חדש\" כדי ליצור עמודות חדשות."
 
-#: modules/content-overview/content-overview.php:890
+#: modules/content-overview/content-overview.php:936
 msgid "Inbuilt Columns"
 msgstr "עמודות מובנות"
 
@@ -1975,7 +1647,12 @@ msgstr "הערה בלוח בקרה"
 msgid "%1$s last updated on %2$s"
 msgstr "%1$s עודכן לאחרונה ב %2$s"
 
-#: modules/dashboard/widgets/dashboard-notepad.php:168
+#: modules/dashboard/widgets/dashboard-notepad.php:160
+#: modules/dashboard/widgets/dashboard-notepad.php:176, fuzzy
+msgid "Dashboard note"
+msgstr "Dashboard note"
+
+#: modules/dashboard/widgets/dashboard-notepad.php:169
 msgid "Update Note"
 msgstr "עדכן הערה"
 
@@ -2054,8 +1731,8 @@ msgid "Invalid action nonce."
 msgstr "נון פעולה לא תקף."
 
 #: modules/editorial-comments/editorial-comments.php:63
-#: modules/editorial-comments/editorial-comments.php:231
-#: modules/editorial-comments/editorial-comments.php:232
+#: modules/editorial-comments/editorial-comments.php:235
+#: modules/editorial-comments/editorial-comments.php:236
 #: modules/editorial-comments/editorial-comments.php:453
 msgid "Editorial Comments"
 msgstr "תגובות עריכה"
@@ -2102,23 +1779,23 @@ msgid "Remove"
 msgstr "הסר"
 
 #: modules/editorial-comments/editorial-comments.php:206
-#: modules/editorial-comments/library/EditorialCommentsTable.php:181
-#: modules/notifications-log/notifications-log.php:204
+#: modules/editorial-comments/library/EditorialCommentsTable.php:182
+#: modules/notifications-log/notifications-log.php:207
 msgid "All Posts"
 msgstr "כל הפוסטים"
 
 #: modules/editorial-comments/editorial-comments.php:207
-#: modules/editorial-comments/library/EditorialCommentsTable.php:196
+#: modules/editorial-comments/library/EditorialCommentsTable.php:198
 msgid "All Users"
 msgstr "כל המשתמשים"
 
-#: modules/editorial-comments/editorial-comments.php:272
+#: modules/editorial-comments/editorial-comments.php:276
 #. translators: %s: search keywords
 #, php-format
 msgid "Search results for &#8220;%s&#8221;"
 msgstr "תוצאות חיפוש עבור &#8220;%s&#8221;"
 
-#: modules/editorial-comments/editorial-comments.php:285
+#: modules/editorial-comments/editorial-comments.php:289
 msgid "Search Comments"
 msgstr "חיפוש תגובות"
 
@@ -2150,7 +1827,7 @@ msgid "Reply"
 msgstr "ענה"
 
 #: modules/editorial-comments/editorial-comments.php:639
-#: modules/editorial-comments/library/EditorialCommentsTable.php:434
+#: modules/editorial-comments/library/EditorialCommentsTable.php:436
 #: modules/editorial-metadata/library/editorial-metadata-list-table.php:161
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:303
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:333
@@ -2261,6 +1938,10 @@ msgstr "שם פרטי"
 msgid "Last Name"
 msgstr "שם משפחה"
 
+#: modules/editorial-comments/editorial-comments.php:1267
+msgid "Email"
+msgstr "דוא\"ל"
+
 #: modules/editorial-comments/editorial-comments.php:1268
 msgid "User Url"
 msgstr "כתובת אתר של משתמש"
@@ -2269,24 +1950,33 @@ msgstr "כתובת אתר של משתמש"
 msgid "No editorial comments."
 msgstr "אין הערות עורכות."
 
-#: modules/editorial-comments/library/EditorialCommentsTable.php:210
-#: modules/notifications-log/library/NotificationsLogTable.php:646
+#: modules/editorial-comments/library/EditorialCommentsTable.php:180
+#: modules/notifications-log/library/NotificationsLogTable.php:566
+msgid "Filter by post"
+msgstr "סנן לפי פוסט"
+
+#: modules/editorial-comments/library/EditorialCommentsTable.php:196
+msgid "Filter by user"
+msgstr "סנן לפי משתמש"
+
+#: modules/editorial-comments/library/EditorialCommentsTable.php:212
+#: modules/notifications-log/library/NotificationsLogTable.php:653
 msgid "Filter"
 msgstr "מסנן"
 
-#: modules/editorial-comments/library/EditorialCommentsTable.php:229
+#: modules/editorial-comments/library/EditorialCommentsTable.php:231
 msgid "Comment"
 msgstr "הערה"
 
-#: modules/editorial-comments/library/EditorialCommentsTable.php:231
+#: modules/editorial-comments/library/EditorialCommentsTable.php:233
 msgid "Post"
 msgstr "פוסט"
 
-#: modules/editorial-comments/library/EditorialCommentsTable.php:233
+#: modules/editorial-comments/library/EditorialCommentsTable.php:235
 msgid "Submitted on"
 msgstr "הוגש ב"
 
-#: modules/editorial-comments/library/EditorialCommentsTable.php:336
+#: modules/editorial-comments/library/EditorialCommentsTable.php:338
 #: modules/editorial-metadata/input-handlers/editorial-metadata-input-date-handler.php:201
 #: modules/notifications/notifications.php:1974
 #. translators: 1: Comment date, 2: Comment time.
@@ -2567,6 +2257,10 @@ msgstr "מיקום"
 msgid "Name"
 msgstr "שם"
 
+#: modules/editorial-metadata/library/editorial-metadata-list-table.php:46
+msgid "Post Types"
+msgstr "סוגי פוסטים"
+
 #: modules/editorial-metadata/library/editorial-metadata-list-table.php:47
 msgid "Field Type"
 msgstr "סוג שדה"
@@ -2785,11 +2479,11 @@ msgstr "הפוסט החדש פורסם"
 msgid "Notify on editorial comments"
 msgstr "הודע על תגובות עריכה"
 
-#: modules/improved-notifications/improved-notifications.php:606
+#: modules/improved-notifications/improved-notifications.php:607
 msgid "minutes"
 msgstr "דקות"
 
-#: modules/improved-notifications/improved-notifications.php:610
+#: modules/improved-notifications/improved-notifications.php:611
 msgid ""
 "This will prevent too many notifications being sent for the same or similar "
 "events. Set this to a higher number if you are receiving duplicate emails."
@@ -2797,104 +2491,116 @@ msgstr ""
 "זה ימנע שליחת יותר מדי הודעות עבור אותם אירועים או אירועים דומים. הגדר זאת "
 "למספר גבוה יותר אם אתה מקבל הודעות דוא\"ל כפולות."
 
-#: modules/improved-notifications/improved-notifications.php:656
-#: modules/improved-notifications/improved-notifications.php:1495
+#: modules/improved-notifications/improved-notifications.php:657
+#: modules/improved-notifications/improved-notifications.php:1514
 #: views/user_profile_notification_channels.html.php:1
 msgid "Editorial Notifications"
 msgstr "הודעות עריכה"
 
-#: modules/improved-notifications/improved-notifications.php:657
-#: modules/improved-notifications/improved-notifications.php:1496
+#: modules/improved-notifications/improved-notifications.php:658
+#: modules/improved-notifications/improved-notifications.php:1515
 #: views/user_profile_notification_channels.html.php:6
 msgid "Choose the channels where each workflow will send notifications to:"
 msgstr "בחר את הערוצים שבהם כל זרימת עבודה תשלח הודעות:"
 
-#: modules/improved-notifications/improved-notifications.php:661
-#: modules/improved-notifications/improved-notifications.php:1483
-#: modules/improved-notifications/improved-notifications.php:1500
+#: modules/improved-notifications/improved-notifications.php:662
+#: modules/improved-notifications/improved-notifications.php:1502
+#: modules/improved-notifications/improved-notifications.php:1519
 msgid "Muted"
 msgstr "מושתק"
 
-#: modules/improved-notifications/improved-notifications.php:662
-#: modules/improved-notifications/improved-notifications.php:1501
+#: modules/improved-notifications/improved-notifications.php:663
+#: modules/improved-notifications/improved-notifications.php:1520
 #: views/user_profile_notification_channels.html.php:14
 msgid "Workflows"
 msgstr "זרימות עבודה"
 
-#: modules/improved-notifications/improved-notifications.php:663
-#: modules/improved-notifications/improved-notifications.php:1502
+#: modules/improved-notifications/improved-notifications.php:664
+#: modules/improved-notifications/improved-notifications.php:1521
 #: views/user_profile_notification_channels.html.php:15
 msgid "Channels"
 msgstr "ערוצים"
 
-#: modules/improved-notifications/improved-notifications.php:1088
+#: modules/improved-notifications/improved-notifications.php:1104
 #: modules/notifications-log/notifications-log.php:75
-#: modules/notifications-log/notifications-log.php:263
-#: modules/notifications-log/notifications-log.php:489
-#: modules/notifications-log/notifications-log.php:490
+#: modules/notifications-log/notifications-log.php:266
+#: modules/notifications-log/notifications-log.php:492
+#: modules/notifications-log/notifications-log.php:493
 msgid "Notifications Log"
 msgstr "יומן התראות"
 
-#: modules/improved-notifications/improved-notifications.php:1122
+#: modules/improved-notifications/improved-notifications.php:1138
 msgid "Workflow Settings"
 msgstr "הגדרות זרימת עבודה"
 
-#: modules/improved-notifications/improved-notifications.php:1131
+#: modules/improved-notifications/improved-notifications.php:1148
+#: views/settings_notification_channels.html.php:5
+#: views/user_profile_notification_channels.html.php:16
 msgid "Options"
 msgstr "אפשרויות"
 
-#: modules/improved-notifications/improved-notifications.php:1140
+#: modules/improved-notifications/improved-notifications.php:1158
 msgid "Help"
 msgstr "עזרה"
 
-#: modules/improved-notifications/improved-notifications.php:1170
+#: modules/improved-notifications/improved-notifications.php:1179
+#: modules/notifications-log/library/NotificationsLogTable.php:497
+msgid "When to notify?"
+msgstr "מתי להודיע?"
+
+#: modules/improved-notifications/improved-notifications.php:1189
 #: modules/notifications-log/library/NotificationsLogTable.php:498
 msgid "For which content?"
 msgstr "עבור איזה תוכן?"
 
-#: modules/improved-notifications/improved-notifications.php:1190
+#: modules/improved-notifications/improved-notifications.php:1199
+#: modules/notifications-log/library/NotificationsLogTable.php:499
+msgid "Who to notify?"
+msgstr "מי להודיע?"
+
+#: modules/improved-notifications/improved-notifications.php:1209
 msgid "What to say?"
 msgstr "מה לומר?"
 
-#: modules/improved-notifications/improved-notifications.php:1310
+#: modules/improved-notifications/improved-notifications.php:1329
 msgid "Select at least one option for each section."
 msgstr "אנא בחר לפחות אפשרות אחת עבור כל סעיף."
 
-#: modules/improved-notifications/improved-notifications.php:1314
+#: modules/improved-notifications/improved-notifications.php:1333
 msgid ""
 "You can add dynamic information to the Subject or Body text using the "
 "following shortcodes:"
 msgstr "תוכל להוסיף מידע דינמי לנושא או לטקסט גוף באמצעות הקודים הקצרים הבאים:"
 
-#: modules/improved-notifications/improved-notifications.php:1319
+#: modules/improved-notifications/improved-notifications.php:1338
 msgid "Editorial Comment"
 msgstr "הערת עורך"
 
-#: modules/improved-notifications/improved-notifications.php:1320
+#: modules/improved-notifications/improved-notifications.php:1339
 msgid "User making changes or comments"
 msgstr "משתמש מבצע שינויים או הערות"
 
-#: modules/improved-notifications/improved-notifications.php:1321
+#: modules/improved-notifications/improved-notifications.php:1340
 msgid "Workflow"
 msgstr "זרימת עבודה"
 
-#: modules/improved-notifications/improved-notifications.php:1322
+#: modules/improved-notifications/improved-notifications.php:1341
 msgid "Format"
 msgstr "פורמט"
 
-#: modules/improved-notifications/improved-notifications.php:1323
+#: modules/improved-notifications/improved-notifications.php:1342
 msgid "Receiver"
 msgstr "נמען"
 
-#: modules/improved-notifications/improved-notifications.php:1324
+#: modules/improved-notifications/improved-notifications.php:1343
 msgid "shortcode"
 msgstr "קוד קצר"
 
-#: modules/improved-notifications/improved-notifications.php:1325
+#: modules/improved-notifications/improved-notifications.php:1344
 msgid "field"
 msgstr "שדה"
 
-#: modules/improved-notifications/improved-notifications.php:1326
+#: modules/improved-notifications/improved-notifications.php:1345
 msgid ""
 "On each shortcode, you can select one or more fields. If more than one, "
 "they will be displayed separated by \", \"."
@@ -2902,15 +2608,15 @@ msgstr ""
 "בכל קוד קצר, תוכל לבחור שדה אחד או יותר. אם יש יותר מאחד, הם יוצגו מופרדים "
 "ב- \", \"."
 
-#: modules/improved-notifications/improved-notifications.php:1330
+#: modules/improved-notifications/improved-notifications.php:1349
 msgid "Available fields"
 msgstr "שדות זמינים"
 
-#: modules/improved-notifications/improved-notifications.php:1331
+#: modules/improved-notifications/improved-notifications.php:1350
 msgid "Meta fields"
 msgstr "שדות מטה"
 
-#: modules/improved-notifications/improved-notifications.php:1332
+#: modules/improved-notifications/improved-notifications.php:1351
 msgid "Click here to read more about shortcode options..."
 msgstr "לחץ כאן כדי לקרוא עוד על אפשרויות הקודים הקצרים..."
 
@@ -3027,77 +2733,95 @@ msgstr "הכל"
 msgid "Success"
 msgstr "הצלחה"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:590
+#: modules/notifications-log/library/NotificationsLogTable.php:582
+msgid "Filter by workflow"
+msgstr "סנן לפי זרימת עבודה"
+
+#: modules/notifications-log/library/NotificationsLogTable.php:589
+msgid "Filter by event"
+msgstr "סנן לפי אירוע"
+
+#: modules/notifications-log/library/NotificationsLogTable.php:593
 msgid "All events"
 msgstr "כל האירועים"
 
 #: modules/notifications-log/library/NotificationsLogTable.php:607
+msgid "Filter by channel"
+msgstr "סנן לפי ערוץ"
+
+#: modules/notifications-log/library/NotificationsLogTable.php:611
 msgid "All channels"
 msgstr "כל הערוצים"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:626
+#: modules/notifications-log/library/NotificationsLogTable.php:628
+#: modules/notifications-log/library/NotificationsLogTable.php:631
 msgid "From date"
 msgstr "מתאריך"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:632
+#: modules/notifications-log/library/NotificationsLogTable.php:635
+#: modules/notifications-log/library/NotificationsLogTable.php:638
 msgid "To date"
 msgstr "עד תאריך"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:640
+#: modules/notifications-log/library/NotificationsLogTable.php:646
+msgid "Filter by receiver"
+msgstr "סנן לפי מקבל"
+
+#: modules/notifications-log/library/NotificationsLogTable.php:647
 msgid "All Receivers"
 msgstr "כל המקבלים"
 
-#: modules/notifications-log/notifications-log.php:205
+#: modules/notifications-log/notifications-log.php:208
 msgid "All Workflows"
 msgstr "כל הזרימות"
 
-#: modules/notifications-log/notifications-log.php:206
+#: modules/notifications-log/notifications-log.php:209
 msgid "All Actions"
 msgstr "כל הפעולות"
 
-#: modules/notifications-log/notifications-log.php:207
+#: modules/notifications-log/notifications-log.php:210
 msgid "All Channels"
 msgstr "כל הערוצים"
 
-#: modules/notifications-log/notifications-log.php:208
+#: modules/notifications-log/notifications-log.php:211
 msgid "All Statuses"
 msgstr "כל הסטטוסים"
 
-#: modules/notifications-log/notifications-log.php:209
-#: publishpress.php:1426
-#: publishpress.php:1431
+#: modules/notifications-log/notifications-log.php:212
+#: publishpress.php:1441
+#: publishpress.php:1446
 msgid "Notification"
 msgstr "התראה"
 
-#: modules/notifications-log/notifications-log.php:272
+#: modules/notifications-log/notifications-log.php:275
 #, php-format
 msgid "%s notification found."
 msgid_plural "%s notifications found."
-msgstr[0] "הודעה אחת נמצאה.|"
-msgstr[1] "%s הודעות נמצאו."
+msgstr[0] "הודעה אחת נמצאה."
+msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: modules/notifications-log/notifications-log.php:284
+#: modules/notifications-log/notifications-log.php:287
 msgid "No notifications found."
 msgstr "לא נמצאו התראות."
 
-#: modules/notifications-log/notifications-log.php:442
+#: modules/notifications-log/notifications-log.php:445
 #, php-format
 msgid ""
 "This notification is very similar to another one sent less than %d minutes "
 "ago for the same receiver"
 msgstr "ההודעה הזו מאוד דומה לאחרת שנשלחה לפני פחות מ-%d דקות לאותו מקבל"
 
-#: modules/notifications-log/notifications-log.php:817
+#: modules/notifications-log/notifications-log.php:820
 msgid "Subject:"
 msgstr "נושא:"
 
-#: modules/notifications-log/notifications-log.php:825
+#: modules/notifications-log/notifications-log.php:828
 msgid "Content:"
 msgstr "תוכן:"
 
-#: modules/notifications-log/notifications-log.php:835
+#: modules/notifications-log/notifications-log.php:838
 msgid ""
 "This is a preview of the scheduled message. The content can still change "
 "until the notification is sent."
@@ -3107,8 +2831,8 @@ msgstr ""
 
 #: modules/notifications/notifications.php:75
 #: modules/notifications/notifications.php:562
-#: publishpress.php:1425
-#: publishpress.php:1430
+#: publishpress.php:1440
+#: publishpress.php:1445
 msgid "Notifications"
 msgstr "הודעות"
 
@@ -3442,7 +3166,7 @@ msgid ""
 msgstr "מושבת כי add_post_type_support('%1$s', '%2$s') כלול בקובץ שהוטען."
 
 #: modules/settings/settings.php:404
-#: publishpress.php:675
+#: publishpress.php:689
 msgid "Cheatin&#8217; uh?"
 msgstr "אתה רמאי, אה?"
 
@@ -3466,44 +3190,44 @@ msgstr "אינטגרציית לוח האירועים"
 msgid "Integrate with the The Events Calendar plugin"
 msgstr "אינטגרציה עם תוסף לוח האירועים"
 
-#: publishpress.php:590
+#: publishpress.php:604
 msgid "Planner"
 msgstr "מתכנן"
 
-#: publishpress.php:671
+#: publishpress.php:685
 msgid "Configure"
 msgstr "הגדר"
 
-#: publishpress.php:674
+#: publishpress.php:688
 msgid "Please correct your form errors below and try again."
 msgstr "אנא תקן את שגיאות הטופס שלך למטה ונסה שוב."
 
-#: publishpress.php:676
+#: publishpress.php:690
 msgid "You do not have necessary permissions to complete this action."
 msgstr "אין לך הרשאות נחוצות כדי להשלים פעולה זו."
 
-#: publishpress.php:680
+#: publishpress.php:694
 msgid "Post does not exist"
 msgstr "הפוסט אינו קיים"
 
-#: publishpress.php:1427
+#: publishpress.php:1442
 msgid "Add New Notification"
 msgstr "הוסף התראה חדשה"
 
-#: publishpress.php:1428
+#: publishpress.php:1443
 msgid "Edit Notification"
 msgstr "ערוך התראה"
 
-#: publishpress.php:1429
+#: publishpress.php:1444
 msgid "Search Notifications"
 msgstr "חפש התראות"
 
-#: publishpress.php:1432
-#: publishpress.php:1433
+#: publishpress.php:1447
+#: publishpress.php:1448
 msgid "No notification found"
 msgstr "לא נמצאה התראה"
 
-#: publishpress.php:1473
+#: publishpress.php:1489
 msgid ""
 "PublishPress Planner tried to load multiple times. Please, deactivate and "
 "remove other instances of PublishPress, specially if you are using "
@@ -3512,38 +3236,9 @@ msgstr ""
 "PublishPress Planner ניסה לטעון מספר פעמים. בבקשה, השבת והסר גרסאות אחרות "
 "של PublishPress, במיוחד אם אתה משתמש ב-PublishPress Pro."
 
-#: publishpress.php:1481
+#: publishpress.php:1497
 msgid "Warning"
 msgstr "אזהרה"
-
-#: modules/editorial-comments/lib/editorial-comments.js:203
-#: modules/editorial-comments/lib/editorial-comments.js:371
-msgid "Please enter a comment"
-msgstr "אנא הכנס תגובה"
-
-#: modules/editorial-comments/lib/editorial-comments.js:377
-msgid "Sending content..."
-msgstr "שולח תוכן..."
-
-#: modules/editorial-comments/lib/editorial-comments.js:434
-msgid ""
-"This comment can't be deleted because it has one or more replies. Before "
-"deleting it make sure to delete all the replies first."
-msgstr ""
-"לא ניתן למחוק את התגובה הזו כי יש לה תגובה אחת או יותר. לפני מחיקתה ודא "
-"שאתה מוחק את כל התגובות קודם."
-
-#: modules/editorial-comments/lib/editorial-comments.js:438
-msgid "Are you sure you want to delete this comment?"
-msgstr "האם אתה בטוח שברצונך למחוק תגובה זו?"
-
-#: modules/notifications-log/assets/js/admin.js:73
-msgid "for"
-msgstr "ל"
-
-#: modules/notifications-log/assets/js/admin.js:73
-msgid "by"
-msgstr "מאת"
 
 #: modules/content-board/library/content-board-utilities.php:538
 #: modules/content-overview/library/content-overview-utilities.php:643

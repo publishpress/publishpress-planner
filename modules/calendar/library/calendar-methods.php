@@ -1121,6 +1121,11 @@ if (! class_exists('PP_Calendar_Methods')) {
                         PUBLISHPRESS_VERSION,
                         true
                     );
+                    wp_set_script_translations(
+                        'publishpress-async-calendar-js',
+                        'publishpress',
+                        PUBLISHPRESS_BASE_PATH . '/languages'
+                    );
 
                     /*
                      * Filters
@@ -1199,6 +1204,11 @@ if (! class_exists('PP_Calendar_Methods')) {
                             'hideItems' => esc_js(__('Hide the %s last items', 'publishpress')),
                             'showMore' => esc_js(__('Show %s more', 'publishpress')),
                             'untitled' => esc_js(__('Untitled', 'publishpress')),
+                            'refresh' => esc_js(__('Refresh', 'publishpress')),
+                            'previousPage' => esc_js(__('Previous page', 'publishpress')),
+                            'previousWeek' => esc_js(__('Previous week', 'publishpress')),
+                            'nextWeek' => esc_js(__('Next week', 'publishpress')),
+                            'nextPage' => esc_js(__('Next page', 'publishpress')),
                             'close' => esc_js(__('Close', 'publishpress')),
                             'save' => esc_js(__('Save', 'publishpress')),
                             'saving' => esc_js(__('Saving...', 'publishpress')),
@@ -1235,6 +1245,8 @@ if (! class_exists('PP_Calendar_Methods')) {
                             'xWeeks' => esc_js(__('%d weeks', 'publishpress')),
                             'today' => esc_js(__('Today', 'publishpress')),
                             'noTerms' => esc_js(__('No terms', 'publishpress')),
+                            'noResults' => esc_js(__('No results found', 'publishpress')),
+                            'searching' => esc_js(__('Loading...', 'publishpress')),
                             'post_date_label'    => esc_html__('Post Date', 'publishpress'),
                             'edit_label'         => esc_html__('Edit', 'publishpress'),
                             'delete_label'       => esc_html__('Trash', 'publishpress'),

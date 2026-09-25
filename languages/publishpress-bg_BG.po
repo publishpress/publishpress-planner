@@ -10,18 +10,18 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-08T16:49:58+00:00\n"
-"PO-Revision-Date: 2026-04-15 14:14+0000\n"
+"PO-Revision-Date: 2026-09-25 19:50+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: bg-BG\n"
 
-#: publishpress.php
+#: publishpress.php, fuzzy
 #. Plugin Name of the plugin
 msgid "PublishPress Planner Free"
 msgstr "PublishPress Planner Free"
 
-#: publishpress.php, fuzzy
+#: publishpress.php
 #. Plugin URI of the plugin
 msgid "https://publishpress.com/"
 msgstr "https://publishpress.com/"
@@ -37,140 +37,143 @@ msgstr ""
 "известия."
 
 #: publishpress.php
-#: modules/calendar/library/calendar-utilities.php:1227
-#: modules/settings/settings.php:61, fuzzy
+#: modules/calendar/library/calendar-utilities.php:1234
+#: modules/settings/settings.php:61
+#: modules/settings/views/footer-base.html.php:35
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: publishpress.php, fuzzy
+#: publishpress.php
 #. Author URI of the plugin
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
-#: common/php/class-module.php:331
-#: modules/calendar/calendar.php:1233
+#: common/php/class-module.php:338
+#: modules/calendar/calendar.php:1261
 msgid "Published"
 msgstr "Публикувано"
 
-#: common/php/class-module.php:332
+#: common/php/class-module.php:339
 msgid "Draft"
 msgstr "Чернова"
 
-#: common/php/class-module.php:333
-#: modules/calendar/calendar.php:1228
+#: common/php/class-module.php:340
+#: modules/calendar/calendar.php:1256
 #: modules/content-board/content-board.php:979
 #: modules/notifications-log/library/NotificationsLogTable.php:529
 msgid "Scheduled"
 msgstr "Планирано"
 
-#: common/php/class-module.php:334
+#: common/php/class-module.php:341
 #: modules/content-board/content-board.php:989
 msgid "Private"
 msgstr "Частно"
 
-#: common/php/class-module.php:335
+#: common/php/class-module.php:342
 msgid "Pending Review"
 msgstr "Чакаща преглед"
 
-#: common/php/class-module.php:336
-#: modules/calendar/library/calendar-methods.php:1240
+#: common/php/class-module.php:343
+#: modules/calendar/library/calendar-methods.php:1252
 #: modules/calendar/library/calendar-utilities.php:1104
 #: modules/content-board/content-board.php:1195
 #: modules/content-board/content-board.php:1290
-#: modules/content-overview/content-overview.php:1221
-#: modules/content-overview/content-overview.php:1715
+#: modules/content-overview/content-overview.php:1267
+#: modules/content-overview/content-overview.php:1761
 msgid "Trash"
 msgstr "Кошче"
 
-#: common/php/class-module.php:750
-#: lib/Notifications/Workflow/Step/Receiver/Role.php:31
+#: common/php/class-module.php:772
 msgid "Roles"
 msgstr "Роли"
 
-#: common/php/class-module.php:753
+#: common/php/class-module.php:775
 msgid "Role"
 msgstr "Роля"
 
-#: common/php/class-module.php:761
+#: common/php/class-module.php:783
 msgid "Groups"
 msgstr "Групи"
 
-#: common/php/class-module.php:764
+#: common/php/class-module.php:786
 msgid "Group"
 msgstr "Група"
 
-#: common/php/class-module.php:772
-#: lib/Notifications/Workflow/Step/Receiver/User.php:26
+#: common/php/class-module.php:794
 msgid "Users"
 msgstr "Потребители"
 
-#: common/php/class-module.php:782
+#: common/php/class-module.php:804
 msgid "E-mails"
 msgstr "Имейли"
 
-#: common/php/class-module.php:1048
+#: common/php/class-module.php:1051
 msgid "Equals (=)"
 msgstr "Равно (=)"
 
-#: common/php/class-module.php:1049
+#: common/php/class-module.php:1052
 msgid "Does not equal (!=)"
 msgstr "Не е равно (!=)"
 
-#: common/php/class-module.php:1050
+#: common/php/class-module.php:1053
 msgid "Greater than (>)"
 msgstr "По-голямо от (>)"
 
-#: common/php/class-module.php:1051
+#: common/php/class-module.php:1054
 msgid "Greater than or equals (>=)"
 msgstr "По-голямо или равно (>=)"
 
-#: common/php/class-module.php:1052
+#: common/php/class-module.php:1055
 msgid "Less than (<)"
 msgstr "По-малко от (<)"
 
-#: common/php/class-module.php:1053
+#: common/php/class-module.php:1056
 msgid "Less than or equals (<=)"
 msgstr "По-малко или равно (<=)"
 
-#: common/php/class-module.php:1054
+#: common/php/class-module.php:1057
 msgid "Like/Contains"
 msgstr "Като/Съдържа"
 
-#: common/php/class-module.php:1055
+#: common/php/class-module.php:1058
 msgid "Not Like"
 msgstr "Не е като"
 
-#: common/php/class-module.php:1056
+#: common/php/class-module.php:1059
 msgid "Not Exists/Empty"
 msgstr "Не съществува/Празно"
 
-#: common/php/class-module.php:1109
+#: common/php/class-module.php:1112
+#: views/workflow_receiver_group_field.html.php:10
+#: views/workflow_receiver_role_field.html.php:9
+#: views/workflow_receiver_user_field.html.php:9
 #, php-format
 msgid "Select %s"
 msgstr "Изберете %s"
 
-#: common/php/class-module.php:1126
-#: modules/calendar/library/calendar-utilities.php:1190
-#: modules/content-overview/content-overview.php:833
-#: modules/content-overview/content-overview.php:848
-#: modules/content-overview/content-overview.php:955
+#: common/php/class-module.php:1129
+#: modules/calendar/library/calendar-utilities.php:1191
+#: modules/content-overview/content-overview.php:850
+#: modules/content-overview/content-overview.php:874
+#: modules/content-overview/content-overview.php:926
+#: modules/content-overview/content-overview.php:995
 msgid "Revision Status"
 msgstr "Статус на ревизията"
 
-#: common/php/class-module.php:1126
+#: common/php/class-module.php:1129
 #: modules/calendar/library/calendar-methods.php:424
 #: modules/calendar/library/calendar-methods.php:858
-#: modules/calendar/library/calendar-methods.php:1245
+#: modules/calendar/library/calendar-methods.php:1257
 #: modules/calendar/library/calendar-utilities.php:47
 #: modules/calendar/library/calendar-utilities.php:1070
-#: modules/calendar/library/calendar-utilities.php:1189
+#: modules/calendar/library/calendar-utilities.php:1188
 #: modules/content-board/content-board.php:811
 #: modules/content-board/content-board.php:1295
 #: modules/content-board/library/content-board-utilities.php:594
 #: modules/content-board/library/content-board-utilities.php:1165
-#: modules/content-overview/content-overview.php:954
-#: modules/content-overview/content-overview.php:1226
+#: modules/content-overview/content-overview.php:992
+#: modules/content-overview/content-overview.php:1272
 #: modules/content-overview/library/content-overview-utilities.php:491
 #: modules/content-overview/library/content-overview-utilities.php:703
 msgid "Post Status"
@@ -203,427 +206,8 @@ msgstr ""
 "функции и поддръжка. %sПревключете на Pro%s"
 
 #: includes.php:161
-#: lib/Legacy/Util.php:216
 msgid "Upgrade to Pro"
 msgstr "Превключете към Pro"
-
-#: lib/Legacy/Util.php:198
-msgid "Upgrade to PublishPress Planner Pro"
-msgstr "Превключете към PublishPress Planner Pro"
-
-#: lib/Legacy/Util.php:203
-msgid "Enhance the power of PublishPress Planner with the Pro version:"
-msgstr "Увеличете мощността на PublishPress Planner с Pro версията:"
-
-#: lib/Legacy/Util.php:206
-msgid "PublishPress Revisions integration"
-msgstr "Интеграция с PublishPress Revisions"
-
-#: lib/Legacy/Util.php:207
-msgid "Slack integration for notifications"
-msgstr "Интеграция със Slack за известия"
-
-#: lib/Legacy/Util.php:208
-msgid "Send reminder notifications"
-msgstr "Изпращане на напомнящи известия"
-
-#: lib/Legacy/Util.php:209
-msgid "Use post meta in notifications"
-msgstr "Използвайте мета данни в известията"
-
-#: lib/Legacy/Util.php:210
-msgid "Modals so you can edit posts without changing screen"
-msgstr "Модали, за да можете да редактирате публикации без да сменяте екрана"
-
-#: lib/Legacy/Util.php:211
-msgid "Integration with SEO plugins"
-msgstr "Интеграция с SEO плъгини"
-
-#: lib/Legacy/Util.php:212
-msgid "Remove PublishPress ads and branding"
-msgstr "Премахнете рекламите и брандинга на PublishPress"
-
-#: lib/Legacy/Util.php:213
-msgid "Fast, professional support"
-msgstr "Бърза, професионална поддръжка"
-
-#: lib/Legacy/Util.php:223
-msgid "Need PublishPress Planner Support?"
-msgstr "Нуждаете се от поддръжка за PublishPress Planner?"
-
-#: lib/Legacy/Util.php:228
-msgid "If you need help or have a new feature request, let us know."
-msgstr "Ако имате нужда от помощ или имате искане за нова функция, уведомете ни."
-
-#: lib/Legacy/Util.php:230
-msgid "Request Support"
-msgstr "Искане за поддръжка"
-
-#: lib/Legacy/Util.php:239
-msgid "Detailed documentation is also available on the plugin website."
-msgstr "Подробна документация също е налична на уебсайта на плъгина."
-
-#: lib/Legacy/Util.php:241
-msgid "View Knowledge Base"
-msgstr "Преглед на базата от знания"
-
-#: lib/Notifications/Plugin.php:65
-#: modules/improved-notifications/improved-notifications.php:1160
-#: modules/notifications-log/library/NotificationsLogTable.php:497
-msgid "When to notify?"
-msgstr "Кога да уведомим?"
-
-#: lib/Notifications/Plugin.php:66
-msgid "Filter the content?"
-msgstr "Филтриране на съдържанието?"
-
-#: lib/Notifications/Plugin.php:67
-#: modules/improved-notifications/improved-notifications.php:1180
-#: modules/notifications-log/library/NotificationsLogTable.php:499
-msgid "Who to notify?"
-msgstr "Кого да уведомим?"
-
-#: lib/Notifications/Plugin.php:209
-#: lib/Notifications/Plugin.php:210
-msgid "Notification workflow updated."
-msgstr "Работният процес по уведомленията е актуализиран."
-
-#: lib/Notifications/Plugin.php:211
-msgid "Notification workflow published."
-msgstr "Работният процес по уведомленията е публикуван."
-
-#: lib/Notifications/Plugin.php:212
-msgid "Notification workflow saved."
-msgstr "Работният процес по уведомленията е запазен."
-
-#: lib/Notifications/Plugin.php:213
-msgid "Notification workflow submitted."
-msgstr "Работният процес по уведомленията е изпратен."
-
-#: lib/Notifications/Plugin.php:215
-#, php-format
-msgid "Notification workflow scheduled for: %s."
-msgstr "Работният процес по уведомленията е планиран за: %s."
-
-#: lib/Notifications/Plugin.php:218
-msgid "Notification workflow draft updated."
-msgstr "Черновата на работния процес по уведомленията е актуализирана."
-
-#: lib/Notifications/Plugin.php:240
-#, php-format
-msgid "%s notification workflow updated."
-msgid_plural "%s notification workflows updated."
-msgstr[0] ""
-"%s работен процес по уведомленията е актуализиран.|%s работни процеса по "
-"уведомленията са актуализирани."
-msgstr[1] ""
-"%s работен процес по уведомленията е актуализиран.|%s работни процеса по "
-"уведомленията са актуализирани."
-
-#: lib/Notifications/Plugin.php:246
-msgid "1 notification workflow not updated, somebody is editing it."
-msgstr "1 работен процес по уведомленията не е актуализиран, някой го редактира."
-
-#: lib/Notifications/Plugin.php:250
-#, php-format
-msgid "%s notification workflow not updated, somebody is editing it."
-msgid_plural "%s notification workflows not updated, somebody is editing them."
-msgstr[0] ""
-"%s работен процес по уведомленията не е актуализиран, някой го "
-"редактира.|%s работни процеса по уведомленията не са актуализирани, някой "
-"ги редактира."
-msgstr[1] ""
-"%s работен процес по уведомленията не е актуализиран, някой го "
-"редактира.|%s работни процеса по уведомленията не са актуализирани, някой "
-"ги редактира."
-
-#: lib/Notifications/Plugin.php:256
-#, php-format
-msgid "%s notification workflow permanently deleted."
-msgid_plural "%s notification workflows permanently deleted."
-msgstr[0] ""
-"%s работен процес по уведомленията е permanently deleted.|%s работни "
-"процеса по уведомленията са permanently deleted."
-msgstr[1] ""
-"%s работен процес по уведомленията е permanently deleted.|%s работни "
-"процеса по уведомленията са permanently deleted."
-
-#: lib/Notifications/Plugin.php:262
-#, php-format
-msgid "%s notification workflow moved to the Trash."
-msgid_plural "%s notification workflows moved to the Trash."
-msgstr[0] ""
-"%s работен процес по уведомленията е преместен в Кошчето.|%s работни "
-"процеса по уведомленията са преместени в Кошчето."
-msgstr[1] ""
-"%s работен процес по уведомленията е преместен в Кошчето.|%s работни "
-"процеса по уведомленията са преместени в Кошчето."
-
-#: lib/Notifications/Plugin.php:268
-#, php-format
-msgid "%s notification workflow restored from the Trash."
-msgid_plural "%s notification workflows restored from the Trash."
-msgstr[0] ""
-"%s работен процес по уведомленията е възстановен от Кошчето.|%s работни "
-"процеса по уведомленията са възстановени от Кошчето."
-msgstr[1] ""
-"%s работен процес по уведомленията е възстановен от Кошчето.|%s работни "
-"процеса по уведомленията са възстановени от Кошчето."
-
-#: lib/Notifications/Plugin.php:302
-msgid "Please select at least one event"
-msgstr "Моля, изберете поне едно събитие"
-
-#: lib/Notifications/Plugin.php:335
-msgid "Not filtered"
-msgstr "Не е филтрирано"
-
-#: lib/Notifications/Table/Base.php:183
-msgid "Excerpt View"
-msgstr "Преглед на откъс"
-
-#: lib/Notifications/Table/Notifications.php:156
-#: lib/Notifications/Table/Workflows.php:142
-#: modules/calendar/library/calendar-methods.php:853
-#: modules/content-board/content-board.php:421
-#: modules/content-board/library/content-board-utilities.php:244
-#: modules/content-board/library/content-board-utilities.php:1159
-#: modules/content-overview/content-overview.php:418
-#: modules/content-overview/library/content-overview-utilities.php:485
-msgid "Title"
-msgstr "Заглавие"
-
-#: lib/Notifications/Table/Notifications.php:157
-msgid "Message"
-msgstr "Съобщение"
-
-#: lib/Notifications/Table/Notifications.php:158
-#: modules/calendar/library/calendar-utilities.php:1064
-#: modules/content-board/library/content-board-utilities.php:116
-#: modules/content-overview/library/content-overview-methods.php:341
-#: modules/editorial-metadata/editorial-metadata.php:290
-#: modules/notifications-log/library/NotificationsLogTable.php:496
-msgid "Date"
-msgstr "Дата"
-
-#: lib/Notifications/Table/Notifications.php:159
-#: lib/Notifications/Table/Workflows.php:143
-#: modules/calendar/library/calendar-utilities.php:1059
-msgid "ID"
-msgstr "ИД"
-
-#: lib/Notifications/Table/Notifications.php:235
-msgid "You don't have any notifications"
-msgstr "Нямате известия"
-
-#: lib/Notifications/Table/Workflows.php:217
-msgid "No workflows found."
-msgstr "Не са намерени работни потоци."
-
-#: lib/Notifications/Workflow/Option/SkipUser.php:26
-msgid "Skip current user"
-msgstr "Пропуснете текущия потребител"
-
-#: lib/Notifications/Workflow/Option/SkipUser.php:31
-msgid "Skip notifications for the user who triggered the action"
-msgstr "Пропуснете известията за потребителя, който е задействал действието"
-
-#: lib/Notifications/Workflow/Step/Channel/Email.php:31
-#: modules/editorial-comments/editorial-comments.php:1267
-msgid "Email"
-msgstr "Имейл"
-
-#: lib/Notifications/Workflow/Step/Content/Main.php:29
-#: modules/calendar/library/calendar-methods.php:902
-#: modules/content-board/library/content-board-utilities.php:1207
-#: modules/content-overview/library/content-overview-utilities.php:533
-#: modules/improved-notifications/improved-notifications.php:1318
-#: views/workflow_help.html.php:2
-msgid "Content"
-msgstr "Съдържание"
-
-#: lib/Notifications/Workflow/Step/Content/Main.php:53
-msgid "Subject"
-msgstr "Тема"
-
-#: lib/Notifications/Workflow/Step/Content/Main.php:54
-msgid "Body"
-msgstr "Тяло"
-
-#: lib/Notifications/Workflow/Step/Event/Editorial_Comment.php:24
-msgid "When an editorial comment is added"
-msgstr "Когато бъде добавен редакционен коментар"
-
-#: lib/Notifications/Workflow/Step/Event/Editorial_Comment.php:96
-#, php-format
-msgid "Comment: %s (%d)"
-msgstr "Коментар: %s (%d)"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:34
-msgid "When the status is changed"
-msgstr "Когато статусът бъде променен"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:35
-msgid "Previous status"
-msgstr "Предишен статус"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:36
-msgid "New status"
-msgstr "Нов статус"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:37
-msgid "- any status -"
-msgstr "- всеки статус -"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:59
-msgid "New"
-msgstr "Нов"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:64
-msgid "Auto-draft"
-msgstr "Авто-чернова"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Taxonomies.php:34
-#: modules/calendar/library/calendar-utilities.php:1206
-#: modules/content-board/content-board.php:767
-#: modules/content-board/content-board.php:827
-#: modules/content-overview/content-overview.php:910
-#: modules/content-overview/content-overview.php:971
-msgid "Taxonomies"
-msgstr "Таксономии"
-
-#: lib/Notifications/Workflow/Step/Event/Post_StatusTransition.php:28
-msgid "When the content is moved to a new status"
-msgstr "Когато съдържанието бъде преместено в нов статус"
-
-#: lib/Notifications/Workflow/Step/Event/Post_StatusTransition.php:118
-#, php-format
-msgid "Old post status: %s"
-msgstr "Стар статус на публикацията: %s"
-
-#: lib/Notifications/Workflow/Step/Event/Post_StatusTransition.php:122
-#, php-format
-msgid "New post status: %s"
-msgstr "Нов статус на публикацията: %s"
-
-#: lib/Notifications/Workflow/Step/Event/Post_TaxonomyUpdate.php:28
-msgid "When taxonomy is updated"
-msgstr "Когато таксономията бъде актуализирана"
-
-#: lib/Notifications/Workflow/Step/Event/Post_Update.php:26
-msgid "When the content is updated"
-msgstr "Когато съдържанието бъде актуализирано"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Category.php:24
-#: modules/calendar/library/calendar-utilities.php:1080
-msgid "Category"
-msgid_plural "Categories"
-msgstr[0] "Категория"
-msgstr[1] "Категории"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Filter/Category.php:34
-#: modules/calendar/library/calendar-methods.php:885
-#: modules/content-board/library/content-board-utilities.php:1190
-#: modules/content-overview/library/content-overview-utilities.php:516
-msgid "Categories"
-msgstr "Категории"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Filter/Post_Type.php:34
-#: modules/editorial-metadata/library/editorial-metadata-list-table.php:46
-msgid "Post Types"
-msgstr "Типове публикации"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Filter/Term.php:33
-msgid "Terms"
-msgstr "Термини"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Post_Type.php:24
-msgid "Post type"
-msgstr "Тип на публикацията"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Taxonomy.php:24
-msgid "Taxonomy"
-msgstr "Таксономия"
-
-#: lib/Notifications/Workflow/Step/Receiver/Author.php:26
-msgid "Authors of the content"
-msgstr "Автори на съдържанието"
-
-#: lib/Notifications/Workflow/Step/Receiver/Author.php:92
-msgid "Authors"
-msgstr "Автори"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:30
-msgid "Users who selected \"Notify me\" for the content"
-msgstr "Потребители, които избраха \"Уведоми ме\" за съдържанието"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:108
-#, php-format
-msgid "role:%s"
-msgstr "роля:%s"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:132
-#, php-format
-msgid "group %d: %s"
-msgstr "група %d: %s"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:153
-msgid "user"
-msgstr "потребител"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:168
-msgid "email"
-msgstr "имейл"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:210
-msgid "\"Notify me\""
-msgstr "\"Уведоми ме\""
-
-#: lib/Notifications/Workflow/Step/Receiver/Group.php:31
-msgid "Permission Groups"
-msgstr "Групи с разрешения"
-
-#: lib/Notifications/Workflow/Step/Receiver/Group.php:222
-#, php-format
-msgid "%d Group"
-msgid_plural "%d Groups"
-msgstr[0] "%d Група"
-msgstr[1] "%d Групи"
-
-#: lib/Notifications/Workflow/Step/Receiver/ParentAuthor.php:26
-msgid "Authors of the parent page"
-msgstr "Автори на родителската страница"
-
-#: lib/Notifications/Workflow/Step/Receiver/ParentAuthor.php:106
-msgid "Parent Page Authors"
-msgstr "Автори на родителската страница"
-
-#: lib/Notifications/Workflow/Step/Receiver/RevisionAuthor.php:39
-msgid "Author of the revision"
-msgstr "Автор на ревизията"
-
-#: lib/Notifications/Workflow/Step/Receiver/RevisionAuthor.php:105
-msgid "Revision Author"
-msgstr "Автор на ревизията"
-
-#: lib/Notifications/Workflow/Step/Receiver/Role.php:173
-#, php-format
-msgid "%d Role"
-msgid_plural "%d Roles"
-msgstr[0] "%d Роля"
-msgstr[1] "%d Роли"
-
-#: lib/Notifications/Workflow/Step/Receiver/Site_Admin.php:24
-#: lib/Notifications/Workflow/Step/Receiver/Site_Admin.php:73
-msgid "Site Administrator"
-msgstr "Администратор на сайта"
-
-#: lib/Notifications/Workflow/Step/Receiver/User.php:152
-#, php-format
-msgid "%d User"
-msgid_plural "%d Users"
-msgstr[0] "%d Потребител"
-msgstr[1] "%d Потребители"
 
 #: modules/async-notifications/async-notifications.php:71
 msgid "Async Notifications"
@@ -636,26 +220,26 @@ msgstr ""
 "Събитие: %s, ID на работен поток: %s, ID на публикация: %s, ID на "
 "потребител: %s"
 
-#: modules/calendar/calendar.php:216
-#: modules/calendar/calendar.php:415
-#: modules/calendar/calendar.php:432
-#: modules/calendar/calendar.php:433
+#: modules/calendar/calendar.php:228
+#: modules/calendar/calendar.php:427
+#: modules/calendar/calendar.php:444
+#: modules/calendar/calendar.php:445
 msgid "Content Calendar"
 msgstr "Календар на съдържанието"
 
-#: modules/calendar/calendar.php:241
+#: modules/calendar/calendar.php:253
 msgid "Post date updated."
 msgstr "Дата на публикацията актуализирана."
 
-#: modules/calendar/calendar.php:242
+#: modules/calendar/calendar.php:254
 msgid "Post status updated."
 msgstr "Статус на публикацията актуализиран."
 
-#: modules/calendar/calendar.php:243
+#: modules/calendar/calendar.php:255
 msgid "There was an error updating the post. Please try again."
 msgstr "Имаше грешка при актуализирането на публикацията. Моля, опитайте отново."
 
-#: modules/calendar/calendar.php:247
+#: modules/calendar/calendar.php:259
 #, php-format
 msgid ""
 "Updating the post date dynamically doesn't work for published content. "
@@ -664,7 +248,7 @@ msgstr ""
 "Динамичното обновление на датата на публикацията не работи за публикувано "
 "съдържание. Моля, <a href='%s'>редактирайте публикацията</a>."
 
-#: modules/calendar/calendar.php:251
+#: modules/calendar/calendar.php:263
 msgid ""
 "iCal secret key regenerated. Please inform all users they will need to "
 "resubscribe."
@@ -672,14 +256,14 @@ msgstr ""
 "iCal секретният ключ е регенериран. Моля, уведомете всички потребители, че "
 "ще трябва да се абонират отново."
 
-#: modules/calendar/calendar.php:259
+#: modules/calendar/calendar.php:271
 #: modules/editorial-comments/editorial-comments.php:82
 #: modules/editorial-metadata/editorial-metadata.php:119
 #: modules/notifications/notifications.php:96
 msgid "Overview"
 msgstr "Преглед"
 
-#: modules/calendar/calendar.php:260
+#: modules/calendar/calendar.php:272
 msgid ""
 "<p>The calendar is a convenient week-by-week or month-by-month view into "
 "your content. Quickly see which stories are on track to being published on "
@@ -689,7 +273,7 @@ msgstr ""
 "вашето съдържание. Бързо вижте кои истории са на път да бъдат публикувани "
 "навреме и кои ще изискват допълнителни усилия.</p>"
 
-#: modules/calendar/calendar.php:265
+#: modules/calendar/calendar.php:277
 msgid ""
 "<p><strong>For more information:</strong></p><p><a "
 "href=\"https://publishpress.com/features/calendar/\">Calendar "
@@ -703,17 +287,17 @@ msgstr ""
 "href=\"https://github.com/ostraining/PublishPress\">PublishPress в "
 "Github</a></p>"
 
-#: modules/calendar/calendar.php:734
-#: modules/calendar/library/calendar-utilities.php:1259
+#: modules/calendar/calendar.php:746
+#: modules/calendar/library/calendar-utilities.php:1266
 #: modules/content-board/content-board.php:1043
 msgid "Weeks"
 msgstr "Седмици"
 
-#: modules/calendar/calendar.php:735
+#: modules/calendar/calendar.php:747
 msgid "Start Date"
 msgstr "Дата на започване"
 
-#: modules/calendar/calendar.php:736
+#: modules/calendar/calendar.php:748
 #: modules/calendar/library/calendar-utilities.php:467
 #: modules/calendar/library/calendar-utilities.php:468
 #: modules/content-board/library/content-board-utilities.php:28
@@ -721,105 +305,105 @@ msgstr "Дата на започване"
 msgid "Me Mode"
 msgstr "Режим Me"
 
-#: modules/calendar/calendar.php:737
+#: modules/calendar/calendar.php:749
 msgid "Show Revision"
 msgstr "Покажи ревизия"
 
-#: modules/calendar/calendar.php:738
+#: modules/calendar/calendar.php:750
 #: modules/calendar/library/calendar-utilities.php:486
 #: modules/content-board/library/content-board-utilities.php:98
 #: modules/content-overview/library/content-overview-methods.php:323
 msgid "Search"
 msgstr "Търсене"
 
-#: modules/calendar/calendar.php:912
-#: modules/content-board/library/content-board-methods.php:164
-#: modules/content-overview/content-overview.php:668
+#: modules/calendar/calendar.php:928
+#: modules/content-board/library/content-board-methods.php:166
+#: modules/content-overview/content-overview.php:684
 msgid "Filter updated successfully."
 msgstr "Филтърът беше актуализиран успешно."
 
-#: modules/calendar/calendar.php:919
+#: modules/calendar/calendar.php:935
 msgid "Filter reset successfully."
 msgstr "Филтърът беше нулиран успешно."
 
-#: modules/calendar/calendar.php:987
+#: modules/calendar/calendar.php:1008
 #: modules/content-board/content-board.php:709
-#: modules/content-overview/content-overview.php:832
 #: modules/content-overview/content-overview.php:847
-#: modules/content-overview/content-overview.php:892
+#: modules/content-overview/content-overview.php:871
+#: modules/content-overview/content-overview.php:923
 #: modules/notifications-log/library/NotificationsLogTable.php:500
 msgid "Status"
 msgstr "Статус"
 
-#: modules/calendar/calendar.php:988
-#: modules/calendar/calendar.php:1212
+#: modules/calendar/calendar.php:1009
+#: modules/calendar/calendar.php:1240
 #: modules/calendar/library/calendar-methods.php:875
-#: modules/calendar/library/calendar-methods.php:1248
+#: modules/calendar/library/calendar-methods.php:1260
 #: modules/calendar/library/calendar-utilities.php:115
 #: modules/calendar/library/calendar-utilities.php:1075
-#: modules/calendar/library/calendar-utilities.php:1191
+#: modules/calendar/library/calendar-utilities.php:1194
 #: modules/content-board/content-board.php:699
 #: modules/content-board/content-board.php:710
 #: modules/content-board/content-board.php:753
 #: modules/content-board/content-board.php:812
 #: modules/content-board/library/content-board-utilities.php:647
 #: modules/content-board/library/content-board-utilities.php:1180
-#: modules/content-overview/content-overview.php:835
-#: modules/content-overview/content-overview.php:849
-#: modules/content-overview/content-overview.php:894
-#: modules/content-overview/content-overview.php:956
-#: modules/content-overview/content-overview.php:1218
+#: modules/content-overview/content-overview.php:854
+#: modules/content-overview/content-overview.php:877
+#: modules/content-overview/content-overview.php:930
+#: modules/content-overview/content-overview.php:998
+#: modules/content-overview/content-overview.php:1264
 #: modules/content-overview/library/content-overview-utilities.php:506
 #: modules/content-overview/library/content-overview-utilities.php:769
-#: modules/editorial-comments/library/EditorialCommentsTable.php:228
+#: modules/editorial-comments/library/EditorialCommentsTable.php:230
 msgid "Author"
 msgid_plural "Authors"
 msgstr[0] "Автор"
 msgstr[1] "Автори"
 
-#: modules/calendar/calendar.php:989
-#: modules/calendar/calendar.php:1220
+#: modules/calendar/calendar.php:1010
+#: modules/calendar/calendar.php:1248
 #: modules/calendar/library/calendar-utilities.php:146
 #: modules/calendar/library/calendar-utilities.php:1054
-#: modules/calendar/library/calendar-utilities.php:1192
+#: modules/calendar/library/calendar-utilities.php:1195
 #: modules/content-board/content-board.php:698
 #: modules/content-board/content-board.php:711
 #: modules/content-board/content-board.php:752
 #: modules/content-board/content-board.php:813
 #: modules/content-board/library/content-board-utilities.php:677
 #: modules/content-board/library/content-board-utilities.php:1153
-#: modules/content-overview/content-overview.php:834
-#: modules/content-overview/content-overview.php:850
-#: modules/content-overview/content-overview.php:893
-#: modules/content-overview/content-overview.php:957
+#: modules/content-overview/content-overview.php:853
+#: modules/content-overview/content-overview.php:878
+#: modules/content-overview/content-overview.php:929
+#: modules/content-overview/content-overview.php:999
 #: modules/content-overview/library/content-overview-utilities.php:479
 #: modules/content-overview/library/content-overview-utilities.php:799
 msgid "Post Type"
 msgstr "Тип на публикацията"
 
-#: modules/calendar/calendar.php:1103
+#: modules/calendar/calendar.php:1131
 msgid "Post moved to the trash."
 msgid_plural "%d posts moved to the trash."
 msgstr[0] "Публикацията е преместена в кошчето."
 msgstr[1] "%d публикации са преместени в кошчето."
 
-#: modules/calendar/calendar.php:1119
+#: modules/calendar/calendar.php:1147
 #: modules/content-board/content-board.php:614
 #: modules/content-overview/library/content-overview-methods.php:214
 msgid "Undo"
 msgstr "Отмяна"
 
-#: modules/calendar/calendar.php:1129
+#: modules/calendar/calendar.php:1157
 msgid "Post restored from the Trash."
 msgid_plural "%d posts restored from the Trash."
 msgstr[0] "Публикацията е възстановена от кошчето."
 msgstr[1] "%d публикации са възстановени от кошчето."
 
-#: modules/calendar/calendar.php:1161
+#: modules/calendar/calendar.php:1189
 msgid "Initializing the calendar. Please wait..."
 msgstr "Инициализиране на календара. Моля изчакайте..."
 
-#: modules/calendar/calendar.php:1165
+#: modules/calendar/calendar.php:1193
 msgid ""
 "It seems like it is taking too long. Please, try reloading the page again "
 "and check the browser console looking for errors."
@@ -827,7 +411,7 @@ msgstr ""
 "Изглежда, че отнема твърде много време. Моля, опитайте да презаредите "
 "страницата отново и проверете конзолата на браузъра за грешки."
 
-#: modules/calendar/calendar.php:1809
+#: modules/calendar/calendar.php:1837
 msgid ""
 "The selected user doesn't have enough permissions to be set as the post "
 "author."
@@ -959,9 +543,24 @@ msgstr "Недостатъчни права"
 msgid "Invalid date"
 msgstr "Невалидна дата"
 
+#: modules/calendar/library/calendar-methods.php:853
+#: modules/content-board/content-board.php:421
+#: modules/content-board/library/content-board-utilities.php:244
+#: modules/content-board/library/content-board-utilities.php:1159
+#: modules/content-overview/content-overview.php:430
+#: modules/content-overview/library/content-overview-utilities.php:485
+msgid "Title"
+msgstr "Заглавие"
+
 #: modules/calendar/library/calendar-methods.php:864
 msgid "Publish Time"
 msgstr "Време на публикуване"
+
+#: modules/calendar/library/calendar-methods.php:885
+#: modules/content-board/library/content-board-utilities.php:1190
+#: modules/content-overview/library/content-overview-utilities.php:516
+msgid "Categories"
+msgstr "Категории"
 
 #: modules/calendar/library/calendar-methods.php:894
 #: modules/content-board/library/content-board-utilities.php:1199
@@ -969,170 +568,200 @@ msgstr "Време на публикуване"
 msgid "Tags"
 msgstr "Тагове"
 
+#: modules/calendar/library/calendar-methods.php:902
+#: modules/content-board/library/content-board-utilities.php:1207
+#: modules/content-overview/library/content-overview-utilities.php:533
+#: modules/improved-notifications/improved-notifications.php:1337
+#: views/workflow_help.html.php:2
+msgid "Content"
+msgstr "Съдържание"
+
 #: modules/calendar/library/calendar-methods.php:1001
 msgid "Publish on"
 msgstr "Публикувай на"
 
-#: modules/calendar/library/calendar-methods.php:1195
-#: modules/notifications-log/notifications-log.php:210
+#: modules/calendar/library/calendar-methods.php:1200
+#: modules/calendar/library/calendar-methods.php:1249
+#: modules/notifications-log/notifications-log.php:213
 msgid "Loading..."
 msgstr "Зареждане..."
 
-#: modules/calendar/library/calendar-methods.php:1196
+#: modules/calendar/library/calendar-methods.php:1201
 msgid "Loading item..."
 msgstr "Зареждане на елемента..."
 
-#: modules/calendar/library/calendar-methods.php:1197
+#: modules/calendar/library/calendar-methods.php:1202
 msgid "Click to add"
 msgstr "Кликнете, за да добавите"
 
-#: modules/calendar/library/calendar-methods.php:1198
+#: modules/calendar/library/calendar-methods.php:1203
 msgid "Moving the item..."
 msgstr "Преместване на елемента..."
 
-#: modules/calendar/library/calendar-methods.php:1199
+#: modules/calendar/library/calendar-methods.php:1204
 #, php-format
 msgid "Hide the %s last items"
 msgstr "Скрийте последните %s елемента"
 
-#: modules/calendar/library/calendar-methods.php:1200
+#: modules/calendar/library/calendar-methods.php:1205
 #, php-format
 msgid "Show %s more"
 msgstr "Покажи %s повече"
 
-#: modules/calendar/library/calendar-methods.php:1201
-#: modules/calendar/library/calendar-methods.php:1704
+#: modules/calendar/library/calendar-methods.php:1206
+#: modules/calendar/library/calendar-methods.php:1716
 msgid "Untitled"
 msgstr "Без заглавие"
 
-#: modules/calendar/library/calendar-methods.php:1202
+#: modules/calendar/library/calendar-methods.php:1207
+msgid "Refresh"
+msgstr "Обнови"
+
+#: modules/calendar/library/calendar-methods.php:1208
+msgid "Previous page"
+msgstr "Предишна страница"
+
+#: modules/calendar/library/calendar-methods.php:1209
+msgid "Previous week"
+msgstr "Предишна седмица"
+
+#: modules/calendar/library/calendar-methods.php:1210
+msgid "Next week"
+msgstr "Следваща седмица"
+
+#: modules/calendar/library/calendar-methods.php:1211
+msgid "Next page"
+msgstr "Следваща страница"
+
+#: modules/calendar/library/calendar-methods.php:1212
+#: modules/calendar/library/calendar-utilities.php:477
+#: modules/calendar/library/calendar-utilities.php:507
 msgid "Close"
 msgstr "Затвори"
 
-#: modules/calendar/library/calendar-methods.php:1203
-#: modules/editorial-comments/lib/editorial-comments.js:349
+#: modules/calendar/library/calendar-methods.php:1213
 msgid "Save"
 msgstr "Запази"
 
-#: modules/calendar/library/calendar-methods.php:1204
+#: modules/calendar/library/calendar-methods.php:1214
 msgid "Saving..."
 msgstr "Запазване..."
 
-#: modules/calendar/library/calendar-methods.php:1205
+#: modules/calendar/library/calendar-methods.php:1215
 msgid "Save and edit"
 msgstr "Запази и редактирай"
 
-#: modules/calendar/library/calendar-methods.php:1206
+#: modules/calendar/library/calendar-methods.php:1216
 #, php-format
 msgid "Add content for %s"
 msgstr "Добавете съдържание за %s"
 
-#: modules/calendar/library/calendar-methods.php:1207
+#: modules/calendar/library/calendar-methods.php:1217
 msgid "Post type not found"
 msgstr "Тип на публикацията не е намерен"
 
-#: modules/calendar/library/calendar-methods.php:1208
+#: modules/calendar/library/calendar-methods.php:1218
 msgid "Post type:"
 msgstr "Тип на публикацията:"
 
-#: modules/calendar/library/calendar-methods.php:1209
+#: modules/calendar/library/calendar-methods.php:1219
 #: modules/content-board/library/content-board-utilities.php:1130
 #: modules/content-overview/library/content-overview-utilities.php:456
 msgid "Please, wait! Loading the form fields..."
 msgstr "Моля, изчакайте! Зареждане на полетата на формуляра..."
 
-#: modules/calendar/library/calendar-methods.php:1210
+#: modules/calendar/library/calendar-methods.php:1220
 msgid "Sun"
 msgstr "Неделя"
 
-#: modules/calendar/library/calendar-methods.php:1211
+#: modules/calendar/library/calendar-methods.php:1221
 msgid "Mon"
 msgstr "Понеделник"
 
-#: modules/calendar/library/calendar-methods.php:1212
+#: modules/calendar/library/calendar-methods.php:1222
 msgid "Tue"
 msgstr "Втр"
 
-#: modules/calendar/library/calendar-methods.php:1213
+#: modules/calendar/library/calendar-methods.php:1223
 msgid "Wed"
 msgstr "Ср"
 
-#: modules/calendar/library/calendar-methods.php:1214
+#: modules/calendar/library/calendar-methods.php:1224
 msgid "Thu"
 msgstr "Чт"
 
-#: modules/calendar/library/calendar-methods.php:1215
+#: modules/calendar/library/calendar-methods.php:1225
 msgid "Fri"
 msgstr "Пт"
 
-#: modules/calendar/library/calendar-methods.php:1216
+#: modules/calendar/library/calendar-methods.php:1226
 msgid "Sat"
 msgstr "Сб"
 
-#: modules/calendar/library/calendar-methods.php:1217
+#: modules/calendar/library/calendar-methods.php:1227
 msgid "Jan"
 msgstr "Ян"
 
-#: modules/calendar/library/calendar-methods.php:1218
+#: modules/calendar/library/calendar-methods.php:1228
 msgid "Feb"
 msgstr "Фев"
 
-#: modules/calendar/library/calendar-methods.php:1219
+#: modules/calendar/library/calendar-methods.php:1229
 msgid "Mar"
 msgstr "Мар"
 
-#: modules/calendar/library/calendar-methods.php:1220
+#: modules/calendar/library/calendar-methods.php:1230
 msgid "Apr"
 msgstr "Апр"
 
-#: modules/calendar/library/calendar-methods.php:1221
+#: modules/calendar/library/calendar-methods.php:1231
 msgid "May"
 msgstr "Май"
 
-#: modules/calendar/library/calendar-methods.php:1222
+#: modules/calendar/library/calendar-methods.php:1232
 msgid "Jun"
 msgstr "Юн"
 
-#: modules/calendar/library/calendar-methods.php:1223
+#: modules/calendar/library/calendar-methods.php:1233
 msgid "Jul"
 msgstr "Юл"
 
-#: modules/calendar/library/calendar-methods.php:1224
+#: modules/calendar/library/calendar-methods.php:1234
 msgid "Aug"
 msgstr "Авг"
 
-#: modules/calendar/library/calendar-methods.php:1225
+#: modules/calendar/library/calendar-methods.php:1235
 msgid "Sep"
 msgstr "Сеп"
 
-#: modules/calendar/library/calendar-methods.php:1226
+#: modules/calendar/library/calendar-methods.php:1236
 msgid "Oct"
 msgstr "Окт"
 
-#: modules/calendar/library/calendar-methods.php:1227
+#: modules/calendar/library/calendar-methods.php:1237
 msgid "Nov"
 msgstr "Ное"
 
-#: modules/calendar/library/calendar-methods.php:1228
+#: modules/calendar/library/calendar-methods.php:1238
 msgid "Dec"
 msgstr "Дек"
 
-#: modules/calendar/library/calendar-methods.php:1229
+#: modules/calendar/library/calendar-methods.php:1239
 #: modules/calendar/library/calendar-utilities.php:51
 #: modules/content-board/library/content-board-utilities.php:598
 #: modules/content-overview/library/content-overview-utilities.php:707
 msgid "All statuses"
 msgstr "Всички статуси"
 
-#: modules/calendar/library/calendar-methods.php:1230
+#: modules/calendar/library/calendar-methods.php:1240
 msgid "All categories"
 msgstr "Всички категории"
 
-#: modules/calendar/library/calendar-methods.php:1231
+#: modules/calendar/library/calendar-methods.php:1241
 msgid "All tags"
 msgstr "Всички тагове"
 
-#: modules/calendar/library/calendar-methods.php:1232
+#: modules/calendar/library/calendar-methods.php:1242
 #: modules/calendar/library/calendar-utilities.php:117
 #: modules/calendar/library/calendar-utilities.php:120
 #: modules/content-board/library/content-board-utilities.php:649
@@ -1142,11 +771,11 @@ msgstr "Всички тагове"
 msgid "All authors"
 msgstr "Всички автори"
 
-#: modules/calendar/library/calendar-methods.php:1233
+#: modules/calendar/library/calendar-methods.php:1243
 msgid "All types"
 msgstr "Всички типове"
 
-#: modules/calendar/library/calendar-methods.php:1234
+#: modules/calendar/library/calendar-methods.php:1244
 #: modules/calendar/library/calendar-utilities.php:513
 #, php-format
 msgid "%d week"
@@ -1154,101 +783,107 @@ msgid_plural "%d weeks"
 msgstr[0] "%d седмица"
 msgstr[1] "%d седмици"
 
-#: modules/calendar/library/calendar-methods.php:1235
+#: modules/calendar/library/calendar-methods.php:1245
 #, php-format
 msgid "%d weeks"
 msgstr "%d седмици"
 
-#: modules/calendar/library/calendar-methods.php:1236
+#: modules/calendar/library/calendar-methods.php:1246
 msgid "Today"
 msgstr "Днес"
 
-#: modules/calendar/library/calendar-methods.php:1237
+#: modules/calendar/library/calendar-methods.php:1247
 msgid "No terms"
 msgstr "Няма термини"
 
-#: modules/calendar/library/calendar-methods.php:1238
+#: modules/calendar/library/calendar-methods.php:1248
+#: modules/content-board/content-board.php:1268
+#: modules/content-overview/content-overview.php:1240
+msgid "No results found"
+msgstr "Не са намерени резултати"
+
+#: modules/calendar/library/calendar-methods.php:1250
 #: modules/content-board/content-board.php:1288
-#: modules/content-overview/content-overview.php:836
-#: modules/content-overview/content-overview.php:895
-#: modules/content-overview/content-overview.php:1219
+#: modules/content-overview/content-overview.php:855
+#: modules/content-overview/content-overview.php:931
+#: modules/content-overview/content-overview.php:1265
 msgid "Post Date"
 msgstr "Дата на публикация"
 
-#: modules/calendar/library/calendar-methods.php:1239
+#: modules/calendar/library/calendar-methods.php:1251
 #: modules/calendar/library/calendar-utilities.php:1097
 #: modules/content-board/content-board.php:1183
 #: modules/content-board/content-board.php:1289
-#: modules/content-overview/content-overview.php:1220
-#: modules/content-overview/content-overview.php:1703
+#: modules/content-overview/content-overview.php:1266
+#: modules/content-overview/content-overview.php:1749
 #: modules/editorial-comments/editorial-comments.php:628
 #: modules/editorial-metadata/library/editorial-metadata-list-table.php:159
 msgid "Edit"
 msgstr "Редактиране"
 
-#: modules/calendar/library/calendar-methods.php:1241
+#: modules/calendar/library/calendar-methods.php:1253
 #: modules/calendar/library/calendar-utilities.php:1114
 #: modules/content-board/content-board.php:1224
 #: modules/content-board/content-board.php:1291
-#: modules/content-overview/content-overview.php:1222
-#: modules/content-overview/content-overview.php:1744
+#: modules/content-overview/content-overview.php:1268
+#: modules/content-overview/content-overview.php:1790
 msgid "Preview"
 msgstr "Преглед"
 
-#: modules/calendar/library/calendar-methods.php:1242
+#: modules/calendar/library/calendar-methods.php:1254
 #: modules/calendar/library/calendar-utilities.php:1111
 #: modules/content-board/content-board.php:1211
 #: modules/content-board/content-board.php:1292
-#: modules/content-overview/content-overview.php:1223
-#: modules/content-overview/content-overview.php:1731
+#: modules/content-overview/content-overview.php:1269
+#: modules/content-overview/content-overview.php:1777
 msgid "View"
 msgstr "Виж"
 
-#: modules/calendar/library/calendar-methods.php:1243
+#: modules/calendar/library/calendar-methods.php:1255
 #: modules/content-board/content-board.php:1293
-#: modules/content-overview/content-overview.php:1224
+#: modules/content-overview/content-overview.php:1270
 msgid "Previous Post"
 msgstr "Предишна публикация"
 
-#: modules/calendar/library/calendar-methods.php:1244
+#: modules/calendar/library/calendar-methods.php:1256
 #: modules/content-board/content-board.php:1294
-#: modules/content-overview/content-overview.php:1225
+#: modules/content-overview/content-overview.php:1271
 msgid "Next Post"
 msgstr "Следваща публикация"
 
-#: modules/calendar/library/calendar-methods.php:1246
+#: modules/calendar/library/calendar-methods.php:1258
 #: modules/content-board/content-board.php:1296
-#: modules/content-overview/content-overview.php:1227
+#: modules/content-overview/content-overview.php:1273
 msgid "Save Changes"
 msgstr "Запази промените"
 
-#: modules/calendar/library/calendar-methods.php:1247
+#: modules/calendar/library/calendar-methods.php:1259
 #: modules/content-board/content-board.php:1297
-#: modules/content-overview/content-overview.php:1228
+#: modules/content-overview/content-overview.php:1274
 msgid "Taxonomy not set."
 msgstr "Таксономията не е зададена."
 
-#: modules/calendar/library/calendar-methods.php:1687
+#: modules/calendar/library/calendar-methods.php:1699
 msgid "No date supplied."
 msgstr "Не е предоставена дата."
 
-#: modules/calendar/library/calendar-methods.php:1698
+#: modules/calendar/library/calendar-methods.php:1710
 msgid "The selected post type is not enabled for the calendar."
 msgstr "Избраният тип публикация не е активиран за календара."
 
-#: modules/calendar/library/calendar-methods.php:1728
+#: modules/calendar/library/calendar-methods.php:1740
 msgid "Invalid Status supplied."
 msgstr "Предоставен е невалиден статус."
 
-#: modules/calendar/library/calendar-methods.php:1752
+#: modules/calendar/library/calendar-methods.php:1764
 msgid "Invalid Publish Date supplied."
 msgstr "Предоставена е невалидна дата на публикуване."
 
-#: modules/calendar/library/calendar-methods.php:1821
+#: modules/calendar/library/calendar-methods.php:1833
 msgid "Post created successfully"
 msgstr "Публикацията е създадена успешно"
 
-#: modules/calendar/library/calendar-methods.php:1828
+#: modules/calendar/library/calendar-methods.php:1840
 msgid "Post could not be created"
 msgstr "Публикацията не можа да бъде създадена"
 
@@ -1351,6 +986,12 @@ msgstr "Неуспешен"
 msgid "Customize Filters"
 msgstr "Персонализиране на филтри"
 
+#: modules/calendar/library/calendar-utilities.php:485
+#: modules/content-board/library/content-board-utilities.php:97
+#: modules/content-overview/library/content-overview-methods.php:322
+msgid "Search content"
+msgstr "Търси съдържание"
+
 #: modules/calendar/library/calendar-utilities.php:502
 #: modules/calendar/library/calendar-utilities.php:503
 msgid "Period"
@@ -1435,35 +1076,53 @@ msgstr "Плъзнете, за да промените реда на актив�
 msgid "Apply Changes"
 msgstr "Приложи промените"
 
+#: modules/calendar/library/calendar-utilities.php:1059
+msgid "ID"
+msgstr "ИД"
+
+#: modules/calendar/library/calendar-utilities.php:1064
+#: modules/content-board/library/content-board-utilities.php:116
+#: modules/content-overview/library/content-overview-methods.php:341
+#: modules/editorial-metadata/editorial-metadata.php:290
+#: modules/notifications-log/library/NotificationsLogTable.php:496
+msgid "Date"
+msgstr "Дата"
+
+#: modules/calendar/library/calendar-utilities.php:1080
+msgid "Category"
+msgid_plural "Categories"
+msgstr[0] "Категория"
+msgstr[1] "Категории"
+
 #: modules/calendar/library/calendar-utilities.php:1085
 msgid "Tag"
 msgid_plural "Tags"
 msgstr[0] "Таг"
 msgstr[1] "Тагове"
 
-#: modules/calendar/library/calendar-utilities.php:1180
+#: modules/calendar/library/calendar-utilities.php:1181
 #: modules/content-board/content-board.php:802
-#: modules/content-overview/content-overview.php:945
+#: modules/content-overview/content-overview.php:985
 msgid "Custom filters"
 msgstr "Персонализирани филтри"
 
-#: modules/calendar/library/calendar-utilities.php:1181
+#: modules/calendar/library/calendar-utilities.php:1182
 #: modules/content-board/content-board.php:803
-#: modules/content-overview/content-overview.php:946
+#: modules/content-overview/content-overview.php:986
 msgid "Click the \"Add New\" button to create new filters."
 msgstr "Щракнете върху бутона \"Добави нов\" за създаване на нови филтри."
 
-#: modules/calendar/library/calendar-utilities.php:1187
+#: modules/calendar/library/calendar-utilities.php:1199
 #: modules/content-board/content-board.php:809
-#: modules/content-overview/content-overview.php:952
+#: modules/content-overview/content-overview.php:1003
 msgid "Inbuilt filters"
 msgstr "Вградени филтри"
 
-#: modules/calendar/library/calendar-utilities.php:1199
+#: modules/calendar/library/calendar-utilities.php:1206
 #: modules/content-board/content-board.php:760
 #: modules/content-board/content-board.php:820
-#: modules/content-overview/content-overview.php:903
-#: modules/content-overview/content-overview.php:964
+#: modules/content-overview/content-overview.php:943
+#: modules/content-overview/content-overview.php:1010
 #: modules/editorial-metadata/editorial-metadata.php:95
 #: modules/editorial-metadata/editorial-metadata.php:511
 #: modules/editorial-metadata/editorial-metadata.php:1720
@@ -1471,140 +1130,148 @@ msgstr "Вградени филтри"
 msgid "Editorial Fields"
 msgstr "Редакционни полета"
 
-#: modules/calendar/library/calendar-utilities.php:1200
+#: modules/calendar/library/calendar-utilities.php:1207
 #: modules/content-board/content-board.php:761
 #: modules/content-board/content-board.php:821
-#: modules/content-overview/content-overview.php:904
-#: modules/content-overview/content-overview.php:965
+#: modules/content-overview/content-overview.php:944
+#: modules/content-overview/content-overview.php:1011
 msgid "You do not have any editorial fields enabled"
 msgstr "Нямате активирани редакционни полета"
 
-#: modules/calendar/library/calendar-utilities.php:1207
+#: modules/calendar/library/calendar-utilities.php:1213
+#: modules/content-board/content-board.php:767
+#: modules/content-board/content-board.php:827
+#: modules/content-overview/content-overview.php:950
+#: modules/content-overview/content-overview.php:1017
+msgid "Taxonomies"
+msgstr "Таксономии"
+
+#: modules/calendar/library/calendar-utilities.php:1214
 #: modules/content-board/content-board.php:768
 #: modules/content-board/content-board.php:828
-#: modules/content-overview/content-overview.php:911
-#: modules/content-overview/content-overview.php:972
+#: modules/content-overview/content-overview.php:951
+#: modules/content-overview/content-overview.php:1018
 msgid "You do not have any public taxonomies"
 msgstr "Нямате публични таксономии"
 
-#: modules/calendar/library/calendar-utilities.php:1229
+#: modules/calendar/library/calendar-utilities.php:1236
 msgid "Subscribe in iCal or Google Calendar"
 msgstr "Абонирайте се в iCal или Google Календар"
 
-#: modules/calendar/library/calendar-utilities.php:1234
+#: modules/calendar/library/calendar-utilities.php:1241
 msgid "Start date"
 msgstr "Начална дата"
 
-#: modules/calendar/library/calendar-utilities.php:1238
+#: modules/calendar/library/calendar-utilities.php:1245
 msgid "Current week"
 msgstr "Текуща седмица"
 
-#: modules/calendar/library/calendar-utilities.php:1240
+#: modules/calendar/library/calendar-utilities.php:1247
 msgid "One month ago"
 msgstr "Преди един месец"
 
-#: modules/calendar/library/calendar-utilities.php:1242
+#: modules/calendar/library/calendar-utilities.php:1249
 msgid "Two months ago"
 msgstr "Преди два месеца"
 
-#: modules/calendar/library/calendar-utilities.php:1244
+#: modules/calendar/library/calendar-utilities.php:1251
 msgid "Three months ago"
 msgstr "Преди три месеца"
 
-#: modules/calendar/library/calendar-utilities.php:1246
+#: modules/calendar/library/calendar-utilities.php:1253
 msgid "Four months ago"
 msgstr "Преди четири месеца"
 
-#: modules/calendar/library/calendar-utilities.php:1248
+#: modules/calendar/library/calendar-utilities.php:1255
 msgid "Five months ago"
 msgstr "Преди пет месеца"
 
-#: modules/calendar/library/calendar-utilities.php:1250
+#: modules/calendar/library/calendar-utilities.php:1257
 msgid "Six months ago"
 msgstr "Преди шест месеца"
 
-#: modules/calendar/library/calendar-utilities.php:1256
+#: modules/calendar/library/calendar-utilities.php:1263
 msgid "End date"
 msgstr "Краен срок"
 
-#: modules/calendar/library/calendar-utilities.php:1261
+#: modules/calendar/library/calendar-utilities.php:1268
 msgid "One week"
 msgstr "Една седмица"
 
-#: modules/calendar/library/calendar-utilities.php:1263
+#: modules/calendar/library/calendar-utilities.php:1270
 msgid "Two weeks"
 msgstr "Две седмици"
 
-#: modules/calendar/library/calendar-utilities.php:1265
+#: modules/calendar/library/calendar-utilities.php:1272
 msgid "Three weeks"
 msgstr "Три седмици"
 
-#: modules/calendar/library/calendar-utilities.php:1267
+#: modules/calendar/library/calendar-utilities.php:1274
 msgid "Four weeks"
 msgstr "Четири седмици"
 
-#: modules/calendar/library/calendar-utilities.php:1271
+#: modules/calendar/library/calendar-utilities.php:1278
 #: modules/content-board/content-board.php:1044
 msgid "Months"
 msgstr "Месеци"
 
-#: modules/calendar/library/calendar-utilities.php:1273
+#: modules/calendar/library/calendar-utilities.php:1280
 msgid "One month"
 msgstr "Един месец"
 
-#: modules/calendar/library/calendar-utilities.php:1276
+#: modules/calendar/library/calendar-utilities.php:1283
 msgid "Two months"
 msgstr "Два месеца"
 
-#: modules/calendar/library/calendar-utilities.php:1278
+#: modules/calendar/library/calendar-utilities.php:1285
 msgid "Three months"
 msgstr "Три месеца"
 
-#: modules/calendar/library/calendar-utilities.php:1280
+#: modules/calendar/library/calendar-utilities.php:1287
 msgid "Four months"
 msgstr "Четири месеца"
 
-#: modules/calendar/library/calendar-utilities.php:1282
+#: modules/calendar/library/calendar-utilities.php:1289
 msgid "Five months"
 msgstr "Пет месеца"
 
-#: modules/calendar/library/calendar-utilities.php:1284
+#: modules/calendar/library/calendar-utilities.php:1291
 msgid "Six months"
 msgstr "Шест месеца"
 
-#: modules/calendar/library/calendar-utilities.php:1286
+#: modules/calendar/library/calendar-utilities.php:1293
 msgid "Seven months"
 msgstr "Седем месеца"
 
-#: modules/calendar/library/calendar-utilities.php:1288
+#: modules/calendar/library/calendar-utilities.php:1295
 msgid "Eight months"
 msgstr "Осем месеца"
 
-#: modules/calendar/library/calendar-utilities.php:1290
+#: modules/calendar/library/calendar-utilities.php:1297
 msgid "Nine months"
 msgstr "Девет месеца"
 
-#: modules/calendar/library/calendar-utilities.php:1292
+#: modules/calendar/library/calendar-utilities.php:1299
 msgid "Ten months"
 msgstr "Десет месеца"
 
-#: modules/calendar/library/calendar-utilities.php:1294
+#: modules/calendar/library/calendar-utilities.php:1301
 msgid "Eleven months"
 msgstr "Единадесет месеца"
 
-#: modules/calendar/library/calendar-utilities.php:1296
+#: modules/calendar/library/calendar-utilities.php:1303
 msgid "Twelve months"
 msgstr "Дванадесет месеца"
 
-#: modules/calendar/library/calendar-utilities.php:1308
+#: modules/calendar/library/calendar-utilities.php:1315
 msgid "Download .ics file"
 msgstr "Изтеглете .ics файл"
 
-#: modules/calendar/library/calendar-utilities.php:1315
+#: modules/calendar/library/calendar-utilities.php:1322
 msgid "Copy to the clipboard"
 msgstr "Копиране в клипборда"
 
-#: modules/calendar/library/calendar-utilities.php:1321
+#: modules/calendar/library/calendar-utilities.php:1328
 msgid "Click here to subscribe in iCal or Google Calendar"
 msgstr "Кликнете тук, за да се абонирате в iCal или Google Calendar"
 
@@ -1630,14 +1297,14 @@ msgstr "Вградени данни за карта"
 #: modules/content-board/content-board.php:847
 #: modules/content-board/library/content-board-methods.php:39
 #: modules/content-board/library/content-board-methods.php:107
-#: modules/content-overview/content-overview.php:991
+#: modules/content-overview/content-overview.php:1037
 msgid "An error occured"
 msgstr "Възникна грешка"
 
 #: modules/content-board/content-board.php:851
 #: modules/content-board/library/content-board-methods.php:43
 #: modules/content-board/library/content-board-methods.php:111
-#: modules/content-overview/content-overview.php:995
+#: modules/content-overview/content-overview.php:1041
 msgid "Error validating nonce. Please reload this page and try again."
 msgstr ""
 "Грешка при валидиране на nonce. Моля, презаредете тази страница и опитайте "
@@ -1645,8 +1312,8 @@ msgstr ""
 
 #: modules/content-board/content-board.php:853
 #: modules/content-board/library/content-board-methods.php:45
-#: modules/content-board/library/content-board-methods.php:113
-#: modules/content-overview/content-overview.php:997
+#: modules/content-board/library/content-board-methods.php:115
+#: modules/content-overview/content-overview.php:1043
 msgid "Invalid form request."
 msgstr "Невалидна форма на заявка."
 
@@ -1685,40 +1352,35 @@ msgid "Only editable posts will be moveable."
 msgstr "Само редактираните публикации ще могат да бъдат преместени."
 
 #: modules/content-board/content-board.php:1179
-#: modules/content-overview/content-overview.php:1699
+#: modules/content-overview/content-overview.php:1745
 #: modules/dashboard/dashboard.php:299
 msgid "Edit this post"
 msgstr "Редактирайте тази публикация"
 
 #: modules/content-board/content-board.php:1191
-#: modules/content-overview/content-overview.php:1711
+#: modules/content-overview/content-overview.php:1757
 msgid "Move this item to the Trash"
 msgstr "Преместете този елемент в Кошчето"
 
 #: modules/content-board/content-board.php:1205
-#: modules/content-overview/content-overview.php:1725
+#: modules/content-overview/content-overview.php:1771
 #, php-format
 msgid "View &#8220;%s&#8221;"
 msgstr "Вижте &#8220;%s&#8221;"
 
 #: modules/content-board/content-board.php:1221
-#: modules/content-overview/content-overview.php:1741
+#: modules/content-overview/content-overview.php:1787
 #, php-format
 msgid "Preview &#8220;%s&#8221;"
 msgstr "Преглед на &#8220;%s&#8221;"
 
-#: modules/content-board/content-board.php:1268
-#: modules/content-overview/content-overview.php:1194
-msgid "No results found"
-msgstr "Не са намерени резултати"
-
 #: modules/content-board/content-board.php:1273
-#: modules/content-overview/content-overview.php:1199
+#: modules/content-overview/content-overview.php:1245
 msgid "There are no posts in the range or filter specified."
 msgstr "Няма публикации в посочения обхват или филтър."
 
 #: modules/content-board/content-board.php:1605
-#: modules/content-overview/content-overview.php:1579
+#: modules/content-overview/content-overview.php:1625
 msgid "None"
 msgstr "Няма"
 
@@ -1737,40 +1399,44 @@ msgstr ""
 "публикацията."
 
 #: modules/content-board/library/content-board-methods.php:95
-#: modules/content-board/library/content-board-methods.php:123
+#: modules/content-board/library/content-board-methods.php:125
 msgid "Changes saved!"
 msgstr "Промените са запазени!"
 
-#: modules/content-board/library/content-board-methods.php:150
+#: modules/content-board/library/content-board-methods.php:113
+msgid "You do not have permission to update schedule settings."
+msgstr "Нямате разрешение да актуализирате настройките на графика."
+
+#: modules/content-board/library/content-board-methods.php:152
 msgid "Card Data updated successfully."
 msgstr "Данните на картата бяха обновени успешно."
 
-#: modules/content-board/library/content-board-methods.php:172
-#: modules/content-overview/content-overview.php:676
+#: modules/content-board/library/content-board-methods.php:174
+#: modules/content-overview/content-overview.php:692
 msgid "Settings updated successfully."
 msgstr "Настройките бяха обновени успешно."
 
-#: modules/content-board/library/content-board-methods.php:250
-#: modules/content-overview/content-overview.php:754
+#: modules/content-board/library/content-board-methods.php:252
+#: modules/content-overview/content-overview.php:770
 #, php-format
 msgid "%s created successfully. <a href=\"%s\" target=\"_blank\">Edit %s</a>"
 msgstr ""
 "%s беше създадено успешно. <a href=\"%s\" target=\"_blank\">Редактирайте "
 "%s</a>"
 
-#: modules/content-board/library/content-board-methods.php:253
-#: modules/content-overview/content-overview.php:757
+#: modules/content-board/library/content-board-methods.php:255
+#: modules/content-overview/content-overview.php:773
 #, php-format
 msgid "%s could not be created"
 msgstr "%s не можа да бъде създадено"
 
-#: modules/content-board/library/content-board-methods.php:258
-#: modules/content-overview/content-overview.php:762
+#: modules/content-board/library/content-board-methods.php:260
+#: modules/content-overview/content-overview.php:778
 #, php-format
 msgid "You do not have permission to add new %s"
 msgstr "Нямате разрешение да добавяте нов %s"
 
-#: modules/content-board/library/content-board-methods.php:437
+#: modules/content-board/library/content-board-methods.php:439
 #: modules/content-overview/library/content-overview-methods.php:160
 msgid "Post types to show:"
 msgstr "Типове публикации за показване:"
@@ -1828,7 +1494,6 @@ msgstr "Покажете съдържание от"
 #: modules/content-overview/library/content-overview-utilities.php:659
 #: modules/editorial-comments/editorial-comments.php:574
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:425
-#: modules/editorial-comments/lib/editorial-comments.js:350
 msgid "Cancel"
 msgstr "Отказ"
 
@@ -1859,45 +1524,45 @@ msgstr "Изпратете"
 msgid "Publish Date"
 msgstr "Дата на публикуване"
 
-#: modules/content-overview/content-overview.php:156
-#: modules/content-overview/content-overview.php:376
-#: modules/content-overview/content-overview.php:393
-#: modules/content-overview/content-overview.php:394
+#: modules/content-overview/content-overview.php:168
+#: modules/content-overview/content-overview.php:388
+#: modules/content-overview/content-overview.php:405
+#: modules/content-overview/content-overview.php:406
 msgid "Content Overview"
 msgstr "Преглед на съдържанието"
 
-#: modules/content-overview/content-overview.php:654
+#: modules/content-overview/content-overview.php:670
 msgid "Column updated successfully."
 msgstr "Колоната е актуализирана успешно."
 
-#: modules/content-overview/content-overview.php:837
-#: modules/content-overview/content-overview.php:896
+#: modules/content-overview/content-overview.php:856
+#: modules/content-overview/content-overview.php:932
 msgid "Last Modified"
 msgstr "Последна модификация"
 
-#: modules/content-overview/content-overview.php:883
+#: modules/content-overview/content-overview.php:916
 msgid "Custom Columns"
 msgstr "Персонализирани колони"
 
-#: modules/content-overview/content-overview.php:884
+#: modules/content-overview/content-overview.php:917
 msgid "Click the \"Add New\" button to create new columns."
 msgstr "Натиснете бутона \"Добави нова\", за да създадете нови колони."
 
-#: modules/content-overview/content-overview.php:890
+#: modules/content-overview/content-overview.php:936
 msgid "Inbuilt Columns"
 msgstr "Вградени колони"
 
 #: modules/content-overview/library/content-overview-methods.php:207
 msgid "Item moved to the trash."
 msgid_plural "%d items moved to the trash."
-msgstr[0] "Елементът е преместен в кошчето.|%d елемента са преместени в кошчето."
-msgstr[1] "Елементът е преместен в кошчето.|%d елемента са преместени в кошчето."
+msgstr[0] "Елементът е преместен в кошчето."
+msgstr[1] "%d елемента са преместени в кошчето."
 
 #: modules/content-overview/library/content-overview-methods.php:221
 msgid "Item restored from the Trash."
 msgid_plural "%d items restored from the Trash."
-msgstr[0] "Елементът е възстановен от кошчето.|%d елемента са възстановени от кошчето."
-msgstr[1] "Елементът е възстановен от кошчето.|%d елемента са възстановени от кошчето."
+msgstr[0] "Елементът е възстановен от кошчето."
+msgstr[1] "%d елемента са възстановени от кошчето."
 
 #: modules/content-overview/library/content-overview-methods.php:257
 msgid "Customize Columns"
@@ -1984,7 +1649,12 @@ msgstr "Забележка на таблото"
 msgid "%1$s last updated on %2$s"
 msgstr "%1$s последно актуализирано на %2$s"
 
-#: modules/dashboard/widgets/dashboard-notepad.php:168
+#: modules/dashboard/widgets/dashboard-notepad.php:160
+#: modules/dashboard/widgets/dashboard-notepad.php:176
+msgid "Dashboard note"
+msgstr "Dashboard бележка"
+
+#: modules/dashboard/widgets/dashboard-notepad.php:169
 msgid "Update Note"
 msgstr "Актуализиране на бележка"
 
@@ -2065,8 +1735,8 @@ msgid "Invalid action nonce."
 msgstr "Невалиден nonce за действие."
 
 #: modules/editorial-comments/editorial-comments.php:63
-#: modules/editorial-comments/editorial-comments.php:231
-#: modules/editorial-comments/editorial-comments.php:232
+#: modules/editorial-comments/editorial-comments.php:235
+#: modules/editorial-comments/editorial-comments.php:236
 #: modules/editorial-comments/editorial-comments.php:453
 msgid "Editorial Comments"
 msgstr "Редакционни коментари"
@@ -2116,23 +1786,23 @@ msgid "Remove"
 msgstr "Премахни"
 
 #: modules/editorial-comments/editorial-comments.php:206
-#: modules/editorial-comments/library/EditorialCommentsTable.php:181
-#: modules/notifications-log/notifications-log.php:204
+#: modules/editorial-comments/library/EditorialCommentsTable.php:182
+#: modules/notifications-log/notifications-log.php:207
 msgid "All Posts"
 msgstr "Всички публикации"
 
 #: modules/editorial-comments/editorial-comments.php:207
-#: modules/editorial-comments/library/EditorialCommentsTable.php:196
+#: modules/editorial-comments/library/EditorialCommentsTable.php:198
 msgid "All Users"
 msgstr "Всички потребители"
 
-#: modules/editorial-comments/editorial-comments.php:272
+#: modules/editorial-comments/editorial-comments.php:276
 #. translators: %s: search keywords
 #, php-format
 msgid "Search results for &#8220;%s&#8221;"
 msgstr "Резултати от търсенето за &#8220;%s&#8221;"
 
-#: modules/editorial-comments/editorial-comments.php:285
+#: modules/editorial-comments/editorial-comments.php:289
 msgid "Search Comments"
 msgstr "Търсене на коментари"
 
@@ -2166,7 +1836,7 @@ msgid "Reply"
 msgstr "Отговори"
 
 #: modules/editorial-comments/editorial-comments.php:639
-#: modules/editorial-comments/library/EditorialCommentsTable.php:434
+#: modules/editorial-comments/library/EditorialCommentsTable.php:436
 #: modules/editorial-metadata/library/editorial-metadata-list-table.php:161
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:303
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:333
@@ -2293,6 +1963,10 @@ msgstr "Име"
 msgid "Last Name"
 msgstr "Фамилия"
 
+#: modules/editorial-comments/editorial-comments.php:1267
+msgid "Email"
+msgstr "Имейл"
+
 #: modules/editorial-comments/editorial-comments.php:1268
 msgid "User Url"
 msgstr "URL на потребителя"
@@ -2301,24 +1975,33 @@ msgstr "URL на потребителя"
 msgid "No editorial comments."
 msgstr "Няма редакционни коментари."
 
-#: modules/editorial-comments/library/EditorialCommentsTable.php:210
-#: modules/notifications-log/library/NotificationsLogTable.php:646
+#: modules/editorial-comments/library/EditorialCommentsTable.php:180
+#: modules/notifications-log/library/NotificationsLogTable.php:566
+msgid "Filter by post"
+msgstr "Филтрирай по публикация"
+
+#: modules/editorial-comments/library/EditorialCommentsTable.php:196
+msgid "Filter by user"
+msgstr "Филтрирай по потребител"
+
+#: modules/editorial-comments/library/EditorialCommentsTable.php:212
+#: modules/notifications-log/library/NotificationsLogTable.php:653
 msgid "Filter"
 msgstr "Филтър"
 
-#: modules/editorial-comments/library/EditorialCommentsTable.php:229
+#: modules/editorial-comments/library/EditorialCommentsTable.php:231
 msgid "Comment"
 msgstr "Коментар"
 
-#: modules/editorial-comments/library/EditorialCommentsTable.php:231
+#: modules/editorial-comments/library/EditorialCommentsTable.php:233
 msgid "Post"
 msgstr "Публикация"
 
-#: modules/editorial-comments/library/EditorialCommentsTable.php:233
+#: modules/editorial-comments/library/EditorialCommentsTable.php:235
 msgid "Submitted on"
 msgstr "Подаден на"
 
-#: modules/editorial-comments/library/EditorialCommentsTable.php:336
+#: modules/editorial-comments/library/EditorialCommentsTable.php:338
 #: modules/editorial-metadata/input-handlers/editorial-metadata-input-date-handler.php:201
 #: modules/notifications/notifications.php:1974
 #. translators: 1: Comment date, 2: Comment time.
@@ -2605,6 +2288,10 @@ msgstr "Позиция"
 msgid "Name"
 msgstr "Име"
 
+#: modules/editorial-metadata/library/editorial-metadata-list-table.php:46
+msgid "Post Types"
+msgstr "Типове публикации"
+
 #: modules/editorial-metadata/library/editorial-metadata-list-table.php:47
 msgid "Field Type"
 msgstr "Тип поле"
@@ -2829,11 +2516,11 @@ msgstr "Нов пост е публикуван"
 msgid "Notify on editorial comments"
 msgstr "Уведомявайте за редакционни коментари"
 
-#: modules/improved-notifications/improved-notifications.php:606
+#: modules/improved-notifications/improved-notifications.php:607
 msgid "minutes"
 msgstr "минути"
 
-#: modules/improved-notifications/improved-notifications.php:610
+#: modules/improved-notifications/improved-notifications.php:611
 msgid ""
 "This will prevent too many notifications being sent for the same or similar "
 "events. Set this to a higher number if you are receiving duplicate emails."
@@ -2842,70 +2529,82 @@ msgstr ""
 "подобни събития. Задайте това на по-високо число, ако получавате дублирани "
 "имейли."
 
-#: modules/improved-notifications/improved-notifications.php:656
-#: modules/improved-notifications/improved-notifications.php:1495
+#: modules/improved-notifications/improved-notifications.php:657
+#: modules/improved-notifications/improved-notifications.php:1514
 #: views/user_profile_notification_channels.html.php:1
 msgid "Editorial Notifications"
 msgstr "Редакционни известия"
 
-#: modules/improved-notifications/improved-notifications.php:657
-#: modules/improved-notifications/improved-notifications.php:1496
+#: modules/improved-notifications/improved-notifications.php:658
+#: modules/improved-notifications/improved-notifications.php:1515
 #: views/user_profile_notification_channels.html.php:6
 msgid "Choose the channels where each workflow will send notifications to:"
 msgstr "Изберете каналите, към които всеки работен процес ще изпраща известия:"
 
-#: modules/improved-notifications/improved-notifications.php:661
-#: modules/improved-notifications/improved-notifications.php:1483
-#: modules/improved-notifications/improved-notifications.php:1500
+#: modules/improved-notifications/improved-notifications.php:662
+#: modules/improved-notifications/improved-notifications.php:1502
+#: modules/improved-notifications/improved-notifications.php:1519
 msgid "Muted"
 msgstr "Без звук"
 
-#: modules/improved-notifications/improved-notifications.php:662
-#: modules/improved-notifications/improved-notifications.php:1501
+#: modules/improved-notifications/improved-notifications.php:663
+#: modules/improved-notifications/improved-notifications.php:1520
 #: views/user_profile_notification_channels.html.php:14
 msgid "Workflows"
 msgstr "Работни процеси"
 
-#: modules/improved-notifications/improved-notifications.php:663
-#: modules/improved-notifications/improved-notifications.php:1502
+#: modules/improved-notifications/improved-notifications.php:664
+#: modules/improved-notifications/improved-notifications.php:1521
 #: views/user_profile_notification_channels.html.php:15
 msgid "Channels"
 msgstr "Канали"
 
-#: modules/improved-notifications/improved-notifications.php:1088
+#: modules/improved-notifications/improved-notifications.php:1104
 #: modules/notifications-log/notifications-log.php:75
-#: modules/notifications-log/notifications-log.php:263
-#: modules/notifications-log/notifications-log.php:489
-#: modules/notifications-log/notifications-log.php:490
+#: modules/notifications-log/notifications-log.php:266
+#: modules/notifications-log/notifications-log.php:492
+#: modules/notifications-log/notifications-log.php:493
 msgid "Notifications Log"
 msgstr "Журнал на известията"
 
-#: modules/improved-notifications/improved-notifications.php:1122
+#: modules/improved-notifications/improved-notifications.php:1138
 msgid "Workflow Settings"
 msgstr "Настройки на работния процес"
 
-#: modules/improved-notifications/improved-notifications.php:1131
+#: modules/improved-notifications/improved-notifications.php:1148
+#: views/settings_notification_channels.html.php:5
+#: views/user_profile_notification_channels.html.php:16
 msgid "Options"
 msgstr "Опции"
 
-#: modules/improved-notifications/improved-notifications.php:1140
+#: modules/improved-notifications/improved-notifications.php:1158
 msgid "Help"
 msgstr "Помощ"
 
-#: modules/improved-notifications/improved-notifications.php:1170
+#: modules/improved-notifications/improved-notifications.php:1179
+#: modules/notifications-log/library/NotificationsLogTable.php:497
+msgid "When to notify?"
+msgstr "Кога да уведомим?"
+
+#: modules/improved-notifications/improved-notifications.php:1189
 #: modules/notifications-log/library/NotificationsLogTable.php:498
 msgid "For which content?"
 msgstr "За какво съдържание?"
 
-#: modules/improved-notifications/improved-notifications.php:1190
+#: modules/improved-notifications/improved-notifications.php:1199
+#: modules/notifications-log/library/NotificationsLogTable.php:499
+msgid "Who to notify?"
+msgstr "Кого да уведомим?"
+
+#: modules/improved-notifications/improved-notifications.php:1209
 msgid "What to say?"
 msgstr "Какво да кажете?"
 
-#: modules/improved-notifications/improved-notifications.php:1310
+#: modules/improved-notifications/improved-notifications.php:1329
 msgid "Select at least one option for each section."
 msgstr "Изберете поне една опция за секцията."
 
-#: modules/improved-notifications/improved-notifications.php:1314
+#: modules/improved-notifications/improved-notifications.php:1333
 msgid ""
 "You can add dynamic information to the Subject or Body text using the "
 "following shortcodes:"
@@ -2913,35 +2612,35 @@ msgstr ""
 "Можете да добавите динамична информация към текста на Заглавието или "
 "Тялото, като използвате следните кратки кодове:"
 
-#: modules/improved-notifications/improved-notifications.php:1319
+#: modules/improved-notifications/improved-notifications.php:1338
 msgid "Editorial Comment"
 msgstr "Редакционен коментар"
 
-#: modules/improved-notifications/improved-notifications.php:1320
+#: modules/improved-notifications/improved-notifications.php:1339
 msgid "User making changes or comments"
 msgstr "Потребител, който прави промени или коментари"
 
-#: modules/improved-notifications/improved-notifications.php:1321
+#: modules/improved-notifications/improved-notifications.php:1340
 msgid "Workflow"
 msgstr "Работен процес"
 
-#: modules/improved-notifications/improved-notifications.php:1322
+#: modules/improved-notifications/improved-notifications.php:1341
 msgid "Format"
 msgstr "Формат"
 
-#: modules/improved-notifications/improved-notifications.php:1323
+#: modules/improved-notifications/improved-notifications.php:1342
 msgid "Receiver"
 msgstr "Получател"
 
-#: modules/improved-notifications/improved-notifications.php:1324
+#: modules/improved-notifications/improved-notifications.php:1343
 msgid "shortcode"
 msgstr "шорткод"
 
-#: modules/improved-notifications/improved-notifications.php:1325
+#: modules/improved-notifications/improved-notifications.php:1344
 msgid "field"
 msgstr "поле"
 
-#: modules/improved-notifications/improved-notifications.php:1326
+#: modules/improved-notifications/improved-notifications.php:1345
 msgid ""
 "On each shortcode, you can select one or more fields. If more than one, "
 "they will be displayed separated by \", \"."
@@ -2949,15 +2648,15 @@ msgstr ""
 "При всеки кратък код можете да изберете едно или повече полета. Ако са "
 "повече от едно, те ще бъдат показани, разделени с \", \"."
 
-#: modules/improved-notifications/improved-notifications.php:1330
+#: modules/improved-notifications/improved-notifications.php:1349
 msgid "Available fields"
 msgstr "Налични полета"
 
-#: modules/improved-notifications/improved-notifications.php:1331
+#: modules/improved-notifications/improved-notifications.php:1350
 msgid "Meta fields"
 msgstr "Метаполета"
 
-#: modules/improved-notifications/improved-notifications.php:1332
+#: modules/improved-notifications/improved-notifications.php:1351
 msgid "Click here to read more about shortcode options..."
 msgstr "Щракнете тук, за да прочетете повече за опции за шорткод..."
 
@@ -3074,60 +2773,78 @@ msgstr "Всички"
 msgid "Success"
 msgstr "Успех"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:590
+#: modules/notifications-log/library/NotificationsLogTable.php:582
+msgid "Filter by workflow"
+msgstr "Филтрирай по работен процес"
+
+#: modules/notifications-log/library/NotificationsLogTable.php:589
+msgid "Filter by event"
+msgstr "Филтрирай по събитие"
+
+#: modules/notifications-log/library/NotificationsLogTable.php:593
 msgid "All events"
 msgstr "Всички събития"
 
 #: modules/notifications-log/library/NotificationsLogTable.php:607
+msgid "Filter by channel"
+msgstr "Филтрирай по канал"
+
+#: modules/notifications-log/library/NotificationsLogTable.php:611
 msgid "All channels"
 msgstr "Всички канали"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:626
+#: modules/notifications-log/library/NotificationsLogTable.php:628
+#: modules/notifications-log/library/NotificationsLogTable.php:631
 msgid "From date"
 msgstr "От дата"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:632
+#: modules/notifications-log/library/NotificationsLogTable.php:635
+#: modules/notifications-log/library/NotificationsLogTable.php:638
 msgid "To date"
 msgstr "До дата"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:640
+#: modules/notifications-log/library/NotificationsLogTable.php:646
+msgid "Filter by receiver"
+msgstr "Филтрирай по получател"
+
+#: modules/notifications-log/library/NotificationsLogTable.php:647
 msgid "All Receivers"
 msgstr "Всички получатели"
 
-#: modules/notifications-log/notifications-log.php:205
+#: modules/notifications-log/notifications-log.php:208
 msgid "All Workflows"
 msgstr "Всички работни потоци"
 
-#: modules/notifications-log/notifications-log.php:206
+#: modules/notifications-log/notifications-log.php:209
 msgid "All Actions"
 msgstr "Всички действия"
 
-#: modules/notifications-log/notifications-log.php:207
+#: modules/notifications-log/notifications-log.php:210
 msgid "All Channels"
 msgstr "Всички канали"
 
-#: modules/notifications-log/notifications-log.php:208
+#: modules/notifications-log/notifications-log.php:211
 msgid "All Statuses"
 msgstr "Всички статуси"
 
-#: modules/notifications-log/notifications-log.php:209
-#: publishpress.php:1426
-#: publishpress.php:1431
+#: modules/notifications-log/notifications-log.php:212
+#: publishpress.php:1441
+#: publishpress.php:1446
 msgid "Notification"
 msgstr "Уведомление"
 
-#: modules/notifications-log/notifications-log.php:272
+#: modules/notifications-log/notifications-log.php:275
 #, php-format
 msgid "%s notification found."
 msgid_plural "%s notifications found."
-msgstr[0] "%s уведомление намерено.|"
-msgstr[1] "%s уведомления намерени."
+msgstr[0] "%s уведомление намерено."
+msgstr[1] ""
 
-#: modules/notifications-log/notifications-log.php:284
+#: modules/notifications-log/notifications-log.php:287
 msgid "No notifications found."
 msgstr "Няма намерени уведомления."
 
-#: modules/notifications-log/notifications-log.php:442
+#: modules/notifications-log/notifications-log.php:445
 #, php-format
 msgid ""
 "This notification is very similar to another one sent less than %d minutes "
@@ -3136,15 +2853,15 @@ msgstr ""
 "Това известие е много подобно на друго, изпратено преди по-малко от %d "
 "минути за същия получател"
 
-#: modules/notifications-log/notifications-log.php:817
+#: modules/notifications-log/notifications-log.php:820
 msgid "Subject:"
 msgstr "Тема:"
 
-#: modules/notifications-log/notifications-log.php:825
+#: modules/notifications-log/notifications-log.php:828
 msgid "Content:"
 msgstr "Съдържание:"
 
-#: modules/notifications-log/notifications-log.php:835
+#: modules/notifications-log/notifications-log.php:838
 msgid ""
 "This is a preview of the scheduled message. The content can still change "
 "until the notification is sent."
@@ -3154,8 +2871,8 @@ msgstr ""
 
 #: modules/notifications/notifications.php:75
 #: modules/notifications/notifications.php:562
-#: publishpress.php:1425
-#: publishpress.php:1430
+#: publishpress.php:1440
+#: publishpress.php:1445
 msgid "Notifications"
 msgstr "Уведомления"
 
@@ -3501,7 +3218,7 @@ msgstr ""
 "зареден файл."
 
 #: modules/settings/settings.php:404
-#: publishpress.php:675
+#: publishpress.php:689
 msgid "Cheatin&#8217; uh?"
 msgstr "Малко хитруване, а?"
 
@@ -3525,44 +3242,44 @@ msgstr "Интеграция с календара на събитията"
 msgid "Integrate with the The Events Calendar plugin"
 msgstr "Интегрирайте с плъгина Календар на събитията"
 
-#: publishpress.php:590
+#: publishpress.php:604
 msgid "Planner"
 msgstr "Планиратор"
 
-#: publishpress.php:671
+#: publishpress.php:685
 msgid "Configure"
 msgstr "Конфигуриране"
 
-#: publishpress.php:674
+#: publishpress.php:688
 msgid "Please correct your form errors below and try again."
 msgstr "Моля, коригирайте грешките във формуляра по-долу и опитайте отново."
 
-#: publishpress.php:676
+#: publishpress.php:690
 msgid "You do not have necessary permissions to complete this action."
 msgstr "Нямате необходимите права, за да завършите това действие."
 
-#: publishpress.php:680
+#: publishpress.php:694
 msgid "Post does not exist"
 msgstr "Публикацията не съществува"
 
-#: publishpress.php:1427
+#: publishpress.php:1442
 msgid "Add New Notification"
 msgstr "Добавяне на ново известие"
 
-#: publishpress.php:1428
+#: publishpress.php:1443
 msgid "Edit Notification"
 msgstr "Редактиране на известие"
 
-#: publishpress.php:1429
+#: publishpress.php:1444
 msgid "Search Notifications"
 msgstr "Търсене на известия"
 
-#: publishpress.php:1432
-#: publishpress.php:1433
+#: publishpress.php:1447
+#: publishpress.php:1448
 msgid "No notification found"
 msgstr "Не е намерено известие"
 
-#: publishpress.php:1473
+#: publishpress.php:1489
 msgid ""
 "PublishPress Planner tried to load multiple times. Please, deactivate and "
 "remove other instances of PublishPress, specially if you are using "
@@ -3572,38 +3289,9 @@ msgstr ""
 "премахнете другите инстанции на PublishPress, особено ако използвате "
 "PublishPress Pro."
 
-#: publishpress.php:1481
+#: publishpress.php:1497
 msgid "Warning"
 msgstr "Предупреждение"
-
-#: modules/editorial-comments/lib/editorial-comments.js:203
-#: modules/editorial-comments/lib/editorial-comments.js:371
-msgid "Please enter a comment"
-msgstr "Моля, въведете коментар"
-
-#: modules/editorial-comments/lib/editorial-comments.js:377
-msgid "Sending content..."
-msgstr "Изпращане на съдържание..."
-
-#: modules/editorial-comments/lib/editorial-comments.js:434
-msgid ""
-"This comment can't be deleted because it has one or more replies. Before "
-"deleting it make sure to delete all the replies first."
-msgstr ""
-"Този коментар не може да бъде изтрит, защото има един или повече отговори. "
-"Преди да го изтриете, уверете се, че първо сте изтрили всички отговори."
-
-#: modules/editorial-comments/lib/editorial-comments.js:438
-msgid "Are you sure you want to delete this comment?"
-msgstr "Сигурни ли сте, че искате да изтриете този коментар?"
-
-#: modules/notifications-log/assets/js/admin.js:73
-msgid "for"
-msgstr "за"
-
-#: modules/notifications-log/assets/js/admin.js:73
-msgid "by"
-msgstr "от"
 
 #: modules/content-board/library/content-board-utilities.php:538
 #: modules/content-overview/library/content-overview-utilities.php:643

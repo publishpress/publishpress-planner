@@ -10,18 +10,18 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-14T18:33:45+00:00\n"
-"PO-Revision-Date: 2026-04-15 14:14+0000\n"
+"PO-Revision-Date: 2026-09-25 19:50+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress\n"
 "Language: zh_TW\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: publishpress.php
+#: publishpress.php, fuzzy
 #. Plugin Name of the plugin
 msgid "PublishPress Planner Free"
 msgstr "PublishPress Planner Free"
 
-#: publishpress.php, fuzzy
+#: publishpress.php
 #. Plugin URI of the plugin
 msgid "https://publishpress.com/"
 msgstr "https://publishpress.com/"
@@ -34,141 +34,144 @@ msgid ""
 msgstr "PublishPress Planner 幫助您在 WordPress 內規劃和發布內容。功能包括內容日曆、看板和通知。"
 
 #: publishpress.php
-#: modules/calendar/library/calendar-utilities.php:1227
-#: modules/settings/settings.php:61, fuzzy
+#: modules/calendar/library/calendar-utilities.php:1234
+#: modules/settings/settings.php:61
+#: modules/settings/views/footer-base.html.php:35
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: publishpress.php, fuzzy
+#: publishpress.php
 #. Author URI of the plugin
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
-#: common/php/class-module.php:331
-#: modules/calendar/calendar.php:1233
+#: common/php/class-module.php:338
+#: modules/calendar/calendar.php:1261
 msgid "Published"
 msgstr "已發佈"
 
-#: common/php/class-module.php:332
+#: common/php/class-module.php:339
 msgid "Draft"
 msgstr "草稿"
 
-#: common/php/class-module.php:333
-#: modules/calendar/calendar.php:1228
+#: common/php/class-module.php:340
+#: modules/calendar/calendar.php:1256
 #: modules/content-board/content-board.php:979
 #: modules/notifications-log/library/NotificationsLogTable.php:529
 msgid "Scheduled"
 msgstr "已排程"
 
-#: common/php/class-module.php:334
+#: common/php/class-module.php:341
 #: modules/content-board/content-board.php:989
 msgid "Private"
 msgstr "私有"
 
-#: common/php/class-module.php:335
+#: common/php/class-module.php:342
 msgid "Pending Review"
 msgstr "等待審核"
 
-#: common/php/class-module.php:336
-#: modules/calendar/library/calendar-methods.php:1240
+#: common/php/class-module.php:343
+#: modules/calendar/library/calendar-methods.php:1252
 #: modules/calendar/library/calendar-utilities.php:1104
 #: modules/content-board/content-board.php:1195
 #: modules/content-board/content-board.php:1290
-#: modules/content-overview/content-overview.php:1221
-#: modules/content-overview/content-overview.php:1715
+#: modules/content-overview/content-overview.php:1267
+#: modules/content-overview/content-overview.php:1761
 msgid "Trash"
 msgstr "垃圾桶"
 
-#: common/php/class-module.php:750
-#: lib/Notifications/Workflow/Step/Receiver/Role.php:31
+#: common/php/class-module.php:772
 msgid "Roles"
 msgstr "角色"
 
-#: common/php/class-module.php:753
+#: common/php/class-module.php:775
 msgid "Role"
 msgstr "角色"
 
-#: common/php/class-module.php:761
+#: common/php/class-module.php:783
 msgid "Groups"
 msgstr "群組"
 
-#: common/php/class-module.php:764
+#: common/php/class-module.php:786
 msgid "Group"
 msgstr "群組"
 
-#: common/php/class-module.php:772
-#: lib/Notifications/Workflow/Step/Receiver/User.php:26
+#: common/php/class-module.php:794
 msgid "Users"
 msgstr "使用者"
 
-#: common/php/class-module.php:782
+#: common/php/class-module.php:804
 msgid "E-mails"
 msgstr "電子郵件"
 
-#: common/php/class-module.php:1048
+#: common/php/class-module.php:1051
 msgid "Equals (=)"
 msgstr "等於 (=)"
 
-#: common/php/class-module.php:1049
+#: common/php/class-module.php:1052
 msgid "Does not equal (!=)"
 msgstr "不等於 (!=)"
 
-#: common/php/class-module.php:1050
+#: common/php/class-module.php:1053
 msgid "Greater than (>)"
 msgstr "大於 (>)"
 
-#: common/php/class-module.php:1051
+#: common/php/class-module.php:1054
 msgid "Greater than or equals (>=)"
 msgstr "大於或等於 (>=)"
 
-#: common/php/class-module.php:1052
+#: common/php/class-module.php:1055
 msgid "Less than (<)"
 msgstr "小於 (<)"
 
-#: common/php/class-module.php:1053
+#: common/php/class-module.php:1056
 msgid "Less than or equals (<=)"
 msgstr "小於或等於 (<=)"
 
-#: common/php/class-module.php:1054
+#: common/php/class-module.php:1057
 msgid "Like/Contains"
 msgstr "像/包含"
 
-#: common/php/class-module.php:1055
+#: common/php/class-module.php:1058
 #, fuzzy
 msgid "Not Like"
 msgstr "未設定"
 
-#: common/php/class-module.php:1056
+#: common/php/class-module.php:1059
 msgid "Not Exists/Empty"
 msgstr "不存在/空"
 
-#: common/php/class-module.php:1109
+#: common/php/class-module.php:1112
+#: views/workflow_receiver_group_field.html.php:10
+#: views/workflow_receiver_role_field.html.php:9
+#: views/workflow_receiver_user_field.html.php:9
 #, php-format
 msgid "Select %s"
 msgstr "選擇 %s"
 
-#: common/php/class-module.php:1126
-#: modules/calendar/library/calendar-utilities.php:1190
-#: modules/content-overview/content-overview.php:833
-#: modules/content-overview/content-overview.php:848
-#: modules/content-overview/content-overview.php:955
+#: common/php/class-module.php:1129
+#: modules/calendar/library/calendar-utilities.php:1191
+#: modules/content-overview/content-overview.php:850
+#: modules/content-overview/content-overview.php:874
+#: modules/content-overview/content-overview.php:926
+#: modules/content-overview/content-overview.php:995
 msgid "Revision Status"
 msgstr "修訂狀態"
 
-#: common/php/class-module.php:1126
+#: common/php/class-module.php:1129
 #: modules/calendar/library/calendar-methods.php:424
 #: modules/calendar/library/calendar-methods.php:858
-#: modules/calendar/library/calendar-methods.php:1245
+#: modules/calendar/library/calendar-methods.php:1257
 #: modules/calendar/library/calendar-utilities.php:47
 #: modules/calendar/library/calendar-utilities.php:1070
-#: modules/calendar/library/calendar-utilities.php:1189
+#: modules/calendar/library/calendar-utilities.php:1188
 #: modules/content-board/content-board.php:811
 #: modules/content-board/content-board.php:1295
 #: modules/content-board/library/content-board-utilities.php:594
 #: modules/content-board/library/content-board-utilities.php:1165
-#: modules/content-overview/content-overview.php:954
-#: modules/content-overview/content-overview.php:1226
+#: modules/content-overview/content-overview.php:992
+#: modules/content-overview/content-overview.php:1272
 #: modules/content-overview/library/content-overview-utilities.php:491
 #: modules/content-overview/library/content-overview-utilities.php:703
 msgid "Post Status"
@@ -199,396 +202,8 @@ msgid ""
 msgstr "您正在使用 PublishPress Planner 免費版。專業版擁有更多功能和支援。 %s升級到專業版%s"
 
 #: includes.php:161
-#: lib/Legacy/Util.php:216
 msgid "Upgrade to Pro"
 msgstr "升級到專業版"
-
-#: lib/Legacy/Util.php:198
-msgid "Upgrade to PublishPress Planner Pro"
-msgstr "升級到 PublishPress Planner Pro"
-
-#: lib/Legacy/Util.php:203
-msgid "Enhance the power of PublishPress Planner with the Pro version:"
-msgstr "使用專業版增強 PublishPress Planner 的功能："
-
-#: lib/Legacy/Util.php:206
-msgid "PublishPress Revisions integration"
-msgstr "PublishPress Revisions 集成"
-
-#: lib/Legacy/Util.php:207
-msgid "Slack integration for notifications"
-msgstr "Slack 通知集成"
-
-#: lib/Legacy/Util.php:208
-msgid "Send reminder notifications"
-msgstr "發送提醒通知"
-
-#: lib/Legacy/Util.php:209
-msgid "Use post meta in notifications"
-msgstr "在通知中使用文章元數據"
-
-#: lib/Legacy/Util.php:210
-msgid "Modals so you can edit posts without changing screen"
-msgstr "模態窗口讓您可以編輯文章而不改變畫面"
-
-#: lib/Legacy/Util.php:211
-msgid "Integration with SEO plugins"
-msgstr "與 SEO 插件的集成"
-
-#: lib/Legacy/Util.php:212
-msgid "Remove PublishPress ads and branding"
-msgstr "去除 PublishPress 廣告和品牌標識"
-
-#: lib/Legacy/Util.php:213
-msgid "Fast, professional support"
-msgstr "快速、專業的支援"
-
-#: lib/Legacy/Util.php:223
-msgid "Need PublishPress Planner Support?"
-msgstr "需要 PublishPress Planner 支援嗎？"
-
-#: lib/Legacy/Util.php:228
-msgid "If you need help or have a new feature request, let us know."
-msgstr "如果您需要幫助或有新的功能請求，請告訴我們。"
-
-#: lib/Legacy/Util.php:230
-msgid "Request Support"
-msgstr "請求支援"
-
-#: lib/Legacy/Util.php:239
-msgid "Detailed documentation is also available on the plugin website."
-msgstr "詳細的文檔也可以在插件網站上找到。"
-
-#: lib/Legacy/Util.php:241
-msgid "View Knowledge Base"
-msgstr "查看知識庫"
-
-#: lib/Notifications/Plugin.php:65
-#: modules/improved-notifications/improved-notifications.php:1160
-#: modules/notifications-log/library/NotificationsLogTable.php:497
-msgid "When to notify?"
-msgstr "何時通知？"
-
-#: lib/Notifications/Plugin.php:66
-msgid "Filter the content?"
-msgstr "過濾內容？"
-
-#: lib/Notifications/Plugin.php:67
-#: modules/improved-notifications/improved-notifications.php:1180
-#: modules/notifications-log/library/NotificationsLogTable.php:499
-msgid "Who to notify?"
-msgstr "誰需要通知？"
-
-#: lib/Notifications/Plugin.php:209
-#: lib/Notifications/Plugin.php:210
-msgid "Notification workflow updated."
-msgstr "通知工作流程已更新。"
-
-#: lib/Notifications/Plugin.php:211
-msgid "Notification workflow published."
-msgstr "通知工作流程已發佈。"
-
-#: lib/Notifications/Plugin.php:212
-msgid "Notification workflow saved."
-msgstr "通知工作流程已儲存。"
-
-#: lib/Notifications/Plugin.php:213
-msgid "Notification workflow submitted."
-msgstr "通知工作流程已提交。"
-
-#: lib/Notifications/Plugin.php:215
-#, php-format
-msgid "Notification workflow scheduled for: %s."
-msgstr "通知工作流程排程於：%s。"
-
-#: lib/Notifications/Plugin.php:218
-msgid "Notification workflow draft updated."
-msgstr "通知工作流程草稿已更新。"
-
-#: lib/Notifications/Plugin.php:240
-#, php-format
-msgid "%s notification workflow updated."
-msgid_plural "%s notification workflows updated."
-msgstr[0] "%s 通知工作流程已更新。"
-
-#: lib/Notifications/Plugin.php:246
-msgid "1 notification workflow not updated, somebody is editing it."
-msgstr "1 個通知工作流程未更新，有人正在編輯它。"
-
-#: lib/Notifications/Plugin.php:250
-#, php-format
-msgid "%s notification workflow not updated, somebody is editing it."
-msgid_plural "%s notification workflows not updated, somebody is editing them."
-msgstr[0] "%s 通知工作流程未更新，有人正在編輯它。"
-
-#: lib/Notifications/Plugin.php:256
-#, php-format
-msgid "%s notification workflow permanently deleted."
-msgid_plural "%s notification workflows permanently deleted."
-msgstr[0] "%s 通知工作流程已永久刪除。"
-
-#: lib/Notifications/Plugin.php:262
-#, php-format
-msgid "%s notification workflow moved to the Trash."
-msgid_plural "%s notification workflows moved to the Trash."
-msgstr[0] "%s 通知工作流程已移至垃圾桶。"
-
-#: lib/Notifications/Plugin.php:268
-#, php-format
-msgid "%s notification workflow restored from the Trash."
-msgid_plural "%s notification workflows restored from the Trash."
-msgstr[0] "%s 通知工作流程已從垃圾桶恢復。"
-
-#: lib/Notifications/Plugin.php:302
-msgid "Please select at least one event"
-msgstr "請至少選擇一個事件"
-
-#: lib/Notifications/Plugin.php:335
-msgid "Not filtered"
-msgstr "未過濾"
-
-#: lib/Notifications/Table/Base.php:183
-msgid "Excerpt View"
-msgstr "摘錄檢視"
-
-#: lib/Notifications/Table/Notifications.php:156
-#: lib/Notifications/Table/Workflows.php:142
-#: modules/calendar/library/calendar-methods.php:853
-#: modules/content-board/content-board.php:421
-#: modules/content-board/library/content-board-utilities.php:244
-#: modules/content-board/library/content-board-utilities.php:1159
-#: modules/content-overview/content-overview.php:418
-#: modules/content-overview/library/content-overview-utilities.php:485
-msgid "Title"
-msgstr "標題"
-
-#: lib/Notifications/Table/Notifications.php:157
-msgid "Message"
-msgstr "訊息"
-
-#: lib/Notifications/Table/Notifications.php:158
-#: modules/calendar/library/calendar-utilities.php:1064
-#: modules/content-board/library/content-board-utilities.php:116
-#: modules/content-overview/library/content-overview-methods.php:341
-#: modules/editorial-metadata/editorial-metadata.php:290
-#: modules/notifications-log/library/NotificationsLogTable.php:496
-msgid "Date"
-msgstr "日期"
-
-#: lib/Notifications/Table/Notifications.php:159
-#: lib/Notifications/Table/Workflows.php:143
-#: modules/calendar/library/calendar-utilities.php:1059, fuzzy
-msgid "ID"
-msgstr "ID"
-
-#: lib/Notifications/Table/Notifications.php:235
-msgid "You don't have any notifications"
-msgstr "您沒有任何通知"
-
-#: lib/Notifications/Table/Workflows.php:217
-msgid "No workflows found."
-msgstr "找不到工作流程。"
-
-#: lib/Notifications/Workflow/Option/SkipUser.php:26
-msgid "Skip current user"
-msgstr "跳過當前用戶"
-
-#: lib/Notifications/Workflow/Option/SkipUser.php:31
-msgid "Skip notifications for the user who triggered the action"
-msgstr "跳過觸發動作的用戶的通知"
-
-#: lib/Notifications/Workflow/Step/Channel/Email.php:31
-#: modules/editorial-comments/editorial-comments.php:1267
-msgid "Email"
-msgstr "電子郵件"
-
-#: lib/Notifications/Workflow/Step/Content/Main.php:29
-#: modules/calendar/library/calendar-methods.php:902
-#: modules/content-board/library/content-board-utilities.php:1207
-#: modules/content-overview/library/content-overview-utilities.php:533
-#: modules/improved-notifications/improved-notifications.php:1318
-#: views/workflow_help.html.php:2
-msgid "Content"
-msgstr "內容"
-
-#: lib/Notifications/Workflow/Step/Content/Main.php:53
-msgid "Subject"
-msgstr "主題"
-
-#: lib/Notifications/Workflow/Step/Content/Main.php:54
-msgid "Body"
-msgstr "正文"
-
-#: lib/Notifications/Workflow/Step/Event/Editorial_Comment.php:24
-msgid "When an editorial comment is added"
-msgstr "當添加編輯評論時"
-
-#: lib/Notifications/Workflow/Step/Event/Editorial_Comment.php:96
-#, php-format
-msgid "Comment: %s (%d)"
-msgstr "評論：%s (%d)"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:34
-msgid "When the status is changed"
-msgstr "當狀態更改時"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:35
-msgid "Previous status"
-msgstr "前一狀態"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:36
-msgid "New status"
-msgstr "新狀態"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:37
-msgid "- any status -"
-msgstr "- 任何狀態 -"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:59
-msgid "New"
-msgstr "新"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:64
-msgid "Auto-draft"
-msgstr "自動草稿"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Taxonomies.php:34
-#: modules/calendar/library/calendar-utilities.php:1206
-#: modules/content-board/content-board.php:767
-#: modules/content-board/content-board.php:827
-#: modules/content-overview/content-overview.php:910
-#: modules/content-overview/content-overview.php:971
-msgid "Taxonomies"
-msgstr "分類法"
-
-#: lib/Notifications/Workflow/Step/Event/Post_StatusTransition.php:28
-msgid "When the content is moved to a new status"
-msgstr "當內容被移動到新狀態時"
-
-#: lib/Notifications/Workflow/Step/Event/Post_StatusTransition.php:118
-#, php-format
-msgid "Old post status: %s"
-msgstr "舊的帖子狀態: %s"
-
-#: lib/Notifications/Workflow/Step/Event/Post_StatusTransition.php:122
-#, php-format
-msgid "New post status: %s"
-msgstr "新的帖子狀態: %s"
-
-#: lib/Notifications/Workflow/Step/Event/Post_TaxonomyUpdate.php:28
-msgid "When taxonomy is updated"
-msgstr "當分類更新時"
-
-#: lib/Notifications/Workflow/Step/Event/Post_Update.php:26
-msgid "When the content is updated"
-msgstr "當內容更新時"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Category.php:24
-#: modules/calendar/library/calendar-utilities.php:1080
-msgid "Category"
-msgid_plural "Categories"
-msgstr[0] "類別"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Filter/Category.php:34
-#: modules/calendar/library/calendar-methods.php:885
-#: modules/content-board/library/content-board-utilities.php:1190
-#: modules/content-overview/library/content-overview-utilities.php:516
-msgid "Categories"
-msgstr "類別"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Filter/Post_Type.php:34
-#: modules/editorial-metadata/library/editorial-metadata-list-table.php:46
-msgid "Post Types"
-msgstr "帖子類型"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Filter/Term.php:33
-msgid "Terms"
-msgstr "術語"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Post_Type.php:24
-msgid "Post type"
-msgstr "帖子類型"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Taxonomy.php:24
-msgid "Taxonomy"
-msgstr "分類"
-
-#: lib/Notifications/Workflow/Step/Receiver/Author.php:26
-msgid "Authors of the content"
-msgstr "內容的作者"
-
-#: lib/Notifications/Workflow/Step/Receiver/Author.php:92
-msgid "Authors"
-msgstr "作者"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:30
-msgid "Users who selected \"Notify me\" for the content"
-msgstr "選擇「通知我」的用戶"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:108
-#, php-format
-msgid "role:%s"
-msgstr "角色:%s"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:132
-#, php-format
-msgid "group %d: %s"
-msgstr "群組 %d: %s"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:153
-msgid "user"
-msgstr "用戶"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:168
-msgid "email"
-msgstr "電子郵件"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:210
-msgid "\"Notify me\""
-msgstr "「通知我」"
-
-#: lib/Notifications/Workflow/Step/Receiver/Group.php:31
-msgid "Permission Groups"
-msgstr "權限群組"
-
-#: lib/Notifications/Workflow/Step/Receiver/Group.php:222
-#, php-format
-msgid "%d Group"
-msgid_plural "%d Groups"
-msgstr[0] "%d 群組"
-
-#: lib/Notifications/Workflow/Step/Receiver/ParentAuthor.php:26
-msgid "Authors of the parent page"
-msgstr "父頁面的作者"
-
-#: lib/Notifications/Workflow/Step/Receiver/ParentAuthor.php:106
-msgid "Parent Page Authors"
-msgstr "父頁面作者"
-
-#: lib/Notifications/Workflow/Step/Receiver/RevisionAuthor.php:39
-msgid "Author of the revision"
-msgstr "修訂的作者"
-
-#: lib/Notifications/Workflow/Step/Receiver/RevisionAuthor.php:105
-msgid "Revision Author"
-msgstr "修訂作者"
-
-#: lib/Notifications/Workflow/Step/Receiver/Role.php:173
-#, php-format
-msgid "%d Role"
-msgid_plural "%d Roles"
-msgstr[0] "%d 角色"
-
-#: lib/Notifications/Workflow/Step/Receiver/Site_Admin.php:24
-#: lib/Notifications/Workflow/Step/Receiver/Site_Admin.php:73
-msgid "Site Administrator"
-msgstr "網站管理員"
-
-#: lib/Notifications/Workflow/Step/Receiver/User.php:152
-#, php-format
-msgid "%d User"
-msgid_plural "%d Users"
-msgstr[0] "%d 用戶"
 
 #: modules/async-notifications/async-notifications.php:71
 msgid "Async Notifications"
@@ -599,53 +214,53 @@ msgstr "異步通知"
 msgid "Event: %s, Workflow ID: %s, Post ID: %s, User ID: %s"
 msgstr "事件: %s, 工作流程 ID: %s, 貼文 ID: %s, 用戶 ID: %s"
 
-#: modules/calendar/calendar.php:216
-#: modules/calendar/calendar.php:415
-#: modules/calendar/calendar.php:432
-#: modules/calendar/calendar.php:433
+#: modules/calendar/calendar.php:228
+#: modules/calendar/calendar.php:427
+#: modules/calendar/calendar.php:444
+#: modules/calendar/calendar.php:445
 msgid "Content Calendar"
 msgstr "內容日曆"
 
-#: modules/calendar/calendar.php:241
+#: modules/calendar/calendar.php:253
 msgid "Post date updated."
 msgstr "貼文日期已更新。"
 
-#: modules/calendar/calendar.php:242
+#: modules/calendar/calendar.php:254
 msgid "Post status updated."
 msgstr "貼文狀態已更新。"
 
-#: modules/calendar/calendar.php:243
+#: modules/calendar/calendar.php:255
 msgid "There was an error updating the post. Please try again."
 msgstr "更新貼文時發生錯誤。請再試一次。"
 
-#: modules/calendar/calendar.php:247
+#: modules/calendar/calendar.php:259
 #, php-format
 msgid ""
 "Updating the post date dynamically doesn't work for published content. "
 "Please <a href='%s'>edit the post</a>."
 msgstr "動態更新發佈日期對已發布內容無效。請 <a href='%s'>編輯文章</a>。"
 
-#: modules/calendar/calendar.php:251
+#: modules/calendar/calendar.php:263
 msgid ""
 "iCal secret key regenerated. Please inform all users they will need to "
 "resubscribe."
 msgstr "iCal 密鑰已重新生成。請通知所有用戶，他們需要重新訂閱。"
 
-#: modules/calendar/calendar.php:259
+#: modules/calendar/calendar.php:271
 #: modules/editorial-comments/editorial-comments.php:82
 #: modules/editorial-metadata/editorial-metadata.php:119
 #: modules/notifications/notifications.php:96
 msgid "Overview"
 msgstr "概覽"
 
-#: modules/calendar/calendar.php:260
+#: modules/calendar/calendar.php:272
 msgid ""
 "<p>The calendar is a convenient week-by-week or month-by-month view into "
 "your content. Quickly see which stories are on track to being published on "
 "time, and which will need extra effort.</p>"
 msgstr "<p>日曆是一個方便的逐週或逐月內容視圖。快速查看哪些故事按時出版，哪些需要額外努力。</p>"
 
-#: modules/calendar/calendar.php:265
+#: modules/calendar/calendar.php:277
 msgid ""
 "<p><strong>For more information:</strong></p><p><a "
 "href=\"https://publishpress.com/features/calendar/\">Calendar "
@@ -658,17 +273,17 @@ msgstr ""
 "href=\"https://github.com/ostraining/PublishPress\">PublishPress 在 "
 "Github</a></p>"
 
-#: modules/calendar/calendar.php:734
-#: modules/calendar/library/calendar-utilities.php:1259
+#: modules/calendar/calendar.php:746
+#: modules/calendar/library/calendar-utilities.php:1266
 #: modules/content-board/content-board.php:1043
 msgid "Weeks"
 msgstr "週"
 
-#: modules/calendar/calendar.php:735
+#: modules/calendar/calendar.php:747
 msgid "Start Date"
 msgstr "開始日期"
 
-#: modules/calendar/calendar.php:736
+#: modules/calendar/calendar.php:748
 #: modules/calendar/library/calendar-utilities.php:467
 #: modules/calendar/library/calendar-utilities.php:468
 #: modules/content-board/library/content-board-utilities.php:28
@@ -676,108 +291,108 @@ msgstr "開始日期"
 msgid "Me Mode"
 msgstr "我模式"
 
-#: modules/calendar/calendar.php:737
+#: modules/calendar/calendar.php:749
 msgid "Show Revision"
 msgstr "顯示修訂"
 
-#: modules/calendar/calendar.php:738
+#: modules/calendar/calendar.php:750
 #: modules/calendar/library/calendar-utilities.php:486
 #: modules/content-board/library/content-board-utilities.php:98
 #: modules/content-overview/library/content-overview-methods.php:323
 msgid "Search"
 msgstr "搜尋"
 
-#: modules/calendar/calendar.php:912
-#: modules/content-board/library/content-board-methods.php:164
-#: modules/content-overview/content-overview.php:668
+#: modules/calendar/calendar.php:928
+#: modules/content-board/library/content-board-methods.php:166
+#: modules/content-overview/content-overview.php:684
 msgid "Filter updated successfully."
 msgstr "篩選成功更新。"
 
-#: modules/calendar/calendar.php:919
+#: modules/calendar/calendar.php:935
 msgid "Filter reset successfully."
 msgstr "篩選成功重置。"
 
-#: modules/calendar/calendar.php:987
+#: modules/calendar/calendar.php:1008
 #: modules/content-board/content-board.php:709
-#: modules/content-overview/content-overview.php:832
 #: modules/content-overview/content-overview.php:847
-#: modules/content-overview/content-overview.php:892
+#: modules/content-overview/content-overview.php:871
+#: modules/content-overview/content-overview.php:923
 #: modules/notifications-log/library/NotificationsLogTable.php:500
 msgid "Status"
 msgstr "狀態"
 
-#: modules/calendar/calendar.php:988
-#: modules/calendar/calendar.php:1212
+#: modules/calendar/calendar.php:1009
+#: modules/calendar/calendar.php:1240
 #: modules/calendar/library/calendar-methods.php:875
-#: modules/calendar/library/calendar-methods.php:1248
+#: modules/calendar/library/calendar-methods.php:1260
 #: modules/calendar/library/calendar-utilities.php:115
 #: modules/calendar/library/calendar-utilities.php:1075
-#: modules/calendar/library/calendar-utilities.php:1191
+#: modules/calendar/library/calendar-utilities.php:1194
 #: modules/content-board/content-board.php:699
 #: modules/content-board/content-board.php:710
 #: modules/content-board/content-board.php:753
 #: modules/content-board/content-board.php:812
 #: modules/content-board/library/content-board-utilities.php:647
 #: modules/content-board/library/content-board-utilities.php:1180
-#: modules/content-overview/content-overview.php:835
-#: modules/content-overview/content-overview.php:849
-#: modules/content-overview/content-overview.php:894
-#: modules/content-overview/content-overview.php:956
-#: modules/content-overview/content-overview.php:1218
+#: modules/content-overview/content-overview.php:854
+#: modules/content-overview/content-overview.php:877
+#: modules/content-overview/content-overview.php:930
+#: modules/content-overview/content-overview.php:998
+#: modules/content-overview/content-overview.php:1264
 #: modules/content-overview/library/content-overview-utilities.php:506
 #: modules/content-overview/library/content-overview-utilities.php:769
-#: modules/editorial-comments/library/EditorialCommentsTable.php:228
+#: modules/editorial-comments/library/EditorialCommentsTable.php:230
 msgid "Author"
 msgid_plural "Authors"
 msgstr[0] "作者"
 
-#: modules/calendar/calendar.php:989
-#: modules/calendar/calendar.php:1220
+#: modules/calendar/calendar.php:1010
+#: modules/calendar/calendar.php:1248
 #: modules/calendar/library/calendar-utilities.php:146
 #: modules/calendar/library/calendar-utilities.php:1054
-#: modules/calendar/library/calendar-utilities.php:1192
+#: modules/calendar/library/calendar-utilities.php:1195
 #: modules/content-board/content-board.php:698
 #: modules/content-board/content-board.php:711
 #: modules/content-board/content-board.php:752
 #: modules/content-board/content-board.php:813
 #: modules/content-board/library/content-board-utilities.php:677
 #: modules/content-board/library/content-board-utilities.php:1153
-#: modules/content-overview/content-overview.php:834
-#: modules/content-overview/content-overview.php:850
-#: modules/content-overview/content-overview.php:893
-#: modules/content-overview/content-overview.php:957
+#: modules/content-overview/content-overview.php:853
+#: modules/content-overview/content-overview.php:878
+#: modules/content-overview/content-overview.php:929
+#: modules/content-overview/content-overview.php:999
 #: modules/content-overview/library/content-overview-utilities.php:479
 #: modules/content-overview/library/content-overview-utilities.php:799
 msgid "Post Type"
 msgstr "文章類型"
 
-#: modules/calendar/calendar.php:1103
+#: modules/calendar/calendar.php:1131
 msgid "Post moved to the trash."
 msgid_plural "%d posts moved to the trash."
 msgstr[0] "文章已移至垃圾桶。"
 
-#: modules/calendar/calendar.php:1119
+#: modules/calendar/calendar.php:1147
 #: modules/content-board/content-board.php:614
 #: modules/content-overview/library/content-overview-methods.php:214
 msgid "Undo"
 msgstr "撤銷"
 
-#: modules/calendar/calendar.php:1129
+#: modules/calendar/calendar.php:1157
 msgid "Post restored from the Trash."
 msgid_plural "%d posts restored from the Trash."
 msgstr[0] "文章已從垃圾桶還原。"
 
-#: modules/calendar/calendar.php:1161
+#: modules/calendar/calendar.php:1189
 msgid "Initializing the calendar. Please wait..."
 msgstr "正在初始化日曆。請稍候..."
 
-#: modules/calendar/calendar.php:1165
+#: modules/calendar/calendar.php:1193
 msgid ""
 "It seems like it is taking too long. Please, try reloading the page again "
 "and check the browser console looking for errors."
 msgstr "看起來這需要太長時間。請再試著重新載入頁面並檢查瀏覽器控制台以尋找錯誤。"
 
-#: modules/calendar/calendar.php:1809
+#: modules/calendar/calendar.php:1837
 msgid ""
 "The selected user doesn't have enough permissions to be set as the post "
 "author."
@@ -899,9 +514,24 @@ msgstr "權限不足"
 msgid "Invalid date"
 msgstr "無效的日期"
 
+#: modules/calendar/library/calendar-methods.php:853
+#: modules/content-board/content-board.php:421
+#: modules/content-board/library/content-board-utilities.php:244
+#: modules/content-board/library/content-board-utilities.php:1159
+#: modules/content-overview/content-overview.php:430
+#: modules/content-overview/library/content-overview-utilities.php:485
+msgid "Title"
+msgstr "標題"
+
 #: modules/calendar/library/calendar-methods.php:864
 msgid "Publish Time"
 msgstr "發布時間"
+
+#: modules/calendar/library/calendar-methods.php:885
+#: modules/content-board/library/content-board-utilities.php:1190
+#: modules/content-overview/library/content-overview-utilities.php:516
+msgid "Categories"
+msgstr "類別"
 
 #: modules/calendar/library/calendar-methods.php:894
 #: modules/content-board/library/content-board-utilities.php:1199
@@ -909,170 +539,200 @@ msgstr "發布時間"
 msgid "Tags"
 msgstr "標籤"
 
+#: modules/calendar/library/calendar-methods.php:902
+#: modules/content-board/library/content-board-utilities.php:1207
+#: modules/content-overview/library/content-overview-utilities.php:533
+#: modules/improved-notifications/improved-notifications.php:1337
+#: views/workflow_help.html.php:2
+msgid "Content"
+msgstr "內容"
+
 #: modules/calendar/library/calendar-methods.php:1001
 msgid "Publish on"
 msgstr "發布於"
 
-#: modules/calendar/library/calendar-methods.php:1195
-#: modules/notifications-log/notifications-log.php:210
+#: modules/calendar/library/calendar-methods.php:1200
+#: modules/calendar/library/calendar-methods.php:1249
+#: modules/notifications-log/notifications-log.php:213
 msgid "Loading..."
 msgstr "載入中..."
 
-#: modules/calendar/library/calendar-methods.php:1196
+#: modules/calendar/library/calendar-methods.php:1201
 msgid "Loading item..."
 msgstr "載入項目..."
 
-#: modules/calendar/library/calendar-methods.php:1197
+#: modules/calendar/library/calendar-methods.php:1202
 msgid "Click to add"
 msgstr "點擊新增"
 
-#: modules/calendar/library/calendar-methods.php:1198
+#: modules/calendar/library/calendar-methods.php:1203
 msgid "Moving the item..."
 msgstr "正在移動項目..."
 
-#: modules/calendar/library/calendar-methods.php:1199
+#: modules/calendar/library/calendar-methods.php:1204
 #, php-format
 msgid "Hide the %s last items"
 msgstr "隱藏最後 %s 個項目"
 
-#: modules/calendar/library/calendar-methods.php:1200
+#: modules/calendar/library/calendar-methods.php:1205
 #, php-format
 msgid "Show %s more"
 msgstr "顯示 %s 更多"
 
-#: modules/calendar/library/calendar-methods.php:1201
-#: modules/calendar/library/calendar-methods.php:1704
+#: modules/calendar/library/calendar-methods.php:1206
+#: modules/calendar/library/calendar-methods.php:1716
 msgid "Untitled"
 msgstr "無標題"
 
-#: modules/calendar/library/calendar-methods.php:1202
+#: modules/calendar/library/calendar-methods.php:1207
+msgid "Refresh"
+msgstr "更新"
+
+#: modules/calendar/library/calendar-methods.php:1208
+msgid "Previous page"
+msgstr "上一頁"
+
+#: modules/calendar/library/calendar-methods.php:1209
+msgid "Previous week"
+msgstr "上星期"
+
+#: modules/calendar/library/calendar-methods.php:1210
+msgid "Next week"
+msgstr "下星期"
+
+#: modules/calendar/library/calendar-methods.php:1211
+msgid "Next page"
+msgstr "下一頁"
+
+#: modules/calendar/library/calendar-methods.php:1212
+#: modules/calendar/library/calendar-utilities.php:477
+#: modules/calendar/library/calendar-utilities.php:507
 msgid "Close"
 msgstr "關閉"
 
-#: modules/calendar/library/calendar-methods.php:1203
-#: modules/editorial-comments/lib/editorial-comments.js:349
+#: modules/calendar/library/calendar-methods.php:1213
 msgid "Save"
 msgstr "儲存"
 
-#: modules/calendar/library/calendar-methods.php:1204
+#: modules/calendar/library/calendar-methods.php:1214
 msgid "Saving..."
 msgstr "儲存中..."
 
-#: modules/calendar/library/calendar-methods.php:1205
+#: modules/calendar/library/calendar-methods.php:1215
 msgid "Save and edit"
 msgstr "儲存並編輯"
 
-#: modules/calendar/library/calendar-methods.php:1206
+#: modules/calendar/library/calendar-methods.php:1216
 #, php-format
 msgid "Add content for %s"
 msgstr "為 %s 新增內容"
 
-#: modules/calendar/library/calendar-methods.php:1207
+#: modules/calendar/library/calendar-methods.php:1217
 msgid "Post type not found"
 msgstr "找不到文章類型"
 
-#: modules/calendar/library/calendar-methods.php:1208
+#: modules/calendar/library/calendar-methods.php:1218
 msgid "Post type:"
 msgstr "文章類型："
 
-#: modules/calendar/library/calendar-methods.php:1209
+#: modules/calendar/library/calendar-methods.php:1219
 #: modules/content-board/library/content-board-utilities.php:1130
 #: modules/content-overview/library/content-overview-utilities.php:456
 msgid "Please, wait! Loading the form fields..."
 msgstr "請稍候！正在載入表單欄位..."
 
-#: modules/calendar/library/calendar-methods.php:1210
+#: modules/calendar/library/calendar-methods.php:1220
 msgid "Sun"
 msgstr "日"
 
-#: modules/calendar/library/calendar-methods.php:1211
+#: modules/calendar/library/calendar-methods.php:1221
 msgid "Mon"
 msgstr "一"
 
-#: modules/calendar/library/calendar-methods.php:1212
+#: modules/calendar/library/calendar-methods.php:1222
 msgid "Tue"
 msgstr "週二"
 
-#: modules/calendar/library/calendar-methods.php:1213
+#: modules/calendar/library/calendar-methods.php:1223
 msgid "Wed"
 msgstr "週三"
 
-#: modules/calendar/library/calendar-methods.php:1214
+#: modules/calendar/library/calendar-methods.php:1224
 msgid "Thu"
 msgstr "週四"
 
-#: modules/calendar/library/calendar-methods.php:1215
+#: modules/calendar/library/calendar-methods.php:1225
 msgid "Fri"
 msgstr "週五"
 
-#: modules/calendar/library/calendar-methods.php:1216
+#: modules/calendar/library/calendar-methods.php:1226
 msgid "Sat"
 msgstr "週六"
 
-#: modules/calendar/library/calendar-methods.php:1217
+#: modules/calendar/library/calendar-methods.php:1227
 msgid "Jan"
 msgstr "一月"
 
-#: modules/calendar/library/calendar-methods.php:1218
+#: modules/calendar/library/calendar-methods.php:1228
 msgid "Feb"
 msgstr "二月"
 
-#: modules/calendar/library/calendar-methods.php:1219
+#: modules/calendar/library/calendar-methods.php:1229
 msgid "Mar"
 msgstr "三月"
 
-#: modules/calendar/library/calendar-methods.php:1220
+#: modules/calendar/library/calendar-methods.php:1230
 msgid "Apr"
 msgstr "四月"
 
-#: modules/calendar/library/calendar-methods.php:1221
+#: modules/calendar/library/calendar-methods.php:1231
 msgid "May"
 msgstr "五月"
 
-#: modules/calendar/library/calendar-methods.php:1222
+#: modules/calendar/library/calendar-methods.php:1232
 msgid "Jun"
 msgstr "六月"
 
-#: modules/calendar/library/calendar-methods.php:1223
+#: modules/calendar/library/calendar-methods.php:1233
 msgid "Jul"
 msgstr "七月"
 
-#: modules/calendar/library/calendar-methods.php:1224
+#: modules/calendar/library/calendar-methods.php:1234
 msgid "Aug"
 msgstr "八月"
 
-#: modules/calendar/library/calendar-methods.php:1225
+#: modules/calendar/library/calendar-methods.php:1235
 msgid "Sep"
 msgstr "九月"
 
-#: modules/calendar/library/calendar-methods.php:1226
+#: modules/calendar/library/calendar-methods.php:1236
 msgid "Oct"
 msgstr "十月"
 
-#: modules/calendar/library/calendar-methods.php:1227
+#: modules/calendar/library/calendar-methods.php:1237
 msgid "Nov"
 msgstr "十一月"
 
-#: modules/calendar/library/calendar-methods.php:1228
+#: modules/calendar/library/calendar-methods.php:1238
 msgid "Dec"
 msgstr "十二月"
 
-#: modules/calendar/library/calendar-methods.php:1229
+#: modules/calendar/library/calendar-methods.php:1239
 #: modules/calendar/library/calendar-utilities.php:51
 #: modules/content-board/library/content-board-utilities.php:598
 #: modules/content-overview/library/content-overview-utilities.php:707
 msgid "All statuses"
 msgstr "所有狀態"
 
-#: modules/calendar/library/calendar-methods.php:1230
+#: modules/calendar/library/calendar-methods.php:1240
 msgid "All categories"
 msgstr "所有類別"
 
-#: modules/calendar/library/calendar-methods.php:1231
+#: modules/calendar/library/calendar-methods.php:1241
 msgid "All tags"
 msgstr "所有標籤"
 
-#: modules/calendar/library/calendar-methods.php:1232
+#: modules/calendar/library/calendar-methods.php:1242
 #: modules/calendar/library/calendar-utilities.php:117
 #: modules/calendar/library/calendar-utilities.php:120
 #: modules/content-board/library/content-board-utilities.php:649
@@ -1082,112 +742,118 @@ msgstr "所有標籤"
 msgid "All authors"
 msgstr "所有作者"
 
-#: modules/calendar/library/calendar-methods.php:1233
+#: modules/calendar/library/calendar-methods.php:1243
 msgid "All types"
 msgstr "所有類型"
 
-#: modules/calendar/library/calendar-methods.php:1234
+#: modules/calendar/library/calendar-methods.php:1244
 #: modules/calendar/library/calendar-utilities.php:513
 #, php-format
 msgid "%d week"
 msgid_plural "%d weeks"
 msgstr[0] "%d 週"
 
-#: modules/calendar/library/calendar-methods.php:1235
+#: modules/calendar/library/calendar-methods.php:1245
 #, php-format
 msgid "%d weeks"
 msgstr "%d 週"
 
-#: modules/calendar/library/calendar-methods.php:1236
+#: modules/calendar/library/calendar-methods.php:1246
 msgid "Today"
 msgstr "今天"
 
-#: modules/calendar/library/calendar-methods.php:1237
+#: modules/calendar/library/calendar-methods.php:1247
 msgid "No terms"
 msgstr "沒有術語"
 
-#: modules/calendar/library/calendar-methods.php:1238
+#: modules/calendar/library/calendar-methods.php:1248
+#: modules/content-board/content-board.php:1268
+#: modules/content-overview/content-overview.php:1240
+msgid "No results found"
+msgstr "找不到結果"
+
+#: modules/calendar/library/calendar-methods.php:1250
 #: modules/content-board/content-board.php:1288
-#: modules/content-overview/content-overview.php:836
-#: modules/content-overview/content-overview.php:895
-#: modules/content-overview/content-overview.php:1219
+#: modules/content-overview/content-overview.php:855
+#: modules/content-overview/content-overview.php:931
+#: modules/content-overview/content-overview.php:1265
 msgid "Post Date"
 msgstr "發佈日期"
 
-#: modules/calendar/library/calendar-methods.php:1239
+#: modules/calendar/library/calendar-methods.php:1251
 #: modules/calendar/library/calendar-utilities.php:1097
 #: modules/content-board/content-board.php:1183
 #: modules/content-board/content-board.php:1289
-#: modules/content-overview/content-overview.php:1220
-#: modules/content-overview/content-overview.php:1703
+#: modules/content-overview/content-overview.php:1266
+#: modules/content-overview/content-overview.php:1749
 #: modules/editorial-comments/editorial-comments.php:628
 #: modules/editorial-metadata/library/editorial-metadata-list-table.php:159
 msgid "Edit"
 msgstr "編輯"
 
-#: modules/calendar/library/calendar-methods.php:1241
+#: modules/calendar/library/calendar-methods.php:1253
 #: modules/calendar/library/calendar-utilities.php:1114
 #: modules/content-board/content-board.php:1224
 #: modules/content-board/content-board.php:1291
-#: modules/content-overview/content-overview.php:1222
-#: modules/content-overview/content-overview.php:1744
+#: modules/content-overview/content-overview.php:1268
+#: modules/content-overview/content-overview.php:1790
 msgid "Preview"
 msgstr "預覽"
 
-#: modules/calendar/library/calendar-methods.php:1242
+#: modules/calendar/library/calendar-methods.php:1254
 #: modules/calendar/library/calendar-utilities.php:1111
 #: modules/content-board/content-board.php:1211
 #: modules/content-board/content-board.php:1292
-#: modules/content-overview/content-overview.php:1223
-#: modules/content-overview/content-overview.php:1731
+#: modules/content-overview/content-overview.php:1269
+#: modules/content-overview/content-overview.php:1777
 msgid "View"
 msgstr "查看"
 
-#: modules/calendar/library/calendar-methods.php:1243
+#: modules/calendar/library/calendar-methods.php:1255
 #: modules/content-board/content-board.php:1293
-#: modules/content-overview/content-overview.php:1224
+#: modules/content-overview/content-overview.php:1270
 msgid "Previous Post"
 msgstr "上一篇文章"
 
-#: modules/calendar/library/calendar-methods.php:1244
+#: modules/calendar/library/calendar-methods.php:1256
 #: modules/content-board/content-board.php:1294
-#: modules/content-overview/content-overview.php:1225
+#: modules/content-overview/content-overview.php:1271
 msgid "Next Post"
 msgstr "下一篇文章"
 
-#: modules/calendar/library/calendar-methods.php:1246
+#: modules/calendar/library/calendar-methods.php:1258
 #: modules/content-board/content-board.php:1296
-#: modules/content-overview/content-overview.php:1227
+#: modules/content-overview/content-overview.php:1273
 msgid "Save Changes"
 msgstr "儲存變更"
 
-#: modules/calendar/library/calendar-methods.php:1247
+#: modules/calendar/library/calendar-methods.php:1259
 #: modules/content-board/content-board.php:1297
-#: modules/content-overview/content-overview.php:1228
+#: modules/content-overview/content-overview.php:1274
 msgid "Taxonomy not set."
 msgstr "未設定分類法。"
 
-#: modules/calendar/library/calendar-methods.php:1687
+#: modules/calendar/library/calendar-methods.php:1699
 msgid "No date supplied."
 msgstr "未提供日期。"
 
-#: modules/calendar/library/calendar-methods.php:1698
+#: modules/calendar/library/calendar-methods.php:1710
 msgid "The selected post type is not enabled for the calendar."
 msgstr "所選的文章類型未啟用日曆功能。"
 
-#: modules/calendar/library/calendar-methods.php:1728
+#: modules/calendar/library/calendar-methods.php:1740
 msgid "Invalid Status supplied."
 msgstr "提供的狀態無效。"
 
-#: modules/calendar/library/calendar-methods.php:1752
+#: modules/calendar/library/calendar-methods.php:1764
 msgid "Invalid Publish Date supplied."
 msgstr "提供的發佈日期無效。"
 
-#: modules/calendar/library/calendar-methods.php:1821
+#: modules/calendar/library/calendar-methods.php:1833
 msgid "Post created successfully"
 msgstr "文章成功創建"
 
-#: modules/calendar/library/calendar-methods.php:1828
+#: modules/calendar/library/calendar-methods.php:1840
 msgid "Post could not be created"
 msgstr "文章無法創建"
 
@@ -1290,6 +956,12 @@ msgstr "失敗"
 msgid "Customize Filters"
 msgstr "自訂過濾器"
 
+#: modules/calendar/library/calendar-utilities.php:485
+#: modules/content-board/library/content-board-utilities.php:97
+#: modules/content-overview/library/content-overview-methods.php:322
+msgid "Search content"
+msgstr "搜尋內容"
+
 #: modules/calendar/library/calendar-utilities.php:502
 #: modules/calendar/library/calendar-utilities.php:503
 msgid "Period"
@@ -1374,34 +1046,51 @@ msgstr "拖動以更改啟用篩選的順序。"
 msgid "Apply Changes"
 msgstr "應用變更"
 
+#: modules/calendar/library/calendar-utilities.php:1059, fuzzy
+msgid "ID"
+msgstr "ID"
+
+#: modules/calendar/library/calendar-utilities.php:1064
+#: modules/content-board/library/content-board-utilities.php:116
+#: modules/content-overview/library/content-overview-methods.php:341
+#: modules/editorial-metadata/editorial-metadata.php:290
+#: modules/notifications-log/library/NotificationsLogTable.php:496
+msgid "Date"
+msgstr "日期"
+
+#: modules/calendar/library/calendar-utilities.php:1080
+msgid "Category"
+msgid_plural "Categories"
+msgstr[0] "類別"
+
 #: modules/calendar/library/calendar-utilities.php:1085
 msgid "Tag"
 msgid_plural "Tags"
 msgstr[0] "標籤"
 
-#: modules/calendar/library/calendar-utilities.php:1180
+#: modules/calendar/library/calendar-utilities.php:1181
 #: modules/content-board/content-board.php:802
-#: modules/content-overview/content-overview.php:945
+#: modules/content-overview/content-overview.php:985
 msgid "Custom filters"
 msgstr "自訂篩選"
 
-#: modules/calendar/library/calendar-utilities.php:1181
+#: modules/calendar/library/calendar-utilities.php:1182
 #: modules/content-board/content-board.php:803
-#: modules/content-overview/content-overview.php:946
+#: modules/content-overview/content-overview.php:986
 msgid "Click the \"Add New\" button to create new filters."
 msgstr "點擊「新增」按鈕以創建新的篩選。"
 
-#: modules/calendar/library/calendar-utilities.php:1187
+#: modules/calendar/library/calendar-utilities.php:1199
 #: modules/content-board/content-board.php:809
-#: modules/content-overview/content-overview.php:952
+#: modules/content-overview/content-overview.php:1003
 msgid "Inbuilt filters"
 msgstr "內建篩選"
 
-#: modules/calendar/library/calendar-utilities.php:1199
+#: modules/calendar/library/calendar-utilities.php:1206
 #: modules/content-board/content-board.php:760
 #: modules/content-board/content-board.php:820
-#: modules/content-overview/content-overview.php:903
-#: modules/content-overview/content-overview.php:964
+#: modules/content-overview/content-overview.php:943
+#: modules/content-overview/content-overview.php:1010
 #: modules/editorial-metadata/editorial-metadata.php:95
 #: modules/editorial-metadata/editorial-metadata.php:511
 #: modules/editorial-metadata/editorial-metadata.php:1720
@@ -1409,140 +1098,148 @@ msgstr "內建篩選"
 msgid "Editorial Fields"
 msgstr "編輯欄位"
 
-#: modules/calendar/library/calendar-utilities.php:1200
+#: modules/calendar/library/calendar-utilities.php:1207
 #: modules/content-board/content-board.php:761
 #: modules/content-board/content-board.php:821
-#: modules/content-overview/content-overview.php:904
-#: modules/content-overview/content-overview.php:965
+#: modules/content-overview/content-overview.php:944
+#: modules/content-overview/content-overview.php:1011
 msgid "You do not have any editorial fields enabled"
 msgstr "您尚未啟用任何編輯欄位"
 
-#: modules/calendar/library/calendar-utilities.php:1207
+#: modules/calendar/library/calendar-utilities.php:1213
+#: modules/content-board/content-board.php:767
+#: modules/content-board/content-board.php:827
+#: modules/content-overview/content-overview.php:950
+#: modules/content-overview/content-overview.php:1017
+msgid "Taxonomies"
+msgstr "分類法"
+
+#: modules/calendar/library/calendar-utilities.php:1214
 #: modules/content-board/content-board.php:768
 #: modules/content-board/content-board.php:828
-#: modules/content-overview/content-overview.php:911
-#: modules/content-overview/content-overview.php:972
+#: modules/content-overview/content-overview.php:951
+#: modules/content-overview/content-overview.php:1018
 msgid "You do not have any public taxonomies"
 msgstr "您沒有任何公開分類法"
 
-#: modules/calendar/library/calendar-utilities.php:1229
+#: modules/calendar/library/calendar-utilities.php:1236
 msgid "Subscribe in iCal or Google Calendar"
 msgstr "在 iCal 或 Google 日曆中訂閱"
 
-#: modules/calendar/library/calendar-utilities.php:1234
+#: modules/calendar/library/calendar-utilities.php:1241
 msgid "Start date"
 msgstr "開始日期"
 
-#: modules/calendar/library/calendar-utilities.php:1238
+#: modules/calendar/library/calendar-utilities.php:1245
 msgid "Current week"
 msgstr "當前週"
 
-#: modules/calendar/library/calendar-utilities.php:1240
+#: modules/calendar/library/calendar-utilities.php:1247
 msgid "One month ago"
 msgstr "一個月前"
 
-#: modules/calendar/library/calendar-utilities.php:1242
+#: modules/calendar/library/calendar-utilities.php:1249
 msgid "Two months ago"
 msgstr "兩個月前"
 
-#: modules/calendar/library/calendar-utilities.php:1244
+#: modules/calendar/library/calendar-utilities.php:1251
 msgid "Three months ago"
 msgstr "三個月前"
 
-#: modules/calendar/library/calendar-utilities.php:1246
+#: modules/calendar/library/calendar-utilities.php:1253
 msgid "Four months ago"
 msgstr "四個月前"
 
-#: modules/calendar/library/calendar-utilities.php:1248
+#: modules/calendar/library/calendar-utilities.php:1255
 msgid "Five months ago"
 msgstr "五個月前"
 
-#: modules/calendar/library/calendar-utilities.php:1250
+#: modules/calendar/library/calendar-utilities.php:1257
 msgid "Six months ago"
 msgstr "六個月前"
 
-#: modules/calendar/library/calendar-utilities.php:1256
+#: modules/calendar/library/calendar-utilities.php:1263
 msgid "End date"
 msgstr "結束日期"
 
-#: modules/calendar/library/calendar-utilities.php:1261
+#: modules/calendar/library/calendar-utilities.php:1268
 msgid "One week"
 msgstr "一週"
 
-#: modules/calendar/library/calendar-utilities.php:1263
+#: modules/calendar/library/calendar-utilities.php:1270
 msgid "Two weeks"
 msgstr "兩週"
 
-#: modules/calendar/library/calendar-utilities.php:1265
+#: modules/calendar/library/calendar-utilities.php:1272
 msgid "Three weeks"
 msgstr "三週"
 
-#: modules/calendar/library/calendar-utilities.php:1267
+#: modules/calendar/library/calendar-utilities.php:1274
 msgid "Four weeks"
 msgstr "四週"
 
-#: modules/calendar/library/calendar-utilities.php:1271
+#: modules/calendar/library/calendar-utilities.php:1278
 #: modules/content-board/content-board.php:1044
 msgid "Months"
 msgstr "月份"
 
-#: modules/calendar/library/calendar-utilities.php:1273
+#: modules/calendar/library/calendar-utilities.php:1280
 msgid "One month"
 msgstr "一個月"
 
-#: modules/calendar/library/calendar-utilities.php:1276
+#: modules/calendar/library/calendar-utilities.php:1283
 msgid "Two months"
 msgstr "兩個月"
 
-#: modules/calendar/library/calendar-utilities.php:1278
+#: modules/calendar/library/calendar-utilities.php:1285
 msgid "Three months"
 msgstr "三個月"
 
-#: modules/calendar/library/calendar-utilities.php:1280
+#: modules/calendar/library/calendar-utilities.php:1287
 msgid "Four months"
 msgstr "四個月"
 
-#: modules/calendar/library/calendar-utilities.php:1282
+#: modules/calendar/library/calendar-utilities.php:1289
 msgid "Five months"
 msgstr "五個月"
 
-#: modules/calendar/library/calendar-utilities.php:1284
+#: modules/calendar/library/calendar-utilities.php:1291
 msgid "Six months"
 msgstr "六個月"
 
-#: modules/calendar/library/calendar-utilities.php:1286
+#: modules/calendar/library/calendar-utilities.php:1293
 msgid "Seven months"
 msgstr "七個月"
 
-#: modules/calendar/library/calendar-utilities.php:1288
+#: modules/calendar/library/calendar-utilities.php:1295
 msgid "Eight months"
 msgstr "八個月"
 
-#: modules/calendar/library/calendar-utilities.php:1290
+#: modules/calendar/library/calendar-utilities.php:1297
 msgid "Nine months"
 msgstr "九個月"
 
-#: modules/calendar/library/calendar-utilities.php:1292
+#: modules/calendar/library/calendar-utilities.php:1299
 msgid "Ten months"
 msgstr "十個月"
 
-#: modules/calendar/library/calendar-utilities.php:1294
+#: modules/calendar/library/calendar-utilities.php:1301
 msgid "Eleven months"
 msgstr "十一個月"
 
-#: modules/calendar/library/calendar-utilities.php:1296
+#: modules/calendar/library/calendar-utilities.php:1303
 msgid "Twelve months"
 msgstr "十二個月"
 
-#: modules/calendar/library/calendar-utilities.php:1308
+#: modules/calendar/library/calendar-utilities.php:1315
 msgid "Download .ics file"
 msgstr "下載 .ics 文件"
 
-#: modules/calendar/library/calendar-utilities.php:1315
+#: modules/calendar/library/calendar-utilities.php:1322
 msgid "Copy to the clipboard"
 msgstr "複製到剪貼簿"
 
-#: modules/calendar/library/calendar-utilities.php:1321
+#: modules/calendar/library/calendar-utilities.php:1328
 msgid "Click here to subscribe in iCal or Google Calendar"
 msgstr "點擊這裡以在 iCal 或 Google 日曆中訂閱"
 
@@ -1568,21 +1265,21 @@ msgstr "內建卡片資料"
 #: modules/content-board/content-board.php:847
 #: modules/content-board/library/content-board-methods.php:39
 #: modules/content-board/library/content-board-methods.php:107
-#: modules/content-overview/content-overview.php:991
+#: modules/content-overview/content-overview.php:1037
 msgid "An error occured"
 msgstr "發生錯誤"
 
 #: modules/content-board/content-board.php:851
 #: modules/content-board/library/content-board-methods.php:43
 #: modules/content-board/library/content-board-methods.php:111
-#: modules/content-overview/content-overview.php:995
+#: modules/content-overview/content-overview.php:1041
 msgid "Error validating nonce. Please reload this page and try again."
 msgstr "驗證 nonce 時出錯。請重新載入此頁面並重試。"
 
 #: modules/content-board/content-board.php:853
 #: modules/content-board/library/content-board-methods.php:45
-#: modules/content-board/library/content-board-methods.php:113
-#: modules/content-overview/content-overview.php:997
+#: modules/content-board/library/content-board-methods.php:115
+#: modules/content-overview/content-overview.php:1043
 msgid "Invalid form request."
 msgstr "無效的表單請求。"
 
@@ -1619,40 +1316,35 @@ msgid "Only editable posts will be moveable."
 msgstr "只有可編輯的帖子才能移動。"
 
 #: modules/content-board/content-board.php:1179
-#: modules/content-overview/content-overview.php:1699
+#: modules/content-overview/content-overview.php:1745
 #: modules/dashboard/dashboard.php:299
 msgid "Edit this post"
 msgstr "編輯此帖子"
 
 #: modules/content-board/content-board.php:1191
-#: modules/content-overview/content-overview.php:1711
+#: modules/content-overview/content-overview.php:1757
 msgid "Move this item to the Trash"
 msgstr "將此項目移到垃圾桶"
 
 #: modules/content-board/content-board.php:1205
-#: modules/content-overview/content-overview.php:1725
+#: modules/content-overview/content-overview.php:1771
 #, php-format
 msgid "View &#8220;%s&#8221;"
 msgstr "查看“%s”"
 
 #: modules/content-board/content-board.php:1221
-#: modules/content-overview/content-overview.php:1741
+#: modules/content-overview/content-overview.php:1787
 #, php-format
 msgid "Preview &#8220;%s&#8221;"
 msgstr "預覽“%s”"
 
-#: modules/content-board/content-board.php:1268
-#: modules/content-overview/content-overview.php:1194
-msgid "No results found"
-msgstr "找不到結果"
-
 #: modules/content-board/content-board.php:1273
-#: modules/content-overview/content-overview.php:1199
+#: modules/content-overview/content-overview.php:1245
 msgid "There are no posts in the range or filter specified."
 msgstr "在指定的範圍或過濾器中沒有帖子。"
 
 #: modules/content-board/content-board.php:1605
-#: modules/content-overview/content-overview.php:1579
+#: modules/content-overview/content-overview.php:1625
 msgid "None"
 msgstr "無"
 
@@ -1669,38 +1361,42 @@ msgid "You do not have permission to move post to selected post status."
 msgstr "您沒有權限將文章移動到所選的文章狀態。"
 
 #: modules/content-board/library/content-board-methods.php:95
-#: modules/content-board/library/content-board-methods.php:123
+#: modules/content-board/library/content-board-methods.php:125
 msgid "Changes saved!"
 msgstr "變更已儲存！"
 
-#: modules/content-board/library/content-board-methods.php:150
+#: modules/content-board/library/content-board-methods.php:113
+msgid "You do not have permission to update schedule settings."
+msgstr "您沒有權限更新日程設置。"
+
+#: modules/content-board/library/content-board-methods.php:152
 msgid "Card Data updated successfully."
 msgstr "卡片數據已成功更新。"
 
-#: modules/content-board/library/content-board-methods.php:172
-#: modules/content-overview/content-overview.php:676
+#: modules/content-board/library/content-board-methods.php:174
+#: modules/content-overview/content-overview.php:692
 msgid "Settings updated successfully."
 msgstr "設定已成功更新。"
 
-#: modules/content-board/library/content-board-methods.php:250
-#: modules/content-overview/content-overview.php:754
+#: modules/content-board/library/content-board-methods.php:252
+#: modules/content-overview/content-overview.php:770
 #, php-format
 msgid "%s created successfully. <a href=\"%s\" target=\"_blank\">Edit %s</a>"
 msgstr "%s 已成功創建。 <a href=\"%s\" target=\"_blank\">編輯 %s</a>"
 
-#: modules/content-board/library/content-board-methods.php:253
-#: modules/content-overview/content-overview.php:757
+#: modules/content-board/library/content-board-methods.php:255
+#: modules/content-overview/content-overview.php:773
 #, php-format
 msgid "%s could not be created"
 msgstr "%s 無法創建"
 
-#: modules/content-board/library/content-board-methods.php:258
-#: modules/content-overview/content-overview.php:762
+#: modules/content-board/library/content-board-methods.php:260
+#: modules/content-overview/content-overview.php:778
 #, php-format
 msgid "You do not have permission to add new %s"
 msgstr "您沒有權限新增 %s"
 
-#: modules/content-board/library/content-board-methods.php:437
+#: modules/content-board/library/content-board-methods.php:439
 #: modules/content-overview/library/content-overview-methods.php:160
 msgid "Post types to show:"
 msgstr "要顯示的文章類型："
@@ -1758,7 +1454,6 @@ msgstr "顯示內容來自"
 #: modules/content-overview/library/content-overview-utilities.php:659
 #: modules/editorial-comments/editorial-comments.php:574
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:425
-#: modules/editorial-comments/lib/editorial-comments.js:350
 msgid "Cancel"
 msgstr "取消"
 
@@ -1789,31 +1484,31 @@ msgstr "提交"
 msgid "Publish Date"
 msgstr "發佈日期"
 
-#: modules/content-overview/content-overview.php:156
-#: modules/content-overview/content-overview.php:376
-#: modules/content-overview/content-overview.php:393
-#: modules/content-overview/content-overview.php:394
+#: modules/content-overview/content-overview.php:168
+#: modules/content-overview/content-overview.php:388
+#: modules/content-overview/content-overview.php:405
+#: modules/content-overview/content-overview.php:406
 msgid "Content Overview"
 msgstr "內容概覽"
 
-#: modules/content-overview/content-overview.php:654
+#: modules/content-overview/content-overview.php:670
 msgid "Column updated successfully."
 msgstr "欄位更新成功。"
 
-#: modules/content-overview/content-overview.php:837
-#: modules/content-overview/content-overview.php:896
+#: modules/content-overview/content-overview.php:856
+#: modules/content-overview/content-overview.php:932
 msgid "Last Modified"
 msgstr "最後修改"
 
-#: modules/content-overview/content-overview.php:883
+#: modules/content-overview/content-overview.php:916
 msgid "Custom Columns"
 msgstr "自訂欄位"
 
-#: modules/content-overview/content-overview.php:884
+#: modules/content-overview/content-overview.php:917
 msgid "Click the \"Add New\" button to create new columns."
 msgstr "點擊「新增」按鈕以創建新欄位。"
 
-#: modules/content-overview/content-overview.php:890
+#: modules/content-overview/content-overview.php:936
 msgid "Inbuilt Columns"
 msgstr "內建欄位"
 
@@ -1910,7 +1605,12 @@ msgstr "儀表板備註"
 msgid "%1$s last updated on %2$s"
 msgstr "%1$s 最後更新於 %2$s"
 
-#: modules/dashboard/widgets/dashboard-notepad.php:168
+#: modules/dashboard/widgets/dashboard-notepad.php:160
+#: modules/dashboard/widgets/dashboard-notepad.php:176, fuzzy
+msgid "Dashboard note"
+msgstr "Dashboard note"
+
+#: modules/dashboard/widgets/dashboard-notepad.php:169
 msgid "Update Note"
 msgstr "更新備註"
 
@@ -1987,8 +1687,8 @@ msgid "Invalid action nonce."
 msgstr "無效的操作隨機數。"
 
 #: modules/editorial-comments/editorial-comments.php:63
-#: modules/editorial-comments/editorial-comments.php:231
-#: modules/editorial-comments/editorial-comments.php:232
+#: modules/editorial-comments/editorial-comments.php:235
+#: modules/editorial-comments/editorial-comments.php:236
 #: modules/editorial-comments/editorial-comments.php:453
 msgid "Editorial Comments"
 msgstr "編輯評論"
@@ -2030,23 +1730,23 @@ msgid "Remove"
 msgstr "移除"
 
 #: modules/editorial-comments/editorial-comments.php:206
-#: modules/editorial-comments/library/EditorialCommentsTable.php:181
-#: modules/notifications-log/notifications-log.php:204
+#: modules/editorial-comments/library/EditorialCommentsTable.php:182
+#: modules/notifications-log/notifications-log.php:207
 msgid "All Posts"
 msgstr "所有文章"
 
 #: modules/editorial-comments/editorial-comments.php:207
-#: modules/editorial-comments/library/EditorialCommentsTable.php:196
+#: modules/editorial-comments/library/EditorialCommentsTable.php:198
 msgid "All Users"
 msgstr "所有用戶"
 
-#: modules/editorial-comments/editorial-comments.php:272
+#: modules/editorial-comments/editorial-comments.php:276
 #. translators: %s: search keywords
 #, php-format
 msgid "Search results for &#8220;%s&#8221;"
 msgstr "搜尋結果 &#8220;%s&#8221;"
 
-#: modules/editorial-comments/editorial-comments.php:285
+#: modules/editorial-comments/editorial-comments.php:289
 msgid "Search Comments"
 msgstr "搜尋評論"
 
@@ -2078,7 +1778,7 @@ msgid "Reply"
 msgstr "回覆"
 
 #: modules/editorial-comments/editorial-comments.php:639
-#: modules/editorial-comments/library/EditorialCommentsTable.php:434
+#: modules/editorial-comments/library/EditorialCommentsTable.php:436
 #: modules/editorial-metadata/library/editorial-metadata-list-table.php:161
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:303
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:333
@@ -2189,6 +1889,10 @@ msgstr "名"
 msgid "Last Name"
 msgstr "姓"
 
+#: modules/editorial-comments/editorial-comments.php:1267
+msgid "Email"
+msgstr "電子郵件"
+
 #: modules/editorial-comments/editorial-comments.php:1268
 msgid "User Url"
 msgstr "用戶網址"
@@ -2197,24 +1901,33 @@ msgstr "用戶網址"
 msgid "No editorial comments."
 msgstr "沒有編輯評論。"
 
-#: modules/editorial-comments/library/EditorialCommentsTable.php:210
-#: modules/notifications-log/library/NotificationsLogTable.php:646
+#: modules/editorial-comments/library/EditorialCommentsTable.php:180
+#: modules/notifications-log/library/NotificationsLogTable.php:566
+msgid "Filter by post"
+msgstr "按帖子篩選"
+
+#: modules/editorial-comments/library/EditorialCommentsTable.php:196
+msgid "Filter by user"
+msgstr "按用戶篩選"
+
+#: modules/editorial-comments/library/EditorialCommentsTable.php:212
+#: modules/notifications-log/library/NotificationsLogTable.php:653
 msgid "Filter"
 msgstr "篩選"
 
-#: modules/editorial-comments/library/EditorialCommentsTable.php:229
+#: modules/editorial-comments/library/EditorialCommentsTable.php:231
 msgid "Comment"
 msgstr "評論"
 
-#: modules/editorial-comments/library/EditorialCommentsTable.php:231
+#: modules/editorial-comments/library/EditorialCommentsTable.php:233
 msgid "Post"
 msgstr "貼文"
 
-#: modules/editorial-comments/library/EditorialCommentsTable.php:233
+#: modules/editorial-comments/library/EditorialCommentsTable.php:235
 msgid "Submitted on"
 msgstr "提交於"
 
-#: modules/editorial-comments/library/EditorialCommentsTable.php:336
+#: modules/editorial-comments/library/EditorialCommentsTable.php:338
 #: modules/editorial-metadata/input-handlers/editorial-metadata-input-date-handler.php:201
 #: modules/notifications/notifications.php:1974
 #. translators: 1: Comment date, 2: Comment time.
@@ -2488,6 +2201,10 @@ msgstr "職位"
 msgid "Name"
 msgstr "姓名"
 
+#: modules/editorial-metadata/library/editorial-metadata-list-table.php:46
+msgid "Post Types"
+msgstr "帖子類型"
+
 #: modules/editorial-metadata/library/editorial-metadata-list-table.php:47
 msgid "Field Type"
 msgstr "欄位類型"
@@ -2699,128 +2416,140 @@ msgstr "新文章已發布"
 msgid "Notify on editorial comments"
 msgstr "對編輯評論發送通知"
 
-#: modules/improved-notifications/improved-notifications.php:606
+#: modules/improved-notifications/improved-notifications.php:607
 msgid "minutes"
 msgstr "分鐘"
 
-#: modules/improved-notifications/improved-notifications.php:610
+#: modules/improved-notifications/improved-notifications.php:611
 msgid ""
 "This will prevent too many notifications being sent for the same or similar "
 "events. Set this to a higher number if you are receiving duplicate emails."
 msgstr "這將防止為相同或相似事件發送過多通知。如果您收到重複電子郵件，請將此設置為更高的數字。"
 
-#: modules/improved-notifications/improved-notifications.php:656
-#: modules/improved-notifications/improved-notifications.php:1495
+#: modules/improved-notifications/improved-notifications.php:657
+#: modules/improved-notifications/improved-notifications.php:1514
 #: views/user_profile_notification_channels.html.php:1
 msgid "Editorial Notifications"
 msgstr "編輯通知"
 
-#: modules/improved-notifications/improved-notifications.php:657
-#: modules/improved-notifications/improved-notifications.php:1496
+#: modules/improved-notifications/improved-notifications.php:658
+#: modules/improved-notifications/improved-notifications.php:1515
 #: views/user_profile_notification_channels.html.php:6
 msgid "Choose the channels where each workflow will send notifications to:"
 msgstr "選擇每個工作流程將發送通知的頻道："
 
-#: modules/improved-notifications/improved-notifications.php:661
-#: modules/improved-notifications/improved-notifications.php:1483
-#: modules/improved-notifications/improved-notifications.php:1500
+#: modules/improved-notifications/improved-notifications.php:662
+#: modules/improved-notifications/improved-notifications.php:1502
+#: modules/improved-notifications/improved-notifications.php:1519
 msgid "Muted"
 msgstr "靜音"
 
-#: modules/improved-notifications/improved-notifications.php:662
-#: modules/improved-notifications/improved-notifications.php:1501
+#: modules/improved-notifications/improved-notifications.php:663
+#: modules/improved-notifications/improved-notifications.php:1520
 #: views/user_profile_notification_channels.html.php:14
 msgid "Workflows"
 msgstr "工作流程"
 
-#: modules/improved-notifications/improved-notifications.php:663
-#: modules/improved-notifications/improved-notifications.php:1502
+#: modules/improved-notifications/improved-notifications.php:664
+#: modules/improved-notifications/improved-notifications.php:1521
 #: views/user_profile_notification_channels.html.php:15
 msgid "Channels"
 msgstr "頻道"
 
-#: modules/improved-notifications/improved-notifications.php:1088
+#: modules/improved-notifications/improved-notifications.php:1104
 #: modules/notifications-log/notifications-log.php:75
-#: modules/notifications-log/notifications-log.php:263
-#: modules/notifications-log/notifications-log.php:489
-#: modules/notifications-log/notifications-log.php:490
+#: modules/notifications-log/notifications-log.php:266
+#: modules/notifications-log/notifications-log.php:492
+#: modules/notifications-log/notifications-log.php:493
 msgid "Notifications Log"
 msgstr "通知日誌"
 
-#: modules/improved-notifications/improved-notifications.php:1122
+#: modules/improved-notifications/improved-notifications.php:1138
 msgid "Workflow Settings"
 msgstr "工作流程設定"
 
-#: modules/improved-notifications/improved-notifications.php:1131
+#: modules/improved-notifications/improved-notifications.php:1148
+#: views/settings_notification_channels.html.php:5
+#: views/user_profile_notification_channels.html.php:16
 msgid "Options"
 msgstr "選項"
 
-#: modules/improved-notifications/improved-notifications.php:1140
+#: modules/improved-notifications/improved-notifications.php:1158
 msgid "Help"
 msgstr "幫助"
 
-#: modules/improved-notifications/improved-notifications.php:1170
+#: modules/improved-notifications/improved-notifications.php:1179
+#: modules/notifications-log/library/NotificationsLogTable.php:497
+msgid "When to notify?"
+msgstr "何時通知？"
+
+#: modules/improved-notifications/improved-notifications.php:1189
 #: modules/notifications-log/library/NotificationsLogTable.php:498
 msgid "For which content?"
 msgstr "針對哪個內容？"
 
-#: modules/improved-notifications/improved-notifications.php:1190
+#: modules/improved-notifications/improved-notifications.php:1199
+#: modules/notifications-log/library/NotificationsLogTable.php:499
+msgid "Who to notify?"
+msgstr "誰需要通知？"
+
+#: modules/improved-notifications/improved-notifications.php:1209
 msgid "What to say?"
 msgstr "要說什麼？"
 
-#: modules/improved-notifications/improved-notifications.php:1310
+#: modules/improved-notifications/improved-notifications.php:1329
 msgid "Select at least one option for each section."
 msgstr "每個部分至少選擇一個選項。"
 
-#: modules/improved-notifications/improved-notifications.php:1314
+#: modules/improved-notifications/improved-notifications.php:1333
 msgid ""
 "You can add dynamic information to the Subject or Body text using the "
 "following shortcodes:"
 msgstr "您可以使用以下短代碼將動態信息添加到主題或正文文本中："
 
-#: modules/improved-notifications/improved-notifications.php:1319
+#: modules/improved-notifications/improved-notifications.php:1338
 msgid "Editorial Comment"
 msgstr "編輯評論"
 
-#: modules/improved-notifications/improved-notifications.php:1320
+#: modules/improved-notifications/improved-notifications.php:1339
 msgid "User making changes or comments"
 msgstr "進行更改或評論的用戶"
 
-#: modules/improved-notifications/improved-notifications.php:1321
+#: modules/improved-notifications/improved-notifications.php:1340
 msgid "Workflow"
 msgstr "工作流程"
 
-#: modules/improved-notifications/improved-notifications.php:1322
+#: modules/improved-notifications/improved-notifications.php:1341
 msgid "Format"
 msgstr "格式"
 
-#: modules/improved-notifications/improved-notifications.php:1323
+#: modules/improved-notifications/improved-notifications.php:1342
 msgid "Receiver"
 msgstr "接收者"
 
-#: modules/improved-notifications/improved-notifications.php:1324
+#: modules/improved-notifications/improved-notifications.php:1343
 msgid "shortcode"
 msgstr "短代碼"
 
-#: modules/improved-notifications/improved-notifications.php:1325
+#: modules/improved-notifications/improved-notifications.php:1344
 msgid "field"
 msgstr "欄位"
 
-#: modules/improved-notifications/improved-notifications.php:1326
+#: modules/improved-notifications/improved-notifications.php:1345
 msgid ""
 "On each shortcode, you can select one or more fields. If more than one, "
 "they will be displayed separated by \", \"."
 msgstr "在每個短代碼上，您可以選擇一個或多個欄位。如果選擇多個欄位，它們將以 \", \" 分隔顯示。"
 
-#: modules/improved-notifications/improved-notifications.php:1330
+#: modules/improved-notifications/improved-notifications.php:1349
 msgid "Available fields"
 msgstr "可用欄位"
 
-#: modules/improved-notifications/improved-notifications.php:1331
+#: modules/improved-notifications/improved-notifications.php:1350
 msgid "Meta fields"
 msgstr "元欄位"
 
-#: modules/improved-notifications/improved-notifications.php:1332
+#: modules/improved-notifications/improved-notifications.php:1351
 msgid "Click here to read more about shortcode options..."
 msgstr "點擊這裡以了解更多有關短代碼選項的資訊..."
 
@@ -2937,74 +2666,92 @@ msgstr "全部"
 msgid "Success"
 msgstr "成功"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:590
+#: modules/notifications-log/library/NotificationsLogTable.php:582
+msgid "Filter by workflow"
+msgstr "按工作流程篩選"
+
+#: modules/notifications-log/library/NotificationsLogTable.php:589
+msgid "Filter by event"
+msgstr "按事件篩選"
+
+#: modules/notifications-log/library/NotificationsLogTable.php:593
 msgid "All events"
 msgstr "所有事件"
 
 #: modules/notifications-log/library/NotificationsLogTable.php:607
+msgid "Filter by channel"
+msgstr "按頻道篩選"
+
+#: modules/notifications-log/library/NotificationsLogTable.php:611
 msgid "All channels"
 msgstr "所有頻道"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:626
+#: modules/notifications-log/library/NotificationsLogTable.php:628
+#: modules/notifications-log/library/NotificationsLogTable.php:631
 msgid "From date"
 msgstr "開始日期"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:632
+#: modules/notifications-log/library/NotificationsLogTable.php:635
+#: modules/notifications-log/library/NotificationsLogTable.php:638
 msgid "To date"
 msgstr "結束日期"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:640
+#: modules/notifications-log/library/NotificationsLogTable.php:646
+msgid "Filter by receiver"
+msgstr "按接收者篩選"
+
+#: modules/notifications-log/library/NotificationsLogTable.php:647
 msgid "All Receivers"
 msgstr "所有接收者"
 
-#: modules/notifications-log/notifications-log.php:205
+#: modules/notifications-log/notifications-log.php:208
 msgid "All Workflows"
 msgstr "所有工作流程"
 
-#: modules/notifications-log/notifications-log.php:206
+#: modules/notifications-log/notifications-log.php:209
 msgid "All Actions"
 msgstr "所有動作"
 
-#: modules/notifications-log/notifications-log.php:207
+#: modules/notifications-log/notifications-log.php:210
 msgid "All Channels"
 msgstr "所有頻道"
 
-#: modules/notifications-log/notifications-log.php:208
+#: modules/notifications-log/notifications-log.php:211
 msgid "All Statuses"
 msgstr "所有狀態"
 
-#: modules/notifications-log/notifications-log.php:209
-#: publishpress.php:1426
-#: publishpress.php:1431
+#: modules/notifications-log/notifications-log.php:212
+#: publishpress.php:1441
+#: publishpress.php:1446
 msgid "Notification"
 msgstr "通知"
 
-#: modules/notifications-log/notifications-log.php:272
+#: modules/notifications-log/notifications-log.php:275
 #, php-format
 msgid "%s notification found."
 msgid_plural "%s notifications found."
 msgstr[0] "%s 條通知找到。"
 
-#: modules/notifications-log/notifications-log.php:284
+#: modules/notifications-log/notifications-log.php:287
 msgid "No notifications found."
 msgstr "未找到通知。"
 
-#: modules/notifications-log/notifications-log.php:442
+#: modules/notifications-log/notifications-log.php:445
 #, php-format
 msgid ""
 "This notification is very similar to another one sent less than %d minutes "
 "ago for the same receiver"
 msgstr "此通知與不久前發送給相同接收者的另一個通知非常相似，時間少於 %d 分鐘。"
 
-#: modules/notifications-log/notifications-log.php:817
+#: modules/notifications-log/notifications-log.php:820
 msgid "Subject:"
 msgstr "主旨:"
 
-#: modules/notifications-log/notifications-log.php:825
+#: modules/notifications-log/notifications-log.php:828
 msgid "Content:"
 msgstr "內容:"
 
-#: modules/notifications-log/notifications-log.php:835
+#: modules/notifications-log/notifications-log.php:838
 msgid ""
 "This is a preview of the scheduled message. The content can still change "
 "until the notification is sent."
@@ -3012,8 +2759,8 @@ msgstr "這是預定消息的預覽。內容仍然可以在通知發送之前更
 
 #: modules/notifications/notifications.php:75
 #: modules/notifications/notifications.php:562
-#: publishpress.php:1425
-#: publishpress.php:1430
+#: publishpress.php:1440
+#: publishpress.php:1445
 msgid "Notifications"
 msgstr "通知"
 
@@ -3340,7 +3087,7 @@ msgid ""
 msgstr "因為 add_post_type_support('%1$s', '%2$s') 包含在已加載的文件中而被禁用。"
 
 #: modules/settings/settings.php:404
-#: publishpress.php:675
+#: publishpress.php:689
 msgid "Cheatin&#8217; uh?"
 msgstr "作弊嘛&#8217;？"
 
@@ -3364,44 +3111,44 @@ msgstr "活動日曆整合"
 msgid "Integrate with the The Events Calendar plugin"
 msgstr "與 The Events Calendar 插件整合"
 
-#: publishpress.php:590
+#: publishpress.php:604
 msgid "Planner"
 msgstr "計劃工具"
 
-#: publishpress.php:671
+#: publishpress.php:685
 msgid "Configure"
 msgstr "配置"
 
-#: publishpress.php:674
+#: publishpress.php:688
 msgid "Please correct your form errors below and try again."
 msgstr "請修正您下面的表單錯誤並重試。"
 
-#: publishpress.php:676
+#: publishpress.php:690
 msgid "You do not have necessary permissions to complete this action."
 msgstr "您沒有必要的權限來完成此操作。"
 
-#: publishpress.php:680
+#: publishpress.php:694
 msgid "Post does not exist"
 msgstr "文章不存在"
 
-#: publishpress.php:1427
+#: publishpress.php:1442
 msgid "Add New Notification"
 msgstr "新增通知"
 
-#: publishpress.php:1428
+#: publishpress.php:1443
 msgid "Edit Notification"
 msgstr "編輯通知"
 
-#: publishpress.php:1429
+#: publishpress.php:1444
 msgid "Search Notifications"
 msgstr "搜尋通知"
 
-#: publishpress.php:1432
-#: publishpress.php:1433
+#: publishpress.php:1447
+#: publishpress.php:1448
 msgid "No notification found"
 msgstr "未找到通知"
 
-#: publishpress.php:1473
+#: publishpress.php:1489
 msgid ""
 "PublishPress Planner tried to load multiple times. Please, deactivate and "
 "remove other instances of PublishPress, specially if you are using "
@@ -3410,36 +3157,9 @@ msgstr ""
 "PublishPress Planner 嘗試多次加載。請停用並刪除其他 PublishPress 實例，特別是如果您正在使用 "
 "PublishPress Pro。"
 
-#: publishpress.php:1481
+#: publishpress.php:1497
 msgid "Warning"
 msgstr "警告"
-
-#: modules/editorial-comments/lib/editorial-comments.js:203
-#: modules/editorial-comments/lib/editorial-comments.js:371
-msgid "Please enter a comment"
-msgstr "請輸入評論"
-
-#: modules/editorial-comments/lib/editorial-comments.js:377
-msgid "Sending content..."
-msgstr "正在發送內容..."
-
-#: modules/editorial-comments/lib/editorial-comments.js:434
-msgid ""
-"This comment can't be deleted because it has one or more replies. Before "
-"deleting it make sure to delete all the replies first."
-msgstr "此評論無法刪除，因為它有一個或多個回覆。在刪除之前，請先確保刪除所有回覆。"
-
-#: modules/editorial-comments/lib/editorial-comments.js:438
-msgid "Are you sure you want to delete this comment?"
-msgstr "您確定要刪除此評論嗎？"
-
-#: modules/notifications-log/assets/js/admin.js:73
-msgid "for"
-msgstr "對於"
-
-#: modules/notifications-log/assets/js/admin.js:73
-msgid "by"
-msgstr "由"
 
 #: modules/content-board/library/content-board-utilities.php:538
 #: modules/content-overview/library/content-overview-utilities.php:643

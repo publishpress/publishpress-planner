@@ -52,6 +52,9 @@
 
 .pp-content-calendar-manage .right-items .item,
 .pp-content-calendar-manage .left-items .item {
+    appearance: none;
+    background-image: none;
+    box-shadow: none;
     font-size: 14px;
     font-weight: 500;
     line-height: 16px;
@@ -68,6 +71,7 @@
     color: rgb(101, 111, 125);
     cursor: pointer;
     padding: 5px;
+    text-shadow: none;
 }
 
 .metadata-item-filter .filter-apply input[type=submit],
@@ -85,8 +89,16 @@
     font-size: .75rem;
     font-weight: 500;
     line-height: 1.334;
+    padding: 4px 8px 4px 6px;
     cursor: pointer;
     user-select: none;
+}
+
+.pp-content-calendar-manage .item.action {
+    box-sizing: border-box;
+    gap: 4px;
+    height: 34px;
+    max-height: none;
 }
 
 .metadata-item-filter .filter-apply input[type=submit],
@@ -97,6 +109,9 @@
 
 .pp-content-calendar-filters button.clear-filter,
 .pp-content-calendar-filters button.co-filter {
+    appearance: none;
+    background-image: none;
+    box-shadow: none;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -109,6 +124,7 @@
     font-size: .75rem;
     font-weight: 500;
     cursor: pointer;
+    text-shadow: none;
     user-select: none;
 }
 
@@ -228,11 +244,18 @@
 }
 
 .content-calendar-modal .close {
+    appearance: none;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
     cursor: pointer;
     display: flex;
     justify-content: end;
     font-size: large;
     margin-bottom: 5px;
+    min-height: 0;
+    padding: 0;
+    text-shadow: none;
 }
 
 .content-calendar-modal.schedule-date-modal .schedule-date-options {

@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-14T18:33:45+00:00\n"
-"PO-Revision-Date: 2026-04-15 14:14+0000\n"
+"PO-Revision-Date: 2026-09-25 19:49+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: publishpress\n"
 "Language: ja\n"
@@ -22,12 +22,12 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
 
-#: publishpress.php
+#: publishpress.php, fuzzy
 #. Plugin Name of the plugin
 msgid "PublishPress Planner Free"
 msgstr "PublishPress Planner Free"
 
-#: publishpress.php, fuzzy
+#: publishpress.php
 #. Plugin URI of the plugin
 msgid "https://publishpress.com/"
 msgstr "https://publishpress.com/"
@@ -38,145 +38,148 @@ msgid ""
 "PublishPress Planner helps you plan and publish content inside WordPress. "
 "Features include a content calendar, kanban board, and notifications."
 msgstr ""
-"PublishPress "
-"Plannerは、WordPress内でコンテンツを計画し、公開するのに役立ちます。機能には、コンテンツカレンダー、カンバンボード、通知が含まれます。"
+"PublishPress Planner は、WordPress "
+"内でコンテンツを計画して公開するのに役立ちます。機能には、コンテンツカレンダー、かんばんボード、通知が含まれます。"
 
 #: publishpress.php
-#: modules/calendar/library/calendar-utilities.php:1227
+#: modules/calendar/library/calendar-utilities.php:1234
 #: modules/settings/settings.php:61
+#: modules/settings/views/footer-base.html.php:35
 #. Author of the plugin
 msgid "PublishPress"
-msgstr "発行プレス"
+msgstr "PublishPress"
 
-#: publishpress.php, fuzzy
+#: publishpress.php
 #. Author URI of the plugin
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
-#: common/php/class-module.php:331
-#: modules/calendar/calendar.php:1233
+#: common/php/class-module.php:338
+#: modules/calendar/calendar.php:1261
 msgid "Published"
 msgstr "公開済み"
 
-#: common/php/class-module.php:332
+#: common/php/class-module.php:339
 msgid "Draft"
 msgstr "下書き"
 
-#: common/php/class-module.php:333
-#: modules/calendar/calendar.php:1228
+#: common/php/class-module.php:340
+#: modules/calendar/calendar.php:1256
 #: modules/content-board/content-board.php:979
 #: modules/notifications-log/library/NotificationsLogTable.php:529
 msgid "Scheduled"
-msgstr "予定済み"
+msgstr "予定"
 
-#: common/php/class-module.php:334
+#: common/php/class-module.php:341
 #: modules/content-board/content-board.php:989
 msgid "Private"
 msgstr "プライベート"
 
-#: common/php/class-module.php:335
+#: common/php/class-module.php:342
 msgid "Pending Review"
 msgstr "保留中のレビュー"
 
-#: common/php/class-module.php:336
-#: modules/calendar/library/calendar-methods.php:1240
+#: common/php/class-module.php:343
+#: modules/calendar/library/calendar-methods.php:1252
 #: modules/calendar/library/calendar-utilities.php:1104
 #: modules/content-board/content-board.php:1195
 #: modules/content-board/content-board.php:1290
-#: modules/content-overview/content-overview.php:1221
-#: modules/content-overview/content-overview.php:1715
+#: modules/content-overview/content-overview.php:1267
+#: modules/content-overview/content-overview.php:1761
 msgid "Trash"
 msgstr "ゴミ箱"
 
-#: common/php/class-module.php:750
-#: lib/Notifications/Workflow/Step/Receiver/Role.php:31
+#: common/php/class-module.php:772
 msgid "Roles"
-msgstr "権限"
+msgstr "権限グループ"
 
-#: common/php/class-module.php:753
+#: common/php/class-module.php:775
 msgid "Role"
-msgstr "権限"
+msgstr "権限グループ"
 
-#: common/php/class-module.php:761
+#: common/php/class-module.php:783
 msgid "Groups"
 msgstr "グループ"
 
-#: common/php/class-module.php:764
+#: common/php/class-module.php:786
 msgid "Group"
 msgstr "グループ"
 
-#: common/php/class-module.php:772
-#: lib/Notifications/Workflow/Step/Receiver/User.php:26
+#: common/php/class-module.php:794
 msgid "Users"
 msgstr "ユーザー"
 
-#: common/php/class-module.php:782
+#: common/php/class-module.php:804
 msgid "E-mails"
 msgstr "電子メール"
 
-#: common/php/class-module.php:1048
+#: common/php/class-module.php:1051
 msgid "Equals (=)"
 msgstr "等しい (=)"
 
-#: common/php/class-module.php:1049
+#: common/php/class-module.php:1052
 msgid "Does not equal (!=)"
 msgstr "等しくない (!=)"
 
-#: common/php/class-module.php:1050
+#: common/php/class-module.php:1053
 msgid "Greater than (>)"
 msgstr "より大きい (>)"
 
-#: common/php/class-module.php:1051
+#: common/php/class-module.php:1054
 msgid "Greater than or equals (>=)"
 msgstr "より大きいか等しい (>=)"
 
-#: common/php/class-module.php:1052
+#: common/php/class-module.php:1055
 msgid "Less than (<)"
 msgstr "より小さい (<)"
 
-#: common/php/class-module.php:1053
+#: common/php/class-module.php:1056
 msgid "Less than or equals (<=)"
 msgstr "より小さいか等しい (<=)"
 
-#: common/php/class-module.php:1054
+#: common/php/class-module.php:1057
 msgid "Like/Contains"
 msgstr "類似/含む"
 
-#: common/php/class-module.php:1055
+#: common/php/class-module.php:1058
 #, fuzzy
 msgid "Not Like"
 msgstr "未設定"
 
-#: common/php/class-module.php:1056
+#: common/php/class-module.php:1059
 msgid "Not Exists/Empty"
 msgstr "存在しない/空"
 
-#: common/php/class-module.php:1109
+#: common/php/class-module.php:1112
+#: views/workflow_receiver_group_field.html.php:10
+#: views/workflow_receiver_role_field.html.php:9
+#: views/workflow_receiver_user_field.html.php:9
 #, php-format
 msgid "Select %s"
-msgstr "%s を選択"
+msgstr "%sを選択"
 
-#: common/php/class-module.php:1126
-#: modules/calendar/library/calendar-utilities.php:1190
-#: modules/content-overview/content-overview.php:833
-#: modules/content-overview/content-overview.php:848
-#: modules/content-overview/content-overview.php:955
+#: common/php/class-module.php:1129
+#: modules/calendar/library/calendar-utilities.php:1191
+#: modules/content-overview/content-overview.php:850
+#: modules/content-overview/content-overview.php:874
+#: modules/content-overview/content-overview.php:926
+#: modules/content-overview/content-overview.php:995
 msgid "Revision Status"
 msgstr "リビジョンステータス"
 
-#: common/php/class-module.php:1126
+#: common/php/class-module.php:1129
 #: modules/calendar/library/calendar-methods.php:424
 #: modules/calendar/library/calendar-methods.php:858
-#: modules/calendar/library/calendar-methods.php:1245
+#: modules/calendar/library/calendar-methods.php:1257
 #: modules/calendar/library/calendar-utilities.php:47
 #: modules/calendar/library/calendar-utilities.php:1070
-#: modules/calendar/library/calendar-utilities.php:1189
+#: modules/calendar/library/calendar-utilities.php:1188
 #: modules/content-board/content-board.php:811
 #: modules/content-board/content-board.php:1295
 #: modules/content-board/library/content-board-utilities.php:594
 #: modules/content-board/library/content-board-utilities.php:1165
-#: modules/content-overview/content-overview.php:954
-#: modules/content-overview/content-overview.php:1226
+#: modules/content-overview/content-overview.php:992
+#: modules/content-overview/content-overview.php:1272
 #: modules/content-overview/library/content-overview-utilities.php:491
 #: modules/content-overview/library/content-overview-utilities.php:703
 msgid "Post Status"
@@ -193,417 +196,23 @@ msgstr "未定義のエラーが見つかりました"
 #: core/Error.php:80
 #: modules/calendar/library/calendar-methods.php:779
 msgid "Invalid nonce"
-msgstr "無効な nonce。"
+msgstr "セキュリティトークンが無効です。"
 
 #: core/Error.php:81
 #, fuzzy
 msgid "Access denied"
-msgstr "アクセスが拒否されました"
+msgstr "アクセス拒否"
 
 #: includes.php:127
 #, php-format
 msgid ""
 "You're using PublishPress Planner Free. The Pro version has more features "
 "and support. %sUpgrade to Pro%s"
-msgstr ""
-"あなたはPublishPress Planner Freeを使用しています。Proバージョンには、さらに多くの機能とサポートがあります。 "
-"%sProにアップグレード%s"
+msgstr "PublishPress Planner Free を使用しています。Pro 版はより多くの機能とサポートがあります。%sPro%s 版にアップグレード"
 
 #: includes.php:161
-#: lib/Legacy/Util.php:216
 msgid "Upgrade to Pro"
-msgstr "Pro にアップグレード"
-
-#: lib/Legacy/Util.php:198
-msgid "Upgrade to PublishPress Planner Pro"
-msgstr "PublishPress プランナー Pro にアップグレード"
-
-#: lib/Legacy/Util.php:203
-msgid "Enhance the power of PublishPress Planner with the Pro version:"
-msgstr "Pro バージョンで PublishPress プランナーの機能を強化しましょう："
-
-#: lib/Legacy/Util.php:206
-msgid "PublishPress Revisions integration"
-msgstr "PublishPress リビジョン統合"
-
-#: lib/Legacy/Util.php:207
-msgid "Slack integration for notifications"
-msgstr "通知用の Slack 統合"
-
-#: lib/Legacy/Util.php:208
-msgid "Send reminder notifications"
-msgstr "リマインダー通知を送信"
-
-#: lib/Legacy/Util.php:209
-msgid "Use post meta in notifications"
-msgstr "通知に投稿メタを使用"
-
-#: lib/Legacy/Util.php:210
-msgid "Modals so you can edit posts without changing screen"
-msgstr "画面を変更せずに投稿を編集できるモーダル"
-
-#: lib/Legacy/Util.php:211
-msgid "Integration with SEO plugins"
-msgstr "SEO プラグインとの統合"
-
-#: lib/Legacy/Util.php:212
-msgid "Remove PublishPress ads and branding"
-msgstr "PublishPress の広告とブランディングを削除"
-
-#: lib/Legacy/Util.php:213
-msgid "Fast, professional support"
-msgstr "迅速で専門的なサポート"
-
-#: lib/Legacy/Util.php:223
-msgid "Need PublishPress Planner Support?"
-msgstr "PublishPress プランナーのサポートが必要ですか？"
-
-#: lib/Legacy/Util.php:228
-msgid "If you need help or have a new feature request, let us know."
-msgstr "ヘルプが必要な場合や新機能のリクエストがある場合は、お知らせください。"
-
-#: lib/Legacy/Util.php:230
-msgid "Request Support"
-msgstr "サポートをリクエスト"
-
-#: lib/Legacy/Util.php:239
-msgid "Detailed documentation is also available on the plugin website."
-msgstr "詳細なドキュメントはプラグインのウェブサイトにもあります。"
-
-#: lib/Legacy/Util.php:241
-msgid "View Knowledge Base"
-msgstr "ナレッジベースを表示"
-
-#: lib/Notifications/Plugin.php:65
-#: modules/improved-notifications/improved-notifications.php:1160
-#: modules/notifications-log/library/NotificationsLogTable.php:497
-msgid "When to notify?"
-msgstr "いつ通知しますか?"
-
-#: lib/Notifications/Plugin.php:66
-msgid "Filter the content?"
-msgstr "コンテンツタイプで絞り込み"
-
-#: lib/Notifications/Plugin.php:67
-#: modules/improved-notifications/improved-notifications.php:1180
-#: modules/notifications-log/library/NotificationsLogTable.php:499
-msgid "Who to notify?"
-msgstr "誰に通知するか?"
-
-#: lib/Notifications/Plugin.php:209
-#: lib/Notifications/Plugin.php:210
-msgid "Notification workflow updated."
-msgstr "通知ワークフローが更新されました。"
-
-#: lib/Notifications/Plugin.php:211
-msgid "Notification workflow published."
-msgstr "通知ワークフローが公開されました。"
-
-#: lib/Notifications/Plugin.php:212
-msgid "Notification workflow saved."
-msgstr "通知ワークフローが保存されました。"
-
-#: lib/Notifications/Plugin.php:213
-msgid "Notification workflow submitted."
-msgstr "通知ワークフローが送信されました。"
-
-#: lib/Notifications/Plugin.php:215
-#, php-format
-msgid "Notification workflow scheduled for: %s."
-msgstr "通知ワークフローが予定されています: %s。"
-
-#: lib/Notifications/Plugin.php:218
-msgid "Notification workflow draft updated."
-msgstr "通知ワークフローのドラフトが更新されました。"
-
-#: lib/Notifications/Plugin.php:240
-#, php-format
-msgid "%s notification workflow updated."
-msgid_plural "%s notification workflows updated."
-msgstr[0] "%s の通知ワークフローが更新されました。"
-
-#: lib/Notifications/Plugin.php:246
-msgid "1 notification workflow not updated, somebody is editing it."
-msgstr "1つの通知ワークフローが更新されていません。他の誰かが編集中です。"
-
-#: lib/Notifications/Plugin.php:250
-#, php-format
-msgid "%s notification workflow not updated, somebody is editing it."
-msgid_plural "%s notification workflows not updated, somebody is editing them."
-msgstr[0] "%s の通知ワークフローが更新されていません。他の誰かが編集中です。"
-
-#: lib/Notifications/Plugin.php:256
-#, php-format
-msgid "%s notification workflow permanently deleted."
-msgid_plural "%s notification workflows permanently deleted."
-msgstr[0] "%s の通知ワークフローが永久に削除されました。"
-
-#: lib/Notifications/Plugin.php:262
-#, php-format
-msgid "%s notification workflow moved to the Trash."
-msgid_plural "%s notification workflows moved to the Trash."
-msgstr[0] "%s の通知ワークフローがゴミ箱に移動されました。"
-
-#: lib/Notifications/Plugin.php:268
-#, php-format
-msgid "%s notification workflow restored from the Trash."
-msgid_plural "%s notification workflows restored from the Trash."
-msgstr[0] "%s の通知ワークフローがゴミ箱から復元されました。"
-
-#: lib/Notifications/Plugin.php:302
-msgid "Please select at least one event"
-msgstr "少なくとも 1 つのイベントを選択してください"
-
-#: lib/Notifications/Plugin.php:335
-msgid "Not filtered"
-msgstr "フィルタなし"
-
-#: lib/Notifications/Table/Base.php:183
-msgid "Excerpt View"
-msgstr "抜粋ビュー"
-
-#: lib/Notifications/Table/Notifications.php:156
-#: lib/Notifications/Table/Workflows.php:142
-#: modules/calendar/library/calendar-methods.php:853
-#: modules/content-board/content-board.php:421
-#: modules/content-board/library/content-board-utilities.php:244
-#: modules/content-board/library/content-board-utilities.php:1159
-#: modules/content-overview/content-overview.php:418
-#: modules/content-overview/library/content-overview-utilities.php:485
-msgid "Title"
-msgstr "タイトル"
-
-#: lib/Notifications/Table/Notifications.php:157
-msgid "Message"
-msgstr "メッセージ"
-
-#: lib/Notifications/Table/Notifications.php:158
-#: modules/calendar/library/calendar-utilities.php:1064
-#: modules/content-board/library/content-board-utilities.php:116
-#: modules/content-overview/library/content-overview-methods.php:341
-#: modules/editorial-metadata/editorial-metadata.php:290
-#: modules/notifications-log/library/NotificationsLogTable.php:496
-msgid "Date"
-msgstr "日付"
-
-#: lib/Notifications/Table/Notifications.php:159
-#: lib/Notifications/Table/Workflows.php:143
-#: modules/calendar/library/calendar-utilities.php:1059, fuzzy
-msgid "ID"
-msgstr "ID"
-
-#: lib/Notifications/Table/Notifications.php:235
-msgid "You don't have any notifications"
-msgstr "通知がない場合"
-
-#: lib/Notifications/Table/Workflows.php:217
-msgid "No workflows found."
-msgstr "ワークフローが見つかりません。"
-
-#: lib/Notifications/Workflow/Option/SkipUser.php:26
-#, fuzzy
-msgid "Skip current user"
-msgstr "現在のユーザーをスキップ"
-
-#: lib/Notifications/Workflow/Option/SkipUser.php:31
-#, fuzzy
-msgid "Skip notifications for the user who triggered the action"
-msgstr "アクションをトリガーしたユーザーの通知をスキップする"
-
-#: lib/Notifications/Workflow/Step/Channel/Email.php:31
-#: modules/editorial-comments/editorial-comments.php:1267
-msgid "Email"
-msgstr "メールアドレス"
-
-#: lib/Notifications/Workflow/Step/Content/Main.php:29
-#: modules/calendar/library/calendar-methods.php:902
-#: modules/content-board/library/content-board-utilities.php:1207
-#: modules/content-overview/library/content-overview-utilities.php:533
-#: modules/improved-notifications/improved-notifications.php:1318
-#: views/workflow_help.html.php:2
-msgid "Content"
-msgstr "コンテンツ"
-
-#: lib/Notifications/Workflow/Step/Content/Main.php:53
-msgid "Subject"
-msgstr "件名"
-
-#: lib/Notifications/Workflow/Step/Content/Main.php:54
-msgid "Body"
-msgstr "本文"
-
-#: lib/Notifications/Workflow/Step/Event/Editorial_Comment.php:24
-msgid "When an editorial comment is added"
-msgstr "エディトリアルコメントが追加された場合"
-
-#: lib/Notifications/Workflow/Step/Event/Editorial_Comment.php:96
-#, php-format
-msgid "Comment: %s (%d)"
-msgstr "コメント: %s (%d)"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:34
-msgid "When the status is changed"
-msgstr "ステータスが変更された場合"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:35
-msgid "Previous status"
-msgstr "前のステータス"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:36
-msgid "New status"
-msgstr "新しいステータス"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:37
-msgid "- any status -"
-msgstr "すべてのステータス"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:59, fuzzy
-msgid "New"
-msgstr "New"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php:64
-#, fuzzy
-msgid "Auto-draft"
-msgstr "自動ドラフト"
-
-#: lib/Notifications/Workflow/Step/Event/Filter/Taxonomies.php:34
-#: modules/calendar/library/calendar-utilities.php:1206
-#: modules/content-board/content-board.php:767
-#: modules/content-board/content-board.php:827
-#: modules/content-overview/content-overview.php:910
-#: modules/content-overview/content-overview.php:971
-msgid "Taxonomies"
-msgstr "分類"
-
-#: lib/Notifications/Workflow/Step/Event/Post_StatusTransition.php:28
-msgid "When the content is moved to a new status"
-msgstr "コンテンツが新しいステータスに移動されたとき"
-
-#: lib/Notifications/Workflow/Step/Event/Post_StatusTransition.php:118
-#, php-format
-msgid "Old post status: %s"
-msgstr "古い投稿ステータス: %s"
-
-#: lib/Notifications/Workflow/Step/Event/Post_StatusTransition.php:122
-#, php-format
-msgid "New post status: %s"
-msgstr "新しい投稿ステータス: %s"
-
-#: lib/Notifications/Workflow/Step/Event/Post_TaxonomyUpdate.php:28
-msgid "When taxonomy is updated"
-msgstr "分類が更新されたとき"
-
-#: lib/Notifications/Workflow/Step/Event/Post_Update.php:26
-msgid "When the content is updated"
-msgstr "コンテンツが更新されたとき"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Category.php:24
-#: modules/calendar/library/calendar-utilities.php:1080
-msgid "Category"
-msgid_plural "Categories"
-msgstr[0] "カテゴリー"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Filter/Category.php:34
-#: modules/calendar/library/calendar-methods.php:885
-#: modules/content-board/library/content-board-utilities.php:1190
-#: modules/content-overview/library/content-overview-utilities.php:516
-msgid "Categories"
-msgstr "カテゴリー"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Filter/Post_Type.php:34
-#: modules/editorial-metadata/library/editorial-metadata-list-table.php:46
-msgid "Post Types"
-msgstr "投稿タイプ"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Filter/Term.php:33
-msgid "Terms"
-msgstr "利用規約"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Post_Type.php:24
-msgid "Post type"
-msgstr "投稿タイプ"
-
-#: lib/Notifications/Workflow/Step/Event_Content/Taxonomy.php:24
-#, fuzzy
-msgid "Taxonomy"
-msgstr "タクソノミー"
-
-#: lib/Notifications/Workflow/Step/Receiver/Author.php:26
-msgid "Authors of the content"
-msgstr "コンテンツの作成者"
-
-#: lib/Notifications/Workflow/Step/Receiver/Author.php:92
-msgid "Authors"
-msgstr "投稿者"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:30
-msgid "Users who selected \"Notify me\" for the content"
-msgstr "コンテンツに対して [通知] を選択したユーザー"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:108
-#, php-format
-msgid "role:%s"
-msgstr "役割 %s"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:132
-#, php-format
-msgid "group %d: %s"
-msgstr "グループ %d: %s"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:153
-msgid "user"
-msgstr "ユーザー"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:168
-msgid "email"
-msgstr "メールアドレス"
-
-#: lib/Notifications/Workflow/Step/Receiver/Follower.php:210
-msgid "\"Notify me\""
-msgstr "通知する"
-
-#: lib/Notifications/Workflow/Step/Receiver/Group.php:31
-msgid "Permission Groups"
-msgstr "権限グループ"
-
-#: lib/Notifications/Workflow/Step/Receiver/Group.php:222
-#, php-format
-msgid "%d Group"
-msgid_plural "%d Groups"
-msgstr[0] "%d グループ"
-
-#: lib/Notifications/Workflow/Step/Receiver/ParentAuthor.php:26
-msgid "Authors of the parent page"
-msgstr "親ページの著者"
-
-#: lib/Notifications/Workflow/Step/Receiver/ParentAuthor.php:106
-msgid "Parent Page Authors"
-msgstr "親ページの著者"
-
-#: lib/Notifications/Workflow/Step/Receiver/RevisionAuthor.php:39
-msgid "Author of the revision"
-msgstr "改訂の著者"
-
-#: lib/Notifications/Workflow/Step/Receiver/RevisionAuthor.php:105
-msgid "Revision Author"
-msgstr "改訂の著者"
-
-#: lib/Notifications/Workflow/Step/Receiver/Role.php:173
-#, php-format
-msgid "%d Role"
-msgid_plural "%d Roles"
-msgstr[0] "%d役割"
-
-#: lib/Notifications/Workflow/Step/Receiver/Site_Admin.php:24
-#: lib/Notifications/Workflow/Step/Receiver/Site_Admin.php:73
-msgid "Site Administrator"
-msgstr "この機能はサイト管理者によって無効にされています。"
-
-#: lib/Notifications/Workflow/Step/Receiver/User.php:152
-#, php-format
-msgid "%d User"
-msgid_plural "%d Users"
-msgstr[0] "ユーザー%d"
+msgstr "Pro 版にアップグレード"
 
 #: modules/async-notifications/async-notifications.php:71
 msgid "Async Notifications"
@@ -614,55 +223,55 @@ msgstr "非同期通知"
 msgid "Event: %s, Workflow ID: %s, Post ID: %s, User ID: %s"
 msgstr "イベント: %s、ワークフロー ID: %s、投稿 ID: %s、ユーザー ID: %s"
 
-#: modules/calendar/calendar.php:216
-#: modules/calendar/calendar.php:415
-#: modules/calendar/calendar.php:432
-#: modules/calendar/calendar.php:433
+#: modules/calendar/calendar.php:228
+#: modules/calendar/calendar.php:427
+#: modules/calendar/calendar.php:444
+#: modules/calendar/calendar.php:445
 msgid "Content Calendar"
 msgstr "コンテンツカレンダー"
 
-#: modules/calendar/calendar.php:241
+#: modules/calendar/calendar.php:253
 msgid "Post date updated."
-msgstr "更新された投稿日。"
+msgstr "投稿日を更新しました。"
 
-#: modules/calendar/calendar.php:242
+#: modules/calendar/calendar.php:254
 msgid "Post status updated."
-msgstr "投稿状況が更新されました。"
+msgstr "投稿ステータスを更新しました。"
 
-#: modules/calendar/calendar.php:243
+#: modules/calendar/calendar.php:255
 msgid "There was an error updating the post. Please try again."
 msgstr "投稿の更新中にエラーが発生しました。もう一度やり直してください。"
 
-#: modules/calendar/calendar.php:247
+#: modules/calendar/calendar.php:259
 #, php-format
 msgid ""
 "Updating the post date dynamically doesn't work for published content. "
 "Please <a href='%s'>edit the post</a>."
-msgstr "公開されたコンテンツに対して、投稿日を動的に更新することは機能しません。<a href='%s'>投稿を編集</a>してください。"
+msgstr "投稿日を動的に更新しても、発行済みコンテンツでは機能しません。 <a href='%s'>投稿を編集</a>してください。"
 
-#: modules/calendar/calendar.php:251
+#: modules/calendar/calendar.php:263
 msgid ""
 "iCal secret key regenerated. Please inform all users they will need to "
 "resubscribe."
-msgstr "iCalの秘密鍵が再生成されました。すべてのユーザーに再購読が必要であることを通知してください。"
+msgstr "iCal 秘密鍵を再生成しました。再登録が必要なすべてのユーザーに通知してください。"
 
-#: modules/calendar/calendar.php:259
+#: modules/calendar/calendar.php:271
 #: modules/editorial-comments/editorial-comments.php:82
 #: modules/editorial-metadata/editorial-metadata.php:119
 #: modules/notifications/notifications.php:96
 msgid "Overview"
 msgstr "概要"
 
-#: modules/calendar/calendar.php:260
+#: modules/calendar/calendar.php:272
 msgid ""
 "<p>The calendar is a convenient week-by-week or month-by-month view into "
 "your content. Quickly see which stories are on track to being published on "
 "time, and which will need extra effort.</p>"
 msgstr ""
-"<p>カレンダーは、コンテンツを週ごとまたは月ごとの便利なビューで提供します。どのストーリーが時間通りに公開される予定で、どのストーリーが追加の努力を必"
-"要とするかをすぐに確認できます。</p>"
+"<p>カレンダーは、週単位または月単位でコンテンツを表示する便利な機能です。どの投稿が予定どおり公開しているか、どの投稿に追加の作業が必要かをすばやく確"
+"認できます。</p>"
 
-#: modules/calendar/calendar.php:265
+#: modules/calendar/calendar.php:277
 msgid ""
 "<p><strong>For more information:</strong></p><p><a "
 "href=\"https://publishpress.com/features/calendar/\">Calendar "
@@ -670,137 +279,136 @@ msgid ""
 "href=\"https://github.com/ostraining/PublishPress\">PublishPress on "
 "Github</a></p>"
 msgstr ""
-"<p><strong>詳細情報:</strong></p><p><a "
-"href=\"https://publishpress.com/features/calendar/\">カレンダードキュメント</a></"
-"p><p><a "
-"href=\"https://github.com/ostraining/PublishPress\">GitHubのPublishPress</"
-"a></p>"
+"<p><strong>詳細情報:</strong></p> <p><a "
+"href=\"https://publishpress.com/features/calendar/\">カレンダーのドキュメント</a></"
+"p><p><a href=\"https://github.com/ostraining/PublishPress\">PublishPress on "
+"Github</a></p>"
 
-#: modules/calendar/calendar.php:734
-#: modules/calendar/library/calendar-utilities.php:1259
+#: modules/calendar/calendar.php:746
+#: modules/calendar/library/calendar-utilities.php:1266
 #: modules/content-board/content-board.php:1043
 msgid "Weeks"
 msgstr "週"
 
-#: modules/calendar/calendar.php:735
+#: modules/calendar/calendar.php:747
 msgid "Start Date"
 msgstr "開始日"
 
-#: modules/calendar/calendar.php:736
+#: modules/calendar/calendar.php:748
 #: modules/calendar/library/calendar-utilities.php:467
 #: modules/calendar/library/calendar-utilities.php:468
 #: modules/content-board/library/content-board-utilities.php:28
 #: modules/content-overview/library/content-overview-methods.php:253
 msgid "Me Mode"
-msgstr "私のモード"
+msgstr "私モード"
 
-#: modules/calendar/calendar.php:737
+#: modules/calendar/calendar.php:749
 msgid "Show Revision"
-msgstr "改訂を表示"
+msgstr "リビジョンを表示"
 
-#: modules/calendar/calendar.php:738
+#: modules/calendar/calendar.php:750
 #: modules/calendar/library/calendar-utilities.php:486
 #: modules/content-board/library/content-board-utilities.php:98
 #: modules/content-overview/library/content-overview-methods.php:323
 msgid "Search"
 msgstr "検索"
 
-#: modules/calendar/calendar.php:912
-#: modules/content-board/library/content-board-methods.php:164
-#: modules/content-overview/content-overview.php:668
+#: modules/calendar/calendar.php:928
+#: modules/content-board/library/content-board-methods.php:166
+#: modules/content-overview/content-overview.php:684
 msgid "Filter updated successfully."
-msgstr "フィルターが正常に更新されました。"
+msgstr "フィルターを正常に更新しました。"
 
-#: modules/calendar/calendar.php:919
+#: modules/calendar/calendar.php:935
 msgid "Filter reset successfully."
-msgstr "フィルターが正常にリセットされました。"
+msgstr "フィルターのリセットに成功しました。"
 
-#: modules/calendar/calendar.php:987
+#: modules/calendar/calendar.php:1008
 #: modules/content-board/content-board.php:709
-#: modules/content-overview/content-overview.php:832
 #: modules/content-overview/content-overview.php:847
-#: modules/content-overview/content-overview.php:892
+#: modules/content-overview/content-overview.php:871
+#: modules/content-overview/content-overview.php:923
 #: modules/notifications-log/library/NotificationsLogTable.php:500
 msgid "Status"
 msgstr "ステータス"
 
-#: modules/calendar/calendar.php:988
-#: modules/calendar/calendar.php:1212
+#: modules/calendar/calendar.php:1009
+#: modules/calendar/calendar.php:1240
 #: modules/calendar/library/calendar-methods.php:875
-#: modules/calendar/library/calendar-methods.php:1248
+#: modules/calendar/library/calendar-methods.php:1260
 #: modules/calendar/library/calendar-utilities.php:115
 #: modules/calendar/library/calendar-utilities.php:1075
-#: modules/calendar/library/calendar-utilities.php:1191
+#: modules/calendar/library/calendar-utilities.php:1194
 #: modules/content-board/content-board.php:699
 #: modules/content-board/content-board.php:710
 #: modules/content-board/content-board.php:753
 #: modules/content-board/content-board.php:812
 #: modules/content-board/library/content-board-utilities.php:647
 #: modules/content-board/library/content-board-utilities.php:1180
-#: modules/content-overview/content-overview.php:835
-#: modules/content-overview/content-overview.php:849
-#: modules/content-overview/content-overview.php:894
-#: modules/content-overview/content-overview.php:956
-#: modules/content-overview/content-overview.php:1218
+#: modules/content-overview/content-overview.php:854
+#: modules/content-overview/content-overview.php:877
+#: modules/content-overview/content-overview.php:930
+#: modules/content-overview/content-overview.php:998
+#: modules/content-overview/content-overview.php:1264
 #: modules/content-overview/library/content-overview-utilities.php:506
 #: modules/content-overview/library/content-overview-utilities.php:769
-#: modules/editorial-comments/library/EditorialCommentsTable.php:228
+#: modules/editorial-comments/library/EditorialCommentsTable.php:230
 msgid "Author"
 msgid_plural "Authors"
 msgstr[0] "投稿者"
 
-#: modules/calendar/calendar.php:989
-#: modules/calendar/calendar.php:1220
+#: modules/calendar/calendar.php:1010
+#: modules/calendar/calendar.php:1248
 #: modules/calendar/library/calendar-utilities.php:146
 #: modules/calendar/library/calendar-utilities.php:1054
-#: modules/calendar/library/calendar-utilities.php:1192
+#: modules/calendar/library/calendar-utilities.php:1195
 #: modules/content-board/content-board.php:698
 #: modules/content-board/content-board.php:711
 #: modules/content-board/content-board.php:752
 #: modules/content-board/content-board.php:813
 #: modules/content-board/library/content-board-utilities.php:677
 #: modules/content-board/library/content-board-utilities.php:1153
-#: modules/content-overview/content-overview.php:834
-#: modules/content-overview/content-overview.php:850
-#: modules/content-overview/content-overview.php:893
-#: modules/content-overview/content-overview.php:957
+#: modules/content-overview/content-overview.php:853
+#: modules/content-overview/content-overview.php:878
+#: modules/content-overview/content-overview.php:929
+#: modules/content-overview/content-overview.php:999
 #: modules/content-overview/library/content-overview-utilities.php:479
 #: modules/content-overview/library/content-overview-utilities.php:799
 msgid "Post Type"
 msgstr "投稿タイプ"
 
-#: modules/calendar/calendar.php:1103
+#: modules/calendar/calendar.php:1131
 msgid "Post moved to the trash."
 msgid_plural "%d posts moved to the trash."
 msgstr[0] "投稿がゴミ箱に移動されました。"
 
-#: modules/calendar/calendar.php:1119
+#: modules/calendar/calendar.php:1147
 #: modules/content-board/content-board.php:614
 #: modules/content-overview/library/content-overview-methods.php:214
 msgid "Undo"
 msgstr "取り消し"
 
-#: modules/calendar/calendar.php:1129
+#: modules/calendar/calendar.php:1157
 msgid "Post restored from the Trash."
 msgid_plural "%d posts restored from the Trash."
 msgstr[0] "投稿がゴミ箱から復元されました。"
 
-#: modules/calendar/calendar.php:1161
+#: modules/calendar/calendar.php:1189
 #, fuzzy
 msgid "Initializing the calendar. Please wait..."
-msgstr "カレンダーの初期化。お待ちください。。。"
+msgstr "カレンダーを初期化しています。しばらくお待ちください ..."
 
-#: modules/calendar/calendar.php:1165
+#: modules/calendar/calendar.php:1193
 msgid ""
 "It seems like it is taking too long. Please, try reloading the page again "
 "and check the browser console looking for errors."
-msgstr "時間がかかりすぎているようです。ページを再読み込みして、ブラウザのコンソールでエラーを確認してください。"
+msgstr "時間がかかりすぎているようです。ページを再度読み込み、ブラウザのコンソールでエラーがないか確認してみてください。"
 
-#: modules/calendar/calendar.php:1809
+#: modules/calendar/calendar.php:1837
 msgid ""
 "The selected user doesn't have enough permissions to be set as the post "
 "author."
-msgstr "選択されたユーザーは、投稿の著者として設定するのに十分な権限を持っていません。"
+msgstr "選択したユーザーには、投稿者として設定するのに十分な権限がありません。"
 
 #: modules/calendar/library/calendar-methods.php:87
 msgid "Post types to show"
@@ -808,19 +416,19 @@ msgstr "表示する投稿タイプ"
 
 #: modules/calendar/library/calendar-methods.php:95
 msgid "Show today's date in the first row"
-msgstr "今日の日付を最初の行に表示"
+msgstr "今日を先頭行に表示"
 
 #: modules/calendar/library/calendar-methods.php:103
 msgid "Enable subscriptions in iCal or Google Calendar"
-msgstr "iCalまたはGoogleカレンダーでのサブスクリプションを有効にする"
+msgstr "iCal または Google カレンダーで購読を有効化"
 
 #: modules/calendar/library/calendar-methods.php:111
 msgid "Allow public access to subscriptions in iCal or Google Calendar"
-msgstr "iCalまたはGoogleカレンダーでのサブスクリプションへの公共アクセスを許可する"
+msgstr "iCal または Google カレンダーの購読への公開アクセスを許可"
 
 #: modules/calendar/library/calendar-methods.php:119
 msgid "Statuses to display publish time"
-msgstr "公開時間を表示するステータス"
+msgstr "公開時刻を表示するステータス"
 
 #: modules/calendar/library/calendar-methods.php:127
 msgid "Posts publish time format"
@@ -828,11 +436,11 @@ msgstr "投稿の公開時刻形式"
 
 #: modules/calendar/library/calendar-methods.php:135
 msgid "Default publish time for items created in the calendar"
-msgstr "予定表に作成されたアイテムの既定の公開時間"
+msgstr "カレンダーで作成した項目のデフォルト公開時間"
 
 #: modules/calendar/library/calendar-methods.php:143
 msgid "Field used for sorting the calendar items in a day cell"
-msgstr "日のセル内の予定表アイテムの並べ替えに使用されるフィールド"
+msgstr "カレンダーの日単位セルの項目を並べ替えるのに使用するフィールド"
 
 #: modules/calendar/library/calendar-methods.php:151
 msgid "Max visible posts per date"
@@ -844,7 +452,7 @@ msgstr "常に完全な投稿タイトルを表示"
 
 #: modules/calendar/library/calendar-methods.php:179
 msgid "At least one post type must be selected"
-msgstr "少なくとも 1 つの転記タイプを選択する必要があります"
+msgstr "少なくとも1つの投稿タイプを選択する必要があります"
 
 #: modules/calendar/library/calendar-methods.php:294
 msgid "edit"
@@ -856,49 +464,51 @@ msgid ""
 "For Revisions integration on the Content Calendar, Overview and Content "
 "Board, please update %sPublishPress Revisions Pro%s."
 msgstr ""
-"コンテンツカレンダー、概要、コンテンツボードでのリビジョン統合には、%sPublishPress Revisions "
-"Pro%sにアップデートしてください。"
+"コンテンツカレンダー、概要、コンテンツボードに Revisions を統合するには、%sPublishPress Revisions Pro%s "
+"を更新してください。"
 
 #: modules/calendar/library/calendar-methods.php:309
 #, php-format
 msgid ""
 "For Revisions integration on the Content Calendar, Overview and Content "
 "Board, please update %sPublishPress Revisions%s."
-msgstr "コンテンツカレンダー、概要、コンテンツボードでのリビジョン統合には、%sPublishPress Revisions%sにアップデートしてください。"
+msgstr ""
+"コンテンツカレンダー、概要、コンテンツボードに Revisions を統合するには、%sPublishPress Revisions%s "
+"を更新してください。"
 
 #: modules/calendar/library/calendar-methods.php:326
 #, php-format
 msgid ""
 "To refine your workflow with custom Post Statuses, install the "
 "%sPublishPress Statuses%s plugin."
-msgstr "カスタム投稿ステータスでワークフローを洗練させるには、%sPublishPress Statuses%sプラグインをインストールしてください。"
+msgstr "カスタム投稿ステータスを使用してワークフローを改善するには、%sPublishPress Statuses%s プラグインをインストールします。"
 
 #: modules/calendar/library/calendar-methods.php:340
 #, php-format
 msgid "For custom Revision Statuses, upgrade to %sPublishPress Statuses Pro%s."
-msgstr "カスタムリビジョンステータスのために、%sPublishPress Statuses Pro%sにアップグレードしてください。"
+msgstr "リビジョンステータスをカスタマイズするには、%sPublishPress Statuses Pro%s にアップグレードしてください。"
 
 #: modules/calendar/library/calendar-methods.php:423
 msgid "Publishing Time"
-msgstr "公開時間"
+msgstr "公開時刻"
 
 #: modules/calendar/library/calendar-methods.php:479
 msgid "All posts"
-msgstr "全てのポスト"
+msgstr "すべての投稿"
 
 #: modules/calendar/library/calendar-methods.php:527
 #: modules/dashboard/dashboard.php:368
 #: modules/dashboard/dashboard.php:391
 #: modules/dashboard/dashboard.php:425
 msgid "Disabled"
-msgstr "無効"
+msgstr "無効化"
 
 #: modules/calendar/library/calendar-methods.php:528
 #: modules/dashboard/dashboard.php:369
 #: modules/dashboard/dashboard.php:392
 #: modules/dashboard/dashboard.php:426
 msgid "Enabled"
-msgstr "有効"
+msgstr "有効化"
 
 #: modules/calendar/library/calendar-methods.php:546
 msgid "Regenerate calendar feed secret"
@@ -911,20 +521,35 @@ msgstr "無効な入力"
 
 #: modules/calendar/library/calendar-methods.php:794
 msgid "Post not found"
-msgstr "投稿が見つかりませんでした"
+msgstr "投稿が見つかりません"
 
 #: modules/calendar/library/calendar-methods.php:799
 #, fuzzy
 msgid "No enough permissions"
-msgstr "十分なアクセス許可がありません"
+msgstr "十分な権限がありません"
 
 #: modules/calendar/library/calendar-methods.php:808
 msgid "Invalid date"
 msgstr "無効な日付"
 
+#: modules/calendar/library/calendar-methods.php:853
+#: modules/content-board/content-board.php:421
+#: modules/content-board/library/content-board-utilities.php:244
+#: modules/content-board/library/content-board-utilities.php:1159
+#: modules/content-overview/content-overview.php:430
+#: modules/content-overview/library/content-overview-utilities.php:485
+msgid "Title"
+msgstr "タイトル"
+
 #: modules/calendar/library/calendar-methods.php:864
 msgid "Publish Time"
 msgstr "公開時刻"
+
+#: modules/calendar/library/calendar-methods.php:885
+#: modules/content-board/library/content-board-utilities.php:1190
+#: modules/content-overview/library/content-overview-utilities.php:516
+msgid "Categories"
+msgstr "カテゴリー"
 
 #: modules/calendar/library/calendar-methods.php:894
 #: modules/content-board/library/content-board-utilities.php:1199
@@ -932,172 +557,202 @@ msgstr "公開時刻"
 msgid "Tags"
 msgstr "タグ"
 
+#: modules/calendar/library/calendar-methods.php:902
+#: modules/content-board/library/content-board-utilities.php:1207
+#: modules/content-overview/library/content-overview-utilities.php:533
+#: modules/improved-notifications/improved-notifications.php:1337
+#: views/workflow_help.html.php:2
+msgid "Content"
+msgstr "コンテンツ"
+
 #: modules/calendar/library/calendar-methods.php:1001
 msgid "Publish on"
-msgstr "公開日"
+msgstr "公開"
 
-#: modules/calendar/library/calendar-methods.php:1195
-#: modules/notifications-log/notifications-log.php:210
+#: modules/calendar/library/calendar-methods.php:1200
+#: modules/calendar/library/calendar-methods.php:1249
+#: modules/notifications-log/notifications-log.php:213
 msgid "Loading..."
 msgstr "読み込み中…"
 
-#: modules/calendar/library/calendar-methods.php:1196
+#: modules/calendar/library/calendar-methods.php:1201
 msgid "Loading item..."
-msgstr "アイテムを読み込み中..."
+msgstr "項目を読み込み中 ..."
 
-#: modules/calendar/library/calendar-methods.php:1197
+#: modules/calendar/library/calendar-methods.php:1202
 msgid "Click to add"
-msgstr "追加するにはクリック"
+msgstr "クリックして追加"
 
-#: modules/calendar/library/calendar-methods.php:1198
+#: modules/calendar/library/calendar-methods.php:1203
 msgid "Moving the item..."
-msgstr "アイテムを移動中..."
+msgstr "項目を移動 ..."
 
-#: modules/calendar/library/calendar-methods.php:1199
+#: modules/calendar/library/calendar-methods.php:1204
 #, php-format
 msgid "Hide the %s last items"
-msgstr "最後の%sアイテムを非表示にする"
+msgstr "最後の%s項目を非表示"
 
-#: modules/calendar/library/calendar-methods.php:1200
+#: modules/calendar/library/calendar-methods.php:1205
 #, php-format
 msgid "Show %s more"
-msgstr "さらに%s表示"
+msgstr "さらに%sを表示"
 
-#: modules/calendar/library/calendar-methods.php:1201
-#: modules/calendar/library/calendar-methods.php:1704
+#: modules/calendar/library/calendar-methods.php:1206
+#: modules/calendar/library/calendar-methods.php:1716
 msgid "Untitled"
 msgstr "無題"
 
-#: modules/calendar/library/calendar-methods.php:1202
+#: modules/calendar/library/calendar-methods.php:1207
+msgid "Refresh"
+msgstr "更新"
+
+#: modules/calendar/library/calendar-methods.php:1208
+msgid "Previous page"
+msgstr "前のページ"
+
+#: modules/calendar/library/calendar-methods.php:1209
+msgid "Previous week"
+msgstr "前の週"
+
+#: modules/calendar/library/calendar-methods.php:1210
+msgid "Next week"
+msgstr "次の週"
+
+#: modules/calendar/library/calendar-methods.php:1211
+msgid "Next page"
+msgstr "次のページ"
+
+#: modules/calendar/library/calendar-methods.php:1212
+#: modules/calendar/library/calendar-utilities.php:477
+#: modules/calendar/library/calendar-utilities.php:507
 msgid "Close"
 msgstr "閉じる"
 
-#: modules/calendar/library/calendar-methods.php:1203
-#: modules/editorial-comments/lib/editorial-comments.js:349
+#: modules/calendar/library/calendar-methods.php:1213
 msgid "Save"
 msgstr "保存"
 
-#: modules/calendar/library/calendar-methods.php:1204
+#: modules/calendar/library/calendar-methods.php:1214
 msgid "Saving..."
-msgstr "保存中..."
+msgstr "保存中 ..."
 
-#: modules/calendar/library/calendar-methods.php:1205
+#: modules/calendar/library/calendar-methods.php:1215
 msgid "Save and edit"
-msgstr "保存して編集"
+msgstr "保存と編集"
 
-#: modules/calendar/library/calendar-methods.php:1206
+#: modules/calendar/library/calendar-methods.php:1216
 #, php-format
 msgid "Add content for %s"
-msgstr "%sのコンテンツを追加"
+msgstr "%sにコンテンツを追加"
 
-#: modules/calendar/library/calendar-methods.php:1207
+#: modules/calendar/library/calendar-methods.php:1217
 msgid "Post type not found"
 msgstr "投稿タイプが見つかりません"
 
-#: modules/calendar/library/calendar-methods.php:1208
+#: modules/calendar/library/calendar-methods.php:1218
 msgid "Post type:"
 msgstr "投稿タイプ:"
 
-#: modules/calendar/library/calendar-methods.php:1209
+#: modules/calendar/library/calendar-methods.php:1219
 #: modules/content-board/library/content-board-utilities.php:1130
 #: modules/content-overview/library/content-overview-utilities.php:456
 msgid "Please, wait! Loading the form fields..."
-msgstr "お待ちください！フォームフィールドを読み込み中..."
+msgstr "しばらくお待ちください。フォームフィールドを読み込み中です ..."
 
-#: modules/calendar/library/calendar-methods.php:1210
+#: modules/calendar/library/calendar-methods.php:1220
 msgid "Sun"
-msgstr "日曜日"
+msgstr "日曜"
 
-#: modules/calendar/library/calendar-methods.php:1211
+#: modules/calendar/library/calendar-methods.php:1221
 msgid "Mon"
 msgstr "月"
 
-#: modules/calendar/library/calendar-methods.php:1212
+#: modules/calendar/library/calendar-methods.php:1222
 msgid "Tue"
-msgstr "火"
+msgstr "火曜"
 
-#: modules/calendar/library/calendar-methods.php:1213
+#: modules/calendar/library/calendar-methods.php:1223
 msgid "Wed"
-msgstr "水"
+msgstr "水曜"
 
-#: modules/calendar/library/calendar-methods.php:1214
+#: modules/calendar/library/calendar-methods.php:1224
 msgid "Thu"
-msgstr "木"
+msgstr "木曜"
 
-#: modules/calendar/library/calendar-methods.php:1215
+#: modules/calendar/library/calendar-methods.php:1225
 msgid "Fri"
-msgstr "金"
+msgstr "金曜"
 
-#: modules/calendar/library/calendar-methods.php:1216
+#: modules/calendar/library/calendar-methods.php:1226
 #, fuzzy
 msgid "Sat"
-msgstr "開始"
+msgstr "土曜"
 
-#: modules/calendar/library/calendar-methods.php:1217
+#: modules/calendar/library/calendar-methods.php:1227
 msgid "Jan"
 msgstr "1月"
 
-#: modules/calendar/library/calendar-methods.php:1218
+#: modules/calendar/library/calendar-methods.php:1228
 msgid "Feb"
 msgstr "2月"
 
-#: modules/calendar/library/calendar-methods.php:1219
+#: modules/calendar/library/calendar-methods.php:1229
 msgid "Mar"
 msgstr "3月"
 
-#: modules/calendar/library/calendar-methods.php:1220
+#: modules/calendar/library/calendar-methods.php:1230
 msgid "Apr"
 msgstr "4月"
 
-#: modules/calendar/library/calendar-methods.php:1221
+#: modules/calendar/library/calendar-methods.php:1231
 #, fuzzy
 msgid "May"
-msgstr "日"
+msgstr "5月"
 
-#: modules/calendar/library/calendar-methods.php:1222
+#: modules/calendar/library/calendar-methods.php:1232
 msgid "Jun"
 msgstr "6月"
 
-#: modules/calendar/library/calendar-methods.php:1223
+#: modules/calendar/library/calendar-methods.php:1233
 msgid "Jul"
 msgstr "7月"
 
-#: modules/calendar/library/calendar-methods.php:1224
+#: modules/calendar/library/calendar-methods.php:1234
 msgid "Aug"
 msgstr "8月"
 
-#: modules/calendar/library/calendar-methods.php:1225
+#: modules/calendar/library/calendar-methods.php:1235
 msgid "Sep"
 msgstr "9月"
 
-#: modules/calendar/library/calendar-methods.php:1226
+#: modules/calendar/library/calendar-methods.php:1236
 msgid "Oct"
 msgstr "10月"
 
-#: modules/calendar/library/calendar-methods.php:1227
+#: modules/calendar/library/calendar-methods.php:1237
 msgid "Nov"
 msgstr "11月"
 
-#: modules/calendar/library/calendar-methods.php:1228
+#: modules/calendar/library/calendar-methods.php:1238
 msgid "Dec"
 msgstr "12月"
 
-#: modules/calendar/library/calendar-methods.php:1229
+#: modules/calendar/library/calendar-methods.php:1239
 #: modules/calendar/library/calendar-utilities.php:51
 #: modules/content-board/library/content-board-utilities.php:598
 #: modules/content-overview/library/content-overview-utilities.php:707
 msgid "All statuses"
 msgstr "すべてのステータス"
 
-#: modules/calendar/library/calendar-methods.php:1230
+#: modules/calendar/library/calendar-methods.php:1240
 msgid "All categories"
-msgstr "すべてのカテゴリ"
+msgstr "すべてのカテゴリー"
 
-#: modules/calendar/library/calendar-methods.php:1231
+#: modules/calendar/library/calendar-methods.php:1241
 msgid "All tags"
 msgstr "すべてのタグ"
 
-#: modules/calendar/library/calendar-methods.php:1232
+#: modules/calendar/library/calendar-methods.php:1242
 #: modules/calendar/library/calendar-utilities.php:117
 #: modules/calendar/library/calendar-utilities.php:120
 #: modules/content-board/library/content-board-utilities.php:649
@@ -1107,116 +762,122 @@ msgstr "すべてのタグ"
 msgid "All authors"
 msgstr "すべての投稿者"
 
-#: modules/calendar/library/calendar-methods.php:1233
+#: modules/calendar/library/calendar-methods.php:1243
 msgid "All types"
 msgstr "すベてのタイプ"
 
-#: modules/calendar/library/calendar-methods.php:1234
+#: modules/calendar/library/calendar-methods.php:1244
 #: modules/calendar/library/calendar-utilities.php:513
 #, php-format
 msgid "%d week"
 msgid_plural "%d weeks"
 msgstr[0] "%d 週"
 
-#: modules/calendar/library/calendar-methods.php:1235
+#: modules/calendar/library/calendar-methods.php:1245
 #, php-format
 msgid "%d weeks"
-msgstr "%d 週間"
+msgstr "%d週"
 
-#: modules/calendar/library/calendar-methods.php:1236
+#: modules/calendar/library/calendar-methods.php:1246
 msgid "Today"
 msgstr "今日"
 
-#: modules/calendar/library/calendar-methods.php:1237
+#: modules/calendar/library/calendar-methods.php:1247
 msgid "No terms"
-msgstr "用語はありません"
+msgstr "条件なし"
 
-#: modules/calendar/library/calendar-methods.php:1238
+#: modules/calendar/library/calendar-methods.php:1248
+#: modules/content-board/content-board.php:1268
+#: modules/content-overview/content-overview.php:1240
+msgid "No results found"
+msgstr "結果が見つかりません"
+
+#: modules/calendar/library/calendar-methods.php:1250
 #: modules/content-board/content-board.php:1288
-#: modules/content-overview/content-overview.php:836
-#: modules/content-overview/content-overview.php:895
-#: modules/content-overview/content-overview.php:1219
+#: modules/content-overview/content-overview.php:855
+#: modules/content-overview/content-overview.php:931
+#: modules/content-overview/content-overview.php:1265
 msgid "Post Date"
 msgstr "投稿日"
 
-#: modules/calendar/library/calendar-methods.php:1239
+#: modules/calendar/library/calendar-methods.php:1251
 #: modules/calendar/library/calendar-utilities.php:1097
 #: modules/content-board/content-board.php:1183
 #: modules/content-board/content-board.php:1289
-#: modules/content-overview/content-overview.php:1220
-#: modules/content-overview/content-overview.php:1703
+#: modules/content-overview/content-overview.php:1266
+#: modules/content-overview/content-overview.php:1749
 #: modules/editorial-comments/editorial-comments.php:628
 #: modules/editorial-metadata/library/editorial-metadata-list-table.php:159
 msgid "Edit"
 msgstr "編集"
 
-#: modules/calendar/library/calendar-methods.php:1241
+#: modules/calendar/library/calendar-methods.php:1253
 #: modules/calendar/library/calendar-utilities.php:1114
 #: modules/content-board/content-board.php:1224
 #: modules/content-board/content-board.php:1291
-#: modules/content-overview/content-overview.php:1222
-#: modules/content-overview/content-overview.php:1744
+#: modules/content-overview/content-overview.php:1268
+#: modules/content-overview/content-overview.php:1790
 msgid "Preview"
 msgstr "プレビュー"
 
-#: modules/calendar/library/calendar-methods.php:1242
+#: modules/calendar/library/calendar-methods.php:1254
 #: modules/calendar/library/calendar-utilities.php:1111
 #: modules/content-board/content-board.php:1211
 #: modules/content-board/content-board.php:1292
-#: modules/content-overview/content-overview.php:1223
-#: modules/content-overview/content-overview.php:1731
+#: modules/content-overview/content-overview.php:1269
+#: modules/content-overview/content-overview.php:1777
 msgid "View"
 msgstr "表示"
 
-#: modules/calendar/library/calendar-methods.php:1243
+#: modules/calendar/library/calendar-methods.php:1255
 #: modules/content-board/content-board.php:1293
-#: modules/content-overview/content-overview.php:1224
+#: modules/content-overview/content-overview.php:1270
 msgid "Previous Post"
 msgstr "前の投稿"
 
-#: modules/calendar/library/calendar-methods.php:1244
+#: modules/calendar/library/calendar-methods.php:1256
 #: modules/content-board/content-board.php:1294
-#: modules/content-overview/content-overview.php:1225
+#: modules/content-overview/content-overview.php:1271
 msgid "Next Post"
 msgstr "次の投稿"
 
-#: modules/calendar/library/calendar-methods.php:1246
+#: modules/calendar/library/calendar-methods.php:1258
 #: modules/content-board/content-board.php:1296
-#: modules/content-overview/content-overview.php:1227
+#: modules/content-overview/content-overview.php:1273
 msgid "Save Changes"
 msgstr "変更を保存"
 
-#: modules/calendar/library/calendar-methods.php:1247
+#: modules/calendar/library/calendar-methods.php:1259
 #: modules/content-board/content-board.php:1297
-#: modules/content-overview/content-overview.php:1228
+#: modules/content-overview/content-overview.php:1274
 msgid "Taxonomy not set."
-msgstr "タクソノミーが設定されていません。"
+msgstr "タクソノミーを設定していません。"
 
-#: modules/calendar/library/calendar-methods.php:1687
+#: modules/calendar/library/calendar-methods.php:1699
 msgid "No date supplied."
-msgstr "日付が指定されていません。"
+msgstr "日付を指定していません。"
 
-#: modules/calendar/library/calendar-methods.php:1698
+#: modules/calendar/library/calendar-methods.php:1710
 #, fuzzy
 msgid "The selected post type is not enabled for the calendar."
-msgstr "選択した投稿タイプはカレンダーに対して有効ではありません。"
+msgstr "選択した投稿タイプはカレンダーで有効化されていません。"
 
-#: modules/calendar/library/calendar-methods.php:1728
+#: modules/calendar/library/calendar-methods.php:1740
 msgid "Invalid Status supplied."
-msgstr "無効なステータスが指定されました。"
+msgstr "無効なステータスを指定しました。"
 
-#: modules/calendar/library/calendar-methods.php:1752
+#: modules/calendar/library/calendar-methods.php:1764
 msgid "Invalid Publish Date supplied."
 msgstr "発行日が無効です。"
 
-#: modules/calendar/library/calendar-methods.php:1821
+#: modules/calendar/library/calendar-methods.php:1833
 #, fuzzy
 msgid "Post created successfully"
-msgstr "投稿が正常に作成されました"
+msgstr "投稿を正常に作成しました"
 
-#: modules/calendar/library/calendar-methods.php:1828
+#: modules/calendar/library/calendar-methods.php:1840
 msgid "Post could not be created"
-msgstr "ポストを作成できませんでした。"
+msgstr "投稿を作成できませんでした"
 
 #: modules/calendar/library/calendar-utilities.php:54
 #: modules/content-overview/library/content-overview-utilities.php:710
@@ -1231,7 +892,7 @@ msgstr "(すべて非表示)"
 #: modules/content-overview/library/content-overview-utilities.php:749
 #, php-format
 msgid "All %s"
-msgstr "すべて %s"
+msgstr "すべての%s"
 
 #: modules/calendar/library/calendar-utilities.php:150
 #: modules/content-board/library/content-board-utilities.php:681
@@ -1272,7 +933,7 @@ msgstr "適用"
 #: modules/content-board/library/content-board-utilities.php:742
 #: modules/content-overview/library/content-overview-utilities.php:864
 msgid "Select option..."
-msgstr "オプションを選択..."
+msgstr "オプションを選択 ..."
 
 #: modules/calendar/library/calendar-utilities.php:245
 #: modules/calendar/library/calendar-utilities.php:279
@@ -1301,7 +962,7 @@ msgstr "すべてのステータス"
 #: modules/content-board/library/content-board-utilities.php:898
 #: modules/content-overview/library/content-overview-utilities.php:1026
 msgid "Passed"
-msgstr "合格"
+msgstr "合格した"
 
 #: modules/calendar/library/calendar-utilities.php:374
 #: modules/content-board/library/content-board-utilities.php:899
@@ -1315,7 +976,13 @@ msgstr "失敗"
 #: modules/content-board/library/content-board-utilities.php:42
 #: modules/content-overview/library/content-overview-methods.php:267
 msgid "Customize Filters"
-msgstr "フィルターをカスタマイズ"
+msgstr "フィルターのカスタマイズ"
+
+#: modules/calendar/library/calendar-utilities.php:485
+#: modules/content-board/library/content-board-utilities.php:97
+#: modules/content-overview/library/content-overview-methods.php:322
+msgid "Search content"
+msgstr "コンテンツを検索"
 
 #: modules/calendar/library/calendar-utilities.php:502
 #: modules/calendar/library/calendar-utilities.php:503
@@ -1325,7 +992,7 @@ msgstr "期間"
 #: modules/calendar/library/calendar-utilities.php:503
 #, php-format
 msgid "%1s weeks"
-msgstr "%1s 週間"
+msgstr "%1s週"
 
 #: modules/calendar/library/calendar-utilities.php:553
 #: modules/content-board/library/content-board-utilities.php:152
@@ -1345,17 +1012,17 @@ msgstr "リセット"
 #: modules/content-board/library/content-board-utilities.php:363
 #: modules/content-overview/library/content-overview-utilities.php:171
 msgid "Enable Filters"
-msgstr "フィルターを有効にする"
+msgstr "フィルターを有効化"
 
 #: modules/calendar/library/calendar-utilities.php:583
 #: modules/content-board/library/content-board-utilities.php:364
 #: modules/content-overview/library/content-overview-utilities.php:172
 msgid "Reorder Filters"
-msgstr "フィルターの順序を変更"
+msgstr "フィルターの並べ替え"
 
 #: modules/calendar/library/calendar-utilities.php:588
 msgid "Enable or Disable Content calendar filter."
-msgstr "コンテンツカレンダーフィルターを有効または無効にします。"
+msgstr "コンテンツカレンダーフィルターを有効化または無効化する。"
 
 #: modules/calendar/library/calendar-utilities.php:601
 #: modules/content-board/library/content-board-utilities.php:236
@@ -1371,13 +1038,13 @@ msgstr "新規追加"
 #: modules/content-board/library/content-board-utilities.php:390
 #: modules/content-overview/library/content-overview-utilities.php:198
 msgid "Filter Title"
-msgstr "フィルタータイトル"
+msgstr "フィルター名"
 
 #: modules/calendar/library/calendar-utilities.php:613
 #: modules/content-board/library/content-board-utilities.php:248
 #: modules/content-overview/library/content-overview-utilities.php:56
 msgid "Search Metakey"
-msgstr "メタキー検索"
+msgstr "メタキーを検索"
 
 #: modules/calendar/library/calendar-utilities.php:618
 #: modules/content-board/library/content-board-utilities.php:399
@@ -1389,7 +1056,7 @@ msgstr "フィルターを追加"
 #: modules/content-board/library/content-board-utilities.php:442
 #: modules/content-overview/library/content-overview-utilities.php:250
 msgid "Drag to change enabled filters order."
-msgstr "ドラッグして有効なフィルターの順序を変更します。"
+msgstr "有効な列の表示順を変更するにはドラッグしてください。"
 
 #: modules/calendar/library/calendar-utilities.php:702
 #: modules/content-board/library/content-board-utilities.php:71
@@ -1401,34 +1068,51 @@ msgstr "ドラッグして有効なフィルターの順序を変更します。
 msgid "Apply Changes"
 msgstr "変更を適用"
 
+#: modules/calendar/library/calendar-utilities.php:1059, fuzzy
+msgid "ID"
+msgstr "ID"
+
+#: modules/calendar/library/calendar-utilities.php:1064
+#: modules/content-board/library/content-board-utilities.php:116
+#: modules/content-overview/library/content-overview-methods.php:341
+#: modules/editorial-metadata/editorial-metadata.php:290
+#: modules/notifications-log/library/NotificationsLogTable.php:496
+msgid "Date"
+msgstr "日付"
+
+#: modules/calendar/library/calendar-utilities.php:1080
+msgid "Category"
+msgid_plural "Categories"
+msgstr[0] "カテゴリー"
+
 #: modules/calendar/library/calendar-utilities.php:1085
 msgid "Tag"
 msgid_plural "Tags"
 msgstr[0] "タグ"
 
-#: modules/calendar/library/calendar-utilities.php:1180
+#: modules/calendar/library/calendar-utilities.php:1181
 #: modules/content-board/content-board.php:802
-#: modules/content-overview/content-overview.php:945
+#: modules/content-overview/content-overview.php:985
 msgid "Custom filters"
 msgstr "カスタムフィルター"
 
-#: modules/calendar/library/calendar-utilities.php:1181
+#: modules/calendar/library/calendar-utilities.php:1182
 #: modules/content-board/content-board.php:803
-#: modules/content-overview/content-overview.php:946
+#: modules/content-overview/content-overview.php:986
 msgid "Click the \"Add New\" button to create new filters."
-msgstr "新しいフィルターを作成するには、「新規追加」ボタンをクリックしてください。"
-
-#: modules/calendar/library/calendar-utilities.php:1187
-#: modules/content-board/content-board.php:809
-#: modules/content-overview/content-overview.php:952
-msgid "Inbuilt filters"
-msgstr "組み込みフィルター"
+msgstr "「新規追加」 ボタンをクリックして、新しいフィルターを作成します。"
 
 #: modules/calendar/library/calendar-utilities.php:1199
+#: modules/content-board/content-board.php:809
+#: modules/content-overview/content-overview.php:1003
+msgid "Inbuilt filters"
+msgstr "作り付けフィルター"
+
+#: modules/calendar/library/calendar-utilities.php:1206
 #: modules/content-board/content-board.php:760
 #: modules/content-board/content-board.php:820
-#: modules/content-overview/content-overview.php:903
-#: modules/content-overview/content-overview.php:964
+#: modules/content-overview/content-overview.php:943
+#: modules/content-overview/content-overview.php:1010
 #: modules/editorial-metadata/editorial-metadata.php:95
 #: modules/editorial-metadata/editorial-metadata.php:511
 #: modules/editorial-metadata/editorial-metadata.php:1720
@@ -1436,146 +1120,154 @@ msgstr "組み込みフィルター"
 msgid "Editorial Fields"
 msgstr "編集フィールド"
 
-#: modules/calendar/library/calendar-utilities.php:1200
+#: modules/calendar/library/calendar-utilities.php:1207
 #: modules/content-board/content-board.php:761
 #: modules/content-board/content-board.php:821
-#: modules/content-overview/content-overview.php:904
-#: modules/content-overview/content-overview.php:965
+#: modules/content-overview/content-overview.php:944
+#: modules/content-overview/content-overview.php:1011
 msgid "You do not have any editorial fields enabled"
-msgstr "有効な編集フィールドがありません"
+msgstr "編集フィールドが有効化されていません"
 
-#: modules/calendar/library/calendar-utilities.php:1207
+#: modules/calendar/library/calendar-utilities.php:1213
+#: modules/content-board/content-board.php:767
+#: modules/content-board/content-board.php:827
+#: modules/content-overview/content-overview.php:950
+#: modules/content-overview/content-overview.php:1017
+msgid "Taxonomies"
+msgstr "タクソノミー"
+
+#: modules/calendar/library/calendar-utilities.php:1214
 #: modules/content-board/content-board.php:768
 #: modules/content-board/content-board.php:828
-#: modules/content-overview/content-overview.php:911
-#: modules/content-overview/content-overview.php:972
+#: modules/content-overview/content-overview.php:951
+#: modules/content-overview/content-overview.php:1018
 msgid "You do not have any public taxonomies"
 msgstr "公開タクソノミーがありません"
 
-#: modules/calendar/library/calendar-utilities.php:1229
+#: modules/calendar/library/calendar-utilities.php:1236
 msgid "Subscribe in iCal or Google Calendar"
-msgstr "iCal または Google カレンダーで購読する"
+msgstr "iCal または Google カレンダーに登録"
 
-#: modules/calendar/library/calendar-utilities.php:1234
+#: modules/calendar/library/calendar-utilities.php:1241
 msgid "Start date"
 msgstr "開始日"
 
-#: modules/calendar/library/calendar-utilities.php:1238
+#: modules/calendar/library/calendar-utilities.php:1245
 msgid "Current week"
 msgstr "現在の週"
 
-#: modules/calendar/library/calendar-utilities.php:1240
+#: modules/calendar/library/calendar-utilities.php:1247
 msgid "One month ago"
-msgstr "1ヶ月前"
+msgstr "1か月前"
 
-#: modules/calendar/library/calendar-utilities.php:1242
+#: modules/calendar/library/calendar-utilities.php:1249
 #, fuzzy
 msgid "Two months ago"
-msgstr "2ヶ月前"
+msgstr "2か月前"
 
-#: modules/calendar/library/calendar-utilities.php:1244
+#: modules/calendar/library/calendar-utilities.php:1251
 #, fuzzy
 msgid "Three months ago"
-msgstr "3ヶ月前"
+msgstr "3か月前"
 
-#: modules/calendar/library/calendar-utilities.php:1246
+#: modules/calendar/library/calendar-utilities.php:1253
 #, fuzzy
 msgid "Four months ago"
-msgstr "4ヶ月前"
+msgstr "4か月前"
 
-#: modules/calendar/library/calendar-utilities.php:1248
+#: modules/calendar/library/calendar-utilities.php:1255
 #, fuzzy
 msgid "Five months ago"
-msgstr "5ヶ月前"
+msgstr "5か月前"
 
-#: modules/calendar/library/calendar-utilities.php:1250
+#: modules/calendar/library/calendar-utilities.php:1257
 msgid "Six months ago"
-msgstr "6ヶ月前"
+msgstr "6か月前"
 
-#: modules/calendar/library/calendar-utilities.php:1256
+#: modules/calendar/library/calendar-utilities.php:1263
 msgid "End date"
 msgstr "終了日"
 
-#: modules/calendar/library/calendar-utilities.php:1261
+#: modules/calendar/library/calendar-utilities.php:1268
 msgid "One week"
 msgstr "1週間"
 
-#: modules/calendar/library/calendar-utilities.php:1263
+#: modules/calendar/library/calendar-utilities.php:1270
 msgid "Two weeks"
 msgstr "2週間"
 
-#: modules/calendar/library/calendar-utilities.php:1265
+#: modules/calendar/library/calendar-utilities.php:1272
 msgid "Three weeks"
 msgstr "3週間"
 
-#: modules/calendar/library/calendar-utilities.php:1267
+#: modules/calendar/library/calendar-utilities.php:1274
 msgid "Four weeks"
 msgstr "4週間"
 
-#: modules/calendar/library/calendar-utilities.php:1271
+#: modules/calendar/library/calendar-utilities.php:1278
 #: modules/content-board/content-board.php:1044
 msgid "Months"
 msgstr "月"
 
-#: modules/calendar/library/calendar-utilities.php:1273
-msgid "One month"
-msgstr "1ヶ月"
-
-#: modules/calendar/library/calendar-utilities.php:1276
-msgid "Two months"
-msgstr "2ヶ月"
-
-#: modules/calendar/library/calendar-utilities.php:1278
-msgid "Three months"
-msgstr "3ヶ月"
-
 #: modules/calendar/library/calendar-utilities.php:1280
+msgid "One month"
+msgstr "1か月"
+
+#: modules/calendar/library/calendar-utilities.php:1283
+msgid "Two months"
+msgstr "2か月"
+
+#: modules/calendar/library/calendar-utilities.php:1285
+msgid "Three months"
+msgstr "3か月"
+
+#: modules/calendar/library/calendar-utilities.php:1287
 msgid "Four months"
-msgstr "4ヶ月前"
+msgstr "4か月前"
 
-#: modules/calendar/library/calendar-utilities.php:1282
+#: modules/calendar/library/calendar-utilities.php:1289
 msgid "Five months"
-msgstr "5ヶ月前"
+msgstr "5か月前"
 
-#: modules/calendar/library/calendar-utilities.php:1284
+#: modules/calendar/library/calendar-utilities.php:1291
 msgid "Six months"
-msgstr "6ヶ月"
+msgstr "6か月"
 
-#: modules/calendar/library/calendar-utilities.php:1286
+#: modules/calendar/library/calendar-utilities.php:1293
 msgid "Seven months"
-msgstr "7ヶ月前"
+msgstr "7か月前"
 
-#: modules/calendar/library/calendar-utilities.php:1288
+#: modules/calendar/library/calendar-utilities.php:1295
 msgid "Eight months"
-msgstr "8ヶ月前"
+msgstr "8か月前"
 
-#: modules/calendar/library/calendar-utilities.php:1290
+#: modules/calendar/library/calendar-utilities.php:1297
 msgid "Nine months"
-msgstr "9ヶ月前"
+msgstr "9か月前"
 
-#: modules/calendar/library/calendar-utilities.php:1292
+#: modules/calendar/library/calendar-utilities.php:1299
 msgid "Ten months"
-msgstr "10ヶ月前"
+msgstr "10か月前"
 
-#: modules/calendar/library/calendar-utilities.php:1294
+#: modules/calendar/library/calendar-utilities.php:1301
 msgid "Eleven months"
-msgstr "11ヶ月前"
+msgstr "11か月前"
 
-#: modules/calendar/library/calendar-utilities.php:1296
+#: modules/calendar/library/calendar-utilities.php:1303
 msgid "Twelve months"
-msgstr "12ヶ月前"
-
-#: modules/calendar/library/calendar-utilities.php:1308
-msgid "Download .ics file"
-msgstr "ICS ファイルのダウンロード"
+msgstr "12か月前"
 
 #: modules/calendar/library/calendar-utilities.php:1315
+msgid "Download .ics file"
+msgstr ".ics ファイルのダウンロード"
+
+#: modules/calendar/library/calendar-utilities.php:1322
 msgid "Copy to the clipboard"
 msgstr "パスをクリップボードにコピーする"
 
-#: modules/calendar/library/calendar-utilities.php:1321
+#: modules/calendar/library/calendar-utilities.php:1328
 msgid "Click here to subscribe in iCal or Google Calendar"
-msgstr "iCalまたはGoogleカレンダーに登録するにはここをクリックしてください"
+msgstr "iCal または Google カレンダーを購読するには、ここをクリックしてください"
 
 #: modules/content-board/content-board.php:142
 #: modules/content-board/content-board.php:379
@@ -1586,44 +1278,44 @@ msgstr "コンテンツボード"
 
 #: modules/content-board/content-board.php:743
 msgid "Custom Items"
-msgstr "カスタムアイテム"
+msgstr "カスタム項目"
 
 #: modules/content-board/content-board.php:744
 msgid "Click the \"Add New\" button to create new card data."
-msgstr "新しいカードデータを作成するには、「新規追加」ボタンをクリックしてください。"
+msgstr "「新規追加」ボタンをクリックして、新しいカードデータを作成します。"
 
 #: modules/content-board/content-board.php:750
 msgid "Inbuilt Card Data"
-msgstr "組み込みカードデータ"
+msgstr "作り付けカードデータ"
 
 #: modules/content-board/content-board.php:847
 #: modules/content-board/library/content-board-methods.php:39
 #: modules/content-board/library/content-board-methods.php:107
-#: modules/content-overview/content-overview.php:991
+#: modules/content-overview/content-overview.php:1037
 msgid "An error occured"
 msgstr "エラーが発生しました"
 
 #: modules/content-board/content-board.php:851
 #: modules/content-board/library/content-board-methods.php:43
 #: modules/content-board/library/content-board-methods.php:111
-#: modules/content-overview/content-overview.php:995
+#: modules/content-overview/content-overview.php:1041
 msgid "Error validating nonce. Please reload this page and try again."
-msgstr "ノンスの検証中にエラーが発生しました。このページを再読み込みしてもう一度お試しください。"
+msgstr "セキュリティチェックに失敗しました。ページを再読み込みして、もう一度お試しください。"
 
 #: modules/content-board/content-board.php:853
 #: modules/content-board/library/content-board-methods.php:45
-#: modules/content-board/library/content-board-methods.php:113
-#: modules/content-overview/content-overview.php:997
+#: modules/content-board/library/content-board-methods.php:115
+#: modules/content-overview/content-overview.php:1043
 msgid "Invalid form request."
-msgstr "無効なフォームリクエストです。"
+msgstr "フォームリクエストが無効です。"
 
 #: modules/content-board/content-board.php:1026
 msgid "Move posts here to change their status"
-msgstr "ここに投稿を移動して、そのステータスを変更します"
+msgstr "投稿をここに移動してステータスを変更"
 
 #: modules/content-board/content-board.php:1029
 msgid "You do not have permission to move post to this status"
-msgstr "このステータスに投稿を移動する権限がありません"
+msgstr "投稿をこのステータスに移動する権限がありません"
 
 #: modules/content-board/content-board.php:1042
 msgid "Days"
@@ -1636,13 +1328,15 @@ msgstr "年"
 #: modules/content-board/content-board.php:1054
 #: modules/content-board/content-board.php:1071
 msgid "Default Date"
-msgstr "デフォルト日付"
+msgstr ""
+"デフォルト\n"
+"日付"
 
 #: modules/content-board/content-board.php:1061
 msgid ""
 "This is the default publish date from today for posts moving to the "
 "Scheduled status."
-msgstr "これは、スケジュールされたステータスに移行する投稿のために、今日からのデフォルトの公開日です。"
+msgstr "ステータスを「予定」へ切り替えた投稿は、公開日がデフォルトで今日日付になります。"
 
 #: modules/content-board/content-board.php:1105
 #: modules/content-board/content-board.php:1247
@@ -1650,46 +1344,41 @@ msgid "Only editable posts will be moveable."
 msgstr "編集可能な投稿のみが移動可能です。"
 
 #: modules/content-board/content-board.php:1179
-#: modules/content-overview/content-overview.php:1699
+#: modules/content-overview/content-overview.php:1745
 #: modules/dashboard/dashboard.php:299
 msgid "Edit this post"
-msgstr "記事を編集"
+msgstr "投稿を編集"
 
 #: modules/content-board/content-board.php:1191
-#: modules/content-overview/content-overview.php:1711
+#: modules/content-overview/content-overview.php:1757
 msgid "Move this item to the Trash"
 msgstr "この項目をゴミ箱に移動する"
 
 #: modules/content-board/content-board.php:1205
-#: modules/content-overview/content-overview.php:1725
+#: modules/content-overview/content-overview.php:1771
 #, php-format
 msgid "View &#8220;%s&#8221;"
 msgstr "表示 &#8220;%s&#8221;"
 
 #: modules/content-board/content-board.php:1221
-#: modules/content-overview/content-overview.php:1741
+#: modules/content-overview/content-overview.php:1787
 #, php-format
 msgid "Preview &#8220;%s&#8221;"
 msgstr "&#8220;%s&#8221; をプレビュー"
 
-#: modules/content-board/content-board.php:1268
-#: modules/content-overview/content-overview.php:1194
-msgid "No results found"
-msgstr "結果が見つかりませんでした"
-
 #: modules/content-board/content-board.php:1273
-#: modules/content-overview/content-overview.php:1199
+#: modules/content-overview/content-overview.php:1245
 msgid "There are no posts in the range or filter specified."
-msgstr "指定された範囲またはフィルターに投稿がありません。"
+msgstr "指定した範囲またはフィルターに該当する投稿がありません。"
 
 #: modules/content-board/content-board.php:1605
-#: modules/content-overview/content-overview.php:1579
+#: modules/content-overview/content-overview.php:1625
 msgid "None"
 msgstr "なし"
 
 #: modules/content-board/library/content-board-methods.php:53
 msgid "Error fetching post data."
-msgstr "投稿データの取得中にエラーが発生しました。"
+msgstr "投稿データの取得エラー。"
 
 #: modules/content-board/library/content-board-methods.php:63
 msgid "You do not have permission to edit selected post."
@@ -1700,45 +1389,49 @@ msgid "You do not have permission to move post to selected post status."
 msgstr "選択した投稿ステータスに投稿を移動する権限がありません。"
 
 #: modules/content-board/library/content-board-methods.php:95
-#: modules/content-board/library/content-board-methods.php:123
+#: modules/content-board/library/content-board-methods.php:125
 msgid "Changes saved!"
-msgstr "変更が保存されました！"
+msgstr "変更を保存しました"
 
-#: modules/content-board/library/content-board-methods.php:150
+#: modules/content-board/library/content-board-methods.php:113
+msgid "You do not have permission to update schedule settings."
+msgstr "スケジュール設定を更新する権限がありません。"
+
+#: modules/content-board/library/content-board-methods.php:152
 msgid "Card Data updated successfully."
-msgstr "カードデータが正常に更新されました。"
+msgstr "カードデータを正常に更新しました。"
 
-#: modules/content-board/library/content-board-methods.php:172
-#: modules/content-overview/content-overview.php:676
+#: modules/content-board/library/content-board-methods.php:174
+#: modules/content-overview/content-overview.php:692
 msgid "Settings updated successfully."
-msgstr "設定が正常に更新されました。"
+msgstr "設定を正常に更新しました。"
 
-#: modules/content-board/library/content-board-methods.php:250
-#: modules/content-overview/content-overview.php:754
+#: modules/content-board/library/content-board-methods.php:252
+#: modules/content-overview/content-overview.php:770
 #, php-format
 msgid "%s created successfully. <a href=\"%s\" target=\"_blank\">Edit %s</a>"
-msgstr "%sが正常に作成されました。 <a href=\"%s\" target=\"_blank\">%sを編集</a>"
+msgstr "%sを正常に作成しました。<a href=\"%s\"target=\"_blank\">%sの編集</a>"
 
-#: modules/content-board/library/content-board-methods.php:253
-#: modules/content-overview/content-overview.php:757
+#: modules/content-board/library/content-board-methods.php:255
+#: modules/content-overview/content-overview.php:773
 #, php-format
 msgid "%s could not be created"
-msgstr "%sを作成できませんでした"
+msgstr "%sを作成できませんでした。"
 
-#: modules/content-board/library/content-board-methods.php:258
-#: modules/content-overview/content-overview.php:762
+#: modules/content-board/library/content-board-methods.php:260
+#: modules/content-overview/content-overview.php:778
 #, php-format
 msgid "You do not have permission to add new %s"
 msgstr "新しい%sを追加する権限がありません"
 
-#: modules/content-board/library/content-board-methods.php:437
+#: modules/content-board/library/content-board-methods.php:439
 #: modules/content-overview/library/content-overview-methods.php:160
 msgid "Post types to show:"
 msgstr "表示する投稿タイプ:"
 
 #: modules/content-board/library/content-board-utilities.php:32
 msgid "Customize Card Data"
-msgstr "カードデータをカスタマイズ"
+msgstr "カードデータのカスタマイズ"
 
 #: modules/content-board/library/content-board-utilities.php:51
 #: modules/content-overview/library/content-overview-methods.php:276
@@ -1748,7 +1441,7 @@ msgstr "印刷"
 #: modules/content-board/library/content-board-utilities.php:63
 #: modules/content-overview/library/content-overview-methods.php:288
 msgid "Maximum number of posts to display"
-msgstr "表示する最大投稿数"
+msgstr "最大表示投稿数"
 
 #: modules/content-board/library/content-board-utilities.php:84
 #: modules/content-overview/library/content-overview-methods.php:309
@@ -1757,23 +1450,23 @@ msgstr "新規投稿"
 
 #: modules/content-board/library/content-board-utilities.php:217
 msgid "Enable or Disable"
-msgstr "有効または無効にする"
+msgstr "有効化または無効化"
 
 #: modules/content-board/library/content-board-utilities.php:218
 msgid "Reorder"
-msgstr "再注文"
+msgstr "並べ替え"
 
 #: modules/content-board/library/content-board-utilities.php:223
 msgid "Enable or Disable Content Board Card Data."
-msgstr "コンテンツボードカードデータを有効または無効にします。"
+msgstr "コンテンツボードカードデータを有効化または無効化する。"
 
 #: modules/content-board/library/content-board-utilities.php:296
 msgid "Drag to change enabled card data order."
-msgstr "ドラッグして有効なカードデータの順序を変更します。"
+msgstr "有効なカードデータの表示順を変更するにはドラッグしてください。"
 
 #: modules/content-board/library/content-board-utilities.php:369
 msgid "Enable or Disable Content Board filter."
-msgstr "コンテンツボードフィルターを有効または無効にします。"
+msgstr "コンテンツボードフィルターを有効化または無効化する。"
 
 #: modules/content-board/library/content-board-utilities.php:394
 #: modules/content-overview/library/content-overview-utilities.php:202
@@ -1783,13 +1476,12 @@ msgstr "メタキーを選択"
 #: modules/content-board/library/content-board-utilities.php:509
 #: modules/content-overview/library/content-overview-utilities.php:614
 msgid "Show content from"
-msgstr "からコンテンツを表示"
+msgstr "コンテンツ表示期間"
 
 #: modules/content-board/library/content-board-utilities.php:554
 #: modules/content-overview/library/content-overview-utilities.php:659
 #: modules/editorial-comments/editorial-comments.php:574
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:425
-#: modules/editorial-comments/lib/editorial-comments.js:350
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -1802,51 +1494,51 @@ msgstr "変更"
 #: modules/content-overview/library/content-overview-utilities.php:314
 #, php-format
 msgid "Add New %s"
-msgstr "新しい %s を追加"
+msgstr "新しい%sを追加"
 
 #: modules/content-board/library/content-board-utilities.php:1121
 #: modules/content-overview/library/content-overview-utilities.php:447
 #, php-format
 msgid "Create %s"
-msgstr "%s を作成"
+msgstr "%sを作成"
 
 #: modules/content-board/library/content-board-utilities.php:1123
 #: modules/content-overview/library/content-overview-utilities.php:449
 msgid "Submit"
-msgstr "送信"
+msgstr "投稿する"
 
 #: modules/content-board/library/content-board-utilities.php:1171
 #: modules/content-overview/library/content-overview-utilities.php:497
 msgid "Publish Date"
 msgstr "公開日"
 
-#: modules/content-overview/content-overview.php:156
-#: modules/content-overview/content-overview.php:376
-#: modules/content-overview/content-overview.php:393
-#: modules/content-overview/content-overview.php:394
+#: modules/content-overview/content-overview.php:168
+#: modules/content-overview/content-overview.php:388
+#: modules/content-overview/content-overview.php:405
+#: modules/content-overview/content-overview.php:406
 msgid "Content Overview"
-msgstr "コンテンツの概要"
+msgstr "コンテンツ概要"
 
-#: modules/content-overview/content-overview.php:654
+#: modules/content-overview/content-overview.php:670
 msgid "Column updated successfully."
-msgstr "列が正常に更新されました。"
+msgstr "カラムを正常に更新しました。"
 
-#: modules/content-overview/content-overview.php:837
-#: modules/content-overview/content-overview.php:896
+#: modules/content-overview/content-overview.php:856
+#: modules/content-overview/content-overview.php:932
 msgid "Last Modified"
 msgstr "最終編集日"
 
-#: modules/content-overview/content-overview.php:883
+#: modules/content-overview/content-overview.php:916
 msgid "Custom Columns"
-msgstr "カスタム列"
+msgstr "カスタムカラム"
 
-#: modules/content-overview/content-overview.php:884
+#: modules/content-overview/content-overview.php:917
 msgid "Click the \"Add New\" button to create new columns."
-msgstr "新しい列を作成するには「新規追加」ボタンをクリックしてください。"
+msgstr "新しいカラムを作成するには、「新規追加」ボタンをクリックします。"
 
-#: modules/content-overview/content-overview.php:890
+#: modules/content-overview/content-overview.php:936
 msgid "Inbuilt Columns"
-msgstr "組み込み列"
+msgstr "作り付けカラム"
 
 #: modules/content-overview/library/content-overview-methods.php:207
 msgid "Item moved to the trash."
@@ -1860,23 +1552,23 @@ msgstr[0] "アイテムがゴミ箱から復元されました。"
 
 #: modules/content-overview/library/content-overview-methods.php:257
 msgid "Customize Columns"
-msgstr "列をカスタマイズ"
+msgstr "カラムのカスタマイズ"
 
 #: modules/content-overview/library/content-overview-utilities.php:25
 msgid "Enable Columns"
-msgstr "列を有効にする"
+msgstr "カラムを有効化"
 
 #: modules/content-overview/library/content-overview-utilities.php:26
 msgid "Reorder Columns"
-msgstr "列を再注文"
+msgstr "カラムの並び替え"
 
 #: modules/content-overview/library/content-overview-utilities.php:31
 msgid "Enable or Disable Content Overview table column."
-msgstr "コンテンツ概要テーブルの列を有効または無効にします。"
+msgstr "コンテンツ概要テーブルカラムを有効化または無効化する。"
 
 #: modules/content-overview/library/content-overview-utilities.php:52
 msgid "Column Title"
-msgstr "カラムタイトル"
+msgstr "カラムのタイトル"
 
 #: modules/content-overview/library/content-overview-utilities.php:61
 msgid "Add Column"
@@ -1884,15 +1576,15 @@ msgstr "カラムを追加"
 
 #: modules/content-overview/library/content-overview-utilities.php:104
 msgid "Drag to change enabled columns order."
-msgstr "ドラッグして有効なカラムの順序を変更します。"
+msgstr "有効なフィルターの表示順を変更するにはドラッグしてください。"
 
 #: modules/content-overview/library/content-overview-utilities.php:177
 msgid "Enable or Disable Content Overview filter."
-msgstr "コンテンツ概要フィルターを有効または無効にします。"
+msgstr "コンテンツ概要フィルターを有効化または無効化する。"
 
 #: modules/dashboard/dashboard.php:56
 msgid "Dashboard Widgets"
-msgstr "ダッシュボードウィジェット"
+msgstr "ダッシュボードのウィジェット"
 
 #: modules/dashboard/dashboard.php:70
 msgid "Widget Options"
@@ -1918,11 +1610,11 @@ msgstr "一目で投稿する"
 
 #: modules/dashboard/dashboard.php:305
 msgid "This post was last updated on "
-msgstr "この投稿は最後に更新されました"
+msgstr "この投稿の最終更新日 "
 
 #: modules/dashboard/dashboard.php:316
 msgid "Sorry! You're not subscribed to any posts!"
-msgstr "ごめんなさい！投稿を購読していません。"
+msgstr "どの投稿も購読していません。"
 
 #: modules/dashboard/dashboard.php:339
 msgid "Post Status Widget"
@@ -1930,7 +1622,7 @@ msgstr "投稿ステータスウィジェット"
 
 #: modules/dashboard/dashboard.php:410
 msgid "The notifications module will need to be enabled for this widget to display."
-msgstr "このウィジェットを表示するには、通知モジュールを有効にする必要があります。"
+msgstr "このウィジェットを表示するには、通知モジュールを有効化する必要があります。"
 
 #: modules/dashboard/widgets/dashboard-notepad.php:50
 msgid "Dashboard Note"
@@ -1939,9 +1631,14 @@ msgstr "ダッシュボードの注意"
 #: modules/dashboard/widgets/dashboard-notepad.php:140
 #, php-format
 msgid "%1$s last updated on %2$s"
-msgstr "%2$sで更新%1$s"
+msgstr "%1$sの最終更新日 %2$s"
 
-#: modules/dashboard/widgets/dashboard-notepad.php:168
+#: modules/dashboard/widgets/dashboard-notepad.php:160
+#: modules/dashboard/widgets/dashboard-notepad.php:176, fuzzy
+msgid "Dashboard note"
+msgstr "Dashboard note"
+
+#: modules/dashboard/widgets/dashboard-notepad.php:169
 msgid "Update Note"
 msgstr "更新ノート"
 
@@ -1952,7 +1649,7 @@ msgstr "デバッグ"
 #: modules/debug/debug.php:228
 #: modules/debug/debug.php:291
 msgid "PublishPress Debug Log"
-msgstr "発行プレス デバッグ ログ"
+msgstr "PublishPress デバッグ ログ"
 
 #: modules/debug/debug.php:242
 #: modules/debug/debug.php:243
@@ -1997,36 +1694,36 @@ msgstr "ログファイル"
 
 #: modules/debug/debug.php:303
 msgid "Log file not found."
-msgstr "ログ ファイルが見つかりません。"
+msgstr "ログファイルが見つかりません。"
 
 #: modules/debug/debug.php:304
 msgid ""
 "If you see any error or look for information regarding PublishPress, please "
 "don't hesitate to contact the support team. E-mail us:"
-msgstr "エラーが表示されたり、PublishPressに関する情報を探している場合は、サポートチームにご連絡ください。メールでお知らせください:"
+msgstr "エラーが発生した場合、または PublishPress に関する情報をお探しの場合は、サポートチームにお問い合わせください。メールでのお問い合わせ:"
 
 #: modules/debug/debug.php:308
 msgid "Click to delete the log file. Be careful, this operation can not be undone. "
-msgstr "ログ ファイルを削除する場合にクリックします。注意してください、この操作は元に戻すことはできません。"
+msgstr "クリックすると、ログファイルを削除します。この操作は元に戻せませんのでご注意ください。 "
 
 #: modules/debug/debug.php:358
 msgid "Action nonce not found."
-msgstr "アクション nonce が見つかりません。"
+msgstr "アクション検証トークンが見つかりませんでした。"
 
 #: modules/debug/debug.php:365
 msgid "Invalid action nonce."
-msgstr "無効なアクション nonce です。"
+msgstr "操作用のセキュリティトークンが無効です。"
 
 #: modules/editorial-comments/editorial-comments.php:63
-#: modules/editorial-comments/editorial-comments.php:231
-#: modules/editorial-comments/editorial-comments.php:232
+#: modules/editorial-comments/editorial-comments.php:235
+#: modules/editorial-comments/editorial-comments.php:236
 #: modules/editorial-comments/editorial-comments.php:453
 msgid "Editorial Comments"
-msgstr "担当者のコメント："
+msgstr "編集コメント"
 
 #: modules/editorial-comments/editorial-comments.php:78
 msgid "Choose Post Types"
-msgstr "投稿の種類を選択してください"
+msgstr "投稿タイプを選択してください"
 
 #: modules/editorial-comments/editorial-comments.php:83
 msgid ""
@@ -2039,10 +1736,11 @@ msgid ""
 "notifications enabled, those following the post will receive an email every "
 "time a comment is left.</p>"
 msgstr ""
-"<p>編集コメントは、メールの過負荷を減らし、会話を重要な場所であるコンテンツに近づけるのに役立ちます。管理者でのスレッドコメントは、ブログ投稿の最後に"
-"見られるものと似ており、ライターや編集者がプライベートにフィードバックを残し、公開前に変更が必要な点について議論することを可能にします。</"
-"p><p>進行中のストーリーを見る権限を持つ誰でも、それにコメントすることができます。通知が有効になっていれば、その投稿をフォローしている人はコメントが"
-"残されるたびにメールを受け取ります。</p>"
+"<p>編集コメントを使用すると、過剰な量のメールを減らし、会話の内容を重要なポイント (コンテンツ) "
+"に近づけることができます。管理画面では、ブログの最後に表示されるスレッド形式のコメント機能と同様に、投稿者や編集者が非公開でフィードバックを残したり、公"
+"開前に変更すべき点について話し合ったりすることができます。</"
+"p><p>進行中の投稿を閲覧できるユーザーは、投稿にコメントを付けることもできます。通知を有効化しておくと、コメントが残されるたびに、その投稿をフォロー"
+"しているユーザーにメールが届きます。</p>"
 
 #: modules/editorial-comments/editorial-comments.php:88
 msgid ""
@@ -2052,11 +1750,11 @@ msgid ""
 "href=\"https://github.com/ostraining/PublishPress\">PublishPress on "
 "Github</a></p>"
 msgstr ""
-"<p><strong>詳細情報:</strong></p><p><a "
+"<p><strong>詳細情報:</strong></p> <p><a "
 "href=\"https://publishpress.com/features/editorial-comments/\""
-">編集コメントドキュメント</a></p><p><a "
-"href=\"https://github.com/ostraining/PublishPress\">GitHubのPublishPress</"
-"a></p>"
+">編集コメントのドキュメント</a></p><p><a "
+"href=\"https://github.com/ostraining/PublishPress\">PublishPress on "
+"Github</a></p>"
 
 #: modules/editorial-comments/editorial-comments.php:205
 #: modules/editorial-comments/editorial-comments.php:717
@@ -2064,23 +1762,23 @@ msgid "Remove"
 msgstr "削除"
 
 #: modules/editorial-comments/editorial-comments.php:206
-#: modules/editorial-comments/library/EditorialCommentsTable.php:181
-#: modules/notifications-log/notifications-log.php:204
+#: modules/editorial-comments/library/EditorialCommentsTable.php:182
+#: modules/notifications-log/notifications-log.php:207
 msgid "All Posts"
 msgstr "すべての投稿"
 
 #: modules/editorial-comments/editorial-comments.php:207
-#: modules/editorial-comments/library/EditorialCommentsTable.php:196
+#: modules/editorial-comments/library/EditorialCommentsTable.php:198
 msgid "All Users"
-msgstr "全ユーザー"
+msgstr "すべてのユーザー"
 
-#: modules/editorial-comments/editorial-comments.php:272
+#: modules/editorial-comments/editorial-comments.php:276
 #. translators: %s: search keywords
 #, php-format
 msgid "Search results for &#8220;%s&#8221;"
-msgstr "「%s」の検索結果"
+msgstr "&#8220;%s&#8221; の検索結果"
 
-#: modules/editorial-comments/editorial-comments.php:285
+#: modules/editorial-comments/editorial-comments.php:289
 msgid "Search Comments"
 msgstr "コメントを検索"
 
@@ -2088,16 +1786,16 @@ msgstr "コメントを検索"
 msgid ""
 "You can add editorial comments to a post once you've saved it for the first "
 "time."
-msgstr "投稿を初めて保存すると、編集コメントを追加できます。"
+msgstr "投稿を初めて保存すると、投稿に編集コメントを追加できます。"
 
 #: modules/editorial-comments/editorial-comments.php:548
 #: modules/editorial-comments/editorial-comments.php:552
 msgid "Add an editorial comment"
-msgstr "エディトリアルコメントを追加する"
+msgstr "編集コメントを追加する"
 
 #: modules/editorial-comments/editorial-comments.php:558
 msgid "Attach file"
-msgstr "ファイルを添付"
+msgstr "添付ファイル"
 
 #: modules/editorial-comments/editorial-comments.php:570
 msgid "Add Comment"
@@ -2112,7 +1810,7 @@ msgid "Reply"
 msgstr "返信"
 
 #: modules/editorial-comments/editorial-comments.php:639
-#: modules/editorial-comments/library/EditorialCommentsTable.php:434
+#: modules/editorial-comments/library/EditorialCommentsTable.php:436
 #: modules/editorial-metadata/library/editorial-metadata-list-table.php:161
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:303
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:333
@@ -2126,38 +1824,38 @@ msgstr "削除"
 #: modules/editorial-comments/editorial-comments.php:684
 #, php-format
 msgid "said on %1$s at %2$s"
-msgstr "%1$s の %2$s にて発言しました"
+msgstr "%2$sで%1$sに言った"
 
 #: modules/editorial-comments/editorial-comments.php:745
 msgid ""
 "Nonce check failed. Please ensure you're supposed to be adding editorial "
 "comments."
-msgstr "Nonceチェックに失敗しました。編集コメントを追加する権限があることを確認してください。"
+msgstr "セキュリティチェックに失敗しました。編集コメントを追加する権限があるか確認してください。"
 
 #: modules/editorial-comments/editorial-comments.php:753
 #: modules/editorial-comments/editorial-comments.php:894
 #: modules/editorial-comments/editorial-comments.php:1026
 #: modules/editorial-comments/editorial-comments.php:1142
 msgid "Invalid comment data"
-msgstr "無効なコメント データ"
+msgstr "無効なコメントデータ"
 
 #: modules/editorial-comments/editorial-comments.php:766
 msgid ""
 "Sorry, you don't have the privileges to add editorial comments. Please talk "
 "to your Administrator."
-msgstr "申し訳ありませんが、編集コメントを追加する権限がありません。管理者に相談してください。"
+msgstr "編集コメントを追加する権限がありません。管理者にご相談ください。"
 
 #: modules/editorial-comments/editorial-comments.php:776
 #: modules/editorial-comments/editorial-comments.php:940
 msgid "Please enter a comment."
-msgstr "コメントをご記入ください。"
+msgstr "コメントを入力してください。"
 
 #: modules/editorial-comments/editorial-comments.php:863
 #: modules/editorial-comments/editorial-comments.php:993
 #: modules/editorial-comments/editorial-comments.php:1103
 #: modules/editorial-comments/editorial-comments.php:1187
 msgid "There was a problem of some sort. Try again or contact your administrator."
-msgstr "何らかの問題がありました。もう一度やり直すか、管理者に問い合わせてください。"
+msgstr "何らかの問題が発生しました。再度実行するか、管理者に問い合わせてください。"
 
 #: modules/editorial-comments/editorial-comments.php:883
 #: modules/editorial-comments/editorial-comments.php:1015
@@ -2165,43 +1863,43 @@ msgstr "何らかの問題がありました。もう一度やり直すか、管
 msgid ""
 "Nonce check failed. Please ensure you're supposed to be editing editorial "
 "comments."
-msgstr "Nonceチェックに失敗しました。編集コメントを編集する権限があることを確認してください。"
+msgstr "セキュリティチェックに失敗しました。編集コメントを編集する権限があるか確認してください。"
 
 #: modules/editorial-comments/editorial-comments.php:909
 #: modules/editorial-comments/editorial-comments.php:1041
 msgid ""
 "Sorry, you don't have the privileges to edit editorial comments. Please "
 "talk to your Administrator."
-msgstr "申し訳ありませんが、編集コメントを編集する権限がありません。管理者に相談してください。"
+msgstr "編集コメントを編集する権限がありません。管理者にご相談ください。"
 
 #: modules/editorial-comments/editorial-comments.php:927
 msgid ""
 "Sorry, you don't have the privileges to edit this editorial comment. Please "
 "talk to your Administrator."
-msgstr "申し訳ありませんが、この編集コメントを編集する権限がありません。管理者に相談してください。"
+msgstr "この編集コメントを編集する権限がありません。管理者にご相談ください。"
 
 #: modules/editorial-comments/editorial-comments.php:1057
 #: modules/editorial-comments/editorial-comments.php:1161
 msgid ""
 "Sorry, you don't have the privileges to delete this editorial comment. "
 "Please talk to your Administrator."
-msgstr "申し訳ありませんが、この編集コメントを削除する権限がありません。管理者に相談してください。"
+msgstr "編集コメントを削除する権限がありません。管理者にご相談ください。"
 
 #: modules/editorial-comments/editorial-comments.php:1078
 msgid "Sorry, you can't delete this editorial comment because it has some replies."
-msgstr "申し訳ありませんが、この編集コメントには返信があるため、削除できません。"
+msgstr "編集コメントに返信があるため削除できません。"
 
 #: modules/editorial-comments/editorial-comments.php:1179
 msgid "Comment deleted successfully."
-msgstr "コメントが正常に削除されました。"
+msgstr "コメントを正常に削除しました。"
 
 #: modules/editorial-comments/editorial-comments.php:1230
 msgid "Enable for these post types:"
-msgstr "これらの投稿タイプを有効にします。"
+msgstr "有効化する投稿タイプ:"
 
 #: modules/editorial-comments/editorial-comments.php:1237
 msgid "Comment author name field:"
-msgstr "コメントの著者名フィールド："
+msgstr "コメント投稿者名フィールド:"
 
 #: modules/editorial-comments/editorial-comments.php:1262
 msgid "Nickname"
@@ -2218,69 +1916,82 @@ msgstr "表示名"
 #: modules/editorial-comments/editorial-comments.php:1265
 #, fuzzy
 msgid "First Name"
-msgstr "最初のページ"
+msgstr "名前"
 
 #: modules/editorial-comments/editorial-comments.php:1266
 #, fuzzy
 msgid "Last Name"
-msgstr "最後のページ"
+msgstr "名字"
+
+#: modules/editorial-comments/editorial-comments.php:1267
+msgid "Email"
+msgstr "メールアドレス"
 
 #: modules/editorial-comments/editorial-comments.php:1268
 msgid "User Url"
-msgstr "ユーザーURL"
+msgstr "ユーザー URL"
 
 #: modules/editorial-comments/library/EditorialCommentsTable.php:158
 msgid "No editorial comments."
 msgstr "編集コメントはありません。"
 
-#: modules/editorial-comments/library/EditorialCommentsTable.php:210
-#: modules/notifications-log/library/NotificationsLogTable.php:646
+#: modules/editorial-comments/library/EditorialCommentsTable.php:180
+#: modules/notifications-log/library/NotificationsLogTable.php:566
+msgid "Filter by post"
+msgstr "投稿でフィルタ"
+
+#: modules/editorial-comments/library/EditorialCommentsTable.php:196
+msgid "Filter by user"
+msgstr "ユーザーでフィルタ"
+
+#: modules/editorial-comments/library/EditorialCommentsTable.php:212
+#: modules/notifications-log/library/NotificationsLogTable.php:653
 msgid "Filter"
 msgstr "フィルター"
 
-#: modules/editorial-comments/library/EditorialCommentsTable.php:229
-msgid "Comment"
-msgstr "%s コメント"
-
 #: modules/editorial-comments/library/EditorialCommentsTable.php:231
+msgid "Comment"
+msgstr "コメント"
+
+#: modules/editorial-comments/library/EditorialCommentsTable.php:233
 msgid "Post"
 msgstr "投稿"
 
-#: modules/editorial-comments/library/EditorialCommentsTable.php:233
+#: modules/editorial-comments/library/EditorialCommentsTable.php:235
 msgid "Submitted on"
-msgstr "提出日"
+msgstr "投稿"
 
-#: modules/editorial-comments/library/EditorialCommentsTable.php:336
+#: modules/editorial-comments/library/EditorialCommentsTable.php:338
 #: modules/editorial-metadata/input-handlers/editorial-metadata-input-date-handler.php:201
 #: modules/notifications/notifications.php:1974
 #. translators: 1: Comment date, 2: Comment time.
 #, php-format
 msgid "%1$s at %2$s"
-msgstr "％2$s で ％1$s"
+msgstr "%2$s で %1$s"
 
 #: modules/editorial-metadata/editorial-metadata.php:109
 msgid "Editorial fields term added."
-msgstr "編集フィールド用語が追加されました。"
+msgstr "編集フィールド項目を追加しました。"
 
 #: modules/editorial-metadata/editorial-metadata.php:110
 msgid "Editorial fields term updated."
-msgstr "編集フィールド用語が更新されました。"
+msgstr "編集フィールド項目を更新しました。"
 
 #: modules/editorial-metadata/editorial-metadata.php:111
 msgid "Editorial fields term doesn't exist."
-msgstr "編集フィールド用語は存在しません。"
+msgstr "編集フィールド項目は存在しません。"
 
 #: modules/editorial-metadata/editorial-metadata.php:112
 msgid "Editorial fields term deleted."
-msgstr "編集フィールド用語が削除されました。"
+msgstr "編集フィールド項目を削除しました。"
 
 #: modules/editorial-metadata/editorial-metadata.php:113
 msgid "Editorial fields order updated."
-msgstr "編集フィールドの順序が更新されました。"
+msgstr "編集フィールドの順番を更新しました。"
 
 #: modules/editorial-metadata/editorial-metadata.php:114
 msgid "Editorial fields visibility changed."
-msgstr "編集フィールドの表示が変更されました。"
+msgstr "編集用フィールドの表示設定を変更しました。"
 
 #: modules/editorial-metadata/editorial-metadata.php:120
 msgid ""
@@ -2293,10 +2004,10 @@ msgid ""
 "rest of your team. Keep it hidden to restrict the information between the "
 "writer and their editor.</p>"
 msgstr ""
-"<p>編集フィールドを使用して、コンテンツに関する重要な詳細を追跡します。この機能では、日付、テキスト、数字などのフィールドを好きなだけ作成し、連絡先の"
-"詳細やインタビューの場所などの情報を保存するために使用できます。</"
-"p><p>フィールドを設定すると、編集フィールドはカレンダーとコンテンツの概要と統合されます。編集フィールド項目を表示可能にすると、チームの他のメンバー"
-"に表示されます。隠すと、ライターとそのエディターの間の情報が制限されます。</p>"
+"<p>編集フィールドでコンテンツの重要な詳細を管理しましょう。この機能では、日付、テキスト、数値などのフィールドを必要な数だけ作成し、連絡先の詳細や面接"
+"の場所などの情報を保存できます。</"
+"p><p>フィールドを設定すると、編集フィールドをカレンダーとコンテンツ概要の両方に組み込みます。編集フィールドの項目を表示することで、チームの他のメン"
+"バーに見えるようになります。投稿者と編集者の間の情報を制限するには、非表示のままにします。</p>"
 
 #: modules/editorial-metadata/editorial-metadata.php:125
 msgid ""
@@ -2306,19 +2017,19 @@ msgid ""
 "href=\"https://github.com/ostraining/PublishPress\">PublishPress on "
 "Github</a></p>"
 msgstr ""
-"<p><strong>詳細情報:</strong></p><p><a "
+"<p><strong>詳細情報:</strong></p> <p><a "
 "href=\"https://publishpress.com/features/editorial-metadata/\""
 ">編集フィールドのドキュメント</a></p><p><a "
-"href=\"https://github.com/ostraining/PublishPress\">GithubのPublishPress</"
-"a></p>"
+"href=\"https://github.com/ostraining/PublishPress\">PublishPress on "
+"Github</a></p>"
 
 #: modules/editorial-metadata/editorial-metadata.php:212
 msgid "First Draft Date"
-msgstr "最初のドラフト日"
+msgstr "初稿日"
 
 #: modules/editorial-metadata/editorial-metadata.php:215
 msgid "When the first draft needs to be ready."
-msgstr "最初のドラフトの準備が必要な場合。"
+msgstr "初稿をいつまでに用意しなければならないか。"
 
 #: modules/editorial-metadata/editorial-metadata.php:220
 msgid "Assignment"
@@ -2326,7 +2037,7 @@ msgstr "課題"
 
 #: modules/editorial-metadata/editorial-metadata.php:223
 msgid "What the post needs to cover."
-msgstr "投稿がカバーする必要があるもの。"
+msgstr "この投稿に含めるべき主要なポイント。"
 
 #: modules/editorial-metadata/editorial-metadata.php:288
 msgid "Checkbox"
@@ -2360,7 +2071,7 @@ msgstr "ユーザー"
 msgid ""
 "Are you sure you want to delete this term? Any metadata for this term will "
 "remain but will not be visible unless this term is re-added."
-msgstr "この用語を削除してもよろしいですか？この用語に関するメタデータは残りますが、この用語が再追加されない限り表示されません。"
+msgstr "この項目を削除してもよろしいですか ? この項目のメタデータは残りますが、この項目を再度追加しない限り表示しません。"
 
 #: modules/editorial-metadata/editorial-metadata.php:453
 msgid "Search Editorial Fields"
@@ -2368,7 +2079,7 @@ msgstr "編集フィールドを検索"
 
 #: modules/editorial-metadata/editorial-metadata.php:454
 msgid "Popular Editorial Fields"
-msgstr "人気の編集フィールド"
+msgstr "人気のある編集フィールド"
 
 #: modules/editorial-metadata/editorial-metadata.php:455
 msgid "All Editorial Fields"
@@ -2376,15 +2087,15 @@ msgstr "すべての編集フィールド"
 
 #: modules/editorial-metadata/editorial-metadata.php:456
 msgid "Edit Editorial Fields"
-msgstr "編集フィールドを編集"
+msgstr "編集フィールドの編集"
 
 #: modules/editorial-metadata/editorial-metadata.php:457
 msgid "Update Editorial Fields"
-msgstr "編集フィールドを更新"
+msgstr "編集フィールドの更新"
 
 #: modules/editorial-metadata/editorial-metadata.php:458
 msgid "Add New Editorial Fields"
-msgstr "新しい編集フィールドを追加"
+msgstr "新しい編集フィールドの追加"
 
 #: modules/editorial-metadata/editorial-metadata.php:459
 msgid "New Editorial Fields"
@@ -2392,23 +2103,23 @@ msgstr "新しい編集フィールド"
 
 #: modules/editorial-metadata/editorial-metadata.php:549
 msgid "No editorial fields available."
-msgstr "編集フィールドが利用できません。"
+msgstr "編集フィールドはありません。"
 
 #: modules/editorial-metadata/editorial-metadata.php:551
 #, php-format
 msgid " <a href=\"%s\">Add fields to get started</a>."
-msgstr " <a href=\"%s\">フィールドを追加して始めましょう</a>。"
+msgstr "<a href=\"%s\">開始するフィールドを追加</a>します。"
 
 #: modules/editorial-metadata/editorial-metadata.php:553
 msgid ""
 " Encourage your site administrator to configure your editorial workflow by "
 "adding editorial fields."
-msgstr "サイト管理者に、編集フィールドを追加して編集ワークフローを構成するよう奨励してください。"
+msgstr " 編集フィールドを追加して、サイト管理者に編集ワークフローの構成を促します。"
 
 #: modules/editorial-metadata/editorial-metadata.php:1244
 #: modules/editorial-metadata/editorial-metadata.php:1401
 msgid "All options value and labels are required."
-msgstr "すべてのオプションの値とラベルは必須です。"
+msgstr "すべてのオプション値とラベルが必須です。"
 
 #: modules/editorial-metadata/editorial-metadata.php:1253
 msgid "Please enter a name for the editorial fields."
@@ -2416,34 +2127,34 @@ msgstr "編集フィールドの名前を入力してください。"
 
 #: modules/editorial-metadata/editorial-metadata.php:1260
 msgid "Please enter a slug for the editorial fields."
-msgstr "編集フィールドのスラッグを入力してください。"
+msgstr "編集フィールドにスラッグを入力してください。"
 
 #: modules/editorial-metadata/editorial-metadata.php:1266
 msgid "Name conflicts with existing term. Please choose another."
-msgstr "名前が既存の用語と競合しています。別の項目を選択してください。"
+msgstr "名前が既存の項目と重複しています。ほかの名前を選んでください。"
 
 #: modules/editorial-metadata/editorial-metadata.php:1273
 #: modules/editorial-metadata/editorial-metadata.php:1433
 msgid "Name already in use. Please choose another."
-msgstr "既に使用されている名前です。別の項目を選択してください。"
+msgstr "名前はすでに使用しています。他の名前を選択してください。"
 
 #: modules/editorial-metadata/editorial-metadata.php:1277
 msgid "Slug already in use. Please choose another."
-msgstr "スラグはすでに使用されています。別の項目を選択してください。"
+msgstr "スラッグはすでに使用しています。他を選択してください。"
 
 #: modules/editorial-metadata/editorial-metadata.php:1283
 #: modules/editorial-metadata/editorial-metadata.php:1290
 #: modules/editorial-metadata/editorial-metadata.php:1446
 msgid "Name cannot exceed 200 characters. Please try a shorter name."
-msgstr "名前は 200 文字を超えることはできません。短い名前を試してください。"
+msgstr "名前は200文字以内です。短い名前を試してください。"
 
 #: modules/editorial-metadata/editorial-metadata.php:1300
 msgid "Please select a valid metadata type."
-msgstr "有効なメタデータ型を選択してください。"
+msgstr "有効なメタデータタイプを選択してください。"
 
 #: modules/editorial-metadata/editorial-metadata.php:1332
 msgid "Error adding term."
-msgstr "用語の追加中にエラーが発生しました。"
+msgstr "項目の追加中にエラーが発生しました。"
 
 #: modules/editorial-metadata/editorial-metadata.php:1410
 msgid "Please enter a name for the editorial fields"
@@ -2451,32 +2162,32 @@ msgstr "編集フィールドの名前を入力してください"
 
 #: modules/editorial-metadata/editorial-metadata.php:1415
 msgid "Please enter a valid, non-numeric name for the editorial fields."
-msgstr "編集フィールドの有効な数値以外の名前を入力してください。"
+msgstr "編集フィールドに有効な、数字以外の名前を入力してください。"
 
 #: modules/editorial-metadata/editorial-metadata.php:1424
 msgid "Metadata name conflicts with existing term. Please choose another."
-msgstr "メタデータ名が既存の用語と競合しています。別の項目を選択してください。"
+msgstr "メタデータ名が既存の項目と重複しています。ほかの名前を選んでください。"
 
 #: modules/editorial-metadata/editorial-metadata.php:1438
 msgid "Name conflicts with slug for another term. Please choose something else."
-msgstr "別の用語のスラグと名前が競合しています。他のものを選択してください。"
+msgstr "名前が別の項目のスラッグと重複しています。ほかの名前を選んでください。"
 
 #: modules/editorial-metadata/editorial-metadata.php:1482
 #: modules/editorial-metadata/editorial-metadata.php:1525
 msgid "Error updating term."
-msgstr "用語の更新中にエラーが発生しました。"
+msgstr "項目の更新中にエラーが発生しました。"
 
 #: modules/editorial-metadata/editorial-metadata.php:1550
 msgid "Terms not set."
-msgstr "用語が設定されていません。"
+msgstr "条件を設定していません。"
 
 #: modules/editorial-metadata/editorial-metadata.php:1591
 msgid "Error deleting term."
-msgstr "用語の削除中にエラーが発生しました。"
+msgstr "項目の削除中にエラーが発生しました。"
 
 #: modules/editorial-metadata/editorial-metadata.php:1638
 msgid "Register editorial fields for these post types:"
-msgstr "これらの投稿タイプ用に編集フィールドを登録します："
+msgstr "編集フィールドを追加する投稿タイプ:"
 
 #: modules/editorial-metadata/input-handlers/editorial-metadata-input-checkbox-handler.php:109
 #: modules/editorial-metadata/input-handlers/editorial-metadata-input-checkbox-handler.php:143
@@ -2496,7 +2207,7 @@ msgstr "はい"
 #: modules/editorial-metadata/input-handlers/editorial-metadata-input-handler.php:106
 #: modules/editorial-metadata/input-handlers/editorial-metadata-input-handler.php:127
 msgid "This editorial fields type is not yet supported."
-msgstr "この編集フィールドタイプはまだサポートされていません。"
+msgstr "この編集フィールドタイプをまだサポートしていません。"
 
 #: modules/editorial-metadata/input-handlers/editorial-metadata-input-handler.php:223
 msgid "Not set"
@@ -2505,16 +2216,16 @@ msgstr "未設定"
 #: modules/editorial-metadata/input-handlers/editorial-metadata-input-location-handler.php:82
 #, php-format
 msgid "View &#8220;%s&#8221; on Google Maps"
-msgstr "Google マップで 「%s」を表示する"
+msgstr "Google マップで「%s」を見る"
 
 #: modules/editorial-metadata/input-handlers/editorial-metadata-input-select-handler.php:255
 #, php-format
 msgid "-- Select %s --"
-msgstr "-- %s を選択 --"
+msgstr "-- %sを選択 --"
 
 #: modules/editorial-metadata/input-handlers/editorial-metadata-input-user-handler.php:79
 msgid "-- Select a user --"
-msgstr "-- ユーザーを選択 --"
+msgstr "ユーザーを選択してください"
 
 #: modules/editorial-metadata/library/editorial-metadata-list-table.php:44
 msgid "Position"
@@ -2524,6 +2235,10 @@ msgstr "位置"
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:443
 msgid "Name"
 msgstr "名前"
+
+#: modules/editorial-metadata/library/editorial-metadata-list-table.php:46
+msgid "Post Types"
+msgstr "投稿タイプ"
 
 #: modules/editorial-metadata/library/editorial-metadata-list-table.php:47
 msgid "Field Type"
@@ -2542,7 +2257,7 @@ msgstr "編集フィールドが見つかりません。"
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:158
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:452
 msgid "The name is for labeling the editorial fields."
-msgstr "名前は編集フィールドのラベリングに使用されます。"
+msgstr "この名前は編集フィールドにラベルを付けるために使用します。"
 
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:163
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:457
@@ -2551,13 +2266,13 @@ msgstr "スラッグ"
 
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:168
 msgid "The slug cannot be changed once the term has been created."
-msgstr "用語が作成されると、スラグを変更することはできません。"
+msgstr "一度作成したスラッグは変更できません。"
 
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:184
 msgid ""
 "The description can be used to communicate with your team about what the "
 "field is for."
-msgstr "説明は、フィールドの用途についてチームとコミュニケーションを取るために使用できます。"
+msgstr "説明文は、フィールドが何のためにあるのかをチームに伝えるために使うことができます。"
 
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:193
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:491
@@ -2566,29 +2281,29 @@ msgstr "タイプ"
 
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:198
 msgid "The field type cannot be changed once created."
-msgstr "作成後はフィールドタイプを変更できません。"
+msgstr "一度作成したフィールドタイプは変更できません。"
 
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:204
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:516
 msgid "User role"
-msgstr "ユーザーロール"
+msgstr "ユーザー権限グループ"
 
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:211
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:523
 msgid "Select roles..."
-msgstr "ロールを選択..."
+msgstr "権限グループを選択 ..."
 
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:223
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:537
 msgid ""
 "Filter the list of users in the editorial meta to users in the selected "
 "roles."
-msgstr "選択した役割のユーザーに対して、編集メタのユーザーリストをフィルターします。"
+msgstr "編集メタのユーザーリストを、選択した権限グループのユーザーにフィルタリングします。"
 
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:229
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:542
 msgid "Select Type"
-msgstr "タイプを選択"
+msgstr "選択タイプ"
 
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:233
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:545
@@ -2603,7 +2318,7 @@ msgstr "複数選択"
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:251
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:566
 msgid "Indicate the select type."
-msgstr "選択タイプを指定してください。"
+msgstr "選択タイプを指定します。"
 
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:258
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:571
@@ -2615,7 +2330,7 @@ msgstr "ドロップダウンオプション"
 msgid ""
 "Enter the dropdown option value and label. You can move options to change "
 "their order."
-msgstr "ドロップダウンオプションの値とラベルを入力してください。オプションを移動して順序を変更できます。"
+msgstr "ドロップダウンオプションの値とラベルを入力します。オプションを移動して順序を変更することができます。"
 
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:285
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:316
@@ -2653,7 +2368,7 @@ msgstr "コンテンツカレンダーと概要フォームに表示"
 msgid ""
 "If enabled, this field will be available when adding new posts on the "
 "Content Calendar and Overview screen."
-msgstr "有効にすると、このフィールドはコンテンツカレンダーおよび概要画面で新しい投稿を追加する際に利用可能になります。"
+msgstr "有効化すると、コンテンツカレンダーと概要画面で新しい投稿を追加するときにこのフィールドが使用できるようになります。"
 
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:370
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:682
@@ -2663,7 +2378,7 @@ msgstr "投稿タイプに追加"
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:375
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:686
 msgid "This field will be available for these post types."
-msgstr "このフィールドはこれらの投稿タイプで利用可能です。"
+msgstr "このフィールドはこれらの投稿タイプで使用できます。"
 
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:394
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:704
@@ -2673,31 +2388,31 @@ msgstr "投稿タイプ画面に表示"
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:399
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:708
 msgid "This field will be viewable on the overview screens for these post types."
-msgstr "このフィールドはこれらの投稿タイプの概要画面で表示されます。"
+msgstr "このフィールドは、これらの投稿タイプの概要画面で表示できます。"
 
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:422
 msgid "Update Editorial fields term"
-msgstr "エディトリアルフィールドの用語を更新"
+msgstr "編集フィールド項目の更新"
 
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:466
 msgid ""
 "The \"slug\" is the URL-friendly version of the name. It is usually all "
 "lowercase and contains only letters, numbers, and hyphens."
-msgstr "「スラッグ」は名前のURLフレンドリーなバージョンです。通常はすべて小文字で構成され、文字、数字、ハイフンのみを含みます。"
+msgstr "「スラッグ」は URL で使いやすい名前のことです。通常はすべて小文字で、文字、数字、ハイフンのみで構成します。"
 
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:483
 msgid ""
 "The description can be used to communicate with your team about what the "
 "metadata is for."
-msgstr "説明は、メタデータの用途についてチームとコミュニケーションを取るために使用できます。"
+msgstr "説明文は、メタデータが何のためにあるのかをチームに伝えるために使うことができます。"
 
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:511
 msgid "Indicate the type of editorial fields."
-msgstr "エディトリアルフィールドのタイプを指定してください。"
+msgstr "編集フィールドのタイプを示す。"
 
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:730
 msgid "Add New Editorial fields term"
-msgstr "新しいエディトリアルフィールドの用語を追加"
+msgstr "新しい編集フィールド項目の追加"
 
 #: modules/efmigration/efmigration.php:288
 msgid ""
@@ -2705,8 +2420,8 @@ msgid ""
 "use PublishPress Planner, please complete Edit Flow data migration and then "
 "deactivate Edit Flow."
 msgstr ""
-"Edit FlowはPublishPress Plannerと併用するべきではありません。PublishPress "
-"Plannerを使用したい場合は、Edit Flowのデータ移行を完了し、Edit Flowを無効にしてください。"
+"Edit Flow は PublishPress Planner と同時に使用しないでください。PublishPress Planner "
+"を使用したい場合は、Edit Flow のデータ移行を完了し、Edit Flow を停止してください。"
 
 #: modules/improved-notifications/improved-notifications.php:102
 msgid "Advanced Notifications"
@@ -2722,166 +2437,178 @@ msgstr "デフォルトの通知チャネル:"
 
 #: modules/improved-notifications/improved-notifications.php:363
 msgid "Existing Post is updated"
-msgstr "既存の投稿が更新されました"
+msgstr "既存の投稿を更新"
 
 #: modules/improved-notifications/improved-notifications.php:409
 msgid "New Post is created in Draft status"
-msgstr "新しい投稿が下書き状態で作成されました"
+msgstr "新しい投稿を下書きのステータスで作成"
 
 #: modules/improved-notifications/improved-notifications.php:462
 msgid "New Post is Published"
-msgstr "新しい投稿が公開されました"
+msgstr "新しい投稿を公開"
 
 #: modules/improved-notifications/improved-notifications.php:501
 msgid "Notify on editorial comments"
 msgstr "編集コメントで通知する"
 
-#: modules/improved-notifications/improved-notifications.php:606
+#: modules/improved-notifications/improved-notifications.php:607
 msgid "minutes"
 msgstr "分"
 
-#: modules/improved-notifications/improved-notifications.php:610
+#: modules/improved-notifications/improved-notifications.php:611
 msgid ""
 "This will prevent too many notifications being sent for the same or similar "
 "events. Set this to a higher number if you are receiving duplicate emails."
 msgstr ""
-"これにより、同じまたは類似のイベントに対して過剰な通知が送信されるのを防ぎます。重複したメールを受け取っている場合は、これをより高い数値に設定してくださ"
-"い。"
+"これにより、同じまたは類似したイベントに対して送信する通知が多くなりすぎるのを防ぐことができます。重複した電子メールを受信する場合は、この値を大きく設定"
+"します。"
 
-#: modules/improved-notifications/improved-notifications.php:656
-#: modules/improved-notifications/improved-notifications.php:1495
+#: modules/improved-notifications/improved-notifications.php:657
+#: modules/improved-notifications/improved-notifications.php:1514
 #: views/user_profile_notification_channels.html.php:1
 msgid "Editorial Notifications"
 msgstr "編集通知"
 
-#: modules/improved-notifications/improved-notifications.php:657
-#: modules/improved-notifications/improved-notifications.php:1496
+#: modules/improved-notifications/improved-notifications.php:658
+#: modules/improved-notifications/improved-notifications.php:1515
 #: views/user_profile_notification_channels.html.php:6
 msgid "Choose the channels where each workflow will send notifications to:"
 msgstr "各ワークフローが通知を送信するチャネルを選択してください:"
 
-#: modules/improved-notifications/improved-notifications.php:661
-#: modules/improved-notifications/improved-notifications.php:1483
-#: modules/improved-notifications/improved-notifications.php:1500
-msgid "Muted"
-msgstr "ミュートされた"
-
 #: modules/improved-notifications/improved-notifications.php:662
-#: modules/improved-notifications/improved-notifications.php:1501
+#: modules/improved-notifications/improved-notifications.php:1502
+#: modules/improved-notifications/improved-notifications.php:1519
+msgid "Muted"
+msgstr "ミュート"
+
+#: modules/improved-notifications/improved-notifications.php:663
+#: modules/improved-notifications/improved-notifications.php:1520
 #: views/user_profile_notification_channels.html.php:14
 msgid "Workflows"
 msgstr "ワークフロー"
 
-#: modules/improved-notifications/improved-notifications.php:663
-#: modules/improved-notifications/improved-notifications.php:1502
+#: modules/improved-notifications/improved-notifications.php:664
+#: modules/improved-notifications/improved-notifications.php:1521
 #: views/user_profile_notification_channels.html.php:15
 msgid "Channels"
 msgstr "チャンネル"
 
-#: modules/improved-notifications/improved-notifications.php:1088
+#: modules/improved-notifications/improved-notifications.php:1104
 #: modules/notifications-log/notifications-log.php:75
-#: modules/notifications-log/notifications-log.php:263
-#: modules/notifications-log/notifications-log.php:489
-#: modules/notifications-log/notifications-log.php:490
+#: modules/notifications-log/notifications-log.php:266
+#: modules/notifications-log/notifications-log.php:492
+#: modules/notifications-log/notifications-log.php:493
 msgid "Notifications Log"
 msgstr "通知ログ"
 
-#: modules/improved-notifications/improved-notifications.php:1122
+#: modules/improved-notifications/improved-notifications.php:1138
 msgid "Workflow Settings"
 msgstr "ワークフローの設定"
 
-#: modules/improved-notifications/improved-notifications.php:1131
+#: modules/improved-notifications/improved-notifications.php:1148
+#: views/settings_notification_channels.html.php:5
+#: views/user_profile_notification_channels.html.php:16
 msgid "Options"
 msgstr "オプション"
 
-#: modules/improved-notifications/improved-notifications.php:1140
+#: modules/improved-notifications/improved-notifications.php:1158
 msgid "Help"
 msgstr "ヘルプ"
 
-#: modules/improved-notifications/improved-notifications.php:1170
+#: modules/improved-notifications/improved-notifications.php:1179
+#: modules/notifications-log/library/NotificationsLogTable.php:497
+msgid "When to notify?"
+msgstr "いつ通知するか ?"
+
+#: modules/improved-notifications/improved-notifications.php:1189
 #: modules/notifications-log/library/NotificationsLogTable.php:498
 msgid "For which content?"
-msgstr "どのコンテンツに対して?"
+msgstr "どのコンテンツか ?"
 
-#: modules/improved-notifications/improved-notifications.php:1190
+#: modules/improved-notifications/improved-notifications.php:1199
+#: modules/notifications-log/library/NotificationsLogTable.php:499
+msgid "Who to notify?"
+msgstr "誰に通知するか ?"
+
+#: modules/improved-notifications/improved-notifications.php:1209
 msgid "What to say?"
-msgstr "何を言う?"
+msgstr "メール本文の内容"
 
-#: modules/improved-notifications/improved-notifications.php:1310
+#: modules/improved-notifications/improved-notifications.php:1329
 msgid "Select at least one option for each section."
-msgstr "各セクションに対して少なくとも 1 つのオプションを選択します。"
+msgstr "各セクションで少なくとも1つの選択肢を選んでください。"
 
-#: modules/improved-notifications/improved-notifications.php:1314
+#: modules/improved-notifications/improved-notifications.php:1333
 msgid ""
 "You can add dynamic information to the Subject or Body text using the "
 "following shortcodes:"
-msgstr "以下のショートコードを使用して、件名または本文に動的情報を追加できます:"
+msgstr "次のショートコードを使用して、件名または本文テキストに動的な情報を追加できます。"
 
-#: modules/improved-notifications/improved-notifications.php:1319
+#: modules/improved-notifications/improved-notifications.php:1338
 msgid "Editorial Comment"
-msgstr "エディトリアルコメント"
+msgstr "編集コメント"
 
-#: modules/improved-notifications/improved-notifications.php:1320
+#: modules/improved-notifications/improved-notifications.php:1339
 msgid "User making changes or comments"
 msgstr "ユーザーによる変更またはコメント"
 
-#: modules/improved-notifications/improved-notifications.php:1321
+#: modules/improved-notifications/improved-notifications.php:1340
 msgid "Workflow"
 msgstr "ワークフロー"
 
-#: modules/improved-notifications/improved-notifications.php:1322
+#: modules/improved-notifications/improved-notifications.php:1341
 msgid "Format"
 msgstr "フォーマット"
 
-#: modules/improved-notifications/improved-notifications.php:1323
+#: modules/improved-notifications/improved-notifications.php:1342
 msgid "Receiver"
 msgstr "受信者"
 
-#: modules/improved-notifications/improved-notifications.php:1324
+#: modules/improved-notifications/improved-notifications.php:1343
 msgid "shortcode"
 msgstr "ショートコード"
 
-#: modules/improved-notifications/improved-notifications.php:1325
+#: modules/improved-notifications/improved-notifications.php:1344
 msgid "field"
 msgstr "フィールド"
 
-#: modules/improved-notifications/improved-notifications.php:1326
+#: modules/improved-notifications/improved-notifications.php:1345
 msgid ""
 "On each shortcode, you can select one or more fields. If more than one, "
 "they will be displayed separated by \", \"."
-msgstr "各ショートコードで、1つ以上のフィールドを選択できます。複数の場合、\", \"で区切って表示されます。"
+msgstr "各ショートコードでは、1つ以上のフィールドを選択できます。複数の場合は、「, 」で区切って表示します。"
 
-#: modules/improved-notifications/improved-notifications.php:1330
+#: modules/improved-notifications/improved-notifications.php:1349
 msgid "Available fields"
 msgstr "使用可能なフィールド"
 
-#: modules/improved-notifications/improved-notifications.php:1331
+#: modules/improved-notifications/improved-notifications.php:1350
 msgid "Meta fields"
 msgstr "メタフィールド"
 
-#: modules/improved-notifications/improved-notifications.php:1332
+#: modules/improved-notifications/improved-notifications.php:1351
 msgid "Click here to read more about shortcode options..."
 msgstr "ショートコードオプションの詳細については、ここをクリックしてください。"
 
 #: modules/modules-settings/modules-settings.php:50
 msgid "Features"
-msgstr "特徴"
+msgstr "機能"
 
 #: modules/modules-settings/modules-settings.php:236
 msgid "Feel free to select only the features you need."
-msgstr "必要な機能だけを自由に選択してください。"
+msgstr "必要な機能を自由に選択してください。"
 
 #: modules/modules-settings/modules-settings.php:242
 msgid "Enabled features"
-msgstr "有効な機能"
+msgstr "有効化機能"
 
 #: modules/notifications-log/library/ModuleErrors.php:54
 msgid "Invalid receiver for the notification"
-msgstr "通知の受信者が無効です"
+msgstr "通知の受信者が無効"
 
 #: modules/notifications-log/library/ModuleErrors.php:55
 msgid "Invalid channel for the notification"
-msgstr "通知のチャネルが無効です"
+msgstr "通知のチャネルが無効"
 
 #: modules/notifications-log/library/ModuleErrors.php:56
 msgid "Notification log not found"
@@ -2890,7 +2617,7 @@ msgstr "通知ログが見つかりません"
 #: modules/notifications-log/library/NotificationsLogModel.php:264
 #, fuzzy
 msgid "The parent log was deleted or probably rescheduled"
-msgstr "親ログが削除されたか、またはおそらく再スケジュールされました"
+msgstr "親ログを削除したか、再スケジュールした可能性があります"
 
 #: modules/notifications-log/library/NotificationsLogTable.php:116
 #, php-format
@@ -2905,7 +2632,7 @@ msgstr "ユーザー: %s (%d)"
 #: modules/notifications-log/library/NotificationsLogTable.php:157
 #, php-format
 msgid "Post type: %s"
-msgstr "転記タイプ %s を検索できます"
+msgstr "投稿タイプ %s を検索できます"
 
 #: modules/notifications-log/library/NotificationsLogTable.php:160
 #, php-format
@@ -2920,15 +2647,15 @@ msgstr "ブログ ID: %d"
 #: modules/notifications-log/library/NotificationsLogTable.php:233
 #, php-format
 msgid "Scheduled for %d receivers. Click here to display them."
-msgstr "%d受信機に対してスケジュールされます。クリックして表示します。"
+msgstr "%d人の受信者へ配信予定です。受信者を表示するにはここをクリックしてください。"
 
 #: modules/notifications-log/library/NotificationsLogTable.php:261
 msgid " Scheduled, but late"
-msgstr "スケジュール済み、ただし遅い"
+msgstr " スケジュール済みですが、過ぎています"
 
 #: modules/notifications-log/library/NotificationsLogTable.php:263
 msgid " Scheduled"
-msgstr "予約済み"
+msgstr " 予定"
 
 #: modules/notifications-log/library/NotificationsLogTable.php:282
 #: modules/notifications-log/library/NotificationsLogTable.php:533
@@ -2937,7 +2664,7 @@ msgstr "エラー"
 
 #: modules/notifications-log/library/NotificationsLogTable.php:283
 msgid "The notification was set as \"Scheduled\" but the cron task is not found"
-msgstr "通知が \"スケジュール済み\" に設定されましたが、cron タスクが見つかりません"
+msgstr "通知を「予定」に設定しましたが、cron タスクが見つかりません。"
 
 #: modules/notifications-log/library/NotificationsLogTable.php:288
 msgid "Sent"
@@ -2964,7 +2691,7 @@ msgstr "再スケジュール"
 #: modules/notifications-log/library/NotificationsLogTable.php:383
 #, fuzzy
 msgid "Blog: "
-msgstr "ブログ："
+msgstr "ブログ: "
 
 #: modules/notifications-log/library/NotificationsLogTable.php:408
 msgid "Delete All"
@@ -2978,83 +2705,101 @@ msgstr "すべて"
 msgid "Success"
 msgstr "成功"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:590
+#: modules/notifications-log/library/NotificationsLogTable.php:582
+msgid "Filter by workflow"
+msgstr "ワークフローでフィルタ"
+
+#: modules/notifications-log/library/NotificationsLogTable.php:589
+msgid "Filter by event"
+msgstr "イベントでフィルタ"
+
+#: modules/notifications-log/library/NotificationsLogTable.php:593
 msgid "All events"
 msgstr "すべてのイベント"
 
 #: modules/notifications-log/library/NotificationsLogTable.php:607
+msgid "Filter by channel"
+msgstr "チャンネルでフィルタ"
+
+#: modules/notifications-log/library/NotificationsLogTable.php:611
 msgid "All channels"
 msgstr "すべてのチャンネル"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:626
+#: modules/notifications-log/library/NotificationsLogTable.php:628
+#: modules/notifications-log/library/NotificationsLogTable.php:631
 msgid "From date"
 msgstr "日付から"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:632
+#: modules/notifications-log/library/NotificationsLogTable.php:635
+#: modules/notifications-log/library/NotificationsLogTable.php:638
 msgid "To date"
 msgstr "現在まで"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:640
-msgid "All Receivers"
-msgstr "すべての受信機"
+#: modules/notifications-log/library/NotificationsLogTable.php:646
+msgid "Filter by receiver"
+msgstr "受信者でフィルタ"
 
-#: modules/notifications-log/notifications-log.php:205
+#: modules/notifications-log/library/NotificationsLogTable.php:647
+msgid "All Receivers"
+msgstr "すべての受信者"
+
+#: modules/notifications-log/notifications-log.php:208
 msgid "All Workflows"
 msgstr "すべてのワークフロー"
 
-#: modules/notifications-log/notifications-log.php:206
+#: modules/notifications-log/notifications-log.php:209
 msgid "All Actions"
-msgstr "賃貸・売買を選択"
+msgstr "すべてのアクション"
 
-#: modules/notifications-log/notifications-log.php:207
+#: modules/notifications-log/notifications-log.php:210
 msgid "All Channels"
 msgstr "すべてのチャンネル"
 
-#: modules/notifications-log/notifications-log.php:208
+#: modules/notifications-log/notifications-log.php:211
 msgid "All Statuses"
 msgstr "ステータス一覧"
 
-#: modules/notifications-log/notifications-log.php:209
-#: publishpress.php:1426
-#: publishpress.php:1431
+#: modules/notifications-log/notifications-log.php:212
+#: publishpress.php:1441
+#: publishpress.php:1446
 msgid "Notification"
 msgstr "通知"
 
-#: modules/notifications-log/notifications-log.php:272
+#: modules/notifications-log/notifications-log.php:275
 #, php-format
 msgid "%s notification found."
 msgid_plural "%s notifications found."
 msgstr[0] "%s通知が見つかりました。"
 
-#: modules/notifications-log/notifications-log.php:284
+#: modules/notifications-log/notifications-log.php:287
 msgid "No notifications found."
-msgstr "通知は見つかりませんでした。"
+msgstr "通知が見つかりません。"
 
-#: modules/notifications-log/notifications-log.php:442
+#: modules/notifications-log/notifications-log.php:445
 #, php-format
 msgid ""
 "This notification is very similar to another one sent less than %d minutes "
 "ago for the same receiver"
-msgstr "この通知は、同じ受信者に対して%d分未満に送信された別の通知と非常に似ています。"
+msgstr "この通知は、同じ受信者に対して%d分前に送信した別の通知と非常によく似ています"
 
-#: modules/notifications-log/notifications-log.php:817
+#: modules/notifications-log/notifications-log.php:820
 msgid "Subject:"
 msgstr "タイトル:"
 
-#: modules/notifications-log/notifications-log.php:825
+#: modules/notifications-log/notifications-log.php:828
 msgid "Content:"
-msgstr "内容:"
+msgstr "コンテンツ:"
 
-#: modules/notifications-log/notifications-log.php:835
+#: modules/notifications-log/notifications-log.php:838
 msgid ""
 "This is a preview of the scheduled message. The content can still change "
 "until the notification is sent."
-msgstr "これは、スケジュールされたメッセージのプレビューです。通知が送信されるまで、内容は変更される可能性があります。"
+msgstr "これは通知予定のメッセージのプレビューです。コンテンツは通知が送信されるまで変更できます。"
 
 #: modules/notifications/notifications.php:75
 #: modules/notifications/notifications.php:562
-#: publishpress.php:1425
-#: publishpress.php:1430
+#: publishpress.php:1440
+#: publishpress.php:1445
 msgid "Notifications"
 msgstr "通知"
 
@@ -3066,9 +2811,8 @@ msgid ""
 "when a post changes status or an editorial comment is left by a writer or "
 "an editor.</p>"
 msgstr ""
-"<p>通知は、最も重要なコンテンツの進捗を把握するのに役立ちます。ユーザーは、投稿ごとに1つずつ、または役割を選択して通知に登録できます。</"
-"p><p>有効にすると、投稿のステータスが変更されたり、ライターまたはエディターによって編集コメントが残された際に通知が送信されることがあります。</"
-"p>"
+"<p>通知機能により、あなたは最も重要なコンテンツの進捗状況を常に把握できます。ユーザーは、投稿ごとに、または権限グループを選択して、通知を購読できます"
+"。</p><p>有効化すると、投稿のステータスが変更されたときや、投稿者または編集者によって編集コメントが残されたときに、通知を送信できます。</p>"
 
 #: modules/notifications/notifications.php:102
 msgid ""
@@ -3078,29 +2822,28 @@ msgid ""
 "href=\"https://github.com/ostraining/PublishPress\">PublishPress on "
 "Github</a></p>"
 msgstr ""
-"<p><strong>詳細情報:</strong></p><p><a "
+"<p><strong>詳細情報:</strong></p> <p><a "
 "href=\"https://publishpress.com/features/notifications/\">通知のドキュメント</a></"
-"p><p><a "
-"href=\"https://github.com/ostraining/PublishPress\">GithubのPublishPress</"
-"a></p>"
+"p><p><a href=\"https://github.com/ostraining/PublishPress\">PublishPress on "
+"Github</a></p>"
 
 #: modules/notifications/notifications.php:303
 #: modules/notifications/notifications.php:306
 msgid "Notify User"
-msgstr "ユーザーに通知"
+msgstr "通知ユーザー"
 
 #: modules/notifications/notifications.php:305
 msgid "Notify Users"
-msgstr "ユーザーに通知"
+msgstr "通知ユーザー"
 
 #: modules/notifications/notifications.php:318
 #: modules/notifications/notifications.php:321
 msgid "Notify Role"
-msgstr "役割に通知"
+msgstr "通知権限グループ"
 
 #: modules/notifications/notifications.php:320
 msgid "Notify Roles"
-msgstr "役割に通知"
+msgstr "通知権限グループ"
 
 #: modules/notifications/notifications.php:334
 #: modules/notifications/notifications.php:337
@@ -3114,26 +2857,26 @@ msgstr "通知グループ"
 #: modules/notifications/notifications.php:350
 #: modules/notifications/notifications.php:353
 msgid "Notify Email"
-msgstr "メールに通知"
+msgstr "通知メール"
 
 #: modules/notifications/notifications.php:352
 msgid "Notify Emails"
-msgstr "メールに通知"
+msgstr "通知メール"
 
 #: modules/notifications/notifications.php:530
 #: modules/notifications/notifications.php:940
 msgid "Click to stop being notified on updates for this post"
-msgstr "クリックすると、この投稿の更新に関する通知を停止します"
+msgstr "この投稿の更新通知を停止するにはここをクリック"
 
 #: modules/notifications/notifications.php:531
 #: modules/notifications/notifications.php:939
 msgid "Stop notifying me"
-msgstr "通知を停止する"
+msgstr "通知を停止"
 
 #: modules/notifications/notifications.php:534
 #: modules/notifications/notifications.php:946
 msgid "Click to start being notified on updates for this post"
-msgstr "クリックすると、この投稿の更新に関する通知が開始されます"
+msgstr "この投稿の更新通知を受け取るにはここをクリック"
 
 #: modules/notifications/notifications.php:535
 #: modules/notifications/notifications.php:945
@@ -3144,7 +2887,7 @@ msgstr "通知する"
 msgid ""
 "Enter users, roles, or email addresses that should receive notifications "
 "for this post."
-msgstr "この投稿の通知を受け取るユーザー、役割、またはメールアドレスを入力してください。"
+msgstr "この投稿の通知を受け取るユーザー、ロール、または電子メールアドレスを入力します。"
 
 #: modules/notifications/notifications.php:603
 msgid "Show active notifications"
@@ -3154,7 +2897,7 @@ msgstr "アクティブな通知を表示"
 msgid ""
 "This won't have any effect unless you have at least one workflow targeting "
 "the \"Users who selected \"Notify me\" for the content\" option."
-msgstr "「コンテンツのために「通知を受け取る」を選択したユーザー」というオプションをターゲットにしたワークフローが最低1つない限り、これは効果を持ちません。"
+msgstr "「コンテンツで「通知する」を選択したユーザー」を対象とするワークフローが少なくとも 1 つなければ、この設定は有効になりません。"
 
 #: modules/notifications/notifications.php:656
 msgid "Active Notifications"
@@ -3162,7 +2905,7 @@ msgstr "アクティブな通知"
 
 #: modules/notifications/notifications.php:684
 msgid "Workflow has users enrolled"
-msgstr "ワークフローにはユーザーが登録されています"
+msgstr "ワークフローにユーザーが登録されています"
 
 #: modules/notifications/notifications.php:691
 #, php-format
@@ -3172,108 +2915,106 @@ msgstr "この%sに対するアクティブな通知が見つかりません。"
 #: modules/notifications/notifications.php:1054
 #, php-format
 msgid "You are receiving this email because you are subscribed to \"%s\"."
-msgstr "このメールは「%s」に登録されているため、受信しています。"
+msgstr "このメールは「%s」を登録しているので受信しています。"
 
 #: modules/notifications/notifications.php:1059
 #, php-format
 msgid "This email was sent %s."
-msgstr "この電子メールは%s送信されました。"
+msgstr "このメールを%sに送信しました。"
 
 #: modules/notifications/notifications.php:1715
 msgid "Show the \"Notify me\" and \"Stop notifying me\" links for these post types:"
-msgstr "次の投稿の種類について、[通知] と [通知を停止する] リンクを表示します。"
+msgstr "「通知する」または 「通知を停止」を表示する投稿タイプ:"
 
 #: modules/notifications/notifications.php:1723
 msgid "Email from:"
-msgstr "メール送信者："
+msgstr "メール送信者:"
 
 #: modules/notifications/notifications.php:1731
 msgid "Always notify the author of the content:"
-msgstr "コンテンツの作成者に常に通知します。"
+msgstr "コンテンツ投稿者へ常に通知:"
 
 #: modules/notifications/notifications.php:1739
 msgid "Always notify users who have edited the content:"
-msgstr "コンテンツを編集したユーザーに常に通知する:"
+msgstr "コンテンツを編集したユーザーへ常に通知:"
 
 #: modules/notifications/notifications.php:1747
 msgid "Blacklisted taxonomies for Notifications"
-msgstr "通知のブラックリストに登録された分類"
+msgstr "通知から除外するタクソノミー"
 
 #: modules/notifications/notifications.php:1861
 msgid "slug1,slug2"
-msgstr "スラッグ1,スラッグ2"
+msgstr "スラッグ1、スラッグ2"
 
 #: modules/notifications/notifications.php:1867
 msgid ""
 "Add a list of taxonomy-slugs separated by comma that should not be loaded "
 "by the Taxonomy content filter when adding a new Notification Workflow."
-msgstr ""
-"新しい通知ワークフローを追加する際に、タクソノミーコンテンツフィルターによって読み込まれないべきタクソノミースラグのリストをカンマで区切って追加してくだ"
-"さい。"
+msgstr "通知ワークフローを新規追加する際、タクソノミーコンテンツフィルターで読み込まないタクソノミースラッグのリストをカンマ区切りで追加します。"
 
 #: modules/notifications/notifications.php:2003
 msgid "WordPress Scheduler"
-msgstr "ワードプレススケジューラ"
+msgstr "WordPress スケジューラ"
 
 #: modules/notifications/notifications.php:2012
 #, php-format
 msgid "[%1$s] New %2$s Created: \"%3$s\""
-msgstr "[%1$s] 新しい%2$s作成: \"%3$s\""
+msgstr "[%1$s] 新しい%2$s作成: 「%3$s」"
 
 #: modules/notifications/notifications.php:2019
 #, php-format
 msgid "A new %1$s (#%2$s \"%3$s\" ) was created by %4$s %5$s"
-msgstr "%4$s %5$sによって新しい%1$s (#%2$s \"%3$s\" ) が作成されました"
+msgstr "新しい%1$s (#%2$s 「%3$s」) を %4$s %5$s によって作成しました"
 
 #: modules/notifications/notifications.php:2029
 #, php-format
 msgid "[%1$s] %2$s Trashed: \"%3$s\""
-msgstr "[%1$s] %2$s ゴミ箱: \"%3$s\""
+msgstr "[%1$s] %2$s ゴミ箱: 「%3$s」"
 
 #: modules/notifications/notifications.php:2036
 #, php-format
 msgid "%1$s #%2$s \"%3$s\" was moved to the trash by %4$s %5$s"
-msgstr "%1$s#%2$s「%3$s」は%4$s %5$sによってゴミ箱に移動されました"
+msgstr "%1$s #%2$s「%3$s」は%4$s %5$sによってゴミ箱に移動しました"
 
 #: modules/notifications/notifications.php:2046
 #, php-format
 msgid "[%1$s] %2$s Restored (from Trash ): \"%3$s\""
-msgstr "[%1$s] 復元%2$s (ゴミ箱から) \" \"%3$s\""
+msgstr "[%1$s] 復元%2$s (ゴミ箱から): 「%3$s」"
 
 #: modules/notifications/notifications.php:2053
 #, php-format
 msgid "%1$s #%2$s \"%3$s\" was restored from trash by %4$s %5$s"
-msgstr "%4$s %5$sによってゴミ箱から「%3$s」と%1$s#%2$s「%3$s」が復元されました"
+msgstr "%1$s #%2$s「%3$s」は%4$s %5$sによってゴミ箱から復元しました"
 
 #: modules/notifications/notifications.php:2076
 #, php-format
 msgid "[%1$s] %2$s Published: \"%3$s\""
-msgstr "[%1$s] %2$s 公開: \"%3$s\""
+msgstr "[%1$s] %2$s 公開: 「%3$s」"
 
 #: modules/notifications/notifications.php:2083
 #, php-format
 msgid "%1$s #%2$s \"%3$s\" was published by %4$s %5$s"
-msgstr "%1$s#%2$s「%3$s」は%4$s %5$sによって出版されました"
+msgstr "%1$s #%2$s「%3$s」は%4$s %5$sによって公開しました"
 
 #: modules/notifications/notifications.php:2093
 #, php-format
 msgid "[%1$s] %2$s Unpublished: \"%3$s\""
-msgstr "[%1$s] %2$s 未発表: \"%3$s\""
+msgstr "[%1$s] %2$s 未公開:  「%3$s」"
 
 #: modules/notifications/notifications.php:2100
 #, php-format
 msgid "%1$s #%2$s \"%3$s\" was unpublished by %4$s %5$s"
-msgstr "%1$s#%2$s「%3$s」は%4$s %5$sによって未発表でした"
+msgstr "%1$s #%2$s「%3$s」は%4$s %5$sによって非公開としました"
 
 #: modules/notifications/notifications.php:2110
 #, php-format
 msgid "[%1$s] %2$s Status Changed for \"%3$s\""
-msgstr "[%1$s] %2$sステータスが変更されました \"%3$s\""
+msgstr "[%1$s] %2$s「%3$s」のステータスを変更しました"
 
 #: modules/notifications/notifications.php:2117
 #, php-format
 msgid "Status was changed for %1$s #%2$s \"%3$s\" by %4$s %5$s"
-msgstr "%4$s %5$sによって %1$s #%2$s \"%3$s\" の状態が変更されました"
+msgstr "%1$s #%2$s「%3$s」は%4$s %5$sによってステータスを変更しました"
 
 #: modules/notifications/notifications.php:2128
 #, php-format
@@ -3281,9 +3022,9 @@ msgid "This action was taken on %1$s at %2$s %3$s"
 msgstr "この操作は%1$s (%2$s %3$s) に行われました"
 
 #: modules/notifications/notifications.php:2141
-#, php-format
+#, fuzzy, php-format
 msgid "%1$s => %2$s"
-msgstr "%1$s, %2$s"
+msgstr "%1$s => %2$s"
 
 #: modules/notifications/notifications.php:2149
 #, php-format
@@ -3298,12 +3039,12 @@ msgstr "タイトル: %s"
 #: modules/notifications/notifications.php:2154
 #, php-format
 msgid "Author: %1$s (%2$s )"
-msgstr "著者: %1$s (%2$s)"
+msgstr "投稿者: %1$s (%2$s)"
 
 #: modules/notifications/notifications.php:2168
 #: modules/notifications/notifications.php:2221
 msgid "== Actions =="
-msgstr "操作"
+msgstr "== アクション=="
 
 #: modules/notifications/notifications.php:2170
 #: modules/notifications/notifications.php:2227
@@ -3319,9 +3060,9 @@ msgstr "%s 編集"
 
 #: modules/notifications/notifications.php:2174
 #: modules/notifications/notifications.php:2231
-#, fuzzy, php-format
+#, php-format
 msgid "View: %s"
-msgstr "View: %s"
+msgstr "表示: %s"
 
 #: modules/notifications/notifications.php:2185
 #, php-format
@@ -3331,7 +3072,7 @@ msgstr "[%1$s] 新しい編集コメント:「%2$s」"
 #: modules/notifications/notifications.php:2192
 #, php-format
 msgid "A new editorial comment was added to %3$s #%1$s \"%2$s\""
-msgstr "#%1$s「%2$s」に新しい編集コメント%3$s追加されました"
+msgstr "新しい編集コメントを%3$s #%1$s 「%2$s」に追加しました"
 
 #: modules/notifications/notifications.php:2199
 #, php-format
@@ -3341,7 +3082,7 @@ msgstr "%1$s(%2$s)は%4$sで%3$sに言いました:"
 #: modules/notifications/notifications.php:2223
 #, php-format
 msgid "Reply: %s"
-msgstr "FTPサーバーの応答: %s"
+msgstr "返信: %s"
 
 #: modules/notifications/notifications.php:2234
 #, php-format
@@ -3358,40 +3099,40 @@ msgstr "設定"
 
 #: modules/settings/settings.php:141
 msgid "PublishPress Settings"
-msgstr "発行プレスの設定"
+msgstr "PublishPress の設定"
 
 #: modules/settings/settings.php:142
 msgid "Settings"
 msgstr "設定"
 
-#: modules/settings/settings.php:266
+#: modules/settings/settings.php:266, fuzzy
 msgid "PublishPress Planner"
-msgstr "PublishPress プランナー"
+msgstr "PublishPress Planner"
 
 #: modules/settings/settings.php:269
 #, php-format
 msgid "If you like %s please leave us a %s rating. Thank you!"
-msgstr "あなたが好きなら%s私たちに%s評価を残してください。ありがとうございました！"
+msgstr "もし %s が気に入りましたら、%s 評価をお願いします。ありがとうございました !"
 
 #: modules/settings/settings.php:289
 msgid "There are no PublishPress modules registered"
-msgstr "登録されている公開プレス モジュールがありません。"
+msgstr "PublishPress モジュールを登録していません"
 
 #: modules/settings/settings.php:380
 #, php-format
 msgid ""
 "Disabled because add_post_type_support('%1$s', '%2$s') is included in a "
 "loaded file."
-msgstr "add_post_type_support('%1$s', '%2$s')が読み込まれたファイルに含まれているため無効です。"
+msgstr "読み込まれたファイルに add_post_type_support('%1$s'、'%2$s') が含まれているため無効です。"
 
 #: modules/settings/settings.php:404
-#: publishpress.php:675
+#: publishpress.php:689
 msgid "Cheatin&#8217; uh?"
-msgstr "不正行為&#8217; ?"
+msgstr "不正なリクエストを検出しました"
 
 #: modules/settings/views/footer-base.html.php:21
 msgid "About"
-msgstr "概要"
+msgstr "私たちについて"
 
 #: modules/settings/views/footer-base.html.php:25
 msgid "Documentation"
@@ -3399,100 +3140,72 @@ msgstr "ドキュメント"
 
 #: modules/settings/views/footer-base.html.php:29
 msgid "Contact"
-msgstr "お問い合わせ"
+msgstr "連絡先"
 
 #: modules/theeventscalendar-integration/theeventscalendar-integration.php:52
 msgid "The Events Calendar Integration"
-msgstr "The Events Calendar統合"
+msgstr "イベントカレンダーの統合"
 
 #: modules/theeventscalendar-integration/theeventscalendar-integration.php:53
 msgid "Integrate with the The Events Calendar plugin"
-msgstr "The Events Calendarプラグインとの統合"
+msgstr "The Events Calendar プラグインとの統合"
 
-#: publishpress.php:590
+#: publishpress.php:604, fuzzy
 msgid "Planner"
-msgstr "プランナー"
+msgstr "Planner"
 
-#: publishpress.php:671
+#: publishpress.php:685
 msgid "Configure"
 msgstr "定義設定"
 
-#: publishpress.php:674
+#: publishpress.php:688
 msgid "Please correct your form errors below and try again."
 msgstr "以下のフォームエラーを修正して、やり直してください。"
 
-#: publishpress.php:676
+#: publishpress.php:690
 msgid "You do not have necessary permissions to complete this action."
 msgstr "この操作を完了するために必要なアクセス許可がありません。"
 
-#: publishpress.php:680
+#: publishpress.php:694
 msgid "Post does not exist"
 msgstr "投稿が存在しません"
 
-#: publishpress.php:1427
+#: publishpress.php:1442
 msgid "Add New Notification"
 msgstr "新しい通知の追加"
 
-#: publishpress.php:1428
+#: publishpress.php:1443
 msgid "Edit Notification"
 msgstr "通知を編集"
 
-#: publishpress.php:1429
+#: publishpress.php:1444
 msgid "Search Notifications"
 msgstr "通知を検索"
 
-#: publishpress.php:1432
-#: publishpress.php:1433
+#: publishpress.php:1447
+#: publishpress.php:1448
 msgid "No notification found"
 msgstr "通知が見つかりません"
 
-#: publishpress.php:1473
+#: publishpress.php:1489
 msgid ""
 "PublishPress Planner tried to load multiple times. Please, deactivate and "
 "remove other instances of PublishPress, specially if you are using "
 "PublishPress Pro."
 msgstr ""
-"PublishPress "
-"Plannerは複数回読み込もうとしました。他のPublishPressのインスタンスを無効にして削除してください。特にPublishPress "
-"Proを使用している場合は注意してください。"
+"PublishPress Planner は複数回読み込みを試行しました。特に PublishPress Pro "
+"を使用している場合は、PublishPress の他のインスタンスを無効にして削除してください。"
 
-#: publishpress.php:1481
+#: publishpress.php:1497
 msgid "Warning"
-msgstr "警告"
-
-#: modules/editorial-comments/lib/editorial-comments.js:203
-#: modules/editorial-comments/lib/editorial-comments.js:371
-msgid "Please enter a comment"
-msgstr "コメントを入力してください"
-
-#: modules/editorial-comments/lib/editorial-comments.js:377
-msgid "Sending content..."
-msgstr "コンテンツを送信中..."
-
-#: modules/editorial-comments/lib/editorial-comments.js:434
-msgid ""
-"This comment can't be deleted because it has one or more replies. Before "
-"deleting it make sure to delete all the replies first."
-msgstr "このコメントは1つ以上の返信があるため削除できません。削除する前に、まずすべての返信を削除してください。"
-
-#: modules/editorial-comments/lib/editorial-comments.js:438
-msgid "Are you sure you want to delete this comment?"
-msgstr "このコメントを削除してもよろしいですか？"
-
-#: modules/notifications-log/assets/js/admin.js:73
-msgid "for"
-msgstr "のために"
-
-#: modules/notifications-log/assets/js/admin.js:73
-msgid "by"
-msgstr "によって"
+msgstr "注意"
 
 #: modules/content-board/library/content-board-utilities.php:538
 #: modules/content-overview/library/content-overview-utilities.php:643
-#, fuzzy, php-format
+#, php-format
 msgctxt "%1$s = start date, %2$s = end date"
 msgid " %1$s <div class=\"input-divider\">to</div> %2$s"
-msgstr " %1$s <div class=\"input-divider\">to</div> %2$s"
+msgstr " %1$s <div class=\"input-divider\">から</div> %2$s"
 
 #: modules/editorial-metadata/editorial-metadata.php:451
 msgctxt "taxonomy general name"

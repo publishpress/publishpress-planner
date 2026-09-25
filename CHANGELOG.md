@@ -1,6 +1,33 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[4.8.1] - 30 Sept, 2026
+
+- Changed: Workflow metaboxes now support WordPress block editor compatibility. #2055
+- Changed: Content Calendar keyboard navigation has been improved for better accessibility. #2032
+- Changed: Planner form controls now include clearer labels to improve accessibility and usability. #2033
+- Changed: Planner tables now use more semantic markup for improved accessibility and screen-reader support. #2034
+- Changed: Calendar scripts now register their translations asynchronously for improved loading behavior. #2052
+- Changed: The Content Board now displays checklist status, making workflow progress easier to see at a glance. #2054
+- Changed: Revision statuses are now hidden when the Revisions feature is not enabled, keeping the interface cleaner. #2051
+- Changed: The module URL property is now explicitly declared for improved consistency and compatibility. #2059
+- Changed: CodeQL and other security workflows have been refactored and updated to improve code quality and automated security checks. #2045 #2010
+- Changed: Plugin documentation and readme information have been refreshed. #2039 #2040 #2013
+- Changed: The plugin's frontend and administrative assets have been refreshed. #2011
+- Fixed: Security issues and code-scanning findings have been addressed to improve the overall security of the plugin. #2058 #2012 #2038 #2001
+- Fixed: Workflow queries have been hardened to perform more reliably with posts containing large amounts of post meta data. #2056
+- Fixed: The Content Calendar now correctly restores the calendar popup card width after recent accessibility changes. #2060
+- Fixed: The Content Calendar now respects the configured date format in the date picker. #2049
+- Fixed: Auto-draft content updates no longer trigger incorrect or unnecessary notifications. #1888 #2048
+- Fixed: Select2 translations are now loaded correctly in the Content Calendar. #2047
+- Fixed: Visual regressions in the Content Calendar caused by keyboard accessibility improvements have been corrected. #2057
+- Fixed: Unsafe module descriptions are now handled more securely to prevent potentially unsafe content from being decoded. #2044
+- Fixed: Planner database queries have been prepared and optimized for safer and more reliable execution. #2043
+- Fixed: Missing image alternative text has been added in affected areas to improve accessibility. #2042
+- Fixed: Dependency-related security advisories have been addressed through updated third-party packages. #2029 #2037 #2035 #2031 #2027 #2021 #2006 #2007 #1998
+- Removed: The editorial comment workflow event has been removed. #2050
+- Removed: Unused development tooling and libraries, including Grunt watch, Grunt curl, Mocha, and Babel Minify Webpack Plugin. #2004 #2003 #2002 #2000
+
 [4.8.0] - 13 Apr, 2025
 
 - Added: Expanded language support with improved translation system integration (up to 34 languages). #1974

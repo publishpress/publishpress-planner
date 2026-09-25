@@ -10,6 +10,8 @@ jobs:
   deploy-to-trunk:
     name: Deploy assets/readme to trunk
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout code
         uses: actions/checkout@master

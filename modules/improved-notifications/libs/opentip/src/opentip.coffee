@@ -1150,26 +1150,26 @@ class Opentip
     hb = borderWidth / 2
 
     # This is the angle of the tip
-    halfAngle = Math.atan (outerStemBase / 2) / outerStemLength
-      angle = halfAngle * 2
+    halfAngle = Math.atan ((outerStemBase / 2) / outerStemLength)
+    angle = halfAngle * 2
 
-# The rhombus from the border tip to the path tip
-      rhombusSide = hb / Math.sin angle
+    # The rhombus from the border tip to the path tip
+    rhombusSide = hb / Math.sin angle
 
-      distanceBetweenTips = 2 * rhombusSide * Math.cos halfAngle
-      stemLength = hb + outerStemLength - distanceBetweenTips
+    distanceBetweenTips = 2 * rhombusSide * Math.cos halfAngle
+    stemLength = hb + outerStemLength - distanceBetweenTips
 
-      throw new Error "Sorry but your stemLength / stemBase ratio is strange." if stemLength < 0
+    throw new Error "Sorry but your stemLength / stemBase ratio is strange." if stemLength < 0
 
-# Now calculate the new base
-      stemBase = (Math.tan(halfAngle) * stemLength) * 2
+    # Now calculate the new base
+    stemBase = (Math.tan(halfAngle) * stemLength) * 2
 
-      {stemLength: stemLength, stemBase: stemBase}
+    {stemLength: stemLength, stemBase: stemBase}
 
 
 
 # Turns a color string into a possible gradient
-      _getColor: (ctx, dimensions, color, horizontal = no) ->
+    _getColor: (ctx, dimensions, color, horizontal = no) ->
 
 # There is no comma so just return
         return color if typeof color == "string"
@@ -1292,7 +1292,7 @@ class Opentip
       ]
 
 # Sets a sepcific css3 value for all vendors
-      Opentip::setCss3Style = (element, styles) ->
+    Opentip::setCss3Style = (element, styles) ->
         element = @adapter.unwrap element
         for own prop, value of styles
           if element.style[prop]?
@@ -1505,9 +1505,9 @@ class Opentip
         "left"
         "topLeft"
       ]
-      Opentip.position = {}
-      for position, i in Opentip.positions
-        Opentip.position[position] = i
+    Opentip.position = {}
+    for position, i in Opentip.positions
+      Opentip.position[position] = i
 
 
 # The standard style.

@@ -463,18 +463,18 @@ if (! class_exists('PP_Calendar_Utilities')) {
                             $me_mode = (int) $user_filters['me_mode'];
                             $active_me_mode = !empty($me_mode) ? 'active-filter' : '';
                         ?>
-                    <div class="item action me-mode-action <?php echo esc_attr($active_me_mode); ?>"
-                        data-label="<?php esc_html_e('Me Mode', 'publishpress'); ?>">
+                    <button type="button" class="item action me-mode-action <?php echo esc_attr($active_me_mode); ?>"
+                        data-label="<?php esc_attr_e('Me Mode', 'publishpress'); ?>">
                         <span class="dashicons dashicons-admin-users"></span> <?php esc_html_e('Me Mode', 'publishpress'); ?>
-                    </div>
+                    </button>
                     <?php do_action('pp_content_calendar_filter_after_me_mode', $user_filters); ?>
                     <?php $modal_id++; ?>
-                    <div class="item action co-filter" data-target="#content_calendar_modal_<?php echo esc_attr($modal_id); ?>">
+                    <button type="button" class="item action co-filter" data-target="#content_calendar_modal_<?php echo esc_attr($modal_id); ?>">
                         <span class="dashicons dashicons-filter"></span> <?php esc_html_e('Customize Filters', 'publishpress'); ?>
-                    </div>
+                    </button>
                     <div id="content_calendar_modal_<?php echo esc_attr($modal_id); ?>" class="customize-customize-item-modal content-calendar-modal" style="display: none;">
                         <div class="content-calendar-modal-content">
-                            <span class="close">&times;</span>
+                            <button type="button" class="close" aria-label="<?php esc_attr_e('Close', 'publishpress'); ?>">&times;</button>
                             <?php echo self::content_calendar_customize_filter_form($args); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                         </div>
                     </div>
@@ -482,7 +482,7 @@ if (! class_exists('PP_Calendar_Utilities')) {
                 <div class="right-items">
                     <div class="item">
                         <div class="search-bar">
-                            <input type="search" id="co-searchbox-search-input" name="s" value="<?php _admin_search_query(); ?>" placeholder="<?php esc_attr_e('Search box', 'publishpress'); ?>" />
+                            <input type="search" id="co-searchbox-search-input" name="s" value="<?php _admin_search_query(); ?>" placeholder="<?php esc_attr_e('Search box', 'publishpress'); ?>" aria-label="<?php esc_attr_e('Search content', 'publishpress'); ?>" />
                             <?php submit_button(esc_html__('Search', 'publishpress'), '', '', false, ['id' => 'co-searchbox-search-submit']); ?>
                         </div>
                     </div>
@@ -504,7 +504,7 @@ if (! class_exists('PP_Calendar_Utilities')) {
                     </button>
                     <div id="content_calendar_modal_<?php echo esc_attr($modal_id); ?>" class="content-calendar-modal" style="display: none;">
                         <div class="content-calendar-modal-content">
-                            <span class="close">&times;</span>
+                            <button type="button" class="close" aria-label="<?php esc_attr_e('Close', 'publishpress'); ?>">&times;</button>
                             <div>
                                 <select name="weeks" id="weeks" class="calendar-weeks-filter">
                                     <?php 
@@ -1175,6 +1175,7 @@ if (! class_exists('PP_Calendar_Utilities')) {
         public static function get_content_calendar_form_filters($args)
         {
             $content_calendar_datas = $args['content_calendar_datas'];
+            $is_revisions_active = ! empty($args['is_revisions_active']);
             // custom filters
             $filters['custom'] = [
                 'title'     => esc_html__('Custom filters', 'publishpress'),
@@ -1183,14 +1184,20 @@ if (! class_exists('PP_Calendar_Utilities')) {
             ];
     
             // default filters
+            $default_filters = [
+                'post_status' => esc_html__('Post Status', 'publishpress'),
+            ];
+            if ($is_revisions_active) {
+                $default_filters['revision_status'] = esc_html__('Revision Status', 'publishpress');
+            }
+            $default_filters += [
+                'author' => esc_html__('Author', 'publishpress'),
+                'cpt' => esc_html__('Post Type', 'publishpress')
+            ];
+
             $filters['default'] = [
                 'title'     => esc_html__('Inbuilt filters', 'publishpress'),
-                'filters'   => [
-                    'post_status' => esc_html__('Post Status', 'publishpress'),
-                    'revision_status' => esc_html__('Revision Status', 'publishpress'),
-                    'author' => esc_html__('Author', 'publishpress'),
-                    'cpt' => esc_html__('Post Type', 'publishpress')
-                ]
+                'filters'   => $default_filters
             ];
             
             // editorial fields filters

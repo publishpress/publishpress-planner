@@ -544,9 +544,10 @@ if (! class_exists('PP_Improved_Notifications')) {
                 // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
                 $posts = $wpdb->get_results(
                     $wpdb->prepare(
-                        "SELECT ID, post_name FROM $wpdb->posts WHERE post_type = %s AND post_status = 'publish' AND (post_name = %s OR post_name LIKE '$default_workflow_name-%') ORDER BY ID ASC",    //phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+                        "SELECT ID, post_name FROM $wpdb->posts WHERE post_type = %s AND post_status = 'publish' AND (post_name = %s OR post_name LIKE %s) ORDER BY ID ASC",
                         'psppnotif_workflow',
-                        $default_workflow_name
+                        $default_workflow_name,
+                        $wpdb->esc_like($default_workflow_name) . '-%'
                     )
                 );
 
@@ -798,11 +799,21 @@ if (! class_exists('PP_Improved_Notifications')) {
         {
             global $wpdb;
 
-            $query = "UPDATE {$wpdb->postmeta} SET meta_key = '_psppno_torole' WHERE meta_key = '_psppno_togroup'";
-            $wpdb->query($query);
+            $wpdb->update(
+                $wpdb->postmeta,
+                ['meta_key' => '_psppno_torole'],
+                ['meta_key' => '_psppno_togroup'],
+                ['%s'],
+                ['%s']
+            );
 
-            $query = "UPDATE {$wpdb->postmeta} SET meta_key = '_psppno_torolelist' WHERE meta_key = '_psppno_togrouplist'";
-            $wpdb->query($query);
+            $wpdb->update(
+                $wpdb->postmeta,
+                ['meta_key' => '_psppno_torolelist'],
+                ['meta_key' => '_psppno_togrouplist'],
+                ['%s'],
+                ['%s']
+            );
         }
 
 
@@ -886,6 +897,11 @@ if (! class_exists('PP_Improved_Notifications')) {
 
             // Ignores auto-save
             if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+                return;
+            }
+
+            // Opening the editor creates an auto-draft without a content update.
+            if ('auto-draft' === $post->post_status) {
                 return;
             }
 
@@ -1123,7 +1139,8 @@ if (! class_exists('PP_Improved_Notifications')) {
                 [$this, 'publishpress_notif_workflow_metabox'],
                 null,
                 'advanced',
-                'high'
+                'high',
+                ['__block_editor_compatible_meta_box' => true]
             );
 
             add_meta_box(
@@ -1132,7 +1149,8 @@ if (! class_exists('PP_Improved_Notifications')) {
                 [$this, 'publishpress_notif_workflow_options_metabox'],
                 null,
                 'side',
-                'high'
+                'high',
+                ['__block_editor_compatible_meta_box' => true]
             );
 
             add_meta_box(
@@ -1141,7 +1159,8 @@ if (! class_exists('PP_Improved_Notifications')) {
                 [$this, 'publishpress_notif_workflow_help_metabox'],
                 null,
                 'side',
-                'low'
+                'low',
+                ['__block_editor_compatible_meta_box' => true]
             );
         }
 

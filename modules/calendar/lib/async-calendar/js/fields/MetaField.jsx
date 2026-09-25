@@ -1,4 +1,5 @@
 import DOMPurify from "dompurify";
+import { getSelect2LanguageParameters } from "../Functions";
 const $ = jQuery;
 
 export default function MetaField(props) {
@@ -9,6 +10,7 @@ export default function MetaField(props) {
             $('.pp_editorial_single_select2').pp_select2(
               {
                 allowClear: true,
+                language: getSelect2LanguageParameters(),
                 placeholder: function(){
                   $(this).data('placeholder');
                 }
@@ -18,6 +20,7 @@ export default function MetaField(props) {
         
           if ($('.pp_editorial_meta_multi_select2').length > 0) {
             $('.pp_editorial_meta_multi_select2').pp_select2({
+              language: getSelect2LanguageParameters(),
               multiple: true
             });
           }

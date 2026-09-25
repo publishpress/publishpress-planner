@@ -43,6 +43,13 @@ if (!class_exists('PP_Module')) {
 
         public $options;
 
+        /**
+         * Public URL for the module assets.
+         *
+         * @var string
+         */
+        public $module_url = '';
+
         public $published_statuses = [
             'publish',
             // 'future',
@@ -557,18 +564,18 @@ if (!class_exists('PP_Module')) {
         }
 
         /**
-         * Encode all of the given arguments as a serialized array, and then base64_encode
+         * Encode all of the given arguments as JSON.
          * Used to store extra data in a term's description field.
          *
          * @param array $args The arguments to encode
          *
-         * @return string Arguments encoded in base64
+         * @return string Arguments encoded as JSON
          * @since 0.7
          *
          */
         public function get_encoded_description($args = [])
         {
-            return base64_encode(maybe_serialize($args));
+            return wp_json_encode($args);
         }
 
         /**
@@ -583,7 +590,22 @@ if (!class_exists('PP_Module')) {
          */
         public function get_unencoded_description($string_to_unencode)
         {
-            return maybe_unserialize(base64_decode($string_to_unencode));
+            $string_to_unencode = stripslashes(htmlspecialchars_decode($string_to_unencode));
+            $decoded_array      = json_decode($string_to_unencode, true);
+
+            if (is_array($decoded_array)) {
+                return $decoded_array;
+            }
+
+            // Legacy Planner versions stored term descriptions as base64-encoded serialized arrays.
+            $legacy_payload = base64_decode($string_to_unencode, true);
+            if (false === $legacy_payload || ! is_serialized($legacy_payload)) {
+                return $string_to_unencode;
+            }
+
+            $legacy_array = @unserialize($legacy_payload, ['allowed_classes' => false]);
+
+            return is_array($legacy_array) ? $legacy_array : $string_to_unencode;
         }
 
         public function get_path_base()
@@ -844,32 +866,13 @@ if (!class_exists('PP_Module')) {
 
             $terms = get_terms($taxonomy, $args);
             foreach ($terms as $term) {
-                // If we can detect that this term already follows the new scheme, let's skip it
-                $maybe_serialized = base64_decode($term->description);
-                if (is_serialized($maybe_serialized)) {
+                // If the description already contains structured data, keep it as-is.
+                $unencoded_description = $this->get_unencoded_description($term->description);
+                if (is_array($unencoded_description)) {
                     continue;
                 }
 
-                $description_args = [];
-
-                // This description has been JSON-encoded, so let's decode it
-                if (0 === strpos($term->description, '{')) {
-                    $string_to_unencode = stripslashes(htmlspecialchars_decode($term->description));
-                    $unencoded_array    = json_decode($string_to_unencode, true);
-                    // Only continue processing if it actually was an array. Otherwise, set to the original string
-                    if (is_array($unencoded_array)) {
-                        foreach ($unencoded_array as $key => $value) {
-                            // html_entity_decode only works on strings but sometimes we store nested arrays
-                            if (!is_array($value)) {
-                                $description_args[$key] = html_entity_decode($value, ENT_QUOTES);
-                            } else {
-                                $description_args[$key] = $value;
-                            }
-                        }
-                    }
-                } else {
-                    $description_args['description'] = $term->description;
-                }
+                $description_args = ['description' => $term->description];
 
                 $new_description = $this->get_encoded_description($description_args);
                 wp_update_term(

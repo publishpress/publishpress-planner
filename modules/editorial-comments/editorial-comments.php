@@ -177,7 +177,7 @@ if (! class_exists('PP_Editorial_Comments')) {
             wp_enqueue_script(
                 'publishpress-editorial-comments',
                 $this->module_url . 'lib/editorial-comments.js',
-                ['jquery', 'wp-ajax-response', 'publishpress-select2'],
+                ['jquery', 'wp-ajax-response', 'publishpress-select2', 'wp-i18n'],
                 PUBLISHPRESS_VERSION,
                 true
             );
@@ -209,7 +209,11 @@ if (! class_exists('PP_Editorial_Comments')) {
                 ]
             );
 
-            wp_set_script_translations( 'publishpress-editorial-comments', 'publishpress' );
+            wp_set_script_translations(
+                'publishpress-editorial-comments',
+                'publishpress',
+                PUBLISHPRESS_BASE_PATH . '/languages'
+            );
 
             $thread_comments = (int)get_option('thread_comments'); ?>
             <script type="text/javascript">
@@ -407,25 +411,21 @@ if (! class_exists('PP_Editorial_Comments')) {
             INNER JOIN {$wpdb->comments} AS c
             ON u.ID = c.user_id
             WHERE c.comment_type = %s";
+            $queryArgs = [$commentType];
 
             if (!empty($queryText)) {
-                $userSql .= $wpdb->prepare(
-                    " AND (user_login LIKE %s
+                $searchLike = '%' . $wpdb->esc_like($queryText) . '%';
+                $userSql .= " AND (user_login LIKE %s
                     OR user_url LIKE %s
                     OR user_email LIKE %s
                     OR user_nicename LIKE %s
-                    OR display_name LIKE %s)",
-                    '%' . $wpdb->esc_like($queryText) . '%',
-                    '%' . $wpdb->esc_like($queryText) . '%',
-                    '%' . $wpdb->esc_like($queryText) . '%',
-                    '%' . $wpdb->esc_like($queryText) . '%',
-                    '%' . $wpdb->esc_like($queryText) . '%'
-                );
+                    OR display_name LIKE %s)";
+                $queryArgs = array_merge($queryArgs, array_fill(0, 5, $searchLike));
             }
 
             $userSql .= " ORDER BY u.display_name LIMIT 20";
 
-            $users = $wpdb->get_results($wpdb->prepare($userSql, $commentType));
+            $users = $wpdb->get_results($wpdb->prepare($userSql, $queryArgs));
 
             foreach ($users as $user) {
                 $results[] = [

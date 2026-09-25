@@ -3,7 +3,7 @@
  * Plugin Name: PublishPress Planner Free
  * Plugin URI: https://publishpress.com/
  * Description: PublishPress Planner helps you plan and publish content inside WordPress. Features include a content calendar, kanban board, and notifications.
- * Version: 4.8.0
+ * Version: 4.8.1
  * Author: PublishPress
  * Author URI: https://publishpress.com
  * Text Domain: publishpress
@@ -67,6 +67,11 @@ if (is_file($instanceProtectionIncPath) && is_readable($instanceProtectionIncPat
     require_once $instanceProtectionIncPath;
 }
 
+$bundledTranslationsIncPath = PP_LIB_VENDOR_PATH . '/publishpress/bundled-translations/core/include.php';
+if (is_file($bundledTranslationsIncPath) && is_readable($bundledTranslationsIncPath)) {
+    require_once $bundledTranslationsIncPath;
+}
+
 if (class_exists('PublishPressInstanceProtection\\Config')) {
     $pluginCheckerConfig = new PublishPressInstanceProtection\Config();
     $pluginCheckerConfig->pluginSlug    = 'publishpress';
@@ -86,6 +91,15 @@ if (! class_exists('ComposerAutoloaderInitPublishPressPlanner')
 add_action('plugins_loaded', function () {
 
     require_once 'includes.php';
+
+    if (class_exists('PublishPress\BundledTranslations\BundledTranslations')) {
+        $bundledTranslations = new PublishPress\BundledTranslations\BundledTranslations(
+            'publishpress',
+            PUBLISHPRESS_BASE_PATH . '/languages',
+            PUBLISHPRESS_FILE_PATH
+        );
+        $bundledTranslations->init();
+    }
 
     // Core class
     if (! class_exists('publishpress')) {
@@ -778,6 +792,8 @@ add_action('plugins_loaded', function () {
                     'pp-notif-log',
                     'pp-manage-roles',
                     'pp-modules-settings',
+                    'pp-editorial-comments',
+                    'pp-editorial-metadata',
                 ];
 
                 $is_pp_page_param      = isset($_GET['page']) && in_array(sanitize_key($_GET['page']), $publishpress_pages);
@@ -1366,15 +1382,14 @@ add_action('plugins_loaded', function () {
 
                 $queryText = isset($_GET['q']) ? sanitize_text_field($_GET['q']) : '';
 
-                // If queryText is not empty, add a WHERE clause to filter meta_key
-                $whereClause = '';
-                if (!empty($queryText)) {
-                    $like = '%' . $wpdb->esc_like($queryText) . '%';
-                    $whereClause = $wpdb->prepare("AND meta_key LIKE %s", $like);
-                }
+                $like = '%' . $wpdb->esc_like($queryText) . '%';
 
-                // Updated query with conditional search
-                $queryResults = $wpdb->get_col("SELECT DISTINCT meta_key FROM $wpdb->postmeta WHERE 1=1 $whereClause ORDER BY meta_key ASC LIMIT 20");
+                $queryResults = $wpdb->get_col(
+                    $wpdb->prepare(
+                        "SELECT DISTINCT meta_key FROM {$wpdb->postmeta} WHERE meta_key LIKE %s ORDER BY meta_key ASC LIMIT 20",
+                        $like
+                    )
+                );
 
                 $results = [];
                 if (!empty($queryResults)) {
@@ -1437,6 +1452,7 @@ add_action('plugins_loaded', function () {
                         'has_archive' => false,
                         'rewrite' => false,
                         'show_ui' => true,
+                        'show_in_rest' => true,
                         'query_var' => true,
                         'capability_type' => 'pp_notif_workflow',
                         'hierarchical' => false,

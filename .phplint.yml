@@ -16,4 +16,6 @@ exclude:
   - languages
   - .github
   - tests
+  - .web
+  - .ddev
 warning: false

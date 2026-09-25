@@ -8,7 +8,7 @@ jQuery(function ($) {
         function strip_html (input) {
             var regexp = new RegExp(/\<[^\<]+\>/g);
             var output = input.replace(regexp, '');
-            output = $.trim(output.toLowerCase().replace(/\n/, '').replace(/\s{2,}/, ' '));
+            output = $.trim(output.toLowerCase().replace(/\n/g, '').replace(/\s{2,}/g, ' '));
             return output;
         }
 

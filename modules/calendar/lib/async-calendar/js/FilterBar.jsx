@@ -1,7 +1,6 @@
 import Select from "./Select";
 import TaxonomyField from "./fields/TaxonomyField";
-
-const _n = wp.i18n._n;
+import { _n, sprintf } from '@wordpress/i18n';
 
 export default function FilterBar(props) {
     const handleFilterChange = (filterName, value) => {
@@ -35,8 +34,7 @@ export default function FilterBar(props) {
     }
 
     const getWeeksFilterLabel = (numberOfWeeks) => {
-        return _n(props.strings.xWeek, props.strings.xWeeks, numberOfWeeks, 'publishpress')
-            .replace('%d', numberOfWeeks);
+        return sprintf(_n('%d week', '%d weeks', numberOfWeeks, 'publishpress'), numberOfWeeks);
     }
 
     const weeksFilterPlaceholder = getWeeksFilterLabel(props.numberOfWeeksToDisplay);

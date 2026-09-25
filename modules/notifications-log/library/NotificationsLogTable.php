@@ -563,7 +563,8 @@ class NotificationsLogTable extends WP_List_Table
         }
 
         // phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
-        echo '<select class="filter-posts" name="post_id">' . $selectedOptionEscaped . '</select>';
+        echo '<label class="screen-reader-text" for="publishpress-notifications-filter-posts">' . esc_html__('Filter by post', 'publishpress') . '</label>';
+        echo '<select class="filter-posts" id="publishpress-notifications-filter-posts" name="post_id">' . $selectedOptionEscaped . '</select>';
         // phpcs:enable
 
         // Workflow
@@ -578,13 +579,15 @@ class NotificationsLogTable extends WP_List_Table
         }
 
         // phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
-        echo '<select class="filter-workflows" name="workflow_id">' . $selectedOptionEscaped . '</select>';
+        echo '<label class="screen-reader-text" for="publishpress-notifications-filter-workflows">' . esc_html__('Filter by workflow', 'publishpress') . '</label>';
+        echo '<select class="filter-workflows" id="publishpress-notifications-filter-workflows" name="workflow_id">' . $selectedOptionEscaped . '</select>';
         // phpcs:enable
 
         // Event
         $selectedAction = isset($_GET['event']) ? sanitize_text_field($_GET['event']) : '';
 
-        echo '<select class="filter-actions" name="event">';
+        echo '<label class="screen-reader-text" for="publishpress-notifications-filter-events">' . esc_html__('Filter by event', 'publishpress') . '</label>';
+        echo '<select class="filter-actions" id="publishpress-notifications-filter-events" name="event">';
         $events = apply_filters('publishpress_notifications_workflow_events', []);
 
         echo '<option value="">' . esc_html__('All events', 'publishpress') . '</option>';
@@ -601,7 +604,8 @@ class NotificationsLogTable extends WP_List_Table
         // Channel
         $selectedChannel = isset($_GET['channel']) ? sanitize_text_field($_GET['channel']) : '';
 
-        echo '<select class="filter-channels" name="channel">';
+        echo '<label class="screen-reader-text" for="publishpress-notifications-filter-channels">' . esc_html__('Filter by channel', 'publishpress') . '</label>';
+        echo '<select class="filter-channels" id="publishpress-notifications-filter-channels" name="channel">';
         $channels = apply_filters('psppno_filter_channels', []);
 
         echo '<option value="">' . esc_html__('All channels', 'publishpress') . '</option>';
@@ -621,13 +625,15 @@ class NotificationsLogTable extends WP_List_Table
 
         echo '<div class="filter-2nd-line">';
         echo '<span class="filter-dates">';
-        echo '<input type="text" class="filter-date-begin" name="date_begin" value="' . esc_attr(
+        echo '<label class="screen-reader-text" for="publishpress-notifications-filter-date-begin">' . esc_html__('From date', 'publishpress') . '</label>';
+        echo '<input type="text" class="filter-date-begin" id="publishpress-notifications-filter-date-begin" name="date_begin" value="' . esc_attr(
                 $dateBegin
             ) . '" placeholder="' . esc_html__(
                 'From date',
                 'publishpress'
             ) . '" />&nbsp;';
-        echo '&nbsp;<input type="text" class="filter-date-end" name="date_end" value="' . esc_attr(
+        echo '&nbsp;<label class="screen-reader-text" for="publishpress-notifications-filter-date-end">' . esc_html__('To date', 'publishpress') . '</label>';
+        echo '&nbsp;<input type="text" class="filter-date-end" id="publishpress-notifications-filter-date-end" name="date_end" value="' . esc_attr(
                 $dateEnd
             ) . '" placeholder="' . esc_html__(
                 'To date',
@@ -637,7 +643,8 @@ class NotificationsLogTable extends WP_List_Table
 
         // Receiver
         $receiver = isset($_GET['receiver']) ? sanitize_text_field($_GET['receiver']) : '';
-        echo '<input type="text" placeholder="' . esc_html__(
+        echo '<label class="screen-reader-text" for="publishpress-notifications-filter-receiver">' . esc_html__('Filter by receiver', 'publishpress') . '</label>';
+        echo '<input type="text" id="publishpress-notifications-filter-receiver" placeholder="' . esc_html__(
                 'All Receivers',
                 'publishpress'
             ) . '" name="receiver" value="' . esc_attr($receiver) . '" />';
