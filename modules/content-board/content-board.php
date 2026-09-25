@@ -1624,19 +1624,6 @@ class PP_Content_Board extends PP_Module
             return $out;
         }
 
-        if (strpos($column_name, 'ppch_co_checklist_') === 0) {
-            $requirement = str_replace('ppch_co_checklist_', '', $column_name);
-            $checklists = apply_filters('publishpress_checklists_requirement_list', [], $post);
-
-            if (! array_key_exists($requirement, $checklists)) {
-                return '<span>' . esc_html__('None', 'publishpress') . '</span>';
-            }
-
-            return ! empty($checklists[$requirement]['status'])
-                ? esc_html__('Passed', 'publishpress')
-                : esc_html__('Failed', 'publishpress');
-        }
-
         switch ($column_name) {
             case 'post_status':
                 $status_name = $this->get_post_status_friendly_name($post->post_status);
