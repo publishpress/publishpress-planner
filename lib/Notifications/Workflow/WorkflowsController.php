@@ -85,15 +85,18 @@ class WorkflowsController
      */
     public function get_workflows_filter_query($params)
     {
+        global $wpdb;
+
         // Build the query
         $query_args = [
-            'nopaging'      => true,
-            'post_type'     => PUBLISHPRESS_NOTIF_POST_TYPE_WORKFLOW,
-            'post_status'   => 'publish',
-            'no_found_rows' => true,
-            'cache_results' => true,
-            'meta_query'    => [],
-            'needs_event_filter' => true,
+            'nopaging'               => true,
+            'post_type'              => PUBLISHPRESS_NOTIF_POST_TYPE_WORKFLOW,
+            'post_status'            => 'publish',
+            'no_found_rows'          => true,
+            'cache_results'          => true,
+            'update_post_term_cache' => false,
+            'meta_query'             => [],
+            'needs_event_filter'     => true,
         ];
 
         /**
@@ -108,6 +111,8 @@ class WorkflowsController
         if (empty($query_args['meta_query']) || isset($query_args['needs_event_filter'])) {
             return (object) ['posts' => []];
         }
+
+        $wpdb->query('SET SESSION SQL_BIG_SELECTS=1'); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
         return new WP_Query($query_args);
     }
