@@ -67,6 +67,11 @@ if (is_file($instanceProtectionIncPath) && is_readable($instanceProtectionIncPat
     require_once $instanceProtectionIncPath;
 }
 
+$bundledTranslationsIncPath = PP_LIB_VENDOR_PATH . '/publishpress/bundled-translations/core/include.php';
+if (is_file($bundledTranslationsIncPath) && is_readable($bundledTranslationsIncPath)) {
+    require_once $bundledTranslationsIncPath;
+}
+
 if (class_exists('PublishPressInstanceProtection\\Config')) {
     $pluginCheckerConfig = new PublishPressInstanceProtection\Config();
     $pluginCheckerConfig->pluginSlug    = 'publishpress';
@@ -86,6 +91,15 @@ if (! class_exists('ComposerAutoloaderInitPublishPressPlanner')
 add_action('plugins_loaded', function () {
 
     require_once 'includes.php';
+
+    if (class_exists('PublishPress\BundledTranslations\BundledTranslations')) {
+        $bundledTranslations = new PublishPress\BundledTranslations\BundledTranslations(
+            'publishpress',
+            PUBLISHPRESS_BASE_PATH . '/languages',
+            PUBLISHPRESS_FILE_PATH
+        );
+        $bundledTranslations->init();
+    }
 
     // Core class
     if (! class_exists('publishpress')) {
