@@ -1,0 +1,2 @@
+<?php
+return ['domain'=>'publishpress','plural-forms'=>NULL,'language'=>'','project-id-version'=>'PublishPress Planner Free 4.8.0','pot-creation-date'=>'2026-04-15T04:56:25+00:00','po-revision-date'=>'YEAR-MO-DA HO:MI+ZONE','x-generator'=>'WP-CLI 2.12.0','messages'=>[]];
