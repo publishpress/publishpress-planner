@@ -341,26 +341,29 @@ jQuery(document).ready(function ($) {
       }
 
       if (!formError) {
+        var escapedEntryTitle = escapeHtml(entryTitle);
+        var escapedEntryMetaKey = escapeHtml(entryMetaKey);
+
         // remove old/duplicate one if exist
-        $(formClass + ' .entry-item.custom.customize-item-' + entryMetaKey).remove();
+        $(formClass + ' .entry-item.custom.customize-item-' + escapedEntryMetaKey).remove();
 
         // add new entry
         var new_entry = '';
-        new_entry += '<div class="entry-item enable-item active-item customize-item-' + entryMetaKey + ' custom" data-name="' + entryMetaKey + '">';
-        new_entry += '<input class="customize-item-input" type="hidden" name="content_board_' + customizeForm + '[' + entryMetaKey + ']" value="' + entryTitle + '" />';
-        new_entry += '<input type="hidden" name="content_board_custom_' + customizeForm + '[' + entryMetaKey + ']" value="' + entryTitle + '" />';
+        new_entry += '<div class="entry-item enable-item active-item customize-item-' + escapedEntryMetaKey + ' custom" data-name="' + escapedEntryMetaKey + '">';
+        new_entry += '<input class="customize-item-input" type="hidden" name="content_board_' + customizeForm + '[' + escapedEntryMetaKey + ']" value="' + escapedEntryTitle + '" />';
+        new_entry += '<input type="hidden" name="content_board_custom_' + customizeForm + '[' + escapedEntryMetaKey + ']" value="' + escapedEntryTitle + '" />';
         new_entry += '<div class="items-list-item-check checked"><svg><use xlink:href="' + PPContentBoard.publishpressUrl + 'common/icons/content-icon.svg#svg-sprite-cu2-check-2-fill"></use></svg></div>';
         new_entry += '<div class="items-list-item-check unchecked"><svg><use xlink:href="' + PPContentBoard.publishpressUrl + 'common/icons/content-icon.svg#svg-sprite-x"></use></svg></div>';
-        new_entry += '<div class="items-list-item-name"><div class="items-list-item-name-text">' + entryTitle + ' <span class="customize-item-info">(' + entryMetaKey + ')</span></div></div>';
-        new_entry += '<div class="delete-content-board-item" data-meta="' + entryMetaKey + '"><svg><use xlink:href="' + PPContentBoard.publishpressUrl + 'common/icons/content-icon.svg#svg-sprite-cu2-menu-trash"></use></svg></div>';
+        new_entry += '<div class="items-list-item-name"><div class="items-list-item-name-text">' + escapedEntryTitle + ' <span class="customize-item-info">(' + escapedEntryMetaKey + ')</span></div></div>';
+        new_entry += '<div class="delete-content-board-item" data-meta="' + escapedEntryMetaKey + '"><svg><use xlink:href="' + PPContentBoard.publishpressUrl + 'common/icons/content-icon.svg#svg-sprite-cu2-menu-trash"></use></svg></div>';
         new_entry += '</div>';
         $(formClass + ' .co-cc-content .entry-item.form-item').after(new_entry);
 
         // add reorder entry
         var reorder_entry = '';
-        reorder_entry += '<div class="entry-item reorder-item active-item customize-item-' + entryMetaKey + ' custom" data-name="' + entryMetaKey + '">';
-        reorder_entry += '<input class="customize-item-input" type="hidden" name="content_board_' + customizeForm + '_order[' + entryMetaKey + ']" value="' + entryTitle + '" />';
-        reorder_entry += '' + entryTitle + '';
+        reorder_entry += '<div class="entry-item reorder-item active-item customize-item-' + escapedEntryMetaKey + ' custom" data-name="' + escapedEntryMetaKey + '">';
+        reorder_entry += '<input class="customize-item-input" type="hidden" name="content_board_' + customizeForm + '_order[' + escapedEntryMetaKey + ']" value="' + escapedEntryTitle + '" />';
+        reorder_entry += '' + escapedEntryTitle + '';
         reorder_entry += '</div>';
 
         $(formClass + ' .co-cc-content .customize-content.reorder-content .scrollable-content').prepend(reorder_entry);
@@ -517,6 +520,12 @@ jQuery(document).ready(function ($) {
 
     function isEmptyOrSpaces(str) {
         return str == '' || str === null || str.match(/^ *$/) !== null;
+    }
+
+    function escapeHtml(value) {
+        return $('<div>').text(value).html()
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
     }
 
     function initFormSelect2() {

@@ -829,7 +829,7 @@ if (! class_exists('PP_Notifications_Log')) {
                             </label>
                             <?php
                             // phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
-                            echo wpautop($content['body']);
+                            echo wp_kses_post(wpautop($content['body']));
                             // phpcs:enable ?>
                         </div>
                         <?php
