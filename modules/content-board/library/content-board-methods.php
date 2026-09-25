@@ -59,7 +59,7 @@ if (! class_exists('PP_Board_Methods')) {
                     }
 
                     $post_type_object = get_post_type_object($post_data->post_type);
-                    if (empty($post_type_object->cap->edit_posts) || !current_user_can($post_type_object->cap->edit_posts)) {
+                    if (! $post_type_object || ! current_user_can('edit_post', $post_id)) {
                         $response['content'] = esc_html__('You do not have permission to edit selected post.', 'publishpress');
                     } elseif (!in_array($post_status, $user_post_status)) {
                         $response['content'] = esc_html__('You do not have permission to move post to selected post status.', 'publishpress');
@@ -109,6 +109,8 @@ if (! class_exists('PP_Board_Methods')) {
 
             if (!isset($_POST['nonce']) || !wp_verify_nonce(sanitize_key($_POST['nonce']), 'content_board_action_nonce')) {
                 $response['content'] = esc_html__('Error validating nonce. Please reload this page and try again.', 'publishpress');
+            } elseif (! current_user_can('manage_options')) {
+                $response['content'] = esc_html__('You do not have permission to update schedule settings.', 'publishpress');
             } elseif (empty($_POST['schedule_number']) || empty($_POST['schedule_period'])) {
                 $response['content'] = esc_html__('Invalid form request.', 'publishpress');
             } else {
