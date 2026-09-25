@@ -177,7 +177,7 @@ if (! class_exists('PP_Editorial_Comments')) {
             wp_enqueue_script(
                 'publishpress-editorial-comments',
                 $this->module_url . 'lib/editorial-comments.js',
-                ['jquery', 'wp-ajax-response', 'publishpress-select2'],
+                ['jquery', 'wp-ajax-response', 'publishpress-select2', 'wp-i18n'],
                 PUBLISHPRESS_VERSION,
                 true
             );
@@ -209,7 +209,11 @@ if (! class_exists('PP_Editorial_Comments')) {
                 ]
             );
 
-            wp_set_script_translations( 'publishpress-editorial-comments', 'publishpress' );
+            wp_set_script_translations(
+                'publishpress-editorial-comments',
+                'publishpress',
+                PUBLISHPRESS_BASE_PATH . '/languages'
+            );
 
             $thread_comments = (int)get_option('thread_comments'); ?>
             <script type="text/javascript">

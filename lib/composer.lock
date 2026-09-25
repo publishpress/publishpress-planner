@@ -4,8 +4,67 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1ea6bfae399f132057bbe24ed131859a",
+    "content-hash": "fc127e90d8be2de731374e649a50dea2",
     "packages": [
+        {
+            "name": "publishpress/bundled-translations",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/publishpress/library-bundled-translations.git",
+                "reference": "95b06baed793a3a4ec44c5d932b68785302a0559"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/publishpress/library-bundled-translations/zipball/95b06baed793a3a4ec44c5d932b68785302a0559",
+                "reference": "95b06baed793a3a4ec44c5d932b68785302a0559",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5"
+            },
+            "require-dev": {
+                "publishpress/dev-workspace": "^1.0",
+                "publishpress/version-loader-generator": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "generator": {
+                    "src-dir": "core",
+                    "version": "1.0.3",
+                    "lib-class-test": "class_exists('PublishPress\\BundledTranslations\\BundledTranslations')",
+                    "action-register-priority": "-200",
+                    "action-initialize-priority": "-190"
+                },
+                "plugin-name": "bundled-translations",
+                "plugin-slug": "bundled-translations",
+                "plugin-folder": "bundled-translations",
+                "version-constant": "PUBLISHPRESS_BUNDLED_TRANSLATIONS_VERSION",
+                "plugin-github-repo": "publishpress/bundled-translations",
+                "plugin-lang-domain": "bundled-translations",
+                "plugin-composer-package": "publishpress/bundled-translations"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "PublishPress",
+                    "email": "help@publishpress.com"
+                }
+            ],
+            "description": "Forces WordPress plugins to use their bundled translations instead of global translations from wordpress.org.",
+            "homepage": "http://publishpress.com/",
+            "keywords": [
+                "wordpress plugin"
+            ],
+            "support": {
+                "issues": "https://github.com/publishpress/library-bundled-translations/issues",
+                "source": "https://github.com/publishpress/library-bundled-translations/tree/v1.0.3"
+            },
+            "time": "2026-05-13T14:34:02+00:00"
+        },
         {
             "name": "publishpress/instance-protection",
             "version": "2.1.0",
