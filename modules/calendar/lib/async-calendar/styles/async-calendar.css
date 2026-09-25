@@ -170,12 +170,34 @@
   color: #fff;
 }
 .publishpress-calendar-popup .publishpress-calendar-popup-title .publishpress-calendar-popup-close {
+  appearance: none;
   position: absolute;
   right: 14px;
   cursor: pointer;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: inherit;
+  min-height: 0;
+  padding: 0;
+  text-shadow: none;
+}
+.publishpress-calendar-popup .publishpress-calendar-popup-links > .publishpress-calendar-popup-action-button {
+  appearance: none;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  min-height: 0;
+  padding: 0;
+  text-shadow: none;
 }
 .publishpress-calendar-popup .publishpress-calendar-popup-links > a,
-.publishpress-calendar-popup .publishpress-calendar-popup-links > a + span {
+.publishpress-calendar-popup .publishpress-calendar-popup-links > button,
+.publishpress-calendar-popup .publishpress-calendar-popup-links > a + span,
+.publishpress-calendar-popup .publishpress-calendar-popup-links > button + span {
   margin-right: 4px;
 }
 .publishpress-calendar-popup-form {
@@ -208,9 +230,17 @@
   padding-left: 8px;
 }
 .publishpress-calendar-popup-form .publishpress-calendar-popup-close {
+  appearance: none;
   position: absolute;
   right: 4px;
   cursor: pointer;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: inherit;
+  min-height: 0;
+  padding: 0;
+  text-shadow: none;
 }
 .publishpress-calendar-popup-form .publishpress-calendar-popup-links {
   position: absolute;
@@ -265,6 +295,7 @@
   display: block;
   width: 100%;
   height: 26px;
+  position: relative;
   text-align: left;
   padding-left: 2px;
   padding-top: 2px;
@@ -279,6 +310,38 @@
   display: inline-block;
   height: 16px;
   line-height: 16px;
+}
+.publishpress-calendar .publishpress-calendar-cell-button {
+  appearance: none;
+  background: transparent !important;
+  border: 0 !important;
+  box-sizing: border-box;
+  box-shadow: none !important;
+  color: inherit;
+  cursor: pointer;
+  display: block;
+  font: inherit;
+  height: 100%;
+  line-height: inherit;
+  min-height: 0;
+  padding: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  text-align: left;
+  text-shadow: none;
+  width: 100%;
+}
+.publishpress-calendar .publishpress-calendar-cell-header .publishpress-calendar-month-name,
+.publishpress-calendar .publishpress-calendar-cell-header .publishpress-calendar-date,
+.publishpress-calendar .publishpress-calendar-cell-header .publishpress-calendar-cell-click-to-add {
+  pointer-events: none;
+  position: relative;
+}
+.publishpress-calendar .publishpress-calendar-cell-button:focus-visible,
+.publishpress-calendar .publishpress-calendar-item:focus-visible {
+  outline: 2px solid #2271b1;
+  outline-offset: 1px;
 }
 .publishpress-calendar .publishpress-calendar-today .publishpress-calendar-date {
   border-radius: 50%;
@@ -319,10 +382,17 @@
 }
 .publishpress-calendar .publishpress-calendar-hide-items,
 .publishpress-calendar .publishpress-calendar-show-more {
+  appearance: none;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  font: inherit;
+  min-height: 0;
   padding-left: 3px;
   color: gray;
   font-size: 11px;
   cursor: pointer;
+  text-shadow: none;
 }
 .publishpress-calendar .publishpress-calendar-hide-items .dashicons,
 .publishpress-calendar .publishpress-calendar-show-more .dashicons {
@@ -346,6 +416,29 @@
 .publishpress-calendar .publishpress-calendar-navigation-bar {
   text-align: right;
 }
+.publishpress-calendar .publishpress-calendar-navigation-bar .publishpress-calendar-button {
+  align-items: center;
+  background: #fff !important;
+  border: 1px solid #dcdcde !important;
+  box-sizing: border-box;
+  color: #655997;
+  display: inline-flex;
+  height: 30px;
+  justify-content: center;
+  line-height: 1;
+  min-height: 30px;
+  padding: 0 10px;
+}
+.publishpress-calendar .publishpress-calendar-navigation-bar .publishpress-calendar-button.refresh-button {
+  padding: 0;
+  width: 34px;
+}
+.publishpress-calendar .publishpress-calendar-navigation-bar .publishpress-calendar-button .dashicons {
+  font-size: 16px;
+  height: 16px;
+  line-height: 1;
+  width: 16px;
+}
 .publishpress-calendar .publishpress-calendar-hovering .publishpress-calendar-cell-click-to-add {
   font-style: italic;
   color: #b0b0b0;
@@ -356,20 +449,26 @@
   color: #717171;
 }
 .publishpress-calendar-button {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  box-shadow: none !important;
+  cursor: pointer;
   text-decoration: none;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
-  padding: 7px 10px;
+  padding: 3px 8px;
   font-weight: normal;
   font-size: 13px;
-  line-height: 35px;
-  min-height: 28px;
-  margin-left: 3px;
+  line-height: 20px;
+  min-height: 24px;
+  margin-left: 2px;
+  text-shadow: none;
   vertical-align: middle;
 }
 .publishpress-calendar-button .dashicons {
-  line-height: 30px;
+  line-height: 20px;
 }
 .publishpress-calendar-category-filter,
 .publishpress-calendar-tag-filter {

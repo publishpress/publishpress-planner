@@ -67,13 +67,14 @@ export default function AsyncCalendar(props) {
     };
 
     const onMeModeClick = (event) => { 
+        const target = event.currentTarget;
         let new_value = '';
-        if (event.target.classList.contains('active-filter')) {
+        if (target.classList.contains('active-filter')) {
             new_value = 0;
-            event.target.classList.remove('active-filter');
+            target.classList.remove('active-filter');
         } else {
             new_value = 1;
-            event.target.classList.add('active-filter');
+            target.classList.add('active-filter');
         }
 
         onFilterEventCallback('me_mode', new_value);
@@ -84,14 +85,15 @@ export default function AsyncCalendar(props) {
 
     const onShowRevisionClick = (event) => { 
         event.preventDefault();
+        const target = event.currentTarget;
         let new_value = '';
         
-        if (event.target.classList.contains('active-filter')) {
+        if (target.classList.contains('active-filter')) {
             new_value = 1;
-            event.target.classList.remove('active-filter');
+            target.classList.remove('active-filter');
         } else {
             new_value = 0;
-            event.target.classList.add('active-filter');
+            target.classList.add('active-filter');
         }
 
         onFilterEventCallback('hide_revision', new_value);
@@ -374,7 +376,7 @@ export default function AsyncCalendar(props) {
             return $child;
         }
 
-        if ($child.is('.publishpress-calendar-cell-header, .publishpress-calendar-date, .publishpress-calendar-cell-click-to-add, .publishpress-calendar-month-name')) {
+        if ($child.is('.publishpress-calendar-cell-header, .publishpress-calendar-cell-button, .publishpress-calendar-date, .publishpress-calendar-cell-click-to-add, .publishpress-calendar-month-name')) {
             return $child.parents('td');
         }
 
@@ -496,6 +498,11 @@ export default function AsyncCalendar(props) {
         setOpenedItemId(null);
     }
 
+    const onCreatePost = (date) => {
+        setOpenedItemId(null);
+        setFormDate(date);
+    }
+
     const calendarTableBodyRowsWithCells = () => {
         const numberOfDaysToDisplay = numberOfWeeksToDisplay * 7;
         const firstDate = getBeginDateOfWeekByDate(firstDateToDisplay, props.weekStartsOnSunday);
@@ -532,6 +539,8 @@ export default function AsyncCalendar(props) {
                     ajaxUrl={props.ajaxUrl}
                     onClickItemCallback={onClickItem}
                     onItemActionClickCallback={onPopupItemActionClick}
+                    canCreate={props.userCanAddPosts}
+                    onCreatePostCallback={onCreatePost}
                     strings={props.strings}/>
             );
 

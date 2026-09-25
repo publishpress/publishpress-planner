@@ -1,8 +1,8 @@
 <table class="psppno_workflow_user_fields psppno_workflows">
     <tr>
-        <th class="psppno_workflow_column_header psppno_workflows"><?php echo esc_html($context['labels']['workflows']); ?></th>
-        <th class="psppno_workflow_column_header psppno_channels"><?php echo esc_html($context['labels']['channels']); ?></th>
-        <th class="psppno_workflow_column_header psppno_options"></th>
+        <th scope="col" class="psppno_workflow_column_header psppno_workflows"><?php echo esc_html($context['labels']['workflows']); ?></th>
+        <th scope="col" class="psppno_workflow_column_header psppno_channels"><?php echo esc_html($context['labels']['channels']); ?></th>
+        <th scope="col" class="psppno_workflow_column_header psppno_options"><span class="screen-reader-text"><?php esc_html_e('Options', 'publishpress'); ?></span></th>
     </tr>
 
     <?php foreach ($context['workflows'] as $workflow) : ?>
@@ -20,7 +20,7 @@
                         <?php checked( $channel->name, $context['selected_channels'][$workflow->ID]); ?> />
 
                     <label for="psppno_workflow_channel_<?php echo esc_attr($workflow->ID); ?>_<?php echo esc_attr($channel->name); ?>">
-                        <img src="<?php echo esc_url($channel->icon); ?>"/>
+                        <img src="<?php echo esc_url($channel->icon); ?>" alt=""/>
                         <span><?php echo esc_html($channel->name); ?></span>
                     </label>
                 </div>

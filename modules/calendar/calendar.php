@@ -189,6 +189,18 @@ if (! class_exists('PP_Calendar')) {
          * @var array
          */
         private $terms_options = [];
+
+        /**
+         * Check if PublishPress Revisions is available for revision status fields.
+         *
+         * @return bool
+         */
+        private function is_revisions_active()
+        {
+            return defined('PUBLISHPRESS_REVISIONS_VERSION')
+                || defined('PUBLISHPRESS_REVISIONS_PRO_VERSION')
+                || function_exists('rvy_in_revision_workflow');
+        }
     
         /**
          * [$content_calendar_datas description]
@@ -786,6 +798,10 @@ if (! class_exists('PP_Calendar')) {
                 }
             }
 
+            if (! $this->is_revisions_active()) {
+                unset($user_filters['revision_status'], $user_filters['revision_status_operator'], $user_filters['hide_revision']);
+            }
+
             // Fix week, if no specific week was set
             if (empty($user_filters['weeks'])) {
                 $user_filters['weeks'] = self::DEFAULT_NUM_WEEKS;
@@ -957,6 +973,11 @@ if (! class_exists('PP_Calendar')) {
                     if (! is_object($term) || $term->taxonomy !== PP_Editorial_Metadata::metadata_taxonomy) {
                         continue;
                     }
+
+                    if ('revision_status' === $term->slug && ! $this->is_revisions_active()) {
+                        continue;
+                    }
+
                     $metadatas[$term->slug] = $term->name;
     
                     $term_options = $this->get_unencoded_description($term->description);
@@ -988,8 +1009,14 @@ if (! class_exists('PP_Calendar')) {
                 'author' => esc_html__('Author', 'publishpress'), 
                 'cpt' => esc_html__('Post Type', 'publishpress')
             ];
+            if (! $this->is_revisions_active()) {
+                unset($datas['content_calendar_filters']['revision_status']);
+            }
 
             $datas['content_calendar_custom_filters'] = is_array($content_calendar_custom_filters) ? $content_calendar_custom_filters : [];
+            if (! $this->is_revisions_active()) {
+                unset($datas['content_calendar_custom_filters']['revision_status']);
+            }
     
             /**
              * @param array $datas
@@ -1019,6 +1046,7 @@ if (! class_exists('PP_Calendar')) {
     
             $args = [];
             $args['content_calendar_datas'] = $content_calendar_datas;
+            $args['is_revisions_active'] = $this->is_revisions_active();
             
             $filters = PP_Calendar_Utilities::get_content_calendar_form_filters($args);
     

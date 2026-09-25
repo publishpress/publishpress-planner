@@ -117,6 +117,18 @@ class PP_Content_Overview extends PP_Module
     public $form_filter_list = [];
 
     /**
+     * Check if PublishPress Revisions is available for revision status fields.
+     *
+     * @return bool
+     */
+    private function is_revisions_active()
+    {
+        return defined('PUBLISHPRESS_REVISIONS_VERSION')
+            || defined('PUBLISHPRESS_REVISIONS_PRO_VERSION')
+            || function_exists('rvy_in_revision_workflow');
+    }
+
+    /**
      * [$user_filters description]
      *
      * @var [type]
@@ -561,6 +573,10 @@ class PP_Content_Overview extends PP_Module
             }
         }
 
+        if (! $this->is_revisions_active()) {
+            unset($user_filters['revision_status'], $user_filters['hide_revision']);
+        }
+
         if (! $user_filters['start_date']) {
             $user_filters['start_date'] = date('Y-m-d', strtotime('-5 weeks')); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
         }
@@ -816,7 +832,7 @@ class PP_Content_Overview extends PP_Module
         $taxonomies = $this->get_post_types_taxonomies($this->get_selected_post_types());
         $all_taxonomies = [];
         foreach ($taxonomies as $taxonomy) {
-            if (in_array($taxonomy->name, ['post_status', 'post_status_core_wp_pp', 'post_visibility_pp'])) {
+            if (in_array($taxonomy->name, ['post_status', 'post_status_core_wp_pp', 'post_visibility_pp', 'pp_revision_status'])) {
                 continue;
             }
             $all_taxonomies[$taxonomy->name] = $taxonomy->label;// . ' (' . $taxonomy->name . ')';
@@ -827,15 +843,23 @@ class PP_Content_Overview extends PP_Module
         $content_overview_columns = $this->module->options->content_overview_columns;
         $content_overview_custom_columns = $this->module->options->content_overview_custom_columns;
 
-        $datas['content_overview_columns'] = is_array($content_overview_columns) ? $content_overview_columns :
-        [
+        $default_content_overview_columns = [
             'post_status' => esc_html__('Status', 'publishpress'),
-            'revision_status' => esc_html__('Revision Status', 'publishpress'),
+        ];
+        if ($this->is_revisions_active()) {
+            $default_content_overview_columns['revision_status'] = esc_html__('Revision Status', 'publishpress');
+        }
+        $default_content_overview_columns += [
             'post_type' => esc_html__('Post Type', 'publishpress'),
             'post_author' => esc_html__('Author', 'publishpress'),
             'post_date' => esc_html__('Post Date', 'publishpress'),
             'post_modified' => esc_html__('Last Modified', 'publishpress'),
         ];
+
+        $datas['content_overview_columns'] = is_array($content_overview_columns) ? $content_overview_columns : $default_content_overview_columns;
+        if (! $this->is_revisions_active()) {
+            unset($datas['content_overview_columns']['revision_status']);
+        }
 
         $datas['content_overview_custom_columns'] = is_array($content_overview_custom_columns) ? $content_overview_custom_columns : [];
 
@@ -843,12 +867,21 @@ class PP_Content_Overview extends PP_Module
         $content_overview_filters = $this->module->options->content_overview_filters;
         $content_overview_custom_filters = $this->module->options->content_overview_custom_filters;
 
-        $datas['content_overview_filters'] = is_array($content_overview_filters) ? $content_overview_filters : [
+        $default_content_overview_filters = [
             'post_status' => esc_html__('Status', 'publishpress'),
-            'revision_status' => esc_html__('Revision Status', 'publishpress'),
+        ];
+        if ($this->is_revisions_active()) {
+            $default_content_overview_filters['revision_status'] = esc_html__('Revision Status', 'publishpress');
+        }
+        $default_content_overview_filters += [
             'author' => esc_html__('Author', 'publishpress'),
             'ptype' => esc_html__('Post Type', 'publishpress')
         ];
+
+        $datas['content_overview_filters'] = is_array($content_overview_filters) ? $content_overview_filters : $default_content_overview_filters;
+        if (! $this->is_revisions_active()) {
+            unset($datas['content_overview_filters']['revision_status']);
+        }
 
         $datas['content_overview_custom_filters'] = is_array($content_overview_custom_filters) ? $content_overview_custom_filters : [];
 
@@ -886,15 +919,22 @@ class PP_Content_Overview extends PP_Module
         ];
 
         // default columns
+        $default_columns = [
+            'post_status' => esc_html__('Status', 'publishpress'),
+        ];
+        if ($this->is_revisions_active()) {
+            $default_columns['revision_status'] = esc_html__('Revision Status', 'publishpress');
+        }
+        $default_columns += [
+            'post_type' => esc_html__('Post Type', 'publishpress'),
+            'post_author' => esc_html__('Author', 'publishpress'),
+            'post_date' => esc_html__('Post Date', 'publishpress'),
+            'post_modified' => esc_html__('Last Modified', 'publishpress')
+        ];
+
         $columns['default'] = [
             'title'     => esc_html__('Inbuilt Columns', 'publishpress'),
-            'columns'   => [
-                'post_status' => esc_html__('Status', 'publishpress'),
-                'post_type' => esc_html__('Post Type', 'publishpress'),
-                'post_author' => esc_html__('Author', 'publishpress'),
-                'post_date' => esc_html__('Post Date', 'publishpress'),
-                'post_modified' => esc_html__('Last Modified', 'publishpress')
-            ]
+            'columns'   => $default_columns
         ];
 
         // editorial fields columns
@@ -948,14 +988,20 @@ class PP_Content_Overview extends PP_Module
         ];
 
         // default filters
+        $default_filters = [
+            'post_status' => esc_html__('Post Status', 'publishpress'),
+        ];
+        if ($this->is_revisions_active()) {
+            $default_filters['revision_status'] = esc_html__('Revision Status', 'publishpress');
+        }
+        $default_filters += [
+            'author' => esc_html__('Author', 'publishpress'),
+            'ptype' => esc_html__('Post Type', 'publishpress')
+        ];
+
         $filters['default'] = [
             'title'     => esc_html__('Inbuilt filters', 'publishpress'),
-            'filters'   => [
-                'post_status' => esc_html__('Post Status', 'publishpress'),
-                'revision_status' => esc_html__('Revision Status', 'publishpress'),
-                'author' => esc_html__('Author', 'publishpress'),
-                'ptype' => esc_html__('Post Type', 'publishpress')
-            ]
+            'filters'   => $default_filters
         ];
 
         // editorial fields filters
@@ -1875,7 +1921,7 @@ class PP_Content_Overview extends PP_Module
                     "SELECT DISTINCT t.slug AS id, t.name AS text
                 FROM {$wpdb->term_taxonomy} as tt
                 INNER JOIN {$wpdb->terms} as t ON (tt.term_id = t.term_id)
-                WHERE taxonomy = '%s' AND t.name LIKE %s
+                WHERE taxonomy = %s AND t.name LIKE %s
                 ORDER BY 2
                 LIMIT 20",
                 $taxonomy,
