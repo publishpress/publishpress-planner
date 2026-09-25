@@ -714,16 +714,26 @@ table.content-overview td:first-child {
     width: 16px;
     height: 16px;
     fill: green;
+    color: green;
     cursor: pointer;
     margin: 0 auto;
 }
 
+.content-overview-inside .column-icon .dashicons {
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    line-height: 16px;
+}
+
 .content-overview-inside .column-icon.red {
     fill: red;
+    color: red;
 }
 
 .content-overview-inside .column-icon.black {
     fill: rgb(101, 111, 125);
+    color: rgb(101, 111, 125);
 }
 
 .title-column a {
