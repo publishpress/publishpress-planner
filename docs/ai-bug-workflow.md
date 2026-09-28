@@ -24,7 +24,7 @@ Severity definitions are in [triage.md](../.github/agents/triage.md). The script
 ## Required repository setup
 
 1. Add `OPENAI_API_KEY` as a GitHub Actions repository or organization secret. Use a key with budget limits suitable for unattended issue traffic.
-2. Enable GitHub Actions and allow workflows to create pull requests in **Settings → Actions → General**. If organization policy prevents creation with `GITHUB_TOKEN`, provide `AGENT_GITHUB_TOKEN` as a fine-grained token or GitHub App installation credential with repository contents and pull request write access. The workflow falls back to `GITHUB_TOKEN` when that secret is absent.
+2. Enable GitHub Actions and allow workflows to create pull requests in **Settings → Actions → General**. If organization policy prevents creation with `GITHUB_TOKEN`, provide `AGENT_GITHUB_TOKEN` as a fine-grained token with repository contents, issues, and pull request write access. The workflow falls back to `GITHUB_TOKEN` when that secret is absent.
 3. Protect `development` with human review and required checks. The agent only creates draft PRs; it does not merge.
 4. Merge these workflow files into the repository's default branch (`development`). Issue and comment event workflows run from the default branch.
 5. Open a small known bug issue. Verify label changes, draft PR creation, and an independent validation comment. Then test an incomplete report and an issue edit or reply.
