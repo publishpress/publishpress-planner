@@ -1037,9 +1037,15 @@ if (! class_exists('PP_Improved_Notifications')) {
                         PUBLISHPRESS_VERSION
                     );
                     wp_enqueue_script(
+                        'psppno-workflow-tooltip',
+                        plugin_dir_url(__FILE__) . 'libs/opentip/downloads/opentip-jquery.js',
+                        ['jquery'],
+                        PUBLISHPRESS_VERSION
+                    );
+                    wp_enqueue_script(
                         'psppno-workflow-form',
                         plugin_dir_url(__FILE__) . 'assets/js/workflow_form.js',
-                        ['jquery', 'psppno-multiple-select'],
+                        ['jquery', 'psppno-workflow-tooltip', 'psppno-multiple-select'],
                         PUBLISHPRESS_VERSION
                     );
 
