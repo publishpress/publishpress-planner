@@ -125,9 +125,6 @@ if (! class_exists('PP_Notifications')) {
             );
 
             if (is_admin()) {
-                // Set up metabox and related actions
-                add_action('add_meta_boxes', [$this, 'add_post_meta_box']);
-
                 add_action('admin_init', [$this, 'register_settings']);
 
                 // Javascript and CSS if we need it
