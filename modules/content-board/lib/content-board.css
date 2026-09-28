@@ -204,11 +204,16 @@
     text-overflow: ellipsis;
     display: flex;
     align-items: center;
+    gap: 4px;
     margin: 0 0 7px;
     font-size: 10px;
     font-weight: 400;
     line-height: 1.2;
     color: #544d61;
+}
+
+.content-board-table-wrap .board-content .content-item .content-item-post .post-date .dashicons {
+    flex-shrink: 0;
 }
 
 .content-board-table-wrap .board-content .content-item .content-item-post .post-title {
@@ -597,6 +602,21 @@
     color: rgb(79, 87, 98);
     text-decoration: none;
     margin-bottom: 8px;
+}
+
+.metadata-item-filter .filter-content input[type="text"],
+.metadata-item-filter .filter-content input[type="number"] {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.metadata-item-filter .filter-content .input-divider {
+    margin: 6px 0;
+}
+
+.metadata-item-filter .filter-content .filter-apply {
+    margin-top: 12px;
+    text-align: right;
 }
 
 .metadata-item-filter.custom-filter select {

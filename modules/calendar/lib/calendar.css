@@ -286,6 +286,21 @@
     margin-bottom: 8px;
 }
 
+.metadata-item-filter .filter-content input[type="text"],
+.metadata-item-filter .filter-content input[type="number"] {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.metadata-item-filter .filter-content .input-divider {
+    margin: 6px 0;
+}
+
+.metadata-item-filter .filter-content .filter-apply {
+    margin-top: 12px;
+    text-align: right;
+}
+
 .metadata-item-filter.custom-filter select {
     width: 90%;
 }
