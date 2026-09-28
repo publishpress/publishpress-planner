@@ -2,7 +2,7 @@
 
 <table class="form-table psppno_workflow_user_fields">
     <tr>
-        <th>
+        <th scope="row">
             <?php echo esc_html__(
                     'Choose the channels where each workflow will send notifications to:',
                     'publishpress');
@@ -11,9 +11,9 @@
         <td>
             <table class="psppno_workflows">
                 <tr>
-                    <th class="psppno_workflow_column_header psppno_workflows"><?php echo esc_html__('Workflows', 'publishpress'); ?></th>
-                    <th class="psppno_workflow_column_header psppno_channels"><?php echo esc_html__('Channels', 'publishpress'); ?></th>
-                    <th class="psppno_workflow_column_header psppno_options"></th>
+                    <th scope="col" class="psppno_workflow_column_header psppno_workflows"><?php echo esc_html__('Workflows', 'publishpress'); ?></th>
+                    <th scope="col" class="psppno_workflow_column_header psppno_channels"><?php echo esc_html__('Channels', 'publishpress'); ?></th>
+                    <th scope="col" class="psppno_workflow_column_header psppno_options"><span class="screen-reader-text"><?php esc_html_e('Options', 'publishpress'); ?></span></th>
                 </tr>
                 <?php 
                 foreach ($context['channels'] as $channel) {                    
@@ -40,7 +40,7 @@
                                             <?php checked( $channel->name, $context['workflow_channels'][$workflow->ID]); ?> />
 
                                     <label for="psppno_workflow_channel_<?php echo esc_attr($workflow->ID); ?>_<?php echo esc_attr($channel->name); ?>">
-                                        <img src="<?php echo esc_url($channel->icon); ?>"/>
+                                        <img src="<?php echo esc_url($channel->icon); ?>" alt=""/>
                                         <span><?php echo esc_html($channel->label); ?></span>
                                     </label>
                                 </div>

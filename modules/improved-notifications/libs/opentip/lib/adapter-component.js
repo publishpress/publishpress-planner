@@ -1,163 +1,196 @@
-var $, Adapter, _ref,
-    __slice = [].slice;
+// Component Opentip Adapter
+// ======================
 
-$ = (_ref = window.jQuery) != null ? _ref : require('jquery');
+// Uses github.com/component components
+var $, Adapter, ref;
 
-module.exports = Adapter = (function () {
-    function Adapter () {}
+$ = (ref = window.jQuery) != null ? ref : require("jquery");
 
-    Adapter.prototype.name = 'component';
+// The adapter class
+module.exports = Adapter = (function() {
+  class Adapter {
+    // Simply using $.domReady
+    domReady(callback) {
+      return $(callback);
+    }
 
-    Adapter.prototype.domReady = function (callback) {
-        return $(callback);
-    };
+    // DOM
+    // ===
 
-    Adapter.prototype.create = function (html) {
-        return $(html);
-    };
+      // Using bonzo to create html
+    create(html) {
+      return $(html);
+    }
 
-    Adapter.prototype.wrap = function (element) {
-        element = $(element);
-        if (element.length > 1) {
-            throw new Error('Multiple elements provided.');
-        }
-        return element;
-    };
+    // Element handling
+    // ----------------
 
-    Adapter.prototype.unwrap = function (element) {
-        return $(element)[0];
-    };
+      // Wraps the element in ender
+    wrap(element) {
+      element = $(element);
+      if (element.length > 1) {
+        throw new Error("Multiple elements provided.");
+      }
+      return element;
+    }
 
-    Adapter.prototype.tagName = function (element) {
-        return this.unwrap(element).tagName;
-    };
+    // Returns the unwrapped element
+    unwrap(element) {
+      return $(element)[0];
+    }
 
-    Adapter.prototype.attr = function () {
-        var args, element, _ref1;
+    // Returns the tag name of the element
+    tagName(element) {
+      return this.unwrap(element).tagName;
+    }
 
-        element = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
-        return (_ref1 = $(element)).attr.apply(_ref1, args);
-    };
+    // Returns or sets the given attribute of element
 
-    Adapter.prototype.data = function () {
-        var args, element, _ref1;
+    // It's important not to simply forward name and value because the value
+    // is set whether or not the value argument is present
+    attr(element, ...args) {
+      return $(element).attr(...args);
+    }
 
-        element = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
-        return (_ref1 = $(element)).data.apply(_ref1, args);
-    };
+    // Returns or sets the given data of element
+    // It's important not to simply forward name and value because the value
+    // is set whether or not the value argument is present
+    data(element, ...args) {
+      return $(element).data(...args);
+    }
 
-    Adapter.prototype.find = function (element, selector) {
-        return $(element).find(selector)[0];
-    };
+    // Finds elements by selector
+    find(element, selector) {
+      return $(element).find(selector)[0];
+    }
 
-    Adapter.prototype.findAll = function (element, selector) {
-        return $(element).find(selector);
-    };
+    // Finds all elements by selector
+    findAll(element, selector) {
+      return $(element).find(selector);
+    }
 
-    Adapter.prototype.update = function (element, content, escape) {
-        element = $(element);
-        if (escape) {
-            return element.text(content);
-        } else {
-            return element.html(content);
-        }
-    };
+    // Updates the content of the element
+    update(element, content, escape) {
+      element = $(element);
+      if (escape) {
+        return element.text(content);
+      } else {
+        return element.html(content);
+      }
+    }
 
-    Adapter.prototype.append = function (element, child) {
-        return $(element).append(child);
-    };
+    // Appends given child to element
+    append(element, child) {
+      return $(element).append(child);
+    }
 
-    Adapter.prototype.remove = function (element) {
-        return $(element).remove();
-    };
+    // Removes element
+    remove(element) {
+      return $(element).remove();
+    }
 
-    Adapter.prototype.addClass = function (element, className) {
-        return $(element).addClass(className);
-    };
+    // Add a class
+    addClass(element, className) {
+      return $(element).addClass(className);
+    }
 
-    Adapter.prototype.removeClass = function (element, className) {
-        return $(element).removeClass(className);
-    };
+    // Remove a class
+    removeClass(element, className) {
+      return $(element).removeClass(className);
+    }
 
-    Adapter.prototype.css = function (element, properties) {
-        return $(element).css(properties);
-    };
+    // Set given css properties
+    css(element, properties) {
+      return $(element).css(properties);
+    }
 
-    Adapter.prototype.dimensions = function (element) {
-        return {
-            width: $(element).outerWidth(),
-            height: $(element).outerHeight()
-        };
-    };
+    // Returns an object with given dimensions
+    dimensions(element) {
+      return {
+        width: $(element).outerWidth(),
+        height: $(element).outerHeight()
+      };
+    }
 
-    Adapter.prototype.scrollOffset = function () {
-        return [window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft, window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop];
-    };
+    // Returns the scroll offsets of current document
+    scrollOffset() {
+      return [window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft, window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop];
+    }
 
-    Adapter.prototype.viewportDimensions = function () {
-        return {
-            width: document.documentElement.clientWidth,
-            height: document.documentElement.clientHeight
-        };
-    };
+    // Returns the dimensions of the viewport (currently visible browser area)
+    viewportDimensions() {
+      return {
+        width: document.documentElement.clientWidth,
+        height: document.documentElement.clientHeight
+      };
+    }
 
-    Adapter.prototype.mousePosition = function (e) {
-        if (e == null) {
-            return null;
-        }
-        return {
-            x: e.pageX,
-            y: e.pageY
-        };
-    };
+    // Returns an object with x and y
+    mousePosition(e) {
+      if (e == null) {
+        return null;
+      }
+      return {
+        x: e.pageX,
+        y: e.pageY
+      };
+    }
 
-    Adapter.prototype.offset = function (element) {
-        var offset;
+    // Returns the offset of the element
+    offset(element) {
+      var offset;
+      offset = $(element).offset();
+      return {
+        left: offset.left,
+        top: offset.top
+      };
+    }
 
-        offset = $(element).offset();
-        return {
-            left: offset.left,
-            top: offset.top
-        };
-    };
+    // Observe given eventName
+    observe(element, eventName, observer) {
+      return $(element).bind(eventName, observer);
+    }
 
-    Adapter.prototype.observe = function (element, eventName, observer) {
-        return $(element).bind(eventName, observer);
-    };
+    // Stop observing event
+    stopObserving(element, eventName, observer) {
+      return $(element).unbind(eventName, observer);
+    }
 
-    Adapter.prototype.stopObserving = function (element, eventName, observer) {
-        return $(element).unbind(eventName, observer);
-    };
+    // Perform an AJAX request and call the appropriate callbacks.
+    ajax(options) {
+      var ref1, ref2;
+      if (options.url == null) {
+        throw new Error("No url provided");
+      }
+      return $.ajax({
+        url: options.url,
+        type: (ref1 = (ref2 = options.method) != null ? ref2.toUpperCase() : void 0) != null ? ref1 : "GET"
+      }).done(function(content) {
+        return typeof options.onSuccess === "function" ? options.onSuccess(content) : void 0;
+      }).fail(function(request) {
+        return typeof options.onError === "function" ? options.onError(`Server responded with status ${request.status}`) : void 0;
+      }).always(function() {
+        return typeof options.onComplete === "function" ? options.onComplete() : void 0;
+      });
+    }
 
-    Adapter.prototype.ajax = function (options) {
-        var _ref1, _ref2;
+    // Utility functions
+    // =================
 
-        if (options.url == null) {
-            throw new Error('No url provided');
-        }
-        return $.ajax({
-            url: options.url,
-            type: (_ref1 = (_ref2 = options.method) != null ? _ref2.toUpperCase() : void 0) != null ? _ref1 : 'GET'
-        }).done(function (content) {
-            return typeof options.onSuccess === 'function' ? options.onSuccess(content) : void 0;
-        }).fail(function (request) {
-            return typeof options.onError === 'function' ? options.onError('Server responded with status ' + request.status) : void 0;
-        }).always(function () {
-            return typeof options.onComplete === 'function' ? options.onComplete() : void 0;
-        });
-    };
+      // Creates a shallow copy of the object
+    clone(object) {
+      return $.extend({}, object);
+    }
 
-    Adapter.prototype.clone = function (object) {
-        return $.extend({}, object);
-    };
+    // Copies all properties from sources to target
+    extend(target, ...sources) {
+      return $.extend(target, ...sources);
+    }
 
-    Adapter.prototype.extend = function () {
-        var sources, target;
+  };
 
-        target = arguments[0], sources = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
-        return $.extend.apply($, [target].concat(__slice.call(sources)));
-    };
+  Adapter.prototype.name = "component";
 
-    return Adapter;
+  return Adapter;
 
-})();
+}).call(this);

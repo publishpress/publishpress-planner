@@ -568,25 +568,30 @@ if (! class_exists('PP_Efmigration')) {
             global $wpdb;
         
             // Step 1: Update term_taxonomy_id for posts in Source Term to Target Term
-            $sql_update_relationships = $wpdb->prepare(
-                "UPDATE {$wpdb->term_relationships}
-                SET term_taxonomy_id = %d
-                WHERE term_taxonomy_id = %d",
-                $target_term_id,
-                $source_term_id
+            $wpdb->update(
+                $wpdb->term_relationships,
+                ['term_taxonomy_id' => $target_term_id],
+                ['term_taxonomy_id' => $source_term_id],
+                ['%d'],
+                ['%d']
             );
-            $wpdb->query($sql_update_relationships);
         
             
             // Step 2: Update term_count for Target Terms
-            $sql_update_term_count_target = $wpdb->prepare(
-                "UPDATE {$wpdb->term_taxonomy}
-                SET count = (SELECT COUNT(*) FROM {$wpdb->term_relationships} WHERE term_taxonomy_id = %d)
-                WHERE term_taxonomy_id = %d",
-                $target_term_id,
-                $target_term_id
+            $target_term_count = (int) $wpdb->get_var(
+                $wpdb->prepare(
+                    "SELECT COUNT(*) FROM {$wpdb->term_relationships} WHERE term_taxonomy_id = %d",
+                    $target_term_id
+                )
             );
-            $wpdb->query($sql_update_term_count_target);
+
+            $wpdb->update(
+                $wpdb->term_taxonomy,
+                ['count' => $target_term_count],
+                ['term_taxonomy_id' => $target_term_id],
+                ['%d'],
+                ['%d']
+            );
         
             return true;
         }

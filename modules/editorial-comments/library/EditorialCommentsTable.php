@@ -177,6 +177,7 @@ class EditorialCommentsTable extends WP_List_Table
 
             //post filter
             $post_id = isset($_GET['p']) ? (int)$_GET['p'] : 0;
+            echo '<label class="screen-reader-text" for="feditorial-comment-filter-posts">' . esc_html__('Filter by post', 'publishpress') . '</label>';
             echo '<select class="editorial-comment-filter-posts" id="feditorial-comment-filter-posts" name="p">';
             printf("\t<option value=''>%s</option>", __('All Posts', 'publishpress'));
             if (!empty($post_id)) {
@@ -192,6 +193,7 @@ class EditorialCommentsTable extends WP_List_Table
 
             //users filter
             $user_id = isset($_GET['user_id']) ? (int)$_GET['user_id'] : 0;
+            echo '<label class="screen-reader-text" for="feditorial-comment-filter-users">' . esc_html__('Filter by user', 'publishpress') . '</label>';
             echo '<select class="editorial-comment-filter-users" id="feditorial-comment-filter-users" name="user_id">';
             printf("\t<option value=''>%s</option>", __('All Users', 'publishpress'));
             if (!empty($user_id)) {

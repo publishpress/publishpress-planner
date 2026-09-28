@@ -32,7 +32,7 @@ $rating_stars_markup = "
     </nav>
     <div class="pp-pressshack-logo">
         <a href="//publishpress.com" target="_blank" rel="noopener noreferrer">
-            <img src="<?php echo esc_url($context['plugin_url']); ?>common/img/publishpress-logo.png">
+            <img src="<?php echo esc_url($context['plugin_url']); ?>common/img/publishpress-logo.png" alt="<?php esc_attr_e('PublishPress', 'publishpress'); ?>">
         </a>
     </div>
 </footer>
