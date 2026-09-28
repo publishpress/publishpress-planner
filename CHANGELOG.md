@@ -1,7 +1,7 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-[4.8.1] - 30 Sept, 2026
+[4.8.1] - 28 Sept, 2026
 
 - Changed: Workflow metaboxes now support WordPress block editor compatibility. #2055
 - Changed: Content Calendar keyboard navigation has been improved for better accessibility. #2032
