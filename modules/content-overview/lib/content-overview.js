@@ -186,8 +186,11 @@ jQuery(document).ready(function ($) {
                 }).show();
     
             } else {
+                var filterContainer = $(this).closest('.pp-content-overview-filters');
+                var modalTop = filterContainer.length ? filterContainer.position().top + filterContainer.outerHeight() : $(this).position().top + 28;
+
                 $(modalID).css({
-                    top: $(this).position().top + 28, 
+                    top: modalTop,
                     left: $(this).position().left
                 }).show();
             }
