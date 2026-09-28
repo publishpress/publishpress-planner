@@ -10,10 +10,11 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-14T18:33:45+00:00\n"
-"PO-Revision-Date: 2026-09-25 19:49+0000\n"
+"PO-Revision-Date: 2026-09-28 14:32+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: publishpress\n"
 ">= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2);\n"
+">= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1: 2);\n"
 "Language: ru_RU\n"
 "Plural-Forms: nplurals=3; plural=(n % 10 == 1 && n % 100 != 11 ? 0 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2);\n"
 
@@ -2005,7 +2006,7 @@ msgstr "Отправлено"
 
 #: modules/editorial-comments/library/EditorialCommentsTable.php:338
 #: modules/editorial-metadata/input-handlers/editorial-metadata-input-date-handler.php:201
-#: modules/notifications/notifications.php:1974
+#: modules/notifications/notifications.php:1971
 #. translators: 1: Comment date, 2: Comment time.
 #, php-format
 msgid "%1$s at %2$s"
@@ -2878,7 +2879,7 @@ msgstr ""
 "может измениться до отправки уведомления."
 
 #: modules/notifications/notifications.php:75
-#: modules/notifications/notifications.php:562
+#: modules/notifications/notifications.php:559
 #: publishpress.php:1440
 #: publishpress.php:1445
 msgid "Notifications"
@@ -2912,63 +2913,63 @@ msgstr ""
 "href=\"https://github.com/ostraining/PublishPress\">PublishPress на "
 "Github</a></p>"
 
+#: modules/notifications/notifications.php:300
 #: modules/notifications/notifications.php:303
-#: modules/notifications/notifications.php:306
 msgid "Notify User"
 msgstr "Уведомить пользователя"
 
-#: modules/notifications/notifications.php:305
+#: modules/notifications/notifications.php:302
 msgid "Notify Users"
 msgstr "Уведомить пользователей"
 
+#: modules/notifications/notifications.php:315
 #: modules/notifications/notifications.php:318
-#: modules/notifications/notifications.php:321
 msgid "Notify Role"
 msgstr "Уведомить роль"
 
-#: modules/notifications/notifications.php:320
+#: modules/notifications/notifications.php:317
 msgid "Notify Roles"
 msgstr "Уведомить роли"
 
+#: modules/notifications/notifications.php:331
 #: modules/notifications/notifications.php:334
-#: modules/notifications/notifications.php:337
 msgid "Notification Group"
 msgstr "Группа уведомлений"
 
-#: modules/notifications/notifications.php:336
+#: modules/notifications/notifications.php:333
 msgid "Notification Groups"
 msgstr "Группы уведомлений"
 
+#: modules/notifications/notifications.php:347
 #: modules/notifications/notifications.php:350
-#: modules/notifications/notifications.php:353
 msgid "Notify Email"
 msgstr "Уведомить по электронной почте"
 
-#: modules/notifications/notifications.php:352
+#: modules/notifications/notifications.php:349
 msgid "Notify Emails"
 msgstr "Уведомить по электронным адресам"
 
-#: modules/notifications/notifications.php:530
-#: modules/notifications/notifications.php:940
+#: modules/notifications/notifications.php:527
+#: modules/notifications/notifications.php:937
 msgid "Click to stop being notified on updates for this post"
 msgstr "Нажмите, чтобы перестать получать уведомления об обновлениях для этого поста"
 
-#: modules/notifications/notifications.php:531
-#: modules/notifications/notifications.php:939
+#: modules/notifications/notifications.php:528
+#: modules/notifications/notifications.php:936
 msgid "Stop notifying me"
 msgstr "Перестать уведомлять меня"
 
-#: modules/notifications/notifications.php:534
-#: modules/notifications/notifications.php:946
+#: modules/notifications/notifications.php:531
+#: modules/notifications/notifications.php:943
 msgid "Click to start being notified on updates for this post"
 msgstr "Нажмите, чтобы начать получать уведомления об обновлениях для этого поста"
 
-#: modules/notifications/notifications.php:535
-#: modules/notifications/notifications.php:945
+#: modules/notifications/notifications.php:532
+#: modules/notifications/notifications.php:942
 msgid "Notify me"
 msgstr "Уведомите меня"
 
-#: modules/notifications/notifications.php:599
+#: modules/notifications/notifications.php:596
 msgid ""
 "Enter users, roles, or email addresses that should receive notifications "
 "for this post."
@@ -2976,11 +2977,11 @@ msgstr ""
 "Введите пользователей, роли или адреса электронной почты, которые должны "
 "получать уведомления об этом посте."
 
-#: modules/notifications/notifications.php:603
+#: modules/notifications/notifications.php:600
 msgid "Show active notifications"
 msgstr "Показать активные уведомления"
 
-#: modules/notifications/notifications.php:642
+#: modules/notifications/notifications.php:639
 msgid ""
 "This won't have any effect unless you have at least one workflow targeting "
 "the \"Users who selected \"Notify me\" for the content\" option."
@@ -2989,56 +2990,56 @@ msgstr ""
 "процесса, нацеленного на опцию \"Пользователи, которые выбрали \"Уведомить "
 "меня\" для контента\"."
 
-#: modules/notifications/notifications.php:656
+#: modules/notifications/notifications.php:653
 msgid "Active Notifications"
 msgstr "Активные уведомления"
 
-#: modules/notifications/notifications.php:684
+#: modules/notifications/notifications.php:681
 msgid "Workflow has users enrolled"
 msgstr "В рабочем процессе зарегистрированы пользователи"
 
-#: modules/notifications/notifications.php:691
+#: modules/notifications/notifications.php:688
 #, php-format
 msgid "No active notifications found for this %s."
 msgstr "Активные уведомления для этого %s не найдены."
 
-#: modules/notifications/notifications.php:1054
+#: modules/notifications/notifications.php:1051
 #, php-format
 msgid "You are receiving this email because you are subscribed to \"%s\"."
 msgstr "Вы получаете это письмо, потому что подписаны на \"%s\"."
 
-#: modules/notifications/notifications.php:1059
+#: modules/notifications/notifications.php:1056
 #, php-format
 msgid "This email was sent %s."
 msgstr "Это письмо было отправлено %s."
 
-#: modules/notifications/notifications.php:1715
+#: modules/notifications/notifications.php:1712
 msgid "Show the \"Notify me\" and \"Stop notifying me\" links for these post types:"
 msgstr ""
 "Показать ссылки \"Уведомить меня\" и \"Перестать уведомлять меня\" для этих "
 "типов постов:"
 
-#: modules/notifications/notifications.php:1723
+#: modules/notifications/notifications.php:1720
 msgid "Email from:"
 msgstr "Email от:"
 
-#: modules/notifications/notifications.php:1731
+#: modules/notifications/notifications.php:1728
 msgid "Always notify the author of the content:"
 msgstr "Всегда уведомлять автора контента:"
 
-#: modules/notifications/notifications.php:1739
+#: modules/notifications/notifications.php:1736
 msgid "Always notify users who have edited the content:"
 msgstr "Всегда уведомлять пользователей, которые редактировали контент:"
 
-#: modules/notifications/notifications.php:1747
+#: modules/notifications/notifications.php:1744
 msgid "Blacklisted taxonomies for Notifications"
 msgstr "Черные списки таксономий для уведомлений"
 
-#: modules/notifications/notifications.php:1861, fuzzy
+#: modules/notifications/notifications.php:1858, fuzzy
 msgid "slug1,slug2"
 msgstr "slug1,slug2"
 
-#: modules/notifications/notifications.php:1867
+#: modules/notifications/notifications.php:1864
 msgid ""
 "Add a list of taxonomy-slugs separated by comma that should not be loaded "
 "by the Taxonomy content filter when adding a new Notification Workflow."
@@ -3047,139 +3048,139 @@ msgstr ""
 "фильтром содержимого таксономии при добавлении нового рабочего процесса "
 "уведомлений."
 
-#: modules/notifications/notifications.php:2003
+#: modules/notifications/notifications.php:2000
 msgid "WordPress Scheduler"
 msgstr "Планировщик WordPress"
 
-#: modules/notifications/notifications.php:2012
+#: modules/notifications/notifications.php:2009
 #, php-format
 msgid "[%1$s] New %2$s Created: \"%3$s\""
 msgstr "[%1$s] Новый %2$s создан: \"%3$s\""
 
-#: modules/notifications/notifications.php:2019
+#: modules/notifications/notifications.php:2016
 #, php-format
 msgid "A new %1$s (#%2$s \"%3$s\" ) was created by %4$s %5$s"
 msgstr "Новый %1$s (#%2$s \"%3$s\" ) был создан %4$s %5$s"
 
-#: modules/notifications/notifications.php:2029
+#: modules/notifications/notifications.php:2026
 #, php-format
 msgid "[%1$s] %2$s Trashed: \"%3$s\""
 msgstr "[%1$s] %2$s удален в корзину: \"%3$s\""
 
-#: modules/notifications/notifications.php:2036
+#: modules/notifications/notifications.php:2033
 #, php-format
 msgid "%1$s #%2$s \"%3$s\" was moved to the trash by %4$s %5$s"
 msgstr "%1$s #%2$s \"%3$s\" был перемещен в корзину %4$s %5$s"
 
-#: modules/notifications/notifications.php:2046
+#: modules/notifications/notifications.php:2043
 #, php-format
 msgid "[%1$s] %2$s Restored (from Trash ): \"%3$s\""
 msgstr "[%1$s] %2$s восстановлен (из корзины): \"%3$s\""
 
-#: modules/notifications/notifications.php:2053
+#: modules/notifications/notifications.php:2050
 #, php-format
 msgid "%1$s #%2$s \"%3$s\" was restored from trash by %4$s %5$s"
 msgstr "%1$s #%2$s \"%3$s\" был восстановлен из корзины %4$s %5$s"
 
-#: modules/notifications/notifications.php:2076
+#: modules/notifications/notifications.php:2073
 #, php-format
 msgid "[%1$s] %2$s Published: \"%3$s\""
 msgstr "[%1$s] %2$s опубликован: \"%3$s\""
 
-#: modules/notifications/notifications.php:2083
+#: modules/notifications/notifications.php:2080
 #, php-format
 msgid "%1$s #%2$s \"%3$s\" was published by %4$s %5$s"
 msgstr "%1$s #%2$s \"%3$s\" был опубликован %4$s %5$s"
 
-#: modules/notifications/notifications.php:2093
+#: modules/notifications/notifications.php:2090
 #, php-format
 msgid "[%1$s] %2$s Unpublished: \"%3$s\""
 msgstr "[%1$s] %2$s Неопубликовано: \"%3$s\""
 
-#: modules/notifications/notifications.php:2100
+#: modules/notifications/notifications.php:2097
 #, php-format
 msgid "%1$s #%2$s \"%3$s\" was unpublished by %4$s %5$s"
 msgstr "%1$s #%2$s \"%3$s\" был неопубликован %4$s %5$s"
 
-#: modules/notifications/notifications.php:2110
+#: modules/notifications/notifications.php:2107
 #, php-format
 msgid "[%1$s] %2$s Status Changed for \"%3$s\""
 msgstr "[%1$s] %2$s Статус изменен для \"%3$s\""
 
-#: modules/notifications/notifications.php:2117
+#: modules/notifications/notifications.php:2114
 #, php-format
 msgid "Status was changed for %1$s #%2$s \"%3$s\" by %4$s %5$s"
 msgstr "Статус был изменен для %1$s #%2$s \"%3$s\" %4$s %5$s"
 
-#: modules/notifications/notifications.php:2128
+#: modules/notifications/notifications.php:2125
 #, php-format
 msgid "This action was taken on %1$s at %2$s %3$s"
 msgstr "Это действие было выполнено %1$s в %2$s %3$s"
 
-#: modules/notifications/notifications.php:2141
+#: modules/notifications/notifications.php:2138
 #, fuzzy, php-format
 msgid "%1$s => %2$s"
 msgstr "%1$s => %2$s"
 
-#: modules/notifications/notifications.php:2149
+#: modules/notifications/notifications.php:2146
 #, php-format
 msgid "== %s Details =="
 msgstr "== %s Подробности =="
 
-#: modules/notifications/notifications.php:2150
+#: modules/notifications/notifications.php:2147
 #, php-format
 msgid "Title: %s"
 msgstr "Заголовок: %s"
 
-#: modules/notifications/notifications.php:2154
+#: modules/notifications/notifications.php:2151
 #, php-format
 msgid "Author: %1$s (%2$s )"
 msgstr "Автор: %1$s (%2$s )"
 
-#: modules/notifications/notifications.php:2168
-#: modules/notifications/notifications.php:2221
+#: modules/notifications/notifications.php:2165
+#: modules/notifications/notifications.php:2218
 msgid "== Actions =="
 msgstr "== Действия =="
 
-#: modules/notifications/notifications.php:2170
-#: modules/notifications/notifications.php:2227
+#: modules/notifications/notifications.php:2167
+#: modules/notifications/notifications.php:2224
 #, php-format
 msgid "Add editorial comment: %s"
 msgstr "Добавить редакционный комментарий: %s"
 
-#: modules/notifications/notifications.php:2173
-#: modules/notifications/notifications.php:2230
+#: modules/notifications/notifications.php:2170
+#: modules/notifications/notifications.php:2227
 #, php-format
 msgid "Edit: %s"
 msgstr "Редактировать: %s"
 
-#: modules/notifications/notifications.php:2174
-#: modules/notifications/notifications.php:2231
+#: modules/notifications/notifications.php:2171
+#: modules/notifications/notifications.php:2228
 #, php-format
 msgid "View: %s"
 msgstr "Просмотреть: %s"
 
-#: modules/notifications/notifications.php:2185
+#: modules/notifications/notifications.php:2182
 #, php-format
 msgid "[%1$s] New Editorial Comment: \"%2$s\""
 msgstr "[%1$s] Новый редакционный комментарий: \"%2$s\""
 
-#: modules/notifications/notifications.php:2192
+#: modules/notifications/notifications.php:2189
 #, php-format
 msgid "A new editorial comment was added to %3$s #%1$s \"%2$s\""
 msgstr "К %3$s #%1$s \"%2$s\" был добавлен новый редакционный комментарий"
 
-#: modules/notifications/notifications.php:2199
+#: modules/notifications/notifications.php:2196
 #, php-format
 msgid "%1$s (%2$s ) said on %3$s at %4$s:"
 msgstr "%1$s (%2$s ) сказал %3$s в %4$s:"
 
-#: modules/notifications/notifications.php:2223
+#: modules/notifications/notifications.php:2220
 #, php-format
 msgid "Reply: %s"
 msgstr "Ответ: %s"
 
-#: modules/notifications/notifications.php:2234
+#: modules/notifications/notifications.php:2231
 #, php-format
 msgid "You can see all editorial comments on this %s here: "
 msgstr "Вы можете увидеть все редакционные комментарии на этом %s здесь: "
