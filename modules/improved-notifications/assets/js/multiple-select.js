@@ -303,17 +303,18 @@
             this.$drop.html('');
 
             if (this.options.filter) {
+                var $searchInput = $('<input/>', {
+                    type: 'text',
+                    autocorrect: 'off',
+                    autocapitalize: 'off',
+                    spellcheck: 'false',
+                    placeholder: this.options.filterPlaceholder
+                }).attr('autocomplete', 'off');
+
                 this.$drop.append(
                     $('<div/>', {
                         'class': 'ms-search'
-                    }).append($('<input/>', {
-                        type: 'text',
-                        autocomplete: 'off',
-                        autocorrect: 'off',
-                        autocapitalize: 'off',
-                        spellcheck: 'false',
-                        placeholder: this.options.filterPlaceholder
-                    }))
+                    }).append($searchInput)
                 );
             }
 

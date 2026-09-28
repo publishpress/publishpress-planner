@@ -31,6 +31,7 @@
                 $chkb.on('change', function () {
                     if ($chkb.is(':checked')) {
                         $filters.show();
+                        $filters.find('select').multipleSelect('refresh');
                     } else {
                         $filters.hide();
                     }

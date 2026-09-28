@@ -109,71 +109,57 @@
         },
         {
             "name": "publishpress/pimple-pimple",
-            "version": "3.5.0.10",
-            "version_normalized": "3.5.0.10",
+            "version": "3.5.0.11",
+            "version_normalized": "3.5.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/publishpress/library-pimple-pimple.git",
-                "reference": "f2784f4b1ccaf195b373a46a74cf3742e7c9f826"
+                "reference": "c5246f8b0b1aaa59088b058d7bee1434ad6dd25c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/publishpress/library-pimple-pimple/zipball/f2784f4b1ccaf195b373a46a74cf3742e7c9f826",
-                "reference": "f2784f4b1ccaf195b373a46a74cf3742e7c9f826",
+                "url": "https://api.github.com/repos/publishpress/library-pimple-pimple/zipball/c5246f8b0b1aaa59088b058d7bee1434ad6dd25c",
+                "reference": "c5246f8b0b1aaa59088b058d7bee1434ad6dd25c",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2.5",
+                "php": ">=7.4.0",
                 "publishpress/psr-container": "^2.0.1.10"
             },
             "require-dev": {
-                "brianhenryie/strauss": "^0.14.0",
-                "codeception/module-asserts": "^1.0",
-                "codeception/module-cli": "^1.0",
-                "codeception/module-db": "^1.0",
-                "codeception/module-filesystem": "^1.0",
-                "codeception/module-phpbrowser": "^1.0",
-                "codeception/module-webdriver": "^1.0",
-                "codeception/util-universalframework": "^1.0",
-                "lucatume/wp-browser": "^3.1",
+                "brianhenryie/strauss": "0.29.2",
                 "pimple/pimple": "3.5.0",
-                "publishpress/codeception-extension-extended-copier": "^1.0",
+                "publishpress/dev-workspace": "^1.8",
                 "publishpress/version-loader-generator": "^1.0"
             },
-            "time": "2023-05-30T18:41:10+00:00",
+            "time": "2026-09-11T18:31:32+00:00",
             "type": "library",
             "extra": {
-                "generator": {
-                    "lib-class-test": "class_exists('PublishPress\\Pimple\\Container')",
-                    "action-initialize-priority": "-185",
-                    "action-register-priority": "-200"
-                },
                 "strauss": {
-                    "target_directory": "lib",
-                    "namespace_prefix": "PublishPress\\",
-                    "classmap_prefix": "PublishPress_",
-                    "constant_prefix": "PUBLISHPRESS_",
-                    "include_author": "true",
-                    "classmap_output": "true",
                     "packages": [
                         "pimple/pimple",
                         "psr/container"
                     ],
-                    "override_autoload": [],
-                    "exclude_from_copy": {
-                        "packages": [],
-                        "namespaces": [],
-                        "file_patterns": []
-                    },
-                    "exclude_from_prefix": {
-                        "packages": [],
-                        "namespaces": [],
-                        "file_patterns": []
-                    },
-                    "namespace_replacement_patterns": [],
-                    "delete_vendor_packages": true,
-                    "delete_vendor_files": true
-                }
+                    "include_author": true,
+                    "classmap_output": true,
+                    "classmap_prefix": "PublishPress_",
+                    "constant_prefix": "PUBLISHPRESS_",
+                    "namespace_prefix": "PublishPress\\",
+                    "target_directory": "lib",
+                    "delete_vendor_files": true,
+                    "delete_vendor_packages": true
+                },
+                "generator": {
+                    "lib-class-test": "class_exists('PublishPress\\Pimple\\Container', false)",
+                    "action-register-priority": "-200",
+                    "action-initialize-priority": "-185"
+                },
+                "plugin-name": "library-pimple-pimple",
+                "plugin-slug": "library-pimple-pimple",
+                "plugin-folder": "library-pimple-pimple",
+                "plugin-github-repo": "publishpress/library-pimple-pimple",
+                "plugin-lang-domain": "pimple-pimple",
+                "plugin-composer-package": "publishpress/pimple-pimple"
             },
             "installation-source": "dist",
             "autoload": {
@@ -204,7 +190,7 @@
             ],
             "support": {
                 "issues": "https://github.com/publishpress/library-pimple-pimple/issues",
-                "source": "https://github.com/publishpress/library-pimple-pimple/tree/3.5.0.10"
+                "source": "https://github.com/publishpress/library-pimple-pimple/tree/3.5.0.11"
             },
             "install-path": "../publishpress/pimple-pimple"
         },
@@ -312,17 +298,17 @@
         },
         {
             "name": "publishpress/wordpress-reviews",
-            "version": "1.2.0",
-            "version_normalized": "1.2.0.0",
+            "version": "1.2.2",
+            "version_normalized": "1.2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/publishpress/library-wordpress-reviews.git",
-                "reference": "6d1cf428aef5fc5f72c9368fbd7ce1f14d956503"
+                "reference": "0a8cd140cdc17088c1910f8db6a6ba8ccc17482d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/publishpress/library-wordpress-reviews/zipball/6d1cf428aef5fc5f72c9368fbd7ce1f14d956503",
-                "reference": "6d1cf428aef5fc5f72c9368fbd7ce1f14d956503",
+                "url": "https://api.github.com/repos/publishpress/library-wordpress-reviews/zipball/0a8cd140cdc17088c1910f8db6a6ba8ccc17482d",
+                "reference": "0a8cd140cdc17088c1910f8db6a6ba8ccc17482d",
                 "shasum": ""
             },
             "require": {
@@ -342,7 +328,7 @@
                 "szepeviktor/phpstan-wordpress": "^1.3",
                 "wp-coding-standards/wpcs": "^3"
             },
-            "time": "2026-01-12T14:05:27+00:00",
+            "time": "2026-09-11T02:52:42+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -373,23 +359,23 @@
             ],
             "support": {
                 "issues": "https://github.com/publishpress/library-wordpress-reviews/issues",
-                "source": "https://github.com/publishpress/library-wordpress-reviews/tree/1.2.0"
+                "source": "https://github.com/publishpress/library-wordpress-reviews/tree/1.2.2"
             },
             "install-path": "../publishpress/wordpress-reviews"
         },
         {
             "name": "publishpress/wordpress-version-notices",
-            "version": "2.2.0",
-            "version_normalized": "2.2.0.0",
+            "version": "2.2.1",
+            "version_normalized": "2.2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/publishpress/library-wordpress-version-notices.git",
-                "reference": "174b2a35e40dfb7ff0426cc16dc8ed0888be2169"
+                "reference": "95447d36d53e4abec9f9b988755acf1c72353677"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/publishpress/library-wordpress-version-notices/zipball/174b2a35e40dfb7ff0426cc16dc8ed0888be2169",
-                "reference": "174b2a35e40dfb7ff0426cc16dc8ed0888be2169",
+                "url": "https://api.github.com/repos/publishpress/library-wordpress-version-notices/zipball/95447d36d53e4abec9f9b988755acf1c72353677",
+                "reference": "95447d36d53e4abec9f9b988755acf1c72353677",
                 "shasum": ""
             },
             "require": {
@@ -413,14 +399,14 @@
                 "overtrue/phplint": "^2.1",
                 "phpcompatibility/php-compatibility": "^9.3",
                 "phpstan/phpstan": "^1.10",
-                "publishpress/publishpress-phpcs-standards": "dev-main",
+                "publishpress/publishpress-phpcs-standards": "^1.0",
                 "publishpress/translations": "^1.0.0",
                 "publishpress/version-loader-generator": "^1.0",
                 "squizlabs/php_codesniffer": "^3.8",
                 "szepeviktor/phpstan-wordpress": "^1.3",
                 "wp-coding-standards/wpcs": "^3"
             },
-            "time": "2025-12-08T23:56:36+00:00",
+            "time": "2026-05-13T15:05:11+00:00",
             "type": "library",
             "extra": {
                 "generator": {
@@ -451,7 +437,7 @@
             "description": "Library for displaying version notices for Pro plugins in WordPress.",
             "support": {
                 "issues": "https://github.com/publishpress/library-wordpress-version-notices/issues",
-                "source": "https://github.com/publishpress/library-wordpress-version-notices/tree/2.2.0"
+                "source": "https://github.com/publishpress/library-wordpress-version-notices/tree/2.2.1"
             },
             "install-path": "../publishpress/wordpress-version-notices"
         },
