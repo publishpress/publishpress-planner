@@ -1,6 +1,10 @@
 module.exports = {
     clearMocks: true,
-    testMatch: ['<rootDir>/modules/**/*.test.js'],
+    testMatch: [
+        '<rootDir>/modules/**/*.test.js',
+        '<rootDir>/common/**/*.test.js',
+        '<rootDir>/tests/**/*.test.js'
+    ],
     testPathIgnorePatterns: [
         '/node_modules/',
         '/modules/improved-notifications/libs/opentip/'
