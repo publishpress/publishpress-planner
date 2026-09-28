@@ -604,7 +604,8 @@
     margin-bottom: 8px;
 }
 
-.metadata-item-filter .filter-content input.date-pick {
+.metadata-item-filter .filter-content input[type="text"],
+.metadata-item-filter .filter-content input[type="number"] {
     box-sizing: border-box;
     width: 100%;
 }
