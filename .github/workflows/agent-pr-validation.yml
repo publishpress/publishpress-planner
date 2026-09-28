@@ -1,0 +1,149 @@
+name: AI bug PR validation
+
+on:
+  workflow_call:
+    inputs:
+      pr_number:
+        required: true
+        type: string
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: Draft PR number to validate
+        required: true
+        type: string
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [development]
+
+concurrency:
+  group: ai-bug-pr-${{ inputs.pr_number || github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: read
+      pull-requests: read
+    outputs:
+      valid: ${{ steps.inspect.outputs.valid }}
+      pr_number: ${{ steps.inspect.outputs.pr_number }}
+      issue_number: ${{ steps.inspect.outputs.issue_number }}
+      head_sha: ${{ steps.inspect.outputs.head_sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: development
+          persist-credentials: false
+      - name: Check PR belongs to this pipeline
+        id: inspect
+        run: node .github/agents/inspect-pr.mjs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ inputs.pr_number || github.event.pull_request.number }}
+
+  checks:
+    needs: inspect
+    if: ${{ needs.inspect.outputs.valid == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: development
+          path: automation
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.inspect.outputs.head_sha }}
+          path: candidate
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run checks without repository secrets
+        run: bash automation/.github/agents/run-checks.sh candidate "${RUNNER_TEMP}/checks"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pr-checks-${{ needs.inspect.outputs.pr_number }}
+          path: ${{ runner.temp }}/checks
+          if-no-files-found: error
+
+  analyze:
+    needs: [inspect, checks]
+    if: ${{ needs.inspect.outputs.valid == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    permissions:
+      contents: read
+      issues: read
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: development
+          path: automation
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.inspect.outputs.head_sha }}
+          path: candidate
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          name: pr-checks-${{ needs.inspect.outputs.pr_number }}
+          path: .agent-input/checks
+      - name: Prepare independent review context
+        run: node automation/.github/agents/prepare-review.mjs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ needs.inspect.outputs.pr_number }}
+          ISSUE_NUMBER: ${{ needs.inspect.outputs.issue_number }}
+      - name: Evaluate whether the issue is fixed
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          allow-users: '*'
+          sandbox: read-only
+          prompt-file: automation/.github/agents/test.md
+          output-schema-file: automation/.github/agents/test.schema.json
+          output-file: ${{ runner.temp }}/verdict.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pr-verdict-${{ needs.inspect.outputs.pr_number }}
+          path: ${{ runner.temp }}/verdict.json
+          if-no-files-found: error
+
+  publish:
+    needs: [inspect, checks, analyze]
+    if: ${{ needs.inspect.outputs.valid == 'true' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: development
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          name: pr-checks-${{ needs.inspect.outputs.pr_number }}
+          path: ${{ runner.temp }}/checks
+      - uses: actions/download-artifact@v4
+        with:
+          name: pr-verdict-${{ needs.inspect.outputs.pr_number }}
+          path: ${{ runner.temp }}/verdict
+      - name: Publish independent verdict
+        run: node .github/agents/publish-verdict.mjs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ needs.inspect.outputs.pr_number }}
+          ISSUE_NUMBER: ${{ needs.inspect.outputs.issue_number }}
+          CHECKS_FILE: ${{ runner.temp }}/checks/summary.json
+          VERDICT_FILE: ${{ runner.temp }}/verdict/verdict.json

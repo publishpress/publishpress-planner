@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["verdict", "summary", "evidence_before", "evidence_after", "regression_test", "remaining_risks"],
+  "properties": {
+    "verdict": { "type": "string", "enum": ["verified", "failed", "inconclusive"] },
+    "summary": { "type": "string" },
+    "evidence_before": { "type": "string" },
+    "evidence_after": { "type": "string" },
+    "regression_test": { "type": "string" },
+    "remaining_risks": { "type": "array", "items": { "type": "string" } }
+  }
+}

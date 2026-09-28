@@ -36,6 +36,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@master
 
+      - name: Check AI workflow controller logic
+        run: node --test .github/agents/lib.test.mjs
+
       - name: Create .env file
         run: |
           cp $GITHUB_WORKSPACE/.env.example $GITHUB_WORKSPACE/.env

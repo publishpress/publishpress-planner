@@ -1,0 +1,14 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["classification", "severity", "fix_ready", "summary", "evidence", "missing_info", "duplicate_of"],
+  "properties": {
+    "classification": { "type": "string", "enum": ["confirmed_bug", "needs_info", "not_bug", "duplicate", "needs_human_review"] },
+    "severity": { "type": "string", "enum": ["critical", "high", "medium", "low", "unknown"] },
+    "fix_ready": { "type": "boolean" },
+    "summary": { "type": "string" },
+    "evidence": { "type": "string" },
+    "missing_info": { "type": "array", "items": { "type": "string" } },
+    "duplicate_of": { "type": ["integer", "null"] }
+  }
+}

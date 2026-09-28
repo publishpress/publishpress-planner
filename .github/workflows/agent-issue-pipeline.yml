@@ -1,0 +1,164 @@
+name: AI bug issue pipeline
+
+on:
+  issues:
+    types: [opened, edited, reopened]
+  issue_comment:
+    types: [created]
+
+concurrency:
+  group: ai-bug-issue-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  triage:
+    if: ${{ github.event_name != 'issue_comment' || (github.event.issue.pull_request == null && github.event.comment.user.type != 'Bot') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      issues: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Prepare issue evidence
+        run: node .github/agents/prepare-issue.mjs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+      - name: Assess reported bug
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          allow-users: '*'
+          sandbox: read-only
+          prompt-file: .github/agents/triage.md
+          output-schema-file: .github/agents/triage.schema.json
+          output-file: ${{ runner.temp }}/triage.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: triage-decision
+          path: ${{ runner.temp }}/triage.json
+          if-no-files-found: error
+
+  publish_triage:
+    needs: triage
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      issues: write
+    outputs:
+      should_fix: ${{ steps.publish.outputs.should_fix }}
+      issue_number: ${{ steps.publish.outputs.issue_number }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          name: triage-decision
+          path: ${{ runner.temp }}/triage
+      - name: Apply classification and severity labels
+        id: publish
+        run: node .github/agents/publish-triage.mjs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          DECISION_FILE: ${{ runner.temp }}/triage/triage.json
+
+  fix_code:
+    needs: publish_triage
+    if: ${{ needs.publish_triage.outputs.should_fix == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: read
+      issues: read
+    outputs:
+      has_changes: ${{ steps.patch.outputs.has_changes }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: development
+          persist-credentials: false
+      - name: Recheck issue and collect evidence
+        run: node .github/agents/prepare-issue.mjs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ needs.publish_triage.outputs.issue_number }}
+      - name: Implement focused fix
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          allow-users: '*'
+          sandbox: workspace-write
+          prompt-file: .github/agents/fix.md
+          output-file: ${{ runner.temp }}/fix-summary.md
+      - name: Review and package patch
+        id: patch
+        run: node .github/agents/prepare-patch.mjs
+        env:
+          PATCH_FILE: ${{ runner.temp }}/fix.patch
+      - uses: actions/upload-artifact@v4
+        if: ${{ steps.patch.outputs.has_changes == 'true' }}
+        with:
+          name: fix-patch
+          path: |
+            ${{ runner.temp }}/fix.patch
+            ${{ runner.temp }}/fix-summary.md
+          if-no-files-found: error
+
+  publish_fix:
+    needs: [publish_triage, fix_code]
+    if: ${{ needs.fix_code.outputs.has_changes == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    outputs:
+      pr_number: ${{ steps.publish.outputs.pr_number }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: development
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          name: fix-patch
+          path: ${{ runner.temp }}/fix
+      - name: Open draft pull request
+        id: publish
+        run: node .github/agents/publish-fix.mjs
+        env:
+          GH_TOKEN: ${{ secrets.AGENT_GITHUB_TOKEN || github.token }}
+          ISSUE_NUMBER: ${{ needs.publish_triage.outputs.issue_number }}
+          PATCH_FILE: ${{ runner.temp }}/fix/fix.patch
+          SUMMARY_FILE: ${{ runner.temp }}/fix/fix-summary.md
+
+  report_fix_failure:
+    needs: [publish_triage, fix_code, publish_fix]
+    if: ${{ always() && needs.publish_triage.outputs.should_fix == 'true' && (needs.fix_code.result != 'success' || needs.fix_code.outputs.has_changes != 'true' || needs.publish_fix.result != 'success') }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: node .github/agents/mark-fix-failed.mjs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ needs.publish_triage.outputs.issue_number }}
+
+  validate:
+    needs: publish_fix
+    if: ${{ needs.publish_fix.outputs.pr_number != '' }}
+    uses: ./.github/workflows/agent-pr-validation.yml
+    with:
+      pr_number: ${{ needs.publish_fix.outputs.pr_number }}
+    secrets: inherit
