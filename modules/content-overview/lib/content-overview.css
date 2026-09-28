@@ -606,6 +606,11 @@ table.content-overview tbody th .column-content {
     max-width: 300px;
 }
 
+table.content-overview tbody td .column-content-post_date {
+    line-height: 1.5;
+    white-space: normal;
+}
+
 table.content-overview tbody td .column-content  .pp-title-tooltip {
     color: #b95c00;
 }
