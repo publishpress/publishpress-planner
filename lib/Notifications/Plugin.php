@@ -153,34 +153,78 @@ class Plugin
     }
 
     function fltSuppressInactivePostCounts($counts, $type, $perm = '') {
-        global $wpdb, $pagenow;
+        global $pagenow;
 
         if (
             ('psppnotif_workflow' == $type) && !empty($pagenow) && ('edit.php' == $pagenow)
             && (!defined('PUBLISHPRESS_REVISIONS_PRO_VERSION') || !defined('PUBLISHPRESS_STATUSES_PRO_VERSION'))
         ) {
-            $query = $wpdb->prepare(
-                "SELECT post_status, COUNT(*) AS num_posts FROM {$wpdb->posts} WHERE post_type = %s",
-                $type
+            $inactive_default_names = [];
+            if (!defined('PUBLISHPRESS_REVISIONS_PRO_VERSION') && !defined('PUBLISHPRESS_INCLUDE_REVISION_NOTIFICATIONS')) {
+                $inactive_default_names = array_merge(
+                    $inactive_default_names,
+                    [
+                        'revision-scheduled-publication',
+                        'scheduled-revision-is-published',
+                        'revision-scheduled',
+                        'revision-is-scheduled',
+                        'revision-declined',
+                        'revision-deferred-or-rejected',
+                        'revision-submission',
+                        'revision-is-submitted',
+                        'new-revision',
+                        'new-revision-created',
+                        'revision-status-changed',
+                        'revision-is-applied',
+                        'revision-is-published'
+                    ]
+                );
+            }
+
+            if (!defined('PUBLISHPRESS_STATUSES_PRO_VERSION') && !defined('PUBLISHPRESS_RETAIN_DEFAULT_STATUS_CHANGED_WORKFLOW')) {
+                $inactive_default_names = array_merge(
+                    $inactive_default_names,
+                    [
+                        'post-status-changed',
+                        'post-deferred-or-rejected',
+                        'post-declined'
+                    ]
+                );
+            }
+
+            $inactive_default_names = array_map('sanitize_key', $inactive_default_names);
+
+            $workflows = get_posts(
+                [
+                    'post_type'              => $type,
+                    'post_status'            => get_post_stati(),
+                    'posts_per_page'         => -1,
+                    'no_found_rows'          => true,
+                    'update_post_meta_cache' => false,
+                    'update_post_term_cache' => false,
+                ]
             );
 
-            if (!defined('PUBLISHPRESS_REVISIONS_PRO_VERSION') && !defined('PUBLISHPRESS_INCLUDE_REVISION_NOTIFICATIONS')) {
-                $query = $this->suppressInactiveRevisionsNotifications($query);
-            }
-            
-            if (!defined('PUBLISHPRESS_STATUSES_PRO_VERSION') && !defined('PUBLISHPRESS_RETAIN_DEFAULT_STATUS_CHANGED_WORKFLOW')) {
-                $query = $this->suppressInactiveStatusesNotifications($query);
+            $counts = array_fill_keys(get_post_stati(), 0);
+
+            foreach ($workflows as $workflow) {
+                if (in_array($workflow->post_name, $inactive_default_names, true)) {
+                    continue;
+                }
+
+                foreach ($inactive_default_names as $default_name) {
+                    if (0 === strpos($workflow->post_name, $default_name . '-')) {
+                        continue 2;
+                    }
+                }
+
+                if (!isset($counts[$workflow->post_status])) {
+                    $counts[$workflow->post_status] = 0;
+                }
+
+                ++$counts[$workflow->post_status];
             }
 
-            $query .= ' GROUP BY post_status';
-        
-            $results = (array) $wpdb->get_results( $query, ARRAY_A );
-            $counts  = array_fill_keys( get_post_stati(), 0 );
-        
-            foreach ( $results as $row ) {
-                $counts[ $row['post_status'] ] = $row['num_posts'];
-            }
-        
             $counts = (object) $counts;
         }
     
