@@ -77,14 +77,16 @@ class Base extends Base_Step
      */
     public function save_metabox_data($id, $post)
     {
-        if (!isset($_POST['publishpress_notif'])
-            || !isset($_POST['publishpress_notif'][$this->attr_prefix])) {
+        $publishpress_notif = isset($_POST['publishpress_notif']) && is_array($_POST['publishpress_notif'])
+            ? wp_unslash($_POST['publishpress_notif'])
+            : [];
+
+        if (!isset($publishpress_notif[$this->attr_prefix])) {
             // Assume it is disabled
             update_post_meta($id, static::META_KEY_SELECTED, false);
         }
 
-        // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-        $params = $this->sanitize_metabox_data($_POST['publishpress_notif']);
+        $params = $this->sanitize_metabox_data($publishpress_notif);
 
         if (isset($params[$this->attr_prefix])) {
             // Is selected in the events?

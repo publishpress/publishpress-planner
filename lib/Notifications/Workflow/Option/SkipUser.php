@@ -40,7 +40,7 @@ class SkipUser extends OptionCheckboxAbstract
     {
         $value = 0;
         if (isset($_POST[$this->getFieldName()])) {
-            $value = sanitize_key($_POST[$this->getFieldName()]);
+            $value = sanitize_key(wp_unslash($_POST[$this->getFieldName()]));
         }
 
         update_post_meta(
