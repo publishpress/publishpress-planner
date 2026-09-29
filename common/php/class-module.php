@@ -597,15 +597,7 @@ if (!class_exists('PP_Module')) {
                 return $decoded_array;
             }
 
-            // Legacy Planner versions stored term descriptions as base64-encoded serialized arrays.
-            $legacy_payload = base64_decode($string_to_unencode, true);
-            if (false === $legacy_payload || ! is_serialized($legacy_payload)) {
-                return $string_to_unencode;
-            }
-
-            $legacy_array = @unserialize($legacy_payload, ['allowed_classes' => false]);
-
-            return is_array($legacy_array) ? $legacy_array : $string_to_unencode;
+            return $string_to_unencode;
         }
 
         public function get_path_base()
