@@ -1323,7 +1323,7 @@ if (! class_exists('PP_Calendar_Utilities')) {
                     </button>
                 </div>
 
-                <a href="#TB_inline?width=550&height=270&inlineId=publishpress-calendar-ics-subs" class="thickbox">
+                <a href="#TB_inline?width=550&height=270&inlineId=publishpress-calendar-ics-subs" class="thickbox" aria-label="<?php echo esc_attr__('Subscribe in iCal or Google Calendar', 'publishpress'); ?>">
                     <?php
                     echo esc_html__('Click here to subscribe in iCal or Google Calendar', 'publishpress'); ?>
                 </a>
