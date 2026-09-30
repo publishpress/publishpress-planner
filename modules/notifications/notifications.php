@@ -1027,7 +1027,7 @@ if (! class_exists('PP_Notifications')) {
                 $this->post_set_users_to_notify($post, (int )$post->post_author);
             }
 
-            $blogname = get_option('blogname');
+            $blogname = get_bloginfo('name');
 
             // Send the notification
             $args = [
@@ -1056,7 +1056,7 @@ if (! class_exists('PP_Notifications')) {
             $body .= sprintf(__('This email was sent %s.', 'publishpress'), date('r'));
             // phpcs:enable
             $body .= "\r\n \r\n";
-            $body .= get_option('blogname') . " | " . get_bloginfo('url') . " | " . admin_url('/') . "\r\n";
+            $body .= get_bloginfo('name') . " | " . home_url('/') . " | " . admin_url('/') . "\r\n";
 
             return $body;
         }
@@ -1985,7 +1985,7 @@ if (! class_exists('PP_Notifications')) {
 
             $post_author = get_userdata($post->post_author);
 
-            $blogname = get_option('blogname');
+            $blogname = get_bloginfo('name');
 
             $body = '';
 
