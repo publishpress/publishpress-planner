@@ -140,6 +140,14 @@ class WorkflowsController
             '\\PublishPress\\Notifications\\Workflow\\Step\\Event\\Post_TaxonomyUpdate',
             '\\PublishPress\\Notifications\\Workflow\\Step\\Event\\Post_StatusTransition',
         ];
+
+        if (!$this->is_editorial_comments_feature_enabled()) {
+            $classes_event = array_diff(
+                $classes_event,
+                ['\\PublishPress\\Notifications\\Workflow\\Step\\Event\\Editorial_Comment']
+            );
+        }
+
         /**
          * Filters the list of classes to define workflow "when" steps.
          *
@@ -239,6 +247,24 @@ class WorkflowsController
                 new $class;
             }
         }
+    }
+
+    /**
+     * Returns whether the Editorial Comments feature is enabled in PublishPress settings.
+     *
+     * @return bool
+     */
+    private function is_editorial_comments_feature_enabled()
+    {
+        global $publishpress;
+
+        if (!is_object($publishpress) || !method_exists($publishpress, 'get_module_by')) {
+            return false;
+        }
+
+        $module = $publishpress->get_module_by('slug', 'editorial-comments');
+
+        return isset($module->options->enabled) && 'on' === $module->options->enabled;
     }
 
     /**
