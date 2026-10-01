@@ -415,9 +415,9 @@ class EditorialCommentsTable extends WP_List_Table
         $current_user = wp_get_current_user();
 
         $actions = [];
-        
+
         if (
-            ($current_user->user_nicename == $item->comment_author && current_user_can('pp_delete_editorial_comment'))
+            ((int)$current_user->ID === (int)$item->user_id && current_user_can('pp_delete_editorial_comment'))
             || (current_user_can('pp_delete_others_editorial_comment'))
             ) {
             $actions['edit'] = sprintf(
