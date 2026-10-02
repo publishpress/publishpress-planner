@@ -88,7 +88,7 @@ if (! class_exists('ComposerAutoloaderInitPublishPressPlanner')
     require_once $autoloadFilePath;
 }
 
-add_action('plugins_loaded', function () {
+function publishpress_planner_load_plugin() {
 
     require_once 'includes.php';
 
@@ -1505,7 +1505,9 @@ add_action('plugins_loaded', function () {
         }
     }
     do_action('publishpress_planner_loaded');
-}, -10);
+}
+
+add_action('plugins_loaded', 'publishpress_planner_load_plugin', -10);
 
 register_activation_hook(
     __FILE__,
