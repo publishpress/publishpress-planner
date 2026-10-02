@@ -54,18 +54,28 @@ class WPCronAdapter implements SchedulerInterface
             'event_args' => $eventArgs,
         ];
 
-        $delay = apply_filters(
+        $delay = (int) apply_filters(
             'publishpress_notifications_schedule_delay_in_seconds',
             Notification::DEFAULT_DELAY_FOR_SENDING_NOTIFICATION_IN_SECONDS
         );
-        $roundFactor = apply_filters(
+        $roundFactor = (int) apply_filters(
             'publishpress_notifications_schedule_round_factor_in_seconds',
             Notification::DEFAULT_ROUND_FACTOR_FOR_NOTIFICATION_IN_SECONDS
         );
 
         // We use a round factor for stopping multiple notifications with the same content
-        $time = time() + $delay;
-        $time -= $time % $roundFactor;
+        $now  = time();
+        $time = $now + max(0, $delay);
+
+        if ($roundFactor > 1) {
+            $remainder = $time % $roundFactor;
+
+            if ($remainder > 0) {
+                $time += $roundFactor - $remainder;
+            }
+        }
+
+        $time = max($time, $now + max(0, $delay));
 
         if (Helper::isDuplicatedNotificationSchedule($time, $data)) {
             return;

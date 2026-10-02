@@ -45,6 +45,6 @@
     "makepot": "wp i18n make-pot . ./languages/publishpress.pot --domain=publishpress"
   },
   "dependencies": {
-    "dompurify": "^3.4.13"
+    "dompurify": "^3.4.16"
   }
 }

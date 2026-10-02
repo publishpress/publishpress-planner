@@ -46,10 +46,13 @@ class Role extends Simple_Checkbox implements Receiver_Interface
     {
         parent::save_metabox_data($id, $post);
 
+        $publishpress_notif = isset($_POST['publishpress_notif']) && is_array($_POST['publishpress_notif'])
+            ? wp_unslash($_POST['publishpress_notif'])
+            : [];
+
         $values = [];
-        if (isset($_POST['publishpress_notif'])
-            && isset($_POST['publishpress_notif']['receiver_role'])) {
-            $values = array_map('sanitize_key', $_POST['publishpress_notif']['receiver_role']);
+        if (isset($publishpress_notif['receiver_role'])) {
+            $values = array_map('sanitize_key', (array)$publishpress_notif['receiver_role']);
         }
 
         $this->update_metadata_array($id, static::META_LIST_KEY, $values);

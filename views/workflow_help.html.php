@@ -24,4 +24,4 @@
 <p><?php echo esc_html($context['labels']['available_fields']); ?>: <em><?php echo esc_html($context['psppno_receiver_fields_list']); ?></em></p>
 
 <hr>
-<a href="https://publishpress.com/docs/the-notification-workflows/"><?php echo esc_html($context['labels']['read_more']); ?></a>
+<a href="https://publishpress.com/docs/the-notification-workflows/" aria-label="<?php esc_attr_e('Read more about notification workflows', 'publishpress'); ?>"><?php echo esc_html($context['labels']['read_more']); ?></a>

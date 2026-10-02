@@ -213,7 +213,7 @@ class Util
                         <li><?php echo esc_html__('Fast, professional support', 'publishpress'); ?></li>
                     </ul>
                     <div class="upgrade-btn">
-                        <a href="https://publishpress.com/links/publishpress-banner" target="__blank"><?php echo esc_html__('Upgrade to Pro', 'publishpress'); ?></a>
+                        <a href="https://publishpress.com/links/publishpress-banner" target="__blank" aria-label="<?php echo esc_attr__('Upgrade to Pro', 'publishpress'); ?>"><?php echo esc_html__('Upgrade to Pro', 'publishpress'); ?></a>
                     </div>
                 </div>
             </div>
@@ -226,7 +226,7 @@ class Util
 
                 <div class="inside pp-advert">
                     <p><?php echo esc_html__('If you need help or have a new feature request, let us know.', 'publishpress'); ?>
-                        <a class="advert-link" href="https://wordpress.org/support/plugin/publishpress/" target="_blank">
+                        <a class="advert-link" href="https://wordpress.org/support/plugin/publishpress/" target="_blank" aria-label="<?php echo esc_attr__('Request Support', 'publishpress'); ?>">
                         <?php echo esc_html__('Request Support', 'publishpress'); ?> 
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="linkIcon">
                                 <path
@@ -237,7 +237,7 @@ class Util
                     </p>
                     <p>
                     <?php echo esc_html__('Detailed documentation is also available on the plugin website.', 'publishpress'); ?> 
-                        <a class="advert-link" href="https://publishpress.com/knowledge-base/start-planner/" target="_blank">
+                        <a class="advert-link" href="https://publishpress.com/knowledge-base/start-planner/" target="_blank" aria-label="<?php echo esc_attr__('View Knowledge Base', 'publishpress'); ?>">
                         <?php echo esc_html__('View Knowledge Base', 'publishpress'); ?> 
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="linkIcon">
                                 <path

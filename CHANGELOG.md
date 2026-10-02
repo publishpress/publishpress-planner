@@ -1,6 +1,28 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[4.8.2] - 06 Oct, 2026
+
+- Changed: Image alternative text is now exposed clearly to automated accessibility and security scanners. #2079
+- Changed: Scanner-flagged links now include descriptive labels to make their purpose clearer. #2080
+- Changed: Serialized hash data has been replaced with JSON encoding for safer and more modern data handling. #2078
+- Changed: Primitive capability checks no longer process unnecessary post IDs, simplifying and improving permission checks. #2081
+- Changed: Internal array handling has been simplified to avoid unnecessary temporary arrays. #2082
+- Changed: Legacy Base64 decoding for module descriptions has been removed in favor of safer handling. #2077
+- Changed: An obsolete suppressed plugin-file check has been removed. #2083
+- Changed: GitHub workflows have been refactored by removing outdated code-check and deployment workflow components. #2017
+- Changed: Compatibility and security dependencies have been refreshed, including DOMPurify and brace-expansion. #2091 #2092 #2093
+- Changed: The editorial comment workflow event has been restored for compatibility with existing editorial workflows. #2090
+- Fixed: Security-scanner findings related to administrative output have been addressed to prevent unsafe content from being rendered. #2084
+- Fixed: SQL scanner findings have been resolved by correcting the affected query placeholders. #2076
+- Fixed: Notification workflow inputs are now properly unslashed before processing. #2085
+- Fixed: Multisite operations now use WordPress helpers that correctly handle information for the current site. #2086
+- Fixed: Deleted posts are now handled correctly in notification logs. #2089
+- Fixed: The Notifications metabox is restored when follower workflows are configured. #2074
+- Fixed: Asynchronous notification cron events are now kept scheduled in the future instead of being incorrectly treated as expired. #2075
+- Fixed: Editorial comment owner capability checks now correctly identify the owner by ID. #2073
+- Fixed: Plugin loader PHP compatibility scanning has been corrected. #2087
+
 [4.8.1] - 28 Sept, 2026
 
 - Changed: Workflow metaboxes now support WordPress block editor compatibility. #2055

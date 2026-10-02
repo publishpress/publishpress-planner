@@ -176,7 +176,7 @@ if (! class_exists('PP_Calendar_Methods')) {
 
             // Check if we need to display the message about selecting at lest one post type
             if (get_transient(static::TRANSIENT_SHOW_ONE_POST_TYPE_WARNING)) {
-                echo '<p class="psppca_field_warning">' . __(
+                echo '<p class="psppca_field_warning">' . esc_html__(
                         'At least one post type must be selected',
                         'publishpress'
                     ) . '</p>';
@@ -223,8 +223,8 @@ if (! class_exists('PP_Calendar_Methods')) {
                 foreach ($statuses as $status => $title) {
                     $id = esc_attr($status) . '-display-publish-time';
 
-                    echo '<div><label for="' . $id . '">';
-                    echo '<input id="' . $id . '" name="' . $field_name . '[' . esc_attr($status) . ']"';
+                    echo '<div><label for="' . esc_attr($id) . '">';
+                    echo '<input id="' . esc_attr($id) . '" name="' . esc_attr($field_name) . '[' . esc_attr($status) . ']"';
 
                     if (isset($this->module->options->show_posts_publish_time[$status])) {
                         checked($this->module->options->show_posts_publish_time[$status], 'on');
@@ -756,7 +756,7 @@ if (! class_exists('PP_Calendar_Methods')) {
                 $post->ID
             );
             $isPublished = in_array($post->post_status, $this->published_statuses);
-            $canPublish = current_user_can($post_type_object->cap->publish_posts, $post->ID);
+            $canPublish = current_user_can($post_type_object->cap->publish_posts);
             $passedPublishedPostRule = (! $isPublished || ($isPublished && $canPublish));
 
             // Published posts only can be updated by those who can publish posts.
@@ -766,7 +766,7 @@ if (! class_exists('PP_Calendar_Methods')) {
             }
 
             // If the user can edit others_posts he can edits the posts depending on the status.
-            if (current_user_can($post_type_object->cap->edit_others_posts, $post->ID) && $passedPublishedPostRule) {
+            if (current_user_can($post_type_object->cap->edit_others_posts) && $passedPublishedPostRule) {
                 return true;
             }
 

@@ -67,12 +67,17 @@ class Post_Type extends Base implements Filter_Interface
      */
     public function save_metabox_data($id, $post)
     {
-        if (!isset($_POST['publishpress_notif']["{$this->step_name}_filters"]['post_type'])) {
+        $filters = isset($_POST['publishpress_notif']["{$this->step_name}_filters"])
+            && is_array($_POST['publishpress_notif']["{$this->step_name}_filters"])
+            ? wp_unslash($_POST['publishpress_notif']["{$this->step_name}_filters"])
+            : [];
+
+        if (!isset($filters['post_type'])) {
             $values = [];
         } else {
             $values = array_map(
                 'sanitize_key',
-                (array)$_POST['publishpress_notif']["{$this->step_name}_filters"]['post_type']
+                (array)$filters['post_type']
             );
         }
 

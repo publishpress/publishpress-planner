@@ -84,13 +84,18 @@ class Term extends Base implements Filter_Interface
      */
     public function save_metabox_data($id, $post)
     {
-        if (!isset($_POST['publishpress_notif']["{$this->step_name}_filters"]['term'])) {
+        $filters = isset($_POST['publishpress_notif']["{$this->step_name}_filters"])
+            && is_array($_POST['publishpress_notif']["{$this->step_name}_filters"])
+            ? wp_unslash($_POST['publishpress_notif']["{$this->step_name}_filters"])
+            : [];
+
+        if (!isset($filters['term'])) {
             $values = [];
         } else {
             // TODO: Should we sanitize with parseInt instead?
             $values = array_map(
                 'sanitize_key',
-                (array)$_POST['publishpress_notif']["{$this->step_name}_filters"]['term']
+                (array)$filters['term']
             );
         }
 
