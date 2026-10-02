@@ -144,19 +144,26 @@ class NotificationsLogTable extends WP_List_Table
             case 'content':
                 if ($log->workflowId !== null) {
                     $post = get_post($log->postId);
-                    $postType = get_post_type_object($post->post_type);
-                    $postTypeLabels = get_post_type_labels($postType);
 
-                    $output .= $this->wrapInALink(
-                        $log->postTitle,
-                        admin_url('post.php?post=' . esc_attr($log->postId) . '&action=edit')
-                    );
+                    if (! empty($post) && ! is_wp_error($post)) {
+                        $postType = get_post_type_object($post->post_type);
+                        $postTypeLabels = get_post_type_labels($postType);
+
+                        $output .= $this->wrapInALink(
+                            $log->postTitle,
+                            admin_url('post.php?post=' . esc_attr($log->postId) . '&action=edit')
+                        );
+                    } else {
+                        $output .= esc_html__('Deleted post', 'publishpress');
+                    }
 
                     $output .= '<div class="muted">';
-                    $output .= '<div>' . sprintf(
-                            __('Post type: %s', 'publishpress'),
-                            $postTypeLabels->singular_name
-                        ) . '</div>';
+                    if (! empty($postTypeLabels)) {
+                        $output .= '<div>' . sprintf(
+                                __('Post type: %s', 'publishpress'),
+                                $postTypeLabels->singular_name
+                            ) . '</div>';
+                    }
                     $output .= '<div>' . sprintf(__('Post ID: %d', 'publishpress'), $log->postId) . '</div>';
 
                     if ($log->isFromAnotherBlog()) {
@@ -556,10 +563,13 @@ class NotificationsLogTable extends WP_List_Table
         $selectedOptionEscaped = '';
         if (! empty($postId)) {
             $post = get_post($postId);
+            $postTitle = ! empty($post) && ! is_wp_error($post)
+                ? $post->post_title
+                : __('Deleted post', 'publishpress');
 
             $selectedOptionEscaped = '<option selected="selected" value="' . esc_attr(
                     $postId
-                ) . '">' . esc_html($post->post_title) . '</option>';
+                ) . '">' . esc_html($postTitle) . '</option>';
         }
 
         // phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -572,10 +582,13 @@ class NotificationsLogTable extends WP_List_Table
         $selectedOptionEscaped = '';
         if (! empty($workflowId)) {
             $workflow = get_post($workflowId);
+            $workflowTitle = ! empty($workflow) && ! is_wp_error($workflow)
+                ? $workflow->post_title
+                : __('Deleted workflow', 'publishpress');
 
             $selectedOptionEscaped = '<option selected="selected" value="' . esc_attr(
                     $workflowId
-                ) . '">' . esc_html($workflow->post_title) . '</option>';
+                ) . '">' . esc_html($workflowTitle) . '</option>';
         }
 
         // phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
