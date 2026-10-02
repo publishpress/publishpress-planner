@@ -9,6 +9,8 @@ on:
 jobs:
   code-check:
     name: Check the code
+    permissions:
+      contents: read
     uses: ./.github/workflows/code-standards.yml
     secrets: inherit
 
