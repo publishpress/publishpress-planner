@@ -771,42 +771,38 @@ if (!class_exists('PP_Module')) {
                 <?php if (!empty($roles)) : ?>
                     <optgroup label="<?php echo esc_attr__('Roles', 'publishpress'); ?>">
                         <?php foreach ($roles as $role => $data) : ?>
-                            <?php $attrSelected = (in_array($role, $selected)) ? 'selected="selected"' : ''; ?>
-                            <option value="<?php echo esc_attr($role); ?>" <?php echo $attrSelected; ?>><?php echo __(
+                            <option value="<?php echo esc_attr($role); ?>" <?php selected(in_array($role, $selected), true); ?>><?php esc_html_e(
                                     'Role',
                                     'publishpress'
-                                ); ?>: <?php echo $data['name']; ?></option>
+                                ); ?>: <?php echo esc_html($data['name']); ?></option>
                         <?php endforeach; ?>
                     </optgroup>
                 <?php endif; ?>
                 <?php if (!empty($groups)) : ?>
                     <optgroup label="<?php echo esc_attr__('Groups', 'publishpress'); ?>">
                         <?php foreach ($groups as $group_id => $group) : ?>
-                            <?php $attrSelected = (in_array("group-$group_id", $selected)) ? 'selected="selected"' : ''; ?>
-                            <option value="group-<?php echo esc_attr($group_id); ?>" <?php echo $attrSelected; ?>><?php echo __(
+                            <option value="group-<?php echo esc_attr($group_id); ?>" <?php selected(in_array("group-$group_id", $selected), true); ?>><?php esc_html_e(
                                     'Group',
                                     'publishpress'
-                                ); ?>: <?php echo $group->name; ?></option>
+                                ); ?>: <?php echo esc_html($group->name); ?></option>
                         <?php endforeach; ?>
                     </optgroup>
                 <?php endif; ?>
                 <?php if (!empty($users)) : ?>
-                    <optgroup label="<?php echo __('Users', 'publishpress'); ?>">
+                    <optgroup label="<?php echo esc_attr__('Users', 'publishpress'); ?>">
                         <?php foreach ($users as $user) : ?>
-                            <?php $attrSelected = (in_array($user->ID, $selected)) ? 'selected="selected"' : ''; ?>
                             <option value="<?php echo esc_attr(
                                 $user->ID
-                            ); ?>" <?php echo $attrSelected; ?>><?php echo $user->display_name; ?></option>
+                            ); ?>" <?php selected(in_array($user->ID, $selected), true); ?>><?php echo esc_html($user->display_name); ?></option>
                         <?php endforeach; ?>
                     </optgroup>
                 <?php endif; ?>
                 <?php if (!empty($emails)) : ?>
-                    <optgroup label="<?php echo __('E-mails', 'publishpress'); ?>">
+                    <optgroup label="<?php echo esc_attr__('E-mails', 'publishpress'); ?>">
                         <?php foreach ($emails as $email) : ?>
-                            <?php $attrSelected = (in_array($email, $selected)) ? 'selected="selected"' : ''; ?>
                             <option value="<?php echo esc_attr(
                                 $email
-                            ); ?>" <?php echo $attrSelected; ?>><?php echo $email; ?></option>
+                            ); ?>" <?php selected(in_array($email, $selected), true); ?>><?php echo esc_html($email); ?></option>
                         <?php endforeach; ?>
                     </optgroup>
                 <?php endif; ?>
@@ -1315,11 +1311,50 @@ if (!class_exists('PP_Module')) {
                 __( 'Minute' ) .
             '</span><input type="text" ' . ( $multi ? '' : 'id="mn" ' ) . 'name="mn" value="' . $mn . '" size="2" maxlength="2"' . $tab_index_attribute . ' autocomplete="off" class="form-required" /></label>';
 
+            $timestamp_allowed_html = [
+                'label'  => [],
+                'span'   => [
+                    'class' => [],
+                ],
+                'select' => [
+                    'class'    => [],
+                    'id'       => [],
+                    'name'     => [],
+                    'tabindex' => [],
+                ],
+                'option' => [
+                    'data-text' => [],
+                    'selected'  => [],
+                    'value'     => [],
+                ],
+                'input'  => [
+                    'autocomplete' => [],
+                    'class'        => [],
+                    'id'           => [],
+                    'maxlength'    => [],
+                    'name'         => [],
+                    'size'         => [],
+                    'tabindex'     => [],
+                    'type'         => [],
+                    'value'        => [],
+                ],
+            ];
+
             echo '<div class="timestamp-wrap">';
             /* translators: 1: Month, 2: Day, 3: Year, 4: Hour, 5: Minute. */
-            printf( __( '%1$s %2$s, %3$s at %4$s:%5$s' ), $month, $day, $year, $hour, $minute );
+            echo wp_kses(
+                sprintf(
+                    esc_html__( '%1$s %2$s, %3$s at %4$s:%5$s' ),
+                    $month,
+                    $day,
+                    $year,
+                    $hour,
+                    $minute
+                ),
+                $timestamp_allowed_html
+            );
 
-            echo '</div><input type="hidden" id="ss" name="ss" value="' . $ss . '" />';
+            echo '</div><input type="hidden" id="ss" name="ss" value="' . esc_attr($ss) . '" />';
 
             if ( $multi ) {
                 return;
@@ -1338,9 +1373,9 @@ if (!class_exists('PP_Module')) {
             foreach ( $map as $timeunit => $value ) {
                 list( $unit, $curr ) = $value;
 
-                echo '<input type="hidden" id="hidden_' . $timeunit . '" name="hidden_' . $timeunit . '" value="' . $unit . '" />' . "\n";
+                echo '<input type="hidden" id="hidden_' . esc_attr($timeunit) . '" name="hidden_' . esc_attr($timeunit) . '" value="' . esc_attr($unit) . '" />' . "\n";
                 $cur_timeunit = 'cur_' . $timeunit;
-                echo '<input type="hidden" id="' . $cur_timeunit . '" name="' . $cur_timeunit . '" value="' . $curr . '" />' . "\n";
+                echo '<input type="hidden" id="' . esc_attr($cur_timeunit) . '" name="' . esc_attr($cur_timeunit) . '" value="' . esc_attr($curr) . '" />' . "\n";
             }
             ?>
             <?php

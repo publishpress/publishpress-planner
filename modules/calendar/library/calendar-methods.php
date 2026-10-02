@@ -176,7 +176,7 @@ if (! class_exists('PP_Calendar_Methods')) {
 
             // Check if we need to display the message about selecting at lest one post type
             if (get_transient(static::TRANSIENT_SHOW_ONE_POST_TYPE_WARNING)) {
-                echo '<p class="psppca_field_warning">' . __(
+                echo '<p class="psppca_field_warning">' . esc_html__(
                         'At least one post type must be selected',
                         'publishpress'
                     ) . '</p>';
@@ -223,8 +223,8 @@ if (! class_exists('PP_Calendar_Methods')) {
                 foreach ($statuses as $status => $title) {
                     $id = esc_attr($status) . '-display-publish-time';
 
-                    echo '<div><label for="' . $id . '">';
-                    echo '<input id="' . $id . '" name="' . $field_name . '[' . esc_attr($status) . ']"';
+                    echo '<div><label for="' . esc_attr($id) . '">';
+                    echo '<input id="' . esc_attr($id) . '" name="' . esc_attr($field_name) . '[' . esc_attr($status) . ']"';
 
                     if (isset($this->module->options->show_posts_publish_time[$status])) {
                         checked($this->module->options->show_posts_publish_time[$status], 'on');
