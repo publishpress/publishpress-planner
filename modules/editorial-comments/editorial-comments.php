@@ -487,7 +487,7 @@ if (! class_exists('PP_Editorial_Comments')) {
         {
             global $post, $post_ID; ?>
             <div id="pp-comments_wrapper">
-                <a name="editorialcomments"></a>
+                <span id="editorialcomments"></span>
 
                 <?php
                 // Show comments only if not a new post
@@ -554,7 +554,7 @@ if (! class_exists('PP_Editorial_Comments')) {
             <!-- Reply form, hidden until reply clicked by user -->
             <div id="pp-replyrow" style="display: none;">
                 <div class="pp-replyattachment">
-                    <a href="#" class="button editorial-comment-file-upload">
+                    <a href="#" class="button editorial-comment-file-upload" aria-label="<?php echo esc_attr__('Attach file', 'publishpress'); ?>">
                         <?php _e('Attach file', 'publishpress') ?>
                     </a>
                 </div>
@@ -565,11 +565,11 @@ if (! class_exists('PP_Editorial_Comments')) {
 
                 <div id="pp-replysubmit">
                     <div class="editorial-attachments"></div>
-                    <a class="button pp-replysave button-primary alignright" href="#comments-form">
+                    <a class="button pp-replysave button-primary alignright" href="#comments-form" aria-label="<?php echo esc_attr__('Add Comment', 'publishpress'); ?>">
                         <span id="pp-replybtn"><?php
                             _e('Add Comment', 'publishpress') ?></span>
                     </a>
-                    <a class="pp-replycancel button-secondary alignright"
+                    <a class="pp-replycancel button-secondary alignright" aria-label="<?php echo esc_attr__('Cancel', 'publishpress'); ?>"
                        href="#comments-form"><?php
                         _e('Cancel', 'publishpress'); ?></a>
                     <img alt="Sending comment..." src="<?php

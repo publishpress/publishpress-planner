@@ -632,7 +632,7 @@ if (! class_exists('PP_Notifications')) {
             $notify_me_style = empty($followersWorkflows) ? 'display: none;' : '';
             ?>
             <div id="pp_post_notify_box">
-                <a name="subscriptions"></a>
+                <span id="subscriptions"></span>
                 <div style="<?php echo esc_attr($notify_me_style); ?>">
                     <p>
                         <?php
