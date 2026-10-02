@@ -603,7 +603,7 @@ if (!class_exists('PP_Module')) {
                 return $string_to_unencode;
             }
 
-            $legacy_array = @unserialize($legacy_payload, ['allowed_classes' => false]);
+            $legacy_array = unserialize($legacy_payload, ['allowed_classes' => false]);
 
             return is_array($legacy_array) ? $legacy_array : $string_to_unencode;
         }
