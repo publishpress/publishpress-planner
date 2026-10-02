@@ -65,7 +65,7 @@ class Email extends Base implements Channel_Interface
 
         $signature  = $this->get_notification_signature(
             $content,
-            $channel . ':' . serialize($receiverData['receiver'])
+            $channel . ':' . wp_json_encode($receiverData['receiver'])
         );
         $controller = $this->get_service('workflows_controller');
 
