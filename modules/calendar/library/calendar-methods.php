@@ -756,7 +756,7 @@ if (! class_exists('PP_Calendar_Methods')) {
                 $post->ID
             );
             $isPublished = in_array($post->post_status, $this->published_statuses);
-            $canPublish = current_user_can($post_type_object->cap->publish_posts, $post->ID);
+            $canPublish = current_user_can($post_type_object->cap->publish_posts);
             $passedPublishedPostRule = (! $isPublished || ($isPublished && $canPublish));
 
             // Published posts only can be updated by those who can publish posts.
@@ -766,7 +766,7 @@ if (! class_exists('PP_Calendar_Methods')) {
             }
 
             // If the user can edit others_posts he can edits the posts depending on the status.
-            if (current_user_can($post_type_object->cap->edit_others_posts, $post->ID) && $passedPublishedPostRule) {
+            if (current_user_can($post_type_object->cap->edit_others_posts) && $passedPublishedPostRule) {
                 return true;
             }
 

@@ -1389,7 +1389,7 @@ function pp_get_comments_plus($args = '')
     extract($args, EXTR_SKIP);
 
     // $args can be whatever, only use the args defined in defaults to compute the key
-    $key = md5(serialize(compact(array_keys($defaults))));
+    $key = md5(wp_json_encode(compact(array_keys($defaults))));
     $last_changed = wp_cache_get('last_changed', 'comment');
     if (! $last_changed) {
         $last_changed = time();

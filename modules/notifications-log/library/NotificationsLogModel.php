@@ -326,7 +326,7 @@ class NotificationsLogModel
     {
         $post = get_post($this->postId);
 
-        return $post->post_title;
+        return (! empty($post) && ! is_wp_error($post)) ? $post->post_title : '';
     }
 
     private function getWorkflow()

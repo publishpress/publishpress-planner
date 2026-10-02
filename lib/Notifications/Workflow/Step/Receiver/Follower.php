@@ -63,9 +63,11 @@ class Follower extends Simple_Checkbox implements Receiver_Interface
             $users  = [];
             $emails = [];
 
-            if ('POST' === $method && (isset($_POST['action']) && 'editpost' === $_POST['action'])) {
+            $action = isset($_POST['action']) ? sanitize_key(wp_unslash($_POST['action'])) : '';
+
+            if ('POST' === $method && 'editpost' === $action) {
                 $toNotify = isset($_POST['to_notify']) ?
-                    array_map('sanitize_text_field', (array)$_POST['to_notify']) : false;
+                    array_map('sanitize_text_field', (array)wp_unslash($_POST['to_notify'])) : false;
 
                 if (!empty($toNotify)) {
                     foreach ($toNotify as $item) {
