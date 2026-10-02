@@ -406,26 +406,42 @@ if (! class_exists('PP_Editorial_Comments')) {
             // Define the custom SQL query to get users who have written comments
             $commentType = self::comment_type;
 
-            $userSql = "SELECT DISTINCT u.ID, u.display_name
-            FROM {$wpdb->users} AS u
-            INNER JOIN {$wpdb->comments} AS c
-            ON u.ID = c.user_id
-            WHERE c.comment_type = %s";
-            $queryArgs = [$commentType];
-
-            if (!empty($queryText)) {
+            if (empty($queryText)) {
+                $users = $wpdb->get_results(
+                    $wpdb->prepare(
+                        "SELECT DISTINCT u.ID, u.display_name
+                        FROM {$wpdb->users} AS u
+                        INNER JOIN {$wpdb->comments} AS c
+                        ON u.ID = c.user_id
+                        WHERE c.comment_type = %s
+                        ORDER BY u.display_name LIMIT 20",
+                        $commentType
+                    )
+                );
+            } else {
                 $searchLike = '%' . $wpdb->esc_like($queryText) . '%';
-                $userSql .= " AND (user_login LIKE %s
-                    OR user_url LIKE %s
-                    OR user_email LIKE %s
-                    OR user_nicename LIKE %s
-                    OR display_name LIKE %s)";
-                $queryArgs = array_merge($queryArgs, array_fill(0, 5, $searchLike));
+                $users = $wpdb->get_results(
+                    $wpdb->prepare(
+                        "SELECT DISTINCT u.ID, u.display_name
+                        FROM {$wpdb->users} AS u
+                        INNER JOIN {$wpdb->comments} AS c
+                        ON u.ID = c.user_id
+                        WHERE c.comment_type = %s
+                        AND (user_login LIKE %s
+                            OR user_url LIKE %s
+                            OR user_email LIKE %s
+                            OR user_nicename LIKE %s
+                            OR display_name LIKE %s)
+                        ORDER BY u.display_name LIMIT 20",
+                        $commentType,
+                        $searchLike,
+                        $searchLike,
+                        $searchLike,
+                        $searchLike,
+                        $searchLike
+                    )
+                );
             }
-
-            $userSql .= " ORDER BY u.display_name LIMIT 20";
-
-            $users = $wpdb->get_results($wpdb->prepare($userSql, $queryArgs));
 
             foreach ($users as $user) {
                 $results[] = [
