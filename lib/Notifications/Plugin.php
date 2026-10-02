@@ -105,35 +105,63 @@ class Plugin
         return $where;
     }
 
+    private function getInactiveRevisionNotificationNames() {
+        return [
+            'revision-scheduled-publication',
+            'scheduled-revision-is-published',
+            'revision-scheduled',
+            'revision-is-scheduled',
+            'revision-declined',
+            'revision-deferred-or-rejected',
+            'revision-submission',
+            'revision-is-submitted',
+            'new-revision',
+            'new-revision-created',
+            'revision-status-changed',
+            'revision-is-applied',
+            'revision-is-published'
+        ];
+    }
+
+    private function getInactiveStatusNotificationNames() {
+        return [
+            'post-status-changed',
+            'post-deferred-or-rejected',
+            'post-declined'
+        ];
+    }
+
+    private function getInactiveDefaultNotificationNames() {
+        $inactive_default_names = [];
+
+        if (!defined('PUBLISHPRESS_REVISIONS_PRO_VERSION') && !defined('PUBLISHPRESS_INCLUDE_REVISION_NOTIFICATIONS')) {
+            $inactive_default_names = array_merge(
+                $inactive_default_names,
+                $this->getInactiveRevisionNotificationNames()
+            );
+        }
+
+        if (!defined('PUBLISHPRESS_STATUSES_PRO_VERSION') && !defined('PUBLISHPRESS_RETAIN_DEFAULT_STATUS_CHANGED_WORKFLOW')) {
+            $inactive_default_names = array_merge(
+                $inactive_default_names,
+                $this->getInactiveStatusNotificationNames()
+            );
+        }
+
+        return array_map('sanitize_key', $inactive_default_names);
+    }
+
     private function suppressInactiveRevisionsNotifications($where) {
         return $this->suppressInactiveNotifications(
             $where,
-            [
-                'revision-scheduled-publication', 
-                'scheduled-revision-is-published', 
-                'revision-scheduled', 
-                'revision-is-scheduled', 
-                'revision-declined', 
-                'revision-deferred-or-rejected', 
-                'revision-submission', 
-                'revision-is-submitted', 
-                'new-revision', 
-                'new-revision-created', 
-                'revision-status-changed', 
-                'revision-is-applied', 
-                'revision-is-published'
-            ]
+            $this->getInactiveRevisionNotificationNames()
         );
     }
 
     private function suppressInactiveStatusesNotifications($where) {
         return $this->suppressInactiveNotifications(
             $where,
-            [
-                'post-status-changed', 
-                'post-deferred-or-rejected', 
-                'post-declined'
-            ]
+            $this->getInactiveStatusNotificationNames()
         );                       
     }
 
@@ -153,76 +181,40 @@ class Plugin
     }
 
     function fltSuppressInactivePostCounts($counts, $type, $perm = '') {
-        global $pagenow;
+        global $wpdb, $pagenow;
 
         if (
             ('psppnotif_workflow' == $type) && !empty($pagenow) && ('edit.php' == $pagenow)
             && (!defined('PUBLISHPRESS_REVISIONS_PRO_VERSION') || !defined('PUBLISHPRESS_STATUSES_PRO_VERSION'))
         ) {
-            $inactive_default_names = [];
-            if (!defined('PUBLISHPRESS_REVISIONS_PRO_VERSION') && !defined('PUBLISHPRESS_INCLUDE_REVISION_NOTIFICATIONS')) {
-                $inactive_default_names = array_merge(
-                    $inactive_default_names,
-                    [
-                        'revision-scheduled-publication',
-                        'scheduled-revision-is-published',
-                        'revision-scheduled',
-                        'revision-is-scheduled',
-                        'revision-declined',
-                        'revision-deferred-or-rejected',
-                        'revision-submission',
-                        'revision-is-submitted',
-                        'new-revision',
-                        'new-revision-created',
-                        'revision-status-changed',
-                        'revision-is-applied',
-                        'revision-is-published'
-                    ]
-                );
+            $inactive_default_names = $this->getInactiveDefaultNotificationNames();
+
+            if (empty($inactive_default_names)) {
+                return $counts;
             }
 
-            if (!defined('PUBLISHPRESS_STATUSES_PRO_VERSION') && !defined('PUBLISHPRESS_RETAIN_DEFAULT_STATUS_CHANGED_WORKFLOW')) {
-                $inactive_default_names = array_merge(
-                    $inactive_default_names,
-                    [
-                        'post-status-changed',
-                        'post-deferred-or-rejected',
-                        'post-declined'
-                    ]
-                );
-            }
-
-            $inactive_default_names = array_map('sanitize_key', $inactive_default_names);
-
-            $workflows = get_posts(
-                [
-                    'post_type'              => $type,
-                    'post_status'            => get_post_stati(),
-                    'posts_per_page'         => -1,
-                    'no_found_rows'          => true,
-                    'update_post_meta_cache' => false,
-                    'update_post_term_cache' => false,
-                ]
+            $inactive_names_pattern = '^(' . implode('|', $inactive_default_names) . ')(-|$)';
+            $results = (array) $wpdb->get_results(
+                $wpdb->prepare(
+                    "SELECT post_status, COUNT(*) AS num_posts
+                    FROM {$wpdb->posts}
+                    WHERE post_type = %s
+                    AND post_name NOT REGEXP %s
+                    GROUP BY post_status",
+                    $type,
+                    $inactive_names_pattern
+                ),
+                ARRAY_A
             );
 
             $counts = array_fill_keys(get_post_stati(), 0);
 
-            foreach ($workflows as $workflow) {
-                if (in_array($workflow->post_name, $inactive_default_names, true)) {
-                    continue;
+            foreach ($results as $row) {
+                if (!isset($counts[$row['post_status']])) {
+                    $counts[$row['post_status']] = 0;
                 }
 
-                foreach ($inactive_default_names as $default_name) {
-                    if (0 === strpos($workflow->post_name, $default_name . '-')) {
-                        continue 2;
-                    }
-                }
-
-                if (!isset($counts[$workflow->post_status])) {
-                    $counts[$workflow->post_status] = 0;
-                }
-
-                ++$counts[$workflow->post_status];
+                $counts[$row['post_status']] = (int) $row['num_posts'];
             }
 
             $counts = (object) $counts;
