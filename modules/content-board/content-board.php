@@ -1814,7 +1814,7 @@ class PP_Content_Board extends PP_Module
                     "SELECT DISTINCT t.slug AS id, t.name AS text
                 FROM {$wpdb->term_taxonomy} as tt
                 INNER JOIN {$wpdb->terms} as t ON (tt.term_id = t.term_id)
-                WHERE taxonomy = '%s' AND t.name LIKE %s
+                WHERE taxonomy = %s AND t.name LIKE %s
                 ORDER BY 2
                 LIMIT 20",
                 $taxonomy,

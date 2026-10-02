@@ -293,9 +293,7 @@ editorialCommentReply = {
         jQuery('#pp-comment_loading').hide();
 
         if (r.responseText) {
-            er = r.responseText.replace(/<.[^<>]*?>/g, '');
-
-            jQuery('#pp-replysubmit .error').html(er).show();
+            jQuery('#pp-replysubmit .error').text(r.responseText).show();
         }
     }
 };
@@ -403,7 +401,7 @@ editorialCommentEdit = {
                 self.close();
             },
             error: function (r) {
-                let $errorLine = self.$('<div class="pp-error">').html(r.responseText);
+                let $errorLine = self.$('<div class="pp-error">').text(r.responseText);
                 self.$('#pp-editcontainer').append($errorLine);
                 self.$('#pp-comment_loading').remove();
             }
@@ -461,7 +459,7 @@ editorialCommentDelete = {
                     editorialCommentReply.revert();
                 },
                 error: function (r) {
-                    let $errorLine = self.$('<div class="pp-error">').html(r.responseText);
+                    let $errorLine = self.$('<div class="pp-error">').text(r.responseText);
                     self.$('#pp-editcontainer').append($errorLine);
                     self.$('#pp-comment_loading').remove();
                 }

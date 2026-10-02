@@ -144,19 +144,26 @@ class NotificationsLogTable extends WP_List_Table
             case 'content':
                 if ($log->workflowId !== null) {
                     $post = get_post($log->postId);
-                    $postType = get_post_type_object($post->post_type);
-                    $postTypeLabels = get_post_type_labels($postType);
 
-                    $output .= $this->wrapInALink(
-                        $log->postTitle,
-                        admin_url('post.php?post=' . esc_attr($log->postId) . '&action=edit')
-                    );
+                    if (! empty($post) && ! is_wp_error($post)) {
+                        $postType = get_post_type_object($post->post_type);
+                        $postTypeLabels = get_post_type_labels($postType);
+
+                        $output .= $this->wrapInALink(
+                            $log->postTitle,
+                            admin_url('post.php?post=' . esc_attr($log->postId) . '&action=edit')
+                        );
+                    } else {
+                        $output .= esc_html__('Deleted post', 'publishpress');
+                    }
 
                     $output .= '<div class="muted">';
-                    $output .= '<div>' . sprintf(
-                            __('Post type: %s', 'publishpress'),
-                            $postTypeLabels->singular_name
-                        ) . '</div>';
+                    if (! empty($postTypeLabels)) {
+                        $output .= '<div>' . sprintf(
+                                __('Post type: %s', 'publishpress'),
+                                $postTypeLabels->singular_name
+                            ) . '</div>';
+                    }
                     $output .= '<div>' . sprintf(__('Post ID: %d', 'publishpress'), $log->postId) . '</div>';
 
                     if ($log->isFromAnotherBlog()) {
@@ -556,14 +563,18 @@ class NotificationsLogTable extends WP_List_Table
         $selectedOptionEscaped = '';
         if (! empty($postId)) {
             $post = get_post($postId);
+            $postTitle = ! empty($post) && ! is_wp_error($post)
+                ? $post->post_title
+                : __('Deleted post', 'publishpress');
 
             $selectedOptionEscaped = '<option selected="selected" value="' . esc_attr(
                     $postId
-                ) . '">' . esc_html($post->post_title) . '</option>';
+                ) . '">' . esc_html($postTitle) . '</option>';
         }
 
         // phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
-        echo '<select class="filter-posts" name="post_id">' . $selectedOptionEscaped . '</select>';
+        echo '<label class="screen-reader-text" for="publishpress-notifications-filter-posts">' . esc_html__('Filter by post', 'publishpress') . '</label>';
+        echo '<select class="filter-posts" id="publishpress-notifications-filter-posts" name="post_id">' . $selectedOptionEscaped . '</select>';
         // phpcs:enable
 
         // Workflow
@@ -571,20 +582,25 @@ class NotificationsLogTable extends WP_List_Table
         $selectedOptionEscaped = '';
         if (! empty($workflowId)) {
             $workflow = get_post($workflowId);
+            $workflowTitle = ! empty($workflow) && ! is_wp_error($workflow)
+                ? $workflow->post_title
+                : __('Deleted workflow', 'publishpress');
 
             $selectedOptionEscaped = '<option selected="selected" value="' . esc_attr(
                     $workflowId
-                ) . '">' . esc_html($workflow->post_title) . '</option>';
+                ) . '">' . esc_html($workflowTitle) . '</option>';
         }
 
         // phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
-        echo '<select class="filter-workflows" name="workflow_id">' . $selectedOptionEscaped . '</select>';
+        echo '<label class="screen-reader-text" for="publishpress-notifications-filter-workflows">' . esc_html__('Filter by workflow', 'publishpress') . '</label>';
+        echo '<select class="filter-workflows" id="publishpress-notifications-filter-workflows" name="workflow_id">' . $selectedOptionEscaped . '</select>';
         // phpcs:enable
 
         // Event
         $selectedAction = isset($_GET['event']) ? sanitize_text_field($_GET['event']) : '';
 
-        echo '<select class="filter-actions" name="event">';
+        echo '<label class="screen-reader-text" for="publishpress-notifications-filter-events">' . esc_html__('Filter by event', 'publishpress') . '</label>';
+        echo '<select class="filter-actions" id="publishpress-notifications-filter-events" name="event">';
         $events = apply_filters('publishpress_notifications_workflow_events', []);
 
         echo '<option value="">' . esc_html__('All events', 'publishpress') . '</option>';
@@ -601,7 +617,8 @@ class NotificationsLogTable extends WP_List_Table
         // Channel
         $selectedChannel = isset($_GET['channel']) ? sanitize_text_field($_GET['channel']) : '';
 
-        echo '<select class="filter-channels" name="channel">';
+        echo '<label class="screen-reader-text" for="publishpress-notifications-filter-channels">' . esc_html__('Filter by channel', 'publishpress') . '</label>';
+        echo '<select class="filter-channels" id="publishpress-notifications-filter-channels" name="channel">';
         $channels = apply_filters('psppno_filter_channels', []);
 
         echo '<option value="">' . esc_html__('All channels', 'publishpress') . '</option>';
@@ -621,13 +638,15 @@ class NotificationsLogTable extends WP_List_Table
 
         echo '<div class="filter-2nd-line">';
         echo '<span class="filter-dates">';
-        echo '<input type="text" class="filter-date-begin" name="date_begin" value="' . esc_attr(
+        echo '<label class="screen-reader-text" for="publishpress-notifications-filter-date-begin">' . esc_html__('From date', 'publishpress') . '</label>';
+        echo '<input type="text" class="filter-date-begin" id="publishpress-notifications-filter-date-begin" name="date_begin" value="' . esc_attr(
                 $dateBegin
             ) . '" placeholder="' . esc_html__(
                 'From date',
                 'publishpress'
             ) . '" />&nbsp;';
-        echo '&nbsp;<input type="text" class="filter-date-end" name="date_end" value="' . esc_attr(
+        echo '&nbsp;<label class="screen-reader-text" for="publishpress-notifications-filter-date-end">' . esc_html__('To date', 'publishpress') . '</label>';
+        echo '&nbsp;<input type="text" class="filter-date-end" id="publishpress-notifications-filter-date-end" name="date_end" value="' . esc_attr(
                 $dateEnd
             ) . '" placeholder="' . esc_html__(
                 'To date',
@@ -637,7 +656,8 @@ class NotificationsLogTable extends WP_List_Table
 
         // Receiver
         $receiver = isset($_GET['receiver']) ? sanitize_text_field($_GET['receiver']) : '';
-        echo '<input type="text" placeholder="' . esc_html__(
+        echo '<label class="screen-reader-text" for="publishpress-notifications-filter-receiver">' . esc_html__('Filter by receiver', 'publishpress') . '</label>';
+        echo '<input type="text" id="publishpress-notifications-filter-receiver" placeholder="' . esc_html__(
                 'All Receivers',
                 'publishpress'
             ) . '" name="receiver" value="' . esc_attr($receiver) . '" />';

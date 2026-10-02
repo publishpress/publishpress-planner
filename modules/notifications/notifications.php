@@ -125,9 +125,6 @@ if (! class_exists('PP_Notifications')) {
             );
 
             if (is_admin()) {
-                // Set up metabox and related actions
-                add_action('add_meta_boxes', [$this, 'add_post_meta_box']);
-
                 add_action('admin_init', [$this, 'register_settings']);
 
                 // Javascript and CSS if we need it
@@ -155,6 +152,8 @@ if (! class_exists('PP_Notifications')) {
 
                 // Ajax for saving notification updates
                 add_action('wp_ajax_pp_notifications_user_post_subscription', [$this, 'handle_user_post_subscription']);
+
+                add_action('add_meta_boxes', [$this, 'add_post_meta_box'], 10, 2);
             }
 
             // Saving post actions
@@ -548,7 +547,7 @@ if (! class_exists('PP_Notifications')) {
         /**
          * Add the subscriptions meta box to relevant post types
          */
-        public function add_post_meta_box()
+        public function add_post_meta_box($post_type = null, $post = null)
         {
             if (! current_user_can($this->edit_post_subscriptions_cap)) {
                 return;
@@ -556,7 +555,17 @@ if (! class_exists('PP_Notifications')) {
 
             $role_post_types = $this->get_post_types_for_module($this->module);
 
-            foreach ($role_post_types as $post_type) {
+            if (! empty($post_type) && ! in_array($post_type, $role_post_types, true)) {
+                return;
+            }
+
+            if (! $this->should_show_notifications_meta_box($post)) {
+                return;
+            }
+
+            $post_types = empty($post_type) ? $role_post_types : [$post_type];
+
+            foreach ($post_types as $post_type) {
                 add_meta_box(
                     'publishpress-notifications',
                     __('Notifications', 'publishpress'),
@@ -566,6 +575,37 @@ if (! class_exists('PP_Notifications')) {
                     'high'
                 );
             }
+        }
+
+        /**
+         * Check whether the post editor should show the notifications meta box.
+         *
+         * @param WP_Post|null $post
+         *
+         * @return bool
+         */
+        protected function should_show_notifications_meta_box($post = null)
+        {
+            $followers_workflows = $this->get_workflows_related_to_followers();
+
+            if (empty($followers_workflows)) {
+                return false;
+            }
+
+            if (empty($post) || ! is_a($post, 'WP_Post')) {
+                return true;
+            }
+
+            $followers_workflow_ids = array_map([$this, 'getPostID'], $followers_workflows);
+            $active_workflows       = $this->get_workflows_related_to_post($post);
+
+            foreach ($active_workflows as $workflow) {
+                if (in_array($workflow->workflow_post->ID, $followers_workflow_ids, true)) {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public function getPostID($post)
@@ -592,7 +632,7 @@ if (! class_exists('PP_Notifications')) {
             $notify_me_style = empty($followersWorkflows) ? 'display: none;' : '';
             ?>
             <div id="pp_post_notify_box">
-                <a name="subscriptions"></a>
+                <span id="subscriptions"></span>
                 <div style="<?php echo esc_attr($notify_me_style); ?>">
                     <p>
                         <?php
@@ -1030,7 +1070,7 @@ if (! class_exists('PP_Notifications')) {
                 $this->post_set_users_to_notify($post, (int )$post->post_author);
             }
 
-            $blogname = get_option('blogname');
+            $blogname = get_bloginfo('name');
 
             // Send the notification
             $args = [
@@ -1059,7 +1099,7 @@ if (! class_exists('PP_Notifications')) {
             $body .= sprintf(__('This email was sent %s.', 'publishpress'), date('r'));
             // phpcs:enable
             $body .= "\r\n \r\n";
-            $body .= get_option('blogname') . " | " . get_bloginfo('url') . " | " . admin_url('/') . "\r\n";
+            $body .= get_bloginfo('name') . " | " . home_url('/') . " | " . admin_url('/') . "\r\n";
 
             return $body;
         }
@@ -1988,7 +2028,7 @@ if (! class_exists('PP_Notifications')) {
 
             $post_author = get_userdata($post->post_author);
 
-            $blogname = get_option('blogname');
+            $blogname = get_bloginfo('name');
 
             $body = '';
 

@@ -58,3 +58,5 @@
 - /vendor/bin
 - webpack.config.js
 - webpack.mix.js
+- .web
+- .ddev

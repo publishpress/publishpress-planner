@@ -1,3 +1,5 @@
+import { getSelect2LanguageParameters } from "./Functions";
+
 const $ = jQuery;
 
 export default function Select(props) {
@@ -14,6 +16,7 @@ export default function Select(props) {
     const initSelect2 = () => {
         let params = {
             placeholder: props.placeholder || false,
+            language: getSelect2LanguageParameters(),
             tags: true,
             allowClear: getAllowClearProp()
         };

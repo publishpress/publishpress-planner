@@ -25,14 +25,14 @@ $rating_stars_markup = "
                    title="<?php echo esc_attr($context['plugin_name']); ?> Documentation"><?php echo esc_html(__('Documentation', 'publishpress')); ?></a>
             </li>
             <li>
-                <a href="//publishpress.com/publishpress-support/" target="_blank" rel="noopener noreferrer"
+                <a href="//publishpress.com/publishpress-support/" target="_blank" rel="noopener noreferrer" aria-label="<?php esc_attr_e('Contact the PublishPress team', 'publishpress'); ?>"
                    title="Contact the PublishPress team"><?php echo esc_html(__('Contact', 'publishpress')); ?></a>
             </li>
         </ul>
     </nav>
     <div class="pp-pressshack-logo">
-        <a href="//publishpress.com" target="_blank" rel="noopener noreferrer">
-            <img src="<?php echo esc_url($context['plugin_url']); ?>common/img/publishpress-logo.png">
+        <a href="//publishpress.com" target="_blank" rel="noopener noreferrer" aria-label="<?php esc_attr_e('Visit PublishPress', 'publishpress'); ?>">
+            <img alt="<?php esc_attr_e('PublishPress', 'publishpress'); ?>" src="<?php echo esc_url($context['plugin_url']); ?>common/img/publishpress-logo.png">
         </a>
     </div>
 </footer>

@@ -85,15 +85,18 @@ class WorkflowsController
      */
     public function get_workflows_filter_query($params)
     {
+        global $wpdb;
+
         // Build the query
         $query_args = [
-            'nopaging'      => true,
-            'post_type'     => PUBLISHPRESS_NOTIF_POST_TYPE_WORKFLOW,
-            'post_status'   => 'publish',
-            'no_found_rows' => true,
-            'cache_results' => true,
-            'meta_query'    => [],
-            'needs_event_filter' => true,
+            'nopaging'               => true,
+            'post_type'              => PUBLISHPRESS_NOTIF_POST_TYPE_WORKFLOW,
+            'post_status'            => 'publish',
+            'no_found_rows'          => true,
+            'cache_results'          => true,
+            'update_post_term_cache' => false,
+            'meta_query'             => [],
+            'needs_event_filter'     => true,
         ];
 
         /**
@@ -108,6 +111,8 @@ class WorkflowsController
         if (empty($query_args['meta_query']) || isset($query_args['needs_event_filter'])) {
             return (object) ['posts' => []];
         }
+
+        $wpdb->query('SET SESSION SQL_BIG_SELECTS=1'); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
         return new WP_Query($query_args);
     }
@@ -135,6 +140,14 @@ class WorkflowsController
             '\\PublishPress\\Notifications\\Workflow\\Step\\Event\\Post_TaxonomyUpdate',
             '\\PublishPress\\Notifications\\Workflow\\Step\\Event\\Post_StatusTransition',
         ];
+
+        if (!$this->is_editorial_comments_feature_enabled()) {
+            $classes_event = array_diff(
+                $classes_event,
+                ['\\PublishPress\\Notifications\\Workflow\\Step\\Event\\Editorial_Comment']
+            );
+        }
+
         /**
          * Filters the list of classes to define workflow "when" steps.
          *
@@ -234,6 +247,24 @@ class WorkflowsController
                 new $class;
             }
         }
+    }
+
+    /**
+     * Returns whether the Editorial Comments feature is enabled in PublishPress settings.
+     *
+     * @return bool
+     */
+    private function is_editorial_comments_feature_enabled()
+    {
+        global $publishpress;
+
+        if (!is_object($publishpress) || !method_exists($publishpress, 'get_module_by')) {
+            return false;
+        }
+
+        $module = $publishpress->get_module_by('slug', 'editorial-comments');
+
+        return isset($module->options->enabled) && 'on' === $module->options->enabled;
     }
 
     /**

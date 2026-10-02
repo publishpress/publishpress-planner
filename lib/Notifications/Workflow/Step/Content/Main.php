@@ -69,20 +69,20 @@ class Main extends Base_Step
      */
     public function save_metabox_data($id, $post)
     {
-        if (!isset($_POST['publishpress_notif'])
-            || !isset($_POST['publishpress_notif']['content_main'])) {
+        $content_main = [];
+
+        if (isset($_POST['publishpress_notif']['content_main'])
+            && is_array($_POST['publishpress_notif']['content_main'])) {
+            $content_main = wp_unslash($_POST['publishpress_notif']['content_main']);
+        } else {
             // Assume it is disabled
             update_post_meta($id, static::META_KEY_SUBJECT, false);
             update_post_meta($id, static::META_KEY_BODY, false);
         }
 
         // Sanitize the data
-        $subject = isset($_POST['publishpress_notif']['content_main']['subject']) ? sanitize_text_field(
-            $_POST['publishpress_notif']['content_main']['subject']
-        ) : '';
-        $body    = isset($_POST['publishpress_notif']['content_main']['body']) ? wp_kses_post(
-            $_POST['publishpress_notif']['content_main']['body']
-        ) : '';
+        $subject = isset($content_main['subject']) ? sanitize_text_field($content_main['subject']) : '';
+        $body    = isset($content_main['body']) ? wp_kses_post($content_main['body']) : '';
 
         update_post_meta($id, static::META_KEY_SUBJECT, $subject);
         update_post_meta($id, static::META_KEY_BODY, $body);
