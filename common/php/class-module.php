@@ -1311,34 +1311,47 @@ if (!class_exists('PP_Module')) {
                 __( 'Minute' ) .
             '</span><input type="text" ' . ( $multi ? '' : 'id="mn" ' ) . 'name="mn" value="' . $mn . '" size="2" maxlength="2"' . $tab_index_attribute . ' autocomplete="off" class="form-required" /></label>';
 
+            $timestamp_allowed_html = [
+                'label'  => [],
+                'span'   => [
+                    'class' => [],
+                ],
+                'select' => [
+                    'class'    => [],
+                    'id'       => [],
+                    'name'     => [],
+                    'tabindex' => [],
+                ],
+                'option' => [
+                    'data-text' => [],
+                    'selected'  => [],
+                    'value'     => [],
+                ],
+                'input'  => [
+                    'autocomplete' => [],
+                    'class'        => [],
+                    'id'           => [],
+                    'maxlength'    => [],
+                    'name'         => [],
+                    'size'         => [],
+                    'tabindex'     => [],
+                    'type'         => [],
+                    'value'        => [],
+                ],
+            ];
+
             echo '<div class="timestamp-wrap">';
             /* translators: 1: Month, 2: Day, 3: Year, 4: Hour, 5: Minute. */
-            printf(
-                wp_kses(
-                    __( '%1$s %2$s, %3$s at %4$s:%5$s' ),
-                    [
-                        'label' => [],
-                        'span'  => [
-                            'class' => [],
-                        ],
-                        'input' => [
-                            'autocomplete' => [],
-                            'class'        => [],
-                            'id'           => [],
-                            'maxlength'    => [],
-                            'name'         => [],
-                            'size'         => [],
-                            'tabindex'     => [],
-                            'type'         => [],
-                            'value'        => [],
-                        ],
-                    ]
+            echo wp_kses(
+                sprintf(
+                    esc_html__( '%1$s %2$s, %3$s at %4$s:%5$s' ),
+                    $month,
+                    $day,
+                    $year,
+                    $hour,
+                    $minute
                 ),
-                wp_kses_post($month),
-                wp_kses_post($day),
-                esc_html($year),
-                wp_kses_post($hour),
-                wp_kses_post($minute)
+                $timestamp_allowed_html
             );
 
             echo '</div><input type="hidden" id="ss" name="ss" value="' . esc_attr($ss) . '" />';
