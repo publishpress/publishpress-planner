@@ -7,13 +7,15 @@ class PP_Editorial_Metadata_List_Table extends WP_List_Table
     public $callback_args;
     public $taxonomy;
     public $tax;
+    public $metadata_types;
 
     /**
      * Construct the class
      */
-    public function __construct()
+    public function __construct($metadata_types = [])
     {
         global $publishpress;
+        $this->metadata_types = $metadata_types;
 
         $this->taxonomy = PP_Editorial_Metadata::metadata_taxonomy;
 
@@ -86,9 +88,14 @@ class PP_Editorial_Metadata_List_Table extends WP_List_Table
 
         switch ($column_name) {
             case 'position':
-            case 'type':
             case 'description':
                 return esc_html($item->$column_name);
+            case 'type':
+                $type = $item->$column_name;
+
+                return isset($this->metadata_types[$type])
+                    ? esc_html($this->metadata_types[$type])
+                    : esc_html($type);
             case 'post_types':
                 $post_types = (isset($item->post_types) && !empty(($item->post_types))) ? (array) $item->post_types : [];
                 if (!empty($post_types)) {

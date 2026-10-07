@@ -73,7 +73,7 @@
         "@translate:json",
         "@translate:php"
     ],
-    "translate:pot": "wp i18n make-pot . ./languages/publishpress.pot --domain=publishpress --exclude=dev-workspace,.wordpress-org,.github,dist,tests,lib,tmp,doc,*.js,*.js.map --allow-root",
+    "translate:pot": "wp i18n make-pot . ./languages/publishpress.pot --domain=publishpress --exclude=dev-workspace,.wordpress-org,.github,dist,tests,tmp,doc,*.js,*.js.map --allow-root",
     "translate:mo": "wp i18n make-mo ./languages ./languages --allow-root",
     "translate:json": "bash ./dev-workspace/scripts/lang-make-json.sh",
     "translate:php": "wp i18n make-php ./languages --allow-root",
