@@ -68,7 +68,7 @@ if (! class_exists('PP_Editorial_Metadata_Utilities')) {
                 $editorial_metadata->title = $editorial_metadata->title . ' <a href="'. esc_url(self::get_link(['action' => 'add-new'])) .'" class="page-title-action">'. esc_html__('Add New', 'publishpress') .'</a>';
             }
             $publishpress->settings->print_default_header($editorial_metadata);
-            $wp_list_table = new PP_Editorial_Metadata_List_Table();
+            $wp_list_table = new PP_Editorial_Metadata_List_Table($metadata_types);
             $wp_list_table->prepare_items();
 
             $showOptionsTab = (! isset($_GET['action']) || $_GET['action'] != 'add-new') && (! isset($_REQUEST['form-errors']) || empty($_REQUEST['form-errors']));
