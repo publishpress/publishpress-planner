@@ -20,6 +20,6 @@ on:
 
 jobs:
   build-zip:
-    uses: publishpress/github-workflows/.github/workflows/build-zip.yml@claude/project-thread-r6x30s
+    uses: publishpress/github-workflows/.github/workflows/build-zip.yml@v3
     with:
       ref: ${{ inputs.ref }}
