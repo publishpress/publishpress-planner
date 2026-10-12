@@ -456,12 +456,13 @@ class Shortcodes
                 $result = $status->label;
                 break;
 
-            case 'content':
-                $result = $post->post_content;
-                break;
-
             case 'excerpt':
                 $result = $post->post_excerpt;
+                if ( ! empty($result) )
+                	break;
+
+            case 'content':
+                $result = $post->post_content;
                 break;
 
             case 'edit_link':
