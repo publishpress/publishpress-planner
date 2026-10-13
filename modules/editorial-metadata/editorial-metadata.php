@@ -749,7 +749,7 @@ if (! class_exists('PP_Editorial_Metadata')) {
             }
 
             // Try to fetch from internal object cache
-            $arg_hash = md5(serialize($filter_args));
+            $arg_hash = md5(wp_json_encode($filter_args));
             if (isset($this->editorial_metadata_terms_cache[$arg_hash])) {
                 return $this->editorial_metadata_terms_cache[$arg_hash];
             }

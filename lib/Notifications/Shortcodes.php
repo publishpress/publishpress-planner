@@ -373,6 +373,10 @@ class Shortcodes
      */
     protected function get_post_data($post, $attrs)
     {
+        if (empty($post) || is_wp_error($post)) {
+            return '';
+        }
+
         // No attributes? Set the default one.
         if (empty($attrs)) {
             $attrs = ['title'];

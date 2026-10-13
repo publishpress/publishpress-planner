@@ -5,17 +5,19 @@ msgstr ""
 "Project-Id-Version: PublishPress Planner 4.8.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: Croatian "
+"<https://weblate.publishpress.com/projects/publishpress-planner/"
+"publishpress/hr/>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-14T18:33:45+00:00\n"
-"PO-Revision-Date: 2026-09-28 14:32+0000\n"
-"X-Generator: WP-CLI 2.12.0\n"
+"PO-Revision-Date: 2026-10-02 16:33+0000\n"
+"X-Generator: Weblate 2026.6.1\n"
 "X-Domain: publishpress\n"
-">= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2);\n"
-">= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1: 2);\n"
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "Language: hr\n"
+">= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1: 2);\n"
 "Plural-Forms: nplurals=3; plural=(n % 10 == 1 && n % 100 != 11 ? 0 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2);\n"
 
 #: publishpress.php, fuzzy
@@ -62,7 +64,7 @@ msgstr "Nacrt"
 #: common/php/class-module.php:340
 #: modules/calendar/calendar.php:1256
 #: modules/content-board/content-board.php:979
-#: modules/notifications-log/library/NotificationsLogTable.php:529
+#: modules/notifications-log/library/NotificationsLogTable.php:536
 msgid "Scheduled"
 msgstr "Zakačeno"
 
@@ -89,64 +91,64 @@ msgstr "Otpad"
 msgid "Roles"
 msgstr "Uloge"
 
-#: common/php/class-module.php:775
+#: common/php/class-module.php:774
 msgid "Role"
 msgstr "Uloga"
 
-#: common/php/class-module.php:783
+#: common/php/class-module.php:782
 msgid "Groups"
 msgstr "Grupe"
 
-#: common/php/class-module.php:786
+#: common/php/class-module.php:784
 msgid "Group"
 msgstr "Grupa"
 
-#: common/php/class-module.php:794
+#: common/php/class-module.php:792
 msgid "Users"
 msgstr "Korisnici"
 
-#: common/php/class-module.php:804
+#: common/php/class-module.php:801
 msgid "E-mails"
 msgstr "E-mailovi"
 
-#: common/php/class-module.php:1051
+#: common/php/class-module.php:1047
 msgid "Equals (=)"
 msgstr "Jednako (=)"
 
-#: common/php/class-module.php:1052
+#: common/php/class-module.php:1048
 msgid "Does not equal (!=)"
 msgstr "Nije jednako (!=)"
 
-#: common/php/class-module.php:1053
+#: common/php/class-module.php:1049
 msgid "Greater than (>)"
 msgstr "Veće od (>)"
 
-#: common/php/class-module.php:1054
+#: common/php/class-module.php:1050
 msgid "Greater than or equals (>=)"
 msgstr "Veće ili jednako (>=)"
 
-#: common/php/class-module.php:1055
+#: common/php/class-module.php:1051
 msgid "Less than (<)"
 msgstr "Manje od (<)"
 
-#: common/php/class-module.php:1056
+#: common/php/class-module.php:1052
 msgid "Less than or equals (<=)"
 msgstr "Manje ili jednako (<=)"
 
-#: common/php/class-module.php:1057
+#: common/php/class-module.php:1053
 msgid "Like/Contains"
 msgstr "Slično/Sadrži"
 
-#: common/php/class-module.php:1058
+#: common/php/class-module.php:1054
 #, fuzzy
 msgid "Not Like"
 msgstr "Nije postavljeno"
 
-#: common/php/class-module.php:1059
+#: common/php/class-module.php:1055
 msgid "Not Exists/Empty"
 msgstr "Ne postoji/Prazno"
 
-#: common/php/class-module.php:1112
+#: common/php/class-module.php:1108
 #: views/workflow_receiver_group_field.html.php:10
 #: views/workflow_receiver_role_field.html.php:9
 #: views/workflow_receiver_user_field.html.php:9
@@ -154,7 +156,7 @@ msgstr "Ne postoji/Prazno"
 msgid "Select %s"
 msgstr "Odaberi %s"
 
-#: common/php/class-module.php:1129
+#: common/php/class-module.php:1125
 #: modules/calendar/library/calendar-utilities.php:1191
 #: modules/content-overview/content-overview.php:850
 #: modules/content-overview/content-overview.php:874
@@ -163,7 +165,7 @@ msgstr "Odaberi %s"
 msgid "Revision Status"
 msgstr "Status revizije"
 
-#: common/php/class-module.php:1129
+#: common/php/class-module.php:1125
 #: modules/calendar/library/calendar-methods.php:424
 #: modules/calendar/library/calendar-methods.php:858
 #: modules/calendar/library/calendar-methods.php:1257
@@ -331,7 +333,7 @@ msgstr "Filtriranje uspješno resetirano."
 #: modules/content-overview/content-overview.php:847
 #: modules/content-overview/content-overview.php:871
 #: modules/content-overview/content-overview.php:923
-#: modules/notifications-log/library/NotificationsLogTable.php:500, fuzzy
+#: modules/notifications-log/library/NotificationsLogTable.php:507, fuzzy
 msgid "Status"
 msgstr "Status"
 
@@ -820,7 +822,7 @@ msgstr "Datum objave"
 #: modules/content-board/content-board.php:1289
 #: modules/content-overview/content-overview.php:1266
 #: modules/content-overview/content-overview.php:1749
-#: modules/editorial-comments/editorial-comments.php:628
+#: modules/editorial-comments/editorial-comments.php:644
 #: modules/editorial-metadata/library/editorial-metadata-list-table.php:159
 msgid "Edit"
 msgstr "Uredi"
@@ -979,8 +981,8 @@ msgstr "Prošao"
 #: modules/calendar/library/calendar-utilities.php:374
 #: modules/content-board/library/content-board-utilities.php:899
 #: modules/content-overview/library/content-overview-utilities.php:1027
-#: modules/notifications-log/library/NotificationsLogTable.php:277
-#: modules/notifications-log/library/NotificationsLogTable.php:293
+#: modules/notifications-log/library/NotificationsLogTable.php:284
+#: modules/notifications-log/library/NotificationsLogTable.php:300
 msgid "Failed"
 msgstr "Neuspjeh"
 
@@ -1088,7 +1090,7 @@ msgstr "ID"
 #: modules/content-board/library/content-board-utilities.php:116
 #: modules/content-overview/library/content-overview-methods.php:341
 #: modules/editorial-metadata/editorial-metadata.php:290
-#: modules/notifications-log/library/NotificationsLogTable.php:496
+#: modules/notifications-log/library/NotificationsLogTable.php:503
 msgid "Date"
 msgstr "Datum"
 
@@ -1161,6 +1163,7 @@ msgid "You do not have any public taxonomies"
 msgstr "Nemate javnih taksonomija"
 
 #: modules/calendar/library/calendar-utilities.php:1236
+#: modules/calendar/library/calendar-utilities.php:1326
 msgid "Subscribe in iCal or Google Calendar"
 msgstr "Pretplatite se u iCal ili Google Kalendar"
 
@@ -1494,7 +1497,8 @@ msgstr "Prikaži sadržaj iz"
 
 #: modules/content-board/library/content-board-utilities.php:554
 #: modules/content-overview/library/content-overview-utilities.php:659
-#: modules/editorial-comments/editorial-comments.php:574
+#: modules/editorial-comments/editorial-comments.php:588
+#: modules/editorial-comments/editorial-comments.php:590
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:425
 msgid "Cancel"
 msgstr "Odustani"
@@ -1739,7 +1743,7 @@ msgstr "Nevažeći akcijski nonce."
 #: modules/editorial-comments/editorial-comments.php:63
 #: modules/editorial-comments/editorial-comments.php:235
 #: modules/editorial-comments/editorial-comments.php:236
-#: modules/editorial-comments/editorial-comments.php:453
+#: modules/editorial-comments/editorial-comments.php:469
 msgid "Editorial Comments"
 msgstr "Urednički komentari"
 
@@ -1782,7 +1786,7 @@ msgstr ""
 "Githubu</a></p>"
 
 #: modules/editorial-comments/editorial-comments.php:205
-#: modules/editorial-comments/editorial-comments.php:717
+#: modules/editorial-comments/editorial-comments.php:733
 msgid "Remove"
 msgstr "Ukloni"
 
@@ -1807,7 +1811,7 @@ msgstr "Rezultati pretraživanja za &#8220;%s&#8221;"
 msgid "Search Comments"
 msgstr "Pretraži komentare"
 
-#: modules/editorial-comments/editorial-comments.php:528
+#: modules/editorial-comments/editorial-comments.php:544
 msgid ""
 "You can add editorial comments to a post once you've saved it for the first "
 "time."
@@ -1815,45 +1819,47 @@ msgstr ""
 "Možete dodavati uredničke komentare na objavu nakon što ste je prvi put "
 "spremili."
 
-#: modules/editorial-comments/editorial-comments.php:548
-#: modules/editorial-comments/editorial-comments.php:552
+#: modules/editorial-comments/editorial-comments.php:564
+#: modules/editorial-comments/editorial-comments.php:568
 msgid "Add an editorial comment"
 msgstr "Dodaj urednički komentar"
 
-#: modules/editorial-comments/editorial-comments.php:558
+#: modules/editorial-comments/editorial-comments.php:573
+#: modules/editorial-comments/editorial-comments.php:574
 msgid "Attach file"
 msgstr "Priloži datoteku"
 
-#: modules/editorial-comments/editorial-comments.php:570
+#: modules/editorial-comments/editorial-comments.php:584
+#: modules/editorial-comments/editorial-comments.php:586
 msgid "Add Comment"
 msgstr "Dodaj komentar"
 
-#: modules/editorial-comments/editorial-comments.php:616
+#: modules/editorial-comments/editorial-comments.php:632
 msgid "Reply to this comment"
 msgstr "Odgovori na ovaj komentar"
 
-#: modules/editorial-comments/editorial-comments.php:619
+#: modules/editorial-comments/editorial-comments.php:635
 msgid "Reply"
 msgstr "Odgovori"
 
-#: modules/editorial-comments/editorial-comments.php:639
+#: modules/editorial-comments/editorial-comments.php:655
 #: modules/editorial-comments/library/EditorialCommentsTable.php:436
 #: modules/editorial-metadata/library/editorial-metadata-list-table.php:161
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:303
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:333
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:614
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:644
-#: modules/notifications-log/library/NotificationsLogTable.php:376
-#: modules/notifications-log/library/NotificationsLogTable.php:407
+#: modules/notifications-log/library/NotificationsLogTable.php:383
+#: modules/notifications-log/library/NotificationsLogTable.php:414
 msgid "Delete"
 msgstr "Izbriši"
 
-#: modules/editorial-comments/editorial-comments.php:684
+#: modules/editorial-comments/editorial-comments.php:700
 #, php-format
 msgid "said on %1$s at %2$s"
 msgstr "rekla je %1$s u %2$s"
 
-#: modules/editorial-comments/editorial-comments.php:745
+#: modules/editorial-comments/editorial-comments.php:761
 msgid ""
 "Nonce check failed. Please ensure you're supposed to be adding editorial "
 "comments."
@@ -1861,14 +1867,14 @@ msgstr ""
 "Provjera nonce-a nije uspjela. Molimo osigurajte se da trebate dodavati "
 "uredničke komentare."
 
-#: modules/editorial-comments/editorial-comments.php:753
-#: modules/editorial-comments/editorial-comments.php:894
-#: modules/editorial-comments/editorial-comments.php:1026
-#: modules/editorial-comments/editorial-comments.php:1142
+#: modules/editorial-comments/editorial-comments.php:769
+#: modules/editorial-comments/editorial-comments.php:910
+#: modules/editorial-comments/editorial-comments.php:1042
+#: modules/editorial-comments/editorial-comments.php:1158
 msgid "Invalid comment data"
 msgstr "Neispravni podaci komentara"
 
-#: modules/editorial-comments/editorial-comments.php:766
+#: modules/editorial-comments/editorial-comments.php:782
 msgid ""
 "Sorry, you don't have the privileges to add editorial comments. Please talk "
 "to your Administrator."
@@ -1876,23 +1882,23 @@ msgstr ""
 "Žao mi je, nemate privilegije za dodavanje uredničkih komentara. Molimo "
 "razgovarajte sa svojim Administratorom."
 
-#: modules/editorial-comments/editorial-comments.php:776
-#: modules/editorial-comments/editorial-comments.php:940
+#: modules/editorial-comments/editorial-comments.php:792
+#: modules/editorial-comments/editorial-comments.php:956
 msgid "Please enter a comment."
 msgstr "Molimo unesite komentar."
 
-#: modules/editorial-comments/editorial-comments.php:863
-#: modules/editorial-comments/editorial-comments.php:993
-#: modules/editorial-comments/editorial-comments.php:1103
-#: modules/editorial-comments/editorial-comments.php:1187
+#: modules/editorial-comments/editorial-comments.php:879
+#: modules/editorial-comments/editorial-comments.php:1009
+#: modules/editorial-comments/editorial-comments.php:1119
+#: modules/editorial-comments/editorial-comments.php:1203
 msgid "There was a problem of some sort. Try again or contact your administrator."
 msgstr ""
 "Došlo je do nekog problema. Pokušajte ponovno ili kontaktirajte svog "
 "administratora."
 
-#: modules/editorial-comments/editorial-comments.php:883
-#: modules/editorial-comments/editorial-comments.php:1015
-#: modules/editorial-comments/editorial-comments.php:1132
+#: modules/editorial-comments/editorial-comments.php:899
+#: modules/editorial-comments/editorial-comments.php:1031
+#: modules/editorial-comments/editorial-comments.php:1148
 msgid ""
 "Nonce check failed. Please ensure you're supposed to be editing editorial "
 "comments."
@@ -1900,8 +1906,8 @@ msgstr ""
 "Provjera noncea nije uspjela. Molimo osigurajte da imate pravo uređivati "
 "uredničke komentare."
 
-#: modules/editorial-comments/editorial-comments.php:909
-#: modules/editorial-comments/editorial-comments.php:1041
+#: modules/editorial-comments/editorial-comments.php:925
+#: modules/editorial-comments/editorial-comments.php:1057
 msgid ""
 "Sorry, you don't have the privileges to edit editorial comments. Please "
 "talk to your Administrator."
@@ -1909,7 +1915,7 @@ msgstr ""
 "Žao mi je, nemate privilegije za uređivanje uredničkih komentara. Molimo "
 "razgovarajte sa svojim Administratorom."
 
-#: modules/editorial-comments/editorial-comments.php:927
+#: modules/editorial-comments/editorial-comments.php:943
 msgid ""
 "Sorry, you don't have the privileges to edit this editorial comment. Please "
 "talk to your Administrator."
@@ -1917,8 +1923,8 @@ msgstr ""
 "Žao mi je, nemate privilegije za uređivanje ovog uredničkog komentara. "
 "Molimo razgovarajte sa svojim Administratorom."
 
-#: modules/editorial-comments/editorial-comments.php:1057
-#: modules/editorial-comments/editorial-comments.php:1161
+#: modules/editorial-comments/editorial-comments.php:1073
+#: modules/editorial-comments/editorial-comments.php:1177
 msgid ""
 "Sorry, you don't have the privileges to delete this editorial comment. "
 "Please talk to your Administrator."
@@ -1926,47 +1932,47 @@ msgstr ""
 "Žao mi je, nemate privilegije za brisanje ovog uredničkog komentara. Molimo "
 "razgovarajte sa svojim Administratorom."
 
-#: modules/editorial-comments/editorial-comments.php:1078
+#: modules/editorial-comments/editorial-comments.php:1094
 msgid "Sorry, you can't delete this editorial comment because it has some replies."
 msgstr "Žao nam je, ne možete izbrisati ovaj urednički komentar jer ima odgovore."
 
-#: modules/editorial-comments/editorial-comments.php:1179
+#: modules/editorial-comments/editorial-comments.php:1195
 msgid "Comment deleted successfully."
 msgstr "Komentar je uspješno obrisan."
 
-#: modules/editorial-comments/editorial-comments.php:1230
+#: modules/editorial-comments/editorial-comments.php:1246
 msgid "Enable for these post types:"
 msgstr "Omogući za ove vrste postova:"
 
-#: modules/editorial-comments/editorial-comments.php:1237
+#: modules/editorial-comments/editorial-comments.php:1253
 msgid "Comment author name field:"
 msgstr "Polje imena autora komentara:"
 
-#: modules/editorial-comments/editorial-comments.php:1262
+#: modules/editorial-comments/editorial-comments.php:1278
 msgid "Nickname"
 msgstr "Nadimak"
 
-#: modules/editorial-comments/editorial-comments.php:1263
+#: modules/editorial-comments/editorial-comments.php:1279
 msgid "Username"
 msgstr "Korisničko ime"
 
-#: modules/editorial-comments/editorial-comments.php:1264
+#: modules/editorial-comments/editorial-comments.php:1280
 msgid "Display Name"
 msgstr "Prikazano ime"
 
-#: modules/editorial-comments/editorial-comments.php:1265
+#: modules/editorial-comments/editorial-comments.php:1281
 msgid "First Name"
 msgstr "Ime"
 
-#: modules/editorial-comments/editorial-comments.php:1266
+#: modules/editorial-comments/editorial-comments.php:1282
 msgid "Last Name"
 msgstr "Prezime"
 
-#: modules/editorial-comments/editorial-comments.php:1267, fuzzy
+#: modules/editorial-comments/editorial-comments.php:1283, fuzzy
 msgid "Email"
 msgstr "Email"
 
-#: modules/editorial-comments/editorial-comments.php:1268
+#: modules/editorial-comments/editorial-comments.php:1284
 msgid "User Url"
 msgstr "URL korisnika"
 
@@ -1975,7 +1981,7 @@ msgid "No editorial comments."
 msgstr "Nema uredničkih komentara."
 
 #: modules/editorial-comments/library/EditorialCommentsTable.php:180
-#: modules/notifications-log/library/NotificationsLogTable.php:566
+#: modules/notifications-log/library/NotificationsLogTable.php:576
 msgid "Filter by post"
 msgstr "Filtriraj prema objavi"
 
@@ -1984,7 +1990,7 @@ msgid "Filter by user"
 msgstr "Filtriraj prema korisniku"
 
 #: modules/editorial-comments/library/EditorialCommentsTable.php:212
-#: modules/notifications-log/library/NotificationsLogTable.php:653
+#: modules/notifications-log/library/NotificationsLogTable.php:666
 msgid "Filter"
 msgstr "Filtriraj"
 
@@ -2002,7 +2008,7 @@ msgstr "Poslano"
 
 #: modules/editorial-comments/library/EditorialCommentsTable.php:338
 #: modules/editorial-metadata/input-handlers/editorial-metadata-input-date-handler.php:201
-#: modules/notifications/notifications.php:1971
+#: modules/notifications/notifications.php:2014
 #. translators: 1: Comment date, 2: Comment time.
 #, php-format
 msgid "%1$s at %2$s"
@@ -2407,6 +2413,13 @@ msgstr "Oznaka prikaza"
 msgid "Default option"
 msgstr "Zadana opcija"
 
+#: modules/editorial-metadata/library/editorial-metadata-utilities.php:303
+#: modules/editorial-metadata/library/editorial-metadata-utilities.php:333
+#: modules/editorial-metadata/library/editorial-metadata-utilities.php:614
+#: modules/editorial-metadata/library/editorial-metadata-utilities.php:644
+msgid "Delete option"
+msgstr "Izbriši opciju"
+
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:338
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:649
 msgid "Add Another Option"
@@ -2577,17 +2590,17 @@ msgid "Help"
 msgstr "Pomoć"
 
 #: modules/improved-notifications/improved-notifications.php:1179
-#: modules/notifications-log/library/NotificationsLogTable.php:497
+#: modules/notifications-log/library/NotificationsLogTable.php:504
 msgid "When to notify?"
 msgstr "Kada obavijestiti?"
 
 #: modules/improved-notifications/improved-notifications.php:1189
-#: modules/notifications-log/library/NotificationsLogTable.php:498
+#: modules/notifications-log/library/NotificationsLogTable.php:505
 msgid "For which content?"
 msgstr "Za koji sadržaj?"
 
 #: modules/improved-notifications/improved-notifications.php:1199
-#: modules/notifications-log/library/NotificationsLogTable.php:499
+#: modules/notifications-log/library/NotificationsLogTable.php:506
 msgid "Who to notify?"
 msgstr "Koga obavijestiti?"
 
@@ -2694,115 +2707,124 @@ msgid "User: %s (%d)"
 msgstr "Korisnik: %s (%d)"
 
 #: modules/notifications-log/library/NotificationsLogTable.php:157
+#: modules/notifications-log/library/NotificationsLogTable.php:568
+msgid "Deleted post"
+msgstr "Izbrisana objava"
+
+#: modules/notifications-log/library/NotificationsLogTable.php:163
 #, php-format
 msgid "Post type: %s"
 msgstr "Vrsta objave: %s"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:160
+#: modules/notifications-log/library/NotificationsLogTable.php:167
 #, php-format
 msgid "Post ID: %d"
 msgstr "ID objave: %d"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:163
+#: modules/notifications-log/library/NotificationsLogTable.php:170
 #, php-format
 msgid "Blog ID: %d"
 msgstr "ID bloga: %d"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:233
+#: modules/notifications-log/library/NotificationsLogTable.php:240
 #, php-format
 msgid "Scheduled for %d receivers. Click here to display them."
 msgstr "Zakazano za %d primatelja. Kliknite ovdje da ih prikažete."
 
-#: modules/notifications-log/library/NotificationsLogTable.php:261
+#: modules/notifications-log/library/NotificationsLogTable.php:268
 msgid " Scheduled, but late"
 msgstr " Zakazano, ali kasni"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:263
+#: modules/notifications-log/library/NotificationsLogTable.php:270
 msgid " Scheduled"
 msgstr " Zakazano"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:282
-#: modules/notifications-log/library/NotificationsLogTable.php:533
+#: modules/notifications-log/library/NotificationsLogTable.php:289
+#: modules/notifications-log/library/NotificationsLogTable.php:540
 msgid "Error"
 msgstr "Greška"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:283
+#: modules/notifications-log/library/NotificationsLogTable.php:290
 msgid "The notification was set as \"Scheduled\" but the cron task is not found"
 msgstr "Obavijest je postavljena kao \"Zakazano\" ali cron zadatak nije pronađen"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:288
+#: modules/notifications-log/library/NotificationsLogTable.php:295
 msgid "Sent"
 msgstr "Poslano"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:291
-#: modules/notifications-log/library/NotificationsLogTable.php:525
+#: modules/notifications-log/library/NotificationsLogTable.php:298
+#: modules/notifications-log/library/NotificationsLogTable.php:532
 msgid "Skipped"
 msgstr "Preskočeno"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:304
+#: modules/notifications-log/library/NotificationsLogTable.php:311
 msgid "asynchronous"
 msgstr "asinkrono"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:304
+#: modules/notifications-log/library/NotificationsLogTable.php:311
 msgid "synchronous"
 msgstr "sinkrono"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:361
-#: modules/notifications-log/library/NotificationsLogTable.php:406
+#: modules/notifications-log/library/NotificationsLogTable.php:368
+#: modules/notifications-log/library/NotificationsLogTable.php:413
 msgid "Reschedule"
 msgstr "Preplanirati"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:383, fuzzy
+#: modules/notifications-log/library/NotificationsLogTable.php:390, fuzzy
 msgid "Blog: "
 msgstr "Blog: "
 
-#: modules/notifications-log/library/NotificationsLogTable.php:408
+#: modules/notifications-log/library/NotificationsLogTable.php:415
 msgid "Delete All"
 msgstr "Izbriši sve"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:517
+#: modules/notifications-log/library/NotificationsLogTable.php:524
 msgid "All"
 msgstr "Sve"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:521
+#: modules/notifications-log/library/NotificationsLogTable.php:528
 msgid "Success"
 msgstr "Uspjeh"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:582
+#: modules/notifications-log/library/NotificationsLogTable.php:587
+msgid "Deleted workflow"
+msgstr "Izbrisani radni tok"
+
+#: modules/notifications-log/library/NotificationsLogTable.php:595
 msgid "Filter by workflow"
 msgstr "Filtriraj prema tijeku rada"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:589
+#: modules/notifications-log/library/NotificationsLogTable.php:602
 msgid "Filter by event"
 msgstr "Filtriraj prema događaju"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:593
+#: modules/notifications-log/library/NotificationsLogTable.php:606
 msgid "All events"
 msgstr "Svi događaji"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:607
+#: modules/notifications-log/library/NotificationsLogTable.php:620
 msgid "Filter by channel"
 msgstr "Filtriraj prema kanalu"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:611
+#: modules/notifications-log/library/NotificationsLogTable.php:624
 msgid "All channels"
 msgstr "Svi kanali"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:628
-#: modules/notifications-log/library/NotificationsLogTable.php:631
+#: modules/notifications-log/library/NotificationsLogTable.php:641
+#: modules/notifications-log/library/NotificationsLogTable.php:644
 msgid "From date"
 msgstr "Od datuma"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:635
-#: modules/notifications-log/library/NotificationsLogTable.php:638
+#: modules/notifications-log/library/NotificationsLogTable.php:648
+#: modules/notifications-log/library/NotificationsLogTable.php:651
 msgid "To date"
 msgstr "Do datuma"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:646
+#: modules/notifications-log/library/NotificationsLogTable.php:659
 msgid "Filter by receiver"
 msgstr "Filtriraj prema primatelju"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:647
+#: modules/notifications-log/library/NotificationsLogTable.php:660
 msgid "All Receivers"
 msgstr "Svi primatelji"
 
@@ -2866,7 +2888,7 @@ msgstr ""
 "slanja obavijesti."
 
 #: modules/notifications/notifications.php:75
-#: modules/notifications/notifications.php:559
+#: modules/notifications/notifications.php:571
 #: publishpress.php:1440
 #: publishpress.php:1445
 msgid "Notifications"
@@ -2900,63 +2922,63 @@ msgstr ""
 "href=\"https://github.com/ostraining/PublishPress\">PublishPress na "
 "Githubu</a></p>"
 
-#: modules/notifications/notifications.php:300
-#: modules/notifications/notifications.php:303
+#: modules/notifications/notifications.php:302
+#: modules/notifications/notifications.php:305
 msgid "Notify User"
 msgstr "Obavijesti korisnika"
 
-#: modules/notifications/notifications.php:302
+#: modules/notifications/notifications.php:304
 msgid "Notify Users"
 msgstr "Obavijesti korisniku"
 
-#: modules/notifications/notifications.php:315
-#: modules/notifications/notifications.php:318
+#: modules/notifications/notifications.php:317
+#: modules/notifications/notifications.php:320
 msgid "Notify Role"
 msgstr "Obavijesti ulogu"
 
-#: modules/notifications/notifications.php:317
+#: modules/notifications/notifications.php:319
 msgid "Notify Roles"
 msgstr "Obavijesti ulogama"
 
-#: modules/notifications/notifications.php:331
-#: modules/notifications/notifications.php:334
+#: modules/notifications/notifications.php:333
+#: modules/notifications/notifications.php:336
 msgid "Notification Group"
 msgstr "Grupa obavijesti"
 
-#: modules/notifications/notifications.php:333
+#: modules/notifications/notifications.php:335
 msgid "Notification Groups"
 msgstr "Grupe obavijesti"
 
-#: modules/notifications/notifications.php:347
-#: modules/notifications/notifications.php:350
+#: modules/notifications/notifications.php:349
+#: modules/notifications/notifications.php:352
 msgid "Notify Email"
 msgstr "Obavijesti e-pošte"
 
-#: modules/notifications/notifications.php:349
+#: modules/notifications/notifications.php:351
 msgid "Notify Emails"
 msgstr "Obavijesti e-pošti"
 
-#: modules/notifications/notifications.php:527
-#: modules/notifications/notifications.php:937
+#: modules/notifications/notifications.php:529
+#: modules/notifications/notifications.php:980
 msgid "Click to stop being notified on updates for this post"
 msgstr "Kliknite da prestanete primati obavijesti o ažuriranjima za ovu objavu"
 
-#: modules/notifications/notifications.php:528
-#: modules/notifications/notifications.php:936
+#: modules/notifications/notifications.php:530
+#: modules/notifications/notifications.php:979
 msgid "Stop notifying me"
 msgstr "Prestanite me obavještavati"
 
-#: modules/notifications/notifications.php:531
-#: modules/notifications/notifications.php:943
+#: modules/notifications/notifications.php:533
+#: modules/notifications/notifications.php:986
 msgid "Click to start being notified on updates for this post"
 msgstr "Kliknite da započnete primati obavijesti o ažuriranjima za ovu objavu"
 
-#: modules/notifications/notifications.php:532
-#: modules/notifications/notifications.php:942
+#: modules/notifications/notifications.php:534
+#: modules/notifications/notifications.php:985
 msgid "Notify me"
 msgstr "Obavijestite me"
 
-#: modules/notifications/notifications.php:596
+#: modules/notifications/notifications.php:639
 msgid ""
 "Enter users, roles, or email addresses that should receive notifications "
 "for this post."
@@ -2964,11 +2986,11 @@ msgstr ""
 "Unesite korisnike, uloge ili adrese e-pošte koje bi trebale primati "
 "obavijesti za ovu objavu."
 
-#: modules/notifications/notifications.php:600
+#: modules/notifications/notifications.php:643
 msgid "Show active notifications"
 msgstr "Prikaži aktivne obavijesti"
 
-#: modules/notifications/notifications.php:639
+#: modules/notifications/notifications.php:682
 msgid ""
 "This won't have any effect unless you have at least one workflow targeting "
 "the \"Users who selected \"Notify me\" for the content\" option."
@@ -2976,56 +2998,56 @@ msgstr ""
 "Ovo neće imati nikakav učinak osim ako nemate barem jedan tijek rada koji "
 "cilja opciju \"Korisnici koji su odabrali \"Obavijesti me\" za sadržaj\"."
 
-#: modules/notifications/notifications.php:653
+#: modules/notifications/notifications.php:696
 msgid "Active Notifications"
 msgstr "Aktivne obavijesti"
 
-#: modules/notifications/notifications.php:681
+#: modules/notifications/notifications.php:724
 msgid "Workflow has users enrolled"
 msgstr "Radni tok ima prijavljene korisnike"
 
-#: modules/notifications/notifications.php:688
+#: modules/notifications/notifications.php:731
 #, php-format
 msgid "No active notifications found for this %s."
 msgstr "Nema aktivnih obavijesti za ovaj %s."
 
-#: modules/notifications/notifications.php:1051
+#: modules/notifications/notifications.php:1094
 #, php-format
 msgid "You are receiving this email because you are subscribed to \"%s\"."
 msgstr "Primate ovu e-poštu jer ste se prijavili na \"%s\"."
 
-#: modules/notifications/notifications.php:1056
+#: modules/notifications/notifications.php:1099
 #, php-format
 msgid "This email was sent %s."
 msgstr "Ova e-pošta je poslana %s."
 
-#: modules/notifications/notifications.php:1712
+#: modules/notifications/notifications.php:1755
 msgid "Show the \"Notify me\" and \"Stop notifying me\" links for these post types:"
 msgstr ""
 "Prikaži veze \"Obavijestite me\" i \"Prestanite me obavještavati\" za ove "
 "tipove objava:"
 
-#: modules/notifications/notifications.php:1720
+#: modules/notifications/notifications.php:1763
 msgid "Email from:"
 msgstr "E-pošta od:"
 
-#: modules/notifications/notifications.php:1728
+#: modules/notifications/notifications.php:1771
 msgid "Always notify the author of the content:"
 msgstr "Uvijek obavijestite autora sadržaja:"
 
-#: modules/notifications/notifications.php:1736
+#: modules/notifications/notifications.php:1779
 msgid "Always notify users who have edited the content:"
 msgstr "Uvijek obavijestite korisnike koji su uredili sadržaj:"
 
-#: modules/notifications/notifications.php:1744
+#: modules/notifications/notifications.php:1787
 msgid "Blacklisted taxonomies for Notifications"
 msgstr "Crna lista taksonomija za obavijesti"
 
-#: modules/notifications/notifications.php:1858, fuzzy
+#: modules/notifications/notifications.php:1901, fuzzy
 msgid "slug1,slug2"
 msgstr "slug1,slug2"
 
-#: modules/notifications/notifications.php:1864
+#: modules/notifications/notifications.php:1907
 msgid ""
 "Add a list of taxonomy-slugs separated by comma that should not be loaded "
 "by the Taxonomy content filter when adding a new Notification Workflow."
@@ -3034,139 +3056,139 @@ msgstr ""
 "učitane filtrima sadržaja taksonomije prilikom dodavanja novog tijeka rada "
 "za obavijesti."
 
-#: modules/notifications/notifications.php:2000
+#: modules/notifications/notifications.php:2043
 msgid "WordPress Scheduler"
 msgstr "WordPress planer"
 
-#: modules/notifications/notifications.php:2009
+#: modules/notifications/notifications.php:2052
 #, php-format
 msgid "[%1$s] New %2$s Created: \"%3$s\""
 msgstr "[%1$s] Novi %2$s stvoren: \"%3$s\""
 
-#: modules/notifications/notifications.php:2016
+#: modules/notifications/notifications.php:2059
 #, php-format
 msgid "A new %1$s (#%2$s \"%3$s\" ) was created by %4$s %5$s"
 msgstr "Novi %1$s (#%2$s \"%3$s\") je kreirao %4$s %5$s"
 
-#: modules/notifications/notifications.php:2026
+#: modules/notifications/notifications.php:2069
 #, php-format
 msgid "[%1$s] %2$s Trashed: \"%3$s\""
 msgstr "[%1$s] %2$s u smeću: \"%3$s\""
 
-#: modules/notifications/notifications.php:2033
+#: modules/notifications/notifications.php:2076
 #, php-format
 msgid "%1$s #%2$s \"%3$s\" was moved to the trash by %4$s %5$s"
 msgstr "%1$s #%2$s \"%3$s\" je premješten u smeće od strane %4$s %5$s"
 
-#: modules/notifications/notifications.php:2043
+#: modules/notifications/notifications.php:2086
 #, php-format
 msgid "[%1$s] %2$s Restored (from Trash ): \"%3$s\""
 msgstr "[%1$s] %2$s vraćen (iz smeća): \"%3$s\""
 
-#: modules/notifications/notifications.php:2050
+#: modules/notifications/notifications.php:2093
 #, php-format
 msgid "%1$s #%2$s \"%3$s\" was restored from trash by %4$s %5$s"
 msgstr "%1$s #%2$s \"%3$s\" je vraćen iz smeća od strane %4$s %5$s"
 
-#: modules/notifications/notifications.php:2073
+#: modules/notifications/notifications.php:2116
 #, php-format
 msgid "[%1$s] %2$s Published: \"%3$s\""
 msgstr "[%1$s] %2$s objavljen: \"%3$s\""
 
-#: modules/notifications/notifications.php:2080
+#: modules/notifications/notifications.php:2123
 #, php-format
 msgid "%1$s #%2$s \"%3$s\" was published by %4$s %5$s"
 msgstr "%1$s #%2$s \"%3$s\" je objavio %4$s %5$s"
 
-#: modules/notifications/notifications.php:2090
+#: modules/notifications/notifications.php:2133
 #, php-format
 msgid "[%1$s] %2$s Unpublished: \"%3$s\""
 msgstr "[%1$s] %2$s Nepublicirano: \"%3$s\""
 
-#: modules/notifications/notifications.php:2097
+#: modules/notifications/notifications.php:2140
 #, php-format
 msgid "%1$s #%2$s \"%3$s\" was unpublished by %4$s %5$s"
 msgstr "%1$s #%2$s \"%3$s\" je nepublished od %4$s %5$s"
 
-#: modules/notifications/notifications.php:2107
+#: modules/notifications/notifications.php:2150
 #, php-format
 msgid "[%1$s] %2$s Status Changed for \"%3$s\""
 msgstr "[%1$s] %2$s Status promijenjen za \"%3$s\""
 
-#: modules/notifications/notifications.php:2114
+#: modules/notifications/notifications.php:2157
 #, php-format
 msgid "Status was changed for %1$s #%2$s \"%3$s\" by %4$s %5$s"
 msgstr "Status je promijenjen za %1$s #%2$s \"%3$s\" od %4$s %5$s"
 
-#: modules/notifications/notifications.php:2125
+#: modules/notifications/notifications.php:2168
 #, php-format
 msgid "This action was taken on %1$s at %2$s %3$s"
 msgstr "Ova radnja je poduzeta na %1$s u %2$s %3$s"
 
-#: modules/notifications/notifications.php:2138
+#: modules/notifications/notifications.php:2181
 #, fuzzy, php-format
 msgid "%1$s => %2$s"
 msgstr "%1$s => %2$s"
 
-#: modules/notifications/notifications.php:2146
+#: modules/notifications/notifications.php:2189
 #, php-format
 msgid "== %s Details =="
 msgstr "== %s Detalji =="
 
-#: modules/notifications/notifications.php:2147
+#: modules/notifications/notifications.php:2190
 #, php-format
 msgid "Title: %s"
 msgstr "Naslov: %s"
 
-#: modules/notifications/notifications.php:2151
+#: modules/notifications/notifications.php:2194
 #, php-format
 msgid "Author: %1$s (%2$s )"
 msgstr "Autor: %1$s (%2$s )"
 
-#: modules/notifications/notifications.php:2165
-#: modules/notifications/notifications.php:2218
+#: modules/notifications/notifications.php:2208
+#: modules/notifications/notifications.php:2261
 msgid "== Actions =="
 msgstr "== Akcije =="
 
-#: modules/notifications/notifications.php:2167
-#: modules/notifications/notifications.php:2224
+#: modules/notifications/notifications.php:2210
+#: modules/notifications/notifications.php:2267
 #, php-format
 msgid "Add editorial comment: %s"
 msgstr "Dodaj urednički komentar: %s"
 
-#: modules/notifications/notifications.php:2170
-#: modules/notifications/notifications.php:2227
+#: modules/notifications/notifications.php:2213
+#: modules/notifications/notifications.php:2270
 #, php-format
 msgid "Edit: %s"
 msgstr "Uredi: %s"
 
-#: modules/notifications/notifications.php:2171
-#: modules/notifications/notifications.php:2228
+#: modules/notifications/notifications.php:2214
+#: modules/notifications/notifications.php:2271
 #, php-format
 msgid "View: %s"
 msgstr "Pogledaj: %s"
 
-#: modules/notifications/notifications.php:2182
+#: modules/notifications/notifications.php:2225
 #, php-format
 msgid "[%1$s] New Editorial Comment: \"%2$s\""
 msgstr "[%1$s] Novi urednički komentar: \"%2$s\""
 
-#: modules/notifications/notifications.php:2189
+#: modules/notifications/notifications.php:2232
 #, php-format
 msgid "A new editorial comment was added to %3$s #%1$s \"%2$s\""
 msgstr "Novi urednički komentar je dodan na %3$s #%1$s \"%2$s\""
 
-#: modules/notifications/notifications.php:2196
+#: modules/notifications/notifications.php:2239
 #, php-format
 msgid "%1$s (%2$s ) said on %3$s at %4$s:"
 msgstr "%1$s (%2$s ) je rekao na %3$s u %4$s:"
 
-#: modules/notifications/notifications.php:2220
+#: modules/notifications/notifications.php:2263
 #, php-format
 msgid "Reply: %s"
 msgstr "Odgovor: %s"
 
-#: modules/notifications/notifications.php:2231
+#: modules/notifications/notifications.php:2274
 #, php-format
 msgid "You can see all editorial comments on this %s here: "
 msgstr "Možete vidjeti sve uredničke komentare na ovom %s ovdje: "
@@ -3222,9 +3244,17 @@ msgstr "O nama"
 msgid "Documentation"
 msgstr "Dokumentacija"
 
+#: modules/settings/views/footer-base.html.php:28
+msgid "Contact the PublishPress team"
+msgstr "Kontaktirajte tim PublishPress"
+
 #: modules/settings/views/footer-base.html.php:29
 msgid "Contact"
 msgstr "Kontakt"
+
+#: modules/settings/views/footer-base.html.php:34
+msgid "Visit PublishPress"
+msgstr "Posjetite PublishPress"
 
 #: modules/theeventscalendar-integration/theeventscalendar-integration.php:52
 msgid "The Events Calendar Integration"
@@ -3284,6 +3314,10 @@ msgstr ""
 #: publishpress.php:1497
 msgid "Warning"
 msgstr "Upozorenje"
+
+#: views/workflow_help.html.php:27
+msgid "Read more about notification workflows"
+msgstr "Pročitajte više o radnim tokovima obavijesti"
 
 #: modules/content-board/library/content-board-utilities.php:538
 #: modules/content-overview/library/content-overview-utilities.php:643

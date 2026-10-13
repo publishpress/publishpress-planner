@@ -8,7 +8,7 @@ function publishpress_statuses_info() {
     }
 
     if (!function_exists('get_plugins')) {
-        if (@file_exists(ABSPATH . 'wp-admin/includes/plugin.php')) {
+        if (file_exists(ABSPATH . 'wp-admin/includes/plugin.php')) {
             require_once ABSPATH . 'wp-admin/includes/plugin.php';
         }
     }

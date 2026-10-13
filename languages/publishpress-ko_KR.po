@@ -5,13 +5,15 @@ msgstr ""
 "Project-Id-Version: PublishPress Planner 4.8.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: Korean "
+"<https://weblate.publishpress.com/projects/publishpress-planner/"
+"publishpress/ko/>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-14T18:33:45+00:00\n"
-"PO-Revision-Date: 2026-09-28 14:32+0000\n"
-"X-Generator: WP-CLI 2.12.0\n"
+"PO-Revision-Date: 2026-10-02 16:32+0000\n"
+"X-Generator: Weblate 2026.6.1\n"
 "X-Domain: publishpress\n"
 "Language: ko_KR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -60,7 +62,7 @@ msgstr "초안"
 #: common/php/class-module.php:340
 #: modules/calendar/calendar.php:1256
 #: modules/content-board/content-board.php:979
-#: modules/notifications-log/library/NotificationsLogTable.php:529
+#: modules/notifications-log/library/NotificationsLogTable.php:536
 msgid "Scheduled"
 msgstr "예정됨"
 
@@ -87,64 +89,64 @@ msgstr "휴지통"
 msgid "Roles"
 msgstr "역할"
 
-#: common/php/class-module.php:775
+#: common/php/class-module.php:774
 msgid "Role"
 msgstr "역할"
 
-#: common/php/class-module.php:783
+#: common/php/class-module.php:782
 msgid "Groups"
 msgstr "그룹"
 
-#: common/php/class-module.php:786
+#: common/php/class-module.php:784
 msgid "Group"
 msgstr "그룹"
 
-#: common/php/class-module.php:794
+#: common/php/class-module.php:792
 msgid "Users"
 msgstr "사용자"
 
-#: common/php/class-module.php:804
+#: common/php/class-module.php:801
 msgid "E-mails"
 msgstr "이메일"
 
-#: common/php/class-module.php:1051
+#: common/php/class-module.php:1047
 msgid "Equals (=)"
 msgstr "같음 (=)"
 
-#: common/php/class-module.php:1052
+#: common/php/class-module.php:1048
 msgid "Does not equal (!=)"
 msgstr "같지 않음 (!=)"
 
-#: common/php/class-module.php:1053
+#: common/php/class-module.php:1049
 msgid "Greater than (>)"
 msgstr "크다 (>)"
 
-#: common/php/class-module.php:1054
+#: common/php/class-module.php:1050
 msgid "Greater than or equals (>=)"
 msgstr "크거나 같음 (>=)"
 
-#: common/php/class-module.php:1055
+#: common/php/class-module.php:1051
 msgid "Less than (<)"
 msgstr "작다 (<)"
 
-#: common/php/class-module.php:1056
+#: common/php/class-module.php:1052
 msgid "Less than or equals (<=)"
 msgstr "작거나 같음 (<=)"
 
-#: common/php/class-module.php:1057
+#: common/php/class-module.php:1053
 msgid "Like/Contains"
 msgstr "같음/포함됨"
 
-#: common/php/class-module.php:1058
+#: common/php/class-module.php:1054
 #, fuzzy
 msgid "Not Like"
 msgstr "설정되지 않음"
 
-#: common/php/class-module.php:1059
+#: common/php/class-module.php:1055
 msgid "Not Exists/Empty"
 msgstr "존재하지 않음/비어 있음"
 
-#: common/php/class-module.php:1112
+#: common/php/class-module.php:1108
 #: views/workflow_receiver_group_field.html.php:10
 #: views/workflow_receiver_role_field.html.php:9
 #: views/workflow_receiver_user_field.html.php:9
@@ -152,7 +154,7 @@ msgstr "존재하지 않음/비어 있음"
 msgid "Select %s"
 msgstr "%s 선택"
 
-#: common/php/class-module.php:1129
+#: common/php/class-module.php:1125
 #: modules/calendar/library/calendar-utilities.php:1191
 #: modules/content-overview/content-overview.php:850
 #: modules/content-overview/content-overview.php:874
@@ -161,7 +163,7 @@ msgstr "%s 선택"
 msgid "Revision Status"
 msgstr "수정 상태"
 
-#: common/php/class-module.php:1129
+#: common/php/class-module.php:1125
 #: modules/calendar/library/calendar-methods.php:424
 #: modules/calendar/library/calendar-methods.php:858
 #: modules/calendar/library/calendar-methods.php:1257
@@ -323,7 +325,7 @@ msgstr "필터가 성공적으로 초기화되었습니다."
 #: modules/content-overview/content-overview.php:847
 #: modules/content-overview/content-overview.php:871
 #: modules/content-overview/content-overview.php:923
-#: modules/notifications-log/library/NotificationsLogTable.php:500
+#: modules/notifications-log/library/NotificationsLogTable.php:507
 msgid "Status"
 msgstr "상태"
 
@@ -792,7 +794,7 @@ msgstr "게시 날짜"
 #: modules/content-board/content-board.php:1289
 #: modules/content-overview/content-overview.php:1266
 #: modules/content-overview/content-overview.php:1749
-#: modules/editorial-comments/editorial-comments.php:628
+#: modules/editorial-comments/editorial-comments.php:644
 #: modules/editorial-metadata/library/editorial-metadata-list-table.php:159
 msgid "Edit"
 msgstr "편집"
@@ -951,8 +953,8 @@ msgstr "통과"
 #: modules/calendar/library/calendar-utilities.php:374
 #: modules/content-board/library/content-board-utilities.php:899
 #: modules/content-overview/library/content-overview-utilities.php:1027
-#: modules/notifications-log/library/NotificationsLogTable.php:277
-#: modules/notifications-log/library/NotificationsLogTable.php:293
+#: modules/notifications-log/library/NotificationsLogTable.php:284
+#: modules/notifications-log/library/NotificationsLogTable.php:300
 msgid "Failed"
 msgstr "실패"
 
@@ -1060,7 +1062,7 @@ msgstr "ID"
 #: modules/content-board/library/content-board-utilities.php:116
 #: modules/content-overview/library/content-overview-methods.php:341
 #: modules/editorial-metadata/editorial-metadata.php:290
-#: modules/notifications-log/library/NotificationsLogTable.php:496
+#: modules/notifications-log/library/NotificationsLogTable.php:503
 msgid "Date"
 msgstr "날짜"
 
@@ -1129,6 +1131,7 @@ msgid "You do not have any public taxonomies"
 msgstr "공개 분류가 없습니다"
 
 #: modules/calendar/library/calendar-utilities.php:1236
+#: modules/calendar/library/calendar-utilities.php:1326
 msgid "Subscribe in iCal or Google Calendar"
 msgstr "iCal 또는 Google 캘린더에서 구독하기"
 
@@ -1458,7 +1461,8 @@ msgstr "다음에서 콘텐츠 표시"
 
 #: modules/content-board/library/content-board-utilities.php:554
 #: modules/content-overview/library/content-overview-utilities.php:659
-#: modules/editorial-comments/editorial-comments.php:574
+#: modules/editorial-comments/editorial-comments.php:588
+#: modules/editorial-comments/editorial-comments.php:590
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:425
 msgid "Cancel"
 msgstr "취소"
@@ -1695,7 +1699,7 @@ msgstr "유효하지 않은 액션 논스입니다."
 #: modules/editorial-comments/editorial-comments.php:63
 #: modules/editorial-comments/editorial-comments.php:235
 #: modules/editorial-comments/editorial-comments.php:236
-#: modules/editorial-comments/editorial-comments.php:453
+#: modules/editorial-comments/editorial-comments.php:469
 msgid "Editorial Comments"
 msgstr "편집 코멘트"
 
@@ -1733,7 +1737,7 @@ msgstr ""
 "PublishPress</a></p>"
 
 #: modules/editorial-comments/editorial-comments.php:205
-#: modules/editorial-comments/editorial-comments.php:717
+#: modules/editorial-comments/editorial-comments.php:733
 msgid "Remove"
 msgstr "제거"
 
@@ -1758,150 +1762,152 @@ msgstr "“%s”에 대한 검색 결과"
 msgid "Search Comments"
 msgstr "댓글 검색"
 
-#: modules/editorial-comments/editorial-comments.php:528
+#: modules/editorial-comments/editorial-comments.php:544
 msgid ""
 "You can add editorial comments to a post once you've saved it for the first "
 "time."
 msgstr "게시물을 처음 저장한 후에 편집 댓글을 추가할 수 있습니다."
 
-#: modules/editorial-comments/editorial-comments.php:548
-#: modules/editorial-comments/editorial-comments.php:552
+#: modules/editorial-comments/editorial-comments.php:564
+#: modules/editorial-comments/editorial-comments.php:568
 msgid "Add an editorial comment"
 msgstr "편집 댓글 추가"
 
-#: modules/editorial-comments/editorial-comments.php:558
+#: modules/editorial-comments/editorial-comments.php:573
+#: modules/editorial-comments/editorial-comments.php:574
 msgid "Attach file"
 msgstr "파일 첨부"
 
-#: modules/editorial-comments/editorial-comments.php:570
+#: modules/editorial-comments/editorial-comments.php:584
+#: modules/editorial-comments/editorial-comments.php:586
 msgid "Add Comment"
 msgstr "댓글 추가"
 
-#: modules/editorial-comments/editorial-comments.php:616
+#: modules/editorial-comments/editorial-comments.php:632
 msgid "Reply to this comment"
 msgstr "이 댓글에 답변하기"
 
-#: modules/editorial-comments/editorial-comments.php:619
+#: modules/editorial-comments/editorial-comments.php:635
 msgid "Reply"
 msgstr "답변"
 
-#: modules/editorial-comments/editorial-comments.php:639
+#: modules/editorial-comments/editorial-comments.php:655
 #: modules/editorial-comments/library/EditorialCommentsTable.php:436
 #: modules/editorial-metadata/library/editorial-metadata-list-table.php:161
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:303
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:333
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:614
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:644
-#: modules/notifications-log/library/NotificationsLogTable.php:376
-#: modules/notifications-log/library/NotificationsLogTable.php:407
+#: modules/notifications-log/library/NotificationsLogTable.php:383
+#: modules/notifications-log/library/NotificationsLogTable.php:414
 msgid "Delete"
 msgstr "삭제"
 
-#: modules/editorial-comments/editorial-comments.php:684
+#: modules/editorial-comments/editorial-comments.php:700
 #, php-format
 msgid "said on %1$s at %2$s"
 msgstr "%1$s에서 %2$s에 말했다"
 
-#: modules/editorial-comments/editorial-comments.php:745
+#: modules/editorial-comments/editorial-comments.php:761
 msgid ""
 "Nonce check failed. Please ensure you're supposed to be adding editorial "
 "comments."
 msgstr "Nonce 검사에 실패했습니다. 편집 댓글을 추가할 수 있는지 확인해 주세요."
 
-#: modules/editorial-comments/editorial-comments.php:753
-#: modules/editorial-comments/editorial-comments.php:894
-#: modules/editorial-comments/editorial-comments.php:1026
-#: modules/editorial-comments/editorial-comments.php:1142
+#: modules/editorial-comments/editorial-comments.php:769
+#: modules/editorial-comments/editorial-comments.php:910
+#: modules/editorial-comments/editorial-comments.php:1042
+#: modules/editorial-comments/editorial-comments.php:1158
 msgid "Invalid comment data"
 msgstr "잘못된 댓글 데이터"
 
-#: modules/editorial-comments/editorial-comments.php:766
+#: modules/editorial-comments/editorial-comments.php:782
 msgid ""
 "Sorry, you don't have the privileges to add editorial comments. Please talk "
 "to your Administrator."
 msgstr "죄송하지만 편집 댓글을 추가할 권한이 없습니다. 관리자와 이야기해 주세요."
 
-#: modules/editorial-comments/editorial-comments.php:776
-#: modules/editorial-comments/editorial-comments.php:940
+#: modules/editorial-comments/editorial-comments.php:792
+#: modules/editorial-comments/editorial-comments.php:956
 msgid "Please enter a comment."
 msgstr "댓글을 입력해 주세요."
 
-#: modules/editorial-comments/editorial-comments.php:863
-#: modules/editorial-comments/editorial-comments.php:993
-#: modules/editorial-comments/editorial-comments.php:1103
-#: modules/editorial-comments/editorial-comments.php:1187
+#: modules/editorial-comments/editorial-comments.php:879
+#: modules/editorial-comments/editorial-comments.php:1009
+#: modules/editorial-comments/editorial-comments.php:1119
+#: modules/editorial-comments/editorial-comments.php:1203
 msgid "There was a problem of some sort. Try again or contact your administrator."
 msgstr "어떤 문제이 발생했습니다. 다시 시도하거나 관리자에게 문의해 주세요."
 
-#: modules/editorial-comments/editorial-comments.php:883
-#: modules/editorial-comments/editorial-comments.php:1015
-#: modules/editorial-comments/editorial-comments.php:1132
+#: modules/editorial-comments/editorial-comments.php:899
+#: modules/editorial-comments/editorial-comments.php:1031
+#: modules/editorial-comments/editorial-comments.php:1148
 msgid ""
 "Nonce check failed. Please ensure you're supposed to be editing editorial "
 "comments."
 msgstr "Nonce 검사에 실패했습니다. 편집 댓글을 수정할 수 있는지 확인해 주세요."
 
-#: modules/editorial-comments/editorial-comments.php:909
-#: modules/editorial-comments/editorial-comments.php:1041
+#: modules/editorial-comments/editorial-comments.php:925
+#: modules/editorial-comments/editorial-comments.php:1057
 msgid ""
 "Sorry, you don't have the privileges to edit editorial comments. Please "
 "talk to your Administrator."
 msgstr "죄송하지만 편집 댓글을 수정할 권한이 없습니다. 관리자와 이야기해 주세요."
 
-#: modules/editorial-comments/editorial-comments.php:927
+#: modules/editorial-comments/editorial-comments.php:943
 msgid ""
 "Sorry, you don't have the privileges to edit this editorial comment. Please "
 "talk to your Administrator."
 msgstr "죄송합니다. 이 편집 댓글을 수정할 권한이 없습니다. 관리자에게 문의하십시오."
 
-#: modules/editorial-comments/editorial-comments.php:1057
-#: modules/editorial-comments/editorial-comments.php:1161
+#: modules/editorial-comments/editorial-comments.php:1073
+#: modules/editorial-comments/editorial-comments.php:1177
 msgid ""
 "Sorry, you don't have the privileges to delete this editorial comment. "
 "Please talk to your Administrator."
 msgstr "죄송합니다. 이 편집 댓글을 삭제할 권한이 없습니다. 관리자에게 문의하십시오."
 
-#: modules/editorial-comments/editorial-comments.php:1078
+#: modules/editorial-comments/editorial-comments.php:1094
 msgid "Sorry, you can't delete this editorial comment because it has some replies."
 msgstr "죄송하지만 이 편집 코멘트는 답글이 있어 삭제할 수 없습니다."
 
-#: modules/editorial-comments/editorial-comments.php:1179
+#: modules/editorial-comments/editorial-comments.php:1195
 msgid "Comment deleted successfully."
 msgstr "코멘트가 성공적으로 삭제되었습니다."
 
-#: modules/editorial-comments/editorial-comments.php:1230
+#: modules/editorial-comments/editorial-comments.php:1246
 msgid "Enable for these post types:"
 msgstr "다음 게시물 유형에 대해 활성화:"
 
-#: modules/editorial-comments/editorial-comments.php:1237
+#: modules/editorial-comments/editorial-comments.php:1253
 msgid "Comment author name field:"
 msgstr "코멘트 작성자 이름 필드:"
 
-#: modules/editorial-comments/editorial-comments.php:1262
+#: modules/editorial-comments/editorial-comments.php:1278
 msgid "Nickname"
 msgstr "닉네임"
 
-#: modules/editorial-comments/editorial-comments.php:1263
+#: modules/editorial-comments/editorial-comments.php:1279
 msgid "Username"
 msgstr "사용자 이름"
 
-#: modules/editorial-comments/editorial-comments.php:1264
+#: modules/editorial-comments/editorial-comments.php:1280
 msgid "Display Name"
 msgstr "표시 이름"
 
-#: modules/editorial-comments/editorial-comments.php:1265
+#: modules/editorial-comments/editorial-comments.php:1281
 msgid "First Name"
 msgstr "이름"
 
-#: modules/editorial-comments/editorial-comments.php:1266
+#: modules/editorial-comments/editorial-comments.php:1282
 msgid "Last Name"
 msgstr "성"
 
-#: modules/editorial-comments/editorial-comments.php:1267
+#: modules/editorial-comments/editorial-comments.php:1283
 msgid "Email"
 msgstr "이메일"
 
-#: modules/editorial-comments/editorial-comments.php:1268
+#: modules/editorial-comments/editorial-comments.php:1284
 msgid "User Url"
 msgstr "사용자 URL"
 
@@ -1910,7 +1916,7 @@ msgid "No editorial comments."
 msgstr "편집 코멘트가 없습니다."
 
 #: modules/editorial-comments/library/EditorialCommentsTable.php:180
-#: modules/notifications-log/library/NotificationsLogTable.php:566
+#: modules/notifications-log/library/NotificationsLogTable.php:576
 msgid "Filter by post"
 msgstr "게시물로 필터링"
 
@@ -1919,7 +1925,7 @@ msgid "Filter by user"
 msgstr "사용자로 필터링"
 
 #: modules/editorial-comments/library/EditorialCommentsTable.php:212
-#: modules/notifications-log/library/NotificationsLogTable.php:653
+#: modules/notifications-log/library/NotificationsLogTable.php:666
 msgid "Filter"
 msgstr "필터"
 
@@ -1937,7 +1943,7 @@ msgstr "제출일"
 
 #: modules/editorial-comments/library/EditorialCommentsTable.php:338
 #: modules/editorial-metadata/input-handlers/editorial-metadata-input-date-handler.php:201
-#: modules/notifications/notifications.php:1971
+#: modules/notifications/notifications.php:2014
 #. translators: 1: Comment date, 2: Comment time.
 #, php-format
 msgid "%1$s at %2$s"
@@ -2326,6 +2332,13 @@ msgstr "표시 레이블"
 msgid "Default option"
 msgstr "기본 옵션"
 
+#: modules/editorial-metadata/library/editorial-metadata-utilities.php:303
+#: modules/editorial-metadata/library/editorial-metadata-utilities.php:333
+#: modules/editorial-metadata/library/editorial-metadata-utilities.php:614
+#: modules/editorial-metadata/library/editorial-metadata-utilities.php:644
+msgid "Delete option"
+msgstr "삭제 옵션"
+
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:338
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:649
 msgid "Add Another Option"
@@ -2487,17 +2500,17 @@ msgid "Help"
 msgstr "도움말"
 
 #: modules/improved-notifications/improved-notifications.php:1179
-#: modules/notifications-log/library/NotificationsLogTable.php:497
+#: modules/notifications-log/library/NotificationsLogTable.php:504
 msgid "When to notify?"
 msgstr "언제를 알릴까요?"
 
 #: modules/improved-notifications/improved-notifications.php:1189
-#: modules/notifications-log/library/NotificationsLogTable.php:498
+#: modules/notifications-log/library/NotificationsLogTable.php:505
 msgid "For which content?"
 msgstr "어떤 콘텐츠에 대해?"
 
 #: modules/improved-notifications/improved-notifications.php:1199
-#: modules/notifications-log/library/NotificationsLogTable.php:499
+#: modules/notifications-log/library/NotificationsLogTable.php:506
 msgid "Who to notify?"
 msgstr "누구에게 알릴까요?"
 
@@ -2600,115 +2613,124 @@ msgid "User: %s (%d)"
 msgstr "사용자: %s (%d)"
 
 #: modules/notifications-log/library/NotificationsLogTable.php:157
+#: modules/notifications-log/library/NotificationsLogTable.php:568
+msgid "Deleted post"
+msgstr "삭제된 게시물"
+
+#: modules/notifications-log/library/NotificationsLogTable.php:163
 #, php-format
 msgid "Post type: %s"
 msgstr "게시물 유형: %s"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:160
+#: modules/notifications-log/library/NotificationsLogTable.php:167
 #, php-format
 msgid "Post ID: %d"
 msgstr "게시물 ID: %d"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:163
+#: modules/notifications-log/library/NotificationsLogTable.php:170
 #, php-format
 msgid "Blog ID: %d"
 msgstr "블로그 ID: %d"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:233
+#: modules/notifications-log/library/NotificationsLogTable.php:240
 #, php-format
 msgid "Scheduled for %d receivers. Click here to display them."
 msgstr "%d명의 수신자를 위해 예약되었습니다. 여기를 클릭하여 표시합니다."
 
-#: modules/notifications-log/library/NotificationsLogTable.php:261
+#: modules/notifications-log/library/NotificationsLogTable.php:268
 msgid " Scheduled, but late"
 msgstr " 예약됨, 하지만 지연됨"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:263
+#: modules/notifications-log/library/NotificationsLogTable.php:270
 msgid " Scheduled"
 msgstr " 예약됨"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:282
-#: modules/notifications-log/library/NotificationsLogTable.php:533
+#: modules/notifications-log/library/NotificationsLogTable.php:289
+#: modules/notifications-log/library/NotificationsLogTable.php:540
 msgid "Error"
 msgstr "오류"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:283
+#: modules/notifications-log/library/NotificationsLogTable.php:290
 msgid "The notification was set as \"Scheduled\" but the cron task is not found"
 msgstr "알림이 \"예약됨\"으로 설정되었지만 cron 작업을 찾을 수 없습니다."
 
-#: modules/notifications-log/library/NotificationsLogTable.php:288
+#: modules/notifications-log/library/NotificationsLogTable.php:295
 msgid "Sent"
 msgstr "전송됨"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:291
-#: modules/notifications-log/library/NotificationsLogTable.php:525
+#: modules/notifications-log/library/NotificationsLogTable.php:298
+#: modules/notifications-log/library/NotificationsLogTable.php:532
 msgid "Skipped"
 msgstr "건너뜀"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:304
+#: modules/notifications-log/library/NotificationsLogTable.php:311
 msgid "asynchronous"
 msgstr "비동기"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:304
+#: modules/notifications-log/library/NotificationsLogTable.php:311
 msgid "synchronous"
 msgstr "동기"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:361
-#: modules/notifications-log/library/NotificationsLogTable.php:406
+#: modules/notifications-log/library/NotificationsLogTable.php:368
+#: modules/notifications-log/library/NotificationsLogTable.php:413
 msgid "Reschedule"
 msgstr "일정 변경"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:383
+#: modules/notifications-log/library/NotificationsLogTable.php:390
 msgid "Blog: "
 msgstr "블로그: "
 
-#: modules/notifications-log/library/NotificationsLogTable.php:408
+#: modules/notifications-log/library/NotificationsLogTable.php:415
 msgid "Delete All"
 msgstr "모두 삭제"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:517
+#: modules/notifications-log/library/NotificationsLogTable.php:524
 msgid "All"
 msgstr "모두"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:521
+#: modules/notifications-log/library/NotificationsLogTable.php:528
 msgid "Success"
 msgstr "성공"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:582
+#: modules/notifications-log/library/NotificationsLogTable.php:587
+msgid "Deleted workflow"
+msgstr "삭제된 워크플로우"
+
+#: modules/notifications-log/library/NotificationsLogTable.php:595
 msgid "Filter by workflow"
 msgstr "워크플로로 필터링"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:589
+#: modules/notifications-log/library/NotificationsLogTable.php:602
 msgid "Filter by event"
 msgstr "이벤트로 필터링"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:593
+#: modules/notifications-log/library/NotificationsLogTable.php:606
 msgid "All events"
 msgstr "모든 이벤트"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:607
+#: modules/notifications-log/library/NotificationsLogTable.php:620
 msgid "Filter by channel"
 msgstr "채널로 필터링"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:611
+#: modules/notifications-log/library/NotificationsLogTable.php:624
 msgid "All channels"
 msgstr "모든 채널"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:628
-#: modules/notifications-log/library/NotificationsLogTable.php:631
+#: modules/notifications-log/library/NotificationsLogTable.php:641
+#: modules/notifications-log/library/NotificationsLogTable.php:644
 msgid "From date"
 msgstr "시작 날짜"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:635
-#: modules/notifications-log/library/NotificationsLogTable.php:638
+#: modules/notifications-log/library/NotificationsLogTable.php:648
+#: modules/notifications-log/library/NotificationsLogTable.php:651
 msgid "To date"
 msgstr "종료 날짜"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:646
+#: modules/notifications-log/library/NotificationsLogTable.php:659
 msgid "Filter by receiver"
 msgstr "수신자로 필터링"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:647
+#: modules/notifications-log/library/NotificationsLogTable.php:660
 msgid "All Receivers"
 msgstr "모든 수신자"
 
@@ -2766,7 +2788,7 @@ msgid ""
 msgstr "이것은 예약된 메시지의 미리보기입니다. 알림이 전송될 때까지 내용이 변경될 수 있습니다."
 
 #: modules/notifications/notifications.php:75
-#: modules/notifications/notifications.php:559
+#: modules/notifications/notifications.php:571
 #: publishpress.php:1440
 #: publishpress.php:1445
 msgid "Notifications"
@@ -2797,126 +2819,126 @@ msgstr ""
 "문서</a></p><p><a href=\"https://github.com/ostraining/PublishPress\">Github의 "
 "PublishPress</a></p>"
 
-#: modules/notifications/notifications.php:300
-#: modules/notifications/notifications.php:303
+#: modules/notifications/notifications.php:302
+#: modules/notifications/notifications.php:305
 msgid "Notify User"
 msgstr "사용자 알림"
 
-#: modules/notifications/notifications.php:302
+#: modules/notifications/notifications.php:304
 msgid "Notify Users"
 msgstr "사용자 알림"
 
-#: modules/notifications/notifications.php:315
-#: modules/notifications/notifications.php:318
+#: modules/notifications/notifications.php:317
+#: modules/notifications/notifications.php:320
 msgid "Notify Role"
 msgstr "역할 알림"
 
-#: modules/notifications/notifications.php:317
+#: modules/notifications/notifications.php:319
 msgid "Notify Roles"
 msgstr "역할 알림"
 
-#: modules/notifications/notifications.php:331
-#: modules/notifications/notifications.php:334
+#: modules/notifications/notifications.php:333
+#: modules/notifications/notifications.php:336
 msgid "Notification Group"
 msgstr "알림 그룹"
 
-#: modules/notifications/notifications.php:333
+#: modules/notifications/notifications.php:335
 msgid "Notification Groups"
 msgstr "알림 그룹"
 
-#: modules/notifications/notifications.php:347
-#: modules/notifications/notifications.php:350
+#: modules/notifications/notifications.php:349
+#: modules/notifications/notifications.php:352
 msgid "Notify Email"
 msgstr "이메일 알림"
 
-#: modules/notifications/notifications.php:349
+#: modules/notifications/notifications.php:351
 msgid "Notify Emails"
 msgstr "이메일 알림"
 
-#: modules/notifications/notifications.php:527
-#: modules/notifications/notifications.php:937
+#: modules/notifications/notifications.php:529
+#: modules/notifications/notifications.php:980
 msgid "Click to stop being notified on updates for this post"
 msgstr "이 게시물의 업데이트 알림을 중지하려면 클릭하세요"
 
-#: modules/notifications/notifications.php:528
-#: modules/notifications/notifications.php:936
+#: modules/notifications/notifications.php:530
+#: modules/notifications/notifications.php:979
 msgid "Stop notifying me"
 msgstr "알림 중지"
 
-#: modules/notifications/notifications.php:531
-#: modules/notifications/notifications.php:943
+#: modules/notifications/notifications.php:533
+#: modules/notifications/notifications.php:986
 msgid "Click to start being notified on updates for this post"
 msgstr "이 게시물의 업데이트 알림을 시작하려면 클릭하세요"
 
-#: modules/notifications/notifications.php:532
-#: modules/notifications/notifications.php:942
+#: modules/notifications/notifications.php:534
+#: modules/notifications/notifications.php:985
 msgid "Notify me"
 msgstr "나에게 알림"
 
-#: modules/notifications/notifications.php:596
+#: modules/notifications/notifications.php:639
 msgid ""
 "Enter users, roles, or email addresses that should receive notifications "
 "for this post."
 msgstr "이 게시물에 대한 알림을 받을 사용자, 역할 또는 이메일 주소를 입력하세요."
 
-#: modules/notifications/notifications.php:600
+#: modules/notifications/notifications.php:643
 msgid "Show active notifications"
 msgstr "활성 알림 표시"
 
-#: modules/notifications/notifications.php:639
+#: modules/notifications/notifications.php:682
 msgid ""
 "This won't have any effect unless you have at least one workflow targeting "
 "the \"Users who selected \"Notify me\" for the content\" option."
 msgstr "“콘텐츠에 대해 '알림 받기'를 선택한 사용자” 옵션을 목표로 하는 워크플로우가 최소한 하나 없이는 아무 효과가 없습니다."
 
-#: modules/notifications/notifications.php:653
+#: modules/notifications/notifications.php:696
 msgid "Active Notifications"
 msgstr "활성 알림"
 
-#: modules/notifications/notifications.php:681
+#: modules/notifications/notifications.php:724
 msgid "Workflow has users enrolled"
 msgstr "워크플로우에 사용자가 등록되었습니다"
 
-#: modules/notifications/notifications.php:688
+#: modules/notifications/notifications.php:731
 #, php-format
 msgid "No active notifications found for this %s."
 msgstr "이 %s에 대한 활성 알림이 없습니다."
 
-#: modules/notifications/notifications.php:1051
+#: modules/notifications/notifications.php:1094
 #, php-format
 msgid "You are receiving this email because you are subscribed to \"%s\"."
 msgstr "당신은 \"%s\"에 구독되어 있기 때문에 이 이메일을 받고 있습니다."
 
-#: modules/notifications/notifications.php:1056
+#: modules/notifications/notifications.php:1099
 #, php-format
 msgid "This email was sent %s."
 msgstr "이 이메일은 %s에 발송되었습니다."
 
-#: modules/notifications/notifications.php:1712
+#: modules/notifications/notifications.php:1755
 msgid "Show the \"Notify me\" and \"Stop notifying me\" links for these post types:"
 msgstr "다음 게시물 유형에 대해 \"알림 받기\" 및 \"알림 중지하기\" 링크를 표시합니다:"
 
-#: modules/notifications/notifications.php:1720
+#: modules/notifications/notifications.php:1763
 msgid "Email from:"
 msgstr "보낸 이메일:"
 
-#: modules/notifications/notifications.php:1728
+#: modules/notifications/notifications.php:1771
 msgid "Always notify the author of the content:"
 msgstr "콘텐츠의 작성자에게 항상 알림:"
 
-#: modules/notifications/notifications.php:1736
+#: modules/notifications/notifications.php:1779
 msgid "Always notify users who have edited the content:"
 msgstr "콘텐츠를 수정한 사용자에게 항상 알림:"
 
-#: modules/notifications/notifications.php:1744
+#: modules/notifications/notifications.php:1787
 msgid "Blacklisted taxonomies for Notifications"
 msgstr "알림용 블랙리스트 분류"
 
-#: modules/notifications/notifications.php:1858, fuzzy
+#: modules/notifications/notifications.php:1901, fuzzy
 msgid "slug1,slug2"
 msgstr "slug1,slug2"
 
-#: modules/notifications/notifications.php:1864
+#: modules/notifications/notifications.php:1907
 msgid ""
 "Add a list of taxonomy-slugs separated by comma that should not be loaded "
 "by the Taxonomy content filter when adding a new Notification Workflow."
@@ -2924,139 +2946,139 @@ msgstr ""
 "새 알림 워크플로우를 추가할 때 세금 콘텐츠 필터에 의해 로드되지 않아야 하는 taxonomy-slug 목록을 쉼표로 구분하여 "
 "추가하세요."
 
-#: modules/notifications/notifications.php:2000
+#: modules/notifications/notifications.php:2043
 msgid "WordPress Scheduler"
 msgstr "워드프레스 스케줄러"
 
-#: modules/notifications/notifications.php:2009
+#: modules/notifications/notifications.php:2052
 #, php-format
 msgid "[%1$s] New %2$s Created: \"%3$s\""
 msgstr "[%1$s] 새 %2$s 생성: \"%3$s\""
 
-#: modules/notifications/notifications.php:2016
+#: modules/notifications/notifications.php:2059
 #, php-format
 msgid "A new %1$s (#%2$s \"%3$s\" ) was created by %4$s %5$s"
 msgstr "새 %1$s (#%2$s \"%3$s\" )가 %4$s %5$s에 의해 생성되었습니다"
 
-#: modules/notifications/notifications.php:2026
+#: modules/notifications/notifications.php:2069
 #, php-format
 msgid "[%1$s] %2$s Trashed: \"%3$s\""
 msgstr "[%1$s] %2$s 휴지통으로 이동됨: \"%3$s\""
 
-#: modules/notifications/notifications.php:2033
+#: modules/notifications/notifications.php:2076
 #, php-format
 msgid "%1$s #%2$s \"%3$s\" was moved to the trash by %4$s %5$s"
 msgstr "%1$s #%2$s \"%3$s\"가 %4$s %5$s에 의해 휴지통으로 이동되었습니다"
 
-#: modules/notifications/notifications.php:2043
+#: modules/notifications/notifications.php:2086
 #, php-format
 msgid "[%1$s] %2$s Restored (from Trash ): \"%3$s\""
 msgstr "[%1$s] %2$s 복원됨 (휴지통에서): \"%3$s\""
 
-#: modules/notifications/notifications.php:2050
+#: modules/notifications/notifications.php:2093
 #, php-format
 msgid "%1$s #%2$s \"%3$s\" was restored from trash by %4$s %5$s"
 msgstr "%1$s #%2$s \"%3$s\"가 %4$s %5$s에 의해 휴지통에서 복원되었습니다"
 
-#: modules/notifications/notifications.php:2073
+#: modules/notifications/notifications.php:2116
 #, php-format
 msgid "[%1$s] %2$s Published: \"%3$s\""
 msgstr "[%1$s] %2$s 발행됨: \"%3$s\""
 
-#: modules/notifications/notifications.php:2080
+#: modules/notifications/notifications.php:2123
 #, php-format
 msgid "%1$s #%2$s \"%3$s\" was published by %4$s %5$s"
 msgstr "%1$s #%2$s \"%3$s\"가 %4$s %5$s에 의해 발행되었습니다"
 
-#: modules/notifications/notifications.php:2090
+#: modules/notifications/notifications.php:2133
 #, php-format
 msgid "[%1$s] %2$s Unpublished: \"%3$s\""
 msgstr "[%1$s] %2$s 미게시: \"%3$s\""
 
-#: modules/notifications/notifications.php:2097
+#: modules/notifications/notifications.php:2140
 #, php-format
 msgid "%1$s #%2$s \"%3$s\" was unpublished by %4$s %5$s"
 msgstr "%1$s #%2$s \"%3$s\"가 %4$s %5$s에 의해 미게시되었습니다"
 
-#: modules/notifications/notifications.php:2107
+#: modules/notifications/notifications.php:2150
 #, php-format
 msgid "[%1$s] %2$s Status Changed for \"%3$s\""
 msgstr "[%1$s] %2$s 상태가 \"%3$s\"에 대해 변경되었습니다"
 
-#: modules/notifications/notifications.php:2114
+#: modules/notifications/notifications.php:2157
 #, php-format
 msgid "Status was changed for %1$s #%2$s \"%3$s\" by %4$s %5$s"
 msgstr "%1$s #%2$s \"%3$s\"의 상태가 %4$s %5$s에 의해 변경되었습니다"
 
-#: modules/notifications/notifications.php:2125
+#: modules/notifications/notifications.php:2168
 #, php-format
 msgid "This action was taken on %1$s at %2$s %3$s"
 msgstr "이 작업은 %1$s에서 %2$s %3$s에 수행되었습니다"
 
-#: modules/notifications/notifications.php:2138
+#: modules/notifications/notifications.php:2181
 #, fuzzy, php-format
 msgid "%1$s => %2$s"
 msgstr "%1$s => %2$s"
 
-#: modules/notifications/notifications.php:2146
+#: modules/notifications/notifications.php:2189
 #, php-format
 msgid "== %s Details =="
 msgstr "== %s 세부정보 =="
 
-#: modules/notifications/notifications.php:2147
+#: modules/notifications/notifications.php:2190
 #, php-format
 msgid "Title: %s"
 msgstr "제목: %s"
 
-#: modules/notifications/notifications.php:2151
+#: modules/notifications/notifications.php:2194
 #, php-format
 msgid "Author: %1$s (%2$s )"
 msgstr "저자: %1$s (%2$s )"
 
-#: modules/notifications/notifications.php:2165
-#: modules/notifications/notifications.php:2218
+#: modules/notifications/notifications.php:2208
+#: modules/notifications/notifications.php:2261
 msgid "== Actions =="
 msgstr "== 작업 =="
 
-#: modules/notifications/notifications.php:2167
-#: modules/notifications/notifications.php:2224
+#: modules/notifications/notifications.php:2210
+#: modules/notifications/notifications.php:2267
 #, php-format
 msgid "Add editorial comment: %s"
 msgstr "편집자 의견 추가: %s"
 
-#: modules/notifications/notifications.php:2170
-#: modules/notifications/notifications.php:2227
+#: modules/notifications/notifications.php:2213
+#: modules/notifications/notifications.php:2270
 #, php-format
 msgid "Edit: %s"
 msgstr "편집: %s"
 
-#: modules/notifications/notifications.php:2171
-#: modules/notifications/notifications.php:2228
+#: modules/notifications/notifications.php:2214
+#: modules/notifications/notifications.php:2271
 #, php-format
 msgid "View: %s"
 msgstr "보기: %s"
 
-#: modules/notifications/notifications.php:2182
+#: modules/notifications/notifications.php:2225
 #, php-format
 msgid "[%1$s] New Editorial Comment: \"%2$s\""
 msgstr "[%1$s] 새 편집자 의견: \"%2$s\""
 
-#: modules/notifications/notifications.php:2189
+#: modules/notifications/notifications.php:2232
 #, php-format
 msgid "A new editorial comment was added to %3$s #%1$s \"%2$s\""
 msgstr "%3$s #%1$s \"%2$s\"에 새 편집자 의견이 추가되었습니다"
 
-#: modules/notifications/notifications.php:2196
+#: modules/notifications/notifications.php:2239
 #, php-format
 msgid "%1$s (%2$s ) said on %3$s at %4$s:"
 msgstr "%1$s (%2$s )가 %3$s %4$s에 다음과 같이 말했습니다:"
 
-#: modules/notifications/notifications.php:2220
+#: modules/notifications/notifications.php:2263
 #, php-format
 msgid "Reply: %s"
 msgstr "답글: %s"
 
-#: modules/notifications/notifications.php:2231
+#: modules/notifications/notifications.php:2274
 #, php-format
 msgid "You can see all editorial comments on this %s here: "
 msgstr "이 %s에 대한 모든 편집자 의견을 여기에서 확인할 수 있습니다: "
@@ -3110,9 +3132,17 @@ msgstr "정보"
 msgid "Documentation"
 msgstr "문서"
 
+#: modules/settings/views/footer-base.html.php:28
+msgid "Contact the PublishPress team"
+msgstr "PublishPress 팀에 문의하세요"
+
 #: modules/settings/views/footer-base.html.php:29
 msgid "Contact"
 msgstr "연락처"
+
+#: modules/settings/views/footer-base.html.php:34
+msgid "Visit PublishPress"
+msgstr "PublishPress 방문하기"
 
 #: modules/theeventscalendar-integration/theeventscalendar-integration.php:52
 msgid "The Events Calendar Integration"
@@ -3171,6 +3201,10 @@ msgstr ""
 #: publishpress.php:1497
 msgid "Warning"
 msgstr "경고"
+
+#: views/workflow_help.html.php:27
+msgid "Read more about notification workflows"
+msgstr "알림 워크플로우에 대한 자세한 내용 읽기"
 
 #: modules/content-board/library/content-board-utilities.php:538
 #: modules/content-overview/library/content-overview-utilities.php:643

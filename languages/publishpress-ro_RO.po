@@ -5,16 +5,18 @@ msgstr ""
 "Project-Id-Version: PublishPress Planner 4.8.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: Romanian "
+"<https://weblate.publishpress.com/projects/publishpress-planner/"
+"publishpress/ro/>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-14T18:33:45+00:00\n"
-"PO-Revision-Date: 2026-09-28 14:32+0000\n"
-"X-Generator: WP-CLI 2.12.0\n"
+"PO-Revision-Date: 2026-10-02 16:32+0000\n"
+"X-Generator: Weblate 2026.6.1\n"
 "X-Domain: publishpress\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
-"20)) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2;\n"
 "Language: ro-RO\n"
 
 #: publishpress.php, fuzzy
@@ -62,7 +64,7 @@ msgstr "Schimbă"
 #: common/php/class-module.php:340
 #: modules/calendar/calendar.php:1256
 #: modules/content-board/content-board.php:979
-#: modules/notifications-log/library/NotificationsLogTable.php:529
+#: modules/notifications-log/library/NotificationsLogTable.php:536
 msgid "Scheduled"
 msgstr "Programat"
 
@@ -89,64 +91,64 @@ msgstr "Coș de gunoi"
 msgid "Roles"
 msgstr "Roluri"
 
-#: common/php/class-module.php:775
+#: common/php/class-module.php:774
 msgid "Role"
 msgstr "Rol"
 
-#: common/php/class-module.php:783
+#: common/php/class-module.php:782
 msgid "Groups"
 msgstr "Grupuri"
 
-#: common/php/class-module.php:786
+#: common/php/class-module.php:784
 msgid "Group"
 msgstr "Grup"
 
-#: common/php/class-module.php:794
+#: common/php/class-module.php:792
 msgid "Users"
 msgstr "Utilizatori"
 
-#: common/php/class-module.php:804
+#: common/php/class-module.php:801
 msgid "E-mails"
 msgstr "E-mailuri"
 
-#: common/php/class-module.php:1051
+#: common/php/class-module.php:1047
 msgid "Equals (=)"
 msgstr "Egal (=)"
 
-#: common/php/class-module.php:1052
+#: common/php/class-module.php:1048
 msgid "Does not equal (!=)"
 msgstr "Nu este egal (!=)"
 
-#: common/php/class-module.php:1053
+#: common/php/class-module.php:1049
 msgid "Greater than (>)"
 msgstr "Mai mare decât (>)"
 
-#: common/php/class-module.php:1054
+#: common/php/class-module.php:1050
 msgid "Greater than or equals (>=)"
 msgstr "Mai mare sau egal (>=)"
 
-#: common/php/class-module.php:1055
+#: common/php/class-module.php:1051
 msgid "Less than (<)"
 msgstr "Mai mic decât (<)"
 
-#: common/php/class-module.php:1056
+#: common/php/class-module.php:1052
 msgid "Less than or equals (<=)"
 msgstr "Mai mic sau egal (<=)"
 
-#: common/php/class-module.php:1057
+#: common/php/class-module.php:1053
 msgid "Like/Contains"
 msgstr "Asemănător/Conține"
 
-#: common/php/class-module.php:1058
+#: common/php/class-module.php:1054
 #, fuzzy
 msgid "Not Like"
 msgstr "Nesetat"
 
-#: common/php/class-module.php:1059
+#: common/php/class-module.php:1055
 msgid "Not Exists/Empty"
 msgstr "Nu există/Empty"
 
-#: common/php/class-module.php:1112
+#: common/php/class-module.php:1108
 #: views/workflow_receiver_group_field.html.php:10
 #: views/workflow_receiver_role_field.html.php:9
 #: views/workflow_receiver_user_field.html.php:9
@@ -154,7 +156,7 @@ msgstr "Nu există/Empty"
 msgid "Select %s"
 msgstr "Selectează %s"
 
-#: common/php/class-module.php:1129
+#: common/php/class-module.php:1125
 #: modules/calendar/library/calendar-utilities.php:1191
 #: modules/content-overview/content-overview.php:850
 #: modules/content-overview/content-overview.php:874
@@ -163,7 +165,7 @@ msgstr "Selectează %s"
 msgid "Revision Status"
 msgstr "Starea reviziei"
 
-#: common/php/class-module.php:1129
+#: common/php/class-module.php:1125
 #: modules/calendar/library/calendar-methods.php:424
 #: modules/calendar/library/calendar-methods.php:858
 #: modules/calendar/library/calendar-methods.php:1257
@@ -332,7 +334,7 @@ msgstr "Filtrul a fost resetat cu succes."
 #: modules/content-overview/content-overview.php:847
 #: modules/content-overview/content-overview.php:871
 #: modules/content-overview/content-overview.php:923
-#: modules/notifications-log/library/NotificationsLogTable.php:500
+#: modules/notifications-log/library/NotificationsLogTable.php:507
 msgid "Status"
 msgstr "Stare"
 
@@ -822,7 +824,7 @@ msgstr "Data postării"
 #: modules/content-board/content-board.php:1289
 #: modules/content-overview/content-overview.php:1266
 #: modules/content-overview/content-overview.php:1749
-#: modules/editorial-comments/editorial-comments.php:628
+#: modules/editorial-comments/editorial-comments.php:644
 #: modules/editorial-metadata/library/editorial-metadata-list-table.php:159
 msgid "Edit"
 msgstr "Editează"
@@ -981,8 +983,8 @@ msgstr "Aprobat"
 #: modules/calendar/library/calendar-utilities.php:374
 #: modules/content-board/library/content-board-utilities.php:899
 #: modules/content-overview/library/content-overview-utilities.php:1027
-#: modules/notifications-log/library/NotificationsLogTable.php:277
-#: modules/notifications-log/library/NotificationsLogTable.php:293
+#: modules/notifications-log/library/NotificationsLogTable.php:284
+#: modules/notifications-log/library/NotificationsLogTable.php:300
 msgid "Failed"
 msgstr "Respins"
 
@@ -1090,7 +1092,7 @@ msgstr "ID"
 #: modules/content-board/library/content-board-utilities.php:116
 #: modules/content-overview/library/content-overview-methods.php:341
 #: modules/editorial-metadata/editorial-metadata.php:290
-#: modules/notifications-log/library/NotificationsLogTable.php:496
+#: modules/notifications-log/library/NotificationsLogTable.php:503
 msgid "Date"
 msgstr "Dată"
 
@@ -1163,6 +1165,7 @@ msgid "You do not have any public taxonomies"
 msgstr "Nu ai niciun taxonomie publică"
 
 #: modules/calendar/library/calendar-utilities.php:1236
+#: modules/calendar/library/calendar-utilities.php:1326
 msgid "Subscribe in iCal or Google Calendar"
 msgstr "Abonează-te în iCal sau Google Calendar"
 
@@ -1496,7 +1499,8 @@ msgstr "Arată conținutul din"
 
 #: modules/content-board/library/content-board-utilities.php:554
 #: modules/content-overview/library/content-overview-utilities.php:659
-#: modules/editorial-comments/editorial-comments.php:574
+#: modules/editorial-comments/editorial-comments.php:588
+#: modules/editorial-comments/editorial-comments.php:590
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:425
 msgid "Cancel"
 msgstr "Anulează"
@@ -1745,7 +1749,7 @@ msgstr "Nonce de acțiune invalid."
 #: modules/editorial-comments/editorial-comments.php:63
 #: modules/editorial-comments/editorial-comments.php:235
 #: modules/editorial-comments/editorial-comments.php:236
-#: modules/editorial-comments/editorial-comments.php:453
+#: modules/editorial-comments/editorial-comments.php:469
 msgid "Editorial Comments"
 msgstr "Comentarii editoriale"
 
@@ -1789,7 +1793,7 @@ msgstr ""
 "Github</a></p>"
 
 #: modules/editorial-comments/editorial-comments.php:205
-#: modules/editorial-comments/editorial-comments.php:717
+#: modules/editorial-comments/editorial-comments.php:733
 msgid "Remove"
 msgstr "Îndepărtați"
 
@@ -1814,7 +1818,7 @@ msgstr "Rezultatele căutării pentru &#8220;%s&#8221;"
 msgid "Search Comments"
 msgstr "Caută comentarii"
 
-#: modules/editorial-comments/editorial-comments.php:528
+#: modules/editorial-comments/editorial-comments.php:544
 msgid ""
 "You can add editorial comments to a post once you've saved it for the first "
 "time."
@@ -1822,45 +1826,47 @@ msgstr ""
 "Poți adăuga comentarii editoriale la o postare odată ce ai salvat-o pentru "
 "prima dată."
 
-#: modules/editorial-comments/editorial-comments.php:548
-#: modules/editorial-comments/editorial-comments.php:552
+#: modules/editorial-comments/editorial-comments.php:564
+#: modules/editorial-comments/editorial-comments.php:568
 msgid "Add an editorial comment"
 msgstr "Adaugă un comentariu editorial"
 
-#: modules/editorial-comments/editorial-comments.php:558
+#: modules/editorial-comments/editorial-comments.php:573
+#: modules/editorial-comments/editorial-comments.php:574
 msgid "Attach file"
 msgstr "Atașează fișier"
 
-#: modules/editorial-comments/editorial-comments.php:570
+#: modules/editorial-comments/editorial-comments.php:584
+#: modules/editorial-comments/editorial-comments.php:586
 msgid "Add Comment"
 msgstr "Adaugă comentariu"
 
-#: modules/editorial-comments/editorial-comments.php:616
+#: modules/editorial-comments/editorial-comments.php:632
 msgid "Reply to this comment"
 msgstr "Răspunde la acest comentariu"
 
-#: modules/editorial-comments/editorial-comments.php:619
+#: modules/editorial-comments/editorial-comments.php:635
 msgid "Reply"
 msgstr "Răspunde"
 
-#: modules/editorial-comments/editorial-comments.php:639
+#: modules/editorial-comments/editorial-comments.php:655
 #: modules/editorial-comments/library/EditorialCommentsTable.php:436
 #: modules/editorial-metadata/library/editorial-metadata-list-table.php:161
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:303
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:333
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:614
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:644
-#: modules/notifications-log/library/NotificationsLogTable.php:376
-#: modules/notifications-log/library/NotificationsLogTable.php:407
+#: modules/notifications-log/library/NotificationsLogTable.php:383
+#: modules/notifications-log/library/NotificationsLogTable.php:414
 msgid "Delete"
 msgstr "Șterge"
 
-#: modules/editorial-comments/editorial-comments.php:684
+#: modules/editorial-comments/editorial-comments.php:700
 #, php-format
 msgid "said on %1$s at %2$s"
 msgstr "a spus pe %1$s la %2$s"
 
-#: modules/editorial-comments/editorial-comments.php:745
+#: modules/editorial-comments/editorial-comments.php:761
 msgid ""
 "Nonce check failed. Please ensure you're supposed to be adding editorial "
 "comments."
@@ -1868,14 +1874,14 @@ msgstr ""
 "Verificarea nonce a eșuat. Te rugăm să te asiguri că ar trebui să adaugi "
 "comentarii editoriale."
 
-#: modules/editorial-comments/editorial-comments.php:753
-#: modules/editorial-comments/editorial-comments.php:894
-#: modules/editorial-comments/editorial-comments.php:1026
-#: modules/editorial-comments/editorial-comments.php:1142
+#: modules/editorial-comments/editorial-comments.php:769
+#: modules/editorial-comments/editorial-comments.php:910
+#: modules/editorial-comments/editorial-comments.php:1042
+#: modules/editorial-comments/editorial-comments.php:1158
 msgid "Invalid comment data"
 msgstr "Date comentariu invalide"
 
-#: modules/editorial-comments/editorial-comments.php:766
+#: modules/editorial-comments/editorial-comments.php:782
 msgid ""
 "Sorry, you don't have the privileges to add editorial comments. Please talk "
 "to your Administrator."
@@ -1883,23 +1889,23 @@ msgstr ""
 "Ne pare rău, nu ai privilegii suficiente pentru a adăuga comentarii "
 "editoriale. Te rugăm să vorbești cu Administratorul tău."
 
-#: modules/editorial-comments/editorial-comments.php:776
-#: modules/editorial-comments/editorial-comments.php:940
+#: modules/editorial-comments/editorial-comments.php:792
+#: modules/editorial-comments/editorial-comments.php:956
 msgid "Please enter a comment."
 msgstr "Te rugăm să introduci un comentariu."
 
-#: modules/editorial-comments/editorial-comments.php:863
-#: modules/editorial-comments/editorial-comments.php:993
-#: modules/editorial-comments/editorial-comments.php:1103
-#: modules/editorial-comments/editorial-comments.php:1187
+#: modules/editorial-comments/editorial-comments.php:879
+#: modules/editorial-comments/editorial-comments.php:1009
+#: modules/editorial-comments/editorial-comments.php:1119
+#: modules/editorial-comments/editorial-comments.php:1203
 msgid "There was a problem of some sort. Try again or contact your administrator."
 msgstr ""
 "A apărut o problemă de vreun fel. Încearcă din nou sau contactează "
 "administratorul tău."
 
-#: modules/editorial-comments/editorial-comments.php:883
-#: modules/editorial-comments/editorial-comments.php:1015
-#: modules/editorial-comments/editorial-comments.php:1132
+#: modules/editorial-comments/editorial-comments.php:899
+#: modules/editorial-comments/editorial-comments.php:1031
+#: modules/editorial-comments/editorial-comments.php:1148
 msgid ""
 "Nonce check failed. Please ensure you're supposed to be editing editorial "
 "comments."
@@ -1907,8 +1913,8 @@ msgstr ""
 "Verificarea nonce a eșuat. Te rugăm să te asiguri că ar trebui să editezi "
 "comentariile editoriale."
 
-#: modules/editorial-comments/editorial-comments.php:909
-#: modules/editorial-comments/editorial-comments.php:1041
+#: modules/editorial-comments/editorial-comments.php:925
+#: modules/editorial-comments/editorial-comments.php:1057
 msgid ""
 "Sorry, you don't have the privileges to edit editorial comments. Please "
 "talk to your Administrator."
@@ -1916,7 +1922,7 @@ msgstr ""
 "Ne pare rău, nu ai privilegii suficiente pentru a edita comentarii "
 "editoriale. Te rugăm să vorbești cu Administratorul tău."
 
-#: modules/editorial-comments/editorial-comments.php:927
+#: modules/editorial-comments/editorial-comments.php:943
 msgid ""
 "Sorry, you don't have the privileges to edit this editorial comment. Please "
 "talk to your Administrator."
@@ -1924,8 +1930,8 @@ msgstr ""
 "Ne pare rău, nu aveți privilegiile necesare pentru a edita acest comentariu "
 "editorial. Vă rugăm să discutați cu Administratorul dumneavoastră."
 
-#: modules/editorial-comments/editorial-comments.php:1057
-#: modules/editorial-comments/editorial-comments.php:1161
+#: modules/editorial-comments/editorial-comments.php:1073
+#: modules/editorial-comments/editorial-comments.php:1177
 msgid ""
 "Sorry, you don't have the privileges to delete this editorial comment. "
 "Please talk to your Administrator."
@@ -1934,49 +1940,49 @@ msgstr ""
 "comentariu editorial. Vă rugăm să discutați cu Administratorul "
 "dumneavoastră."
 
-#: modules/editorial-comments/editorial-comments.php:1078
+#: modules/editorial-comments/editorial-comments.php:1094
 msgid "Sorry, you can't delete this editorial comment because it has some replies."
 msgstr ""
 "Ne pare rău, nu poți șterge acest comentariu editorial deoarece are "
 "răspunsuri."
 
-#: modules/editorial-comments/editorial-comments.php:1179
+#: modules/editorial-comments/editorial-comments.php:1195
 msgid "Comment deleted successfully."
 msgstr "Comentariul a fost șters cu succes."
 
-#: modules/editorial-comments/editorial-comments.php:1230
+#: modules/editorial-comments/editorial-comments.php:1246
 msgid "Enable for these post types:"
 msgstr "Activează pentru aceste tipuri de postări:"
 
-#: modules/editorial-comments/editorial-comments.php:1237
+#: modules/editorial-comments/editorial-comments.php:1253
 msgid "Comment author name field:"
 msgstr "Câmpul numelui autorului comentariului:"
 
-#: modules/editorial-comments/editorial-comments.php:1262
+#: modules/editorial-comments/editorial-comments.php:1278
 msgid "Nickname"
 msgstr "Pseudonim"
 
-#: modules/editorial-comments/editorial-comments.php:1263
+#: modules/editorial-comments/editorial-comments.php:1279
 msgid "Username"
 msgstr "Nume utilizator"
 
-#: modules/editorial-comments/editorial-comments.php:1264
+#: modules/editorial-comments/editorial-comments.php:1280
 msgid "Display Name"
 msgstr "Nume afișat"
 
-#: modules/editorial-comments/editorial-comments.php:1265
+#: modules/editorial-comments/editorial-comments.php:1281
 msgid "First Name"
 msgstr "Prenume"
 
-#: modules/editorial-comments/editorial-comments.php:1266
+#: modules/editorial-comments/editorial-comments.php:1282
 msgid "Last Name"
 msgstr "Nume de familie"
 
-#: modules/editorial-comments/editorial-comments.php:1267, fuzzy
+#: modules/editorial-comments/editorial-comments.php:1283, fuzzy
 msgid "Email"
 msgstr "Email"
 
-#: modules/editorial-comments/editorial-comments.php:1268
+#: modules/editorial-comments/editorial-comments.php:1284
 msgid "User Url"
 msgstr "URL utilizator"
 
@@ -1985,7 +1991,7 @@ msgid "No editorial comments."
 msgstr "Nu există comentarii editoriale."
 
 #: modules/editorial-comments/library/EditorialCommentsTable.php:180
-#: modules/notifications-log/library/NotificationsLogTable.php:566
+#: modules/notifications-log/library/NotificationsLogTable.php:576
 msgid "Filter by post"
 msgstr "Filtrează după postare"
 
@@ -1994,7 +2000,7 @@ msgid "Filter by user"
 msgstr "Filtrează după utilizator"
 
 #: modules/editorial-comments/library/EditorialCommentsTable.php:212
-#: modules/notifications-log/library/NotificationsLogTable.php:653
+#: modules/notifications-log/library/NotificationsLogTable.php:666
 msgid "Filter"
 msgstr "Filtru"
 
@@ -2012,7 +2018,7 @@ msgstr "Trimis pe"
 
 #: modules/editorial-comments/library/EditorialCommentsTable.php:338
 #: modules/editorial-metadata/input-handlers/editorial-metadata-input-date-handler.php:201
-#: modules/notifications/notifications.php:1971
+#: modules/notifications/notifications.php:2014
 #. translators: 1: Comment date, 2: Comment time.
 #, php-format
 msgid "%1$s at %2$s"
@@ -2426,6 +2432,13 @@ msgstr "Etichetă de afișare"
 msgid "Default option"
 msgstr "Opțiune implicită"
 
+#: modules/editorial-metadata/library/editorial-metadata-utilities.php:303
+#: modules/editorial-metadata/library/editorial-metadata-utilities.php:333
+#: modules/editorial-metadata/library/editorial-metadata-utilities.php:614
+#: modules/editorial-metadata/library/editorial-metadata-utilities.php:644
+msgid "Delete option"
+msgstr "Opțiune de ștergere"
+
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:338
 #: modules/editorial-metadata/library/editorial-metadata-utilities.php:649
 msgid "Add Another Option"
@@ -2599,17 +2612,17 @@ msgid "Help"
 msgstr "Ajutor"
 
 #: modules/improved-notifications/improved-notifications.php:1179
-#: modules/notifications-log/library/NotificationsLogTable.php:497
+#: modules/notifications-log/library/NotificationsLogTable.php:504
 msgid "When to notify?"
 msgstr "Când să notificați?"
 
 #: modules/improved-notifications/improved-notifications.php:1189
-#: modules/notifications-log/library/NotificationsLogTable.php:498
+#: modules/notifications-log/library/NotificationsLogTable.php:505
 msgid "For which content?"
 msgstr "Pentru ce conținut?"
 
 #: modules/improved-notifications/improved-notifications.php:1199
-#: modules/notifications-log/library/NotificationsLogTable.php:499
+#: modules/notifications-log/library/NotificationsLogTable.php:506
 msgid "Who to notify?"
 msgstr "Pe cine să notificați?"
 
@@ -2716,117 +2729,126 @@ msgid "User: %s (%d)"
 msgstr "Utilizator: %s (%d)"
 
 #: modules/notifications-log/library/NotificationsLogTable.php:157
+#: modules/notifications-log/library/NotificationsLogTable.php:568
+msgid "Deleted post"
+msgstr "Postare ștearsă"
+
+#: modules/notifications-log/library/NotificationsLogTable.php:163
 #, php-format
 msgid "Post type: %s"
 msgstr "Tip postare: %s"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:160
+#: modules/notifications-log/library/NotificationsLogTable.php:167
 #, php-format
 msgid "Post ID: %d"
 msgstr "ID postare: %d"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:163
+#: modules/notifications-log/library/NotificationsLogTable.php:170
 #, php-format
 msgid "Blog ID: %d"
 msgstr "ID blog: %d"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:233
+#: modules/notifications-log/library/NotificationsLogTable.php:240
 #, php-format
 msgid "Scheduled for %d receivers. Click here to display them."
 msgstr "Programat pentru %d destinatari. Faceți clic aici pentru a-i afișa."
 
-#: modules/notifications-log/library/NotificationsLogTable.php:261
+#: modules/notifications-log/library/NotificationsLogTable.php:268
 msgid " Scheduled, but late"
 msgstr " Programat, dar întârziat"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:263
+#: modules/notifications-log/library/NotificationsLogTable.php:270
 msgid " Scheduled"
 msgstr " Programat"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:282
-#: modules/notifications-log/library/NotificationsLogTable.php:533
+#: modules/notifications-log/library/NotificationsLogTable.php:289
+#: modules/notifications-log/library/NotificationsLogTable.php:540
 msgid "Error"
 msgstr "Eroare"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:283
+#: modules/notifications-log/library/NotificationsLogTable.php:290
 msgid "The notification was set as \"Scheduled\" but the cron task is not found"
 msgstr ""
 "Notificarea a fost setată ca \"Programată\" dar sarcina cron nu a fost "
 "găsită"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:288
+#: modules/notifications-log/library/NotificationsLogTable.php:295
 msgid "Sent"
 msgstr "Trimis"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:291
-#: modules/notifications-log/library/NotificationsLogTable.php:525
+#: modules/notifications-log/library/NotificationsLogTable.php:298
+#: modules/notifications-log/library/NotificationsLogTable.php:532
 msgid "Skipped"
 msgstr "Sărit"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:304, fuzzy
+#: modules/notifications-log/library/NotificationsLogTable.php:311, fuzzy
 msgid "asynchronous"
 msgstr "asynchronous"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:304, fuzzy
+#: modules/notifications-log/library/NotificationsLogTable.php:311, fuzzy
 msgid "synchronous"
 msgstr "synchronous"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:361
-#: modules/notifications-log/library/NotificationsLogTable.php:406
+#: modules/notifications-log/library/NotificationsLogTable.php:368
+#: modules/notifications-log/library/NotificationsLogTable.php:413
 msgid "Reschedule"
 msgstr "Reprogramare"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:383, fuzzy
+#: modules/notifications-log/library/NotificationsLogTable.php:390, fuzzy
 msgid "Blog: "
 msgstr "Blog: "
 
-#: modules/notifications-log/library/NotificationsLogTable.php:408
+#: modules/notifications-log/library/NotificationsLogTable.php:415
 msgid "Delete All"
 msgstr "Șterge tot"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:517
+#: modules/notifications-log/library/NotificationsLogTable.php:524
 msgid "All"
 msgstr "Tot"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:521
+#: modules/notifications-log/library/NotificationsLogTable.php:528
 msgid "Success"
 msgstr "Succes"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:582
+#: modules/notifications-log/library/NotificationsLogTable.php:587
+msgid "Deleted workflow"
+msgstr "Flux de lucru șters"
+
+#: modules/notifications-log/library/NotificationsLogTable.php:595
 msgid "Filter by workflow"
 msgstr "Filtrează după flux de lucru"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:589
+#: modules/notifications-log/library/NotificationsLogTable.php:602
 msgid "Filter by event"
 msgstr "Filtrează după eveniment"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:593
+#: modules/notifications-log/library/NotificationsLogTable.php:606
 msgid "All events"
 msgstr "Toate evenimentele"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:607
+#: modules/notifications-log/library/NotificationsLogTable.php:620
 msgid "Filter by channel"
 msgstr "Filtrează după canal"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:611
+#: modules/notifications-log/library/NotificationsLogTable.php:624
 msgid "All channels"
 msgstr "Toate canalele"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:628
-#: modules/notifications-log/library/NotificationsLogTable.php:631
+#: modules/notifications-log/library/NotificationsLogTable.php:641
+#: modules/notifications-log/library/NotificationsLogTable.php:644
 msgid "From date"
 msgstr "De la data"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:635
-#: modules/notifications-log/library/NotificationsLogTable.php:638
+#: modules/notifications-log/library/NotificationsLogTable.php:648
+#: modules/notifications-log/library/NotificationsLogTable.php:651
 msgid "To date"
 msgstr "Până la data"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:646
+#: modules/notifications-log/library/NotificationsLogTable.php:659
 msgid "Filter by receiver"
 msgstr "Filtrează după receptor"
 
-#: modules/notifications-log/library/NotificationsLogTable.php:647
+#: modules/notifications-log/library/NotificationsLogTable.php:660
 msgid "All Receivers"
 msgstr "Toți receptorii"
 
@@ -2890,7 +2912,7 @@ msgstr ""
 "schimbe până când notificarea este trimisă."
 
 #: modules/notifications/notifications.php:75
-#: modules/notifications/notifications.php:559
+#: modules/notifications/notifications.php:571
 #: publishpress.php:1440
 #: publishpress.php:1445
 msgid "Notifications"
@@ -2925,65 +2947,65 @@ msgstr ""
 "href=\"https://github.com/ostraining/PublishPress\">PublishPress pe "
 "Github</a></p>"
 
-#: modules/notifications/notifications.php:300
-#: modules/notifications/notifications.php:303
+#: modules/notifications/notifications.php:302
+#: modules/notifications/notifications.php:305
 msgid "Notify User"
 msgstr "Notifică Utilizator"
 
-#: modules/notifications/notifications.php:302
+#: modules/notifications/notifications.php:304
 msgid "Notify Users"
 msgstr "Notifică Utilizatori"
 
-#: modules/notifications/notifications.php:315
-#: modules/notifications/notifications.php:318
+#: modules/notifications/notifications.php:317
+#: modules/notifications/notifications.php:320
 msgid "Notify Role"
 msgstr "Notifică Rol"
 
-#: modules/notifications/notifications.php:317
+#: modules/notifications/notifications.php:319
 msgid "Notify Roles"
 msgstr "Notifică Roluri"
 
-#: modules/notifications/notifications.php:331
-#: modules/notifications/notifications.php:334
+#: modules/notifications/notifications.php:333
+#: modules/notifications/notifications.php:336
 msgid "Notification Group"
 msgstr "Grup de Notificare"
 
-#: modules/notifications/notifications.php:333
+#: modules/notifications/notifications.php:335
 msgid "Notification Groups"
 msgstr "Grupuri de Notificare"
 
-#: modules/notifications/notifications.php:347
-#: modules/notifications/notifications.php:350
+#: modules/notifications/notifications.php:349
+#: modules/notifications/notifications.php:352
 msgid "Notify Email"
 msgstr "Notifică Email"
 
-#: modules/notifications/notifications.php:349
+#: modules/notifications/notifications.php:351
 msgid "Notify Emails"
 msgstr "Notifică Emailuri"
 
-#: modules/notifications/notifications.php:527
-#: modules/notifications/notifications.php:937
+#: modules/notifications/notifications.php:529
+#: modules/notifications/notifications.php:980
 msgid "Click to stop being notified on updates for this post"
 msgstr "Click pentru a opri notificările pentru actualizările acestui post"
 
-#: modules/notifications/notifications.php:528
-#: modules/notifications/notifications.php:936
+#: modules/notifications/notifications.php:530
+#: modules/notifications/notifications.php:979
 msgid "Stop notifying me"
 msgstr "Oprește-mă din a fi notificat"
 
-#: modules/notifications/notifications.php:531
-#: modules/notifications/notifications.php:943
+#: modules/notifications/notifications.php:533
+#: modules/notifications/notifications.php:986
 msgid "Click to start being notified on updates for this post"
 msgstr ""
 "Click pentru a începe să primesc notificări pentru actualizările acestui "
 "post"
 
-#: modules/notifications/notifications.php:532
-#: modules/notifications/notifications.php:942
+#: modules/notifications/notifications.php:534
+#: modules/notifications/notifications.php:985
 msgid "Notify me"
 msgstr "Notifică-mă"
 
-#: modules/notifications/notifications.php:596
+#: modules/notifications/notifications.php:639
 msgid ""
 "Enter users, roles, or email addresses that should receive notifications "
 "for this post."
@@ -2991,11 +3013,11 @@ msgstr ""
 "Introduceți utilizatori, roluri sau adrese de email care ar trebui să "
 "primească notificări pentru această postare."
 
-#: modules/notifications/notifications.php:600
+#: modules/notifications/notifications.php:643
 msgid "Show active notifications"
 msgstr "Arată notificările active"
 
-#: modules/notifications/notifications.php:639
+#: modules/notifications/notifications.php:682
 msgid ""
 "This won't have any effect unless you have at least one workflow targeting "
 "the \"Users who selected \"Notify me\" for the content\" option."
@@ -3004,56 +3026,56 @@ msgstr ""
 "care vizează opțiunea \"Utilizatorii care au selectat \"Notifică-mă\" "
 "pentru conținut\"."
 
-#: modules/notifications/notifications.php:653
+#: modules/notifications/notifications.php:696
 msgid "Active Notifications"
 msgstr "Notificări Active"
 
-#: modules/notifications/notifications.php:681
+#: modules/notifications/notifications.php:724
 msgid "Workflow has users enrolled"
 msgstr "Fluxul de lucru are utilizatori înscriși"
 
-#: modules/notifications/notifications.php:688
+#: modules/notifications/notifications.php:731
 #, php-format
 msgid "No active notifications found for this %s."
 msgstr "Nu s-au găsit notificări active pentru acest %s."
 
-#: modules/notifications/notifications.php:1051
+#: modules/notifications/notifications.php:1094
 #, php-format
 msgid "You are receiving this email because you are subscribed to \"%s\"."
 msgstr "Primești acest email deoarece ești abonat la \"%s\"."
 
-#: modules/notifications/notifications.php:1056
+#: modules/notifications/notifications.php:1099
 #, php-format
 msgid "This email was sent %s."
 msgstr "Acest email a fost trimis %s."
 
-#: modules/notifications/notifications.php:1712
+#: modules/notifications/notifications.php:1755
 msgid "Show the \"Notify me\" and \"Stop notifying me\" links for these post types:"
 msgstr ""
 "Arată linkurile \"Notifică-mă\" și \"Oprește-mă de la notificări\" pentru "
 "aceste tipuri de postări:"
 
-#: modules/notifications/notifications.php:1720
+#: modules/notifications/notifications.php:1763
 msgid "Email from:"
 msgstr "Email de la:"
 
-#: modules/notifications/notifications.php:1728
+#: modules/notifications/notifications.php:1771
 msgid "Always notify the author of the content:"
 msgstr "Notifică întotdeauna autorul conținutului:"
 
-#: modules/notifications/notifications.php:1736
+#: modules/notifications/notifications.php:1779
 msgid "Always notify users who have edited the content:"
 msgstr "Notifică întotdeauna utilizatorii care au editat conținutul:"
 
-#: modules/notifications/notifications.php:1744
+#: modules/notifications/notifications.php:1787
 msgid "Blacklisted taxonomies for Notifications"
 msgstr "Taxonomii pe lista neagră pentru Notificări"
 
-#: modules/notifications/notifications.php:1858, fuzzy
+#: modules/notifications/notifications.php:1901, fuzzy
 msgid "slug1,slug2"
 msgstr "slug1,slug2"
 
-#: modules/notifications/notifications.php:1864
+#: modules/notifications/notifications.php:1907
 msgid ""
 "Add a list of taxonomy-slugs separated by comma that should not be loaded "
 "by the Taxonomy content filter when adding a new Notification Workflow."
@@ -3062,139 +3084,139 @@ msgstr ""
 "să fie încărcate de filtrul de conținut Taxonomy atunci când adăugați un "
 "nou Flux de Lucru pentru Notificări."
 
-#: modules/notifications/notifications.php:2000
+#: modules/notifications/notifications.php:2043
 msgid "WordPress Scheduler"
 msgstr "Programator WordPress"
 
-#: modules/notifications/notifications.php:2009
+#: modules/notifications/notifications.php:2052
 #, php-format
 msgid "[%1$s] New %2$s Created: \"%3$s\""
 msgstr "[%1$s] Nou %2$s Creat: \"%3$s\""
 
-#: modules/notifications/notifications.php:2016
+#: modules/notifications/notifications.php:2059
 #, php-format
 msgid "A new %1$s (#%2$s \"%3$s\" ) was created by %4$s %5$s"
 msgstr "Un nou %1$s (#%2$s \"%3$s\") a fost creat de %4$s %5$s"
 
-#: modules/notifications/notifications.php:2026
+#: modules/notifications/notifications.php:2069
 #, php-format
 msgid "[%1$s] %2$s Trashed: \"%3$s\""
 msgstr "[%1$s] %2$s Șters: \"%3$s\""
 
-#: modules/notifications/notifications.php:2033
+#: modules/notifications/notifications.php:2076
 #, php-format
 msgid "%1$s #%2$s \"%3$s\" was moved to the trash by %4$s %5$s"
 msgstr "%1$s #%2$s \"%3$s\" a fost mutat în coșul de gunoi de către %4$s %5$s"
 
-#: modules/notifications/notifications.php:2043
+#: modules/notifications/notifications.php:2086
 #, php-format
 msgid "[%1$s] %2$s Restored (from Trash ): \"%3$s\""
 msgstr "[%1$s] %2$s Restaurat (din Coș): \"%3$s\""
 
-#: modules/notifications/notifications.php:2050
+#: modules/notifications/notifications.php:2093
 #, php-format
 msgid "%1$s #%2$s \"%3$s\" was restored from trash by %4$s %5$s"
 msgstr "%1$s #%2$s \"%3$s\" a fost restaurat din coș de către %4$s %5$s"
 
-#: modules/notifications/notifications.php:2073
+#: modules/notifications/notifications.php:2116
 #, php-format
 msgid "[%1$s] %2$s Published: \"%3$s\""
 msgstr "[%1$s] %2$s Publicat: \"%3$s\""
 
-#: modules/notifications/notifications.php:2080
+#: modules/notifications/notifications.php:2123
 #, php-format
 msgid "%1$s #%2$s \"%3$s\" was published by %4$s %5$s"
 msgstr "%1$s #%2$s \"%3$s\" a fost publicat de %4$s %5$s"
 
-#: modules/notifications/notifications.php:2090
+#: modules/notifications/notifications.php:2133
 #, php-format
 msgid "[%1$s] %2$s Unpublished: \"%3$s\""
 msgstr "[%1$s] %2$s Nepublicat: \"%3$s\""
 
-#: modules/notifications/notifications.php:2097
+#: modules/notifications/notifications.php:2140
 #, php-format
 msgid "%1$s #%2$s \"%3$s\" was unpublished by %4$s %5$s"
 msgstr "%1$s #%2$s \"%3$s\" a fost nepulicat de %4$s %5$s"
 
-#: modules/notifications/notifications.php:2107
+#: modules/notifications/notifications.php:2150
 #, php-format
 msgid "[%1$s] %2$s Status Changed for \"%3$s\""
 msgstr "[%1$s] %2$s Status schimbat pentru \"%3$s\""
 
-#: modules/notifications/notifications.php:2114
+#: modules/notifications/notifications.php:2157
 #, php-format
 msgid "Status was changed for %1$s #%2$s \"%3$s\" by %4$s %5$s"
 msgstr "Statusul a fost schimbat pentru %1$s #%2$s \"%3$s\" de %4$s %5$s"
 
-#: modules/notifications/notifications.php:2125
+#: modules/notifications/notifications.php:2168
 #, php-format
 msgid "This action was taken on %1$s at %2$s %3$s"
 msgstr "Această acțiune a fost efectuată pe %1$s la %2$s %3$s"
 
-#: modules/notifications/notifications.php:2138
+#: modules/notifications/notifications.php:2181
 #, fuzzy, php-format
 msgid "%1$s => %2$s"
 msgstr "%1$s => %2$s"
 
-#: modules/notifications/notifications.php:2146
+#: modules/notifications/notifications.php:2189
 #, php-format
 msgid "== %s Details =="
 msgstr "== %s Detalii =="
 
-#: modules/notifications/notifications.php:2147
+#: modules/notifications/notifications.php:2190
 #, php-format
 msgid "Title: %s"
 msgstr "Titlu: %s"
 
-#: modules/notifications/notifications.php:2151
+#: modules/notifications/notifications.php:2194
 #, php-format
 msgid "Author: %1$s (%2$s )"
 msgstr "Autor: %1$s (%2$s )"
 
-#: modules/notifications/notifications.php:2165
-#: modules/notifications/notifications.php:2218
+#: modules/notifications/notifications.php:2208
+#: modules/notifications/notifications.php:2261
 msgid "== Actions =="
 msgstr "== Acțiuni =="
 
-#: modules/notifications/notifications.php:2167
-#: modules/notifications/notifications.php:2224
+#: modules/notifications/notifications.php:2210
+#: modules/notifications/notifications.php:2267
 #, php-format
 msgid "Add editorial comment: %s"
 msgstr "Adaugă comentariu editorial: %s"
 
-#: modules/notifications/notifications.php:2170
-#: modules/notifications/notifications.php:2227
+#: modules/notifications/notifications.php:2213
+#: modules/notifications/notifications.php:2270
 #, php-format
 msgid "Edit: %s"
 msgstr "Editează: %s"
 
-#: modules/notifications/notifications.php:2171
-#: modules/notifications/notifications.php:2228
+#: modules/notifications/notifications.php:2214
+#: modules/notifications/notifications.php:2271
 #, php-format
 msgid "View: %s"
 msgstr "Vezi: %s"
 
-#: modules/notifications/notifications.php:2182
+#: modules/notifications/notifications.php:2225
 #, php-format
 msgid "[%1$s] New Editorial Comment: \"%2$s\""
 msgstr "[%1$s] Comentariu editorial nou: \"%2$s\""
 
-#: modules/notifications/notifications.php:2189
+#: modules/notifications/notifications.php:2232
 #, php-format
 msgid "A new editorial comment was added to %3$s #%1$s \"%2$s\""
 msgstr "Un comentariu editorial nou a fost adăugat la %3$s #%1$s \"%2$s\""
 
-#: modules/notifications/notifications.php:2196
+#: modules/notifications/notifications.php:2239
 #, php-format
 msgid "%1$s (%2$s ) said on %3$s at %4$s:"
 msgstr "%1$s (%2$s ) a spus pe %3$s la %4$s:"
 
-#: modules/notifications/notifications.php:2220
+#: modules/notifications/notifications.php:2263
 #, php-format
 msgid "Reply: %s"
 msgstr "Răspuns: %s"
 
-#: modules/notifications/notifications.php:2231
+#: modules/notifications/notifications.php:2274
 #, php-format
 msgid "You can see all editorial comments on this %s here: "
 msgstr "Poți vedea toate comentariile editoriale pe acest %s aici: "
@@ -3250,9 +3272,17 @@ msgstr "Despre"
 msgid "Documentation"
 msgstr "Documentație"
 
+#: modules/settings/views/footer-base.html.php:28
+msgid "Contact the PublishPress team"
+msgstr "Contactați echipa PublishPress"
+
 #: modules/settings/views/footer-base.html.php:29, fuzzy
 msgid "Contact"
 msgstr "Contact"
+
+#: modules/settings/views/footer-base.html.php:34
+msgid "Visit PublishPress"
+msgstr "Vizitați PublishPress"
 
 #: modules/theeventscalendar-integration/theeventscalendar-integration.php:52
 msgid "The Events Calendar Integration"
@@ -3314,6 +3344,10 @@ msgstr ""
 #: publishpress.php:1497
 msgid "Warning"
 msgstr "Atenție"
+
+#: views/workflow_help.html.php:27
+msgid "Read more about notification workflows"
+msgstr "Citiți mai multe despre fluxurile de lucru pentru notificări"
 
 #: modules/content-board/library/content-board-utilities.php:538
 #: modules/content-overview/library/content-overview-utilities.php:643

@@ -406,26 +406,42 @@ if (! class_exists('PP_Editorial_Comments')) {
             // Define the custom SQL query to get users who have written comments
             $commentType = self::comment_type;
 
-            $userSql = "SELECT DISTINCT u.ID, u.display_name
-            FROM {$wpdb->users} AS u
-            INNER JOIN {$wpdb->comments} AS c
-            ON u.ID = c.user_id
-            WHERE c.comment_type = %s";
-            $queryArgs = [$commentType];
-
-            if (!empty($queryText)) {
+            if (empty($queryText)) {
+                $users = $wpdb->get_results(
+                    $wpdb->prepare(
+                        "SELECT DISTINCT u.ID, u.display_name
+                        FROM {$wpdb->users} AS u
+                        INNER JOIN {$wpdb->comments} AS c
+                        ON u.ID = c.user_id
+                        WHERE c.comment_type = %s
+                        ORDER BY u.display_name LIMIT 20",
+                        $commentType
+                    )
+                );
+            } else {
                 $searchLike = '%' . $wpdb->esc_like($queryText) . '%';
-                $userSql .= " AND (user_login LIKE %s
-                    OR user_url LIKE %s
-                    OR user_email LIKE %s
-                    OR user_nicename LIKE %s
-                    OR display_name LIKE %s)";
-                $queryArgs = array_merge($queryArgs, array_fill(0, 5, $searchLike));
+                $users = $wpdb->get_results(
+                    $wpdb->prepare(
+                        "SELECT DISTINCT u.ID, u.display_name
+                        FROM {$wpdb->users} AS u
+                        INNER JOIN {$wpdb->comments} AS c
+                        ON u.ID = c.user_id
+                        WHERE c.comment_type = %s
+                        AND (user_login LIKE %s
+                            OR user_url LIKE %s
+                            OR user_email LIKE %s
+                            OR user_nicename LIKE %s
+                            OR display_name LIKE %s)
+                        ORDER BY u.display_name LIMIT 20",
+                        $commentType,
+                        $searchLike,
+                        $searchLike,
+                        $searchLike,
+                        $searchLike,
+                        $searchLike
+                    )
+                );
             }
-
-            $userSql .= " ORDER BY u.display_name LIMIT 20";
-
-            $users = $wpdb->get_results($wpdb->prepare($userSql, $queryArgs));
 
             foreach ($users as $user) {
                 $results[] = [
@@ -487,7 +503,7 @@ if (! class_exists('PP_Editorial_Comments')) {
         {
             global $post, $post_ID; ?>
             <div id="pp-comments_wrapper">
-                <a name="editorialcomments"></a>
+                <span id="editorialcomments"></span>
 
                 <?php
                 // Show comments only if not a new post
@@ -554,7 +570,7 @@ if (! class_exists('PP_Editorial_Comments')) {
             <!-- Reply form, hidden until reply clicked by user -->
             <div id="pp-replyrow" style="display: none;">
                 <div class="pp-replyattachment">
-                    <a href="#" class="button editorial-comment-file-upload">
+                    <a href="#" class="button editorial-comment-file-upload" aria-label="<?php echo esc_attr__('Attach file', 'publishpress'); ?>">
                         <?php _e('Attach file', 'publishpress') ?>
                     </a>
                 </div>
@@ -565,11 +581,11 @@ if (! class_exists('PP_Editorial_Comments')) {
 
                 <div id="pp-replysubmit">
                     <div class="editorial-attachments"></div>
-                    <a class="button pp-replysave button-primary alignright" href="#comments-form">
+                    <a class="button pp-replysave button-primary alignright" href="#comments-form" aria-label="<?php echo esc_attr__('Add Comment', 'publishpress'); ?>">
                         <span id="pp-replybtn"><?php
                             _e('Add Comment', 'publishpress') ?></span>
                     </a>
-                    <a class="pp-replycancel button-secondary alignright"
+                    <a class="pp-replycancel button-secondary alignright" aria-label="<?php echo esc_attr__('Cancel', 'publishpress'); ?>"
                        href="#comments-form"><?php
                         _e('Cancel', 'publishpress'); ?></a>
                     <img alt="Sending comment..." src="<?php
@@ -1389,7 +1405,7 @@ function pp_get_comments_plus($args = '')
     extract($args, EXTR_SKIP);
 
     // $args can be whatever, only use the args defined in defaults to compute the key
-    $key = md5(serialize(compact(array_keys($defaults))));
+    $key = md5(wp_json_encode(compact(array_keys($defaults))));
     $last_changed = wp_cache_get('last_changed', 'comment');
     if (! $last_changed) {
         $last_changed = time();

@@ -300,7 +300,7 @@ if (! class_exists('PP_Editorial_Metadata_Utilities')) {
                                                             <?php esc_html_e('Default option', 'publishpress'); ?>
                                                     </label>
                                                     <div class="delete-button" style="<?php echo ($index === 0 ? 'display:none' : ''); ?>">
-                                                        <a href="#" class="delete"><?php esc_html_e('Delete', 'publishpress'); ?></a>
+                                                        <a href="#" class="delete" aria-label="<?php esc_attr_e('Delete option', 'publishpress'); ?>"><?php esc_html_e('Delete', 'publishpress'); ?></a>
                                                     </div>
                                                 </div>
                                             <?php
@@ -330,12 +330,12 @@ if (! class_exists('PP_Editorial_Metadata_Utilities')) {
                                                         <?php esc_html_e('Default option', 'publishpress'); ?>
                                                 </label>
                                                 <div class="delete-button" style="display:none;">
-                                                    <a href="#" class="delete"><?php esc_html_e('Delete', 'publishpress'); ?></a>
+                                                    <a href="#" class="delete" aria-label="<?php esc_attr_e('Delete option', 'publishpress'); ?>"><?php esc_html_e('Delete', 'publishpress'); ?></a>
                                                 </div>
                                             </div>
                                         <?php } ?>
                                     </div>
-                                    <p class="pp-add-new-paragraph"><a class="pp-add-new-option" href="#"><?php esc_html_e('Add Another Option', 'publishpress'); ?></a></p>
+                                    <p class="pp-add-new-paragraph"><a class="pp-add-new-option" href="#" aria-label="<?php esc_attr_e('Add Another Option', 'publishpress'); ?>"><?php esc_html_e('Add Another Option', 'publishpress'); ?></a></p>
                                 </div>
                             </div>
                         </td>
@@ -611,7 +611,7 @@ if (! class_exists('PP_Editorial_Metadata_Utilities')) {
                                                                         <?php esc_html_e('Default option', 'publishpress'); ?>
                                                                 </label>
                                                                 <div class="delete-button" style="<?php echo ($index === 0 ? 'display:none' : ''); ?>">
-                                                                    <a href="#" class="delete"><?php esc_html_e('Delete', 'publishpress'); ?></a>
+                                                                    <a href="#" class="delete" aria-label="<?php esc_attr_e('Delete option', 'publishpress'); ?>"><?php esc_html_e('Delete', 'publishpress'); ?></a>
                                                                 </div>
                                                             </div>
                                                         <?php
@@ -641,12 +641,12 @@ if (! class_exists('PP_Editorial_Metadata_Utilities')) {
                                                                     <?php esc_html_e('Default option', 'publishpress'); ?>
                                                             </label>
                                                             <div class="delete-button" style="display:none;">
-                                                                <a href="#" class="delete"><?php esc_html_e('Delete', 'publishpress'); ?></a>
+                                                                <a href="#" class="delete" aria-label="<?php esc_attr_e('Delete option', 'publishpress'); ?>"><?php esc_html_e('Delete', 'publishpress'); ?></a>
                                                             </div>
                                                         </div>
                                                     <?php } ?>
                                                 </div>
-                                                <p class="pp-add-new-paragraph"><a class="pp-add-new-option" href="#"><?php esc_html_e('Add Another Option', 'publishpress'); ?></a></p>
+                                                <p class="pp-add-new-paragraph"><a class="pp-add-new-option" href="#" aria-label="<?php esc_attr_e('Add Another Option', 'publishpress'); ?>"><?php esc_html_e('Add Another Option', 'publishpress'); ?></a></p>
                                             </div>
                                         </div>
                                     </div>

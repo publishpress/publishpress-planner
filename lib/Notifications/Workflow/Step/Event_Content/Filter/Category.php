@@ -75,12 +75,17 @@ class Category extends Base implements Filter_Interface
      */
     public function save_metabox_data($id, $post)
     {
-        if (!isset($_POST['publishpress_notif']["{$this->step_name}_filters"]['category'])) {
+        $filters = isset($_POST['publishpress_notif']["{$this->step_name}_filters"])
+            && is_array($_POST['publishpress_notif']["{$this->step_name}_filters"])
+            ? wp_unslash($_POST['publishpress_notif']["{$this->step_name}_filters"])
+            : [];
+
+        if (!isset($filters['category'])) {
             $values = [];
         } else {
             $values = array_map(
                 'sanitize_key',
-                (array)$_POST['publishpress_notif']["{$this->step_name}_filters"]['category']
+                (array)$filters['category']
             );
         }
 

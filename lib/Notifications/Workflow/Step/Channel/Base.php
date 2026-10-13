@@ -199,7 +199,7 @@ class Base extends Base_Step
      */
     protected function get_notification_signature($content, $channel)
     {
-        $signature = md5(serialize($content) . '|' . $channel);
+        $signature = md5(wp_json_encode($content) . '|' . $channel);
 
         return $signature;
     }

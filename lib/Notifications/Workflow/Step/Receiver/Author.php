@@ -44,6 +44,10 @@ class Author extends Simple_Checkbox implements Receiver_Interface
         if ($this->is_selected($workflow->ID)) {
             $post = get_post($args['params']['post_id']);
 
+            if (empty($post) || is_wp_error($post)) {
+                return $receivers;
+            }
+
             /**
              * @param int $post_author
              * @param int $post_id

@@ -41,14 +41,17 @@ class User extends Simple_Checkbox implements Receiver_Interface
     {
         parent::save_metabox_data($id, $post);
 
-        if (!isset($_POST['publishpress_notif'])
-            || !isset($_POST['publishpress_notif']['receiver_user'])) {
+        $publishpress_notif = isset($_POST['publishpress_notif']) && is_array($_POST['publishpress_notif'])
+            ? wp_unslash($_POST['publishpress_notif'])
+            : [];
+
+        if (!isset($publishpress_notif['receiver_user'])) {
             // Assume it is disabled
             $values = [];
         } else {
             $values = array_map(
                 'sanitize_key',
-                (array)$_POST['publishpress_notif']['receiver_user']
+                (array)$publishpress_notif['receiver_user']
             );
         }
 

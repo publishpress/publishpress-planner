@@ -66,9 +66,12 @@ class Simple_Checkbox extends Base implements Receiver_Interface
      */
     public function save_metabox_data($id, $post)
     {
-        $selected = isset($_POST['publishpress_notif'])
-            && isset($_POST['publishpress_notif'][$this->option_name])
-            && $_POST['publishpress_notif'][$this->option_name] === static::META_VALUE;
+        $publishpress_notif = isset($_POST['publishpress_notif']) && is_array($_POST['publishpress_notif'])
+            ? wp_unslash($_POST['publishpress_notif'])
+            : [];
+
+        $selected = isset($publishpress_notif[$this->option_name])
+            && $publishpress_notif[$this->option_name] === static::META_VALUE;
 
         $this->set_selection($id, $selected);
     }

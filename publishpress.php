@@ -3,7 +3,7 @@
  * Plugin Name: PublishPress Planner Free
  * Plugin URI: https://publishpress.com/
  * Description: PublishPress Planner helps you plan and publish content inside WordPress. Features include a content calendar, kanban board, and notifications.
- * Version: 4.8.1
+ * Version: 4.8.2
  * Author: PublishPress
  * Author URI: https://publishpress.com
  * Text Domain: publishpress
@@ -88,7 +88,7 @@ if (! class_exists('ComposerAutoloaderInitPublishPressPlanner')
     require_once $autoloadFilePath;
 }
 
-add_action('plugins_loaded', function () {
+function publishpress_planner_load_plugin() {
 
     require_once 'includes.php';
 
@@ -1505,7 +1505,9 @@ add_action('plugins_loaded', function () {
         }
     }
     do_action('publishpress_planner_loaded');
-}, -10);
+}
+
+add_action('plugins_loaded', 'publishpress_planner_load_plugin', -10);
 
 register_activation_hook(
     __FILE__,
