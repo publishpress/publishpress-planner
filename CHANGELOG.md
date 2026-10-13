@@ -1,7 +1,7 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-[4.8.2] - 06 Oct, 2026
+[4.8.2] - 13 Oct, 2026
 
 - Changed: Image alternative text is now exposed clearly to automated accessibility and security scanners. #2079
 - Changed: Scanner-flagged links now include descriptive labels to make their purpose clearer. #2080
