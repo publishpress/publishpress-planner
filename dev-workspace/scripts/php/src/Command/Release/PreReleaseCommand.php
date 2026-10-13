@@ -104,12 +104,12 @@ class PreReleaseCommand extends Command
     private function runGitCommand(array $command): string
     {
         $cmd = 'git ' . implode(' ', array_map('escapeshellarg', $command));
-        exec($cmd . ' 2>&1', $output, $returnCode);
+        exec($cmd . ' 2>&1', $output, $returnCode); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.system_calls_exec -- This CLI release command requires Git; all arguments are shell-escaped above.
 
         $output = implode("\n", $output);
 
         if ($returnCode !== 0 && !in_array('status', $command)) {
-            throw new \RuntimeException("Command failed: " . $output);
+            throw new \RuntimeException("Command failed: " . $output); // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- CLI diagnostics, not HTML.
         }
 
         return trim($output);

@@ -1,0 +1,2635 @@
+DEPRECATED: Scanning CSS/JS files is deprecated and support will be removed in PHP_CodeSniffer 4.0.
+The WordPressVIPMinimum.JS.InnerHTML sniff is listening for JS.
+DEPRECATED: Scanning CSS/JS files is deprecated and support will be removed in PHP_CodeSniffer 4.0.
+The WordPressVIPMinimum.JS.Window sniff is listening for JS.
+DEPRECATED: Scanning CSS/JS files is deprecated and support will be removed in PHP_CodeSniffer 4.0.
+The WordPressVIPMinimum.JS.DangerouslySetInnerHTML sniff is listening for JS.
+DEPRECATED: Scanning CSS/JS files is deprecated and support will be removed in PHP_CodeSniffer 4.0.
+The WordPressVIPMinimum.JS.StringConcat sniff is listening for JS.
+DEPRECATED: Scanning CSS/JS files is deprecated and support will be removed in PHP_CodeSniffer 4.0.
+The WordPressVIPMinimum.JS.StrippingTags sniff is listening for JS.
+DEPRECATED: Scanning CSS/JS files is deprecated and support will be removed in PHP_CodeSniffer 4.0.
+The WordPressVIPMinimum.JS.HTMLExecutingFunctions sniff is listening for JS.
+
+[31mE[0m[31mE[0m[31mE[0m[31mE[0m[31mE[0m[31mE[0m[31mE[0m[31mE[0m.[31mE[0m[31mE[0m[31mE[0m[31mE[0m.[33mW[0m[33mW[0m[33mW[0m[31mE[0m....[31mE[0m[31mE[0m[31mE[0m[31mE[0m[31mE[0m..[31mE[0m[31mE[0m[31mE[0m[31mE[0m[31mE[0m[31mE[0m[31mE[0m...[33mW[0m[31mE[0m[31mE[0m[31mE[0m[31mE[0m[31mE[0m[31mE[0m[31mE[0m[31mE[0m[31mE[0m[31mE[0m.[31mE[0m.[31mE[0m.[31mE[0m.[31mE[0m..  60 / 145 (41%)
+.........[31mE[0m[32mE[0m.[31mE[0m[31mE[0m.[31mE[0m.[31mE[0m[31mE[0m..[31mE[0m.[33mW[0m.[31mE[0m.[31mE[0m..[31mE[0m[31mE[0m..[31mE[0m.[31mE[0m..[31mE[0m[31mE[0m[31mE[0m.....[31mE[0m.[31mE[0m..[31mE[0m...[31mE[0m.[31mE[0m[33mW[0m 120 / 145 (83%)
+[31mE[0m[33mW[0m.[31mE[0m..[31mE[0m.[31mE[0m...[31mE[0m..[31mE[0m[31mE[0m[31mE[0m......[31mE[0m                                    145 / 145 (100%)
+
+
+
+[1mFILE: ...ditorial-metadata/input-handlers/editorial-metadata-input-user-handler.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 2 ERRORS AFFECTING 2 LINES[0m
+--------------------------------------------------------------------------------
+  53 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+     |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |       | [1m'self'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 102 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+     |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |       | [1m'self'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: ...torial-metadata/input-handlers/editorial-metadata-input-select-handler.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 2 ERRORS AFFECTING 2 LINES[0m
+--------------------------------------------------------------------------------
+ 105 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+     |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |       | [1m'self'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 168 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+     |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |       | [1m'self'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: ...rial-metadata/input-handlers/editorial-metadata-input-location-handler.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 3 ERRORS AFFECTING 3 LINES[0m
+--------------------------------------------------------------------------------
+  60 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+     |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |       | [1m'self'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 109 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+     |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |       | [1m'self'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 117 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+     |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |       | [1m'self'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: ...ditorial-metadata/input-handlers/editorial-metadata-input-text-handler.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 2 ERRORS AFFECTING 2 LINES[0m
+--------------------------------------------------------------------------------
+  66 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+     |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |       | [1m'self'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 100 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+     |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |       | [1m'self'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: ...rial-metadata/input-handlers/editorial-metadata-input-checkbox-handler.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 1 ERROR AFFECTING 1 LINE[0m
+--------------------------------------------------------------------------------
+ 103 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+     |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |       | [1m'self'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: ...ial-metadata/input-handlers/editorial-metadata-input-paragraph-handler.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 2 ERRORS AFFECTING 2 LINES[0m
+--------------------------------------------------------------------------------
+ 63 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+    |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+    |       | [1m'self'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 95 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+    |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+    |       | [1m'self'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: ...torial-metadata/input-handlers/editorial-metadata-input-number-handler.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 1 ERROR AFFECTING 1 LINE[0m
+--------------------------------------------------------------------------------
+ 70 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+    |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+    |       | [1m'self'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: ...les/editorial-metadata/input-handlers/editorial-metadata-input-handler.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 1 ERROR AFFECTING 1 LINE[0m
+--------------------------------------------------------------------------------
+ 210 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+     |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |       | [1m'self'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: ...ditorial-metadata/input-handlers/editorial-metadata-input-date-handler.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 1 ERROR AFFECTING 1 LINE[0m
+--------------------------------------------------------------------------------
+ 156 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+     |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |       | [1m'self'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: modules/editorial-metadata/library/editorial-metadata-utilities.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 57 ERRORS AND 15 WARNINGS AFFECTING 46 LINES[0m
+--------------------------------------------------------------------------------
+  67 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  67 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  74 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  74 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  74 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  74 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  76 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  76 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  76 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 100 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 100 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 100 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 105 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 108 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$current_module'.[0m
+     |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 120 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 120 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 121 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 121 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 122 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 122 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 122 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 123 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 123 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 123 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 124 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 124 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 124 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 126 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 126 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 127 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 128 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 136 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 136 | [33mWARNING[0m | [1mDetected usage of a non-sanitized input variable:[0m
+     |         | [1m$_POST['show_in_calendar_form'][0m
+     |         | (WordPress.Security.ValidatedSanitizedInput.InputNotSanitized)
+ 136 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 285 | [31mERROR[0m   | [1mWrong escaping function. HTML attributes should be escaped by[0m
+     |         | [1m`esc_attr()`, not by `esc_html_e()`.[0m
+     |         | (WordPressVIPMinimum.Security.ProperEscapingFunction.htmlAttrNotByEscHTML)
+ 291 | [31mERROR[0m   | [1mWrong escaping function. HTML attributes should be escaped by[0m
+     |         | [1m`esc_attr()`, not by `esc_html_e()`.[0m
+     |         | (WordPressVIPMinimum.Security.ProperEscapingFunction.htmlAttrNotByEscHTML)
+ 316 | [31mERROR[0m   | [1mWrong escaping function. HTML attributes should be escaped by[0m
+     |         | [1m`esc_attr()`, not by `esc_html_e()`.[0m
+     |         | (WordPressVIPMinimum.Security.ProperEscapingFunction.htmlAttrNotByEscHTML)
+ 322 | [31mERROR[0m   | [1mWrong escaping function. HTML attributes should be escaped by[0m
+     |         | [1m`esc_attr()`, not by `esc_html_e()`.[0m
+     |         | (WordPressVIPMinimum.Security.ProperEscapingFunction.htmlAttrNotByEscHTML)
+ 446 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 447 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 460 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 461 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 477 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 478 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 494 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 495 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 497 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 518 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 518 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 519 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 548 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 549 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 551 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 577 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 577 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 577 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 586 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 586 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 596 | [31mERROR[0m   | [1mWrong escaping function. HTML attributes should be escaped by[0m
+     |         | [1m`esc_attr()`, not by `esc_html_e()`.[0m
+     |         | (WordPressVIPMinimum.Security.ProperEscapingFunction.htmlAttrNotByEscHTML)
+ 602 | [31mERROR[0m   | [1mWrong escaping function. HTML attributes should be escaped by[0m
+     |         | [1m`esc_attr()`, not by `esc_html_e()`.[0m
+     |         | (WordPressVIPMinimum.Security.ProperEscapingFunction.htmlAttrNotByEscHTML)
+ 627 | [31mERROR[0m   | [1mWrong escaping function. HTML attributes should be escaped by[0m
+     |         | [1m`esc_attr()`, not by `esc_html_e()`.[0m
+     |         | (WordPressVIPMinimum.Security.ProperEscapingFunction.htmlAttrNotByEscHTML)
+ 633 | [31mERROR[0m   | [1mWrong escaping function. HTML attributes should be escaped by[0m
+     |         | [1m`esc_attr()`, not by `esc_html_e()`.[0m
+     |         | (WordPressVIPMinimum.Security.ProperEscapingFunction.htmlAttrNotByEscHTML)
+ 662 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 663 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 665 | [33mWARNING[0m | [1mDetected usage of a non-sanitized input variable:[0m
+     |         | [1m$_POST['show_in_calendar_form'][0m
+     |         | (WordPress.Security.ValidatedSanitizedInput.InputNotSanitized)
+ 665 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 689 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 689 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 690 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 711 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 711 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 712 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: modules/editorial-metadata/library/editorial-metadata-list-table.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 2 ERRORS AFFECTING 2 LINES[0m
+--------------------------------------------------------------------------------
+ 69 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+    |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+    |       | [1m'$row_class'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 70 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+    |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+    |       | [1m'$this'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: modules/editorial-metadata/editorial-metadata.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 30 ERRORS AND 6 WARNINGS AFFECTING 30 LINES[0m
+--------------------------------------------------------------------------------
+  309 | [31mERROR[0m   | [1mOverriding WordPress globals is prohibited. Found assignment[0m
+      |         | [1mto $wp_roles[0m
+      |         | (WordPress.WP.GlobalVariablesOverride.Prohibited)
+  430 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$css_property'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  430 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$rules'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  541 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound 'self'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  543 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound 'self'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  543 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound 'wp_create_nonce'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  558 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$message'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  568 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '"_$term->type'>"'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  680 | [33mWARNING[0m | [1m`strip_tags()` does not strip CSS and JS in between the[0m
+      |         | [1mscript and style tags. Use `wp_strip_all_tags()` to strip all[0m
+      |         | [1mtags.[0m
+      |         | (WordPressVIPMinimum.Functions.StripTags.StripTagsOneParameter)
+  926 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$this'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  926 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$current_metadata'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1193 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+      |         | [1mindex: $_POST['_wpnonce']. Check that the array index exists[0m
+      |         | [1mbefore using it.[0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+ 1194 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$this'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1198 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$this'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1211 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+      |         | [1mindex: $_POST['metadata_name']. Check that the array index[0m
+      |         | [1mexists before using it.[0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+ 1218 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+      |         | [1mindex: $_POST['metadata_description']. Check that the array[0m
+      |         | [1mindex exists before using it.[0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+ 1219 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+      |         | [1mindex: $_POST['metadata_type']. Check that the array index[0m
+      |         | [1mexists before using it.[0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+ 1347 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+      |         | [1mindex: $_GET['page']. Check that the array index exists[0m
+      |         | [1mbefore using it.[0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+ 1352 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+      |         | [1mindex: $_POST['_wpnonce']. Check that the array index exists[0m
+      |         | [1mbefore using it.[0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+ 1353 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$this'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1357 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$this'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1361 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$this'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1364 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+      |         | [1mindex: $_POST['name']. Check that the array index exists[0m
+      |         | [1mbefore using it.[0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+ 1367 | [33mWARNING[0m | [1m`strip_tags()` does not strip CSS and JS in between the[0m
+      |         | [1mscript and style tags. Use `wp_strip_all_tags()` to strip all[0m
+      |         | [1mtags.[0m
+      |         | (WordPressVIPMinimum.Functions.StripTags.StripTagsOneParameter)
+ 1367 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+      |         | [1mindex: $_POST['description']. Check that the array index[0m
+      |         | [1mexists before using it.[0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+ 1511 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$this'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1516 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$this'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1541 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+      |         | [1mindex: $_POST['editorial_metadata_sortable_nonce']. Check[0m
+      |         | [1mthat the array index exists before using it.[0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+ 1577 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+      |         | [1mindex: $_GET['nonce']. Check that the array index exists[0m
+      |         | [1mbefore using it.[0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+ 1578 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$this'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1582 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$this'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1586 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$this'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1751 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+ 1751 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+ 1751 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+ 1752 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: modules/dashboard/widgets/dashboard-notepad.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 0 ERRORS AND 1 WARNING AFFECTING 1 LINE[0m
+--------------------------------------------------------------------------------
+ 93 | [33mWARNING[0m | [1mDetected usage of a non-sanitized input variable:[0m
+    |         | [1m$_REQUEST['note'][0m
+    |         | (WordPress.Security.ValidatedSanitizedInput.InputNotSanitized)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: modules/notifications-log/notifications-log.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 0 ERRORS AND 7 WARNINGS AFFECTING 5 LINES[0m
+--------------------------------------------------------------------------------
+ 115 | [33mWARNING[0m | [1mThis comment is 77% valid code; is this commented out code?[0m
+     |         | (Squiz.PHP.CommentedOutCode.Found)
+ 550 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 551 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 592 | [33mWARNING[0m | [1mUse of a direct database call is discouraged.[0m
+     |         | (WordPress.DB.DirectDatabaseQuery.DirectQuery)
+ 592 | [33mWARNING[0m | [1mDirect database call without caching detected. Consider using[0m
+     |         | [1mwp_cache_get() / wp_cache_set() or wp_cache_delete().[0m
+     |         | (WordPress.DB.DirectDatabaseQuery.NoCaching)
+ 647 | [33mWARNING[0m | [1mUse of a direct database call is discouraged.[0m
+     |         | (WordPress.DB.DirectDatabaseQuery.DirectQuery)
+ 647 | [33mWARNING[0m | [1mDirect database call without caching detected. Consider using[0m
+     |         | [1mwp_cache_get() / wp_cache_set() or wp_cache_delete().[0m
+     |         | (WordPress.DB.DirectDatabaseQuery.NoCaching)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: modules/notifications-log/library/NotificationsLogHandler.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 0 ERRORS AND 1 WARNING AFFECTING 1 LINE[0m
+--------------------------------------------------------------------------------
+ 236 | [33mWARNING[0m | [1mDetected usage of meta_query, possible slow query.[0m
+     |         | (WordPress.DB.SlowDBQuery.slow_db_query_meta_query)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: modules/notifications-log/library/NotificationsLogTable.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 4 ERRORS AND 39 WARNINGS AFFECTING 31 LINES[0m
+--------------------------------------------------------------------------------
+  32 | [31mERROR[0m   | [1mOverriding WordPress globals is prohibited. Found assignment[0m
+     |         | [1mto $title[0m (WordPress.WP.GlobalVariablesOverride.Prohibited)
+ 319 | [33mWARNING[0m | [1mprint_r() found. Debug code should not normally be used in[0m
+     |         | [1mproduction.[0m
+     |         | (WordPress.PHP.DevelopmentFunctions.error_log_print_r)
+ 438 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 439 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 442 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 443 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 446 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 447 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 451 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 452 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 455 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 456 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 459 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 460 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 463 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 463 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 464 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 465 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 468 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 469 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 474 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 474 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 474 | [33mWARNING[0m | [1mDetected usage of a non-sanitized input variable:[0m
+     |         | [1m$_REQUEST['orderby'][0m
+     |         | (WordPress.Security.ValidatedSanitizedInput.InputNotSanitized)
+ 475 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 475 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 475 | [33mWARNING[0m | [1mDetected usage of a non-sanitized input variable:[0m
+     |         | [1m$_REQUEST['order'][0m
+     |         | (WordPress.Security.ValidatedSanitizedInput.InputNotSanitized)
+ 562 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 562 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 581 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 581 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 600 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 600 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 618 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 618 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 636 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 636 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 637 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 637 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 644 | [31mERROR[0m   | [1mWrong escaping function. HTML attributes should be escaped by[0m
+     |         | [1m`esc_attr()`, not by `esc_html__()`.[0m
+     |         | (WordPressVIPMinimum.Security.ProperEscapingFunction.htmlAttrNotByEscHTML)
+ 651 | [31mERROR[0m   | [1mWrong escaping function. HTML attributes should be escaped by[0m
+     |         | [1m`esc_attr()`, not by `esc_html__()`.[0m
+     |         | (WordPressVIPMinimum.Security.ProperEscapingFunction.htmlAttrNotByEscHTML)
+ 658 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 658 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 660 | [31mERROR[0m   | [1mWrong escaping function. HTML attributes should be escaped by[0m
+     |         | [1m`esc_attr()`, not by `esc_html__()`.[0m
+     |         | (WordPressVIPMinimum.Security.ProperEscapingFunction.htmlAttrNotByEscHTML)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: modules/improved-notifications/improved-notifications.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 11 ERRORS AND 10 WARNINGS AFFECTING 13 LINES[0m
+--------------------------------------------------------------------------------
+  288 | [33mWARNING[0m | [1mDetected usage of meta_query, possible slow query.[0m
+      |         | (WordPress.DB.SlowDBQuery.slow_db_query_meta_query)
+  580 | [33mWARNING[0m | [1mUse of a direct database call is discouraged.[0m
+      |         | (WordPress.DB.DirectDatabaseQuery.DirectQuery)
+  672 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$this'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  672 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$context'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  684 | [33mWARNING[0m | [1mDetected usage of meta_query, possible slow query.[0m
+      |         | (WordPress.DB.SlowDBQuery.slow_db_query_meta_query)
+  802 | [33mWARNING[0m | [1mUse of a direct database call is discouraged.[0m
+      |         | (WordPress.DB.DirectDatabaseQuery.DirectQuery)
+  802 | [33mWARNING[0m | [1mDirect database call without caching detected. Consider using[0m
+      |         | [1mwp_cache_get() / wp_cache_set() or wp_cache_delete().[0m
+      |         | (WordPress.DB.DirectDatabaseQuery.NoCaching)
+  810 | [33mWARNING[0m | [1mUse of a direct database call is discouraged.[0m
+      |         | (WordPress.DB.DirectDatabaseQuery.DirectQuery)
+  810 | [33mWARNING[0m | [1mDirect database call without caching detected. Consider using[0m
+      |         | [1mwp_cache_get() / wp_cache_set() or wp_cache_delete().[0m
+      |         | (WordPress.DB.DirectDatabaseQuery.NoCaching)
+ 1224 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$view'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1224 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$main_context'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1224 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$this'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1237 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$view'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1237 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$context'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1363 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$this'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1363 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$context'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1423 | [33mWARNING[0m | [1mDetected usage of meta_query, possible slow query.[0m
+      |         | (WordPress.DB.SlowDBQuery.slow_db_query_meta_query)
+ 1455 | [33mWARNING[0m | [1mDetected usage of meta_query, possible slow query.[0m
+      |         | (WordPress.DB.SlowDBQuery.slow_db_query_meta_query)
+ 1529 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$this'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1529 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$context'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1662 | [33mWARNING[0m | [1mDetected usage of a non-sanitized input variable:[0m
+      |         | [1m$_POST['psppno_workflow_channel'][0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotSanitized)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: modules/content-board/content-board.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 2 ERRORS AND 9 WARNINGS AFFECTING 10 LINES[0m
+--------------------------------------------------------------------------------
+  161 | [33mWARNING[0m | [1mHaving more than 100 posts returned per page may lead to[0m
+      |         | [1msevere performance problems.[0m
+      |         | (WordPress.WP.PostsPerPage.posts_per_page_posts_per_page)
+  229 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  229 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  578 | [31mERROR[0m   | [1mdate() is affected by runtime timezone changes which can[0m
+      |         | [1mcause date/time to be incorrectly displayed. Use gmdate()[0m
+      |         | [1minstead.[0m (WordPress.DateTime.RestrictedFunctions.date_date)
+  688 | [33mWARNING[0m | [1mThis comment is 36% valid code; is this commented out code?[0m
+      |         | (Squiz.PHP.CommentedOutCode.Found)
+ 1064 | [31mERROR[0m   | [1mWrong escaping function. HTML attributes should be escaped by[0m
+      |         | [1m`esc_attr()`, not by `esc_html__()`.[0m
+      |         | (WordPressVIPMinimum.Security.ProperEscapingFunction.htmlAttrNotByEscHTML)
+ 1483 | [33mWARNING[0m | [1mDetected usage of meta_query, possible slow query.[0m
+      |         | (WordPress.DB.SlowDBQuery.slow_db_query_meta_query)
+ 1487 | [33mWARNING[0m | [1mDetected usage of tax_query, possible slow query.[0m
+      |         | (WordPress.DB.SlowDBQuery.slow_db_query_tax_query)
+ 1669 | [33mWARNING[0m | [1mprint_r() found. Debug code should not normally be used in[0m
+      |         | [1mproduction.[0m
+      |         | (WordPress.PHP.DevelopmentFunctions.error_log_print_r)
+ 1799 | [33mWARNING[0m | [1mDetected usage of a non-sanitized input variable:[0m
+      |         | [1m$_GET['taxonomy'][0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotSanitized)
+ 1809 | [33mWARNING[0m | [1mRedeclaration of global variable $wpdb as global variable.[0m
+      |         | (VariableAnalysis.CodeAnalysis.VariableAnalysis.VariableRedeclaration)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: modules/content-board/library/content-board-methods.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 11 ERRORS AND 1 WARNING AFFECTING 11 LINES[0m
+--------------------------------------------------------------------------------
+  48 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+     |         | [1mindex: $_POST['schedule_number']. Check that the array index[0m
+     |         | [1mexists before using it.[0m
+     |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+  49 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+     |         | [1mindex: $_POST['schedule_period']. Check that the array index[0m
+     |         | [1mexists before using it.[0m
+     |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+  86 | [31mERROR[0m   | [1mdate() is affected by runtime timezone changes which can cause[0m
+     |         | [1mdate/time to be incorrectly displayed. Use gmdate() instead.[0m
+     |         | (WordPress.DateTime.RestrictedFunctions.date_date)
+ 198 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+     |         | [1mindex: $_POST['aa']. Check that the array index exists before[0m
+     |         | [1musing it.[0m
+     |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+ 200 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+     |         | [1mindex: $_POST['jj']. Check that the array index exists before[0m
+     |         | [1musing it.[0m
+     |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+ 201 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+     |         | [1mindex: $_POST['hh']. Check that the array index exists before[0m
+     |         | [1musing it.[0m
+     |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+ 202 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+     |         | [1mindex: $_POST['mn']. Check that the array index exists before[0m
+     |         | [1musing it.[0m
+     |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+ 203 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+     |         | [1mindex: $_POST['ss']. Check that the array index exists before[0m
+     |         | [1musing it.[0m
+     |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+ 302 | [31mERROR[0m   | [1mdate() is affected by runtime timezone changes which can cause[0m
+     |         | [1mdate/time to be incorrectly displayed. Use gmdate() instead.[0m
+     |         | (WordPress.DateTime.RestrictedFunctions.date_date)
+ 305 | [33mWARNING[0m | [1mDetected usage of a non-sanitized input variable:[0m
+     |         | [1m$_REQUEST['pp-content-board-end-date_hidden'][0m
+     |         | (WordPress.Security.ValidatedSanitizedInput.InputNotSanitized)
+ 305 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+     |         | [1mindex: $_REQUEST['pp-content-board-end-date_hidden']. Check[0m
+     |         | [1mthat the array index exists before using it.[0m
+     |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+ 308 | [31mERROR[0m   | [1mdate() is affected by runtime timezone changes which can cause[0m
+     |         | [1mdate/time to be incorrectly displayed. Use gmdate() instead.[0m
+     |         | (WordPress.DateTime.RestrictedFunctions.date_date)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: modules/content-board/library/content-board-utilities.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 11 ERRORS AND 6 WARNINGS AFFECTING 12 LINES[0m
+--------------------------------------------------------------------------------
+  166 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  166 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  167 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  169 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  169 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  169 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  176 | [31mERROR[0m   | [1mdate() is affected by runtime timezone changes which can[0m
+      |         | [1mcause date/time to be incorrectly displayed. Use gmdate()[0m
+      |         | [1minstead.[0m (WordPress.DateTime.RestrictedFunctions.date_date)
+  177 | [31mERROR[0m   | [1mdate() is affected by runtime timezone changes which can[0m
+      |         | [1mcause date/time to be incorrectly displayed. Use gmdate()[0m
+      |         | [1minstead.[0m (WordPress.DateTime.RestrictedFunctions.date_date)
+  193 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$start_date_value'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  193 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$end_date_value'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  193 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$nonce'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  284 | [31mERROR[0m   | [1mWrong escaping function. HTML attributes should be escaped by[0m
+      |         | [1m`esc_attr()`, not by `esc_html()`.[0m
+      |         | (WordPressVIPMinimum.Security.ProperEscapingFunction.htmlAttrNotByEscHTML)
+  430 | [31mERROR[0m   | [1mWrong escaping function. HTML attributes should be escaped by[0m
+      |         | [1m`esc_attr()`, not by `esc_html()`.[0m
+      |         | (WordPressVIPMinimum.Security.ProperEscapingFunction.htmlAttrNotByEscHTML)
+  548 | [31mERROR[0m   | [1mWrong escaping function. HTML attributes should be escaped by[0m
+      |         | [1m`esc_attr()`, not by `esc_html__()`.[0m
+      |         | (WordPressVIPMinimum.Security.ProperEscapingFunction.htmlAttrNotByEscHTML)
+  558 | [31mERROR[0m   | [1mWrong escaping function. HTML attributes should be escaped by[0m
+      |         | [1m`esc_attr()`, not by `esc_html__()`.[0m
+      |         | (WordPressVIPMinimum.Security.ProperEscapingFunction.htmlAttrNotByEscHTML)
+ 1092 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound 'stripslashes_deep'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1123 | [31mERROR[0m   | [1mWrong escaping function. HTML attributes should be escaped by[0m
+      |         | [1m`esc_attr()`, not by `esc_html_e()`.[0m
+      |         | (WordPressVIPMinimum.Security.ProperEscapingFunction.htmlAttrNotByEscHTML)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: modules/efmigration/efmigration.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 4 ERRORS AND 21 WARNINGS AFFECTING 16 LINES[0m
+--------------------------------------------------------------------------------
+ 103 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 103 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 304 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 304 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 307 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'__'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 310 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'add_query_arg'.[0m
+     |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 317 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'add_query_arg'.[0m
+     |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 335 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 340 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 364 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+     |         | [1mindex: $_POST['step']. Check that the array index exists[0m
+     |         | [1mbefore using it.[0m
+     |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+ 377 | [33mWARNING[0m | [1mjson_encode() is discouraged. Use wp_json_encode() instead.[0m
+     |         | (WordPress.WP.AlternativeFunctions.json_encode_json_encode)
+ 417 | [33mWARNING[0m | [1mUse of a direct database call is discouraged.[0m
+     |         | (WordPress.DB.DirectDatabaseQuery.DirectQuery)
+ 417 | [33mWARNING[0m | [1mDirect database call without caching detected. Consider using[0m
+     |         | [1mwp_cache_get() / wp_cache_set() or wp_cache_delete().[0m
+     |         | (WordPress.DB.DirectDatabaseQuery.NoCaching)
+ 485 | [33mWARNING[0m | [1mUse of a direct database call is discouraged.[0m
+     |         | (WordPress.DB.DirectDatabaseQuery.DirectQuery)
+ 485 | [33mWARNING[0m | [1mDirect database call without caching detected. Consider using[0m
+     |         | [1mwp_cache_get() / wp_cache_set() or wp_cache_delete().[0m
+     |         | (WordPress.DB.DirectDatabaseQuery.NoCaching)
+ 523 | [33mWARNING[0m | [1mUse of a direct database call is discouraged.[0m
+     |         | (WordPress.DB.DirectDatabaseQuery.DirectQuery)
+ 523 | [33mWARNING[0m | [1mDirect database call without caching detected. Consider using[0m
+     |         | [1mwp_cache_get() / wp_cache_set() or wp_cache_delete().[0m
+     |         | (WordPress.DB.DirectDatabaseQuery.NoCaching)
+ 535 | [33mWARNING[0m | [1mUse of a direct database call is discouraged.[0m
+     |         | (WordPress.DB.DirectDatabaseQuery.DirectQuery)
+ 535 | [33mWARNING[0m | [1mDirect database call without caching detected. Consider using[0m
+     |         | [1mwp_cache_get() / wp_cache_set() or wp_cache_delete().[0m
+     |         | (WordPress.DB.DirectDatabaseQuery.NoCaching)
+ 571 | [33mWARNING[0m | [1mUse of a direct database call is discouraged.[0m
+     |         | (WordPress.DB.DirectDatabaseQuery.DirectQuery)
+ 571 | [33mWARNING[0m | [1mDirect database call without caching detected. Consider using[0m
+     |         | [1mwp_cache_get() / wp_cache_set() or wp_cache_delete().[0m
+     |         | (WordPress.DB.DirectDatabaseQuery.NoCaching)
+ 581 | [33mWARNING[0m | [1mUse of a direct database call is discouraged.[0m
+     |         | (WordPress.DB.DirectDatabaseQuery.DirectQuery)
+ 581 | [33mWARNING[0m | [1mDirect database call without caching detected. Consider using[0m
+     |         | [1mwp_cache_get() / wp_cache_set() or wp_cache_delete().[0m
+     |         | (WordPress.DB.DirectDatabaseQuery.NoCaching)
+ 588 | [33mWARNING[0m | [1mUse of a direct database call is discouraged.[0m
+     |         | (WordPress.DB.DirectDatabaseQuery.DirectQuery)
+ 588 | [33mWARNING[0m | [1mDirect database call without caching detected. Consider using[0m
+     |         | [1mwp_cache_get() / wp_cache_set() or wp_cache_delete().[0m
+     |         | (WordPress.DB.DirectDatabaseQuery.NoCaching)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: modules/async-notifications/async-notifications.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 1 ERROR AFFECTING 1 LINE[0m
+--------------------------------------------------------------------------------
+ 175 | [31mERROR[0m | [1mdate() is affected by runtime timezone changes which can cause[0m
+     |       | [1mdate/time to be incorrectly displayed. Use gmdate() instead.[0m
+     |       | (WordPress.DateTime.RestrictedFunctions.date_date)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: modules/editorial-comments/editorial-comments.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 12 ERRORS AND 19 WARNINGS AFFECTING 24 LINES[0m
+--------------------------------------------------------------------------------
+  153 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  153 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  165 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  165 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  274 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  274 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  282 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  283 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  335 | [33mWARNING[0m | [1mUse of a direct database call is discouraged.[0m
+      |         | (WordPress.DB.DirectDatabaseQuery.DirectQuery)
+  335 | [33mWARNING[0m | [1mDirect database call without caching detected. Consider using[0m
+      |         | [1mwp_cache_get() / wp_cache_set() or wp_cache_delete().[0m
+      |         | (WordPress.DB.DirectDatabaseQuery.NoCaching)
+  410 | [33mWARNING[0m | [1mUse of a direct database call is discouraged.[0m
+      |         | (WordPress.DB.DirectDatabaseQuery.DirectQuery)
+  410 | [33mWARNING[0m | [1mDirect database call without caching detected. Consider using[0m
+      |         | [1mwp_cache_get() / wp_cache_set() or wp_cache_delete().[0m
+      |         | (WordPress.DB.DirectDatabaseQuery.NoCaching)
+  413 | [31mERROR[0m   | [1mUsage of users tables is highly discouraged in VIP context[0m
+      |         | (WordPressVIPMinimum.Variables.RestrictedVariables.user_meta__wpdb__users)
+  423 | [33mWARNING[0m | [1mUse of a direct database call is discouraged.[0m
+      |         | (WordPress.DB.DirectDatabaseQuery.DirectQuery)
+  423 | [33mWARNING[0m | [1mDirect database call without caching detected. Consider using[0m
+      |         | [1mwp_cache_get() / wp_cache_set() or wp_cache_delete().[0m
+      |         | (WordPress.DB.DirectDatabaseQuery.NoCaching)
+  426 | [31mERROR[0m   | [1mUsage of users tables is highly discouraged in VIP context[0m
+      |         | (WordPressVIPMinimum.Variables.RestrictedVariables.user_meta__wpdb__users)
+  488 | [33mWARNING[0m | [1mUse of a direct database call is discouraged.[0m
+      |         | (WordPress.DB.DirectDatabaseQuery.DirectQuery)
+  488 | [33mWARNING[0m | [1mDirect database call without caching detected. Consider using[0m
+      |         | [1mwp_cache_get() / wp_cache_set() or wp_cache_delete().[0m
+      |         | (WordPress.DB.DirectDatabaseQuery.NoCaching)
+  632 | [31mERROR[0m   | [1mWrong escaping function. HTML attributes should be escaped by[0m
+      |         | [1m`esc_attr()`, not by `esc_html__()`.[0m
+      |         | (WordPressVIPMinimum.Security.ProperEscapingFunction.htmlAttrNotByEscHTML)
+  685 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$theComment'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  686 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$theComment'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  687 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$theComment'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  704 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound 'get_comment_date'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  705 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound 'get_comment_time'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  733 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '__'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  743 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$actions_string_escaped'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  776 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+      |         | [1mindex: $_POST['comment_files']. Check that the array index[0m
+      |         | [1mexists before using it.[0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+  790 | [33mWARNING[0m | [1mDetected usage of a non-sanitized input variable:[0m
+      |         | [1m$_POST['content'][0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotSanitized)
+  803 | [33mWARNING[0m | [1mDue to server-side caching, server-side based client related[0m
+      |         | [1mlogic might not work. We recommend implementing client side[0m
+      |         | [1mlogic in JavaScript instead.[0m
+      |         | (WordPressVIPMinimum.Variables.RestrictedVariables.cache_constraints___SERVER__REMOTE_ADDR__)
+  920 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+      |         | [1mindex: $_POST['comment_files']. Check that the array index[0m
+      |         | [1mexists before using it.[0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+ 1500 | [33mWARNING[0m | [1mUse of a direct database call is discouraged.[0m
+      |         | (WordPress.DB.DirectDatabaseQuery.DirectQuery)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: modules/editorial-comments/library/EditorialCommentsTable.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 9 ERRORS AND 25 WARNINGS AFFECTING 21 LINES[0m
+--------------------------------------------------------------------------------
+  77 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  77 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  79 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  79 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  79 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  81 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  81 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  81 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  83 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  83 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  83 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  85 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  85 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  86 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  86 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  90 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  91 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  98 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  99 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  99 | [33mWARNING[0m | [1mDetected usage of a non-sanitized input variable:[0m
+     |         | [1m$_REQUEST['start'][0m
+     |         | (WordPress.Security.ValidatedSanitizedInput.InputNotSanitized)
+ 179 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 179 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 182 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'__'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 195 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 195 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 198 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'__'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 211 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$output'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 228 | [33mWARNING[0m | [1mThis comment is 78% valid code; is this commented out code?[0m
+     |         | (Squiz.PHP.CommentedOutCode.Found)
+ 326 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$avatar'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 346 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$submitted'.[0m
+     |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 373 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$thumb'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 377 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$post_link'.[0m
+     |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 380 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'get_permalink'.[0m
+     |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 380 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$post_type_object'.[0m
+     |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: modules/settings/views/module.html.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 1 ERROR AFFECTING 1 LINE[0m
+--------------------------------------------------------------------------------
+ 15 | [31mERROR[0m | [1mWrong escaping function. href, src, and action attributes should[0m
+    |       | [1mbe escaped by `esc_url()`, not by `esc_attr()`.[0m
+    |       | (WordPressVIPMinimum.Security.ProperEscapingFunction.hrefSrcEscUrl)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: modules/settings/views/settings.html.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 1 ERROR AFFECTING 1 LINE[0m
+--------------------------------------------------------------------------------
+ 16 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+    |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+    |       | [1m'$context['module_output']'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: modules/settings/views/footer-base.html.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 3 ERRORS AFFECTING 1 LINE[0m
+--------------------------------------------------------------------------------
+ 15 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+    |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+    |       | [1m'$context['rating_message']'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 15 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+    |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+    |       | [1m'$plugin_name_markup'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 15 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+    |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+    |       | [1m'$rating_stars_markup'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: modules/settings/settings.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 40 ERRORS AND 24 WARNINGS AFFECTING 60 LINES[0m
+--------------------------------------------------------------------------------
+ 176 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'get_admin_url'.[0m
+     |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 189 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 190 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 191 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 192 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 193 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 194 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 204 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 205 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 206 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 207 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 208 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 209 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 220 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$current_module'.[0m
+     |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 222 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$display_text'.[0m
+     |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 227 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$current_module'.[0m
+     |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 231 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$custom_text'.[0m
+     |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 278 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$html'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 289 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'__'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 307 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$this'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 310 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'isset'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 311 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$mod_data'.[0m
+     |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 312 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$mod_data'.[0m
+     |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 313 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'get_admin_url'.[0m
+     |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 314 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$mod_data'.[0m
+     |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 316 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$url'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 318 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$this'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 336 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 338 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 338 | [33mWARNING[0m | [1mDetected usage of a non-sanitized input variable:[0m
+     |         | [1m$_REQUEST['form-errors'][$field][0m
+     |         | (WordPress.Security.ValidatedSanitizedInput.InputNotSanitized)
+ 369 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$module'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 370 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$module'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 371 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$module'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 380 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'__'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 380 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$post_type'.[0m
+     |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 380 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$module'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 399 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+     |         | [1mindex: $_GET['page']. Check that the array index exists before[0m
+     |         | [1musing it.[0m
+     |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+ 404 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'__'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 409 | [33mWARNING[0m | [1mDetected usage of a non-sanitized input variable:[0m
+     |         | [1m$_POST['publishpress_module_name'][0m
+     |         | (WordPress.Security.ValidatedSanitizedInput.InputNotSanitized)
+ 412 | [33mWARNING[0m | [1mDetected usage of a non-sanitized input variable:[0m
+     |         | [1m$_POST[$publishpress->$module_name->module->options_group_name][0m
+     |         | (WordPress.Security.ValidatedSanitizedInput.InputNotSanitized)
+ 480 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 480 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 481 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 493 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 494 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 495 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 496 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 497 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 498 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 508 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 509 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 510 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 511 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 512 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 513 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 554 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$this'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 557 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$all_modules'.[0m
+     |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 558 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$module_settings_slug'.[0m
+     |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 559 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'PP_Modules_Settings'.[0m
+     |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 560 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$module_output'.[0m
+     |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 562 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$display_text'.[0m
+     |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 564 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'Util'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 565 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'Util'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 567 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$this'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: modules/modules-settings/modules-settings.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 0 ERRORS AND 7 WARNINGS AFFECTING 4 LINES[0m
+--------------------------------------------------------------------------------
+  85 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  85 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  98 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  98 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  99 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  99 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 174 | [33mWARNING[0m | [1mDetected usage of a non-sanitized input variable:[0m
+     |         | [1m$_POST['publishpress_options']['features'][0m
+     |         | (WordPress.Security.ValidatedSanitizedInput.InputNotSanitized)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: modules/notifications/notifications.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 1 ERROR AND 7 WARNINGS AFFECTING 7 LINES[0m
+--------------------------------------------------------------------------------
+  146 | [33mWARNING[0m | [1mThis comment is 64% valid code; is this commented out code?[0m
+      |         | (Squiz.PHP.CommentedOutCode.Found)
+  267 | [33mWARNING[0m | [1mUse of a direct database call is discouraged.[0m
+      |         | (WordPress.DB.DirectDatabaseQuery.DirectQuery)
+  267 | [33mWARNING[0m | [1mDirect database call without caching detected. Consider using[0m
+      |         | [1mwp_cache_get() / wp_cache_set() or wp_cache_delete().[0m
+      |         | (WordPress.DB.DirectDatabaseQuery.NoCaching)
+  877 | [33mWARNING[0m | [1mDetected usage of a non-sanitized input variable:[0m
+      |         | [1m$_POST['to_notify'][0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotSanitized)
+ 1190 | [33mWARNING[0m | [1m`wp_mail` should be used sparingly. For any bulk emailing[0m
+      |         | [1mshould be handled by a 3rd party service, in order to prevent[0m
+      |         | [1mdomain or IP addresses being flagged as spam.[0m
+      |         | (WordPressVIPMinimum.Functions.RestrictedFunctions.wp_mail_wp_mail)
+ 1721 | [33mWARNING[0m | [1mDetected usage of tax_query, possible slow query.[0m
+      |         | (WordPress.DB.SlowDBQuery.slow_db_query_tax_query)
+ 1901 | [31mERROR[0m   | [1mWrong escaping function. HTML attributes should be escaped by[0m
+      |         | [1m`esc_attr()`, not by `esc_html_e()`.[0m
+      |         | (WordPressVIPMinimum.Security.ProperEscapingFunction.htmlAttrNotByEscHTML)
+ 2248 | [33mWARNING[0m | [1mThis comment is 55% valid code; is this commented out code?[0m
+      |         | (Squiz.PHP.CommentedOutCode.Found)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: modules/calendar/library/calendar-methods.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 23 ERRORS AND 3 WARNINGS AFFECTING 24 LINES[0m
+--------------------------------------------------------------------------------
+  259 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$id'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  260 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$id'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  260 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$field_name'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  294 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$item_edit_link'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  294 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '__'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  312 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$msg'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  395 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$timeFormat'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  397 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$timeMockValue'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  414 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$this'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  451 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$key'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  453 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$label'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  479 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '__'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  486 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$i'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  546 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '__'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  695 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$this'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  701 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$this'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  778 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+      |         | [1mindex: $_GET['nonce']. Check that the array index exists[0m
+      |         | [1mbefore using it.[0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+  839 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+      |         | [1mindex: $_GET['nonce']. Check that the array index exists[0m
+      |         | [1mbefore using it.[0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+ 1167 | [31mERROR[0m   | [1mdate() is affected by runtime timezone changes which can[0m
+      |         | [1mcause date/time to be incorrectly displayed. Use gmdate()[0m
+      |         | [1minstead.[0m (WordPress.DateTime.RestrictedFunctions.date_date)
+ 1343 | [33mWARNING[0m | [1mThis comment is 60% valid code; is this commented out code?[0m
+      |         | (Squiz.PHP.CommentedOutCode.Found)
+ 1587 | [33mWARNING[0m | [1mDetected usage of meta_query, possible slow query.[0m
+      |         | (WordPress.DB.SlowDBQuery.slow_db_query_meta_query)
+ 1591 | [33mWARNING[0m | [1mDetected usage of tax_query, possible slow query.[0m
+      |         | (WordPress.DB.SlowDBQuery.slow_db_query_tax_query)
+ 1660 | [31mERROR[0m   | [1mdate() is affected by runtime timezone changes which can[0m
+      |         | [1mcause date/time to be incorrectly displayed. Use gmdate()[0m
+      |         | [1minstead.[0m (WordPress.DateTime.RestrictedFunctions.date_date)
+ 1677 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+      |         | [1mindex: $_POST['nonce']. Check that the array index exists[0m
+      |         | [1mbefore using it.[0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+ 1757 | [31mERROR[0m   | [1mdate() is affected by runtime timezone changes which can[0m
+      |         | [1mcause date/time to be incorrectly displayed. Use gmdate()[0m
+      |         | [1minstead.[0m (WordPress.DateTime.RestrictedFunctions.date_date)
+ 1758 | [31mERROR[0m   | [1mdate() is affected by runtime timezone changes which can[0m
+      |         | [1mcause date/time to be incorrectly displayed. Use gmdate()[0m
+      |         | [1minstead.[0m (WordPress.DateTime.RestrictedFunctions.date_date)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: modules/calendar/library/calendar-utilities.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 13 ERRORS AND 4 WARNINGS AFFECTING 13 LINES[0m
+--------------------------------------------------------------------------------
+   63 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$hide_all_label'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  502 | [31mERROR[0m   | [1mWrong escaping function. HTML attributes should be escaped by[0m
+      |         | [1m`esc_attr()`, not by `esc_html_e()`.[0m
+      |         | (WordPressVIPMinimum.Security.ProperEscapingFunction.htmlAttrNotByEscHTML)
+  503 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$filter_weeks'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  514 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$i'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  514 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$selected'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  514 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$week_text'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  649 | [31mERROR[0m   | [1mWrong escaping function. HTML attributes should be escaped by[0m
+      |         | [1m`esc_attr()`, not by `esc_html()`.[0m
+      |         | (WordPressVIPMinimum.Security.ProperEscapingFunction.htmlAttrNotByEscHTML)
+  752 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+      |         | [1mindex: $_GET['nonce']. Check that the array index exists[0m
+      |         | [1mbefore using it.[0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+  812 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+      |         | [1mindex: $_GET['nonce']. Check that the array index exists[0m
+      |         | [1mbefore using it.[0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+  820 | [33mWARNING[0m | [1mUse of a direct database call is discouraged.[0m
+      |         | (WordPress.DB.DirectDatabaseQuery.DirectQuery)
+  820 | [33mWARNING[0m | [1mDirect database call without caching detected. Consider using[0m
+      |         | [1mwp_cache_get() / wp_cache_set() or wp_cache_delete().[0m
+      |         | (WordPress.DB.DirectDatabaseQuery.NoCaching)
+ 1002 | [31mERROR[0m   | [1mdate() is affected by runtime timezone changes which can[0m
+      |         | [1mcause date/time to be incorrectly displayed. Use gmdate()[0m
+      |         | [1minstead.[0m (WordPress.DateTime.RestrictedFunctions.date_date)
+ 1005 | [31mERROR[0m   | [1mdate() is affected by runtime timezone changes which can[0m
+      |         | [1mcause date/time to be incorrectly displayed. Use gmdate()[0m
+      |         | [1minstead.[0m (WordPress.DateTime.RestrictedFunctions.date_date)
+ 1026 | [31mERROR[0m   | [1mdate() is affected by runtime timezone changes which can[0m
+      |         | [1mcause date/time to be incorrectly displayed. Use gmdate()[0m
+      |         | [1minstead.[0m (WordPress.DateTime.RestrictedFunctions.date_date)
+ 1029 | [31mERROR[0m   | [1mdate() is affected by runtime timezone changes which can[0m
+      |         | [1mcause date/time to be incorrectly displayed. Use gmdate()[0m
+      |         | [1minstead.[0m (WordPress.DateTime.RestrictedFunctions.date_date)
+ 1131 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+ 1131 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: modules/calendar/calendar.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 20 ERRORS AND 4 WARNINGS AFFECTING 23 LINES[0m
+--------------------------------------------------------------------------------
+  519 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  519 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  679 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$vCalendar'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  723 | [31mERROR[0m   | [1mdate() is affected by runtime timezone changes which can[0m
+      |         | [1mcause date/time to be incorrectly displayed. Use gmdate()[0m
+      |         | [1minstead.[0m (WordPress.DateTime.RestrictedFunctions.date_date)
+  812 | [31mERROR[0m   | [1mdate() is affected by runtime timezone changes which can[0m
+      |         | [1mcause date/time to be incorrectly displayed. Use gmdate()[0m
+      |         | [1minstead.[0m (WordPress.DateTime.RestrictedFunctions.date_date)
+  999 | [33mWARNING[0m | [1mThis comment is 36% valid code; is this commented out code?[0m
+      |         | (Squiz.PHP.CommentedOutCode.Found)
+ 1090 | [31mERROR[0m   | [1mdate() is affected by runtime timezone changes which can[0m
+      |         | [1mcause date/time to be incorrectly displayed. Use gmdate()[0m
+      |         | [1minstead.[0m (WordPress.DateTime.RestrictedFunctions.date_date)
+ 1131 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '_n'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1137 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound 'number_format_i18n'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1157 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '_n'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1163 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound 'number_format_i18n'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1189 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '__'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1193 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '__'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1373 | [31mERROR[0m   | [1mSetting `suppress_filters` to `true` is prohibited.[0m
+      |         | (WordPressVIPMinimum.Performance.WPQueryParams.SuppressFilters_suppress_filters)
+ 1408 | [31mERROR[0m   | [1mdate() is affected by runtime timezone changes which can[0m
+      |         | [1mcause date/time to be incorrectly displayed. Use gmdate()[0m
+      |         | [1minstead.[0m (WordPress.DateTime.RestrictedFunctions.date_date)
+ 1429 | [31mERROR[0m   | [1mdate() is affected by runtime timezone changes which can[0m
+      |         | [1mcause date/time to be incorrectly displayed. Use gmdate()[0m
+      |         | [1minstead.[0m (WordPress.DateTime.RestrictedFunctions.date_date)
+ 1587 | [33mWARNING[0m | [1mDetected usage of tax_query, possible slow query.[0m
+      |         | (WordPress.DB.SlowDBQuery.slow_db_query_tax_query)
+ 1601 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+      |         | [1mindex: $_GET['nonce']. Check that the array index exists[0m
+      |         | [1mbefore using it.[0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+ 1605 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+      |         | [1mindex: $_GET['start_date']. Check that the array index exists[0m
+      |         | [1mbefore using it.[0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+ 1606 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+      |         | [1mindex: $_GET['number_of_weeks']. Check that the array index[0m
+      |         | [1mexists before using it.[0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+ 1675 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+      |         | [1mindex: $_GET['nonce']. Check that the array index exists[0m
+      |         | [1mbefore using it.[0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+ 1679 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+      |         | [1mindex: $_GET['id']. Check that the array index exists before[0m
+      |         | [1musing it.[0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+ 1709 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+      |         | [1mindex: $_GET['nonce']. Check that the array index exists[0m
+      |         | [1mbefore using it.[0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+ 1766 | [31mERROR[0m   | [1mdate() is affected by runtime timezone changes which can[0m
+      |         | [1mcause date/time to be incorrectly displayed. Use gmdate()[0m
+      |         | [1minstead.[0m (WordPress.DateTime.RestrictedFunctions.date_date)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: modules/theeventscalendar-integration/theeventscalendar-integration.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 1 ERROR AFFECTING 1 LINE[0m
+--------------------------------------------------------------------------------
+ 88 | [31mERROR[0m | [1mdate() is affected by runtime timezone changes which can cause[0m
+    |       | [1mdate/time to be incorrectly displayed. Use gmdate() instead.[0m
+    |       | (WordPress.DateTime.RestrictedFunctions.date_date)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: modules/content-overview/library/content-overview-utilities.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 7 ERRORS AFFECTING 7 LINES[0m
+--------------------------------------------------------------------------------
+  92 | [31mERROR[0m | [1mWrong escaping function. HTML attributes should be escaped by[0m
+     |       | [1m`esc_attr()`, not by `esc_html()`.[0m
+     |       | (WordPressVIPMinimum.Security.ProperEscapingFunction.htmlAttrNotByEscHTML)
+ 238 | [31mERROR[0m | [1mWrong escaping function. HTML attributes should be escaped by[0m
+     |       | [1m`esc_attr()`, not by `esc_html()`.[0m
+     |       | (WordPressVIPMinimum.Security.ProperEscapingFunction.htmlAttrNotByEscHTML)
+ 419 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+     |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |       | [1m'stripslashes_deep'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 449 | [31mERROR[0m | [1mWrong escaping function. HTML attributes should be escaped by[0m
+     |       | [1m`esc_attr()`, not by `esc_html_e()`.[0m
+     |       | (WordPressVIPMinimum.Security.ProperEscapingFunction.htmlAttrNotByEscHTML)
+ 653 | [31mERROR[0m | [1mWrong escaping function. HTML attributes should be escaped by[0m
+     |       | [1m`esc_attr()`, not by `esc_html__()`.[0m
+     |       | (WordPressVIPMinimum.Security.ProperEscapingFunction.htmlAttrNotByEscHTML)
+ 663 | [31mERROR[0m | [1mWrong escaping function. HTML attributes should be escaped by[0m
+     |       | [1m`esc_attr()`, not by `esc_html__()`.[0m
+     |       | (WordPressVIPMinimum.Security.ProperEscapingFunction.htmlAttrNotByEscHTML)
+ 719 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+     |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |       | [1m'$hide_all_label'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: modules/content-overview/library/content-overview-methods.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 5 ERRORS AND 8 WARNINGS AFFECTING 7 LINES[0m
+--------------------------------------------------------------------------------
+  31 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  31 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 391 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 391 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 392 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 394 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 394 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 394 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 401 | [31mERROR[0m   | [1mdate() is affected by runtime timezone changes which can cause[0m
+     |         | [1mdate/time to be incorrectly displayed. Use gmdate() instead.[0m
+     |         | (WordPress.DateTime.RestrictedFunctions.date_date)
+ 402 | [31mERROR[0m   | [1mdate() is affected by runtime timezone changes which can cause[0m
+     |         | [1mdate/time to be incorrectly displayed. Use gmdate() instead.[0m
+     |         | (WordPress.DateTime.RestrictedFunctions.date_date)
+ 418 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$start_date_value'.[0m
+     |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 418 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$end_date_value'.[0m
+     |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 418 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$nonce'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: modules/content-overview/content-overview.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 9 ERRORS AND 8 WARNINGS AFFECTING 16 LINES[0m
+--------------------------------------------------------------------------------
+  182 | [33mWARNING[0m | [1mHaving more than 100 posts returned per page may lead to[0m
+      |         | [1msevere performance problems.[0m
+      |         | (WordPress.WP.PostsPerPage.posts_per_page_posts_per_page)
+  585 | [31mERROR[0m   | [1mdate() is affected by runtime timezone changes which can[0m
+      |         | [1mcause date/time to be incorrectly displayed. Use gmdate()[0m
+      |         | [1minstead.[0m (WordPress.DateTime.RestrictedFunctions.date_date)
+  637 | [31mERROR[0m   | [1mdate() is affected by runtime timezone changes which can[0m
+      |         | [1mcause date/time to be incorrectly displayed. Use gmdate()[0m
+      |         | [1minstead.[0m (WordPress.DateTime.RestrictedFunctions.date_date)
+  640 | [33mWARNING[0m | [1mDetected usage of a non-sanitized input variable:[0m
+      |         | [1m$_REQUEST['pp-content-overview-end-date_hidden'][0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotSanitized)
+  640 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+      |         | [1mindex: $_REQUEST['pp-content-overview-end-date_hidden'].[0m
+      |         | [1mCheck that the array index exists before using it.[0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+  643 | [31mERROR[0m   | [1mdate() is affected by runtime timezone changes which can[0m
+      |         | [1mcause date/time to be incorrectly displayed. Use gmdate()[0m
+      |         | [1minstead.[0m (WordPress.DateTime.RestrictedFunctions.date_date)
+  716 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+      |         | [1mindex: $_POST['aa']. Check that the array index exists before[0m
+      |         | [1musing it.[0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+  718 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+      |         | [1mindex: $_POST['jj']. Check that the array index exists before[0m
+      |         | [1musing it.[0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+  719 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+      |         | [1mindex: $_POST['hh']. Check that the array index exists before[0m
+      |         | [1musing it.[0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+  720 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+      |         | [1mindex: $_POST['mn']. Check that the array index exists before[0m
+      |         | [1musing it.[0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+  721 | [31mERROR[0m   | [1mDetected usage of a possibly undefined superglobal array[0m
+      |         | [1mindex: $_POST['ss']. Check that the array index exists before[0m
+      |         | [1musing it.[0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotValidated)
+  838 | [33mWARNING[0m | [1mThis comment is 36% valid code; is this commented out code?[0m
+      |         | (Squiz.PHP.CommentedOutCode.Found)
+ 1474 | [33mWARNING[0m | [1mDetected usage of meta_query, possible slow query.[0m
+      |         | (WordPress.DB.SlowDBQuery.slow_db_query_meta_query)
+ 1478 | [33mWARNING[0m | [1mDetected usage of tax_query, possible slow query.[0m
+      |         | (WordPress.DB.SlowDBQuery.slow_db_query_tax_query)
+ 1689 | [33mWARNING[0m | [1mprint_r() found. Debug code should not normally be used in[0m
+      |         | [1mproduction.[0m
+      |         | (WordPress.PHP.DevelopmentFunctions.error_log_print_r)
+ 1906 | [33mWARNING[0m | [1mDetected usage of a non-sanitized input variable:[0m
+      |         | [1m$_GET['taxonomy'][0m
+      |         | (WordPress.Security.ValidatedSanitizedInput.InputNotSanitized)
+ 1916 | [33mWARNING[0m | [1mRedeclaration of global variable $wpdb as global variable.[0m
+      |         | (VariableAnalysis.CodeAnalysis.VariableAnalysis.VariableRedeclaration)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: common/php/class-module.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 2 ERRORS AND 16 WARNINGS AFFECTING 12 LINES[0m
+--------------------------------------------------------------------------------
+  499 | [33mWARNING[0m | [1mjson_encode() is discouraged. Use wp_json_encode() instead.[0m
+      |         | (WordPress.WP.AlternativeFunctions.json_encode_json_encode)
+  518 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  518 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  541 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  545 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  545 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  545 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  551 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  551 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  558 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  558 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  606 | [33mWARNING[0m | [1munserialize() found. Serialized data has known vulnerability[0m
+      |         | [1mproblems with Object Injection. JSON is generally a better[0m
+      |         | [1mapproach for serializing data. See[0m
+      |         | [1mhttps://www.owasp.org/index.php/PHP_Object_Injection[0m
+      |         | (WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize)
+  677 | [31mERROR[0m   | [1mdate() is affected by runtime timezone changes which can[0m
+      |         | [1mcause date/time to be incorrectly displayed. Use gmdate()[0m
+      |         | [1minstead.[0m (WordPress.DateTime.RestrictedFunctions.date_date)
+  680 | [31mERROR[0m   | [1mdate() is affected by runtime timezone changes which can[0m
+      |         | [1mcause date/time to be incorrectly displayed. Use gmdate()[0m
+      |         | [1minstead.[0m (WordPress.DateTime.RestrictedFunctions.date_date)
+  737 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  737 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+ 1006 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+ 1030 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: common/php/screen-options.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 1 ERROR AFFECTING 1 LINE[0m
+--------------------------------------------------------------------------------
+ 212 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m
+     |       | (WordPress.Security.NonceVerification.Missing)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: views/workflow_event_field.html.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 1 ERROR AFFECTING 1 LINE[0m
+--------------------------------------------------------------------------------
+ 16 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+    |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+    |       | [1m'$event_filter'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: views/workflow_filter_post_status.html.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 2 ERRORS AFFECTING 2 LINES[0m
+--------------------------------------------------------------------------------
+  1 | [31mERROR[0m | [1mWrong escaping function, using `esc_attr()` in a context outside[0m
+    |       | [1mof HTML attributes may not escape properly.[0m
+    |       | (WordPressVIPMinimum.Security.ProperEscapingFunction.notAttrEscAttr)
+ 10 | [31mERROR[0m | [1mWrong escaping function, using `esc_attr()` in a context outside[0m
+    |       | [1mof HTML attributes may not escape properly.[0m
+    |       | (WordPressVIPMinimum.Security.ProperEscapingFunction.notAttrEscAttr)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: views/workflow_metabox_section.html.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 2 ERRORS AFFECTING 2 LINES[0m
+--------------------------------------------------------------------------------
+ 5 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+   |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+   |       | [1m'$context['header']'.[0m
+   |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 9 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+   |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+   |       | [1m'$context['html']'.[0m
+   |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: views/workflow_metabox.html.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 5 ERRORS AFFECTING 5 LINES[0m
+--------------------------------------------------------------------------------
+  4 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+    |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+    |       | [1m'$context['section_event']'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  7 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+    |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+    |       | [1m'$context['section_event_content']'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 10 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+    |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+    |       | [1m'$context['section_receiver']'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 13 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+    |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+    |       | [1m'$context['section_content']'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 16 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+    |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+    |       | [1m'$context['section_channel']'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: views/workflow_receiver_group_field.html.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 1 ERROR AFFECTING 1 LINE[0m
+--------------------------------------------------------------------------------
+ 15 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+    |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+    |       | [1m'$group_object'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: views/workflow_metabox_options.html.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 2 ERRORS AFFECTING 2 LINES[0m
+--------------------------------------------------------------------------------
+ 2 | [31mERROR[0m | [ ] [1mAll output should be run through an escaping function (see the[0m
+   |       |     [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+   |       |     [1m'$option'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 3 | [31mERROR[0m | [x] [1mA closing tag is not permitted at the end of a PHP file[0m
+   |       |     (PSR2.Files.ClosingTag.NotAllowed)
+--------------------------------------------------------------------------------
+[1mPHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY[0m
+--------------------------------------------------------------------------------
+
+
+[1mFILE: views/workflow_receiver_role_field.html.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 2 ERRORS AFFECTING 2 LINES[0m
+--------------------------------------------------------------------------------
+ 12 | [31mERROR[0m | [1mOverriding WordPress globals is prohibited. Found assignment to[0m
+    |       | [1m$role[0m (WordPress.WP.GlobalVariablesOverride.Prohibited)
+ 14 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+    |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+    |       | [1m'$role_object'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: publishpress.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 2 ERRORS AND 16 WARNINGS AFFECTING 15 LINES[0m
+--------------------------------------------------------------------------------
+  799 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  799 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  800 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  800 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  801 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  861 | [33mWARNING[0m | [1mRedeclaration of global variable $pagenow as global variable.[0m
+      |         | (VariableAnalysis.CodeAnalysis.VariableAnalysis.VariableRedeclaration)
+ 1007 | [31mERROR[0m   | [1mOverriding WordPress globals is prohibited. Found assignment[0m
+      |         | [1mto $submenu[0m (WordPress.WP.GlobalVariablesOverride.Prohibited)
+ 1077 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+ 1082 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+ 1125 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+ 1149 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+ 1151 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+ 1152 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+ 1154 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+ 1387 | [33mWARNING[0m | [1mUse of a direct database call is discouraged.[0m
+      |         | (WordPress.DB.DirectDatabaseQuery.DirectQuery)
+ 1387 | [33mWARNING[0m | [1mDirect database call without caching detected. Consider using[0m
+      |         | [1mwp_cache_get() / wp_cache_set() or wp_cache_delete().[0m
+      |         | (WordPress.DB.DirectDatabaseQuery.NoCaching)
+ 1485 | [33mWARNING[0m | [1mThis comment is 42% valid code; is this commented out code?[0m
+      |         | (Squiz.PHP.CommentedOutCode.Found)
+ 1501 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$msg'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: includes.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 1 ERROR AFFECTING 1 LINE[0m
+--------------------------------------------------------------------------------
+ 118 | [31mERROR[0m | [1mOverriding WordPress globals is prohibited. Found assignment to[0m
+     |       | [1m$plugin[0m (WordPress.WP.GlobalVariablesOverride.Prohibited)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: lib/Legacy/Util.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 2 ERRORS AND 5 WARNINGS AFFECTING 5 LINES[0m
+--------------------------------------------------------------------------------
+  45 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  45 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  53 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  54 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  59 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 164 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+ 164 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Missing)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: lib/Legacy/Auto_loader.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 1 ERROR AFFECTING 1 LINE[0m
+--------------------------------------------------------------------------------
+ 117 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+     |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |       | [1m'"Cannot register '{$prefix}'. The requested base directory does[0m
+     |       | [1mnot exist!'"'.[0m
+     |       | (WordPress.Security.EscapeOutput.ExceptionNotEscaped)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: lib/Notifications/Workflow/Step/Content/Main.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 3 ERRORS AND 1 WARNING AFFECTING 3 LINES[0m
+--------------------------------------------------------------------------------
+ 74 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+    |         | (WordPress.Security.NonceVerification.Missing)
+ 75 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+    |         | (WordPress.Security.NonceVerification.Missing)
+ 76 | [33mWARNING[0m | [1mDetected usage of a non-sanitized input variable:[0m
+    |         | [1m$_POST['publishpress_notif']['content_main'][0m
+    |         | (WordPress.Security.ValidatedSanitizedInput.InputNotSanitized)
+ 76 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+    |         | (WordPress.Security.NonceVerification.Missing)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: lib/Notifications/Workflow/Step/Channel/Email.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 0 ERRORS AND 3 WARNINGS AFFECTING 3 LINES[0m
+--------------------------------------------------------------------------------
+ 218 | [33mWARNING[0m | [1mjson_encode() is discouraged. Use wp_json_encode() instead.[0m
+     |         | (WordPress.WP.AlternativeFunctions.json_encode_json_encode)
+ 219 | [33mWARNING[0m | [1mjson_encode() is discouraged. Use wp_json_encode() instead.[0m
+     |         | (WordPress.WP.AlternativeFunctions.json_encode_json_encode)
+ 220 | [33mWARNING[0m | [1mjson_encode() is discouraged. Use wp_json_encode() instead.[0m
+     |         | (WordPress.WP.AlternativeFunctions.json_encode_json_encode)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: lib/Notifications/Workflow/Step/Base.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 1 ERROR AFFECTING 1 LINE[0m
+--------------------------------------------------------------------------------
+ 79 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+    |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+    |       | [1m'$this'.[0m (WordPress.Security.EscapeOutput.ExceptionNotEscaped)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: lib/Notifications/Workflow/Step/Receiver/Simple_Checkbox.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 3 ERRORS AND 1 WARNING AFFECTING 2 LINES[0m
+--------------------------------------------------------------------------------
+ 69 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+    |         | (WordPress.Security.NonceVerification.Missing)
+ 69 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+    |         | (WordPress.Security.NonceVerification.Missing)
+ 70 | [33mWARNING[0m | [1mDetected usage of a non-sanitized input variable:[0m
+    |         | [1m$_POST['publishpress_notif'][0m
+    |         | (WordPress.Security.ValidatedSanitizedInput.InputNotSanitized)
+ 70 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+    |         | (WordPress.Security.NonceVerification.Missing)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: lib/Notifications/Workflow/Step/Receiver/Role.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 3 ERRORS AND 1 WARNING AFFECTING 2 LINES[0m
+--------------------------------------------------------------------------------
+ 49 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+    |         | (WordPress.Security.NonceVerification.Missing)
+ 49 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+    |         | (WordPress.Security.NonceVerification.Missing)
+ 50 | [33mWARNING[0m | [1mDetected usage of a non-sanitized input variable:[0m
+    |         | [1m$_POST['publishpress_notif'][0m
+    |         | (WordPress.Security.ValidatedSanitizedInput.InputNotSanitized)
+ 50 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+    |         | (WordPress.Security.NonceVerification.Missing)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: lib/Notifications/Workflow/Step/Receiver/Follower.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 4 ERRORS AFFECTING 3 LINES[0m
+--------------------------------------------------------------------------------
+ 66 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m
+    |       | (WordPress.Security.NonceVerification.Missing)
+ 66 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m
+    |       | (WordPress.Security.NonceVerification.Missing)
+ 69 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m
+    |       | (WordPress.Security.NonceVerification.Missing)
+ 70 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m
+    |       | (WordPress.Security.NonceVerification.Missing)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: lib/Notifications/Workflow/Step/Receiver/Group.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 3 ERRORS AND 1 WARNING AFFECTING 2 LINES[0m
+--------------------------------------------------------------------------------
+ 49 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+    |         | (WordPress.Security.NonceVerification.Missing)
+ 49 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+    |         | (WordPress.Security.NonceVerification.Missing)
+ 50 | [33mWARNING[0m | [1mDetected usage of a non-sanitized input variable:[0m
+    |         | [1m$_POST['publishpress_notif'][0m
+    |         | (WordPress.Security.ValidatedSanitizedInput.InputNotSanitized)
+ 50 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+    |         | (WordPress.Security.NonceVerification.Missing)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: lib/Notifications/Workflow/Step/Receiver/User.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 3 ERRORS AND 1 WARNING AFFECTING 2 LINES[0m
+--------------------------------------------------------------------------------
+ 44 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+    |         | (WordPress.Security.NonceVerification.Missing)
+ 44 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+    |         | (WordPress.Security.NonceVerification.Missing)
+ 45 | [33mWARNING[0m | [1mDetected usage of a non-sanitized input variable:[0m
+    |         | [1m$_POST['publishpress_notif'][0m
+    |         | (WordPress.Security.ValidatedSanitizedInput.InputNotSanitized)
+ 45 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+    |         | (WordPress.Security.NonceVerification.Missing)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: lib/Notifications/Workflow/Step/Event_Content/Filter/Post_Type.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 5 ERRORS AND 1 WARNING AFFECTING 5 LINES[0m
+--------------------------------------------------------------------------------
+ 27 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+    |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+    |         | [1m'$this'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 32 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+    |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+    |         | [1m'$this'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 70 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+    |         | (WordPress.Security.NonceVerification.Missing)
+ 71 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+    |         | (WordPress.Security.NonceVerification.Missing)
+ 72 | [33mWARNING[0m | [1mDetected usage of a non-sanitized input variable:[0m
+    |         | [1m$_POST['publishpress_notif']["{$this->step_name}_filters"][0m
+    |         | (WordPress.Security.ValidatedSanitizedInput.InputNotSanitized)
+ 72 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+    |         | (WordPress.Security.NonceVerification.Missing)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: lib/Notifications/Workflow/Step/Event_Content/Filter/Category.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 5 ERRORS AND 1 WARNING AFFECTING 5 LINES[0m
+--------------------------------------------------------------------------------
+ 27 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+    |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+    |         | [1m'$this'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 32 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+    |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+    |         | [1m'$this'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 78 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+    |         | (WordPress.Security.NonceVerification.Missing)
+ 79 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+    |         | (WordPress.Security.NonceVerification.Missing)
+ 80 | [33mWARNING[0m | [1mDetected usage of a non-sanitized input variable:[0m
+    |         | [1m$_POST['publishpress_notif']["{$this->step_name}_filters"][0m
+    |         | (WordPress.Security.ValidatedSanitizedInput.InputNotSanitized)
+ 80 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+    |         | (WordPress.Security.NonceVerification.Missing)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: lib/Notifications/Workflow/Step/Event_Content/Filter/Term.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 5 ERRORS AND 1 WARNING AFFECTING 4 LINES[0m
+--------------------------------------------------------------------------------
+ 37 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+    |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+    |         | [1m'$this'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 37 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+    |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+    |         | [1m'$context'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 87 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+    |         | (WordPress.Security.NonceVerification.Missing)
+ 88 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+    |         | (WordPress.Security.NonceVerification.Missing)
+ 89 | [33mWARNING[0m | [1mDetected usage of a non-sanitized input variable:[0m
+    |         | [1m$_POST['publishpress_notif']["{$this->step_name}_filters"][0m
+    |         | (WordPress.Security.ValidatedSanitizedInput.InputNotSanitized)
+ 89 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+    |         | (WordPress.Security.NonceVerification.Missing)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: lib/Notifications/Workflow/Step/Event/Filter/Taxonomies.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 4 ERRORS AFFECTING 4 LINES[0m
+--------------------------------------------------------------------------------
+ 27 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+    |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+    |       | [1m'$this'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 32 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+    |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+    |       | [1m'$this'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 82 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m
+    |       | (WordPress.Security.NonceVerification.Missing)
+ 87 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m
+    |       | (WordPress.Security.NonceVerification.Missing)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: lib/Notifications/Workflow/Step/Event/Filter/Post_Status.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 7 ERRORS AFFECTING 7 LINES[0m
+--------------------------------------------------------------------------------
+  26 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+     |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |       | [1m'$this'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  31 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+     |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |       | [1m'$this'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  32 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+     |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |       | [1m'$this'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 112 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m
+     |       | (WordPress.Security.NonceVerification.Missing)
+ 117 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m
+     |       | (WordPress.Security.NonceVerification.Missing)
+ 124 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m
+     |       | (WordPress.Security.NonceVerification.Missing)
+ 129 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m
+     |       | (WordPress.Security.NonceVerification.Missing)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: lib/Notifications/Workflow/Step/Event/Base.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 3 ERRORS AND 1 WARNING AFFECTING 2 LINES[0m
+--------------------------------------------------------------------------------
+ 80 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+    |         | (WordPress.Security.NonceVerification.Missing)
+ 80 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+    |         | (WordPress.Security.NonceVerification.Missing)
+ 81 | [33mWARNING[0m | [1mDetected usage of a non-sanitized input variable:[0m
+    |         | [1m$_POST['publishpress_notif'][0m
+    |         | (WordPress.Security.ValidatedSanitizedInput.InputNotSanitized)
+ 81 | [31mERROR[0m   | [1mProcessing form data without nonce verification.[0m
+    |         | (WordPress.Security.NonceVerification.Missing)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: lib/Notifications/Workflow/Option/SkipUser.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 2 ERRORS AFFECTING 2 LINES[0m
+--------------------------------------------------------------------------------
+ 42 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m
+    |       | (WordPress.Security.NonceVerification.Missing)
+ 43 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m
+    |       | (WordPress.Security.NonceVerification.Missing)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: lib/Notifications/Workflow/WorkflowsController.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 3 ERRORS AND 4 WARNINGS AFFECTING 6 LINES[0m
+--------------------------------------------------------------------------------
+  63 | [31mERROR[0m   | [1merror_log() found. Debug code should not normally be used in[0m
+     |         | [1mproduction.[0m
+     |         | (WordPress.PHP.DevelopmentFunctions.error_log_error_log)
+  92 | [31mERROR[0m   | [1mDisabling pagination is prohibited in VIP context, do not set[0m
+     |         | [1m`nopaging` to `true` ever.[0m
+     |         | (WordPressVIPMinimum.Performance.NoPaging.nopaging_nopaging)
+  98 | [33mWARNING[0m | [1mDetected usage of meta_query, possible slow query.[0m
+     |         | (WordPress.DB.SlowDBQuery.slow_db_query_meta_query)
+ 115 | [33mWARNING[0m | [1mUse of a direct database call is discouraged.[0m
+     |         | (WordPress.DB.DirectDatabaseQuery.DirectQuery)
+ 115 | [33mWARNING[0m | [1mDirect database call without caching detected. Consider using[0m
+     |         | [1mwp_cache_get() / wp_cache_set() or wp_cache_delete().[0m
+     |         | (WordPress.DB.DirectDatabaseQuery.NoCaching)
+ 296 | [31mERROR[0m   | [1mDisabling pagination is prohibited in VIP context, do not set[0m
+     |         | [1m`nopaging` to `true` ever.[0m
+     |         | (WordPressVIPMinimum.Performance.NoPaging.nopaging_nopaging)
+ 301 | [33mWARNING[0m | [1mDetected usage of meta_query, possible slow query.[0m
+     |         | (WordPress.DB.SlowDBQuery.slow_db_query_meta_query)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: lib/Notifications/Table/Workflows.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 0 ERRORS AND 7 WARNINGS AFFECTING 4 LINES[0m
+--------------------------------------------------------------------------------
+  91 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  91 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  92 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  92 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 109 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 109 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 189 | [33mWARNING[0m | [1mprint_r() found. Debug code should not normally be used in[0m
+     |         | [1mproduction.[0m
+     |         | (WordPress.PHP.DevelopmentFunctions.error_log_print_r)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: lib/Notifications/Table/Base.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 15 ERRORS AND 25 WARNINGS AFFECTING 30 LINES[0m
+--------------------------------------------------------------------------------
+  176 | [33mWARNING[0m | [1mThis comment is 58% valid code; is this commented out code?[0m
+      |         | (Squiz.PHP.CommentedOutCode.Found)
+  320 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  320 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  341 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  347 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  348 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  350 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  351 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  353 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  354 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  356 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  357 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  413 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$views'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  441 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  441 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  445 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  445 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  446 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  449 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  449 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  450 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  844 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$this'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  881 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  882 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  887 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+  887 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+ 1115 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$this'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1118 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound 'call_user_func'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1126 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '"<td $attributes>"'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1127 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound 'call_user_func'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1128 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$this'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1128 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$column_name'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1128 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$primary'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1131 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '"<td $attributes>"'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1132 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$this'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1132 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$column_name'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1133 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$this'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1133 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$column_name'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1133 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see[0m
+      |         | [1mthe Security sections in the WordPress Developer Handbooks),[0m
+      |         | [1mfound '$primary'.[0m
+      |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 1213 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+      |         | (WordPress.Security.NonceVerification.Recommended)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: lib/Notifications/Table/Notifications.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 0 ERRORS AND 8 WARNINGS AFFECTING 5 LINES[0m
+--------------------------------------------------------------------------------
+  94 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  94 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  95 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+  95 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 106 | [33mWARNING[0m | [1mDetected usage of meta_query, possible slow query.[0m
+     |         | (WordPress.DB.SlowDBQuery.slow_db_query_meta_query)
+ 123 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 123 | [33mWARNING[0m | [1mProcessing form data without nonce verification.[0m
+     |         | (WordPress.Security.NonceVerification.Recommended)
+ 207 | [33mWARNING[0m | [1mprint_r() found. Debug code should not normally be used in[0m
+     |         | [1mproduction.[0m
+     |         | (WordPress.PHP.DevelopmentFunctions.error_log_print_r)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: lib/Notifications/Plugin.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 5 ERRORS AND 2 WARNINGS AFFECTING 6 LINES[0m
+--------------------------------------------------------------------------------
+ 197 | [33mWARNING[0m | [1mUse of a direct database call is discouraged.[0m
+     |         | (WordPress.DB.DirectDatabaseQuery.DirectQuery)
+ 197 | [33mWARNING[0m | [1mDirect database call without caching detected. Consider using[0m
+     |         | [1mwp_cache_get() / wp_cache_set() or wp_cache_delete().[0m
+     |         | (WordPress.DB.DirectDatabaseQuery.NoCaching)
+ 346 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'__'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 351 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$events'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 379 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'__'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 381 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$filters'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 403 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'$values'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: lib/Notifications/Traits/Dependency_Injector.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 1 ERROR AFFECTING 1 LINE[0m
+--------------------------------------------------------------------------------
+ 39 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+    |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+    |       | [1m'"Service \"{$service_name}\" not found in the container"'.[0m
+    |       | (WordPress.Security.EscapeOutput.ExceptionNotEscaped)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: dev-workspace/scripts/plugin-bump-version.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 1 ERROR AND 11 WARNINGS AFFECTING 11 LINES[0m
+--------------------------------------------------------------------------------
+   9 | [33mWARNING[0m | [1mfile_get_contents() is uncached. If the function is being used[0m
+     |         | [1mto fetch a remote file (e.g. a URL starting with https://),[0m
+     |         | [1mplease use wpcom_vip_file_get_contents() to ensure the results[0m
+     |         | [1mare cached. For more details, please see:[0m
+     |         | [1mhttps://docs.wpvip.com/technical-references/code-quality-and-best-practices/retrieving-remote-data/[0m
+     |         | (WordPressVIPMinimum.Performance.FetchingRemoteData.FileGetContentsUnknown)
+  60 | [33mWARNING[0m | [1mfile_get_contents() is uncached. If the function is being used[0m
+     |         | [1mto fetch a remote file (e.g. a URL starting with https://),[0m
+     |         | [1mplease use wpcom_vip_file_get_contents() to ensure the results[0m
+     |         | [1mare cached. For more details, please see:[0m
+     |         | [1mhttps://docs.wpvip.com/technical-references/code-quality-and-best-practices/retrieving-remote-data/[0m
+     |         | (WordPressVIPMinimum.Performance.FetchingRemoteData.FileGetContentsUnknown)
+  70 | [33mWARNING[0m | [1mFile system operations only work on the `/tmp/` and[0m
+     |         | [1m`wp-content/uploads/` directories. To avoid unexpected[0m
+     |         | [1mresults, please use helper functions like `get_temp_dir()`  or[0m
+     |         | [1m`wp_get_upload_dir()` to get the proper directory path when[0m
+     |         | [1musing functions such as file_put_contents(). For more details,[0m
+     |         | [1mplease see:[0m
+     |         | [1mhttps://docs.wpvip.com/technical-references/vip-go-files-system/local-file-operations/[0m
+     |         | (WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_file_put_contents)
+  77 | [33mWARNING[0m | [1mfile_get_contents() is uncached. If the function is being used[0m
+     |         | [1mto fetch a remote file (e.g. a URL starting with https://),[0m
+     |         | [1mplease use wpcom_vip_file_get_contents() to ensure the results[0m
+     |         | [1mare cached. For more details, please see:[0m
+     |         | [1mhttps://docs.wpvip.com/technical-references/code-quality-and-best-practices/retrieving-remote-data/[0m
+     |         | (WordPressVIPMinimum.Performance.FetchingRemoteData.FileGetContentsUnknown)
+  85 | [33mWARNING[0m | [1mFile system operations only work on the `/tmp/` and[0m
+     |         | [1m`wp-content/uploads/` directories. To avoid unexpected[0m
+     |         | [1mresults, please use helper functions like `get_temp_dir()`  or[0m
+     |         | [1m`wp_get_upload_dir()` to get the proper directory path when[0m
+     |         | [1musing functions such as file_put_contents(). For more details,[0m
+     |         | [1mplease see:[0m
+     |         | [1mhttps://docs.wpvip.com/technical-references/vip-go-files-system/local-file-operations/[0m
+     |         | (WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_file_put_contents)
+  92 | [33mWARNING[0m | [1mfile_get_contents() is uncached. If the function is being used[0m
+     |         | [1mto fetch a remote file (e.g. a URL starting with https://),[0m
+     |         | [1mplease use wpcom_vip_file_get_contents() to ensure the results[0m
+     |         | [1mare cached. For more details, please see:[0m
+     |         | [1mhttps://docs.wpvip.com/technical-references/code-quality-and-best-practices/retrieving-remote-data/[0m
+     |         | (WordPressVIPMinimum.Performance.FetchingRemoteData.FileGetContentsUnknown)
+ 100 | [33mWARNING[0m | [1mFile system operations only work on the `/tmp/` and[0m
+     |         | [1m`wp-content/uploads/` directories. To avoid unexpected[0m
+     |         | [1mresults, please use helper functions like `get_temp_dir()`  or[0m
+     |         | [1m`wp_get_upload_dir()` to get the proper directory path when[0m
+     |         | [1musing functions such as file_put_contents(). For more details,[0m
+     |         | [1mplease see:[0m
+     |         | [1mhttps://docs.wpvip.com/technical-references/vip-go-files-system/local-file-operations/[0m
+     |         | (WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_file_put_contents)
+ 105 | [33mWARNING[0m | [1mfile_get_contents() is uncached. If the function is being used[0m
+     |         | [1mto fetch a remote file (e.g. a URL starting with https://),[0m
+     |         | [1mplease use wpcom_vip_file_get_contents() to ensure the results[0m
+     |         | [1mare cached. For more details, please see:[0m
+     |         | [1mhttps://docs.wpvip.com/technical-references/code-quality-and-best-practices/retrieving-remote-data/[0m
+     |         | (WordPressVIPMinimum.Performance.FetchingRemoteData.FileGetContentsUnknown)
+ 109 | [33mWARNING[0m | [1mFile system operations only work on the `/tmp/` and[0m
+     |         | [1m`wp-content/uploads/` directories. To avoid unexpected[0m
+     |         | [1mresults, please use helper functions like `get_temp_dir()`  or[0m
+     |         | [1m`wp_get_upload_dir()` to get the proper directory path when[0m
+     |         | [1musing functions such as file_put_contents(). For more details,[0m
+     |         | [1mplease see:[0m
+     |         | [1mhttps://docs.wpvip.com/technical-references/vip-go-files-system/local-file-operations/[0m
+     |         | (WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_file_put_contents)
+ 109 | [33mWARNING[0m | [1mjson_encode() is discouraged. Use wp_json_encode() instead.[0m
+     |         | (WordPress.WP.AlternativeFunctions.json_encode_json_encode)
+ 114 | [33mWARNING[0m | [1mThis comment is 60% valid code; is this commented out code?[0m
+     |         | (Squiz.PHP.CommentedOutCode.Found)
+ 120 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+     |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |         | [1m'NEW_VERSION'.[0m
+     |         | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: dev-workspace/scripts/php/src/Utils/PoFileProcessor.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 2 ERRORS AND 8 WARNINGS AFFECTING 10 LINES[0m
+--------------------------------------------------------------------------------
+ 65 | [33mWARNING[0m | [1mUsing cURL functions is highly discouraged within VIP context.[0m
+    |         | [1mPlease see:[0m
+    |         | [1mhttps://docs.wpvip.com/technical-references/code-quality-and-best-practices/retrieving-remote-data/.[0m
+    |         | (WordPress.WP.AlternativeFunctions.curl_curl_init)
+ 66 | [33mWARNING[0m | [1mUsing cURL functions is highly discouraged. Use wp_remote_get()[0m
+    |         | [1minstead.[0m
+    |         | (WordPress.WP.AlternativeFunctions.curl_curl_setopt_array)
+ 73 | [33mWARNING[0m | [1mUsing cURL functions is highly discouraged. Use wp_remote_get()[0m
+    |         | [1minstead.[0m (WordPress.WP.AlternativeFunctions.curl_curl_exec)
+ 74 | [33mWARNING[0m | [1mUsing cURL functions is highly discouraged within VIP context.[0m
+    |         | [1mPlease see:[0m
+    |         | [1mhttps://docs.wpvip.com/technical-references/code-quality-and-best-practices/retrieving-remote-data/.[0m
+    |         | (WordPress.WP.AlternativeFunctions.curl_curl_getinfo)
+ 77 | [33mWARNING[0m | [1mUsing cURL functions is highly discouraged. Use wp_remote_get()[0m
+    |         | [1minstead.[0m (WordPress.WP.AlternativeFunctions.curl_curl_error)
+ 78 | [33mWARNING[0m | [1mUsing cURL functions is highly discouraged within VIP context.[0m
+    |         | [1mPlease see:[0m
+    |         | [1mhttps://docs.wpvip.com/technical-references/code-quality-and-best-practices/retrieving-remote-data/.[0m
+    |         | (WordPress.WP.AlternativeFunctions.curl_curl_close)
+ 79 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+    |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+    |         | [1m'"Failed to download remote file '{$poFile}'. Error:[0m
+    |         | [1m{$error}"'.[0m
+    |         | (WordPress.Security.EscapeOutput.ExceptionNotEscaped)
+ 82 | [33mWARNING[0m | [1mUsing cURL functions is highly discouraged within VIP context.[0m
+    |         | [1mPlease see:[0m
+    |         | [1mhttps://docs.wpvip.com/technical-references/code-quality-and-best-practices/retrieving-remote-data/.[0m
+    |         | (WordPress.WP.AlternativeFunctions.curl_curl_close)
+ 85 | [31mERROR[0m   | [1mAll output should be run through an escaping function (see the[0m
+    |         | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+    |         | [1m'"Local file '{$poFile}' not found"'.[0m
+    |         | (WordPress.Security.EscapeOutput.ExceptionNotEscaped)
+ 87 | [33mWARNING[0m | [1mfile_get_contents() is uncached. If the function is being used[0m
+    |         | [1mto fetch a remote file (e.g. a URL starting with https://),[0m
+    |         | [1mplease use wpcom_vip_file_get_contents() to ensure the results[0m
+    |         | [1mare cached. For more details, please see:[0m
+    |         | [1mhttps://docs.wpvip.com/technical-references/code-quality-and-best-practices/retrieving-remote-data/[0m
+    |         | (WordPressVIPMinimum.Performance.FetchingRemoteData.FileGetContentsUnknown)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: dev-workspace/scripts/php/src/Command/Release/PreReleaseCommand.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 2 ERRORS AFFECTING 2 LINES[0m
+--------------------------------------------------------------------------------
+ 107 | [31mERROR[0m | [1mexec() found. PHP system calls are often disabled by server[0m
+     |       | [1madmins.[0m
+     |       | (WordPress.PHP.DiscouragedPHPFunctions.system_calls_exec)
+ 112 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+     |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |       | [1m'$output'.[0m (WordPress.Security.EscapeOutput.ExceptionNotEscaped)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: statuses-intro.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 1 ERROR AND 3 WARNINGS AFFECTING 4 LINES[0m
+--------------------------------------------------------------------------------
+  65 | [33mWARNING[0m | [1mDetected usage of a non-sanitized input variable:[0m
+     |         | [1m$_SERVER['HTTP_REFERER'][0m
+     |         | (WordPress.Security.ValidatedSanitizedInput.InputNotSanitized)
+  66 | [33mWARNING[0m | [1mDetected usage of a non-sanitized input variable:[0m
+     |         | [1m$_SERVER['HTTP_REFERER'][0m
+     |         | (WordPress.Security.ValidatedSanitizedInput.InputNotSanitized)
+  88 | [33mWARNING[0m | [1mThis comment is 52% valid code; is this commented out code?[0m
+     |         | (Squiz.PHP.CommentedOutCode.Found)
+ 112 | [31mERROR[0m   | [1mOverriding WordPress globals is prohibited. Found assignment[0m
+     |         | [1mto $type[0m (WordPress.WP.GlobalVariablesOverride.Prohibited)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: core/View.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 1 ERROR AFFECTING 1 LINE[0m
+--------------------------------------------------------------------------------
+ 56 | [31mERROR[0m | [1merror_log() found. Debug code should not normally be used in[0m
+    |       | [1mproduction.[0m
+    |       | (WordPress.PHP.DevelopmentFunctions.error_log_error_log)
+--------------------------------------------------------------------------------
+
+
+[1mFILE: core/Error.php[0m
+--------------------------------------------------------------------------------
+[1mFOUND 2 ERRORS AFFECTING 1 LINE[0m
+--------------------------------------------------------------------------------
+ 148 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+     |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |       | [1m'$this'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 148 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the[0m
+     |       | [1mSecurity sections in the WordPress Developer Handbooks), found[0m
+     |       | [1m'$code'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+--------------------------------------------------------------------------------
+
+Time: 811ms; Memory: 10MB
+

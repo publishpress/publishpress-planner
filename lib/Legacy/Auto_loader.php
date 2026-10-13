@@ -114,7 +114,7 @@ class Auto_loader
     public static function registerCamelBase($prefix, $baseDir)
     {
         if (!is_dir($baseDir)) {
-            throw new Exception("Cannot register '{$prefix}'. The requested base directory does not exist!'");
+            throw new Exception('Cannot register "' . esc_html($prefix) . '". The requested base directory does not exist!');
         }
 
         if (count(self::$camelPrefixes) == 0) {

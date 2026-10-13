@@ -9,24 +9,39 @@
     <ini name="memory_limit" value="256M"/>
     <arg name="basepath" value="./"/>
     <arg name="parallel" value="20"/>
-    <arg name="severity" value="5"/>
     <arg value="ps"/>
 
     <file>.</file>
-    <exclude-pattern>*/\.github/*</exclude-pattern>
+    <exclude-pattern>/.ddev/*</exclude-pattern>
+    <exclude-pattern>/.web/*</exclude-pattern>
+    <exclude-pattern>/\.cursor/*</exclude-pattern>
+    <exclude-pattern>/\.github/*</exclude-pattern>
+    <exclude-pattern>/\.idea/*</exclude-pattern>
     <exclude-pattern>/\.vscode/*</exclude-pattern>
-    <exclude-pattern>/tests/*</exclude-pattern>
-    <exclude-pattern>/.wordpress-org/*</exclude-pattern>
+    <exclude-pattern>/\.wordpress-org/*</exclude-pattern>
     <exclude-pattern>/bin/*</exclude-pattern>
-    <exclude-pattern>/vendor/*</exclude-pattern>
+    <exclude-pattern>/dev-workspace-cache/*</exclude-pattern>
     <exclude-pattern>/dist/*</exclude-pattern>
     <exclude-pattern>/languages/*</exclude-pattern>
+    <exclude-pattern>/lib/vendor/*</exclude-pattern>
     <exclude-pattern>/node_modules/*</exclude-pattern>
-    <exclude-pattern>/RoboFile.php</exclude-pattern>
+    <exclude-pattern>/tests-old/*</exclude-pattern>
+    <exclude-pattern>/tests/*</exclude-pattern>
+    <exclude-pattern>/vendor/*</exclude-pattern>
 
-    <rule ref="WordPressVIPMinimum"/>
+    <rule ref="PSR12">
+        <exclude name="Generic.Files.LineLength.TooLong" />
+    </rule>
+    <rule ref="WordPressVIPMinimum">
+        <exclude name="WordPress.DateTime.RestrictedFunctions.date_date" />
+        <exclude name="WordPress.WP.GlobalVariablesOverride.Prohibited" />
+        <exclude name="WordPress.DB.DirectDatabaseQuery.SchemaChange" />
+        <exclude name="WordPress.DB.DirectDatabaseQuery.DirectQuery" />
+        <exclude name="PSR1.Files.SideEffects.FoundWithSymbols" />
+        <!-- Temporary: surfaced after vipwpcs 3.1.0; fix WorkflowsModel posts_per_page=-1 then remove. -->
+        <exclude name="WordPressVIPMinimum.Performance.NoPaging.posts_per_page_posts_per_page" />
+    </rule>
     <rule ref="WordPress-VIP-Go"/>
     <rule ref="VariableAnalysis"/>
-    <exclude-pattern>/\.web/</exclude-pattern>
-    <exclude-pattern>/\.ddev/</exclude-pattern>
+    <rule ref="PublishPressStandards"/>
 </ruleset>

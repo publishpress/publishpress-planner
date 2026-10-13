@@ -13,7 +13,7 @@
                     <?php endif; ?>
                 <?php endforeach; ?>
             </h2>
-            <div class="pp-module-settings"><?php echo $context['module_output']; ?></div>
+            <div class="pp-module-settings"><?php echo $context['module_output']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Module callbacks escape their settings form fields. ?></div>
         </div><!-- .pp-column-left -->
         <?php if (!$context['pro_active']) { ?>
             <div class="pp-column-right">

@@ -172,7 +172,7 @@ if (! class_exists('PP_Async_Notifications')) {
                         }
 
                         foreach ($dings as $sig => $data) {
-                            $formattedDate = date('Y-m-d H:i:s', $time);
+                            $formattedDate = gmdate('Y-m-d H:i:s', $time);
 
                             $scheduledNotifications["$hook-$sig-$time"] = [
                                 'label' => $formattedDate,

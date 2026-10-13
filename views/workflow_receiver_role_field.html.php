@@ -9,9 +9,9 @@
         <label class="screen-reader-text" for="<?php echo esc_attr($context['input_id']); ?>"><?php printf(esc_html__('Select %s', 'publishpress'), esc_html($context['label'])); ?></label>
         <select multiple="multiple" class="<?php echo esc_attr($context['list_class']); ?>"
                 name="<?php echo esc_attr($context['input_name']); ?>" id="<?php echo esc_attr($context['input_id']); ?>">
-            <?php foreach ($context['roles'] as $role => $role_object) : ?>
+            <?php foreach ($context['roles'] as $role_slug => $role_object) : ?>
                 <?php $selected = isset($role_object->selected) ? $role_object->selected : false; ?>
-                <option value="<?php echo esc_attr($role); ?>" <?php selected($selected, true); ?>><?php echo $role_object->name; ?></option>
+                <option value="<?php echo esc_attr($role_slug); ?>" <?php selected($selected, true); ?>><?php echo esc_html($role_object->name); ?></option>
             <?php endforeach; ?>
         </select>
     <?php endif; ?>

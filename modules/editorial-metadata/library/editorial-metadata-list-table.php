@@ -64,10 +64,8 @@ class PP_Editorial_Metadata_List_Table extends WP_List_Table
     {
         static $alternate_class = '';
         $alternate_class = ($alternate_class == '' ? ' alternate' : '');
-        $row_class = ' class="term-static' . $alternate_class . '"';
-
-        echo '<tr id="term-' . esc_attr($term->term_id) . '"' . $row_class . '>';
-        echo $this->single_row_columns($term);
+        echo '<tr id="term-' . esc_attr($term->term_id) . '" class="' . esc_attr('term-static' . $alternate_class) . '">';
+        $this->single_row_columns($term);
         echo '</tr>';
     }
 

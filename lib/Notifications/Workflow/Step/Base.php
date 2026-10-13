@@ -76,7 +76,7 @@ class Base
     public function render_metabox_section($html)
     {
         if (empty($this->view_name)) {
-            throw new Exception('Undefined view template for the workflow metabox: ' . $this->name);
+            throw new Exception('Undefined view template for the workflow metabox: ' . esc_html($this->name));
         }
 
         $context = [

@@ -173,8 +173,8 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                     } ?>
                     <?php 
                     $date_format = 'Y-m-d';
-                    $reset_start_date = date($date_format, strtotime('-5 weeks'));
-                    $reset_end_date   = date($date_format, strtotime($reset_start_date . ' +10 weeks'));
+                    $reset_start_date = gmdate($date_format, strtotime('-5 weeks'));
+                    $reset_end_date   = gmdate($date_format, strtotime($reset_start_date . ' +10 weeks'));
     
                     $filtered_start_date = $reset_start_date;
                     $filtered_start_date_timestamp = strtotime($filtered_start_date);
@@ -182,15 +182,13 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                     $filtered_end_date = $reset_end_date;
                     $filtered_end_date_timestamp = strtotime($filtered_end_date);
     
-                    $start_date_value = '<input type="hidden" name="pp-content-board-start-date" value="' . esc_attr(date_i18n($date_format, $filtered_start_date_timestamp)) . '" />';
-                    $start_date_value .= '<input type="hidden" name="pp-content-board-start-date_hidden" value="' . $filtered_start_date . '" />';
+                    echo '<input type="hidden" name="pp-content-board-start-date" value="' . esc_attr(date_i18n($date_format, $filtered_start_date_timestamp)) . '" />';
+                    echo '<input type="hidden" name="pp-content-board-start-date_hidden" value="' . esc_attr($filtered_start_date) . '" />';
                 
-                    $end_date_value = '<input type="hidden" name="pp-content-board-end-date" value="' . esc_attr(date_i18n($date_format, $filtered_end_date_timestamp)) . '" />';
-                    $end_date_value .= '<input type="hidden" name="pp-content-board-end-date_hidden" value="' . $filtered_end_date . '" />';
+                    echo '<input type="hidden" name="pp-content-board-end-date" value="' . esc_attr(date_i18n($date_format, $filtered_end_date_timestamp)) . '" />';
+                    echo '<input type="hidden" name="pp-content-board-end-date_hidden" value="' . esc_attr($filtered_end_date) . '" />';
     
-                    $nonce = wp_nonce_field('change-date', 'nonce', 'change-date-nonce', false);
-    
-                    echo $start_date_value . $end_date_value . $nonce;
+                    wp_nonce_field('change-date', 'nonce', 'change-date-nonce');
                     ?>
                     <input type="hidden" name="pp-content-board-range-use-today" value="1"/>
             </form>
@@ -281,7 +279,7 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                                                 <div class="items-list-item-name-text"><?php echo esc_html($column_label); ?> <?php if ($column_group === 'custom') : ?><span class="customize-item-info">(<?php echo esc_html($column_name); ?>)</span><?php endif; ?></div>
                                             </div>
                                             <?php if ($column_group === 'custom') : ?>
-                                                <div class="delete-content-board-item" data-meta="<?php echo esc_html($column_name); ?>">
+                                                <div class="delete-content-board-item" data-meta="<?php echo esc_attr($column_name); ?>">
                                                     <svg><use xlink:href="<?php echo esc_url(PUBLISHPRESS_URL . 'common/icons/content-icon.svg#svg-sprite-cu2-menu-trash'); ?>"></use></svg>
                                                 </div>
                                             <?php endif; ?>
@@ -427,7 +425,7 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                                                 <div class="items-list-item-name-text"><?php echo esc_html($filter_label); ?> <?php if ($filter_group === 'custom') : ?><span class="customize-item-info">(<?php echo esc_html($filter_name); ?>)</span><?php endif; ?></div>
                                             </div>
                                             <?php if ($filter_group === 'custom') : ?>
-                                                <div class="delete-content-board-item" data-meta="<?php echo esc_html($filter_name); ?>">
+                                                <div class="delete-content-board-item" data-meta="<?php echo esc_attr($filter_name); ?>">
                                                     <svg><use xlink:href="<?php echo esc_url(PUBLISHPRESS_URL . 'common/icons/content-icon.svg#svg-sprite-cu2-menu-trash'); ?>"></use></svg>
                                                 </div>
                                             <?php endif; ?>
@@ -545,7 +543,7 @@ if (! class_exists('PP_Content_Board_Utilities')) {
             );
             $output .= '&nbsp;&nbsp;<span class="change-date-buttons">';
             $output .= '<input id="pp-content-board-range-submit" name="pp-content-board-range-submit" type="hidden" value="1"';
-            $output .= ' class="button" value="' . esc_html__('Apply', 'publishpress') . '" />';
+            $output .= ' class="button" value="' . esc_attr__('Apply', 'publishpress') . '" />';
             $output .= '&nbsp;';
             $output .= '<input id="pp-content-board-range-today-btn" name="pp-content-board-range-today-btn" type="submit"';
             $output .= ' class="button button-secondary hidden" value="' . esc_attr__('Reset', 'publishpress') . '" />';
@@ -555,7 +553,7 @@ if (! class_exists('PP_Content_Board_Utilities')) {
             $output .= '<a class="change-date hidden" href="#">' . esc_html__('Change', 'publishpress') . '</a>';
             $output .= wp_nonce_field('change-date', 'nonce', 'change-date-nonce', false);
             $output .= '</span>';
-            $output .= '<div class="filter-apply"><input type="submit" id="filter-submit" class="button button-primary" value="' . esc_html__('Apply', 'publishpress') . '"></div>';
+            $output .= '<div class="filter-apply"><input type="submit" id="filter-submit" class="button button-primary" value="' . esc_attr__('Apply', 'publishpress') . '"></div>';
 
             $output .= '</div>';
             $output .= '</div>';
@@ -1089,7 +1087,7 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                                                         case 'html':
                                                                 ?>
                                                                 <textarea 
-                                                                    name="<?php echo esc_attr($field_key); ?>"><?php echo stripslashes_deep($field_options['value']); ?></textarea>
+                                                                    name="<?php echo esc_attr($field_key); ?>"><?php echo esc_textarea(stripslashes_deep($field_options['value'])); ?></textarea>
                                                                 <?php
                                                         break;
     
@@ -1120,7 +1118,7 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                         <div class="save-cc-changes save-new-post-form">
                             <?php echo sprintf(esc_html__('Create %s', 'publishpress'), esc_html($postTypeObject->labels->singular_name)); ?>
                         </div>
-                        <input type="submit" name="submit" class="form-submit-button" value="<?php esc_html_e('Submit', 'publishpress'); ?>" style="display: none;"/>
+                        <input type="submit" name="submit" class="form-submit-button" value="<?php esc_attr_e('Submit', 'publishpress'); ?>" style="display: none;"/>
                     </div>
                 </div>
             </form>

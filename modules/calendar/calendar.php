@@ -676,7 +676,7 @@ if (! class_exists('PP_Calendar')) {
             // Render the .ics template and set the content type
             header('Content-type: text/calendar; charset=utf-8');
             header('Content-Disposition: inline; filename=calendar.ics');
-            echo $vCalendar->serialize();
+            echo $vCalendar->serialize(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- The serializer escapes iCalendar data; HTML escaping would corrupt the feed.
 
             die();
             // phpcs:enable
@@ -720,7 +720,7 @@ if (! class_exists('PP_Calendar')) {
 
             if (!empty($_POST['co_form_action']) && !empty($_POST['_nonce']) && $_POST['co_form_action'] == 'reset_filter' && wp_verify_nonce(sanitize_key($_POST['_nonce']), 'content_calendar_filter_rest_nonce')) {
                 $user_filters['weeks'] = self::DEFAULT_NUM_WEEKS;
-                $user_filters['start_date'] = date('Y-m-d', current_time('timestamp'));
+                $user_filters['start_date'] = gmdate('Y-m-d', current_time('timestamp'));
                 return $user_filters;
             }
 
@@ -809,7 +809,7 @@ if (! class_exists('PP_Calendar')) {
 
             // Fix start_date, if no specific date was set
             if (empty($user_filters['start_date'])) {
-                $user_filters['start_date'] = date('Y-m-d', current_time('timestamp'));
+                $user_filters['start_date'] = gmdate('Y-m-d', current_time('timestamp'));
             }
 
             // Set the start date as the beginning of the week, according to blog settings
@@ -1087,7 +1087,7 @@ if (! class_exists('PP_Calendar')) {
             // user's standard
             $this->total_weeks = empty($this->user_filters['weeks']) ? self::DEFAULT_NUM_WEEKS : $this->user_filters['weeks'];
 
-            $this->start_date = empty($this->user_filters['start_date']) ? date('Y-m-d', current_time('timestamp')) :  $this->user_filters['start_date'];
+            $this->start_date = empty($this->user_filters['start_date']) ? gmdate('Y-m-d', current_time('timestamp')) :  $this->user_filters['start_date'];
 
             // Get the custom description for this page
             $description = '';
@@ -1128,13 +1128,13 @@ if (! class_exists('PP_Calendar')) {
                     echo '<div id="trashed-message" class="updated"><p>';
                     if (isset($_GET['trashed']) && (int)$_GET['trashed']) {
                         printf(
-                            _n(
+                            esc_html(_n(
                                 'Post moved to the trash.',
                                 '%d posts moved to the trash.',
                                 (int)$_GET['trashed'],
                                 'publishpress'
-                            ),
-                            number_format_i18n((int)$_GET['trashed'])
+                            )),
+                            esc_html(number_format_i18n((int)$_GET['trashed']))
                         );
                         $ids = isset($_GET['ids']) ? sanitize_text_field($_GET['ids']) : 0;
                         $pid = explode(',', $ids);
@@ -1154,13 +1154,13 @@ if (! class_exists('PP_Calendar')) {
 
                     if (isset($_GET['untrashed']) && (int)$_GET['untrashed']) {
                         printf(
-                            _n(
+                            esc_html(_n(
                                 'Post restored from the Trash.',
                                 '%d posts restored from the Trash.',
                                 (int)$_GET['untrashed'],
                                 'publishpress'
-                            ),
-                            number_format_i18n((int)$_GET['untrashed'])
+                            )),
+                            esc_html(number_format_i18n((int)$_GET['untrashed']))
                         );
                         unset($_GET['undeleted']);
                     }
@@ -1186,11 +1186,11 @@ if (! class_exists('PP_Calendar')) {
                                 <div class="sk-cube sk-cube9"></div>
                             </div>
                             <div><?php
-                                echo __('Initializing the calendar. Please wait...', 'publishpress'); ?></div>
+                                echo esc_html__('Initializing the calendar. Please wait...', 'publishpress'); ?></div>
                         </div>
                         <div class="publishpress-calendar-loader-delayed-tip">
                             <?php
-                            echo __(
+                            echo esc_html__(
                                 'It seems like it is taking too long. Please, try reloading the page again and check the browser console looking for errors.',
                                 'publishpress'
                             ); ?>
@@ -1370,7 +1370,7 @@ if (! class_exists('PP_Calendar')) {
                 }
 
                 if (isset($this->module->options->ics_subscription_public_visibility) && 'on' === $this->module->options->ics_subscription_public_visibility) {
-                    $args['suppress_filters'] = true;
+                    $args['suppress_filters'] = true; // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.SuppressFilters_suppress_filters -- Public ICS subscriptions explicitly opt out of per-user visibility filters.
                 }
             }
             // The WP functions for printing the category and author assign a value of 0 to the default
@@ -1405,7 +1405,7 @@ if (! class_exists('PP_Calendar')) {
             while ($post_results->have_posts()) {
                 $post_results->the_post();
                 global $post;
-                $key_date = date('Y-m-d', strtotime($post->post_date));
+                $key_date = gmdate('Y-m-d', strtotime($post->post_date));
                 $posts[$key_date][] = $post;
             }
 
@@ -1426,7 +1426,7 @@ if (! class_exists('PP_Calendar')) {
             $beginning_date = PP_Calendar_Utilities::get_beginning_of_week($this->start_date, 'Y-m-d', $this->current_week);
             $ending_date = PP_Calendar_Utilities::get_ending_of_week($this->start_date, 'Y-m-d', $this->current_week);
             // Adjust the ending date to account for the entire day of the last day of the week
-            $ending_date = date('Y-m-d', strtotime('+1 day', strtotime($ending_date)));
+            $ending_date = gmdate('Y-m-d', strtotime('+1 day', strtotime($ending_date)));
             $where = $where . $wpdb->prepare(
                     " AND ($wpdb->posts.post_date >= %s AND $wpdb->posts.post_date < %s)",
                     $beginning_date,
@@ -1598,11 +1598,15 @@ if (! class_exists('PP_Calendar')) {
 
         public function fetchCalendarDataJson()
         {
-            if (! wp_verify_nonce(sanitize_text_field($_GET['nonce']), 'publishpress-calendar-get-data')) {
+            if (!isset($_GET['nonce']) || ! wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['nonce'])), 'publishpress-calendar-get-data')) {
                 wp_send_json([], 403);
             }
 
-            $beginningDate = PP_Calendar_Utilities::get_beginning_of_week(sanitize_text_field($_GET['start_date']));
+            if (!isset($_GET['start_date'], $_GET['number_of_weeks'])) {
+                wp_send_json([], 400);
+            }
+
+            $beginningDate = PP_Calendar_Utilities::get_beginning_of_week(sanitize_text_field(wp_unslash($_GET['start_date'])));
             $endingDate = PP_Calendar_Utilities::get_ending_of_week($beginningDate, 'Y-m-d', (int)$_GET['number_of_weeks']);
 
             //get and update filters
@@ -1672,11 +1676,11 @@ if (! class_exists('PP_Calendar')) {
 
         public function getPostData()
         {
-            if (! wp_verify_nonce(sanitize_text_field($_GET['nonce']), 'publishpress-calendar-get-data')) {
+            if (!isset($_GET['nonce']) || ! wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['nonce'])), 'publishpress-calendar-get-data')) {
                 wp_send_json([], 403);
             }
 
-            $id = (int)$_GET['id'];
+            $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
             if (empty($id)) {
                 wp_send_json(null, 404);
@@ -1706,7 +1710,7 @@ if (! class_exists('PP_Calendar')) {
         {
             global $publishpress;
 
-            if (! wp_verify_nonce(sanitize_text_field($_GET['nonce']), 'publishpress-calendar-get-data')) {
+            if (!isset($_GET['nonce']) || ! wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['nonce'])), 'publishpress-calendar-get-data')) {
                 wp_send_json([], 403);
             }
 
@@ -1763,7 +1767,7 @@ if (! class_exists('PP_Calendar')) {
                     }
                     break;
                 case 'start_date':
-                    return date('Y-m-d', strtotime($dirty_value));
+                    return gmdate('Y-m-d', strtotime($dirty_value));
                     break;
                 case 'cat':
                 case 'tag':

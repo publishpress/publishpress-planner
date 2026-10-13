@@ -173,7 +173,7 @@ if (! class_exists('PP_Settings')) {
         {
             ?>
 			<script type="text/javascript">
-				var pp_admin_url = '<?php echo get_admin_url(); ?>';
+				var pp_admin_url = '<?php echo esc_js(get_admin_url()); ?>';
 			</script>
 			<?php
         }
@@ -190,8 +190,6 @@ if (! class_exists('PP_Settings')) {
                 $message = sanitize_text_field($_GET['message']);
             } elseif (isset($_REQUEST['message'])) {
                 $message = sanitize_text_field($_REQUEST['message']);
-            } elseif (isset($_POST['message'])) {
-                $message = sanitize_text_field($_POST['message']);
             } else {
                 $message = false;
             }
@@ -205,8 +203,6 @@ if (! class_exists('PP_Settings')) {
                 $error = sanitize_text_field($_GET['error']);
             } elseif (isset($_REQUEST['error'])) {
                 $error = sanitize_text_field($_REQUEST['error']);
-            } elseif (isset($_POST['error'])) {
-                $error = sanitize_text_field($_POST['error']);
             } else {
                 $error = false;
             }
@@ -217,18 +213,24 @@ if (! class_exists('PP_Settings')) {
 
 			<div class="publishpress-admin pressshack-admin-wrapper wrap <?php echo esc_attr($current_module->slug); ?>">
 				<header>
-					<h1 class="wp-heading-inline"><?php echo $current_module->title; ?></h1>
+					<h1 class="wp-heading-inline"><?php echo wp_kses_post($current_module->title); ?></h1>
 
-					<?php echo !empty($display_text) ? $display_text : ''; ?>
+					<?php echo wp_kses_post($display_text); ?>
 					<?php // We keep the H2 tag to keep notices tied to the header?>
 					<h2>
 
 						<?php if ($current_module->short_description && empty($custom_text)): ?>
-							<?php echo $current_module->short_description; ?>
+							<?php echo wp_kses_post($current_module->short_description); ?>
 						<?php endif; ?>
 
 						<?php if (!empty($custom_text)) : ?>
-							<?php echo $custom_text; ?>
+							<?php echo wp_kses($custom_text, array_merge(wp_kses_allowed_html('post'), [
+                                'select' => ['id' => true, 'name' => true, 'class' => true],
+                                'option' => ['value' => true, 'selected' => true],
+                                'optgroup' => ['label' => true],
+                                'input' => ['id' => true, 'name' => true, 'type' => true, 'value' => true, 'class' => true, 'readonly' => true],
+                                'button' => ['id' => true, 'type' => true, 'class' => true, 'data-clipboard-target' => true, 'data-clipboard-text' => true],
+                            ])); ?>
 						<?php endif; ?>
 					</h2>
 
@@ -275,7 +277,7 @@ if (! class_exists('PP_Settings')) {
                     return $html;
                 }
 
-                echo $html;
+                echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- The footer template escapes its dynamic values.
             }
 
             return '';
@@ -286,7 +288,7 @@ if (! class_exists('PP_Settings')) {
             global $publishpress;
 
             if (!count($publishpress->modules)) {
-                echo '<div class="message error">' . __('There are no PublishPress modules registered', 'publishpress') . '</div>';
+                echo '<div class="message error">' . esc_html__('There are no PublishPress modules registered', 'publishpress') . '</div>';
             } else {
                 foreach ($publishpress->modules as $mod_name => $mod_data) {
                     $add_menu = isset($mod_data->add_menu) && $mod_data->add_menu === true;
@@ -304,7 +306,7 @@ if (! class_exists('PP_Settings')) {
                             $url = $mod_data->page_link;
                         }
 
-                        echo $this->view->render(
+                        $this->view->display(
                             'module',
                             [
                                 'has_config_link' => isset($mod_data->configure_page_cb) && !empty($mod_data->configure_page_cb),
@@ -366,9 +368,9 @@ if (! class_exists('PP_Settings')) {
             }
 
             foreach ($post_types as $post_type => $title) {
-                echo '<label for="' . esc_attr($post_type) . '-' . $module->slug . '">';
-                echo '<input id="' . esc_attr($post_type) . '-' . $module->slug . '" name="'
-                    . $module->options_group_name . '[post_types][' . esc_attr($post_type) . ']"';
+                echo '<label for="' . esc_attr($post_type) . '-' . esc_attr($module->slug) . '">';
+                echo '<input id="' . esc_attr($post_type) . '-' . esc_attr($module->slug) . '" name="'
+                    . esc_attr($module->options_group_name) . '[post_types][' . esc_attr($post_type) . ']"';
                 if (isset($module->options->post_types[$post_type])) {
                     checked($module->options->post_types[$post_type], 'on');
                 }
@@ -377,7 +379,7 @@ if (! class_exists('PP_Settings')) {
                 echo ' type="checkbox" value="on" />&nbsp;&nbsp;&nbsp;' . esc_html($title) . '</label>';
                 // Leave a note to the admin as a reminder that add_post_type_support has been used somewhere in their code
                 if (post_type_supports($post_type, $module->post_type_support)) {
-                    echo '&nbsp&nbsp;&nbsp;<span class="description">' . sprintf(__('Disabled because add_post_type_support(\'%1$s\', \'%2$s\') is included in a loaded file.', 'publishpress'), $post_type, $module->post_type_support) . '</span>';
+                    echo '&nbsp&nbsp;&nbsp;<span class="description">' . esc_html(sprintf(__('Disabled because add_post_type_support(\'%1$s\', \'%2$s\') is included in a loaded file.', 'publishpress'), $post_type, $module->post_type_support)) . '</span>';
                 }
                 echo '<br />';
             }
@@ -396,12 +398,12 @@ if (! class_exists('PP_Settings')) {
             }
 
             if ($_POST['action'] != 'update'
-                || $_GET['page'] != 'pp-modules-settings') {
+                || !isset($_GET['page']) || $_GET['page'] != 'pp-modules-settings') {
                 return false;
             }
 
             if (!current_user_can('manage_options') || !wp_verify_nonce(sanitize_key($_POST['_wpnonce']), 'edit-publishpress-settings')) {
-                wp_die(__('Cheatin&#8217; uh?', 'publishpress'));
+                wp_die(esc_html__('Cheatin&#8217; uh?', 'publishpress'));
             }
 
             global $publishpress;
@@ -494,8 +496,6 @@ if (! class_exists('PP_Settings')) {
                 $message = sanitize_text_field($_GET['message']);
             } elseif (isset($_REQUEST['message'])) {
                 $message = sanitize_text_field($_REQUEST['message']);
-            } elseif (isset($_POST['message'])) {
-                $message = sanitize_text_field($_POST['message']);
             } else {
                 $message = false;
             }
@@ -509,8 +509,6 @@ if (! class_exists('PP_Settings')) {
                 $error = sanitize_text_field($_GET['error']);
             } elseif (isset($_REQUEST['error'])) {
                 $error = sanitize_text_field($_REQUEST['error']);
-            } elseif (isset($_POST['error'])) {
-                $error = sanitize_text_field($_POST['error']);
             } else {
                 $error = false;
             }
@@ -551,7 +549,7 @@ if (! class_exists('PP_Settings')) {
 
             $module_output = ob_get_clean();
 
-            echo $this->view->render(
+            $this->view->display(
                 'settings',
                 [
                     'modules'        => $all_modules,

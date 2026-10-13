@@ -410,7 +410,7 @@ class Base
         foreach ($views as $class => $view) {
             $views[$class] = "\t<li class='" . esc_attr($class) . "'>$view";
         }
-        echo implode(" |</li>\n", $views) . "</li>\n";
+        echo wp_kses_post(implode(" |</li>\n", $views)) . "</li>\n";
         echo "</ul>";
     }
 
@@ -841,7 +841,7 @@ class Base
         }
         $this->_pagination = "<div class='tablenav-pages{$page_class}'>$output</div>";
 
-        echo $this->_pagination;
+        echo $this->_pagination; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Pagination markup, including its input, is escaped when constructed above.
     }
 
     /**
@@ -1106,15 +1106,14 @@ class Base
 
             // Comments column uses HTML in the display name with screen reader text.
             // Instead of using esc_attr(), we strip tags to get closer to a user-friendly string.
-            $data = 'data-colname="' . wp_strip_all_tags($column_display_name) . '"';
-
-            $attributes = "class='$classes' $data";
+            $data = 'data-colname="' . esc_attr(wp_strip_all_tags($column_display_name)) . '"';
 
             if ('cb' === $column_name) {
                 echo '<th scope="row" class="check-column">';
-                echo $this->column_cb($item);
+                echo $this->column_cb($item); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Column callbacks escape their checkbox markup.
                 echo '</th>';
             } elseif (method_exists($this, '_column_' . $column_name)) {
+                // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Column callbacks escape their output, following the WP_List_Table contract.
                 echo call_user_func(
                     [$this, '_column_' . $column_name],
                     $item,
@@ -1123,14 +1122,14 @@ class Base
                     $primary
                 );
             } elseif (method_exists($this, 'column_' . $column_name)) {
-                echo "<td $attributes>";
-                echo call_user_func([$this, 'column_' . $column_name], $item);
-                echo $this->handle_row_actions($item, $column_name, $primary);
+                echo '<td class="' . esc_attr($classes) . '" data-colname="' . esc_attr(wp_strip_all_tags($column_display_name)) . '">';
+                echo call_user_func([$this, 'column_' . $column_name], $item); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Column callbacks escape their output, following the WP_List_Table contract.
+                echo wp_kses($this->handle_row_actions($item, $column_name, $primary), array_merge(wp_kses_allowed_html('post'), ['button' => ['type' => true, 'class' => true]]));
                 echo "</td>";
             } else {
-                echo "<td $attributes>";
-                echo $this->column_default($item, $column_name);
-                echo $this->handle_row_actions($item, $column_name, $primary);
+                echo '<td class="' . esc_attr($classes) . '" data-colname="' . esc_attr(wp_strip_all_tags($column_display_name)) . '">';
+                echo $this->column_default($item, $column_name); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Column callbacks escape their output, following the WP_List_Table contract.
+                echo wp_kses($this->handle_row_actions($item, $column_name, $primary), array_merge(wp_kses_allowed_html('post'), ['button' => ['type' => true, 'class' => true]]));
                 echo "</td>";
             }
         }
@@ -1158,7 +1157,7 @@ class Base
      */
     protected function handle_row_actions($item, $column_name, $primary)
     {
-        return $column_name === $primary ? '<button type="button" class="toggle-row"><span class="screen-reader-text">' . __(
+        return $column_name === $primary ? '<button type="button" class="toggle-row"><span class="screen-reader-text">' . esc_html__(
                 'Show more details'
             ) . '</span></button>' : '';
     }

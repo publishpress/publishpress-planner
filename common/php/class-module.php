@@ -674,10 +674,10 @@ if (!class_exists('PP_Module')) {
             if ($since > $chunks[2][0] || $original > $today) {
                 $dateFormat = get_option('date_format', 'Y-m-d');
 
-                $print = date($dateFormat, $original);
+                $print = gmdate($dateFormat, $original);
 
                 if ($since > $chunks[0][0]) { // Seconds in a year
-                    $print .= ', ' . date('Y', $original);
+                    $print .= ', ' . gmdate('Y', $original);
                 }
 
                 return $print;

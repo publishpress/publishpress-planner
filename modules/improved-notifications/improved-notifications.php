@@ -669,7 +669,7 @@ if (! class_exists('PP_Improved_Notifications')) {
                 'channels_options' => $channels_options,
             ];
 
-            echo $this->get_service('view')->render('settings_notification_channels', $context);
+            $this->get_service('view')->display('settings_notification_channels', $context);
         }
 
         /**
@@ -1221,7 +1221,7 @@ if (! class_exists('PP_Improved_Notifications')) {
 
             $main_context['section_channel'] = $view->render('workflow_metabox_section', $context);
 
-            echo $view->render('workflow_metabox', $main_context, $this->viewsPath);
+            $view->display('workflow_metabox', $main_context, $this->viewsPath);
         }
 
         public function publishpress_notif_workflow_options_metabox()
@@ -1234,7 +1234,7 @@ if (! class_exists('PP_Improved_Notifications')) {
                 'options' => apply_filters('publishpress_notif_workflow_options', [], $post, $view),
             ];
 
-            echo $view->render('workflow_metabox_options', $context);
+            $view->display('workflow_metabox_options', $context);
         }
 
         private function getShortcodePostFields()
@@ -1360,7 +1360,7 @@ if (! class_exists('PP_Improved_Notifications')) {
                 'psppno_receiver_fields_list' => esc_html(implode(', ', $this->getShortcodeReceiverFields())),
             ];
 
-            echo $this->get_service('view')->render('workflow_help', $context);
+            $this->get_service('view')->display('workflow_help', $context);
         }
 
         /**
@@ -1526,7 +1526,7 @@ if (! class_exists('PP_Improved_Notifications')) {
                 'channels_options' => $channels_options,
             ];
 
-            echo $this->get_service('view')->render('user_profile_notification_channels', $context);
+            $this->get_service('view')->display('user_profile_notification_channels', $context);
         }
 
         /**

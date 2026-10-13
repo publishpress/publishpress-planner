@@ -76,13 +76,13 @@ class PoFileProcessor implements PoFileProcessorInterface
             if ($content === false || $httpCode !== 200) {
                 $error = curl_error($ch);
                 curl_close($ch);
-                throw new \Exception("Failed to download remote file '{$poFile}'. Error: {$error}");
+                throw new \Exception("Failed to download remote file '{$poFile}'. Error: {$error}"); // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- CLI diagnostics, not HTML.
             }
 
             curl_close($ch);
         } else {
             if (!file_exists($poFile)) {
-                throw new \Exception("Local file '{$poFile}' not found");
+                throw new \Exception("Local file '{$poFile}' not found"); // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- CLI diagnostics, not HTML.
             }
             $content = file_get_contents($poFile);
         }

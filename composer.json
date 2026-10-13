@@ -32,6 +32,7 @@
     "squizlabs/php_codesniffer": "^3.13.6",
     "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
     "phpcompatibility/php-compatibility": "*",
+    "publishpress/publishpress-phpcs-standards": "^1.1",
     "publishpress/translations": "^1.0.0",
     "szepeviktor/phpstan-wordpress": "^2.0",
     "wp-coding-standards/wpcs": "^3.4.1"
@@ -55,12 +56,6 @@
     "pre-autoload-dump": "composer dumpautoload --working-dir=./lib",
     "pre-update-cmd": "composer update --working-dir=./lib",
     "pre-install-cmd": "composer install --working-dir=./lib",
-    "post-install-cmd": [
-      "[ $COMPOSER_DEV_MODE -eq 0 ] || vendor/bin/phpcs --config-set installed_paths \"../../automattic/vipwpcs,../../phpcompatibility/php-compatibility,../../sirbrillig/phpcs-variable-analysis,../../wp-coding-standards/wpcs,../../publishpress/publishpress-phpcs-standards/standards/PublishPressStandards\""
-    ],
-    "post-update-cmd": [
-      "[ $COMPOSER_DEV_MODE -eq 0 ] || vendor/bin/phpcs --config-set installed_paths \"../../automattic/vipwpcs,../../phpcompatibility/php-compatibility,../../sirbrillig/phpcs-variable-analysis,../../wp-coding-standards/wpcs,../../publishpress/publishpress-phpcs-standards/standards/PublishPressStandards\""
-    ],
     "translate": "vendor/bin/publishpress-translate",
     "translate:dry-run": "vendor/bin/publishpress-translate --dry-run",
     "translate:download": "vendor/bin/publishpress-translate --download",

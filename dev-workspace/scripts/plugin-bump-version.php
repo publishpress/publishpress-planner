@@ -117,4 +117,4 @@ if (isStableVersion(NEW_VERSION)) {
     updateVersionInReadme(NEW_VERSION);
 }
 
-echo "Version updated to " . NEW_VERSION . "\n";
+echo "Version updated to " . NEW_VERSION . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CLI output, not HTML.

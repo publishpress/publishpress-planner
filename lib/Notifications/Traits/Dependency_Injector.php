@@ -36,7 +36,7 @@ trait Dependency_Injector
         }
 
         if (!isset($this->container[$service_name])) {
-            throw new Exception("Service \"{$service_name}\" not found in the container");
+            throw new Exception('Service "' . esc_html($service_name) . '" not found in the container');
         }
 
         return $this->container[$service_name];

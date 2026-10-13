@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8e2ede93cf1f3cf1ab09c9aae30cf96a",
+    "content-hash": "b8a6aadcc21d1e304821a887cbd34aa9",
     "packages": [],
     "packages-dev": [
         {
@@ -4675,6 +4675,53 @@
                 "source": "https://github.com/php-fig/log/tree/1.1.4"
             },
             "time": "2021-05-03T11:20:27+00:00"
+        },
+        {
+            "name": "publishpress/publishpress-phpcs-standards",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/publishpress/publishpress-phpcs-standards.git",
+                "reference": "95a6ebe1508071735a0a3daf590b493d6253d7f6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/publishpress/publishpress-phpcs-standards/zipball/95a6ebe1508071735a0a3daf590b493d6253d7f6",
+                "reference": "95a6ebe1508071735a0a3daf590b493d6253d7f6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.20"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "*",
+                "friendsofphp/php-cs-fixer": "^3.4",
+                "overtrue/phplint": "^2.1",
+                "phpcompatibility/php-compatibility": "*",
+                "phpmd/phpmd": "^2.8",
+                "sebastian/phpcpd": "^6.0",
+                "squizlabs/php_codesniffer": "^3.5",
+                "vimeo/psalm": "^4.17"
+            },
+            "type": "phpcodesniffer-standard",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "PublishPress",
+                    "email": "help@publishpress.com",
+                    "homepage": "https://publishpress.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PublishPress PHPCS standards, including vendored WordPress.org Plugin Check rules",
+            "support": {
+                "issues": "https://github.com/publishpress/publishpress-phpcs-standards/issues",
+                "source": "https://github.com/publishpress/publishpress-phpcs-standards/tree/1.1.0"
+            },
+            "time": "2026-07-31T15:48:12+00:00"
         },
         {
             "name": "publishpress/translations",
