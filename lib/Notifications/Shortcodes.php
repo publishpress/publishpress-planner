@@ -462,6 +462,10 @@ class Shortcodes
 
             case 'excerpt':
                 $result = $post->post_excerpt;
+
+                if (empty($result)) {
+                    $result = wp_trim_excerpt('', $post);
+                }
                 break;
 
             case 'edit_link':
