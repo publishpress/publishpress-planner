@@ -73,10 +73,12 @@ if (! class_exists('Editorial_Metadata_Input_Checkbox_Handler')) {
                     name="%s"
                     value="1"
                     %s
+                    %s
                 />',
                 esc_attr($input_name),
                 esc_attr($input_name),
-                checked($value, 1, false)
+                checked($value, 1, false),
+                self::generateDescribedByAttr($input_description, $input_name) // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
             );
         }
 

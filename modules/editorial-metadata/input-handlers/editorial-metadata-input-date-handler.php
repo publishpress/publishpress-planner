@@ -93,10 +93,12 @@ if (! class_exists('Editorial_Metadata_Input_Date_Handler')) {
                     class="date-time-pick"
                     data-alt-field="%1$s_hidden"
                     data-alt-format="%3$s"
+                    %4$s
                 />',
                 esc_attr($input_name),
                 esc_attr($value_formatted),
-                esc_attr(pp_convert_date_format_to_jqueryui_datepicker('Y-m-d'))
+                esc_attr(pp_convert_date_format_to_jqueryui_datepicker('Y-m-d')),
+                self::generateDescribedByAttr($input_description, $input_name) // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
             );
 
             $field_value = empty($value) ? '' : gmdate('Y-m-d H:i', $value);

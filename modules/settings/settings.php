@@ -333,13 +333,30 @@ if (! class_exists('PP_Settings')) {
          */
         public function helper_print_error_or_description($field, $description)
         {
+            // The output gets id="pp-{$field}-description" so callers can reference it from the
+            // input with aria-describedby (see get_error_or_description_id()).
+            $description_id = $this->get_error_or_description_id($field);
+
             if (isset($_REQUEST['form-errors'][$field])): ?>
-				<div class="form-error">
+				<div class="form-error" id="<?php echo esc_attr($description_id); ?>">
 					<p><?php echo esc_html($_REQUEST['form-errors'][$field]); ?></p>
 				</div>
 			<?php else: ?>
-				<p class="description"><?php echo esc_html($description); ?></p>
+				<p class="description" id="<?php echo esc_attr($description_id); ?>"><?php echo esc_html($description); ?></p>
 			<?php endif;
+        }
+
+        /**
+         * Returns the id used by helper_print_error_or_description() for the given field,
+         * for use in the field's aria-describedby attribute.
+         *
+         * @param string $field
+         *
+         * @return string
+         */
+        public function get_error_or_description_id($field)
+        {
+            return 'pp-' . sanitize_html_class($field) . '-description';
         }
 
         /**
@@ -365,6 +382,8 @@ if (! class_exists('PP_Settings')) {
                 }
             }
 
+            echo '<fieldset><legend class="screen-reader-text">' . esc_html__('Post types', 'publishpress') . '</legend>';
+
             foreach ($post_types as $post_type => $title) {
                 echo '<label for="' . esc_attr($post_type) . '-' . $module->slug . '">';
                 echo '<input id="' . esc_attr($post_type) . '-' . $module->slug . '" name="'
@@ -381,6 +400,8 @@ if (! class_exists('PP_Settings')) {
                 }
                 echo '<br />';
             }
+
+            echo '</fieldset>';
         }
 
         /**

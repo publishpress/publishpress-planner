@@ -19,6 +19,7 @@
   left: 0;
   min-height: 50px;
   width: 380px;
+  max-width: calc(100vw - 32px);
   z-index: 999;
   -moz-box-shadow: -1px 3px 10px 2px @shadowColor;
   -webkit-box-shadow: -1px 3px 10px 2px @shadowColor;
@@ -29,6 +30,11 @@
   color: @textColor;
   padding: 10px;
   cursor: default;
+
+  &:focus {
+    outline: 2px solid #2271b1;
+    outline-offset: 1px;
+  }
 
   table {
     border: none;
@@ -86,6 +92,24 @@
     }
   }
 
+  .publishpress-calendar-popup-move {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 6px;
+    margin-top: 6px;
+
+    label {
+      font-weight: bold;
+    }
+
+    input[type="date"] {
+      min-height: 26px;
+      line-height: 1.5;
+      max-width: 100%;
+    }
+  }
+
   .publishpress-calendar-popup-links {
     > .publishpress-calendar-popup-action-button {
       appearance: none;
@@ -115,8 +139,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  min-width: 420px;
-  max-width: 500px;
+  min-width: ~"min(420px, calc(100vw - 32px))";
+  max-width: ~"min(500px, calc(100vw - 32px))";
   min-height: 420px;
   height: auto;
   background-color: white;
@@ -126,6 +150,7 @@
   textarea,
   select {
     width: 300px;
+    max-width: 100%;
   }
 
   textarea {
@@ -138,7 +163,7 @@
   }
 
   .publishpress-calendar-popup-title {
-    background-color: #a0a0a0;
+    background-color: #646970;
     padding-left: 8px;
   }
 
@@ -165,6 +190,7 @@
 
   .publishpress-calendar-popup-loading-fields {
     width: 400px;
+    max-width: calc(100vw - 52px);
     height: 300px;
     text-align: center;
     display: table-cell;
@@ -188,5 +214,19 @@
       margin-right: 5px;
       color: #714646;
     }
+  }
+}
+
+// The item popup is rendered outside the calendar item (React portal); keep the typography it inherited from the item.
+.publishpress-calendar-popup:not(.publishpress-calendar-popup-form) {
+  line-height: 18px;
+
+  .publishpress-calendar-popup-title,
+  table th {
+    white-space: nowrap;
+  }
+
+  .dashicons {
+    font-size: 16px;
   }
 }

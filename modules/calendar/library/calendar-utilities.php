@@ -464,15 +464,16 @@ if (! class_exists('PP_Calendar_Utilities')) {
                             $active_me_mode = !empty($me_mode) ? 'active-filter' : '';
                         ?>
                     <button type="button" class="item action me-mode-action <?php echo esc_attr($active_me_mode); ?>"
-                        data-label="<?php esc_attr_e('Me Mode', 'publishpress'); ?>">
-                        <span class="dashicons dashicons-admin-users"></span> <?php esc_html_e('Me Mode', 'publishpress'); ?>
+                        data-label="<?php esc_attr_e('Me Mode', 'publishpress'); ?>"
+                        aria-pressed="<?php echo !empty($me_mode) ? 'true' : 'false'; ?>">
+                        <span class="dashicons dashicons-admin-users" aria-hidden="true"></span> <?php esc_html_e('Me Mode', 'publishpress'); ?>
                     </button>
                     <?php do_action('pp_content_calendar_filter_after_me_mode', $user_filters); ?>
                     <?php $modal_id++; ?>
-                    <button type="button" class="item action co-filter" data-target="#content_calendar_modal_<?php echo esc_attr($modal_id); ?>">
-                        <span class="dashicons dashicons-filter"></span> <?php esc_html_e('Customize Filters', 'publishpress'); ?>
+                    <button type="button" class="item action co-filter" data-target="#content_calendar_modal_<?php echo esc_attr($modal_id); ?>" aria-expanded="false" aria-controls="content_calendar_modal_<?php echo esc_attr($modal_id); ?>">
+                        <span class="dashicons dashicons-filter" aria-hidden="true"></span> <?php esc_html_e('Customize Filters', 'publishpress'); ?>
                     </button>
-                    <div id="content_calendar_modal_<?php echo esc_attr($modal_id); ?>" class="customize-customize-item-modal content-calendar-modal" style="display: none;">
+                    <div id="content_calendar_modal_<?php echo esc_attr($modal_id); ?>" class="customize-customize-item-modal content-calendar-modal" style="display: none;" role="dialog" aria-label="<?php esc_attr_e('Customize Filters', 'publishpress'); ?>">
                         <div class="content-calendar-modal-content">
                             <button type="button" class="close" aria-label="<?php esc_attr_e('Close', 'publishpress'); ?>">&times;</button>
                             <?php echo self::content_calendar_customize_filter_form($args); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
@@ -498,14 +499,15 @@ if (! class_exists('PP_Calendar_Utilities')) {
                     $filter_weeks = isset($user_filters['weeks']) ? (int)$user_filters['weeks'] : self::DEFAULT_NUM_WEEKS;
                     $modal_id++;
                     ?>
-                    <button data-target="#content_calendar_modal_<?php echo esc_attr($modal_id); ?>" class="co-filter active-filter"
-                    data-label="<?php esc_html_e('Period', 'publishpress'); ?>">
+                    <button type="button" data-target="#content_calendar_modal_<?php echo esc_attr($modal_id); ?>" class="co-filter active-filter"
+                    data-label="<?php esc_html_e('Period', 'publishpress'); ?>" aria-expanded="false" aria-controls="content_calendar_modal_<?php echo esc_attr($modal_id); ?>">
                         <?php esc_html_e('Period', 'publishpress'); ?>: <?php echo sprintf(esc_html__('%1s weeks', 'publishpress'), $filter_weeks); ?>
                     </button>
-                    <div id="content_calendar_modal_<?php echo esc_attr($modal_id); ?>" class="content-calendar-modal" style="display: none;">
+                    <div id="content_calendar_modal_<?php echo esc_attr($modal_id); ?>" class="content-calendar-modal" style="display: none;" role="dialog" aria-label="<?php esc_attr_e('Period', 'publishpress'); ?>">
                         <div class="content-calendar-modal-content">
                             <button type="button" class="close" aria-label="<?php esc_attr_e('Close', 'publishpress'); ?>">&times;</button>
                             <div>
+                                <label for="weeks" class="screen-reader-text"><?php esc_html_e('Period', 'publishpress'); ?></label>
                                 <select name="weeks" id="weeks" class="calendar-weeks-filter">
                                     <?php 
                                         for ($i = 1; $i <= 12; $i++) {
@@ -532,14 +534,16 @@ if (! class_exists('PP_Calendar_Utilities')) {
                         $button_label .= !empty($filter_data['selected_value']) ? ': ' . $filter_data['selected_value'] : '';
                         ?>
                         <?php if (!empty($button_label)) : ?>
-                            <button 
+                            <button type="button"
                                 data-target="#content_calendar_modal_<?php echo esc_attr($modal_id); ?>"
+                                aria-expanded="false"
+                                aria-controls="content_calendar_modal_<?php echo esc_attr($modal_id); ?>"
                                 data-label="<?php echo esc_attr($filter_data['filter_label']); ?>"
                                 class="co-filter <?php echo esc_attr($active_class); ?> <?php echo esc_attr($select_id); ?> me-mode-status-<?php echo esc_attr($me_mode); ?>"
                                 <?php if ('revision_status' == $select_id && !empty($user_filters['hide_revision'])) echo ' style="display: none;"';?>><?php echo esc_html($button_label); ?></button>
-                            <div id="content_calendar_modal_<?php echo esc_attr($modal_id); ?>" class="content-calendar-modal" style="display: none;">
+                            <div id="content_calendar_modal_<?php echo esc_attr($modal_id); ?>" class="content-calendar-modal" style="display: none;" role="dialog" aria-label="<?php echo esc_attr($filter_data['filter_label']); ?>">
                                 <div class="content-calendar-modal-content">
-                                    <span class="close">&times;</span>
+                                    <button type="button" class="close" aria-label="<?php esc_attr_e('Close', 'publishpress'); ?>">&times;</button>
                                     <div><?php echo $filter_data['html']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
                                 </div>
                             </div>
@@ -550,7 +554,7 @@ if (! class_exists('PP_Calendar_Utilities')) {
                     } 
                     ?>
                     <button class="clear-filter">
-                        <span class="dashicons dashicons-dismiss"></span> <?php esc_html_e('Reset Filters', 'publishpress'); ?>
+                        <span class="dashicons dashicons-dismiss" aria-hidden="true"></span> <?php esc_html_e('Reset Filters', 'publishpress'); ?>
                         <input style="display: none;" type="submit" id="post-query-clear" value="<?php echo esc_attr(__('Reset', 'publishpress')); ?>" class="button-secondary button"/>
                     </button>
                 </div>
@@ -578,12 +582,12 @@ if (! class_exists('PP_Calendar_Utilities')) {
             <form method="POST" class="pp-content-calendar-customize-form filters" id="pp-content-calendar-filter-form" data-form="filters">
                 <input type="hidden" name="co_form_action" value="filter_form"/>
                 <input type="hidden" name="_nonce" value="<?php echo esc_attr(wp_create_nonce('content_calendar_filter_form_nonce')); ?>"/>
-                <div class="co-customize-tabs">
-                    <div class="customize-tab enable-tab cc-active-tab" data-tab="enable-content"><?php esc_html_e('Enable Filters', 'publishpress'); ?></div>
-                    <div class="customize-tab reorder-tab" data-tab="reorder-content"> <?php esc_html_e('Reorder Filters', 'publishpress'); ?> </div>
+                <div class="co-customize-tabs" role="tablist">
+                    <button type="button" class="customize-tab enable-tab cc-active-tab" data-tab="enable-content" role="tab" id="pp-calendar-filters-enable-tab" aria-selected="true" aria-controls="pp-calendar-filters-enable-panel" tabindex="0"><?php esc_html_e('Enable Filters', 'publishpress'); ?></button>
+                    <button type="button" class="customize-tab reorder-tab" data-tab="reorder-content" role="tab" id="pp-calendar-filters-reorder-tab" aria-selected="false" aria-controls="pp-calendar-filters-reorder-panel" tabindex="-1"><?php esc_html_e('Reorder Filters', 'publishpress'); ?></button>
                 </div>
                 <div class="co-cc-content">
-                    <div class="customize-content enable-content">
+                    <div class="customize-content enable-content" role="tabpanel" id="pp-calendar-filters-enable-panel" aria-labelledby="pp-calendar-filters-enable-tab">
                         <div class="fixed-header">
                             <p class="description"><?php esc_html_e('Enable or Disable Content calendar filter.', 'publishpress'); ?></p>
                         </div>
@@ -597,26 +601,30 @@ if (! class_exists('PP_Calendar_Utilities')) {
                                 <div class="customize-group-title title-index-<?php echo esc_attr($filter_index); ?> <?php echo esc_attr($filter_group); ?>" style="<?php echo esc_attr($hidden_style); ?>">
                                     <div class="title-text"><?php echo esc_html($filter_datas['title']); ?></div>
                                     <?php if ($filter_group === 'custom') : ?>
-                                        <div class="title-action new-item">
-                                            <span class="dashicons dashicons-plus-alt"></span> <?php esc_html_e('Add New', 'publishpress'); ?>
-                                        </div>
+                                        <button type="button" class="title-action new-item" aria-expanded="false" aria-controls="pp-calendar-new-filter-form">
+                                            <span class="dashicons dashicons-plus-alt" aria-hidden="true"></span> <?php esc_html_e('Add New', 'publishpress'); ?>
+                                        </button>
                                     <?php endif; ?>
                                 </div>
                                 <?php if ($filter_group === 'custom') : ?>
-                                    <div class="entry-item enable-item form-item" style="display: none;">
+                                    <div class="entry-item enable-item form-item" id="pp-calendar-new-filter-form" style="display: none;">
                                         <div class="new-fields">
                                             <div class="field">
-                                                <input class="new-item-title" type="text" placeholder="<?php esc_attr_e('Filter Title', 'publishpress'); ?>" />
+                                                <label class="screen-reader-text" for="pp-calendar-new-filter-title"><?php esc_html_e('Filter Title', 'publishpress'); ?></label>
+                                                <input class="new-item-title" id="pp-calendar-new-filter-title" type="text" placeholder="<?php esc_attr_e('Filter Title', 'publishpress'); ?>" aria-describedby="pp-calendar-new-filter-title-error" />
+                                                <p class="pp-co-field-error" id="pp-calendar-new-filter-title-error" hidden></p>
                                             </div>
                                             <div class="field">
-                                            <select class="new-item-metakey" data-nonce="<?php echo esc_attr(wp_create_nonce('publishpress-content-get-data')); ?>">
+                                            <label class="screen-reader-text" for="pp-calendar-new-filter-metakey"><?php esc_html_e('Meta key', 'publishpress'); ?></label>
+                                            <select class="new-item-metakey" id="pp-calendar-new-filter-metakey" aria-describedby="pp-calendar-new-filter-metakey-error" data-nonce="<?php echo esc_attr(wp_create_nonce('publishpress-content-get-data')); ?>">
                                                 <option value=""><?php esc_html_e('Search Metakey', 'publishpress'); ?></option>
                                             </select>
+                                            <p class="pp-co-field-error" id="pp-calendar-new-filter-metakey-error" hidden></p>
                                             </div>
                                         </div>
-                                        <div class="new-submit">
+                                        <button type="button" class="new-submit">
                                             <?php esc_html_e('Add Filter', 'publishpress'); ?>
-                                        </div>
+                                        </button>
                                     </div>
                                 <?php endif; ?>
                                 <?php if (empty($filter_datas['filters'])) : ?>
@@ -631,24 +639,24 @@ if (! class_exists('PP_Calendar_Utilities')) {
                                             'filter_group' => $filter_group
                                         ];
                                         ?>
-                                        <div class="entry-item enable-item <?php echo esc_attr($active_class); ?> customize-item-<?php echo esc_attr($filter_name); ?> <?php echo esc_attr($filter_group); ?>" data-name="<?php echo esc_attr($filter_name); ?>">
+                                        <div class="entry-item enable-item <?php echo esc_attr($active_class); ?> customize-item-<?php echo esc_attr($filter_name); ?> <?php echo esc_attr($filter_group); ?>" data-name="<?php echo esc_attr($filter_name); ?>" role="checkbox" tabindex="0" aria-checked="<?php echo !empty($active_class) ? 'true' : 'false'; ?>" aria-label="<?php echo esc_attr($filter_label); ?>">
                                             <input class="customize-item-input" type="hidden" name="<?php echo esc_attr($input_name); ?>" value="<?php echo esc_attr($filter_label); ?>" />
                                             <?php if ($filter_group === 'custom') : ?>
                                                 <input type="hidden" name="content_calendar_custom_filters[<?php echo esc_attr($filter_name); ?>]" value="<?php echo esc_attr($filter_label); ?>" />
                                             <?php endif; ?>
-                                            <div class="items-list-item-check checked">
+                                            <div class="items-list-item-check checked" aria-hidden="true">
                                                 <svg><use xlink:href="<?php echo esc_url(PUBLISHPRESS_URL . 'common/icons/content-icon.svg#svg-sprite-cu2-check-2-fill'); ?>"></use></svg>
                                             </div>
-                                            <div class="items-list-item-check unchecked">
+                                            <div class="items-list-item-check unchecked" aria-hidden="true">
                                                 <svg><use xlink:href="<?php echo esc_url(PUBLISHPRESS_URL . 'common/icons/content-icon.svg#svg-sprite-x'); ?>"></use></svg>
                                             </div>
                                             <div class="items-list-item-name">
                                                 <div class="items-list-item-name-text"><?php echo esc_html($filter_label); ?> <?php if ($filter_group === 'custom') : ?><span class="customize-item-info">(<?php echo esc_html($filter_name); ?>)</span><?php endif; ?></div>
                                             </div>
                                             <?php if ($filter_group === 'custom') : ?>
-                                                <div class="delete-content-calendar-item" data-meta="<?php echo esc_html($filter_name); ?>">
-                                                    <svg><use xlink:href="<?php echo esc_url(PUBLISHPRESS_URL . 'common/icons/content-icon.svg#svg-sprite-cu2-menu-trash'); ?>"></use></svg>
-                                                </div>
+                                                <button type="button" class="delete-content-calendar-item" data-meta="<?php echo esc_attr($filter_name); ?>" aria-label="<?php echo esc_attr(sprintf(__('Delete %s', 'publishpress'), $filter_label)); ?>">
+                                                    <svg aria-hidden="true" focusable="false"><use xlink:href="<?php echo esc_url(PUBLISHPRESS_URL . 'common/icons/content-icon.svg#svg-sprite-cu2-menu-trash'); ?>"></use></svg>
+                                                </button>
                                             <?php endif; ?>
                                         </div>
                                     <?php endforeach; ?>
@@ -656,9 +664,9 @@ if (! class_exists('PP_Calendar_Utilities')) {
                             <?php endforeach; ?>
                         </div>
                     </div>
-                    <div class="customize-content reorder-content" style="display: none;">
+                    <div class="customize-content reorder-content" role="tabpanel" id="pp-calendar-filters-reorder-panel" aria-labelledby="pp-calendar-filters-reorder-tab" style="display: none;">
                         <div class="fixed-header">
-                            <p class="description"><?php esc_html_e('Drag to change enabled filters order.', 'publishpress'); ?></p>
+                            <p class="description"><?php esc_html_e('Drag, or use the Move up and Move down buttons, to change enabled filters order.', 'publishpress'); ?></p>
                         </div>
                         <div class="scrollable-content">
                             <?php 
@@ -698,9 +706,9 @@ if (! class_exists('PP_Calendar_Utilities')) {
                         </div>
                     </div>
                     <div class="fixed-footer">
-                        <div class="save-cc-changes save-customize-item-form">
+                        <button type="submit" class="save-cc-changes save-customize-item-form">
                             <?php esc_html_e('Apply Changes', 'publishpress'); ?>
-                        </div>
+                        </button>
                     </div>
                 </div>
             </form>

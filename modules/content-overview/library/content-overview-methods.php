@@ -58,7 +58,7 @@ if (! class_exists('PP_Overview_Methods')) {
                 wp_enqueue_script(
                     'publishpress-content_overview',
                     $this->module_url . 'lib/content-overview.js',
-                    ['jquery', 'publishpress-date_picker', 'publishpress-select2', 'jquery-ui-sortable'],
+                    ['jquery', 'publishpress-date_picker', 'publishpress-select2', 'jquery-ui-sortable', 'wp-a11y'],
                     PUBLISHPRESS_VERSION,
                     true
                 );
@@ -85,6 +85,20 @@ if (! class_exists('PP_Overview_Methods')) {
                         'nonce' => wp_create_nonce('content_overview_filter_nonce'),
                         'moduleUrl' => $this->module_url,
                         'publishpressUrl' => PUBLISHPRESS_URL,
+                        /* translators: %s: column or filter name */
+                        'moveUpLabel' => esc_html__('Move %s up', 'publishpress'),
+                        /* translators: %s: column or filter name */
+                        'moveDownLabel' => esc_html__('Move %s down', 'publishpress'),
+                        /* translators: 1: column or filter name, 2: new position, 3: total number of items */
+                        'movedToPosition' => esc_html__('%1$s moved to position %2$d of %3$d.', 'publishpress'),
+                        /* translators: %s: column or filter name */
+                        'deleteItemLabel' => esc_html__('Delete %s', 'publishpress'),
+                        /* translators: %s: column or filter name */
+                        'itemAdded' => esc_html__('%s added.', 'publishpress'),
+                        /* translators: %s: column or filter name */
+                        'itemDeleted' => esc_html__('%s deleted.', 'publishpress'),
+                        'titleRequired' => esc_html__('Please enter a title.', 'publishpress'),
+                        'metakeyRequired' => esc_html__('Please select a meta key.', 'publishpress'),
                     ]
                 );
             }
@@ -249,39 +263,42 @@ if (! class_exists('PP_Overview_Methods')) {
                             $me_mode = (int) $user_filters['me_mode'];
                             $active_me_mode = !empty($me_mode) ? 'active-filter' : '';
                         ?>
-                    <div class="item action me-mode-action <?php echo esc_attr($active_me_mode); ?>">
-                        <span class="dashicons dashicons-admin-users"></span> <?php esc_html_e('Me Mode', 'publishpress'); ?>
-                    </div>
+                    <button type="button" class="item action me-mode-action <?php echo esc_attr($active_me_mode); ?>" aria-pressed="<?php echo !empty($me_mode) ? 'true' : 'false'; ?>">
+                        <span class="dashicons dashicons-admin-users" aria-hidden="true"></span> <?php esc_html_e('Me Mode', 'publishpress'); ?>
+                        <?php if (!empty($me_mode)) : ?>
+                            <span class="dashicons dashicons-yes me-mode-on-indicator" aria-hidden="true"></span>
+                        <?php endif; ?>
+                    </button>
                     <?php do_action('pp_content_overview_filter_after_me_mode', $user_filters); ?>
-                    <div class="item action co-filter" data-target="#content_overview_modal_<?php echo esc_attr($modal_id); ?>">
-                        <span class="dashicons dashicons-editor-table"></span> <?php esc_html_e('Customize Columns', 'publishpress'); ?>
-                    </div>
-                    <div id="content_overview_modal_<?php echo esc_attr($modal_id); ?>" class="customize-customize-item-modal content-overview-modal" style="display: none;">
+                    <button type="button" class="item action co-filter" id="content_overview_modal_<?php echo esc_attr($modal_id); ?>_trigger" data-target="#content_overview_modal_<?php echo esc_attr($modal_id); ?>" aria-expanded="false" aria-controls="content_overview_modal_<?php echo esc_attr($modal_id); ?>">
+                        <span class="dashicons dashicons-editor-table" aria-hidden="true"></span> <?php esc_html_e('Customize Columns', 'publishpress'); ?>
+                    </button>
+                    <div id="content_overview_modal_<?php echo esc_attr($modal_id); ?>" class="customize-customize-item-modal content-overview-modal" role="dialog" aria-labelledby="content_overview_modal_<?php echo esc_attr($modal_id); ?>_trigger" style="display: none;">
                         <div class="content-overview-modal-content">
-                            <span class="close">&times;</span>
+                            <button type="button" class="close" aria-label="<?php esc_attr_e('Close', 'publishpress'); ?>"><span aria-hidden="true">&times;</span></button>
                             <?php echo PP_Content_Overview_Utilities::content_overview_customize_column_form($args); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                         </div>
                     </div>
                     <?php $modal_id++; ?>
-                    <div class="item action co-filter" data-target="#content_overview_modal_<?php echo esc_attr($modal_id); ?>">
-                        <span class="dashicons dashicons-filter"></span> <?php esc_html_e('Customize Filters', 'publishpress'); ?>
-                    </div>
-                    <div id="content_overview_modal_<?php echo esc_attr($modal_id); ?>" class="customize-customize-item-modal content-overview-modal" style="display: none;">
+                    <button type="button" class="item action co-filter" id="content_overview_modal_<?php echo esc_attr($modal_id); ?>_trigger" data-target="#content_overview_modal_<?php echo esc_attr($modal_id); ?>" aria-expanded="false" aria-controls="content_overview_modal_<?php echo esc_attr($modal_id); ?>">
+                        <span class="dashicons dashicons-filter" aria-hidden="true"></span> <?php esc_html_e('Customize Filters', 'publishpress'); ?>
+                    </button>
+                    <div id="content_overview_modal_<?php echo esc_attr($modal_id); ?>" class="customize-customize-item-modal content-overview-modal" role="dialog" aria-labelledby="content_overview_modal_<?php echo esc_attr($modal_id); ?>_trigger" style="display: none;">
                         <div class="content-overview-modal-content">
-                            <span class="close">&times;</span>
+                            <button type="button" class="close" aria-label="<?php esc_attr_e('Close', 'publishpress'); ?>"><span aria-hidden="true">&times;</span></button>
                             <?php echo PP_Content_Overview_Utilities::content_overview_customize_filter_form($args); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                         </div>
                     </div>
-                    <div class="item action" id="print_link">
-                        <span class="dashicons dashicons-printer"></span> <?php esc_html_e('Print', 'publishpress'); ?>
-                    </div>
+                    <button type="button" class="item action" id="print_link">
+                        <span class="dashicons dashicons-printer" aria-hidden="true"></span> <?php esc_html_e('Print', 'publishpress'); ?>
+                    </button>
                     <?php $modal_id++; ?>
-                    <div data-target="#content_overview_modal_<?php echo esc_attr($modal_id); ?>" class="co-filter item action">
-                        <span class="dashicons dashicons-admin-generic"></span>
-                    </div>
-                    <div id="content_overview_modal_<?php echo esc_attr($modal_id); ?>" class="content-overview-modal" style="display: none;">
+                    <button type="button" data-target="#content_overview_modal_<?php echo esc_attr($modal_id); ?>" class="co-filter item action" id="content_overview_modal_<?php echo esc_attr($modal_id); ?>_trigger" aria-label="<?php esc_attr_e('Settings', 'publishpress'); ?>" aria-expanded="false" aria-controls="content_overview_modal_<?php echo esc_attr($modal_id); ?>">
+                        <span class="dashicons dashicons-admin-generic" aria-hidden="true"></span>
+                    </button>
+                    <div id="content_overview_modal_<?php echo esc_attr($modal_id); ?>" class="content-overview-modal" role="dialog" aria-labelledby="content_overview_modal_<?php echo esc_attr($modal_id); ?>_trigger" style="display: none;">
                         <div class="content-overview-modal-content">
-                            <span class="close">&times;</span>
+                            <button type="button" class="close" aria-label="<?php esc_attr_e('Close', 'publishpress'); ?>"><span aria-hidden="true">&times;</span></button>
                             <div>
                                 <div class="metadata-item-filter custom-filter">
                                     <label class="filter-title" for="pp_posts_per_page">
@@ -305,12 +322,12 @@ if (! class_exists('PP_Overview_Methods')) {
                 <div class="right-items">
                     <?php if (!empty($editable_post_types)) : ?>
                         <?php $modal_id++; ?>
-                        <div class="item action co-filter new-post" data-target="#content_overview_modal_<?php echo esc_attr($modal_id); ?>">
-                            <span class="dashicons dashicons-plus-alt"></span> <?php esc_html_e('New Post', 'publishpress'); ?>
-                        </div>
-                        <div id="content_overview_modal_<?php echo esc_attr($modal_id); ?>" class="customize-customize-item-modal content-overview-modal new-post-modal" style="display: none;">
+                        <button type="button" class="item action co-filter new-post" id="content_overview_modal_<?php echo esc_attr($modal_id); ?>_trigger" data-target="#content_overview_modal_<?php echo esc_attr($modal_id); ?>" aria-expanded="false" aria-controls="content_overview_modal_<?php echo esc_attr($modal_id); ?>">
+                            <span class="dashicons dashicons-plus-alt" aria-hidden="true"></span> <?php esc_html_e('New Post', 'publishpress'); ?>
+                        </button>
+                        <div id="content_overview_modal_<?php echo esc_attr($modal_id); ?>" class="customize-customize-item-modal content-overview-modal new-post-modal" role="dialog" aria-labelledby="content_overview_modal_<?php echo esc_attr($modal_id); ?>_trigger" style="display: none;">
                             <div class="content-overview-modal-content">
-                                <span class="close">&times;</span>
+                                <button type="button" class="close" aria-label="<?php esc_attr_e('Close', 'publishpress'); ?>"><span aria-hidden="true">&times;</span></button>
                                 <div class="content-overview-modal-form">
                                     <?php echo PP_Content_Overview_Utilities::content_overview_get_post_form($args); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                                 </div>
@@ -330,6 +347,7 @@ if (! class_exists('PP_Overview_Methods')) {
                 <input type="hidden" name="page" value="pp-content-overview"/>
                 <input type="hidden" name="me_mode" id="content_overview_me_mode" value="<?php echo esc_attr($me_mode); ?>" />
                 <?php do_action('pp_content_overview_filter_hidden_fields', $user_filters); ?>
+                <p class="pp-content-overview-filters-note description"><?php esc_html_e('The list updates when you change a filter.', 'publishpress'); ?></p>
                 <div class="pp-content-overview-filters">
                     <?php
                     $filtered_start_date = $user_filters['start_date'];
@@ -337,12 +355,12 @@ if (! class_exists('PP_Overview_Methods')) {
                     $selected_date = ': ' . date_i18n("F j, Y", strtotime($filtered_start_date)) . ' '. esc_html__('to', 'publishpress').' ' . date_i18n("F j, Y", strtotime($filtered_end_date));
                     $modal_id++;
                     ?>
-                    <button data-target="#content_overview_modal_<?php echo esc_attr($modal_id); ?>" class="co-filter active-filter">
+                    <button data-target="#content_overview_modal_<?php echo esc_attr($modal_id); ?>" class="co-filter active-filter" id="content_overview_modal_<?php echo esc_attr($modal_id); ?>_trigger" aria-expanded="false" aria-controls="content_overview_modal_<?php echo esc_attr($modal_id); ?>">
                         <?php esc_html_e('Date', 'publishpress'); ?><?php echo esc_html($selected_date); ?>
                     </button>
-                    <div id="content_overview_modal_<?php echo esc_attr($modal_id); ?>" class="content-overview-modal" style="display: none;">
+                    <div id="content_overview_modal_<?php echo esc_attr($modal_id); ?>" class="content-overview-modal" role="dialog" aria-labelledby="content_overview_modal_<?php echo esc_attr($modal_id); ?>_trigger" style="display: none;">
                         <div class="content-overview-modal-content">
-                            <span class="close">&times;</span>
+                            <button type="button" class="close" aria-label="<?php esc_attr_e('Close', 'publishpress'); ?>"><span aria-hidden="true">&times;</span></button>
                             <div><?php echo PP_Content_Overview_Utilities::content_overview_time_range($args); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
                         </div>
                     </div>
@@ -360,10 +378,13 @@ if (! class_exists('PP_Overview_Methods')) {
                         <?php if (!empty($button_label)) : ?>
                             <button
                                 data-target="#content_overview_modal_<?php echo esc_attr($modal_id); ?>"
+                                id="content_overview_modal_<?php echo esc_attr($modal_id); ?>_trigger"
+                                aria-expanded="false"
+                                aria-controls="content_overview_modal_<?php echo esc_attr($modal_id); ?>"
                                 class="co-filter <?php echo esc_attr($active_class); ?> <?php echo esc_attr($select_id); ?> me-mode-status-<?php echo esc_attr($me_mode); ?>"><?php echo esc_html($button_label); ?></button>
-                            <div id="content_overview_modal_<?php echo esc_attr($modal_id); ?>" class="content-overview-modal" style="display: none;">
+                            <div id="content_overview_modal_<?php echo esc_attr($modal_id); ?>" class="content-overview-modal" role="dialog" aria-labelledby="content_overview_modal_<?php echo esc_attr($modal_id); ?>_trigger" style="display: none;">
                                 <div class="content-overview-modal-content">
-                                    <span class="close">&times;</span>
+                                    <button type="button" class="close" aria-label="<?php esc_attr_e('Close', 'publishpress'); ?>"><span aria-hidden="true">&times;</span></button>
                                     <div><?php echo $filter_data['html']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
                                 </div>
                             </div>

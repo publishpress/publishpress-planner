@@ -241,6 +241,9 @@ if (! class_exists('PP_Modules_Settings')) {
                             <th scope="row"><?php
                                 esc_html_e('Enabled features', 'publishpress'); ?></th>
                             <td>
+                                <fieldset>
+                                <legend class="screen-reader-text"><?php
+                                    esc_html_e('Enabled features', 'publishpress'); ?></legend>
                                 <?php
                                 foreach ($publishpress->modules as $mod_name => $mod_data) : ?>
 
@@ -266,6 +269,7 @@ if (! class_exists('PP_Modules_Settings')) {
                                     <br>
                                 <?php
                                 endforeach; ?>
+                                </fieldset>
                             </td>
                         </tr>
                         </tbody>

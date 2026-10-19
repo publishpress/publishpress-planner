@@ -42,3 +42,9 @@
 .psppno_workflows div.psppno_workflow_channel_field {
     padding-left: 20px;
 }
+.psppno_workflow_channel_fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+}

@@ -1763,7 +1763,8 @@ if (! class_exists('PP_Notifications')) {
                 __('Email from:', 'publishpress'),
                 [$this, 'settings_email_from_option'],
                 $this->module->options_group_name,
-                $this->module->options_group_name . '_general'
+                $this->module->options_group_name . '_general',
+                ['label_for' => $this->module->slug . '_email_from_name']
             );
 
             add_settings_field(
@@ -1771,7 +1772,8 @@ if (! class_exists('PP_Notifications')) {
                 __('Always notify the author of the content:', 'publishpress'),
                 [$this, 'settings_notify_author_by_default_option'],
                 $this->module->options_group_name,
-                $this->module->options_group_name . '_general'
+                $this->module->options_group_name . '_general',
+                ['label_for' => $this->module->slug . '_notify_author_by_default']
             );
 
             add_settings_field(
@@ -1779,7 +1781,8 @@ if (! class_exists('PP_Notifications')) {
                 __('Always notify users who have edited the content:', 'publishpress'),
                 [$this, 'settings_notify_current_user_by_default_option'],
                 $this->module->options_group_name,
-                $this->module->options_group_name . '_general'
+                $this->module->options_group_name . '_general',
+                ['label_for' => $this->module->slug . '_notify_current_user_by_default']
             );
 
             add_settings_field(
@@ -1787,7 +1790,8 @@ if (! class_exists('PP_Notifications')) {
                 __('Blacklisted taxonomies for Notifications', 'publishpress'),
                 [$this, 'settings_blacklisted_taxonomies_option'],
                 $this->module->options_group_name,
-                $this->module->options_group_name . '_general'
+                $this->module->options_group_name . '_general',
+                ['label_for' => $this->module->slug . '_blacklisted_taxonomies']
             );
         }
 
@@ -1835,17 +1839,17 @@ if (! class_exists('PP_Notifications')) {
                     style="min-width: 300px"
                     placeholder="' . esc_attr(get_bloginfo('name')) . '"
                     name="' . esc_attr($this->module->options_group_name) . '[email_from_name]"
-                    value="' . esc_attr($email_from['name']) . '" />
-                </label>';
+                    value="' . esc_attr($email_from['name']) . '" />';
             echo '<br />';
+            echo '<label class="screen-reader-text" for="' . esc_attr($this->module->slug) . '_email_from">'
+                . esc_html__('Email from address', 'publishpress') . '</label>';
             echo '<input
                     id="' . esc_attr($this->module->slug) . '_email_from"
                     type="email"
                     style="min-width: 300px"
                     placeholder="' . esc_attr(get_bloginfo('admin_email')) . '"
                     name="' . esc_attr($this->module->options_group_name) . '[email_from]"
-                    value="' . esc_attr($email_from['email']) . '" />
-                </label>';
+                    value="' . esc_attr($email_from['email']) . '" />';
         }
 
         /**

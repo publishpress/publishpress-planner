@@ -250,8 +250,8 @@ if (! class_exists('PP_Efmigration')) {
         {
             add_submenu_page(
                 '',
-                'PublishPress',
-                'PublishPress',
+                esc_html__('Migrate Edit Flow data', 'publishpress'),
+                esc_html__('Migrate Edit Flow data', 'publishpress'),
                 'manage_options',
                 self::PAGE_SLUG,
                 [$this, 'print_view']

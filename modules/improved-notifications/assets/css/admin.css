@@ -119,7 +119,7 @@
 
 #pp_post_notify_box .no-workflows {
     font-style: italic;
-    color: #a3a3a3;
+    color: #646970;
     margin-top: 15px;
 }
 
@@ -175,7 +175,7 @@
 }
 
 .psppno_workflow_metabox_option_description {
-    color: silver;
+    color: #646970;
     margin-left: 23px;
 }
 
@@ -219,7 +219,30 @@ body.post-type-psppnotif_workflow #wpbody-content {
 
 
 .psppno_workflow_metabox_section_header.invalid {
-    background-color: #ff8585 !important;
+    background-color: #b32d2e !important;
+    border-color: #8a2424;
+    color: #fff;
+}
+
+.psppno_workflow_metabox_section_header .psppno-required-marker,
+.psppno_workflow_metabox_section_header .psppno-invalid-marker {
+    font-weight: normal;
+}
+
+#psppno-workflow-metabox-section-content label .psppno-required-marker {
+    font-weight: normal;
+}
+
+#error_messages:focus {
+    outline: 2px solid #2271b1;
+    outline-offset: 2px;
+}
+
+.psppno_workflow_channel_fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
 }
 
 .wrap .logo-header {

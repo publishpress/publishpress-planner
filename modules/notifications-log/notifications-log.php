@@ -816,17 +816,17 @@ if (! class_exists('PP_Notifications_Log')) {
 
                     ob_start(); ?>
                     <div class="preview-notification">
-                        <div class="subject"><label><?php
-                                _e(
+                        <div class="subject"><strong class="preview-notification-label"><?php
+                                esc_html_e(
                                     'Subject:',
                                     'publishpress'
-                                ); ?></label><?php
+                                ); ?></strong><?php
                             echo esc_html($content['subject']); ?></div>
                         <div class="content">
-                            <label>
+                            <strong class="preview-notification-label">
                                 <?php
                                 esc_html_e('Content:', 'publishpress'); ?>
-                            </label>
+                            </strong>
                             <?php
                             // phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
                             echo wp_kses_post(wpautop($content['body']));

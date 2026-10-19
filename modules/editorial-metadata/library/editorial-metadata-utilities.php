@@ -149,7 +149,7 @@ if (! class_exists('PP_Editorial_Metadata_Utilities')) {
                     <table class='form-table'>
                         <tr class='form-field form-required'>
                             <th scope='row' valign='top'><label for='name'><?php
-                                    esc_html_e('Name'); ?></label></th>
+                                    esc_html_e('Name'); ?> <span class="required"><?php esc_html_e('(required)', 'publishpress'); ?></span></label></th>
                             <td><input name='name' id='name' type='text' value="<?php
                                 echo esc_attr($name); ?>" size='40' aria-required='true'/>
                                 <?php
@@ -283,12 +283,14 @@ if (! class_exists('PP_Editorial_Metadata_Utilities')) {
                                                         name="metadata_select_options[values][]" 
                                                         value="<?php echo esc_attr($value); ?>"
                                                         placeholder="<?php esc_html_e('Meta Value', 'publishpress'); ?>"
+                                                        aria-label="<?php echo esc_attr(sprintf(__('Option %d value', 'publishpress'), (int)$index + 1)); ?>"
                                                     />
                                                     <input class="entry-field label-field" 
                                                         autocomplete="off"
                                                         type="text" name="metadata_select_options[labels][]" 
                                                         value="<?php echo esc_attr($option_labels[$index]); ?>"
                                                         placeholder="<?php esc_html_e('Display Label', 'publishpress'); ?>"
+                                                        aria-label="<?php echo esc_attr(sprintf(__('Option %d label', 'publishpress'), (int)$index + 1)); ?>"
                                                     />
                                                     <label class="select_dropdown_default_label">
                                                         <input type="radio"
@@ -314,12 +316,14 @@ if (! class_exists('PP_Editorial_Metadata_Utilities')) {
                                                     name="metadata_select_options[values][]" 
                                                     value=""
                                                     placeholder="<?php esc_html_e('Meta Value', 'publishpress'); ?>"
+                                                    aria-label="<?php echo esc_attr(sprintf(__('Option %d value', 'publishpress'), 1)); ?>"
                                                 />
                                                 <input class="entry-field label-field" 
                                                     autocomplete="off"
                                                     type="text" name="metadata_select_options[labels][]" 
                                                     value=""
                                                     placeholder="<?php esc_html_e('Display Label', 'publishpress'); ?>"
+                                                    aria-label="<?php echo esc_attr(sprintf(__('Option %d label', 'publishpress'), 1)); ?>"
                                                 />
                                                 <label class="select_dropdown_default_label">
                                                     <input type="radio"
@@ -440,7 +444,7 @@ if (! class_exists('PP_Editorial_Metadata_Utilities')) {
                                       name='addmetadata'>
                                     <div class='form-field form-required'>
                                         <label for='metadata_name'><?php
-                                            esc_html_e('Name', 'publishpress'); ?></label>
+                                            esc_html_e('Name', 'publishpress'); ?> <span class="required"><?php esc_html_e('(required)', 'publishpress'); ?></span></label>
                                         <input type="text" aria-required='true' size='20' maxlength='200'
                                                id='metadata_name' name='metadata_name' value="<?php
                                         if (! empty($_POST['metadata_name'])) {
@@ -454,7 +458,7 @@ if (! class_exists('PP_Editorial_Metadata_Utilities')) {
                                     </div>
                                     <div class='form-field form-required'>
                                         <label for='metadata_slug'><?php
-                                            esc_html_e('Slug', 'publishpress'); ?></label>
+                                            esc_html_e('Slug', 'publishpress'); ?> <span class="required"><?php esc_html_e('(required)', 'publishpress'); ?></span></label>
                                         <input type="text" aria-required='true' size='20' maxlength='200'
                                                id='metadata_slug' name='metadata_slug' value="<?php
                                         if (! empty($_POST['metadata_slug'])) {
@@ -594,12 +598,14 @@ if (! class_exists('PP_Editorial_Metadata_Utilities')) {
                                                                     name="metadata_select_options[values][]" 
                                                                     value="<?php echo esc_attr($value); ?>"
                                                                     placeholder="<?php esc_html_e('Meta Value', 'publishpress'); ?>"
+                                                                    aria-label="<?php echo esc_attr(sprintf(__('Option %d value', 'publishpress'), (int)$index + 1)); ?>"
                                                                 />
                                                                 <input class="entry-field label-field" 
                                                                     autocomplete="off"
                                                                     type="text" name="metadata_select_options[labels][]" 
                                                                     value="<?php echo esc_attr($option_labels[$index]); ?>"
                                                                     placeholder="<?php esc_html_e('Display Label', 'publishpress'); ?>"
+                                                                    aria-label="<?php echo esc_attr(sprintf(__('Option %d label', 'publishpress'), (int)$index + 1)); ?>"
                                                                 />
                                                                 <label class="select_dropdown_default_label">
                                                                     <input type="radio"
@@ -625,12 +631,14 @@ if (! class_exists('PP_Editorial_Metadata_Utilities')) {
                                                                 name="metadata_select_options[values][]" 
                                                                 value=""
                                                                 placeholder="<?php esc_html_e('Meta Value', 'publishpress'); ?>"
+                                                                aria-label="<?php echo esc_attr(sprintf(__('Option %d value', 'publishpress'), 1)); ?>"
                                                             />
                                                             <input class="entry-field label-field" 
                                                                 autocomplete="off"
                                                                 type="text" name="metadata_select_options[labels][]" 
                                                                 value=""
                                                                 placeholder="<?php esc_html_e('Display Label', 'publishpress'); ?>"
+                                                                aria-label="<?php echo esc_attr(sprintf(__('Option %d label', 'publishpress'), 1)); ?>"
                                                             />
                                                             <label class="select_dropdown_default_label">
                                                                 <input type="radio"

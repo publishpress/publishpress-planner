@@ -22,6 +22,10 @@ export default function ItemFormPopup(props) {
     const [isLoading, setIsLoading] = React.useState(false);
     const [savingLink, setSavingLink] = React.useState(false);
     const [errorMessage, setErrorMessage] = React.useState();
+    const dialogRef = React.useRef(null);
+
+    const TITLE_ID = 'publishpress-calendar-popup-form-title';
+    const POST_TYPE_FIELD_ID = 'publishpress-calendar-field-post-type';
 
     const didMount = () => {
         resetGlobalFormFieldData()
@@ -30,6 +34,10 @@ export default function ItemFormPopup(props) {
 
         setDefaultValueForFields();
         activateFixForScreenLockerSize();
+
+        if (dialogRef.current) {
+            dialogRef.current.focus();
+        }
 
         return didUnmount;
     }
@@ -391,7 +399,13 @@ export default function ItemFormPopup(props) {
             linkData = formLinks[linkName];
 
             if (savingLink === linkData.id) {
-                links.push(<span key={linkData.id}>{linkData.labelLoading}</span>);
+                links.push(
+                    <button type="button"
+                            key={linkData.id}
+                            className={linkData.className}
+                            disabled={true}
+                            aria-busy="true">{linkData.labelLoading}</button>
+                );
             } else {
                 links.push(getPostLinksElement(linkData, handleLinkOnClick));
             }
@@ -463,6 +477,34 @@ export default function ItemFormPopup(props) {
         }, 500);
     }
 
+    // Keep the keyboard focus inside the modal dialog.
+    const handleDialogKeyDown = (e) => {
+        if (e.key !== 'Tab' || !dialogRef.current) {
+            return;
+        }
+
+        const focusableElements = $(dialogRef.current)
+            .find('a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])')
+            .filter(':visible')
+            .toArray();
+
+        if (focusableElements.length === 0) {
+            e.preventDefault();
+            return;
+        }
+
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+
+        if (e.shiftKey && (document.activeElement === firstElement || document.activeElement === dialogRef.current)) {
+            e.preventDefault();
+            lastElement.focus();
+        } else if (!e.shiftKey && document.activeElement === lastElement) {
+            e.preventDefault();
+            firstElement.focus();
+        }
+    }
+
     React.useEffect(didMount, []);
     React.useEffect(fetchFieldsForSelectedPostType, [postType]);
 
@@ -471,9 +513,15 @@ export default function ItemFormPopup(props) {
     return (
         <>
             <div className={'publishpress-calendar-popup-screen-lock'}/>
-            <div className={'publishpress-calendar-popup publishpress-calendar-popup-form'}>
+            <div className={'publishpress-calendar-popup publishpress-calendar-popup-form'}
+                 role="dialog"
+                 aria-modal="true"
+                 aria-labelledby={TITLE_ID}
+                 tabIndex="-1"
+                 ref={dialogRef}
+                 onKeyDown={handleDialogKeyDown}>
                 <div className={'publishpress-calendar-popup-title'}>
-                    {getFormPopupTitle()}
+                    <span id={TITLE_ID}>{getFormPopupTitle()}</span>
                     <button type="button" className={'dashicons dashicons-no publishpress-calendar-popup-close'}
                             aria-label={props.strings.close} onClick={props.onCloseCallback}/>
                 </div>
@@ -482,9 +530,10 @@ export default function ItemFormPopup(props) {
                     <tbody>
                     {props.postTypes.length > 1 &&
                     <tr>
-                        <th><label>{props.strings.postType}</label></th>
+                        <th><label htmlFor={POST_TYPE_FIELD_ID}>{props.strings.postType}</label></th>
                         <td>
                             <Select
+                                id={POST_TYPE_FIELD_ID}
                                 options={props.postTypes}
                                 allowClear={false}
                                 onSelect={handleOnSelectPostTypeField}
@@ -495,7 +544,7 @@ export default function ItemFormPopup(props) {
 
                     {props.postTypes.length === 1 &&
                     <tr>
-                        <th><label>{props.strings.postType}</label></th>
+                        <th>{props.strings.postType}</th>
                         <td>{getPostTypeNameBySlug(postType)}</td>
                     </tr>
                     }
@@ -513,8 +562,8 @@ export default function ItemFormPopup(props) {
                 }
 
                 {errorMessage &&
-                <div className={'publishpress-calendar-popup-error-message'}>
-                    <span className={'dashicons dashicons-warning'}/>
+                <div className={'publishpress-calendar-popup-error-message'} role="alert">
+                    <span className={'dashicons dashicons-warning'} aria-hidden="true"/>
                     {errorMessage}
                 </div>
                 }
@@ -523,7 +572,7 @@ export default function ItemFormPopup(props) {
                 <div className="publishpress-calendar-popup-links">
                     {getFooterLinks()}
                     {isLoading &&
-                    <span className={'dashicons dashicons-update-alt publishpress-spinner'}/>
+                    <span className={'dashicons dashicons-update-alt publishpress-spinner'} aria-hidden="true"/>
                     }
                 </div>
             </div>

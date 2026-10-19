@@ -2,7 +2,8 @@ import NavigationBar from "./NavigationBar";
 import WeekDays from "./WeekDays";
 import MessageBar from "./MessageBar";
 import DayCell from "./DayCell";
-import {calculateWeeksInMilliseconds, getBeginDateOfWeekByDate, getDateAsStringInWpFormat, getDateInstanceFromString, addCalendarPosts, openPostModal, adjustTextareaHeight, updateModalPost, initToolTips} from "./Functions";
+import {calculateWeeksInMilliseconds, getBeginDateOfWeekByDate, getDateAsStringInWpFormat, getDateInstanceFromString, addCalendarPosts, openPostModal, adjustTextareaHeight, updateModalPost, initToolTips, speakMessage} from "./Functions";
+import { __, _n, sprintf } from '@wordpress/i18n';
 import FilterBar from "./FilterBar";
 import ItemFormPopup from "./ItemFormPopup";
 
@@ -33,6 +34,11 @@ export default function AsyncCalendar(props) {
 
     const DRAG_AND_DROP_HOVERING_CLASS = 'publishpress-calendar-day-hover';
 
+    // Element that opened the "add content" form, so the focus can be returned to it when the form closes.
+    const formTriggerElement = React.useRef(null);
+    const isFirstDataFetch = React.useRef(true);
+    const announceTimeout = React.useRef(null);
+
     const getUrl = (action, query) => {
         if (!query) {
             query = '';
@@ -55,6 +61,7 @@ export default function AsyncCalendar(props) {
             previousElement.classList.add('active-filter');
             previousElement.innerHTML = previousElement.getAttribute('data-label') + ': ' + selectedOptionText;
             elementModal.style.display = 'none';
+            previousElement.setAttribute('aria-expanded', 'false');
         }
         onFilterEventCallback(selectName, selectValue);
     }
@@ -76,6 +83,7 @@ export default function AsyncCalendar(props) {
             new_value = 1;
             target.classList.add('active-filter');
         }
+        target.setAttribute('aria-pressed', new_value ? 'true' : 'false');
 
         onFilterEventCallback('me_mode', new_value);
 
@@ -142,6 +150,8 @@ export default function AsyncCalendar(props) {
         }
     
         elementModal.style.display = 'none';
+        previousElement.setAttribute('aria-expanded', 'false');
+        previousElement.focus();
     };
     
 
@@ -214,7 +224,40 @@ export default function AsyncCalendar(props) {
 
                 resetCSSClasses();
                 initToolTips();
+
+                announceCalendarUpdate(fetchedData);
             });
+    };
+
+    const announceCalendarUpdate = (fetchedData) => {
+        // Skip the first fetch, done when the page loads.
+        if (isFirstDataFetch.current) {
+            isFirstDataFetch.current = false;
+            return;
+        }
+
+        let numberOfItems = 0;
+        if (fetchedData && typeof fetchedData === 'object') {
+            for (const date in fetchedData) {
+                if (fetchedData.hasOwnProperty(date) && Array.isArray(fetchedData[date])) {
+                    numberOfItems += fetchedData[date].length;
+                }
+            }
+        }
+
+        if (announceTimeout.current) {
+            clearTimeout(announceTimeout.current);
+        }
+
+        announceTimeout.current = setTimeout(() => {
+            speakMessage(
+                sprintf(
+                    _n('Calendar updated, %d item', 'Calendar updated, %d items', numberOfItems, 'publishpress'),
+                    numberOfItems
+                ),
+                'polite'
+            );
+        }, 500);
     };
 
     const resetCSSClasses = () => {
@@ -291,21 +334,59 @@ export default function AsyncCalendar(props) {
         }
         let item = itemsByDate[itemDate][itemIndex];
 
+        if (!item) {
+            return;
+        }
+
+        moveCalendarItemByIdToANewDate(item.id, newYear, newMonth, newDay);
+    }
+
+    const moveCalendarItemByIdToANewDate = (itemId, newYear, newMonth, newDay) => {
         setIsLoading(true);
         setMessage(props.strings.movingTheItem);
 
         const dataUrl = getUrl(props.actionMoveItem);
 
         const formData = new FormData();
-        formData.append('id', item.id);
+        formData.append('id', itemId);
         formData.append('year', newYear);
         formData.append('month', newMonth);
         formData.append('day', newDay);
 
+        const newDateString = date_i18n(props.dateFormat, new Date(newYear, newMonth - 1, newDay));
+
         fetch(dataUrl, {method: 'POST', body: formData})
-            .then(response => response.json())
-            .then(() => {
-                setRefreshCount(refreshCount + 1);
+            .then(response => {
+                return response.json()
+                    .catch(() => null)
+                    .then((data) => ({ok: response.ok, data: data}));
+            })
+            .then((result) => {
+                if (!result.ok || result.data !== true) {
+                    const errorMessage = result.data && result.data.error
+                        ? sprintf(__('The item could not be moved: %s', 'publishpress'), result.data.error)
+                        : __('The item could not be moved.', 'publishpress');
+
+                    setIsLoading(false);
+                    setMessage(errorMessage);
+                    resetCSSClasses();
+                    speakMessage(errorMessage, 'assertive');
+
+                    return;
+                }
+
+                speakMessage(sprintf(__('Item moved to %s.', 'publishpress'), newDateString), 'polite');
+
+                setOpenedItemRefreshCount(prevCount => prevCount + 1);
+                setRefreshCount(prevCount => prevCount + 1);
+            })
+            .catch(() => {
+                const errorMessage = __('The item could not be moved.', 'publishpress');
+
+                setIsLoading(false);
+                setMessage(errorMessage);
+                resetCSSClasses();
+                speakMessage(errorMessage, 'assertive');
             });
     }
 
@@ -433,6 +514,7 @@ export default function AsyncCalendar(props) {
                 const cell = getCellFromChild(e.target);
 
                 if (cell) {
+                    formTriggerElement.current = cell.find('.publishpress-calendar-cell-button').get(0) || null;
                     setOpenedItemId(null);
                     setFormDate(lastHoveredDate);
                 }
@@ -499,9 +581,27 @@ export default function AsyncCalendar(props) {
     }
 
     const onCreatePost = (date) => {
+        if (document.activeElement && document.activeElement !== document.body) {
+            formTriggerElement.current = document.activeElement;
+        }
         setOpenedItemId(null);
         setFormDate(date);
     }
+
+    // Return the focus to the element that opened the form, when the form is closed.
+    const formWasOpened = React.useRef(false);
+    React.useEffect(() => {
+        if (formWasOpened.current && !formDate && formTriggerElement.current) {
+            const trigger = formTriggerElement.current;
+            formTriggerElement.current = null;
+
+            if (document.body.contains(trigger)) {
+                trigger.focus();
+            }
+        }
+
+        formWasOpened.current = !!formDate;
+    }, [formDate]);
 
     const calendarTableBodyRowsWithCells = () => {
         const numberOfDaysToDisplay = numberOfWeeksToDisplay * 7;
@@ -538,6 +638,7 @@ export default function AsyncCalendar(props) {
                     getOpenedItemDataCallback={getOpenedItemData}
                     ajaxUrl={props.ajaxUrl}
                     onClickItemCallback={onClickItem}
+                    onMoveItemCallback={moveCalendarItemByIdToANewDate}
                     onItemActionClickCallback={onPopupItemActionClick}
                     canCreate={props.userCanAddPosts}
                     onCreatePostCallback={onCreatePost}

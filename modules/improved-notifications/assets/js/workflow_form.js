@@ -32,6 +32,9 @@
                     if ($chkb.is(':checked')) {
                         $filters.show();
                         $filters.find('select').multipleSelect('refresh');
+                        $filters.find('select').each(function () {
+                            applyMultipleSelectA11y($(this));
+                        });
                     } else {
                         $filters.hide();
                     }
@@ -76,30 +79,135 @@
             return content.trim();
         }
 
+        var i18n = (typeof workflowFormData !== 'undefined' && workflowFormData.text) ? workflowFormData.text : {};
+
+        /**
+         * Add accessible names and state to the multiple-select replacement controls.
+         * The native select stays hidden (the library sets the "hidden" attribute on it).
+         *
+         * @param $select
+         */
+        function applyMultipleSelectA11y($select) {
+            var $parent = $select.next('.ms-parent');
+
+            if ($parent.length === 0) {
+                return;
+            }
+
+            var selectId = $select.attr('id');
+            var $choice = $parent.find('.ms-choice');
+            var $text = $choice.children('span').first();
+            var labelledBy = [];
+
+            if (selectId) {
+                var $label = $('label[for="' + selectId.replace(/([:\\\[\]])/g, '\\$1') + '"]').first();
+
+                if ($label.length > 0) {
+                    if (!$label.attr('id')) {
+                        $label.attr('id', selectId + '-label');
+                    }
+
+                    labelledBy.push($label.attr('id'));
+                }
+
+                if (!$text.attr('id')) {
+                    $text.attr('id', selectId + '-ms-text');
+                }
+
+                labelledBy.push($text.attr('id'));
+            }
+
+            $choice.attr({
+                'aria-haspopup': 'dialog',
+                'aria-expanded': $parent.hasClass('open') ? 'true' : 'false'
+            });
+
+            if (labelledBy.length > 0) {
+                $choice.attr('aria-labelledby', labelledBy.join(' '));
+            }
+
+            $parent.find('.ms-search input').attr('aria-label', i18n.search || 'Search');
+        }
+
         // List search
-        $('.publishpress-filter-checkbox-list select').multipleSelect({
-            filter: true
+        $('.publishpress-filter-checkbox-list select').each(function () {
+            var $select = $(this);
+
+            $select.multipleSelect({
+                filter: true,
+                onOpen: function () {
+                    $select.next('.ms-parent').find('.ms-choice').attr('aria-expanded', 'true');
+                },
+                onClose: function () {
+                    $select.next('.ms-parent').find('.ms-choice').attr('aria-expanded', 'false');
+                }
+            });
+
+            applyMultipleSelectA11y($select);
+        });
+
+        /**
+         * Toggle aria-invalid on a field (and on its multiple-select replacement button, if any).
+         *
+         * @param $field
+         * @param invalid
+         */
+        function set_field_invalid($field, invalid) {
+            var $targets = $field.add($field.next('.ms-parent').find('.ms-choice'));
+
+            if (invalid) {
+                $targets.attr('aria-invalid', 'true');
+            } else {
+                $targets.removeAttr('aria-invalid');
+            }
+        }
+
+        // Clear the invalid state as soon as the user fixes a field.
+        $('#publishpress_notification_content_main_subject').on('input', function () {
+            if ($(this).val().trim() !== '') {
+                set_field_invalid($(this), false);
+            }
+        });
+
+        $('.publishpress-filter-checkbox-list select').on('change', function () {
+            if ($(this).val() !== null && $(this).val().length !== 0) {
+                set_field_invalid($(this), false);
+            }
         });
 
         // Form validation
         $('form#post').on('submit', function (event) {
             var selected,
                 sections = ['event', 'event_content'],
-                messages = [];
+                messages = [],
+                invalidSections = {};
 
             /**
              * Set the validation status to the given section.
+             * A section flagged invalid stays invalid for the rest of this validation pass.
              *
              * @param section
              * @param status
              */
             function set_validation_status(section, status) {
-                var selector = '#psppno-workflow-metabox-section-' + section + ' .psppno_workflow_metabox_section_header';
+                var $section = $('#psppno-workflow-metabox-section-' + section);
+                var $header = $section.find('.psppno_workflow_metabox_section_header');
 
-                if (status) {
-                    $(selector).removeClass('invalid');
+                invalidSections[section] = invalidSections[section] || !status;
+
+                if (!invalidSections[section]) {
+                    $header.removeClass('invalid');
+                    $header.find('.psppno-invalid-marker').remove();
+                    $section.removeAttr('aria-invalid');
                 } else {
-                    $(selector).addClass('invalid');
+                    $header.addClass('invalid');
+                    $section.attr('aria-invalid', 'true');
+
+                    if ($header.find('.psppno-invalid-marker').length === 0) {
+                        $header.append(
+                            $('<span class="psppno-invalid-marker"></span>').text(' ' + (i18n.invalidSection || ''))
+                        );
+                    }
                 }
             }
 
@@ -125,6 +233,9 @@
 
             // Check if any status was selected for "moving to new status"
             if ($('#publishpress_notif_event_post_save:checked').length > 0) {
+                set_field_invalid($('#publishpress_notif_event_post_save_filters_post_status_from'), $('#publishpress_notif_event_post_save_filters_post_status_from').val() == null);
+                set_field_invalid($('#publishpress_notif_event_post_save_filters_post_status_to'), $('#publishpress_notif_event_post_save_filters_post_status_to').val() == null);
+
                 if ($('#publishpress_notif_event_post_save_filters_post_status_from').val() == null
                     || $('#publishpress_notif_event_post_save_filters_post_status_to').val() == null) {
 
@@ -144,6 +255,8 @@
 
             // Check if any post type was selected (if checked)
             if ($('#publishpress_notif_event_content_post_type:checked').length > 0) {
+                set_field_invalid($('#publishpress_notif_event_content_post_type_filters_post_type'), $('#publishpress_notif_event_content_post_type_filters_post_type').val() == null);
+
                 if ($('#publishpress_notif_event_content_post_type_filters_post_type').val() == null) {
                     set_validation_status('event_content', false);
 
@@ -155,6 +268,8 @@
 
             // Check if any category was selected (if checked)
             if ($('#publishpress_notif_event_content_category:checked').length > 0) {
+                set_field_invalid($('#publishpress_notif_event_content_category_filters_category'), $('#publishpress_notif_event_content_category_filters_category').val() == null);
+
                 if ($('#publishpress_notif_event_content_category_filters_category').val() == null) {
                     set_validation_status('event_content', false);
 
@@ -166,6 +281,8 @@
 
             // Check if any taxonomy was selected (if checked)
             if ($('#publishpress_notif_event_content_taxonomy:checked').length > 0) {
+                set_field_invalid($('#publishpress_notif_event_content_taxonomy_filters_term'), $('#publishpress_notif_event_content_taxonomy_filters_term').val() == null);
+
                 if ($('#publishpress_notif_event_content_taxonomy_filters_term').val() == null) {
                     set_validation_status('event_content', false);
 
@@ -186,6 +303,8 @@
 
             // Check if any user was selected (if checked)
             if ($('#publishpress_notif_user:checked').length > 0) {
+                set_field_invalid($('#publishpress_notif_user_list'), $('#publishpress_notif_user_list').val() == null);
+
                 if ($('#publishpress_notif_user_list').val() == null) {
                     set_validation_status('receiver', false);
 
@@ -197,6 +316,8 @@
 
             // Check if any role was selected (if checked)
             if ($('#publishpress_notif_role:checked').length > 0) {
+                set_field_invalid($('#publishpress_notif_roles'), $('#publishpress_notif_roles').val() == null);
+
                 if ($('#publishpress_notif_roles').val() == null) {
                     set_validation_status('receiver', false);
 
@@ -207,6 +328,11 @@
             }
 
             // Check the Content section
+            set_field_invalid(
+                $('#publishpress_notification_content_main_subject'),
+                $('#publishpress_notification_content_main_subject').val().trim() == ''
+            );
+
             if ($('#publishpress_notification_content_main_subject').val().trim() == ''
                 || getEditorContent() === '') {
                 set_validation_status('content', false);
@@ -227,14 +353,16 @@
             if (!valid) {
                 if (messages.length > 0) {
                     $('#error_messages').remove();
-                    var $messageBox = $('<div id="error_messages" class="notice notice-error"></div>');
+                    var $messageBox = $('<div id="error_messages" class="notice notice-error" role="alert" tabindex="-1"></div>');
                     $('.wp-header-end').after($messageBox);
 
                     for (var i = 0; i < messages.length; i++) {
-                        $element = $('<p>');
+                        var $element = $('<p>');
                         $element.text(messages[i]);
                         $messageBox.append($element);
                     }
+
+                    $messageBox.trigger('focus');
                 }
             } else {
                 $('#error_messages').remove();

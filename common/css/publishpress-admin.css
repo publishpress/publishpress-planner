@@ -181,7 +181,7 @@ Status color box */
 .psppno_no_filter_warning,
 .psppno_no_events_warning {
     font-style: italic;
-    color: #9c9c9c;
+    color: #646970;
 }
 
 #wp-admin-bar-publishpress_debug {

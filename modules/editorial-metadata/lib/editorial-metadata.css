@@ -202,3 +202,24 @@ div#side-sortables .pp_editorial_meta_checkbox input {
 .block-editor-page .ui-datepicker {
     z-index: 9999 !important;
 }
+
+/* Keyboard alternative to drag and drop reordering */
+.pp-move-buttons {
+    display: inline-flex;
+    gap: 4px;
+    margin: 0 8px;
+    vertical-align: middle;
+}
+
+.pp-move-buttons .button.pp-move-button {
+    min-width: 24px;
+    min-height: 24px;
+    padding: 0 4px;
+    line-height: 22px;
+    cursor: pointer;
+}
+
+.pp-option-move-buttons {
+    align-self: center;
+    margin: 0 10px 0 4px;
+}

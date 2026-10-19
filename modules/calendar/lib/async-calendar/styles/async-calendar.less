@@ -109,9 +109,10 @@
 
   .publishpress-calendar-item {
     display: block;
-    height: 20px;
-    max-height: 20px;
-    line-height: 18px;
+    height: 24px;
+    min-height: 24px;
+    max-height: 24px;
+    line-height: 22px;
     box-sizing: border-box;
     padding: 1px;
     margin: 0 0 1px 0;
@@ -123,7 +124,7 @@
   }
 
   .publishpress-calendar-item-opened-popup {
-    border: 1px dashed yellow;
+    border: 1px dashed #996800;
   }
 
   .publishpress-calendar-month-name {
@@ -140,7 +141,7 @@
     font: inherit;
     min-height: 0;
     padding-left: 3px;
-    color: gray;
+    color: #646970;
     font-size: 11px;
     cursor: pointer;
     text-shadow: none;
@@ -153,7 +154,8 @@
 
   .publishpress-calendar-hide-items:hover,
   .publishpress-calendar-show-more:hover {
-    color: #acacac;
+    color: #50575e;
+    text-decoration: underline;
   }
 
   .publishpress-calendar-loading::before {
@@ -199,13 +201,13 @@
 
   .publishpress-calendar-hovering .publishpress-calendar-cell-click-to-add {
     font-style: italic;
-    color: #b0b0b0;
+    color: #646970;
     margin-left: 5px;
     font-size: 12px;
   }
 
   .publishpress-calendar-hovering.publishpress-calendar-today .publishpress-calendar-cell-click-to-add {
-    color: #717171;
+    color: #50575e;
   }
 }
 

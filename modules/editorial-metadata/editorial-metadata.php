@@ -360,7 +360,7 @@ if (! class_exists('PP_Editorial_Metadata')) {
                 wp_enqueue_script(
                     'publishpress-editorial-metadata-configure',
                     PUBLISHPRESS_URL . 'modules/editorial-metadata/lib/editorial-metadata-configure.js',
-                    ['jquery', 'jquery-ui-sortable', 'publishpress-editorial-select2'],
+                    ['jquery', 'jquery-ui-sortable', 'publishpress-editorial-select2', 'wp-a11y'],
                     PUBLISHPRESS_VERSION,
                     true
                 );
@@ -373,6 +373,24 @@ if (! class_exists('PP_Editorial_Metadata')) {
                             'Are you sure you want to delete this term? Any metadata for this term will remain but will not be visible unless this term is re-added.',
                             'publishpress'
                         ),
+                        /* translators: %s: item name */
+                        'move_up' => __('Move %s up', 'publishpress'),
+                        /* translators: %s: item name */
+                        'move_down' => __('Move %s down', 'publishpress'),
+                        /* translators: 1: item name, 2: new position, 3: total number of items */
+                        'moved_to_position' => __('%1$s moved to position %2$d of %3$d', 'publishpress'),
+                        /* translators: %s: item name */
+                        'already_first' => __('%s is already in the first position', 'publishpress'),
+                        /* translators: %s: item name */
+                        'already_last' => __('%s is already in the last position', 'publishpress'),
+                        /* translators: %d: option number */
+                        'option_value' => __('Option %d value', 'publishpress'),
+                        /* translators: %d: option number */
+                        'option_label' => __('Option %d label', 'publishpress'),
+                        /* translators: %d: option number */
+                        'option_name' => __('Option %d', 'publishpress'),
+                        'option_deleted' => __('Option deleted', 'publishpress'),
+                        'reorder_failed' => __('The new order could not be saved. Please try again.', 'publishpress'),
                     ]
                 );
             }

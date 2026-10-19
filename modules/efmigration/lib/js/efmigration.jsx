@@ -7,7 +7,7 @@
     class ErrorRow extends React.Component {
         render() {
             return (
-                <div className="error">
+                <div className="error" role="alert">
                     <p>{this.props.msg}</p>
                 </div>
             );
@@ -28,11 +28,12 @@
 
             return (
                 <div>
-                    <div className="pp-progressbar-container">
+                    <div className="pp-progressbar-container" role="status" aria-live="polite"
+                         tabIndex="-1" ref={this.props.statusRef}>
                         {inProgress
                         &&
                         <div>
-                            <span className="dashicons dashicons-update pp-rotating"></span>
+                            <span className="dashicons dashicons-update pp-rotating" aria-hidden="true"></span>
                             <span className="pp-in-progress">{objectL10n.header_msg}</span>
                         </div>
                         }
@@ -53,7 +54,7 @@
                     {finished
                     &&
                     <div>
-                        <p className="pp-success">{objectL10n.success_msg}</p>
+                        <p className="pp-success" role="status">{objectL10n.success_msg}</p>
 
                         <a className="button"
                            href={objectL10n.back_to_publishpress_url}>{objectL10n.back_to_publishpress_label}</a>
@@ -66,7 +67,8 @@
 
     class StepListContainer extends React.Component {
         render() {
-            return <StepList started={this.props.started} finished={this.props.finished} errors={this.props.errors}/>;
+            return <StepList started={this.props.started} finished={this.props.finished} errors={this.props.errors}
+                             statusRef={this.props.statusRef}/>;
         }
     }
 
@@ -100,6 +102,7 @@
                 errors: []
             };
 
+            this.statusRef = React.createRef();
             this.eventStartMigration = this.eventStartMigration.bind(this);
         }
 
@@ -180,6 +183,13 @@
 
         eventStartMigration() {
             this.executeNextStep();
+
+            // The Start button is removed once started, so move focus to the status region.
+            window.setTimeout(() => {
+                if (this.statusRef.current) {
+                    this.statusRef.current.focus();
+                }
+            }, 0);
         }
 
         render() {
@@ -197,13 +207,14 @@
                     }
 
                     <div>
-                        <StepListContainer started={started} finished={this.state.finished} errors={this.state.errors}/>
+                        <StepListContainer started={started} finished={this.state.finished} errors={this.state.errors}
+                                            statusRef={this.statusRef}/>
 
                         <br/>
 
                         {!started
                         &&
-                        <button onClick={this.eventStartMigration}
+                        <button type="button" onClick={this.eventStartMigration}
                                 className="button button-primary">{objectL10n.start_migration}</button>
                         }
                     </div>

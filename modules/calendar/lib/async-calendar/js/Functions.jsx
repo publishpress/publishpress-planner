@@ -125,6 +125,19 @@ export function getDateWithNoTimezoneOffset(dateString) {
     return new Date(date.getTime() + browserTimezoneOffset);
 }
 
+/**
+ * Announce a message to assistive technologies using wp.a11y.speak, when available.
+ */
+export function speakMessage(message, politeness = 'polite') {
+    if (!message) {
+        return;
+    }
+
+    if (typeof window.wp !== 'undefined' && window.wp.a11y && typeof window.wp.a11y.speak === 'function') {
+        window.wp.a11y.speak(message, politeness);
+    }
+}
+
 export function getPostLinksElement(linkData, handleOnClick) {
     var className = linkData.className ? linkData.className : '';
     if (linkData.url) {

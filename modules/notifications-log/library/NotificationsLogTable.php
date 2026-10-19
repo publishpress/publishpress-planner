@@ -214,14 +214,21 @@ class NotificationsLogTable extends WP_List_Table
                                 $log->workflowId
                             );
 
+                            $viewLogLabel = $log->status === 'scheduled'
+                                /* translators: %s: notification receiver */
+                                ? __('Preview the message for %s', 'publishpress')
+                                /* translators: %s: notification receiver */
+                                : __('View the message for %s', 'publishpress');
+
                             $output .= sprintf(
-                                '<li><i title="%s" class="dashicons dashicons-visibility view-log" data-id="%d" data-receiver-text="%s" data-receiver="%s" data-channel="%s"></i><i class="channel-icon %s"></i>',
-                                $log->status === 'scheduled' ? __('Preview the message') : __('View the message'),
+                                '<li><button type="button" class="button-link view-log" title="%1$s" data-id="%2$d" data-receiver-text="%3$s" data-receiver="%4$s" data-channel="%5$s"><span class="dashicons dashicons-visibility" aria-hidden="true"></span><span class="screen-reader-text">%6$s</span></button><i class="channel-icon %7$s" aria-hidden="true"></i>',
+                                $log->status === 'scheduled' ? esc_attr__('Preview the message', 'publishpress') : esc_attr__('View the message', 'publishpress'),
                                 $log->id,
                                 esc_attr(wp_strip_all_tags($receiverText)),
                                 esc_attr($receiverData['receiver']),
                                 esc_attr($receiverData['channel']),
-                                apply_filters('publishpress_notifications_channel_icon_class', $receiverData['channel'])
+                                esc_html(sprintf($viewLogLabel, wp_strip_all_tags($receiverText))),
+                                esc_attr(apply_filters('publishpress_notifications_channel_icon_class', $receiverData['channel']))
                             );
 
                             $output .= $receiverText;
@@ -234,11 +241,24 @@ class NotificationsLogTable extends WP_List_Table
 
                     // Add the slide effect for scheduled notifications
                     if ($receiversCount > 4 && $log->status === 'scheduled') {
+                        $slideId = 'publishpress-notif-log-receivers-' . (int)$log->id;
+
                         $output = sprintf(
-                            '<a href="#" class="slide-closed-text">%s <i class="dashicons dashicons-arrow-down-alt2"></i></a><div class="slide">%s</div>',
-                            sprintf(
-                                __('Scheduled for %d receivers. Click here to display them.', 'publishpress'),
-                                $receiversCount
+                            '<button type="button" class="button-link slide-closed-text" aria-expanded="false" aria-controls="%1$s" data-text-collapsed="%2$s" data-text-expanded="%3$s"><span class="slide-closed-label">%2$s</span> <span class="dashicons dashicons-arrow-down-alt2" aria-hidden="true"></span></button><div class="slide" id="%1$s">%4$s</div>',
+                            esc_attr($slideId),
+                            esc_html(
+                                sprintf(
+                                    /* translators: %d: number of receivers */
+                                    __('Scheduled for %d receivers. Click here to display them.', 'publishpress'),
+                                    $receiversCount
+                                )
+                            ),
+                            esc_attr(
+                                sprintf(
+                                    /* translators: %d: number of receivers */
+                                    __('Scheduled for %d receivers. Click here to hide them.', 'publishpress'),
+                                    $receiversCount
+                                )
                             ),
                             $output
                         );
@@ -336,9 +356,16 @@ class NotificationsLogTable extends WP_List_Table
     public function column_cb($item)
     {
         return sprintf(
-            '<input type="checkbox" name="%1$s[]" value="%2$s" />',
-            $this->_args['singular'],
-            $item->comment_ID
+            '<label class="screen-reader-text" for="cb-select-%2$s">%3$s</label><input type="checkbox" id="cb-select-%2$s" name="%1$s[]" value="%2$s" />',
+            esc_attr($this->_args['singular']),
+            esc_attr($item->comment_ID),
+            esc_html(
+                sprintf(
+                    /* translators: %s: notification log ID */
+                    __('Select notification %s', 'publishpress'),
+                    $item->comment_ID
+                )
+            )
         );
     }
 
@@ -520,28 +547,27 @@ class NotificationsLogTable extends WP_List_Table
 
     protected function get_views()
     {
-        return [
-            'all' => '<a href="' . esc_url(add_query_arg('status', 'all')) . '">' . __(
-                    'All',
-                    'publishpress'
-                ) . '</a>',
-            'success' => '<a href="' . esc_url(add_query_arg('status', 'success')) . '">' . __(
-                    'Success',
-                    'publishpress'
-                ) . '</a>',
-            'skipped' => '<a href="' . esc_url(add_query_arg('status', 'skipped')) . '">' . __(
-                    'Skipped',
-                    'publishpress'
-                ) . '</a>',
-            'scheduled' => '<a href="' . esc_url(add_query_arg('status', 'scheduled')) . '">' . __(
-                    'Scheduled',
-                    'publishpress'
-                ) . '</a>',
-            'error' => '<a href="' . esc_url(add_query_arg('status', 'error')) . '">' . __(
-                    'Error',
-                    'publishpress'
-                ) . '</a>',
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+        $currentStatus = isset($_REQUEST['status']) ? sanitize_key($_REQUEST['status']) : 'all';
+
+        $statuses = [
+            'all' => __('All', 'publishpress'),
+            'success' => __('Success', 'publishpress'),
+            'skipped' => __('Skipped', 'publishpress'),
+            'scheduled' => __('Scheduled', 'publishpress'),
+            'error' => __('Error', 'publishpress'),
         ];
+
+        $views = [];
+
+        foreach ($statuses as $status => $label) {
+            $currentAttrs = $status === $currentStatus ? ' class="current" aria-current="page"' : '';
+
+            $views[$status] = '<a href="' . esc_url(add_query_arg('status', $status)) . '"' . $currentAttrs . '>'
+                . esc_html($label) . '</a>';
+        }
+
+        return $views;
     }
 
     /**
@@ -573,7 +599,7 @@ class NotificationsLogTable extends WP_List_Table
         }
 
         // phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
-        echo '<label class="screen-reader-text" for="publishpress-notifications-filter-posts">' . esc_html__('Filter by post', 'publishpress') . '</label>';
+        echo '<label class="screen-reader-text" id="publishpress-notifications-filter-posts-label" for="publishpress-notifications-filter-posts">' . esc_html__('Filter by post', 'publishpress') . '</label>';
         echo '<select class="filter-posts" id="publishpress-notifications-filter-posts" name="post_id">' . $selectedOptionEscaped . '</select>';
         // phpcs:enable
 
@@ -592,14 +618,14 @@ class NotificationsLogTable extends WP_List_Table
         }
 
         // phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
-        echo '<label class="screen-reader-text" for="publishpress-notifications-filter-workflows">' . esc_html__('Filter by workflow', 'publishpress') . '</label>';
+        echo '<label class="screen-reader-text" id="publishpress-notifications-filter-workflows-label" for="publishpress-notifications-filter-workflows">' . esc_html__('Filter by workflow', 'publishpress') . '</label>';
         echo '<select class="filter-workflows" id="publishpress-notifications-filter-workflows" name="workflow_id">' . $selectedOptionEscaped . '</select>';
         // phpcs:enable
 
         // Event
         $selectedAction = isset($_GET['event']) ? sanitize_text_field($_GET['event']) : '';
 
-        echo '<label class="screen-reader-text" for="publishpress-notifications-filter-events">' . esc_html__('Filter by event', 'publishpress') . '</label>';
+        echo '<label class="screen-reader-text" id="publishpress-notifications-filter-events-label" for="publishpress-notifications-filter-events">' . esc_html__('Filter by event', 'publishpress') . '</label>';
         echo '<select class="filter-actions" id="publishpress-notifications-filter-events" name="event">';
         $events = apply_filters('publishpress_notifications_workflow_events', []);
 
@@ -617,7 +643,7 @@ class NotificationsLogTable extends WP_List_Table
         // Channel
         $selectedChannel = isset($_GET['channel']) ? sanitize_text_field($_GET['channel']) : '';
 
-        echo '<label class="screen-reader-text" for="publishpress-notifications-filter-channels">' . esc_html__('Filter by channel', 'publishpress') . '</label>';
+        echo '<label class="screen-reader-text" id="publishpress-notifications-filter-channels-label" for="publishpress-notifications-filter-channels">' . esc_html__('Filter by channel', 'publishpress') . '</label>';
         echo '<select class="filter-channels" id="publishpress-notifications-filter-channels" name="channel">';
         $channels = apply_filters('psppno_filter_channels', []);
 

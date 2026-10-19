@@ -1011,6 +1011,15 @@ class PP_Content_Board extends PP_Module
                 }
                 $allowed_post_statuses = array_unique($allowed_post_statuses);
 
+                // Columns a card can be moved into (same rule as the drag-and-drop "can_move_to" columns),
+                // used for the keyboard-accessible "Change status" control on each card.
+                $movable_statuses = [];
+                foreach ($post_statuses as $movable_status_object) {
+                    if (empty($movable_status_object->alternate) && in_array($movable_status_object->slug, $allowed_post_statuses)) {
+                        $movable_statuses[$movable_status_object->slug] = $movable_status_object->label;
+                    }
+                }
+
                 ?>
                 <div class="statuses-contents">
                 <?php 
@@ -1032,11 +1041,11 @@ class PP_Content_Board extends PP_Module
                     $post_status_options = $this->get_post_status_options($post_status_object->slug); 
                     if ($post_status_object->slug === 'future') {
                         $content_board_scheduled_date = $this->module->options->content_board_scheduled_date;
-                        $number_select = '<select class="schedule-content-number">';
+                        $number_select = '<select class="schedule-content-number" aria-label="'. esc_attr__('Default date amount', 'publishpress') .'">';
                         for ($i = 1; $i <= 31; $i++) {
                             $number_select .= '<option value="'. $i .'" '. selected($i, $content_board_scheduled_date['number'], false).'>'. $i .'</option>';
                         }
-                        $number_select .= '<select>';
+                        $number_select .= '</select>';
 
                         $period_options = [
                             'days'   => esc_html__('Days', 'publishpress'),
@@ -1044,11 +1053,11 @@ class PP_Content_Board extends PP_Module
                             'months' => esc_html__('Months', 'publishpress'),
                             'years'  => esc_html__('Years', 'publishpress'),
                         ];
-                        $period_select = '<select class="schedule-content-period">';
+                        $period_select = '<select class="schedule-content-period" aria-label="'. esc_attr__('Default date period', 'publishpress') .'">';
                         foreach ($period_options as $period_option => $period_label) {
-                            $period_select .= '<option value="'. $period_option .'" '. selected($period_option, $content_board_scheduled_date['period'], false).'>'. $period_label .'</option>';
+                            $period_select .= '<option value="'. esc_attr($period_option) .'" '. selected($period_option, $content_board_scheduled_date['period'], false).'>'. $period_label .'</option>';
                         }
-                        $period_select .= '<select>';
+                        $period_select .= '</select>';
 
                         $date_markup = '<div class="metadata-item-filter">
                         <div class="filter-title">'. esc_html__("Default Date", "publishpress") .'</div>
@@ -1067,12 +1076,12 @@ class PP_Content_Board extends PP_Module
                     </div>';
 
                         $modal_id = time();
-                        $output_markup = '&nbsp; <div data-target="#content_board_modal_'. esc_attr($modal_id) .'" class="co-filter">
+                        $output_markup = '&nbsp; <button type="button" data-target="#content_board_modal_'. esc_attr($modal_id) .'" class="co-filter" id="content_board_modal_'. esc_attr($modal_id) .'_trigger" aria-expanded="false" aria-controls="content_board_modal_'. esc_attr($modal_id) .'">
                         '. esc_html__("Default Date", "publishpress") .'
-                    </div>
-                    <div id="content_board_modal_'. esc_attr($modal_id) .'" class="content-board-modal schedule-date-modal" style="display: none;">
+                    </button>
+                    <div id="content_board_modal_'. esc_attr($modal_id) .'" class="content-board-modal schedule-date-modal" role="dialog" aria-labelledby="content_board_modal_'. esc_attr($modal_id) .'_trigger" style="display: none;">
                         <div class="content-board-modal-content">
-                            <span class="close">&times;</span>
+                            <button type="button" class="close" aria-label="'. esc_attr__('Close', 'publishpress') .'"><span aria-hidden="true">&times;</span></button>
                             <div>'. $date_markup .'</div>
                         </div>
                     </div>';
@@ -1086,8 +1095,8 @@ class PP_Content_Board extends PP_Module
                     $statuses_header_markup  .= '<div class="status-content board-top-header status-'. esc_attr($post_status_object->slug). '" data-slug="'. esc_attr($post_status_object->slug). '" data-counts="0">
                     <div class="board-title" style="border-top-color: '. esc_attr($post_status_options['color']). '">
                         <div class="board-title-content">
-                            <span class="status-title-count" style="color: '. esc_attr($post_status_options['color']). '">
-                            <span class="status-post-total">0 &nbsp;</span> <span class="dashicons '. esc_attr($post_status_options['icon']). '"></span>
+                            <span class="status-title-count">
+                            <span class="status-post-total">0 &nbsp;</span> <span class="dashicons '. esc_attr($post_status_options['icon']). '" style="color: '. esc_attr($post_status_options['color']). '" aria-hidden="true"></span>
                             '. $output_markup .'
                                
                             </span>
@@ -1113,8 +1122,8 @@ class PP_Content_Board extends PP_Module
                         $statuses_header_markup  .= '<div class="status-content board-top-header status-'. esc_attr($post_status_object->slug) .'" data-slug="'. esc_attr($post_status_object->slug) .'" data-counts="'. esc_attr(count($status_posts)) .'">
                         <div class="board-title" style="border-top-color: '. esc_attr($post_status_options["color"]) .'">
                                 <div class="board-title-content">
-                                    <span class="status-title-count" style="color: '. esc_attr($post_status_options["color"]) .'">
-                                    <span class="status-post-total">'. esc_html(count($status_posts)) .' &nbsp;</span> <span class="dashicons '. esc_attr($post_status_options["icon"]) .'"></span>
+                                    <span class="status-title-count">
+                                    <span class="status-post-total">'. esc_html(count($status_posts)) .' &nbsp;</span> <span class="dashicons '. esc_attr($post_status_options["icon"]) .'" style="color: '. esc_attr($post_status_options["color"]) .'" aria-hidden="true"></span>
                                         '. $output_markup .'
                                     </span>
                                     <span class="title-text">
@@ -1239,6 +1248,26 @@ class PP_Content_Board extends PP_Module
                                                     $statuses_content_markup .= $html;
                                                     $statuses_content_markup .= '</div></div>';
                                         endif;
+
+                                        // Only where drag is allowed: editable card in a "can_move_to" column.
+                                        if ($can_edit_post && $board_class === 'can_move_to' && count($movable_statuses) > 1) {
+                                            $status_select_id = 'pp-content-board-status-' . (int) $status_post->ID;
+                                            $statuses_content_markup .= '<div class="pp-content-board-status-change">
+                                                <label for="'. esc_attr($status_select_id) .'">'. esc_html__('Change status', 'publishpress') .'<span class="screen-reader-text"> '
+                                                . esc_html(sprintf(
+                                                    /* translators: %s: post title */
+                                                    __('for %s', 'publishpress'),
+                                                    $post_title
+                                                )) .'</span></label>
+                                                <select id="'. esc_attr($status_select_id) .'" class="pp-content-board-status-select" data-post_id="'. esc_attr($status_post->ID) .'" data-post_title="'. esc_attr($post_title) .'" data-current="'. esc_attr($post_status_object->slug) .'">';
+                                            foreach ($movable_statuses as $movable_slug => $movable_label) {
+                                                $statuses_content_markup .= '<option value="'. esc_attr($movable_slug) .'" '. selected($movable_slug, $post_status_object->slug, false) .'>'. esc_html($movable_label) .'</option>';
+                                            }
+                                            $statuses_content_markup .= '</select>
+                                                <button type="button" class="button button-small pp-content-board-status-apply">'. esc_html__('Move', 'publishpress') .'<span class="screen-reader-text"> '
+                                                . esc_html($post_title) .'</span></button>
+                                            </div>';
+                                        }
                                     $statuses_content_markup .= '</div>';
                                 endforeach;
                                 // show empty card placeholder

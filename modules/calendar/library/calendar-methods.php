@@ -1064,7 +1064,7 @@ if (! class_exists('PP_Calendar_Methods')) {
                 wp_enqueue_script(
                     'publishpress-calendar-js',
                     $this->module_url . 'lib/calendar.js',
-                    $js_libraries,
+                    array_merge($js_libraries, ['wp-a11y']),
                     PUBLISHPRESS_VERSION,
                     true
                 );
@@ -1116,6 +1116,7 @@ if (! class_exists('PP_Calendar_Methods')) {
                             'jquery-ui-droppable',
                             'wp-i18n',
                             'wp-element',
+                            'wp-a11y',
                             'date_i18n',
                         ],
                         PUBLISHPRESS_VERSION,
@@ -1364,6 +1365,7 @@ if (! class_exists('PP_Calendar_Methods')) {
                 'color' => esc_attr($postTypeOptions['color']),
                 'showTime' => (bool)$this->showPostsPublishTime($post->post_status),
                 'canEdit' => $canEdit,
+                'statusLabel' => wp_strip_all_tags($this->get_post_status_friendly_name($_post_status, $post)),
             ];
 
             if (PublishPress\Legacy\Util::isPlannersProActive()) {

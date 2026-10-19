@@ -100,6 +100,12 @@
 
 /* Posts I'm Following */
 
+.pp-myposts .pp-myposts-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
 .pp-myposts li {
     list-style-type: none;
     padding-bottom: 5px;
@@ -110,9 +116,9 @@
 }
 
 .pp-myposts li .pp-myposts-timestamp {
-    color: #999;
+    color: #646970;
     font-style: italic;
-    font-size: 10px;
+    font-size: 12px;
 }
 
 /** Dashboard Notepad **/
@@ -123,7 +129,7 @@
 #dashboard-notepad #dashboard-notepad-last-updated {
     font-size: 12px;
     line-height: 18px;
-    color: #999;
+    color: #646970;
 }
 
 #dashboard-notepad .submit #dashboard-notepad-last-updated {
