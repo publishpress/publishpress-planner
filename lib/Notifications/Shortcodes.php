@@ -458,7 +458,7 @@ class Shortcodes
 
             case 'excerpt':
                 $result = $post->post_excerpt;
-                if ( ! empty($result) )
+                if ( '' === trim((string) $result) )
                 	break;
 
             case 'content':
