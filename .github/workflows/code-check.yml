@@ -52,3 +52,16 @@ jobs:
       - name: Run Lint check
         run: |
           $GITHUB_WORKSPACE/dev-workspace/run composer check:lint
+
+      - name: Check PHP minimum and compatibility
+        run: |
+          $GITHUB_WORKSPACE/dev-workspace/run composer check:php
+          $GITHUB_WORKSPACE/dev-workspace/run vendor/bin/phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 5.4 publishpress.php
+
+      - name: Verify the minimum PHP bootstrap guard
+        run: |
+          for version in 8.1 8.2; do
+            docker run --rm \
+              -v "$GITHUB_WORKSPACE:/project:ro" -w /project \
+              "php:${version}-cli" php tests/regression/minimum-php-bootstrap.php
+          done

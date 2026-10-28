@@ -10,6 +10,7 @@ extensions:
   - php
 exclude:
   - vendor
+  - dev-workspace-cache
   - lib/vendor
   - .wordpress-org
   - dist

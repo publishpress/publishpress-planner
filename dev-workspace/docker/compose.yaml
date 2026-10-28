@@ -12,6 +12,8 @@ services:
         stdin_open: true
         tty: true
         working_dir: "/project"
+        environment:
+            INSIDE_DEV_CONTAINER: "true"
         volumes:
             - ../../:/project
             - ../.cache/terminal/.zsh_history:/root/.zsh_history
