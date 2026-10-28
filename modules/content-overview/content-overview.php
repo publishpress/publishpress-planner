@@ -1166,7 +1166,7 @@ class PP_Content_Overview extends PP_Module
                 <div>
                 <?php
                 if (! empty($posts)) : ?>
-                    <table class="widefat post content-overview striped" cellspacing="0">
+                    <table class="widefat post content-overview striped table-view-list" cellspacing="0">
                         <thead>
                         <tr>
                             <?php
@@ -1560,7 +1560,7 @@ class PP_Content_Overview extends PP_Module
     public function print_post($post)
     {
         ?>
-        <tr id="post-<?php echo esc_attr($post->ID); ?>" data-post_id="<?php echo esc_attr($post->ID); ?>" valign="top">
+        <tr id="post-<?php echo esc_attr($post->ID); ?>" class="has-row-actions" data-post_id="<?php echo esc_attr($post->ID); ?>" valign="top">
             <?php
             foreach ((array)$this->columns as $key => $name) {
                 if (!array_key_exists($key, $this->form_column_list) && $key !== 'post_title') {
@@ -1737,7 +1737,6 @@ class PP_Content_Overview extends PP_Module
         }
 
         // Edit or Trash or View
-        $output .= '<div class="row-actions">';
         $item_actions = [];
 
         if ($can_edit_post) {

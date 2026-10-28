@@ -183,10 +183,19 @@ if (! class_exists('Editorial_Metadata_Input_Handler')) {
          * @since   1.20.0
          *
          */
-        protected static function generateDescriptionHtml($description)
+        protected static function generateDescriptionHtml($description, $input_name = '')
         {
             if (mb_strlen($description) === 0) {
                 return '';
+            }
+
+            if (mb_strlen((string)$input_name) > 0) {
+                return sprintf(
+                    '<span class="%s" id="%s">%s</span>',
+                    'description',
+                    esc_attr($input_name . '-desc'),
+                    esc_html($description)
+                );
             }
 
             return sprintf(
@@ -194,6 +203,26 @@ if (! class_exists('Editorial_Metadata_Input_Handler')) {
                 'description',
                 esc_html($description)
             );
+        }
+
+        /**
+         * Returns an escaped aria-describedby attribute pointing to the
+         * description element, or an empty string if there is no description.
+         *
+         * @static
+         * @access  protected
+         * @param string $description The description content
+         * @param string $input_name The related input name
+         *
+         * @return  string
+         */
+        protected static function generateDescribedByAttr($description, $input_name)
+        {
+            if (mb_strlen((string)$description) === 0 || mb_strlen((string)$input_name) === 0) {
+                return '';
+            }
+
+            return sprintf(' aria-describedby="%s"', esc_attr($input_name . '-desc'));
         }
 
         /**
@@ -205,9 +234,9 @@ if (! class_exists('Editorial_Metadata_Input_Handler')) {
          * @since   1.20.0
          *
          */
-        protected static function renderDescription($description)
+        protected static function renderDescription($description, $input_name = '')
         {
-            echo self::generateDescriptionHtml($description);
+            echo self::generateDescriptionHtml($description, $input_name);
         }
 
         /**

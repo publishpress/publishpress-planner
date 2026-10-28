@@ -50,7 +50,7 @@ if (! class_exists('Editorial_Metadata_Input_User_Handler')) {
                 $input_name
             );
 
-            echo self::generateDescriptionHtml($input_description);
+            echo self::generateDescriptionHtml($input_description, $input_name);
 
             $user_dropdown_args = [
                 'show_option_all' => self::getOptionShowAll(),
@@ -63,7 +63,16 @@ if (! class_exists('Editorial_Metadata_Input_User_Handler')) {
             }
 
             $user_dropdown_args = apply_filters('pp_editorial_metadata_user_dropdown_args', $user_dropdown_args);
-            wp_dropdown_users($user_dropdown_args);
+
+            $described_by = self::generateDescribedByAttr($input_description, $input_name);
+            if ($described_by === '') {
+                wp_dropdown_users($user_dropdown_args);
+            } else {
+                $user_dropdown_args['echo'] = false;
+                $dropdown_html = wp_dropdown_users($user_dropdown_args);
+                // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                echo preg_replace('/<select /', '<select' . $described_by . ' ', (string)$dropdown_html, 1);
+            }
         }
 
         /**

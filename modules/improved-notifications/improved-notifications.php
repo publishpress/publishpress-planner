@@ -257,7 +257,8 @@ if (! class_exists('PP_Improved_Notifications')) {
                 __('Duplicated notification threshold:', 'publishpress'),
                 [$this, 'settings_duplicated_notification_threshold_option'],
                 $this->module->options_group_name,
-                $this->module->options_group_name . '_general'
+                $this->module->options_group_name . '_general',
+                ['label_for' => $this->module->slug . '_duplicated_notification_threshold']
             );
 
             add_settings_field(
@@ -1054,18 +1055,22 @@ if (! class_exists('PP_Improved_Notifications')) {
                         'workflowFormData',
                         [
                             'messages' => [
-                                'selectAllIn_event' => 'Select at least one event.',
-                                'selectAllIn_event_content' => 'Select at least a filter for the content.',
-                                'selectAPreviousStatus' => 'Select at least one previous status.',
-                                'selectANewStatus' => 'Select at least one new status.',
-                                'selectPostType' => 'Select at least one post type.',
-                                'selectCategory' => 'Select at least one category.',
-                                'selectTaxonomy' => 'Select at least one taxonomy.',
-                                'selectAReceiver' => 'Select at least one receiver.',
-                                'selectAUser' => 'Select at least one user.',
-                                'selectARole' => 'Select at least one role.',
-                                'setASubject' => 'Type a subject for the notification.',
-                                'setABody' => 'Type a body text for the notification.',
+                                'selectAllIn_event' => __('Select at least one event.', 'publishpress'),
+                                'selectAllIn_event_content' => __('Select at least a filter for the content.', 'publishpress'),
+                                'selectAPreviousStatus' => __('Select at least one previous status.', 'publishpress'),
+                                'selectANewStatus' => __('Select at least one new status.', 'publishpress'),
+                                'selectPostType' => __('Select at least one post type.', 'publishpress'),
+                                'selectCategory' => __('Select at least one category.', 'publishpress'),
+                                'selectTaxonomy' => __('Select at least one taxonomy.', 'publishpress'),
+                                'selectAReceiver' => __('Select at least one receiver.', 'publishpress'),
+                                'selectAUser' => __('Select at least one user.', 'publishpress'),
+                                'selectARole' => __('Select at least one role.', 'publishpress'),
+                                'setASubject' => __('Type a subject for the notification.', 'publishpress'),
+                                'setABody' => __('Type a body text for the notification.', 'publishpress'),
+                            ],
+                            'text' => [
+                                'search' => __('Search', 'publishpress'),
+                                'invalidSection' => __('(needs attention)', 'publishpress'),
                             ],
                         ]
                     );
@@ -1178,6 +1183,7 @@ if (! class_exists('PP_Improved_Notifications')) {
                 'id' => 'event',
                 'header' => __('When to notify?', 'publishpress'),
                 'html' => apply_filters('publishpress_notif_render_metabox_section_event', ''),
+                'required' => true,
                 'class' => 'pure-u-1-3 pure-u-sm-1 pure-u-md-1 pure-u-lg-1-3',
             ];
 
@@ -1188,6 +1194,7 @@ if (! class_exists('PP_Improved_Notifications')) {
                 'id' => 'event_content',
                 'header' => __('For which content?', 'publishpress'),
                 'html' => apply_filters('publishpress_notif_render_metabox_section_event_content', ''),
+                'required' => true,
                 'class' => 'pure-u-1-3 pure-u-sm-1 pure-u-md-1-2 pure-u-lg-1-3',
             ];
 
@@ -1198,6 +1205,7 @@ if (! class_exists('PP_Improved_Notifications')) {
                 'id' => 'receiver',
                 'header' => __('Who to notify?', 'publishpress'),
                 'html' => apply_filters('publishpress_notif_render_metabox_section_receiver', ''),
+                'required' => true,
                 'class' => 'pure-u-1-3 pure-u-sm-1 pure-u-md-1-2 pure-u-lg-1-3',
             ];
 
@@ -1208,6 +1216,7 @@ if (! class_exists('PP_Improved_Notifications')) {
                 'id' => 'content',
                 'header' => __('What to say?', 'publishpress'),
                 'html' => apply_filters('publishpress_notif_render_metabox_section_content', ''),
+                'required' => true,
                 'class' => 'pure-u-1',
             ];
 

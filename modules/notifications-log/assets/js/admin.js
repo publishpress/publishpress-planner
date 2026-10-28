@@ -56,13 +56,34 @@ jQuery(function ($) {
         allowClear: true
     });
 
+    // Label the select2 replacement controls with the existing screen-reader labels.
+    [
+        ['.filter-posts', 'publishpress-notifications-filter-posts-label'],
+        ['.filter-workflows', 'publishpress-notifications-filter-workflows-label'],
+        ['.filter-actions', 'publishpress-notifications-filter-events-label'],
+        ['.filter-channels', 'publishpress-notifications-filter-channels-label']
+    ].forEach(function (pair) {
+        if (!document.getElementById(pair[1])) {
+            return;
+        }
+
+        $(pair[0]).each(function () {
+            var $selection = $(this).next('.select2-container').find('.select2-selection');
+            var renderedId = $selection.find('.select2-selection__rendered').attr('id');
+            var labelledBy = renderedId ? pair[1] + ' ' + renderedId : pair[1];
+
+            $selection.attr('aria-labelledby', labelledBy);
+        });
+    });
+
     $('.view-log').on('click', function (event) {
         event.preventDefault();
+        var $button = $(event.currentTarget).closest('.view-log');
         var $dialog = $('<div class="notif-log-modal">Test!</div>');
-        var notificationId = $(event.target).data('id');
-        var receiver = $(event.target).data('receiver');
-        var receiverText = $(event.target).data('receiver-text');
-        var channel = $(event.target).data('channel');
+        var notificationId = $button.data('id');
+        var receiver = $button.data('receiver');
+        var receiverText = $button.data('receiver-text');
+        var channel = $button.data('channel');
 
 
         $('body').append($dialog);
@@ -111,9 +132,26 @@ jQuery(function ($) {
     $('.filter-date-begin').datepicker();
     $('.filter-date-end').datepicker();
 
-    $('.admin_page_pp-notif-log .slide-closed-text').on('click', function () {
-        $(this).next().slideDown();
-        $(this).remove();
+    $('.admin_page_pp-notif-log .slide-closed-text').on('click', function (event) {
+        event.preventDefault();
+
+        var $toggle = $(this);
+        var $slide = $('#' + $toggle.attr('aria-controls'));
+        var isExpanded = $toggle.attr('aria-expanded') === 'true';
+
+        if (isExpanded) {
+            $slide.slideUp();
+        } else {
+            $slide.slideDown();
+        }
+
+        $toggle.attr('aria-expanded', isExpanded ? 'false' : 'true');
+        $toggle.find('.slide-closed-label').text(
+            $toggle.data(isExpanded ? 'text-collapsed' : 'text-expanded')
+        );
+        $toggle.find('.dashicons')
+            .toggleClass('dashicons-arrow-down-alt2', isExpanded)
+            .toggleClass('dashicons-arrow-up-alt2', !isExpanded);
     });
 
     if ($('body').hasClass('admin_page_pp-notif-log')) {

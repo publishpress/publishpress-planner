@@ -166,7 +166,19 @@
 }
 
 .co-border-red {
-    border-color: red !important;
+    border-color: #d63638 !important;
+}
+
+.co-cc-content .pp-co-field-error {
+    margin: 4px 0 0;
+    color: #b32d2e;
+    font-size: 12px;
+    line-height: 1.4;
+    white-space: normal;
+}
+
+.co-cc-content .pp-co-field-error[hidden] {
+    display: none;
 }
 
 .pp-content-calendar-filters button.clear-filter {
@@ -338,7 +350,7 @@
     padding: 12px;
     border: none;
     border-bottom: 2px solid transparent;
-    color: #818193;
+    color: #646970;
     text-transform: capitalize;
     cursor: pointer;
 }
@@ -431,7 +443,7 @@
 .co-cc-content .customize-group-title {
     margin-top: 4px;
     font-weight: 600;
-    color: #818193;
+    color: #646970;
     text-transform: uppercase;
     letter-spacing: .05em;
     user-select: none;
@@ -538,7 +550,7 @@
 }
 
 .co-cc-content .items-list-item-name-text .customize-item-info {
-    color: #a8a8a8;
+    color: #646970;
 }
 
 .co-cc-content .items-list-item-check,
@@ -548,24 +560,32 @@
     flex-shrink: 0;
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-grow: 0;
-    width: 16px;
-    height: 16px;
+    box-sizing: border-box;
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    padding: 4px;
     fill: #655997;
     cursor: pointer;
 }
 
 .co-cc-content .delete-content-calendar-item {
-    fill: red;
+    fill: #b32d2e;
+    border: none;
+    background: none;
+    border-radius: 3px;
     margin-right: 0;
     margin-left: 5px;
 }
 
 .co-cc-content .items-list-item-check.unchecked {
-    fill: red;
+    fill: #b32d2e;
 }
 
-.co-cc-content .items-list-item-check svg {
+.co-cc-content .items-list-item-check svg,
+.co-cc-content .delete-content-calendar-item svg {
     display: block;
     width: 100%;
     height: 100%;
@@ -629,4 +649,79 @@
     .publishpress-admin.content-calendar .publishpress-admin header h2 .co-top-searchbox {
         margin-top: 10px;
     }
+}
+
+/* Accessibility: native buttons that replaced div-based controls keep their previous look. */
+.co-customize-tabs button.customize-tab,
+.co-cc-content button.save-cc-changes,
+.co-cc-content button.new-submit,
+.co-cc-content button.title-action,
+.content-calendar-modal button.close {
+    font-family: inherit;
+    margin: 0;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.co-customize-tabs button.customize-tab {
+    background: none;
+    text-align: center;
+}
+
+.co-cc-content button.save-cc-changes {
+    margin-top: 12px;
+}
+
+.co-cc-content .entry-item.form-item button.new-submit {
+    width: 100%;
+    margin-top: 5px;
+}
+
+.content-calendar-modal button.close {
+    margin-left: auto;
+    margin-bottom: 5px;
+    min-width: 24px;
+    min-height: 24px;
+    color: inherit;
+    line-height: 1;
+}
+
+.co-cc-content .enable-item.entry-item[role="checkbox"] {
+    cursor: pointer;
+}
+
+.co-customize-tabs button.customize-tab:focus-visible,
+.co-cc-content button:focus-visible,
+.co-cc-content .enable-item.entry-item[role="checkbox"]:focus-visible,
+.content-calendar-modal button.close:focus-visible {
+    outline: 2px solid #2271b1;
+    outline-offset: 1px;
+}
+
+.co-cc-content .reorder-item .pp-co-reorder-buttons {
+    display: inline-flex;
+    gap: 2px;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.co-cc-content .reorder-item .pp-co-move-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-width: 24px;
+    min-height: 24px;
+    padding: 0;
+    border: 1px solid #c3c4c7;
+    border-radius: 3px;
+    background: #fff;
+    color: #3c434a;
+    cursor: pointer;
+}
+
+.co-cc-content .reorder-item .pp-co-move-item .dashicons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
 }

@@ -1,6 +1,7 @@
 import {getHourStringOnFormat, getDateInstanceFromString} from './Functions';
 import ItemPopup from './ItemPopup';
 import DOMPurify from "dompurify";
+import { createPortal } from "&wp.element";
 
 
 const $ = jQuery;
@@ -10,6 +11,7 @@ export default function Item(props) {
     const DEFAULT_LABEL = props.strings.untitled;
 
     const calendarItem = React.useRef(null);
+    const wasPopupOpened = React.useRef(false);
 
     const getHourString = () => {
         let timestampDate = getDateInstanceFromString(props.timestamp);
@@ -45,14 +47,33 @@ export default function Item(props) {
     }
 
     const dispatchKeyboardEvent = (e) => {
+        // Keyboard events from the popup bubble through the React tree (even when rendered in a portal).
+        // Let the popup controls handle them natively.
+        if (isPopupElementOrChildrenOfPopup(e.target)) {
+            return;
+        }
+
         if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
             dispatchClickEvent(e);
         }
     }
 
+    // Return the focus to the item when its popup is closed (close button, Escape) and the focus was lost.
+    React.useEffect(() => {
+        if (wasPopupOpened.current && !props.isPopupOpened && calendarItem.current) {
+            const activeElement = document.activeElement;
+
+            if (!activeElement || activeElement === document.body) {
+                calendarItem.current.focus();
+            }
+        }
+
+        wasPopupOpened.current = props.isPopupOpened;
+    }, [props.isPopupOpened]);
+
     const iconElement = props.showIcon && props.icon ?
-        <span className={'dashicons ' + props.icon}> </span> : null;
+        <span className={'dashicons ' + props.icon} aria-hidden="true"> </span> : null;
 
     const timeElement = props.showTime ?
         <time className="publishpress-calendar-item-time"
@@ -62,7 +83,42 @@ export default function Item(props) {
     const label = props.label || DEFAULT_LABEL;
 
     const sanitizedLabel = DOMPurify.sanitize(label);
-    const accessibleLabel = DOMPurify.sanitize(label, {ALLOWED_TAGS: []});
+    const plainLabel = DOMPurify.sanitize(label, {ALLOWED_TAGS: []});
+
+    let accessibleLabel = plainLabel;
+    if (props.showTime) {
+        accessibleLabel = getHourString() + ' ' + accessibleLabel;
+    }
+    if (props.statusLabel) {
+        accessibleLabel += ', ' + props.statusLabel;
+    }
+
+    let popupElement = null;
+
+    if (props.isPopupOpened && calendarItem.current) {
+        popupElement = (
+            <ItemPopup target={calendarItem}
+                       id={props.id}
+                       title={label}
+                       icon={props.icon}
+                       timestamp={props.timestamp}
+                       color={props.color}
+                       canMove={props.canMove}
+                       onMoveItemCallback={props.onMoveItemCallback}
+                       data={props.isPopupOpened ? props.getPopupItemDataCallback() : null}
+                       onItemActionClickCallback={props.onItemActionClickCallback}
+                       ajaxUrl={props.ajaxUrl}
+                       strings={props.strings}/>
+        );
+
+        // Render the popup outside the <li role="button"> to avoid nesting interactive controls inside a button.
+        // The popup container is the item's offset parent, so the popup position stays the same.
+        const portalContainer = calendarItem.current.offsetParent || (calendarItem.current.parentNode && calendarItem.current.parentNode.parentNode);
+
+        if (createPortal && portalContainer) {
+            popupElement = createPortal(popupElement, portalContainer);
+        }
+    }
 
     return (
         <li
@@ -77,22 +133,12 @@ export default function Item(props) {
             role="button"
             tabIndex="0"
             aria-label={accessibleLabel}
+            aria-haspopup="dialog"
             aria-expanded={props.isPopupOpened}>
 
             {iconElement}{timeElement}
             <span className="publishpress-calendar-item-title" dangerouslySetInnerHTML={{__html: sanitizedLabel}}></span>
-            {props.isPopupOpened &&
-            <ItemPopup target={calendarItem}
-                       id={props.id}
-                       title={label}
-                       icon={props.icon}
-                       timestamp={props.timestamp}
-                       color={props.color}
-                       data={props.isPopupOpened ? props.getPopupItemDataCallback() : null}
-                       onItemActionClickCallback={props.onItemActionClickCallback}
-                       ajaxUrl={props.ajaxUrl}
-                       strings={props.strings}/>
-            }
+            {popupElement}
         </li>
     )
 }

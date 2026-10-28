@@ -38,7 +38,7 @@
 
 .notif-log-modal .user,
 .admin_page_pp-notif-log .wp-list-table .user {
-    color: silver;
+    color: #646970;
 }
 
 .notif-log-modal table th {
@@ -103,7 +103,7 @@
     border-top: 1px solid silver;
     padding-top: 5px;
     font-weight: bold;
-    color: gray;
+    color: #646970;
 }
 
 .admin_page_pp-notif-log .publishpress-notifications-receivers li.receiver-title:nth-child(1) {
@@ -120,7 +120,7 @@
     padding: 5px 6px;
     background: rgba(143, 133, 224, 0.25);
     border-radius: 4px;
-    color: gray;
+    color: #50575e;
 }
 
 .admin_page_pp-notif-log .publishpress-notifications-receivers .channel-icon {
@@ -130,15 +130,35 @@
 }
 
 .admin_page_pp-notif-log .publishpress-notifications-receivers .view-log {
-    color: rgb(101, 88, 151);
-    font-size: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    min-height: 24px;
+    padding: 0;
     margin-right: 3px;
+    color: rgb(101, 88, 151);
+    vertical-align: middle;
     cursor: pointer;
 }
 
+.admin_page_pp-notif-log .publishpress-notifications-receivers .view-log .dashicons {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+}
+
+.admin_page_pp-notif-log .publishpress-notifications-receivers .view-log:focus-visible,
+.admin_page_pp-notif-log .slide-closed-text:focus-visible {
+    outline: 2px solid #2271b1;
+    outline-offset: 2px;
+    box-shadow: none;
+}
+
 .admin_page_pp-notif-log .slide-closed-text {
-    color: rgba(143, 133, 224, 0.65);
+    color: #5b4fa8;
     font-style: italic;
+    text-align: left;
 }
 
 .admin_page_pp-notif-log .slide {
@@ -150,7 +170,7 @@
 }
 
 .admin_page_pp-notif-log .muted {
-    color: #c0c0c0;
+    color: #646970;
     font-weight: normal;
 }
 
@@ -171,7 +191,8 @@
 }
 
 
-.preview-notification label {
+.preview-notification label,
+.preview-notification .preview-notification-label {
     display: block;
     font-weight: bold;
     margin-bottom: 10px;

@@ -1210,6 +1210,20 @@ if (! class_exists('PP_Calendar')) {
                     'nonce' => wp_create_nonce('publishpress-calendar-get-data'),
                     'moduleUrl' => $this->module_url,
                     'publishpressUrl' => PUBLISHPRESS_URL,
+                    /* translators: %s: filter name */
+                    'moveUpLabel' => esc_html__('Move %s up', 'publishpress'),
+                    /* translators: %s: filter name */
+                    'moveDownLabel' => esc_html__('Move %s down', 'publishpress'),
+                    /* translators: 1: filter name, 2: new position, 3: total number of items */
+                    'movedToPosition' => esc_html__('%1$s moved to position %2$d of %3$d.', 'publishpress'),
+                    /* translators: %s: filter name */
+                    'deleteItemLabel' => esc_html__('Delete %s', 'publishpress'),
+                    /* translators: %s: filter name */
+                    'itemAdded' => esc_html__('%s added.', 'publishpress'),
+                    /* translators: %s: filter name */
+                    'itemDeleted' => esc_html__('%s deleted.', 'publishpress'),
+                    'titleRequired' => esc_html__('Please enter a title.', 'publishpress'),
+                    'metaKeyRequired' => esc_html__('Please select a meta key.', 'publishpress'),
                 ]
             );
 

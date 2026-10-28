@@ -63,7 +63,7 @@ if (! class_exists('Editorial_Metadata_Input_Text_Handler')) {
                 $input_name
             );
 
-            echo self::generateDescriptionHtml($input_description);
+            echo self::generateDescriptionHtml($input_description, $input_name);
 
             printf(
                 '<input
@@ -71,9 +71,11 @@ if (! class_exists('Editorial_Metadata_Input_Text_Handler')) {
                     id="%s"
                     name="%1$s"
                     value="%2$s"
+                    %3$s
                 />',
                 esc_attr($input_name),
-                esc_attr($value)
+                esc_attr($value),
+                self::generateDescribedByAttr($input_description, $input_name) // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
             );
         }
 

@@ -337,7 +337,7 @@ if (! class_exists('PP_Board_Methods')) {
                 wp_enqueue_script(
                     'publishpress-content_board',
                     $this->module_url . 'lib/content-board.js',
-                    ['jquery', 'publishpress-date_picker', 'publishpress-select2', 'jquery-ui-sortable'],
+                    ['jquery', 'publishpress-date_picker', 'publishpress-select2', 'jquery-ui-sortable', 'wp-a11y'],
                     PUBLISHPRESS_VERSION,
                     true
                 );
@@ -364,6 +364,25 @@ if (! class_exists('PP_Board_Methods')) {
                         'nonce' => wp_create_nonce('content_board_action_nonce'),
                         'moduleUrl' => $this->module_url,
                         'publishpressUrl' => PUBLISHPRESS_URL,
+                        /* translators: %s: card data or filter name */
+                        'moveUpLabel' => esc_html__('Move %s up', 'publishpress'),
+                        /* translators: %s: card data or filter name */
+                        'moveDownLabel' => esc_html__('Move %s down', 'publishpress'),
+                        /* translators: 1: card data or filter name, 2: new position, 3: total number of items */
+                        'movedToPosition' => esc_html__('%1$s moved to position %2$d of %3$d.', 'publishpress'),
+                        /* translators: %s: card data or filter name */
+                        'deleteItemLabel' => esc_html__('Delete %s', 'publishpress'),
+                        /* translators: %s: card data or filter name */
+                        'itemAdded' => esc_html__('%s added.', 'publishpress'),
+                        /* translators: %s: card data or filter name */
+                        'itemDeleted' => esc_html__('%s deleted.', 'publishpress'),
+                        'titleRequired' => esc_html__('Please enter a title.', 'publishpress'),
+                        'metakeyRequired' => esc_html__('Please select a meta key.', 'publishpress'),
+                        /* translators: 1: post title, 2: new status name */
+                        'statusChanged' => esc_html__('%1$s moved to %2$s.', 'publishpress'),
+                        /* translators: %s: post title */
+                        'statusChanging' => esc_html__('Moving %s…', 'publishpress'),
+                        'statusChangeFailed' => esc_html__('The status could not be changed.', 'publishpress'),
                     ]
                 );
             }

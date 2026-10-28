@@ -244,7 +244,7 @@ if (!class_exists('PP_Module')) {
             } else {
                 $default_status_colors = [
                     'pitch' => '#887618',
-                    'assigned' => '#009ba0',
+                    'assigned' => '#007a7e',
                     'in-progress' => '#8c5400',
                     'draft' => '#767676',
                     'pending' => '#b95c00',

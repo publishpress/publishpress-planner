@@ -102,7 +102,7 @@ if (! class_exists('Editorial_Metadata_Input_Select_Handler')) {
                 $input_name
             );
 
-            echo self::generateDescriptionHtml($input_description);
+            echo self::generateDescriptionHtml($input_description, $input_id);
 
             if (!$dropdown_data) {
                 return;
@@ -110,13 +110,14 @@ if (! class_exists('Editorial_Metadata_Input_Select_Handler')) {
 
             $html = '<div class="pp-editorial-select2-wrapper">';
             $html .= sprintf(
-                '<select id="%1$s" class="%2$s" name="%3$s" placeholder="%4$s" data-placeholder="%5$s" %6$s>',
+                '<select id="%1$s" class="%2$s" name="%3$s" placeholder="%4$s" data-placeholder="%5$s" %6$s%7$s>',
                 esc_attr($input_id),
                 esc_attr($input_class),
                 esc_attr($input_name),
                 esc_attr($default_option_label),
                 esc_attr($default_option_label),
-                esc_attr($select_type)
+                esc_attr($select_type),
+                self::generateDescribedByAttr($input_description, $input_id)
             );
             $html .= self::generate_option('', '');
 

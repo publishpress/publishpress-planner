@@ -24,39 +24,42 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                             $me_mode = (int) $user_filters['me_mode'];
                             $active_me_mode = !empty($me_mode) ? 'active-filter' : '';
                         ?>
-                    <div class="item action me-mode-action <?php echo esc_attr($active_me_mode); ?>">
-                        <span class="dashicons dashicons-admin-users"></span> <?php esc_html_e('Me Mode', 'publishpress'); ?>
-                    </div>
+                    <button type="button" class="item action me-mode-action <?php echo esc_attr($active_me_mode); ?>" aria-pressed="<?php echo !empty($me_mode) ? 'true' : 'false'; ?>">
+                        <span class="dashicons dashicons-admin-users" aria-hidden="true"></span> <?php esc_html_e('Me Mode', 'publishpress'); ?>
+                        <?php if (!empty($me_mode)) : ?>
+                            <span class="dashicons dashicons-yes me-mode-on-indicator" aria-hidden="true"></span>
+                        <?php endif; ?>
+                    </button>
                     <?php do_action('pp_content_board_filter_after_me_mode', $user_filters); ?>
-                    <div class="item action co-filter" data-target="#content_board_modal_<?php echo esc_attr($modal_id); ?>">
-                        <span class="dashicons dashicons-editor-table"></span> <?php esc_html_e('Customize Card Data', 'publishpress'); ?>
-                    </div>
-                    <div id="content_board_modal_<?php echo esc_attr($modal_id); ?>" class="customize-customize-item-modal content-board-modal" style="display: none;">
+                    <button type="button" class="item action co-filter" id="content_board_modal_<?php echo esc_attr($modal_id); ?>_trigger" data-target="#content_board_modal_<?php echo esc_attr($modal_id); ?>" aria-expanded="false" aria-controls="content_board_modal_<?php echo esc_attr($modal_id); ?>">
+                        <span class="dashicons dashicons-editor-table" aria-hidden="true"></span> <?php esc_html_e('Customize Card Data', 'publishpress'); ?>
+                    </button>
+                    <div id="content_board_modal_<?php echo esc_attr($modal_id); ?>" class="customize-customize-item-modal content-board-modal" role="dialog" aria-labelledby="content_board_modal_<?php echo esc_attr($modal_id); ?>_trigger" style="display: none;">
                         <div class="content-board-modal-content">
-                            <span class="close">&times;</span>
+                            <button type="button" class="close" aria-label="<?php esc_attr_e('Close', 'publishpress'); ?>"><span aria-hidden="true">&times;</span></button>
                             <?php echo self::content_board_customize_column_form($args); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                         </div>
                     </div>
                     <?php $modal_id++; ?>
-                    <div class="item action co-filter" data-target="#content_board_modal_<?php echo esc_attr($modal_id); ?>">
-                        <span class="dashicons dashicons-filter"></span> <?php esc_html_e('Customize Filters', 'publishpress'); ?>
-                    </div>
-                    <div id="content_board_modal_<?php echo esc_attr($modal_id); ?>" class="customize-customize-item-modal content-board-modal" style="display: none;">
+                    <button type="button" class="item action co-filter" id="content_board_modal_<?php echo esc_attr($modal_id); ?>_trigger" data-target="#content_board_modal_<?php echo esc_attr($modal_id); ?>" aria-expanded="false" aria-controls="content_board_modal_<?php echo esc_attr($modal_id); ?>">
+                        <span class="dashicons dashicons-filter" aria-hidden="true"></span> <?php esc_html_e('Customize Filters', 'publishpress'); ?>
+                    </button>
+                    <div id="content_board_modal_<?php echo esc_attr($modal_id); ?>" class="customize-customize-item-modal content-board-modal" role="dialog" aria-labelledby="content_board_modal_<?php echo esc_attr($modal_id); ?>_trigger" style="display: none;">
                         <div class="content-board-modal-content">
-                            <span class="close">&times;</span>
+                            <button type="button" class="close" aria-label="<?php esc_attr_e('Close', 'publishpress'); ?>"><span aria-hidden="true">&times;</span></button>
                             <?php echo self::content_board_customize_filter_form($args); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                         </div>
                     </div>
-                    <div class="item action" id="print_link">
-                        <span class="dashicons dashicons-printer"></span> <?php esc_html_e('Print', 'publishpress'); ?>
-                    </div>
+                    <button type="button" class="item action" id="print_link">
+                        <span class="dashicons dashicons-printer" aria-hidden="true"></span> <?php esc_html_e('Print', 'publishpress'); ?>
+                    </button>
                     <?php $modal_id++; ?>
-                    <div data-target="#content_board_modal_<?php echo esc_attr($modal_id); ?>" class="co-filter item action">
-                        <span class="dashicons dashicons-admin-generic"></span>
-                    </div>
-                    <div id="content_board_modal_<?php echo esc_attr($modal_id); ?>" class="content-board-modal" style="display: none;">
+                    <button type="button" data-target="#content_board_modal_<?php echo esc_attr($modal_id); ?>" class="co-filter item action" id="content_board_modal_<?php echo esc_attr($modal_id); ?>_trigger" aria-label="<?php esc_attr_e('Board settings', 'publishpress'); ?>" aria-expanded="false" aria-controls="content_board_modal_<?php echo esc_attr($modal_id); ?>">
+                        <span class="dashicons dashicons-admin-generic" aria-hidden="true"></span>
+                    </button>
+                    <div id="content_board_modal_<?php echo esc_attr($modal_id); ?>" class="content-board-modal" role="dialog" aria-labelledby="content_board_modal_<?php echo esc_attr($modal_id); ?>_trigger" style="display: none;">
                         <div class="content-board-modal-content">
-                            <span class="close">&times;</span>
+                            <button type="button" class="close" aria-label="<?php esc_attr_e('Close', 'publishpress'); ?>"><span aria-hidden="true">&times;</span></button>
                             <div>
                                 <div class="metadata-item-filter custom-filter">
                                     <label class="filter-title" for="pp_posts_per_page">
@@ -80,12 +83,12 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                 <div class="right-items">
                     <?php if (!empty($editable_post_types)) : ?>
                         <?php $modal_id++; ?>
-                        <div class="item action co-filter new-post" data-target="#content_board_modal_<?php echo esc_attr($modal_id); ?>">
-                            <span class="dashicons dashicons-plus-alt"></span> <?php esc_html_e('New Post', 'publishpress'); ?>
-                        </div>
-                        <div id="content_board_modal_<?php echo esc_attr($modal_id); ?>" class="customize-customize-item-modal content-board-modal new-post-modal" style="display: none;">
+                        <button type="button" class="item action co-filter new-post" id="content_board_modal_<?php echo esc_attr($modal_id); ?>_trigger" data-target="#content_board_modal_<?php echo esc_attr($modal_id); ?>" aria-expanded="false" aria-controls="content_board_modal_<?php echo esc_attr($modal_id); ?>">
+                            <span class="dashicons dashicons-plus-alt" aria-hidden="true"></span> <?php esc_html_e('New Post', 'publishpress'); ?>
+                        </button>
+                        <div id="content_board_modal_<?php echo esc_attr($modal_id); ?>" class="customize-customize-item-modal content-board-modal new-post-modal" role="dialog" aria-labelledby="content_board_modal_<?php echo esc_attr($modal_id); ?>_trigger" style="display: none;">
                             <div class="content-board-modal-content">
-                                <span class="close">&times;</span>
+                                <button type="button" class="close" aria-label="<?php esc_attr_e('Close', 'publishpress'); ?>"><span aria-hidden="true">&times;</span></button>
                                 <div class="content-board-modal-form">
                                     <?php echo self::content_board_get_post_form($args); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                                 </div>
@@ -112,12 +115,12 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                     $selected_date = ': ' . date_i18n("F j, Y", strtotime($filtered_start_date)) . ' '. esc_html__('to', 'publishpress').' ' . date_i18n("F j, Y", strtotime($filtered_end_date));
                     $modal_id++;
                     ?>
-                    <button data-target="#content_board_modal_<?php echo esc_attr($modal_id); ?>" class="co-filter active-filter">
+                    <button data-target="#content_board_modal_<?php echo esc_attr($modal_id); ?>" class="co-filter active-filter" id="content_board_modal_<?php echo esc_attr($modal_id); ?>_trigger" aria-expanded="false" aria-controls="content_board_modal_<?php echo esc_attr($modal_id); ?>">
                         <?php esc_html_e('Date', 'publishpress'); ?><?php echo esc_html($selected_date); ?>
                     </button>
-                    <div id="content_board_modal_<?php echo esc_attr($modal_id); ?>" class="content-board-modal" style="display: none;">
+                    <div id="content_board_modal_<?php echo esc_attr($modal_id); ?>" class="content-board-modal" role="dialog" aria-labelledby="content_board_modal_<?php echo esc_attr($modal_id); ?>_trigger" style="display: none;">
                         <div class="content-board-modal-content">
-                            <span class="close">&times;</span>
+                            <button type="button" class="close" aria-label="<?php esc_attr_e('Close', 'publishpress'); ?>"><span aria-hidden="true">&times;</span></button>
                             <div><?php echo self::content_board_time_range($args); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
                         </div>
                     </div>
@@ -133,12 +136,15 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                         $button_label .= !empty($filter_data['selected_value']) ? ': ' . $filter_data['selected_value'] : '';
                         ?>
                         <?php if (!empty($button_label)) : ?>
-                            <button 
-                                data-target="#content_board_modal_<?php echo esc_attr($modal_id); ?>" 
+                            <button
+                                data-target="#content_board_modal_<?php echo esc_attr($modal_id); ?>"
+                                id="content_board_modal_<?php echo esc_attr($modal_id); ?>_trigger"
+                                aria-expanded="false"
+                                aria-controls="content_board_modal_<?php echo esc_attr($modal_id); ?>"
                                 class="co-filter <?php echo esc_attr($active_class); ?> <?php echo esc_attr($select_id); ?> me-mode-status-<?php echo esc_attr($me_mode); ?>"><?php echo esc_html($button_label); ?></button>
-                            <div id="content_board_modal_<?php echo esc_attr($modal_id); ?>" class="content-board-modal" style="display: none;">
+                            <div id="content_board_modal_<?php echo esc_attr($modal_id); ?>" class="content-board-modal" role="dialog" aria-labelledby="content_board_modal_<?php echo esc_attr($modal_id); ?>_trigger" style="display: none;">
                                 <div class="content-board-modal-content">
-                                    <span class="close">&times;</span>
+                                    <button type="button" class="close" aria-label="<?php esc_attr_e('Close', 'publishpress'); ?>"><span aria-hidden="true">&times;</span></button>
                                     <div><?php echo $filter_data['html']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
                                 </div>
                             </div>
@@ -149,7 +155,7 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                     } 
                     ?>
                     <button class="clear-filter">
-                        <span class="dashicons dashicons-dismiss"></span> <?php esc_html_e('Reset Filters', 'publishpress'); ?>
+                        <span class="dashicons dashicons-dismiss" aria-hidden="true"></span> <?php esc_html_e('Reset Filters', 'publishpress'); ?>
                         <input style="display: none;" type="submit" id="post-query-clear" value="<?php echo esc_attr(__('Reset', 'publishpress')); ?>" class="button-secondary button"/>
                     </button>
                 </div>
@@ -213,12 +219,12 @@ if (! class_exists('PP_Content_Board_Utilities')) {
             <form method="POST" class="pp-content-board-customize-form columns" id="pp-content-board-column-form" data-form="columns">
                 <input type="hidden" name="co_form_action" value="column_form"/>
                 <input type="hidden" name="_nonce" value="<?php echo esc_attr(wp_create_nonce('content_board_column_form_nonce')); ?>"/>
-                <div class="co-customize-tabs">
-                    <div class="customize-tab enable-tab cc-active-tab" data-tab="enable-content"><?php esc_html_e('Enable or Disable', 'publishpress'); ?></div>
-                    <div class="customize-tab reorder-tab" data-tab="reorder-content"> <?php esc_html_e('Reorder', 'publishpress'); ?> </div>
+                <div class="co-customize-tabs" role="tablist">
+                    <button type="button" class="customize-tab enable-tab cc-active-tab" data-tab="enable-content" role="tab" id="pp-cb-columns-enable-tab" aria-selected="true" aria-controls="pp-cb-columns-enable-panel" tabindex="0"><?php esc_html_e('Enable or Disable', 'publishpress'); ?></button>
+                    <button type="button" class="customize-tab reorder-tab" data-tab="reorder-content" role="tab" id="pp-cb-columns-reorder-tab" aria-selected="false" aria-controls="pp-cb-columns-reorder-panel" tabindex="-1"><?php esc_html_e('Reorder', 'publishpress'); ?></button>
                 </div>
                 <div class="co-cc-content">
-                    <div class="customize-content enable-content">
+                    <div class="customize-content enable-content" role="tabpanel" id="pp-cb-columns-enable-panel" aria-labelledby="pp-cb-columns-enable-tab">
                         <div class="fixed-header">
                             <p class="description"><?php esc_html_e('Enable or Disable Content Board Card Data.', 'publishpress'); ?></p>
                         </div>
@@ -232,26 +238,30 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                                 <div class="customize-group-title title-index-<?php echo esc_attr($column_index); ?> <?php echo esc_attr($column_group); ?>" style="<?php echo esc_attr($hidden_style); ?>">
                                     <div class="title-text"><?php echo esc_html($column_datas['title']); ?></div>
                                     <?php if ($column_group === 'custom') : ?>
-                                        <div class="title-action new-item">
-                                            <span class="dashicons dashicons-plus-alt"></span> <?php esc_html_e('Add New', 'publishpress'); ?>
-                                        </div>
+                                        <button type="button" class="title-action new-item" aria-expanded="false">
+                                            <span class="dashicons dashicons-plus-alt" aria-hidden="true"></span> <?php esc_html_e('Add New', 'publishpress'); ?>
+                                        </button>
                                     <?php endif; ?>
                                 </div>
                                 <?php if ($column_group === 'custom') : ?>
                                     <div class="entry-item enable-item form-item" style="display: none;">
                                         <div class="new-fields">
                                             <div class="field">
-                                                <input class="new-item-title" type="text" placeholder="<?php esc_attr_e('Title', 'publishpress'); ?>" />
+                                                <label class="screen-reader-text" for="pp-cb-new-column-title"><?php esc_html_e('Title', 'publishpress'); ?></label>
+                                                <input class="new-item-title" id="pp-cb-new-column-title" type="text" placeholder="<?php esc_attr_e('Title', 'publishpress'); ?>" aria-describedby="pp-cb-new-column-title-error" />
+                                                <p class="pp-co-field-error" id="pp-cb-new-column-title-error" hidden></p>
                                             </div>
                                             <div class="field">
-                                            <select class="new-item-metakey" data-nonce="<?php echo esc_attr(wp_create_nonce('publishpress-content-get-data')); ?>">
+                                            <label class="screen-reader-text" for="pp-cb-new-column-metakey"><?php esc_html_e('Meta key', 'publishpress'); ?></label>
+                                            <select class="new-item-metakey" id="pp-cb-new-column-metakey" aria-describedby="pp-cb-new-column-metakey-error" data-nonce="<?php echo esc_attr(wp_create_nonce('publishpress-content-get-data')); ?>">
                                                 <option value=""><?php esc_html_e('Search Metakey', 'publishpress'); ?></option>
                                             </select>
+                                            <p class="pp-co-field-error" id="pp-cb-new-column-metakey-error" hidden></p>
                                             </div>
                                         </div>
-                                        <div class="new-submit">
+                                        <button type="button" class="new-submit">
                                             <?php esc_html_e('Add New', 'publishpress'); ?>
-                                        </div>
+                                        </button>
                                     </div>
                                 <?php endif; ?>
                                 <?php if (empty($column_datas['columns'])) : ?>
@@ -266,24 +276,24 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                                             'column_group' => $column_group
                                         ];
                                         ?>
-                                        <div class="entry-item enable-item <?php echo esc_attr($active_class); ?> customize-item-<?php echo esc_attr($column_name); ?> <?php echo esc_attr($column_group); ?>" data-name="<?php echo esc_attr($column_name); ?>">
+                                        <div class="entry-item enable-item <?php echo esc_attr($active_class); ?> customize-item-<?php echo esc_attr($column_name); ?> <?php echo esc_attr($column_group); ?>" data-name="<?php echo esc_attr($column_name); ?>" role="checkbox" tabindex="0" aria-checked="<?php echo !empty($active_class) ? 'true' : 'false'; ?>" aria-label="<?php echo esc_attr($column_label); ?>">
                                             <input class="customize-item-input" type="hidden" name="<?php echo esc_attr($input_name); ?>" value="<?php echo esc_attr($column_label); ?>" />
                                             <?php if ($column_group === 'custom') : ?>
                                                 <input type="hidden" name="content_board_custom_columns[<?php echo esc_attr($column_name); ?>]" value="<?php echo esc_attr($column_label); ?>" />
                                             <?php endif; ?>
-                                            <div class="items-list-item-check checked">
+                                            <div class="items-list-item-check checked" aria-hidden="true">
                                                 <svg><use xlink:href="<?php echo esc_url(PUBLISHPRESS_URL . 'common/icons/content-icon.svg#svg-sprite-cu2-check-2-fill'); ?>"></use></svg>
                                             </div>
-                                            <div class="items-list-item-check unchecked">
+                                            <div class="items-list-item-check unchecked" aria-hidden="true">
                                                 <svg><use xlink:href="<?php echo esc_url(PUBLISHPRESS_URL . 'common/icons/content-icon.svg#svg-sprite-x'); ?>"></use></svg>
                                             </div>
                                             <div class="items-list-item-name">
                                                 <div class="items-list-item-name-text"><?php echo esc_html($column_label); ?> <?php if ($column_group === 'custom') : ?><span class="customize-item-info">(<?php echo esc_html($column_name); ?>)</span><?php endif; ?></div>
                                             </div>
                                             <?php if ($column_group === 'custom') : ?>
-                                                <div class="delete-content-board-item" data-meta="<?php echo esc_html($column_name); ?>">
-                                                    <svg><use xlink:href="<?php echo esc_url(PUBLISHPRESS_URL . 'common/icons/content-icon.svg#svg-sprite-cu2-menu-trash'); ?>"></use></svg>
-                                                </div>
+                                                <button type="button" class="delete-content-board-item" data-meta="<?php echo esc_attr($column_name); ?>" aria-label="<?php echo esc_attr(sprintf(__('Delete %s', 'publishpress'), $column_label)); ?>">
+                                                    <svg aria-hidden="true" focusable="false"><use xlink:href="<?php echo esc_url(PUBLISHPRESS_URL . 'common/icons/content-icon.svg#svg-sprite-cu2-menu-trash'); ?>"></use></svg>
+                                                </button>
                                             <?php endif; ?>
                                         </div>
                                     <?php endforeach; ?>
@@ -291,9 +301,9 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                             <?php endforeach; ?>
                         </div>
                     </div>
-                    <div class="customize-content reorder-content" style="display: none;">
+                    <div class="customize-content reorder-content" role="tabpanel" id="pp-cb-columns-reorder-panel" aria-labelledby="pp-cb-columns-reorder-tab" style="display: none;">
                         <div class="fixed-header">
-                            <p class="description"><?php esc_html_e('Drag to change enabled card data order.', 'publishpress'); ?></p>
+                            <p class="description"><?php esc_html_e('Drag, or use the Move up and Move down buttons, to change enabled card data order.', 'publishpress'); ?></p>
                         </div>
                         <div class="scrollable-content">
                             <?php 
@@ -333,9 +343,9 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                         </div>
                     </div>
                     <div class="fixed-footer">
-                        <div class="save-cc-changes save-customize-item-form">
+                        <button type="button" class="save-cc-changes save-customize-item-form">
                             <?php esc_html_e('Apply Changes', 'publishpress'); ?>
-                        </div>
+                        </button>
                     </div>
                 </div>
             </form>
@@ -359,12 +369,12 @@ if (! class_exists('PP_Content_Board_Utilities')) {
             <form method="POST" class="pp-content-board-customize-form filters" id="pp-content-board-filter-form" data-form="filters">
                 <input type="hidden" name="co_form_action" value="filter_form"/>
                 <input type="hidden" name="_nonce" value="<?php echo esc_attr(wp_create_nonce('content_board_filter_form_nonce')); ?>"/>
-                <div class="co-customize-tabs">
-                    <div class="customize-tab enable-tab cc-active-tab" data-tab="enable-content"><?php esc_html_e('Enable Filters', 'publishpress'); ?></div>
-                    <div class="customize-tab reorder-tab" data-tab="reorder-content"> <?php esc_html_e('Reorder Filters', 'publishpress'); ?> </div>
+                <div class="co-customize-tabs" role="tablist">
+                    <button type="button" class="customize-tab enable-tab cc-active-tab" data-tab="enable-content" role="tab" id="pp-cb-filters-enable-tab" aria-selected="true" aria-controls="pp-cb-filters-enable-panel" tabindex="0"><?php esc_html_e('Enable Filters', 'publishpress'); ?></button>
+                    <button type="button" class="customize-tab reorder-tab" data-tab="reorder-content" role="tab" id="pp-cb-filters-reorder-tab" aria-selected="false" aria-controls="pp-cb-filters-reorder-panel" tabindex="-1"><?php esc_html_e('Reorder Filters', 'publishpress'); ?></button>
                 </div>
                 <div class="co-cc-content">
-                    <div class="customize-content enable-content">
+                    <div class="customize-content enable-content" role="tabpanel" id="pp-cb-filters-enable-panel" aria-labelledby="pp-cb-filters-enable-tab">
                         <div class="fixed-header">
                             <p class="description"><?php esc_html_e('Enable or Disable Content Board filter.', 'publishpress'); ?></p>
                         </div>
@@ -378,26 +388,30 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                                 <div class="customize-group-title title-index-<?php echo esc_attr($filter_index); ?> <?php echo esc_attr($filter_group); ?>" style="<?php echo esc_attr($hidden_style); ?>">
                                     <div class="title-text"><?php echo esc_html($filter_datas['title']); ?></div>
                                     <?php if ($filter_group === 'custom') : ?>
-                                        <div class="title-action new-item">
-                                            <span class="dashicons dashicons-plus-alt"></span> <?php esc_html_e('Add New', 'publishpress'); ?>
-                                        </div>
+                                        <button type="button" class="title-action new-item" aria-expanded="false">
+                                            <span class="dashicons dashicons-plus-alt" aria-hidden="true"></span> <?php esc_html_e('Add New', 'publishpress'); ?>
+                                        </button>
                                     <?php endif; ?>
                                 </div>
                                 <?php if ($filter_group === 'custom') : ?>
                                     <div class="entry-item enable-item form-item" style="display: none;">
                                         <div class="new-fields">
                                             <div class="field">
-                                                <input class="new-item-title" type="text" placeholder="<?php esc_attr_e('Filter Title', 'publishpress'); ?>" />
+                                                <label class="screen-reader-text" for="pp-cb-new-filter-title"><?php esc_html_e('Filter Title', 'publishpress'); ?></label>
+                                                <input class="new-item-title" id="pp-cb-new-filter-title" type="text" placeholder="<?php esc_attr_e('Filter Title', 'publishpress'); ?>" aria-describedby="pp-cb-new-filter-title-error" />
+                                                <p class="pp-co-field-error" id="pp-cb-new-filter-title-error" hidden></p>
                                             </div>
                                             <div class="field">
-                                            <select class="new-item-metakey" data-nonce="<?php echo esc_attr(wp_create_nonce('publishpress-content-get-data')); ?>">
+                                            <label class="screen-reader-text" for="pp-cb-new-filter-metakey"><?php esc_html_e('Meta key', 'publishpress'); ?></label>
+                                            <select class="new-item-metakey" id="pp-cb-new-filter-metakey" aria-describedby="pp-cb-new-filter-metakey-error" data-nonce="<?php echo esc_attr(wp_create_nonce('publishpress-content-get-data')); ?>">
                                                 <option value=""><?php esc_html_e('Select Metakey', 'publishpress'); ?></option>
                                             </select>
+                                            <p class="pp-co-field-error" id="pp-cb-new-filter-metakey-error" hidden></p>
                                             </div>
                                         </div>
-                                        <div class="new-submit">
+                                        <button type="button" class="new-submit">
                                             <?php esc_html_e('Add Filter', 'publishpress'); ?>
-                                        </div>
+                                        </button>
                                     </div>
                                 <?php endif; ?>
                                 <?php if (empty($filter_datas['filters'])) : ?>
@@ -412,24 +426,24 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                                             'filter_group' => $filter_group
                                         ];
                                         ?>
-                                        <div class="entry-item enable-item <?php echo esc_attr($active_class); ?> customize-item-<?php echo esc_attr($filter_name); ?> <?php echo esc_attr($filter_group); ?>" data-name="<?php echo esc_attr($filter_name); ?>">
+                                        <div class="entry-item enable-item <?php echo esc_attr($active_class); ?> customize-item-<?php echo esc_attr($filter_name); ?> <?php echo esc_attr($filter_group); ?>" data-name="<?php echo esc_attr($filter_name); ?>" role="checkbox" tabindex="0" aria-checked="<?php echo !empty($active_class) ? 'true' : 'false'; ?>" aria-label="<?php echo esc_attr($filter_label); ?>">
                                             <input class="customize-item-input" type="hidden" name="<?php echo esc_attr($input_name); ?>" value="<?php echo esc_attr($filter_label); ?>" />
                                             <?php if ($filter_group === 'custom') : ?>
                                                 <input type="hidden" name="content_board_custom_filters[<?php echo esc_attr($filter_name); ?>]" value="<?php echo esc_attr($filter_label); ?>" />
                                             <?php endif; ?>
-                                            <div class="items-list-item-check checked">
+                                            <div class="items-list-item-check checked" aria-hidden="true">
                                                 <svg><use xlink:href="<?php echo esc_url(PUBLISHPRESS_URL . 'common/icons/content-icon.svg#svg-sprite-cu2-check-2-fill'); ?>"></use></svg>
                                             </div>
-                                            <div class="items-list-item-check unchecked">
+                                            <div class="items-list-item-check unchecked" aria-hidden="true">
                                                 <svg><use xlink:href="<?php echo esc_url(PUBLISHPRESS_URL . 'common/icons/content-icon.svg#svg-sprite-x'); ?>"></use></svg>
                                             </div>
                                             <div class="items-list-item-name">
                                                 <div class="items-list-item-name-text"><?php echo esc_html($filter_label); ?> <?php if ($filter_group === 'custom') : ?><span class="customize-item-info">(<?php echo esc_html($filter_name); ?>)</span><?php endif; ?></div>
                                             </div>
                                             <?php if ($filter_group === 'custom') : ?>
-                                                <div class="delete-content-board-item" data-meta="<?php echo esc_html($filter_name); ?>">
-                                                    <svg><use xlink:href="<?php echo esc_url(PUBLISHPRESS_URL . 'common/icons/content-icon.svg#svg-sprite-cu2-menu-trash'); ?>"></use></svg>
-                                                </div>
+                                                <button type="button" class="delete-content-board-item" data-meta="<?php echo esc_attr($filter_name); ?>" aria-label="<?php echo esc_attr(sprintf(__('Delete %s', 'publishpress'), $filter_label)); ?>">
+                                                    <svg aria-hidden="true" focusable="false"><use xlink:href="<?php echo esc_url(PUBLISHPRESS_URL . 'common/icons/content-icon.svg#svg-sprite-cu2-menu-trash'); ?>"></use></svg>
+                                                </button>
                                             <?php endif; ?>
                                         </div>
                                     <?php endforeach; ?>
@@ -437,9 +451,9 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                             <?php endforeach; ?>
                         </div>
                     </div>
-                    <div class="customize-content reorder-content" style="display: none;">
+                    <div class="customize-content reorder-content" role="tabpanel" id="pp-cb-filters-reorder-panel" aria-labelledby="pp-cb-filters-reorder-tab" style="display: none;">
                         <div class="fixed-header">
-                            <p class="description"><?php esc_html_e('Drag to change enabled filters order.', 'publishpress'); ?></p>
+                            <p class="description"><?php esc_html_e('Drag, or use the Move up and Move down buttons, to change enabled filters order.', 'publishpress'); ?></p>
                         </div>
                         <div class="scrollable-content">
                             <?php 
@@ -479,9 +493,9 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                         </div>
                     </div>
                     <div class="fixed-footer">
-                        <div class="save-cc-changes save-customize-item-form">
+                        <button type="button" class="save-cc-changes save-customize-item-form">
                             <?php esc_html_e('Apply Changes', 'publishpress'); ?>
-                        </div>
+                        </button>
                     </div>
                 </div>
             </form>
@@ -505,14 +519,15 @@ if (! class_exists('PP_Content_Board_Utilities')) {
             $filtered_end_date_timestamp = strtotime($filtered_end_date);
 
             $output = '<div class="metadata-item-filter">';
-            $output .= '<div class="filter-title">';
+            $output .= '<div class="filter-title" id="pp-content-board-date-range-title">';
             $output .= esc_html__('Show content from', 'publishpress');
             $output .= '</div>';
-            $output .= '<div class="filter-content">';
+            $output .= '<div class="filter-content" role="group" aria-labelledby="pp-content-board-date-range-title">';
 
             $date_format = get_option('date_format');
 
-            $start_date_value = '<input type="text" id="pp-content-board-start-date" name="pp-content-board-start-date"'
+            $start_date_value = '<label class="screen-reader-text" for="pp-content-board-start-date">' . esc_html__('Start date', 'publishpress') . '</label>';
+            $start_date_value .= '<input type="text" id="pp-content-board-start-date" name="pp-content-board-start-date"'
                 . ' class="date-pick" data-alt-field="pp-content-board-start-date_hidden" data-alt-format="' . pp_convert_date_format_to_jqueryui_datepicker(
                     'Y-m-d'
                 ) . '" value="'
@@ -523,7 +538,8 @@ if (! class_exists('PP_Content_Board_Utilities')) {
             $start_date_value .= esc_html(date_i18n($date_format, $filtered_start_date_timestamp));
             $start_date_value .= '</span>';
 
-            $end_date_value = '<input type="text" id="pp-content-board-end-date" name="pp-content-board-end-date"'
+            $end_date_value = '<label class="screen-reader-text" for="pp-content-board-end-date">' . esc_html__('End date', 'publishpress') . '</label>';
+            $end_date_value .= '<input type="text" id="pp-content-board-end-date" name="pp-content-board-end-date"'
                 . ' class="date-pick" data-alt-field="pp-content-board-end-date_hidden" data-alt-format="' . pp_convert_date_format_to_jqueryui_datepicker(
                     'Y-m-d'
                 ) . '" value="'
@@ -593,7 +609,7 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                 case 'post_status':
                     $filter_label   = esc_html__('Post Status', 'publishpress');
                     ?>
-                    <select id="post_status" name="post_status"><!-- Status selectors -->
+                    <select id="post_status" name="post_status" aria-label="<?php echo esc_attr($filter_label); ?>"><!-- Status selectors -->
                         <option value=""><?php
                             _e('All statuses', 'publishpress'); ?></option>
                         <?php
@@ -621,6 +637,7 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                         id="<?php echo esc_attr('filter_taxonomy_' . $select_name); ?>" 
                         data-taxonomy="<?php echo esc_attr($select_name); ?>" 
                         name="<?php echo esc_attr($select_name); ?>"
+                        aria-label="<?php echo esc_attr($taxonomy->label); ?>"
                         data-placeholder="<?php printf(esc_attr__('All %s', 'publishpress'), esc_html($taxonomy->label)); ?>"
                         >
                         <option value="">
@@ -646,7 +663,7 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                     $selectedOptionAll = empty($authorId) ? 'selected="selected"' : '';
                     $filter_label   = esc_html__('Author', 'publishpress');
                     ?>
-                    <select id="filter_author" name="author" data-placeholder="<?php esc_attr_e('All authors', 'publishpress'); ?>">
+                    <select id="filter_author" name="author" aria-label="<?php echo esc_attr($filter_label); ?>" data-placeholder="<?php esc_attr_e('All authors', 'publishpress'); ?>">
                         <?php // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                         <option value="" <?php echo $selectedOptionAll; ?>>
                             <?php esc_html_e('All authors', 'publishpress'); ?>
@@ -676,7 +693,7 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                     $selectedPostType = isset($filters['ptype']) ? sanitize_text_field($filters['ptype']) : '';
                     $filter_label   = esc_html__('Post Type', 'publishpress');
                     ?>
-                    <select id="filter_post_type" name="ptype">
+                    <select id="filter_post_type" name="ptype" aria-label="<?php echo esc_attr($filter_label); ?>">
                         <option value=""><?php
                             _e('All post types', 'publishpress'); ?></option>
                         <?php
@@ -890,7 +907,7 @@ if (! class_exists('PP_Content_Board_Utilities')) {
 
                         if (strpos($select_name, "ppch_co_checklist_") === 0) {
                             ?>
-                            <select id="filter_<?php echo esc_attr($select_name); ?>" name="<?php echo esc_attr($select_name); ?>">
+                            <select id="filter_<?php echo esc_attr($select_name); ?>" name="<?php echo esc_attr($select_name); ?>" aria-label="<?php echo esc_attr($filter_label); ?>">
                                 <option value=""><?php
                                     _e('All status', 'publishpress'); ?></option>
                                 <?php
@@ -930,7 +947,7 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                                     <?php echo esc_html($filter_label); ?>
                                 </div>
                                 <div class="filter-content">
-                                <select class="non-trigger-select" id="filter_<?php echo esc_attr($select_name); ?>_operator" name="<?php echo esc_attr($select_name); ?>_operator">
+                                <select class="non-trigger-select" id="filter_<?php echo esc_attr($select_name); ?>_operator" name="<?php echo esc_attr($select_name); ?>_operator" aria-label="<?php echo esc_attr(sprintf(__('%s operator', 'publishpress'), $filter_label)); ?>">
                                 <?php
                                 foreach ($operator_labels as $option_key => $option_label) {
                                     if (
@@ -951,6 +968,7 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                                 type="<?php echo esc_attr($input_type); ?>" 
                                 id="<?php echo esc_attr('custom_metadata_key_' . $select_name); ?>" 
                                 name="<?php echo esc_attr($select_name); ?>" 
+                                aria-label="<?php echo esc_attr(sprintf(__('%s value', 'publishpress'), $filter_label)); ?>"
                                 value="<?php echo esc_attr($selected_value_meta); ?>" 
                                 placeholder=""
                                 />
@@ -992,10 +1010,16 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                         <div class="scrollable-content">
                         <table class="content-board-form-table fixed">
                             <tbody>
-                                <?php foreach ($post_fields as $field_key => $field_options) : ?>
+                                <?php foreach ($post_fields as $field_key => $field_options) :
+                                    $field_id       = 'publishpress-content-board-field-' . $field_key;
+                                    $field_label_id = $field_id . '-label';
+                                    // Controls whose ids are used by JS (select2 init, AJAX reload) keep them and are named via aria-labelledby.
+                                    $label_has_for  = empty($field_options['html'])
+                                        && !in_array($field_options['type'], ['status', 'taxonomy', 'authors', 'post_type'], true);
+                                    ?>
                                     <tr>
                                         <th scope="row">
-                                            <label for="publishpress-content-board-field-<?php echo esc_attr($field_key); ?>">
+                                            <label id="<?php echo esc_attr($field_label_id); ?>"<?php if ($label_has_for) : ?> for="<?php echo esc_attr($field_id); ?>"<?php endif; ?>>
                                                 <?php echo esc_html($field_options['label']); ?>
                                                 <?php if (!empty($field_options['required'])) : ?>
                                                     <span class="required">*</span>
@@ -1004,13 +1028,15 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                                         </th>
                                         <td>
                                             <?php if (!empty($field_options['html'])) : ?>
+                                                <div role="group" aria-labelledby="<?php echo esc_attr($field_label_id); ?>">
                                                 <?php echo $field_options['html']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+                                                </div>
                                             <?php else : ?>
                                                 <?php
                                                 switch ($field_options['type']) {
                                                     case 'status':
                                                         ?>
-                                                        <select id="form_post_status" name="<?php echo esc_attr($field_key); ?>">
+                                                        <select id="form_post_status" name="<?php echo esc_attr($field_key); ?>" aria-labelledby="<?php echo esc_attr($field_label_id); ?>">
                                                             <?php
                                                             foreach (apply_filters('publishpress_content_board_new_post_statuses', $field_options['options'], $args) as $post_status) {
                                                                 echo "<option value='" . esc_attr($post_status['value']) . "' " . selected(
@@ -1032,6 +1058,7 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                                                                 id="<?php echo esc_attr('post_form_taxonomy_' . $taxonomy_name); ?>" 
                                                                 data-taxonomy="<?php echo esc_attr($taxonomy_name); ?>" 
                                                                 name="<?php echo esc_attr($taxonomy_name); ?>[]"
+                                                                aria-labelledby="<?php echo esc_attr($field_label_id); ?>"
                                                                 multiple
                                                                 >
                                                                 <?php
@@ -1050,7 +1077,7 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                                                         case 'authors':
                                                             $authorId = (int) $field_options['value'];
                                                             ?>
-                                                            <select id="post_form_author_<?php echo esc_attr($field_key); ?>" class="post_form_author <?php echo esc_attr($field_key); ?>" name="<?php echo esc_attr($field_key); ?>">
+                                                            <select id="post_form_author_<?php echo esc_attr($field_key); ?>" class="post_form_author <?php echo esc_attr($field_key); ?>" name="<?php echo esc_attr($field_key); ?>" aria-labelledby="<?php echo esc_attr($field_label_id); ?>">
                                                                 <?php
                                                                 if (! empty($authorId)) {
                                                                     $author = get_user_by('id', $authorId);
@@ -1073,7 +1100,7 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                                             
                                                         case 'post_type':
                                                             ?>
-                                                            <select id="post_form_post_type" name="<?php echo esc_attr($field_key); ?>">
+                                                            <select id="post_form_post_type" name="<?php echo esc_attr($field_key); ?>" aria-labelledby="<?php echo esc_attr($field_label_id); ?>">
                                                                 <?php
                                                                 foreach ($field_options['options'] as $option_key => $option_label) {
                                                                     echo '<option value="' . esc_attr($option_key) . '" ' . selected(
@@ -1089,6 +1116,7 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                                                         case 'html':
                                                                 ?>
                                                                 <textarea 
+                                                                    id="<?php echo esc_attr($field_id); ?>"
                                                                     name="<?php echo esc_attr($field_key); ?>"><?php echo stripslashes_deep($field_options['value']); ?></textarea>
                                                                 <?php
                                                         break;
@@ -1099,6 +1127,7 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                                                             <input 
                                                                 type="<?php echo esc_attr($field_options['type']); ?>"
                                                                 class="new-post-<?php echo esc_attr($field_key); ?>-field"
+                                                                id="<?php echo esc_attr($field_id); ?>"
                                                                 name="<?php echo esc_attr($field_key); ?>" 
                                                                 value="<?php echo esc_attr($field_options['value']); ?>"
                                                                 <?php echo esc_html($required_html); ?>
@@ -1117,10 +1146,11 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                         </div>
                     </div>
                     <div class="fixed-footer">
-                        <div class="save-cc-changes save-new-post-form">
+                        <button type="submit" class="save-cc-changes save-new-post-form">
                             <?php echo sprintf(esc_html__('Create %s', 'publishpress'), esc_html($postTypeObject->labels->singular_name)); ?>
-                        </div>
-                        <input type="submit" name="submit" class="form-submit-button" value="<?php esc_html_e('Submit', 'publishpress'); ?>" style="display: none;"/>
+                        </button>
+                        <?php // Hidden native submit kept for the existing JS submit path (triggers HTML5 validation); removed from the tab order and accessibility tree. ?>
+                        <input type="submit" name="submit" class="form-submit-button" value="<?php esc_attr_e('Submit', 'publishpress'); ?>" style="display: none;" tabindex="-1" aria-hidden="true"/>
                     </div>
                 </div>
             </form>

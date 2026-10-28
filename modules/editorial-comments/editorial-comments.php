@@ -177,7 +177,7 @@ if (! class_exists('PP_Editorial_Comments')) {
             wp_enqueue_script(
                 'publishpress-editorial-comments',
                 $this->module_url . 'lib/editorial-comments.js',
-                ['jquery', 'wp-ajax-response', 'publishpress-select2', 'wp-i18n'],
+                ['jquery', 'wp-ajax-response', 'publishpress-select2', 'wp-i18n', 'wp-a11y'],
                 PUBLISHPRESS_VERSION,
                 true
             );
@@ -203,6 +203,12 @@ if (! class_exists('PP_Editorial_Comments')) {
                 [
                     'loadingImgSrc' => esc_url(admin_url('/images/wpspin_light.gif')),
                     'removeText'    => __('Remove', 'publishpress'),
+                    /* translators: %s: file name */
+                    'removeFileLabel' => __('Remove %s', 'publishpress'),
+                    'editCommentLabel' => __('Edit comment', 'publishpress'),
+                    'commentAdded'  => __('Comment added.', 'publishpress'),
+                    'commentUpdated' => __('Comment updated.', 'publishpress'),
+                    'commentDeleted' => __('Comment deleted.', 'publishpress'),
                     'allPosts'      => __('All Posts', 'publishpress'),
                     'allUsers'      => __('All Users', 'publishpress'),
                     'nonce'         => wp_create_nonce('editorial-comments-admin'),
@@ -576,6 +582,8 @@ if (! class_exists('PP_Editorial_Comments')) {
                 </div>
 
                 <div id="pp-replycontainer">
+                    <label for="pp-replycontent" class="screen-reader-text"><?php
+                        echo esc_html__('Editorial comment', 'publishpress'); ?></label>
                     <textarea id="pp-replycontent" name="replycontent" cols="40" rows="5"></textarea>
                 </div>
 
@@ -592,7 +600,7 @@ if (! class_exists('PP_Editorial_Comments')) {
                     echo esc_url(admin_url('/images/wpspin_light.gif')); ?>"
                          class="alignright" style="display: none;" id="pp-comment_loading"/>
                     <br class="clear" style="margin-bottom:35px;"/>
-                    <span style="display: none;" class="error"></span>
+                    <span style="display: none;" class="error" role="alert"></span>
                 </div>
 
                 <input type="hidden" value="" id="pp-comment_parent" name="pp-comment_parent"/>
@@ -641,10 +649,16 @@ if (! class_exists('PP_Editorial_Comments')) {
                         || current_user_can('pp_edit_others_editorial_comment')
                     )
                 ) {
-                    $actions['quickedit'] = '<a onclick="editorialCommentEdit.open(\'' . (int)$theComment->comment_ID . '\');" href="javascript:void(0);">' . esc_html__(
+                    $actions['quickedit'] = '<button type="button" class="button-link" onclick="editorialCommentEdit.open(\'' . (int)$theComment->comment_ID . '\');" aria-label="' . esc_attr(
+                            sprintf(
+                                /* translators: %s: comment author name */
+                                __('Edit comment by %s', 'publishpress'),
+                                $theComment->comment_author
+                            )
+                        ) . '">' . esc_html__(
                             'Edit',
                             'publishpress'
-                        ) . '</a>';
+                        ) . '</button>';
                 }
 
                 if (
@@ -652,10 +666,16 @@ if (! class_exists('PP_Editorial_Comments')) {
                         || current_user_can('pp_delete_others_editorial_comment')
                     )
                 ) {
-                    $actions['delete'] = '<a onclick="editorialCommentDelete.open(\'' . (int)$theComment->comment_ID . '\');" href="javascript:void(0);">' . esc_html__(
+                    $actions['delete'] = '<button type="button" class="button-link" onclick="editorialCommentDelete.open(\'' . (int)$theComment->comment_ID . '\');" aria-label="' . esc_attr(
+                            sprintf(
+                                /* translators: %s: comment author name */
+                                __('Delete comment by %s', 'publishpress'),
+                                $theComment->comment_author
+                            )
+                        ) . '">' . esc_html__(
                             'Delete',
                             'publishpress'
-                        ) . '</a>';
+                        ) . '</button>';
                 }
 
                 $i = 0;
@@ -729,9 +749,11 @@ if (! class_exists('PP_Editorial_Comments')) {
                                         <a href="<?php echo esc_url($media_file); ?>" target="blank">
                                             <?php echo esc_html(end($file_name)); ?>
                                         </a>
-                                        <span class="editorial-comment-edit-file-remove">
-                                            <?php echo __('Remove', 'publishpress'); ?>
-                                        </span>
+                                        <button type="button" class="button-link editorial-comment-edit-file-remove" aria-label="<?php
+                                        /* translators: %s: file name */
+                                        echo esc_attr(sprintf(__('Remove %s', 'publishpress'), end($file_name))); ?>">
+                                            <?php echo esc_html__('Remove', 'publishpress'); ?>
+                                        </button>
                                     </div>
                                     <?php
                                 }

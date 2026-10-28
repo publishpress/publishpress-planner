@@ -50,22 +50,36 @@
 }
 
 .pressshack-admin-wrapper a:hover,
-.pressshack-admin-wrapper a:focus,
 .pressshack-admin-wrapper a:active,
 .pressshack-admin-wrapper a:hover div,
-.pressshack-admin-wrapper a:focus div,
 .pressshack-admin-wrapper a:active div,
 .pressshack-admin-wrapper a:hover p,
-.pressshack-admin-wrapper a:focus p,
 .pressshack-admin-wrapper a:active p,
 .pressshack-admin-wrapper a:hover .dashicons:before,
-.pressshack-admin-wrapper a:focus .dashicons:before,
 .pressshack-admin-wrapper a:active .dashicons:before {
     color: #5A4F87;
     box-shadow: none;
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
     -o-box-shadow: none;
+}
+
+.pressshack-admin-wrapper a:focus,
+.pressshack-admin-wrapper a:focus div,
+.pressshack-admin-wrapper a:focus p,
+.pressshack-admin-wrapper a:focus .dashicons:before {
+    color: #5A4F87;
+}
+
+/* Visible keyboard focus indicator (WCAG 2.4.7). */
+.pressshack-admin-wrapper a:focus-visible,
+.pressshack-admin-wrapper .nav-tab-wrapper .nav-tab:focus-visible,
+.pressshack-admin-wrapper button:focus-visible,
+.pressshack-admin-wrapper .button:focus-visible,
+.pressshack-admin-wrapper input[type="submit"]:focus-visible,
+.pressshack-admin-wrapper input[type="button"]:focus-visible {
+    outline: 2px solid #2271b1;
+    outline-offset: 2px;
 }
 
 .pressshack-admin-wrapper > header h1 a,
@@ -98,7 +112,7 @@
 }
 
 .pressshack-admin-wrapper > footer * {
-    color: #777;
+    color: #646970;
 }
 
 .pressshack-admin-wrapper > footer > nav ul {
@@ -148,9 +162,7 @@
 }
 
 .pressshack-admin-wrapper .button:not(.notice-dismiss):hover,
-.pressshack-admin-wrapper .button:not(.notice-dismiss):active,
-.pressshack-admin-wrapper .button:not(.notice-dismiss):focus {
-    outline: none;
+.pressshack-admin-wrapper .button:not(.notice-dismiss):active {
     -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
     -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);

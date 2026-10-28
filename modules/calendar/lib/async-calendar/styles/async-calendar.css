@@ -8,7 +8,7 @@
   position: relative;
 }
 .publishpress-calendar-wrap .publishpress-calendar-loader-delayed-tip {
-  color: #a9a9a9;
+  color: #646970;
   width: 50%;
   padding-left: 50%;
   margin-left: -25%;
@@ -124,6 +124,7 @@
   left: 0;
   min-height: 50px;
   width: 380px;
+  max-width: calc(100vw - 32px);
   z-index: 999;
   -moz-box-shadow: -1px 3px 10px 2px #838383;
   -webkit-box-shadow: -1px 3px 10px 2px #838383;
@@ -134,6 +135,10 @@
   color: #000;
   padding: 10px;
   cursor: default;
+}
+.publishpress-calendar-popup:focus {
+  outline: 2px solid #2271b1;
+  outline-offset: 1px;
 }
 .publishpress-calendar-popup table {
   border: none;
@@ -184,6 +189,21 @@
   padding: 0;
   text-shadow: none;
 }
+.publishpress-calendar-popup .publishpress-calendar-popup-move {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 6px;
+  margin-top: 6px;
+}
+.publishpress-calendar-popup .publishpress-calendar-popup-move label {
+  font-weight: bold;
+}
+.publishpress-calendar-popup .publishpress-calendar-popup-move input[type="date"] {
+  min-height: 26px;
+  line-height: 1.5;
+  max-width: 100%;
+}
 .publishpress-calendar-popup .publishpress-calendar-popup-links > .publishpress-calendar-popup-action-button {
   appearance: none;
   background: transparent !important;
@@ -208,8 +228,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  min-width: 420px;
-  max-width: 500px;
+  min-width: min(420px, calc(100vw - 32px));
+  max-width: min(500px, calc(100vw - 32px));
   min-height: 420px;
   height: auto;
   background-color: white;
@@ -219,6 +239,7 @@
 .publishpress-calendar-popup-form textarea,
 .publishpress-calendar-popup-form select {
   width: 300px;
+  max-width: 100%;
 }
 .publishpress-calendar-popup-form textarea {
   height: 85px;
@@ -228,7 +249,7 @@
   right: 4px;
 }
 .publishpress-calendar-popup-form .publishpress-calendar-popup-title {
-  background-color: #a0a0a0;
+  background-color: #646970;
   padding-left: 8px;
 }
 .publishpress-calendar-popup-form .publishpress-calendar-popup-close {
@@ -252,6 +273,7 @@
 }
 .publishpress-calendar-popup-form .publishpress-calendar-popup-loading-fields {
   width: 400px;
+  max-width: calc(100vw - 52px);
   height: 300px;
   text-align: center;
   display: table-cell;
@@ -272,6 +294,16 @@
 .publishpress-calendar-popup-form .publishpress-calendar-popup-error-message .dashicons {
   margin-right: 5px;
   color: #714646;
+}
+.publishpress-calendar-popup:not(.publishpress-calendar-popup-form) {
+  line-height: 18px;
+}
+.publishpress-calendar-popup:not(.publishpress-calendar-popup-form) .publishpress-calendar-popup-title,
+.publishpress-calendar-popup:not(.publishpress-calendar-popup-form) table th {
+  white-space: nowrap;
+}
+.publishpress-calendar-popup:not(.publishpress-calendar-popup-form) .dashicons {
+  font-size: 16px;
 }
 .publishpress-calendar {
   display: block;
@@ -363,9 +395,10 @@
 }
 .publishpress-calendar .publishpress-calendar-item {
   display: block;
-  height: 20px;
-  max-height: 20px;
-  line-height: 18px;
+  height: 24px;
+  min-height: 24px;
+  max-height: 24px;
+  line-height: 22px;
   box-sizing: border-box;
   padding: 1px;
   margin: 0 0 1px 0;
@@ -376,7 +409,7 @@
   cursor: pointer;
 }
 .publishpress-calendar .publishpress-calendar-item-opened-popup {
-  border: 1px dashed yellow;
+  border: 1px dashed #996800;
 }
 .publishpress-calendar .publishpress-calendar-month-name {
   margin-right: 2px;
@@ -391,7 +424,7 @@
   font: inherit;
   min-height: 0;
   padding-left: 3px;
-  color: gray;
+  color: #646970;
   font-size: 11px;
   cursor: pointer;
   text-shadow: none;
@@ -403,7 +436,8 @@
 }
 .publishpress-calendar .publishpress-calendar-hide-items:hover,
 .publishpress-calendar .publishpress-calendar-show-more:hover {
-  color: #acacac;
+  color: #50575e;
+  text-decoration: underline;
 }
 .publishpress-calendar .publishpress-calendar-loading::before {
   font-family: dashicons, serif;
@@ -443,12 +477,12 @@
 }
 .publishpress-calendar .publishpress-calendar-hovering .publishpress-calendar-cell-click-to-add {
   font-style: italic;
-  color: #b0b0b0;
+  color: #646970;
   margin-left: 5px;
   font-size: 12px;
 }
 .publishpress-calendar .publishpress-calendar-hovering.publishpress-calendar-today .publishpress-calendar-cell-click-to-add {
-  color: #717171;
+  color: #50575e;
 }
 .publishpress-calendar-button {
   appearance: none;

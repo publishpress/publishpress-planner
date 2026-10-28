@@ -9,6 +9,10 @@
         <tr class="psppno_workflow_<?php echo esc_attr($workflow->ID); ?>">
             <td class="psppno_workflow_title"><?php echo esc_html($workflow->post_title); ?></td>
             <td class="psppno_workflow_channel">
+                <fieldset class="psppno_workflow_channel_fieldset">
+                <legend class="screen-reader-text"><?php
+                    /* translators: %s: workflow title */
+                    echo esc_html(sprintf(__('Channel for %s', 'publishpress'), $workflow->post_title)); ?></legend>
                 <?php foreach ($context['channels'] as $channel) : ?>
                 <div class="psppno_workflow_channel_field">
                     <input
@@ -25,6 +29,7 @@
                     </label>
                 </div>
                 <?php endforeach; ?>
+                </fieldset>
             </td>
 
         </tr>

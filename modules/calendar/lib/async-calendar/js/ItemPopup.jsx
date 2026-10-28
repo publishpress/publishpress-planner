@@ -13,11 +13,22 @@ import UserField from "./fields/UserField";
 import NumberField from "./fields/NumberField";
 import TimeField from "./fields/TimeField";
 import DOMPurify from "dompurify";
+import { __ } from '@wordpress/i18n';
 
 
 const $ = jQuery;
 
 export default function ItemPopup(props) {
+    const popupRef = React.useRef(null);
+    const [moveDate, setMoveDate] = React.useState(() => (props.timestamp || '').substring(0, 10));
+
+    // Move the focus into the popup when it opens.
+    React.useEffect(() => {
+        if (popupRef.current) {
+            popupRef.current.focus();
+        }
+    }, [!!props.data]);
+
     if (!props.data) {
         return <></>;
     }
@@ -165,7 +176,7 @@ export default function ItemPopup(props) {
                 );
             }
 
-            links.push(<span key={`links-popup-${links.length}`}>|</span>);
+            links.push(<span key={`links-popup-${links.length}`} aria-hidden="true">|</span>);
         }
 
         links.pop();
@@ -173,15 +184,65 @@ export default function ItemPopup(props) {
         return links;
     }
 
+    const handleMoveOnClick = (e) => {
+        e.preventDefault();
+
+        const dateParts = (moveDate || '').split('-');
+
+        if (dateParts.length !== 3 || typeof props.onMoveItemCallback !== 'function') {
+            return;
+        }
+
+        props.onMoveItemCallback(
+            props.id,
+            parseInt(dateParts[0], 10),
+            parseInt(dateParts[1], 10),
+            parseInt(dateParts[2], 10)
+        );
+    }
+
+    const getMoveForm = () => {
+        if (!props.canMove || typeof props.onMoveItemCallback !== 'function') {
+            return null;
+        }
+
+        const inputId = 'publishpress-calendar-popup-move-date-' + props.id;
+
+        return (
+            <div className="publishpress-calendar-popup-move">
+                <label htmlFor={inputId}>{__('Move to date', 'publishpress')}</label>
+                <input type="date"
+                       id={inputId}
+                       value={moveDate}
+                       onChange={(e) => setMoveDate(e.target.value)}
+                       onKeyDown={(e) => {
+                           if (e.key === 'Enter') {
+                               handleMoveOnClick(e);
+                           }
+                       }}/>
+                <button type="button"
+                        className="button button-small publishpress-calendar-popup-move-button"
+                        disabled={!moveDate}
+                        onClick={handleMoveOnClick}>{__('Move', 'publishpress')}</button>
+            </div>
+        );
+    }
+
     const sanitizedTitle = DOMPurify.sanitize(props.title);
+    const titleId = 'publishpress-calendar-popup-title-' + props.id;
 
     return (
-        <div className="publishpress-calendar-popup" style={{top: positionTop, left: positionLeft}}>
+        <div className="publishpress-calendar-popup"
+             style={{top: positionTop, left: positionLeft}}
+             role="dialog"
+             aria-labelledby={titleId}
+             tabIndex="-1"
+             ref={popupRef}>
             <div className="publishpress-calendar-popup-title" style={{backgroundColor: props.color}}>
                 {props.icon &&
-                <span className={'dashicons ' + props.icon + ' publishpress-calendar-icon'}/>
+                <span className={'dashicons ' + props.icon + ' publishpress-calendar-icon'} aria-hidden="true"/>
                 }
-                <span dangerouslySetInnerHTML={{__html: sanitizedTitle}}></span>
+                <span id={titleId} dangerouslySetInnerHTML={{__html: sanitizedTitle}}></span>
 
                 <button type="button" className={'dashicons dashicons-no publishpress-calendar-popup-close'}
                         aria-label={props.strings.close} onClick={closePopup}/>
@@ -191,6 +252,7 @@ export default function ItemPopup(props) {
                 {getFieldRows()}
                 </tbody>
             </table>
+            {getMoveForm()}
             <hr/>
             <div className="publishpress-calendar-popup-links">
                 {getPostLinks()}

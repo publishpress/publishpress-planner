@@ -69,7 +69,8 @@ export default function DayCell(props) {
             return (
                 <button type="button"
                     className={className}
-                    onClick={toggleUncollapseItems}><span className={'dashicons dashicons-' + iconClass}/> {label}</button>
+                    onClick={toggleUncollapseItems}
+                    aria-expanded={uncollapseItems}><span className={'dashicons dashicons-' + iconClass} aria-hidden="true"/> {label}</button>
             );
         }
 
@@ -117,6 +118,8 @@ export default function DayCell(props) {
                                 showIcon={true}
                                 index={itemIndex++}
                                 canMove={item.canEdit}
+                                statusLabel={item.statusLabel}
+                                onMoveItemCallback={props.onMoveItemCallback}
                                 isPopupOpened={isPopupOpened}
                                 getPopupItemDataCallback={props.getOpenedItemDataCallback}
                                 onClickItemCallback={props.onClickItemCallback}

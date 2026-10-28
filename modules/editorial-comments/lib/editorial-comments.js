@@ -70,8 +70,13 @@ jQuery(function ($) {
         multiple: false
       }).on('select', function () {
         const attachment = custom_uploader.state().get('selection').first().toJSON();
-        const file_html   = '<div class="editorial-uploaded-file" data-file_id="' + attachment.id + '" data-file_id="' + attachment.id + '"> &dash; <span class="file">' + attachment.filename
-        + '</span><span class="editorial-comment-file-remove">' + publishpressEditorialCommentsParams.removeText + '</span></div>';
+        const file_html   = $('<div class="editorial-uploaded-file"> &dash; </div>').attr('data-file_id', attachment.id);
+        file_html.append($('<span class="file"></span>').text(attachment.filename));
+        file_html.append(
+          $('<button type="button" class="button-link editorial-comment-file-remove"></button>')
+            .text(publishpressEditorialCommentsParams.removeText)
+            .attr('aria-label', publishpressEditorialCommentsParams.removeFileLabel.replace('%s', attachment.filename))
+        );
         $('.editorial-attachments').append(file_html);
         processEditorialCommentFiles();
       });
@@ -200,7 +205,8 @@ editorialCommentReply = {
         // Validation: check to see if comment entered
         post.content = jQuery.trim(jQuery('#pp-replycontent').val());
         if (!post.content) {
-            jQuery('#pp-replyrow .error').text(wp.i18n.__('Please enter a comment', 'publishpress')).show();
+            // Show the (role="alert") container before filling it so screen readers announce it.
+            jQuery('#pp-replyrow .error').show().text(wp.i18n.__('Please enter a comment', 'publishpress'));
             return;
         }
 
@@ -286,6 +292,10 @@ editorialCommentReply = {
             .animate({'backgroundColor': '#CCEEBB'}, 600)
             .animate({'backgroundColor': '#fff'}, 600);
 
+        // Move focus to the new comment and announce it
+        jQuery(id).attr('tabindex', '-1').trigger('focus');
+        wp.a11y.speak(publishpressEditorialCommentsParams.commentAdded);
+
     },
 
     error: function (r) {
@@ -293,7 +303,7 @@ editorialCommentReply = {
         jQuery('#pp-comment_loading').hide();
 
         if (r.responseText) {
-            jQuery('#pp-replysubmit .error').text(r.responseText).show();
+            jQuery('#pp-replysubmit .error').show().text(r.responseText);
         }
     }
 };
@@ -335,7 +345,8 @@ editorialCommentEdit = {
         var $editBox = this.$('<div id="pp-editrow" data-id="' + id + '"><div id="pp-editcontainer"></div></div>');
         $rowActions.before($editBox);
 
-        var $textArea = this.$('<textarea id="pp-editcontent" name="editcontent" cols="40" rows="5" spellcheck="false">');
+        var $textArea = this.$('<textarea id="pp-editcontent" name="editcontent" cols="40" rows="5" spellcheck="false">')
+            .attr('aria-label', publishpressEditorialCommentsParams.editCommentLabel);
         var $editContainer = this.$('#pp-editcontainer');
         $editContainer.append($textArea);
         $textArea.val($content.text());
@@ -352,6 +363,8 @@ editorialCommentEdit = {
         $buttonCancel.on('click', this.close.bind(this));
         $buttonSave.on('click', this.send.bind(this));
 
+        $textArea.trigger('focus');
+
         return false;
     },
 
@@ -366,7 +379,7 @@ editorialCommentEdit = {
         // Validation: check to see if comment entered
         post.content = this.$.trim(this.$('#pp-editcontent').val());
         if (!post.content) {
-            var $errorLine = this.$('<div class="pp-error">').text(wp.i18n.__('Please enter a comment', 'publishpress'));
+            var $errorLine = this.$('<div class="pp-error" role="alert">').text(wp.i18n.__('Please enter a comment', 'publishpress'));
             this.$('#pp-editcontainer').append($errorLine);
             return;
         }
@@ -399,9 +412,13 @@ editorialCommentEdit = {
                 jQuery('.editorial-attachments').html('');
                 self.$('#comment-' + post.comment_id + ' .comment-content').html(x.content);
                 self.close();
+
+                // Move focus to the edited comment and announce the update
+                self.$('#comment-' + post.comment_id).attr('tabindex', '-1').trigger('focus');
+                wp.a11y.speak(publishpressEditorialCommentsParams.commentUpdated);
             },
             error: function (r) {
-                let $errorLine = self.$('<div class="pp-error">').text(r.responseText);
+                let $errorLine = self.$('<div class="pp-error" role="alert">').text(r.responseText);
                 self.$('#pp-editcontainer').append($errorLine);
                 self.$('#pp-comment_loading').remove();
             }
@@ -457,9 +474,13 @@ editorialCommentDelete = {
 
                     editorialCommentEdit.close();
                     editorialCommentReply.revert();
+
+                    // The deleted comment had focus, so move it to the "Add an editorial comment" button
+                    self.$('#pp-comment_respond').show().trigger('focus');
+                    wp.a11y.speak(publishpressEditorialCommentsParams.commentDeleted);
                 },
                 error: function (r) {
-                    let $errorLine = self.$('<div class="pp-error">').text(r.responseText);
+                    let $errorLine = self.$('<div class="pp-error" role="alert">').text(r.responseText);
                     self.$('#pp-editcontainer').append($errorLine);
                     self.$('#pp-comment_loading').remove();
                 }

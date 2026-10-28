@@ -8,11 +8,12 @@
 
 @itemBackground: #707ec4;
 @itemColor: #fff;
-@itemIconColor: rgba(255, 255, 255, 0.8);
-@itemTimeColor: rgba(255, 255, 255, 0.6);
+@itemIconColor: #fff;
+@itemTimeColor: #fff;
 @itemPopupColor: #000;
-@itemPopupYesColor: #4eaf5a;
-@itemPopupNoColor: #f7b8b8;
+@itemPopupYesColor: #00a32a;
+@itemPopupNoColor: #d63638;
+@itemPopupEmptyValueColor: #b32d2e;
 
 @todayBackground: #dfe9f9;
 @todayDateBackground: #655997;
@@ -20,7 +21,7 @@
 @firstDayOfMonthStartBackgroundOnToday: #d4d2e6;
 
 @weekendCellBackground: #f8f8f8;
-@weekendDateColor: #888;
+@weekendDateColor: #646970;
 @firstDayOfMonthStartBackgroundOnWeekend: #e6e6e6;
 
 @messageColor: #3d3d3d;
@@ -133,10 +134,17 @@
       line-height: 20px;
     }
 
-    .publishpress-calendar-empty-value,
-    .dashicons-no,
+    .publishpress-calendar-empty-value {
+      color: @itemPopupEmptyValueColor;
+    }
+
+    .dashicons-no:not(.publishpress-calendar-popup-close),
     .dashicons-no-alt {
       color: @itemPopupNoColor;
+    }
+
+    .publishpress-calendar-popup-title .publishpress-calendar-popup-close {
+      color: #fff;
     }
 
     .dashicons-yes,

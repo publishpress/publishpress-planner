@@ -60,15 +60,17 @@ if (! class_exists('Editorial_Metadata_Input_Paragraph_Handler')) {
                 $input_name
             );
 
-            echo self::generateDescriptionHtml($input_description);
+            echo self::generateDescriptionHtml($input_description, $input_name);
 
             printf(
                 '<textarea
                     id="%s"
                     name="%1$s"
+                    %3$s
                 >%2$s</textarea>',
                 esc_attr($input_name),
-                esc_html($value)
+                esc_html($value),
+                self::generateDescribedByAttr($input_description, $input_name) // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
             );
         }
 

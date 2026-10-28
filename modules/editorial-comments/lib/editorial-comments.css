@@ -39,7 +39,8 @@
     background: #fff;
 }
 
-#pp-comments li:hover .row-actions {
+#pp-comments li:hover .row-actions,
+#pp-comments li:focus-within .row-actions {
     visibility: visible;
 }
 
@@ -70,6 +71,7 @@
     width: calc(100% - 70px);
     margin-left: 70px;
     padding: 10px;
+    color: #8a2424;
     background: #ffdddd;
     border: 1px solid #f7bebe;
 }
@@ -138,9 +140,20 @@
 }
 
 #pp-replyrow .editorial-uploaded-file .editorial-comment-file-remove,
+#pp-comments .editorial-comment-edit-file-remove,
 .editorial-comment-edit-file-remove {
-  color: red;
+  color: #b32d2e;
   cursor: pointer;
+}
+
+/* Buttons replacing former links/spans: keep the old inline link look */
+#pp-comments .row-actions .button-link,
+#pp-replyrow .editorial-uploaded-file .button-link,
+#pp-comments .comment-files .button-link {
+  font-size: inherit;
+  line-height: inherit;
+  text-decoration: none;
+  vertical-align: baseline;
 }
 
 .editorial-comment-edit-file-remove {
@@ -202,7 +215,7 @@
     margin: 6px 6px 0 0;
     line-height: 1.2em;
     padding: 4px 10px;
-    color: red;
+    color: #b32d2e;
 }
 
 #pp-editrow #pp-editsubmit {

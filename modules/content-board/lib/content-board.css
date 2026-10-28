@@ -131,6 +131,7 @@
     padding: 0 6px;
     min-width: 25px;
     background-color: transparent;
+    color: #1e1e1e;
 }
 
 .content-board-table-wrap .board-content .content-item {
@@ -178,7 +179,7 @@
 
 .content-board-table-wrap .board-content .content-item.empty-card .drag-message p {
     font-weight: 400;
-    color: grey;
+    color: #646970;
     max-width: 120px;
 }
 
@@ -478,7 +479,19 @@
 }
 
 .co-border-red {
-    border-color: red !important;
+    border-color: #d63638 !important;
+}
+
+.co-cc-content .pp-co-field-error {
+    margin: 4px 0 0;
+    color: #b32d2e;
+    font-size: 12px;
+    line-height: 1.4;
+    white-space: normal;
+}
+
+.co-cc-content .pp-co-field-error[hidden] {
+    display: none;
 }
 
 .pp-content-board-filters button.co-filter.author.me-mode-status-1 {
@@ -656,7 +669,7 @@
     padding: 12px;
     border: none;
     border-bottom: 2px solid transparent;
-    color: #818193;
+    color: #646970;
     text-transform: capitalize;
     cursor: pointer;
 }
@@ -749,7 +762,7 @@
 .co-cc-content .customize-group-title {
     margin-top: 4px;
     font-weight: 600;
-    color: #818193;
+    color: #646970;
     text-transform: uppercase;
     letter-spacing: .05em;
     user-select: none;
@@ -856,7 +869,7 @@
 }
 
 .co-cc-content .items-list-item-name-text .customize-item-info {
-    color: #a8a8a8;
+    color: #646970;
 }
 
 .co-cc-content .items-list-item-check,
@@ -866,24 +879,32 @@
     flex-shrink: 0;
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-grow: 0;
-    width: 16px;
-    height: 16px;
+    box-sizing: border-box;
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    padding: 4px;
     fill: #655997;
     cursor: pointer;
 }
 
 .co-cc-content .delete-content-board-item {
-    fill: red;
+    fill: #b32d2e;
+    border: none;
+    background: none;
+    border-radius: 3px;
     margin-right: 0;
     margin-left: 5px;
 }
 
 .co-cc-content .items-list-item-check.unchecked {
-    fill: red;
+    fill: #b32d2e;
 }
 
-.co-cc-content .items-list-item-check svg {
+.co-cc-content .items-list-item-check svg,
+.co-cc-content .delete-content-board-item svg {
     display: block;
     width: 100%;
     height: 100%;
@@ -927,7 +948,7 @@
 }
 
 .content-board-inside .message.info p {
-    color: #a8a8a8;
+    color: #646970;
     text-align: center;
     font-size: 20px;
     font-weight: 400;
@@ -972,7 +993,7 @@
 }
 
 header h2 span {
-    color: #999999;
+    color: #646970;
 }
 
 header h2 form {
@@ -1057,7 +1078,7 @@ header h2 a.change-date-cancel {
     float: right;
     margin-bottom: 0;
     margin-right: 25px;
-    color: #999999;
+    color: #646970;
 }
 
 #pp-content-board-tablenav,
@@ -1068,7 +1089,7 @@ header h2 a.change-date-cancel {
 #pp-content-board-tablenav ::-webkit-input-placeholder,
 .publishpress-admin.content-board .publishpress-admin header h2 ::-webkit-input-placeholder,
 .pp-co-metadata-filter-row .form-table {
-    color: #999999;
+    color: #646970;
 }
 
 .publishpress-admin.content-board .publishpress-admin .pp-content-board-wrap {
@@ -1080,7 +1101,7 @@ header h2 a.change-date-cancel {
     padding-right: 0;
     padding-top: 0;
     padding-bottom: 0;
-    color: #999999;
+    color: #646970;
     vertical-align: middle;
     min-width: 155px;
 }
@@ -1089,7 +1110,7 @@ header h2 a.change-date-cancel {
     padding-left: 0;
     padding-top: 0;
     padding-bottom: 0;
-    color: #999999;
+    color: #646970;
 }
 
 .pp-co-metadata-filter-row .form-table td .select2-container {
@@ -1197,4 +1218,142 @@ header h2 a.change-date-cancel {
     .fixed .column-status {
         width: 33%;
     }
+}
+
+/* Accessibility: native buttons that replaced div-based controls keep their previous look. */
+.pp-content-board-manage button.item.action,
+.board-title-content button.co-filter,
+.co-customize-tabs button.customize-tab,
+.co-cc-content button.save-cc-changes,
+.co-cc-content button.new-submit,
+.co-cc-content button.title-action,
+.content-board-modal button.close {
+    font-family: inherit;
+    margin: 0;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.board-title-content button.co-filter {
+    border: none;
+    padding: 0 2px;
+}
+
+.co-customize-tabs button.customize-tab {
+    background: none;
+    text-align: center;
+}
+
+.co-cc-content .entry-item.form-item button.new-submit {
+    width: 100%;
+}
+
+.content-board-modal button.close {
+    margin-left: auto;
+    margin-bottom: 5px;
+    padding: 0;
+    min-width: 24px;
+    min-height: 24px;
+    border: none;
+    background: none;
+    color: inherit;
+    line-height: 1;
+}
+
+.pp-content-board-manage .me-mode-action .me-mode-on-indicator {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+}
+
+.co-cc-content .enable-item.entry-item[role="checkbox"] {
+    cursor: pointer;
+}
+
+.pp-content-board-manage button.item.action:focus-visible,
+.board-title-content button.co-filter:focus-visible,
+.co-customize-tabs button.customize-tab:focus-visible,
+.co-cc-content button:focus-visible,
+.co-cc-content .enable-item.entry-item[role="checkbox"]:focus-visible,
+.content-board-modal button.close:focus-visible,
+.content-board-table-wrap .pp-content-board-status-select:focus-visible {
+    outline: 2px solid #2271b1;
+    outline-offset: 1px;
+}
+
+.co-cc-content .reorder-item .pp-co-reorder-buttons {
+    display: inline-flex;
+    gap: 2px;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.co-cc-content .reorder-item .pp-co-move-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-width: 24px;
+    min-height: 24px;
+    padding: 0;
+    border: 1px solid #c3c4c7;
+    border-radius: 3px;
+    background: #fff;
+    color: #3c434a;
+    cursor: pointer;
+}
+
+.co-cc-content .reorder-item .pp-co-move-item .dashicons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+}
+
+/* Keyboard alternative to drag-and-drop: compact "Change status" control on each card. */
+.content-board-table-wrap .pp-content-board-status-change {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    font-size: 12px;
+    color: #50575e;
+}
+
+.content-board-table-wrap .pp-content-board-status-change label {
+    white-space: nowrap;
+}
+
+.content-board-table-wrap .pp-content-board-status-select {
+    flex: 1;
+    min-width: 0;
+    min-height: 24px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+/* Move up/down buttons: keyboard alternative to dragging reorder rows. */
+.co-cc-content .reorder-item .pp-cb-move-buttons {
+    float: right;
+    display: inline-flex;
+    gap: 2px;
+}
+
+.co-cc-content .reorder-item .pp-cb-move-buttons button {
+    min-width: 24px;
+    min-height: 24px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #50575e;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.co-cc-content .reorder-item .pp-cb-move-buttons button:hover {
+    color: #1e1e1e;
+}
+
+.co-cc-content .reorder-item .pp-cb-move-buttons button:focus-visible {
+    outline: 2px solid #2271b1;
+    outline-offset: 1px;
 }

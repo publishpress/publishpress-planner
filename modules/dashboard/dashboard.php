@@ -287,6 +287,7 @@ if (! class_exists('PP_Dashboard')) {
                 <?php
                 if (! empty($myposts)) : ?>
 
+                    <ul class="pp-myposts-list">
                     <?php
                     foreach ($myposts as $post) : ?>
                         <?php
@@ -310,6 +311,7 @@ if (! class_exists('PP_Dashboard')) {
                         </li>
                     <?php
                     endforeach; ?>
+                    </ul>
                 <?php
                 else : ?>
                     <p><?php
