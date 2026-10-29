@@ -242,7 +242,7 @@ export default function ItemFormPopup(props) {
 
             fieldRows.push(
                 <tr key={`field-rows-${fieldRows.length}`}>
-                    <th><label htmlFor={fieldId}>{dataProperty.label}:</label></th>
+                    <th><label htmlFor={fieldId}>{dataProperty.label}{dataProperty.required ? " *" : ""}:</label></th>
                     <td>{field}</td>
                 </tr>
             );

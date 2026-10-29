@@ -337,7 +337,7 @@ if (! class_exists('PP_Content_Overview_Utilities')) {
                                                 switch ($field_options['type']) {
                                                     case 'status':
                                                         ?>
-                                                        <select id="form_post_status" name="<?php echo esc_attr($field_key); ?>">
+                                                        <select id="form_post_status" name="<?php echo esc_attr($field_key); ?>" <?php echo !empty($field_options['required']) ? 'required' : ''; ?>>
                                                             <?php
                                                             foreach (apply_filters('publishpress_content_overview_new_post_statuses', $field_options['options'], $args) as $post_status) {
                                                                 echo "<option value='" . esc_attr($post_status['value']) . "' " . selected(
@@ -359,6 +359,7 @@ if (! class_exists('PP_Content_Overview_Utilities')) {
                                                                 id="<?php echo esc_attr('post_form_taxonomy_' . $taxonomy_name); ?>" 
                                                                 data-taxonomy="<?php echo esc_attr($taxonomy_name); ?>" 
                                                                 name="<?php echo esc_attr($taxonomy_name); ?>[]"
+                                                                <?php echo !empty($field_options['required']) ? 'required' : ''; ?>
                                                                 multiple
                                                                 >
                                                                 <?php
@@ -377,7 +378,7 @@ if (! class_exists('PP_Content_Overview_Utilities')) {
                                                         case 'authors':
                                                             $authorId = (int) $field_options['value'];
                                                             ?>
-                                                            <select id="post_form_author_<?php echo esc_attr($field_key); ?>" class="post_form_author <?php echo esc_attr($field_key); ?>" name="<?php echo esc_attr($field_key); ?>">
+                                                            <select id="post_form_author_<?php echo esc_attr($field_key); ?>" class="post_form_author <?php echo esc_attr($field_key); ?>" name="<?php echo esc_attr($field_key); ?>" <?php echo !empty($field_options['required']) ? 'required' : ''; ?>>
                                                                 <?php
                                                                 if (! empty($authorId)) {
                                                                     $author = get_user_by('id', $authorId);
@@ -416,7 +417,7 @@ if (! class_exists('PP_Content_Overview_Utilities')) {
                                                         case 'html':
                                                                 ?>
                                                                 <textarea 
-                                                                    name="<?php echo esc_attr($field_key); ?>"><?php echo esc_textarea(stripslashes_deep($field_options['value'])); ?></textarea>
+                                                                    name="<?php echo esc_attr($field_key); ?>" <?php echo !empty($field_options['required']) ? 'required' : ''; ?>><?php echo esc_textarea(stripslashes_deep($field_options['value'])); ?></textarea>
                                                                 <?php
                                                         break;
     
@@ -592,6 +593,8 @@ if (! class_exists('PP_Content_Overview_Utilities')) {
             }
     
             $fields = apply_filters('publishpress_content_overview_get_post_type_fields', $fields, $postType);
+
+            $fields = PP_Module::configure_new_post_fields($fields);
     
             return $fields;
         }

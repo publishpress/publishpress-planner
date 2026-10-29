@@ -1092,6 +1092,68 @@ if (!class_exists('PP_Module')) {
             return $return;
         }
 
+        public static function new_post_field_labels()
+        {
+            return [
+                'title' => __('Title', 'publishpress'),
+                'status' => __('Post Status', 'publishpress'),
+                'authors' => __('Author', 'publishpress'),
+                'categories' => __('Categories', 'publishpress'),
+                'tags' => __('Tags', 'publishpress'),
+                'content' => __('Content', 'publishpress'),
+            ];
+        }
+
+        public static function new_post_field_settings()
+        {
+            global $publishpress;
+            return (array) ($publishpress->modules->modules_settings->options->new_post_fields ?? []);
+        }
+
+        public static function configure_new_post_fields($fields)
+        {
+            $settings = self::new_post_field_settings();
+            foreach (self::new_post_field_labels() as $name => $label) {
+                if (!isset($fields[$name]) || !isset($settings[$name])) {
+                    continue;
+                }
+                if ($settings[$name] === 'hidden') {
+                    unset($fields[$name]);
+                } else {
+                    $fields[$name]['required'] = $settings[$name] === 'required';
+                }
+            }
+            return $fields;
+        }
+
+        public static function validate_new_post_fields($values, $post_type)
+        {
+            $settings = self::new_post_field_settings();
+            $taxonomies = get_object_taxonomies($post_type);
+            $post_type_object = get_post_type_object($post_type);
+            if (!$post_type_object) {
+                return '';
+            }
+            foreach (self::new_post_field_labels() as $name => $label) {
+                if (($settings[$name] ?? '') !== 'required') {
+                    continue;
+                }
+                if (($name === 'categories' && !in_array('category', $taxonomies, true))
+                    || ($name === 'tags' && !in_array('post_tag', $taxonomies, true))
+                    || ($name === 'authors' && !current_user_can($post_type_object->cap->edit_others_posts))) {
+                    continue;
+                }
+                $value = $values[$name] ?? '';
+                if (is_array($value)) {
+                    $value = implode('', array_map('sanitize_text_field', $value));
+                }
+                if (trim((string) $value) === '') {
+                    return sprintf(__('%s is required.', 'publishpress'), $label);
+                }
+            }
+            return '';
+        }
+
         public function localize_post_data($localized_post_data, $post, $can_edit_post) {
             global $publishpress;
 
