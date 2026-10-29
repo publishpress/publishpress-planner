@@ -77,12 +77,33 @@ class Workflow
          * @param WP_Post $workflow
          * @param array $args
          */
-        return apply_filters(
+        $receivers = apply_filters(
             'publishpress_notif_run_workflow_receivers',
             [],
             $this->workflow_post,
             $this->event_args
         );
+        foreach (['read_post' => 'require_read_access', 'edit_post' => 'require_edit_access'] as $capability => $option) {
+            if (!get_post_meta($this->workflow_post->ID, '_psppno_option_' . $option, true)) {
+                continue;
+            }
+            $post_id = (int) ($this->event_args['params']['post_id'] ?? 0);
+            if (!$post_id || !get_post($post_id)) {
+                return [];
+            }
+            $receivers = array_values(array_filter($receivers, static function ($data) use ($post_id, $capability) {
+                $receiver = $data['receiver'];
+                if (is_object($receiver)) {
+                    $receiver = $receiver->ID ?? ($receiver->id ?? 0);
+                }
+                if (!is_numeric($receiver)) {
+                    $email = explode('/', preg_replace('/^email:/', '', (string) $receiver))[0];
+                    $receiver = email_exists($email);
+                }
+                return $receiver && user_can((int) $receiver, $capability, $post_id);
+            }));
+        }
+        return $receivers;
     }
 
     public function get_option($option)
