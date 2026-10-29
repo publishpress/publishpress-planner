@@ -4,7 +4,7 @@ Author: PublishPress
 Author URI: https://publishpress.com
 Tags: editorial calendar, marketing calendar, kanban board, content overview, marketing
 Requires at least: 5.5
-Requires PHP: 7.2.5
+Requires PHP: 8.2
 Tested up to: 7.1
 Stable tag: 4.8.2
 License: GPLv2 or later
