@@ -962,6 +962,8 @@ if (! class_exists('PP_Calendar_Methods')) {
 
             $fields = apply_filters('publishpress_calendar_get_post_type_fields', $fields, $postType);
 
+            $fields = PP_Module::configure_new_post_fields($fields);
+
             $data = ['fields' => $fields];
 
             return $data;
@@ -1676,6 +1678,12 @@ if (! class_exists('PP_Calendar_Methods')) {
         {
             if (!isset($_POST['nonce']) || ! wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'])), 'publishpress-calendar-get-data')) {
                 $this->print_ajax_response('error', $this->module->messages['nonce-failed']);
+            }
+
+            $error = self::validate_new_post_fields(wp_unslash($_POST), isset($_POST['post_type']) ? sanitize_key($_POST['post_type']) : 'post');
+            if ($error !== '') {
+                $this->print_ajax_response('error', $error);
+                return;
             }
 
             // Check that the user has the right capabilities to add posts to the calendar (defaults to 'edit_posts')

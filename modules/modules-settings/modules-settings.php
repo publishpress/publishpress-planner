@@ -55,6 +55,7 @@ if (! class_exists('PP_Modules_Settings')) {
                 'slug' => 'modules-settings',
                 'default_options' => [
                     'enabled' => 'on',
+                    'new_post_fields' => [],
                 ],
                 'configure_page_cb' => 'print_configure_view',
                 'autoload' => false,
@@ -131,6 +132,28 @@ if (! class_exists('PP_Modules_Settings')) {
                 $this->module->options_group_name,
                 $this->module->options_group_name . '_general'
             );
+
+            add_settings_field(
+                'new_post_fields',
+                __('New Post fields', 'publishpress'),
+                [$this, 'settings_new_post_fields'],
+                $this->module->options_group_name,
+                $this->module->options_group_name . '_general'
+            );
+        }
+
+        public function settings_new_post_fields()
+        {
+            $settings = self::new_post_field_settings();
+            echo '<p>' . esc_html__('Choose the fields shown when creating content in the Calendar, Content Board, and Content Overview.', 'publishpress') . '</p>';
+            foreach (self::new_post_field_labels() as $name => $label) {
+                $value = $settings[$name] ?? ($name === 'title' ? 'required' : 'optional');
+                echo '<p><label>' . esc_html($label) . ' <select name="' . esc_attr($this->module->options_group_name) . '[new_post_fields][' . esc_attr($name) . ']">';
+                foreach (['hidden' => __('Hidden', 'publishpress'), 'optional' => __('Optional', 'publishpress'), 'required' => __('Required', 'publishpress')] as $key => $text) {
+                    echo '<option value="' . esc_attr($key) . '" ' . selected($value, $key, false) . '>' . esc_html($text) . '</option>';
+                }
+                echo '</select></label></p>';
+            }
         }
 
         /**
@@ -144,6 +167,14 @@ if (! class_exists('PP_Modules_Settings')) {
          */
         public function settings_validate($new_options)
         {
+            $fields = [];
+            foreach (self::new_post_field_labels() as $name => $label) {
+                $value = $new_options['new_post_fields'][$name] ?? '';
+                if (in_array($value, ['hidden', 'optional', 'required'], true)) {
+                    $fields[$name] = $value;
+                }
+            }
+            $new_options['new_post_fields'] = $fields;
             return $new_options;
         }
 

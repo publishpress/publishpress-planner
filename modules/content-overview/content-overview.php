@@ -703,6 +703,15 @@ class PP_Content_Overview extends PP_Module
                 $categories = isset($_POST['category']) ? array_map('sanitize_text_field', $_POST['category']) : [];
                 $tags = isset($_POST['post_tag']) ? array_map('sanitize_text_field', $_POST['post_tag']) : [];
 
+                $error = self::validate_new_post_fields([
+                    'title' => $title, 'status' => $status, 'content' => $content,
+                    'authors' => isset($_POST['authors']) ? $authors : '', 'categories' => $categories, 'tags' => $tags,
+                ], $postType);
+                if ($error !== '') {
+                    echo pp_planner_admin_notice(esc_html($error), false); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                    return;
+                }
+
                 $postArgs = [
                     'post_author' => $authors,
                     'post_title' => $title,
