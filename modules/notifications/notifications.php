@@ -152,6 +152,7 @@ if (! class_exists('PP_Notifications')) {
 
                 // Ajax for saving notification updates
                 add_action('wp_ajax_pp_notifications_user_post_subscription', [$this, 'handle_user_post_subscription']);
+                add_action('wp_ajax_pp_notifications_search_users', [$this, 'ajax_search_notification_users']);
 
                 add_action('add_meta_boxes', [$this, 'add_post_meta_box'], 10, 2);
             }
@@ -613,6 +614,38 @@ if (! class_exists('PP_Notifications')) {
             return $post->ID;
         }
 
+        public function ajax_search_notification_users()
+        {
+            check_ajax_referer('pp-notification-users', 'nonce');
+            $post_id = isset($_GET['post_id']) ? absint($_GET['post_id']) : 0;
+            if (!$post_id || !current_user_can($this->edit_post_subscriptions_cap)
+                || !current_user_can('edit_post', $post_id)) {
+                wp_send_json_error(null, 403);
+                return;
+            }
+
+            $search = isset($_GET['q']) ? sanitize_text_field(wp_unslash($_GET['q'])) : '';
+            $page = isset($_GET['page']) ? max(1, absint($_GET['page'])) : 1;
+            $args = apply_filters('pp_users_select_form_get_users_args', [
+                'fields' => ['ID', 'display_name', 'user_email'],
+                'orderby' => 'display_name',
+            ]);
+            // Always bound the query, including when a filter changes the defaults.
+            $args['number'] = 21;
+            $args['offset'] = ($page - 1) * 20;
+            $args['count_total'] = false;
+            $args['search'] = '*' . $search . '*';
+            $args['search_columns'] = ['user_login', 'display_name', 'user_email'];
+            $users = get_users($args);
+            $more = count($users) > 20;
+            $users = apply_filters('publishpress_notification_users_meta_box', array_slice($users, 0, 20), $post_id);
+            $results = [];
+            foreach ($users as $user) {
+                $results[] = ['id' => (string) $user->ID, 'text' => $user->display_name];
+            }
+            wp_send_json(['results' => $results, 'pagination' => ['more' => $more]]);
+        }
+
         /**
          * Outputs box used to subscribe users and roles to Posts
          *
@@ -655,6 +688,7 @@ if (! class_exists('PP_Notifications')) {
 
                         $select_form_args = [
                             'list_class' => 'pp_post_notify_list',
+                            'post_id' => $post->ID,
                         ];
                         $this->users_select_form($selected, $select_form_args); ?>
 
