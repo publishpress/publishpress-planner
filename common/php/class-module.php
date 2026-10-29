@@ -714,6 +714,7 @@ if (!class_exists('PP_Module')) {
             $defaults    = [
                 'list_class' => 'pp-users-select-form',
                 'input_id'   => 'pp-selected-users',
+                'post_id'    => 0,
             ];
             $parsed_args = wp_parse_args($args, $defaults);
             extract($parsed_args, EXTR_SKIP);
@@ -728,14 +729,21 @@ if (!class_exists('PP_Module')) {
             ];
             $args = apply_filters('pp_users_select_form_get_users_args', $args);
 
+            $selected = is_array($selected) ? $selected : [];
+            $selected_user_ids = array_values(array_filter($selected, 'is_numeric'));
+            $args['include'] = array_map('absint', $selected_user_ids);
+
             /**
              * Filters the list of users available for notification.
              *
              * @param array $users
              * @param int $post_id
              */
-            $post_id = isset($_GET['post']) ? (int)$_GET['post'] : null;
-            $users   = apply_filters('publishpress_notification_users_meta_box', get_users($args), $post_id);
+            $users = apply_filters(
+                'publishpress_notification_users_meta_box',
+                empty($selected_user_ids) ? [] : get_users($args),
+                $post_id
+            );
 
             if (!is_array($selected)) {
                 $selected = [];
@@ -766,8 +774,9 @@ if (!class_exists('PP_Module')) {
             }
             ?>
 
-            <?php if (!empty($users) || !empty($roles) || !empty($emails)) : ?>
-            <select id="to_notify" class="chosen-select" name="to_notify[]" multiple="multiple">
+            <select id="to_notify" class="chosen-select" name="to_notify[]" multiple="multiple"
+                    data-post-id="<?php echo esc_attr($post_id); ?>"
+                    data-nonce="<?php echo esc_attr(wp_create_nonce('pp-notification-users')); ?>">
                 <?php if (!empty($roles)) : ?>
                     <optgroup label="<?php echo esc_attr__('Roles', 'publishpress'); ?>">
                         <?php foreach ($roles as $role => $data) : ?>
@@ -807,7 +816,6 @@ if (!class_exists('PP_Module')) {
                     </optgroup>
                 <?php endif; ?>
             </select>
-        <?php endif; ?>
             <?php
         }
 
