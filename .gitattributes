@@ -60,3 +60,4 @@ phpunit.xml.dist export-ignore
 psalm.xml export-ignore
 webpack.config.js export-ignore
 wp-cli.local.yml export-ignore
+/tools/deepmerge export-ignore
