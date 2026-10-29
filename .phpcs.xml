@@ -12,7 +12,11 @@
     <arg name="severity" value="5"/>
     <arg value="ps"/>
 
+    <!-- Keep advisory warnings visible while CI fails on errors. -->
+    <config name="ignore_warnings_on_exit" value="1"/>
+
     <file>.</file>
+    <exclude-pattern>/.cache/*</exclude-pattern>
     <exclude-pattern>*/\.github/*</exclude-pattern>
     <exclude-pattern>/\.vscode/*</exclude-pattern>
     <exclude-pattern>/tests/*</exclude-pattern>

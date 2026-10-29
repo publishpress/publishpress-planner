@@ -29,7 +29,7 @@ use WP_List_Table;
 global $title;
 
 if (!isset($title)) {
-    $title = '';
+    $title = ''; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- Initialize the admin title only when WordPress has not set it.
 }
 
 if (! class_exists('WP_List_Table')) {
@@ -147,7 +147,7 @@ class NotificationsLogTable extends WP_List_Table
 
                     if (! empty($post) && ! is_wp_error($post)) {
                         $postType = get_post_type_object($post->post_type);
-                        $postTypeLabels = get_post_type_labels($postType);
+                        $postTypeLabels = $postType ? $postType->labels : null;
 
                         $output .= $this->wrapInALink(
                             $log->postTitle,
@@ -641,14 +641,14 @@ class NotificationsLogTable extends WP_List_Table
         echo '<label class="screen-reader-text" for="publishpress-notifications-filter-date-begin">' . esc_html__('From date', 'publishpress') . '</label>';
         echo '<input type="text" class="filter-date-begin" id="publishpress-notifications-filter-date-begin" name="date_begin" value="' . esc_attr(
                 $dateBegin
-            ) . '" placeholder="' . esc_html__(
+            ) . '" placeholder="' . esc_attr__(
                 'From date',
                 'publishpress'
             ) . '" />&nbsp;';
         echo '&nbsp;<label class="screen-reader-text" for="publishpress-notifications-filter-date-end">' . esc_html__('To date', 'publishpress') . '</label>';
         echo '&nbsp;<input type="text" class="filter-date-end" id="publishpress-notifications-filter-date-end" name="date_end" value="' . esc_attr(
                 $dateEnd
-            ) . '" placeholder="' . esc_html__(
+            ) . '" placeholder="' . esc_attr__(
                 'To date',
                 'publishpress'
             ) . '" />&nbsp;';
@@ -657,7 +657,7 @@ class NotificationsLogTable extends WP_List_Table
         // Receiver
         $receiver = isset($_GET['receiver']) ? sanitize_text_field($_GET['receiver']) : '';
         echo '<label class="screen-reader-text" for="publishpress-notifications-filter-receiver">' . esc_html__('Filter by receiver', 'publishpress') . '</label>';
-        echo '<input type="text" id="publishpress-notifications-filter-receiver" placeholder="' . esc_html__(
+        echo '<input type="text" id="publishpress-notifications-filter-receiver" placeholder="' . esc_attr__(
                 'All Receivers',
                 'publishpress'
             ) . '" name="receiver" value="' . esc_attr($receiver) . '" />';

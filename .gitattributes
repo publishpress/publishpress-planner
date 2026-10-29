@@ -21,6 +21,7 @@
 .gitignore export-ignore
 .gitlab-ci.yml export-ignore
 .phpcs.xml export-ignore
+.phpcs-plugin-review.xml export-ignore
 .phplint.yml export-ignore
 .rsync-filters-post-build export-ignore
 .rsync-filters-pre-build export-ignore

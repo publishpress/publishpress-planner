@@ -207,7 +207,7 @@ if (! class_exists('Editorial_Metadata_Input_Handler')) {
          */
         protected static function renderDescription($description)
         {
-            echo self::generateDescriptionHtml($description);
+            echo wp_kses_post(self::generateDescriptionHtml($description));
         }
 
         /**

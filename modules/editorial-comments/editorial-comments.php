@@ -406,6 +406,7 @@ if (! class_exists('PP_Editorial_Comments')) {
             // Define the custom SQL query to get users who have written comments
             $commentType = self::comment_type;
 
+            // phpcs:disable WordPressVIPMinimum.Variables.RestrictedVariables.user_meta__wpdb__users -- These prepared queries return at most 20 authors by joining users to editorial comments.
             if (empty($queryText)) {
                 $users = $wpdb->get_results(
                     $wpdb->prepare(
@@ -442,6 +443,8 @@ if (! class_exists('PP_Editorial_Comments')) {
                     )
                 );
             }
+
+            // phpcs:enable WordPressVIPMinimum.Variables.RestrictedVariables.user_meta__wpdb__users
 
             foreach ($users as $user) {
                 $results[] = [
@@ -629,7 +632,7 @@ if (! class_exists('PP_Editorial_Comments')) {
             $actions_string_escaped = '';
             // Comments can only be added by users that can edit the post
             if (current_user_can('edit_post', $theComment->comment_post_ID)) {
-                $actions['reply'] = '<a onclick="editorialCommentReply.open(\'' . (int)$theComment->comment_ID . '\',\'' . (int)$theComment->comment_post_ID . '\');return false;" class="vim-r hide-if-no-js" title="' . esc_html__(
+                $actions['reply'] = '<a onclick="editorialCommentReply.open(\'' . (int)$theComment->comment_ID . '\',\'' . (int)$theComment->comment_post_ID . '\');return false;" class="vim-r hide-if-no-js" title="' . esc_attr__(
                         'Reply to this comment',
                         'publishpress'
                     ) . '" href="#">' . esc_html__('Reply', 'publishpress') . '</a>';
@@ -682,9 +685,9 @@ if (! class_exists('PP_Editorial_Comments')) {
                     wp_get_comment_status($theComment->comment_ID),
                 ]
             ); ?> data-parent="<?php
-            echo $theComment->comment_parent; ?>" data-id="<?php
-            echo $theComment->comment_ID; ?>" data-post-id="<?php
-            echo $theComment->comment_post_ID; ?>">
+            echo esc_attr($theComment->comment_parent); ?>" data-id="<?php
+            echo esc_attr($theComment->comment_ID); ?>" data-post-id="<?php
+            echo esc_attr($theComment->comment_post_ID); ?>">
 
 
                 <?php
@@ -701,8 +704,8 @@ if (! class_exists('PP_Editorial_Comments')) {
                                     'said on %1$s at %2$s',
                                     'publishpress'
                                 ),
-                                get_comment_date(get_option('date_format')),
-                                get_comment_time()
+                                esc_html(get_comment_date(get_option('date_format'))),
+                                esc_html(get_comment_time())
                             );
                             ?>
                         </span>
@@ -730,7 +733,7 @@ if (! class_exists('PP_Editorial_Comments')) {
                                             <?php echo esc_html(end($file_name)); ?>
                                         </a>
                                         <span class="editorial-comment-edit-file-remove">
-                                            <?php echo __('Remove', 'publishpress'); ?>
+                                            <?php echo esc_html__('Remove', 'publishpress'); ?>
                                         </span>
                                     </div>
                                     <?php
@@ -740,7 +743,7 @@ if (! class_exists('PP_Editorial_Comments')) {
                         <?php endif; ?>
                     </div>
                     <div class="row-actions"><?php
-                        echo $actions_string_escaped; ?></div>
+                        echo $actions_string_escaped; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Action links are escaped when constructed above; KSES would remove their required onclick handlers. ?></div>
                 </div>
             </li>
             <?php
@@ -773,7 +776,7 @@ if (! class_exists('PP_Editorial_Comments')) {
 
             $post_id = absint($_POST['post_id']);
             $parent = absint($_POST['parent']);
-            $comment_files = sanitize_text_field($_POST['comment_files']);
+            $comment_files = isset($_POST['comment_files']) ? sanitize_text_field(wp_unslash($_POST['comment_files'])) : '';
 
             // Only allow the comment if user can edit post
             // @TODO: allow contributors to add comments as well (?)
@@ -917,7 +920,7 @@ if (! class_exists('PP_Editorial_Comments')) {
 
             $comment_id = absint($_POST['comment_id']);
             $post_id = absint($_POST['post_id']);
-            $comment_files = sanitize_text_field($_POST['comment_files']);
+            $comment_files = isset($_POST['comment_files']) ? sanitize_text_field(wp_unslash($_POST['comment_files'])) : '';
 
             // Only allow the comment if user can edit post
             if (! current_user_can('edit_post', $post_id)) {

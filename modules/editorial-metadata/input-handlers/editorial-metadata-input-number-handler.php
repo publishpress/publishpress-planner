@@ -67,7 +67,7 @@ if (! class_exists('Editorial_Metadata_Input_Number_Handler')) {
                     $input_name
                 );
 
-                echo self::generateDescriptionHtml($input_description);
+                echo wp_kses_post(self::generateDescriptionHtml($input_description));
 
                 self::renderValuePlaceholder();
             }

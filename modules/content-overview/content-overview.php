@@ -582,7 +582,7 @@ class PP_Content_Overview extends PP_Module
         }
 
         if (! $user_filters['end_date']) {
-            $user_filters['end_date'] = date('Y-m-d', strtotime($user_filters['start_date'] . ' +10 weeks'));
+            $user_filters['end_date'] = gmdate('Y-m-d', strtotime($user_filters['start_date'] . ' +10 weeks'));
         }
 
         if (!empty($user_filters['me_mode'])) {
@@ -634,13 +634,13 @@ class PP_Content_Overview extends PP_Module
 
         $date_format = 'Y-m-d';
         $user_filters['start_date'] = $use_today_as_start_date
-            ? date($date_format, strtotime('-5 weeks'))
+            ? gmdate($date_format, strtotime('-5 weeks'))
             : date($date_format, strtotime(sanitize_text_field($_REQUEST['pp-content-overview-start-date_hidden']))); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
 
-        $user_filters['end_date'] = $_REQUEST['pp-content-overview-end-date_hidden'];
+        $user_filters['end_date'] = isset($_REQUEST['pp-content-overview-end-date_hidden']) ? sanitize_text_field(wp_unslash($_REQUEST['pp-content-overview-end-date_hidden'])) : '';
 
         if ($use_today_as_start_date || (empty(trim($user_filters['end_date']))) || (strtotime($user_filters['start_date']) > strtotime($user_filters['end_date']))) {
-            $user_filters['end_date'] = date($date_format, strtotime($user_filters['start_date'] . ' +10 weeks'));
+            $user_filters['end_date'] = gmdate($date_format, strtotime($user_filters['start_date'] . ' +10 weeks'));
         }
 
         $this->update_user_meta($current_user->ID, self::USERMETA_KEY_PREFIX . 'filters', $user_filters);
@@ -713,12 +713,12 @@ class PP_Content_Overview extends PP_Module
 
                 // set post date
                 if ( ! empty( $_POST['mm'] ) ) {
-                    $aa = sanitize_text_field($_POST['aa']);
+                    $aa = isset($_POST['aa']) ? (int) $_POST['aa'] : 0;
                     $mm = sanitize_text_field($_POST['mm']);
-                    $jj = sanitize_text_field($_POST['jj']);
-                    $hh = sanitize_text_field($_POST['hh']);
-                    $mn = sanitize_text_field($_POST['mn']);
-                    $ss = sanitize_text_field($_POST['ss']);
+                    $jj = isset($_POST['jj']) ? (int) $_POST['jj'] : 0;
+                    $hh = isset($_POST['hh']) ? (int) $_POST['hh'] : 0;
+                    $mn = isset($_POST['mn']) ? (int) $_POST['mn'] : 0;
+                    $ss = isset($_POST['ss']) ? (int) $_POST['ss'] : 0;
                     $aa = ( $aa <= 0 ) ? gmdate( 'Y' ) : $aa;
                     $mm = ( $mm <= 0 ) ? gmdate( 'n' ) : $mm;
                     $jj = ( $jj > 31 ) ? 31 : $jj;
