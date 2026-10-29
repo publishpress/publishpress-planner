@@ -109,9 +109,9 @@ if (is_admin()) {
                         $post_types = maybe_unserialize($status_options->post_types);
 
                         // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Recommended
-                        $type = (!empty($_REQUEST['post_type'])) ? sanitize_key($_REQUEST['post_type']) : 'post';
+                        $requested_post_type = (!empty($_REQUEST['post_type'])) ? sanitize_key($_REQUEST['post_type']) : 'post';
 
-                        if (is_array($post_types) && isset($post_types[$type]) && ('off' != $post_types[$type]) && !get_user_option('publishpress_planner_statuses_notice_done')) {
+                        if (is_array($post_types) && isset($post_types[$requested_post_type]) && ('off' != $post_types[$requested_post_type]) && !get_user_option('publishpress_planner_statuses_notice_done')) {
                             // Also ensure any user sees one-time display of PublishPress Statuses notice on Posts / Pages screen
 
                             $statuses_info = publishpress_statuses_info();

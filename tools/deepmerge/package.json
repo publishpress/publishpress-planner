@@ -1,0 +1,9 @@
+{
+  "name": "@publishpress/deepmerge-patched",
+  "version": "4.3.1-patch.1",
+  "private": true,
+  "description": "Local deepmerge 4.3.1 security patch for CVE-2026-93753",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "license": "MIT"
+}

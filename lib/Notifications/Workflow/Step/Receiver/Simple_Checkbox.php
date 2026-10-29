@@ -66,6 +66,10 @@ class Simple_Checkbox extends Base implements Receiver_Interface
      */
     public function save_metabox_data($id, $post)
     {
+        if (!isset($_POST['publishpress_notif_metabox_events_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['publishpress_notif_metabox_events_nonce'])), 'publishpress_notif_save_metabox')) {
+            return;
+        }
+
         $publishpress_notif = isset($_POST['publishpress_notif']) && is_array($_POST['publishpress_notif'])
             ? wp_unslash($_POST['publishpress_notif'])
             : [];

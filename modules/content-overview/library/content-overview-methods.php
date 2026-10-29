@@ -398,8 +398,8 @@ if (! class_exists('PP_Overview_Methods')) {
                     } ?>
                     <?php
                     $date_format = 'Y-m-d';
-                    $reset_start_date = date($date_format, strtotime('-5 weeks'));
-                    $reset_end_date   = date($date_format, strtotime($reset_start_date . ' +10 weeks'));
+                    $reset_start_date = gmdate($date_format, strtotime('-5 weeks'));
+                    $reset_end_date   = gmdate($date_format, strtotime($reset_start_date . ' +10 weeks'));
 
                     $filtered_start_date = $reset_start_date;
                     $filtered_start_date_timestamp = strtotime($filtered_start_date);
@@ -407,15 +407,13 @@ if (! class_exists('PP_Overview_Methods')) {
                     $filtered_end_date = $reset_end_date;
                     $filtered_end_date_timestamp = strtotime($filtered_end_date);
 
-                    $start_date_value = '<input type="hidden" name="pp-content-overview-start-date" value="' . esc_attr(date_i18n($date_format, $filtered_start_date_timestamp)) . '" />';
-                    $start_date_value .= '<input type="hidden" name="pp-content-overview-start-date_hidden" value="' . $filtered_start_date . '" />';
+                    echo '<input type="hidden" name="pp-content-overview-start-date" value="' . esc_attr(date_i18n($date_format, $filtered_start_date_timestamp)) . '" />';
+                    echo '<input type="hidden" name="pp-content-overview-start-date_hidden" value="' . esc_attr($filtered_start_date) . '" />';
 
-                    $end_date_value = '<input type="hidden" name="pp-content-overview-end-date" value="' . esc_attr(date_i18n($date_format, $filtered_end_date_timestamp)) . '" />';
-                    $end_date_value .= '<input type="hidden" name="pp-content-overview-end-date_hidden" value="' . $filtered_end_date . '" />';
+                    echo '<input type="hidden" name="pp-content-overview-end-date" value="' . esc_attr(date_i18n($date_format, $filtered_end_date_timestamp)) . '" />';
+                    echo '<input type="hidden" name="pp-content-overview-end-date_hidden" value="' . esc_attr($filtered_end_date) . '" />';
 
-                    $nonce = wp_nonce_field('change-date', 'nonce', 'change-date-nonce', false);
-
-                    echo $start_date_value . $end_date_value . $nonce;
+                    wp_nonce_field('change-date', 'nonce', 'change-date-nonce');
                     ?>
                     <input type="hidden" name="pp-content-overview-range-use-today" value="1"/>
             </form>

@@ -1,6 +1,7 @@
 - *.code-workspace
 - .babelrc
 - .distignore
+- .env
 - .env.testing
 - .env.testing.dist
 - .env.testing.linux.dist
@@ -62,3 +63,7 @@
 - webpack.mix.js
 - .web
 - .ddev
+- .agents
+- .aws
+- .codex
+- /tools/deepmerge

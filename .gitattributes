@@ -13,6 +13,7 @@
 .babelrc export-ignore
 .distignore export-ignore
 .editorconfig export-ignore
+.env export-ignore
 .env.example export-ignore
 .git export-ignore
 .gitattributes export-ignore
@@ -20,6 +21,7 @@
 .gitignore export-ignore
 .gitlab-ci.yml export-ignore
 .phpcs.xml export-ignore
+.phpcs-plugin-review.xml export-ignore
 .phplint.yml export-ignore
 .rsync-filters-post-build export-ignore
 .rsync-filters-pre-build export-ignore
@@ -58,3 +60,4 @@ phpunit.xml.dist export-ignore
 psalm.xml export-ignore
 webpack.config.js export-ignore
 wp-cli.local.yml export-ignore
+/tools/deepmerge export-ignore

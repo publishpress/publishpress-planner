@@ -24,7 +24,7 @@ class Taxonomies extends Base implements Filter_Interface
      */
     public function render()
     {
-        echo $this->get_service('view')->render(
+        $this->get_service('view')->display(
             'workflow_filter_multiple_select',
             [
                 'name'         => esc_attr("publishpress_notif[{$this->step_name}_filters][taxonomies]"),
@@ -79,6 +79,10 @@ class Taxonomies extends Base implements Filter_Interface
      */
     public function save_metabox_data($id, $post)
     {
+        if (!isset($_POST['publishpress_notif_metabox_events_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['publishpress_notif_metabox_events_nonce'])), 'publishpress_notif_save_metabox')) {
+            return;
+        }
+
         if (!isset($_POST['publishpress_notif']["{$this->step_name}_filters"]['taxonomies'])) {
             $values = [];
         } else {

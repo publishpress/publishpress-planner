@@ -304,19 +304,19 @@ if (! class_exists('PP_Efmigration')) {
                 if (! $dismissMigration && (! isset($_GET['page']) || self::PAGE_SLUG !== $_GET['page'])) {
                     echo '<div class="updated"><p>';
                     printf(
-                        __(
+                        wp_kses_post(__(
                             'We have found Edit Flow and its data! Would you like to import the data into PublishPress? <a href="%1$s">Yes, import the data</a> | <a href="%2$s">Dismiss</a>'
-                        ),
-                        add_query_arg(
+                        )),
+                        esc_url(add_query_arg(
                             [
                                 'page' => self::PAGE_SLUG,
                                 self::EDITFLOW_MIGRATION_URL_FLAG => 1,
                             ],
                             admin_url()
-                        ),
-                        add_query_arg(
+                        )),
+                        esc_url(add_query_arg(
                             [self::EDITFLOW_MIGRATION_URL_FLAG => 0]
-                        )
+                        ))
                     );
                     echo '</p></div>';
                 }
@@ -361,7 +361,7 @@ if (! class_exists('PP_Efmigration')) {
             ];
 
             // Get and validate the step
-            $step = sanitize_text_field($_POST['step']);
+            $step = isset($_POST['step']) ? sanitize_text_field(wp_unslash($_POST['step'])) : '';
             if (! in_array($step, $allowedSteps)) {
                 $result->error = __('Unknown step', self::PLUGIN_NAMESPACE);
             }

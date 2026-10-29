@@ -256,8 +256,8 @@ if (! class_exists('PP_Calendar_Methods')) {
                         $style = '';
                     }
 
-                    echo '<div style="' . esc_attr($style) . '"><label for="' . $id . '">';
-                    echo '<input id="' . $id . '" name="' . $field_name . '[' . esc_attr($status) . ']"';
+                    echo '<div style="' . esc_attr($style) . '"><label for="' . esc_attr($id) . '">';
+                    echo '<input id="' . esc_attr($id) . '" name="' . esc_attr($field_name) . '[' . esc_attr($status) . ']"';
 
                     if (isset($this->module->options->show_posts_publish_time[$status])) {
                         checked($this->module->options->show_posts_publish_time[$status], 'on');
@@ -291,7 +291,7 @@ if (! class_exists('PP_Calendar_Methods')) {
                             )
                         );
 
-                        echo ' <a href="' . $item_edit_link . '">' . __('edit', 'publishpress') . '</a>';
+                        echo ' <a href="' . esc_url($item_edit_link) . '">' . esc_html__('edit', 'publishpress') . '</a>';
                     }
 
                     echo '</div>';
@@ -309,7 +309,7 @@ if (! class_exists('PP_Calendar_Methods')) {
                 : esc_html__('For Revisions integration on the Content Calendar, Overview and Content Board, please update %sPublishPress Revisions%s.', 'publishpress');
 
                 printf(
-                    $msg,
+                    esc_html($msg),
                     '<a href="' . esc_url(self_admin_url('plugins.php')) . '" target="_blank">',
                     '</a>'
                 );
@@ -392,9 +392,9 @@ if (! class_exists('PP_Calendar_Methods')) {
                         <code>%2$s</code>
                     </div>',
                     esc_attr($this->module->options_group_name) . '[posts_publish_time_format]',
-                    $timeFormat,
+                    esc_attr($timeFormat),
                     $posts_publish_time_format === $timeFormat ? 'checked' : '',
-                    $timeMockValue
+                    esc_html($timeMockValue)
                 );
             }
 
@@ -411,7 +411,7 @@ if (! class_exists('PP_Calendar_Methods')) {
             echo sprintf(
                 '<input type="text" name="%s" value="%s" class="time-pick" readonly>',
                 esc_attr($this->module->options_group_name) . '[default_publish_time]',
-                $this->module->options->default_publish_time
+                esc_attr($this->module->options->default_publish_time)
             );
 
             echo '</div>';
@@ -448,9 +448,9 @@ if (! class_exists('PP_Calendar_Methods')) {
                         </label>
                     </div>',
                     esc_attr($this->module->options_group_name) . '[sort_by]',
-                    $key,
+                    esc_attr($key),
                     $key === $sortByOptionValue ? 'checked' : '',
-                    $label
+                    esc_html($label)
                 );
             }
 
@@ -476,14 +476,14 @@ if (! class_exists('PP_Calendar_Methods')) {
             echo sprintf(
                 '<option value="-1" %s>%s</option>',
                 selected($maxVisiblePostsPerDate, -1, false),
-                __('All posts', 'publishpress')
+                esc_html__('All posts', 'publishpress')
             );
 
             for ($i = 4; $i <= 30; $i++) {
                 echo sprintf(
                     '<option value="%2$d" %s>%2$d</option>',
                     selected($maxVisiblePostsPerDate, $i, false),
-                    $i
+                    (int)$i
                 );
             }
 
@@ -543,7 +543,7 @@ if (! class_exists('PP_Calendar_Methods')) {
                 admin_url('admin.php?page=pp-calendar')
             );
             $regenerate_url = wp_nonce_url($regenerate_url, 'pp-regenerate-ics-key');
-            echo '&nbsp;&nbsp;&nbsp;<a href="' . esc_url($regenerate_url) . '">' . __(
+            echo '&nbsp;&nbsp;&nbsp;<a href="' . esc_url($regenerate_url) . '">' . esc_html__(
                     'Regenerate calendar feed secret',
                     'publishpress'
                 ) . '</a>';
@@ -692,13 +692,13 @@ if (! class_exists('PP_Calendar_Methods')) {
             }
 
             if (! current_user_can('manage_options')) {
-                wp_die($this->module->messages['invalid-permissions']);
+                wp_die(esc_html($this->module->messages['invalid-permissions']));
             }
 
             if (! isset($_GET['_wpnonce'])
                 || ! wp_verify_nonce(sanitize_text_field($_GET['_wpnonce']), 'pp-regenerate-ics-key')
             ) {
-                wp_die($this->module->messages['nonce-failed']);
+                wp_die(esc_html($this->module->messages['nonce-failed']));
             }
 
             PublishPress()->update_module_option($this->module->name, 'ics_secret_key', wp_generate_password());
@@ -775,7 +775,7 @@ if (! class_exists('PP_Calendar_Methods')) {
 
         public function moveCalendarItemToNewDate()
         {
-            if (! wp_verify_nonce(sanitize_text_field($_GET['nonce']), 'publishpress-calendar-get-data')) {
+            if (!isset($_GET['nonce']) || ! wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['nonce'])), 'publishpress-calendar-get-data')) {
                 wp_send_json(['error' => __('Invalid nonce', 'publishpress')], 403);
             }
 
@@ -836,7 +836,7 @@ if (! class_exists('PP_Calendar_Methods')) {
         {
             global $publishpress;
 
-            if (! wp_verify_nonce(sanitize_text_field($_GET['nonce']), 'publishpress-calendar-get-data')) {
+            if (!isset($_GET['nonce']) || ! wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['nonce'])), 'publishpress-calendar-get-data')) {
                 wp_send_json([], 403);
             }
 
@@ -1164,7 +1164,7 @@ if (! class_exists('PP_Calendar_Methods')) {
                             sanitize_text_field($calendar_request_filter['start_date']) : date('Y-m-d')) . ' 00:00:00'; // phpcs:ignore WordPress.Security.NonceVerification.Recommended,WordPress.DateTime.RestrictedFunctions.date_date
 
                     if (isset($this->module->options->calendar_today_in_first_row) && 'on' === $this->module->options->calendar_today_in_first_row) {
-                        $firstDateToDisplay = $calendar_request_filter['start_date'] = date('Y-m-d', current_time('timestamp'));
+                        $firstDateToDisplay = $calendar_request_filter['start_date'] = gmdate('Y-m-d', current_time('timestamp'));
                     }
 
                     $firstDateToDisplay = PP_Calendar_Utilities::get_beginning_of_week($firstDateToDisplay);
@@ -1394,7 +1394,7 @@ if (! class_exists('PP_Calendar_Methods')) {
                 'post_status' => null,
                 'author' => null,
                 'post_type' => $supported_post_types,
-                'posts_per_page' => -1,
+                'posts_per_page' => -1, // phpcs:ignore WordPressVIPMinimum.Performance.NoPaging.posts_per_page_posts_per_page -- The calendar needs every post within the requested date range; pagination would omit scheduled content.
                 'order' => 'ASC',
             ];
 
@@ -1657,7 +1657,7 @@ if (! class_exists('PP_Calendar_Methods')) {
                     /**
                      * TODO: Should we require posts like x2 if results is empty due to $add_post been false for all?
                     */
-                    $key_date = date('Y-m-d', strtotime($post->post_date));
+                    $key_date = gmdate('Y-m-d', strtotime($post->post_date));
                     $posts[$key_date][] = $post;
                 }
             }
@@ -1674,7 +1674,7 @@ if (! class_exists('PP_Calendar_Methods')) {
          */
         public function createItem()
         {
-            if (! wp_verify_nonce(sanitize_text_field($_POST['nonce']), 'publishpress-calendar-get-data')) {
+            if (!isset($_POST['nonce']) || ! wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'])), 'publishpress-calendar-get-data')) {
                 $this->print_ajax_response('error', $this->module->messages['nonce-failed']);
             }
 
@@ -1754,8 +1754,8 @@ if (! class_exists('PP_Calendar_Methods')) {
                     '%s %s',
                     $date,
                     ((function_exists('mb_strlen') ? mb_strlen($time) : strlen($time)) === 5)
-                        ? "{$time}:" . date('s', $dateTimestamp)
-                        : date('H:i:s', $dateTimestamp)
+                        ? "{$time}:" . gmdate('s', $dateTimestamp)
+                        : gmdate('H:i:s', $dateTimestamp)
                 );
             }
 

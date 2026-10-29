@@ -85,7 +85,7 @@ if (! class_exists('PP_Theeventscalendar_Integration')) {
             $eventDuration = (int)get_post_meta($postId, '_EventDuration', true);
 
             $startDateInSeconds = strtotime($newDate);
-            $endDate = date('Y-m-d H:i:s', $startDateInSeconds + $eventDuration);
+            $endDate = gmdate('Y-m-d H:i:s', $startDateInSeconds + $eventDuration);
 
             update_post_meta($postId, '_EventStartDate', $newDate);
             update_post_meta($postId, '_EventStartDateUTC', get_gmt_from_date($newDate));

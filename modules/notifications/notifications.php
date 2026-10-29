@@ -1898,7 +1898,7 @@ if (! class_exists('PP_Notifications')) {
                         value="<?php
                         echo esc_attr($blacklisted_taxonomies); ?>"
                         placeholder="<?php
-                        esc_html_e('slug1,slug2', 'publishpress'); ?>"
+                        esc_attr_e('slug1,slug2', 'publishpress'); ?>"
                         style="width: 100%;"
                 />
 

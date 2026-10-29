@@ -10,10 +10,10 @@
 
     <?php if (! empty($context['event_filters'])) : ?>
         <ul class="<?php echo esc_attr($context['id']); ?>_filters publishpress-filter-checkbox-list"
-            <?php if (! $context['meta']['selected']) : ?>style="display:none;"<?php endif; ?>
+            <?php if (! $context['meta']['selected']) : ?>style="display:none;"<?php endif; ?>>
             <?php foreach ($context['event_filters'] as $event_filter) : ?>
                 <li>
-                    <?php echo $event_filter->render(); ?>
+                    <?php echo $event_filter->render(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- The filter renders escaped form markup. ?>
                 </li>
             <?php endforeach; ?>
         </ul>

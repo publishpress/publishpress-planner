@@ -38,6 +38,10 @@ class SkipUser extends OptionCheckboxAbstract
 
     public function setValue($postId, $post)
     {
+        if (!isset($_POST['publishpress_notif_metabox_events_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['publishpress_notif_metabox_events_nonce'])), 'publishpress_notif_save_metabox')) {
+            return;
+        }
+
         $value = 0;
         if (isset($_POST[$this->getFieldName()])) {
             $value = sanitize_key(wp_unslash($_POST[$this->getFieldName()]));

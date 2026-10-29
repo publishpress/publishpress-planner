@@ -69,6 +69,10 @@ class Main extends Base_Step
      */
     public function save_metabox_data($id, $post)
     {
+        if (!isset($_POST['publishpress_notif_metabox_events_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['publishpress_notif_metabox_events_nonce'])), 'publishpress_notif_save_metabox')) {
+            return;
+        }
+
         $content_main = [];
 
         if (isset($_POST['publishpress_notif']['content_main'])

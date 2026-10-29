@@ -115,8 +115,8 @@ if (! defined('PP_LOADED')) {
     }
 
     // Load the improved notifications
-    $plugin = new PublishPress\Notifications\Plugin();
-    $plugin->init();
+    $notifications_plugin = new PublishPress\Notifications\Plugin();
+    $notifications_plugin->init();
 
     if (is_admin() && ! defined('PUBLISHPRESS_SKIP_VERSION_NOTICES')) {
         if (current_user_can('install_plugins')) {

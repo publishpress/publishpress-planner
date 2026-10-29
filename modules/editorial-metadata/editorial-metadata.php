@@ -304,14 +304,11 @@ if (! class_exists('PP_Editorial_Metadata')) {
          */
         private function get_supported_metadata_user_roles()
         {
-            global $wp_roles;
-            if (!isset($wp_roles)) {
-                $wp_roles = new WP_Roles();
-            }
+            $roles = wp_roles();
 
             $supported_metadata_user_roles = [];
 
-            foreach ($wp_roles->roles as $role => $details) {
+            foreach ($roles->roles as $role => $details) {
                 $supported_metadata_user_roles[$role] = translate_user_role($details['name']);
             }
 
@@ -425,11 +422,11 @@ if (! class_exists('PP_Editorial_Metadata')) {
                     }
                     // Allow users to filter out rules if there's something wonky
                     $css_rules = apply_filters('pp_editorial_metadata_manage_posts_css_rules', $css_rules);
-                    echo "<style type=\"text/css\">\n";
+                    $inline_css = '';
                     foreach ((array)$css_rules as $css_property => $rules) {
-                        echo $css_property . " {" . implode(' ', $rules) . "}\n";
+                        $inline_css .= $css_property . " {" . implode(' ', $rules) . "}\n";
                     }
-                    echo '</style>';
+                    wp_add_inline_style('publishpress-editorial_metadata-styles', $inline_css);
                 }
             }
         }
@@ -538,11 +535,11 @@ if (! class_exists('PP_Editorial_Metadata')) {
          */
         public function display_meta_box($post)
         {
-            echo "<div id='" . self::metadata_taxonomy . "_meta_box'>";
+            echo "<div id='" . esc_attr(self::metadata_taxonomy) . "_meta_box'>";
             // Add nonce for verification upon save
-            echo "<input type='hidden' name='" . self::metadata_taxonomy . "_nonce' value='" . wp_create_nonce(
+            echo "<input type='hidden' name='" . esc_attr(self::metadata_taxonomy) . "_nonce' value='" . esc_attr(wp_create_nonce(
                     __FILE__
-                ) . "' />";
+                )) . "' />";
 
             $terms = $this->get_editorial_metadata_terms();
             if (! count($terms)) {
@@ -555,7 +552,7 @@ if (! class_exists('PP_Editorial_Metadata')) {
                         'publishpress'
                     );
                 }
-                echo '<p>' . $message . '</p>';
+                echo '<p>' . wp_kses_post($message) . '</p>';
             } else {
                 $post_type = $post->post_type;
                 foreach ($terms as $term) {
@@ -565,7 +562,7 @@ if (! class_exists('PP_Editorial_Metadata')) {
 
                         echo "<div class='" . esc_attr(self::metadata_taxonomy) . " " . esc_attr(
                             self::metadata_taxonomy
-                        ) . "_$term->type'>";
+                        ) . '_' . esc_attr($term->type) . "'>";
 
                         // Check if the user can edit the metadata
                         $can_edit = $this->checkEditCapability();
@@ -677,7 +674,7 @@ if (! class_exists('PP_Editorial_Metadata')) {
                         if (is_array($new_metadata)) {
                             $new_metadata = array_filter($new_metadata);
                         } else {
-                            $new_metadata = strip_tags($new_metadata);
+                            $new_metadata = wp_strip_all_tags($new_metadata);
                         }
                         update_post_meta($post->ID, $key, $new_metadata);
                         // Add the slugs of the terms with non-empty new metadata to an array
@@ -759,7 +756,8 @@ if (! class_exists('PP_Editorial_Metadata')) {
                 'hide_empty' => false,
             ];
 
-            $terms = get_terms(self::metadata_taxonomy, $args);
+            $args['taxonomy'] = self::metadata_taxonomy;
+            $terms = get_terms($args);
             $ordered_terms = [];
             $hold_to_end = [];
             // Order the terms
@@ -923,7 +921,7 @@ if (! class_exists('PP_Editorial_Metadata')) {
                     }
 
                     $current_metadata = $this->get_postmeta_value($term, $post_id);
-                    echo $this->generate_editorial_metadata_term_output($term, $current_metadata);
+                    echo wp_kses_post($this->generate_editorial_metadata_term_output($term, $current_metadata));
                 }
             }
         }
@@ -1190,12 +1188,12 @@ if (! class_exists('PP_Editorial_Metadata')) {
                 return;
             }
 
-            if (! wp_verify_nonce(sanitize_key($_POST['_wpnonce']), 'edit-publishpress-settings')) {
-                wp_die($this->module->messages['nonce-failed']);
+            if (!isset($_POST['_wpnonce']) || ! wp_verify_nonce(sanitize_key($_POST['_wpnonce']), 'edit-publishpress-settings')) {
+                wp_die(esc_html($this->module->messages['nonce-failed']));
             }
 
             if (! current_user_can('manage_options')) {
-                wp_die($this->module->messages['invalid-permissions']);
+                wp_die(esc_html($this->module->messages['invalid-permissions']));
             }
 
             /**
@@ -1208,15 +1206,15 @@ if (! class_exists('PP_Editorial_Metadata')) {
             $_REQUEST['form-errors'] = [];
 
             // Sanitize all of the user-entered values
-            $term_name = trim(sanitize_text_field($_POST['metadata_name']));
+            $term_name = isset($_POST['metadata_name']) ? trim(sanitize_text_field(wp_unslash($_POST['metadata_name']))) : '';
             $term_slug = (! empty($_POST['metadata_slug'])) ? sanitize_title($_POST['metadata_slug']) : sanitize_title(
                 $term_name
             );
 
             // Sanitized by the wp_filter_post_kses.
             // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-            $term_description = trim(stripslashes(wp_filter_post_kses($_POST['metadata_description'])));
-            $term_type = sanitize_key($_POST['metadata_type']);
+            $term_description = isset($_POST['metadata_description']) ? trim(wp_kses_post(wp_unslash($_POST['metadata_description']))) : '';
+            $term_type = isset($_POST['metadata_type']) ? sanitize_key($_POST['metadata_type']) : '';
             $term_user_role = (isset($_POST['metadata_user_role']) && is_array($_POST['metadata_user_role']))
                 ? array_map('sanitize_key', $_POST['metadata_user_role']) : [];
             $term_select_type    = (isset($_POST['metadata_select_type'])) ? sanitize_text_field($_POST['metadata_select_type']) : '';
@@ -1343,28 +1341,28 @@ if (! class_exists('PP_Editorial_Metadata')) {
          */
         public function handle_edit_editorial_metadata()
         {
-            if (!isset($_POST['submit'], $_GET['action'], $_GET['term-id'])
+            if (!isset($_POST['submit'], $_GET['page'], $_GET['action'], $_GET['term-id'])
                 || ($_GET['page'] != self::MENU_SLUG)
                 || $_GET['action'] != 'edit-term') {
                 return;
             }
 
-            if (! wp_verify_nonce(sanitize_key($_POST['_wpnonce']), 'editorial-metadata-edit-nonce')) {
-                wp_die($this->module->messages['nonce-failed']);
+            if (!isset($_POST['_wpnonce']) || ! wp_verify_nonce(sanitize_key($_POST['_wpnonce']), 'editorial-metadata-edit-nonce')) {
+                wp_die(esc_html($this->module->messages['nonce-failed']));
             }
 
             if (! current_user_can('manage_options')) {
-                wp_die($this->module->messages['invalid-permissions']);
+                wp_die(esc_html($this->module->messages['invalid-permissions']));
             }
 
             if (! $existing_term = $this->get_editorial_metadata_term_by('id', (int)$_GET['term-id'])) {
-                wp_die($this->module->messages['term-missing']);
+                wp_die(esc_html($this->module->messages['term-missing']));
             }
 
-            $new_name = trim(sanitize_text_field($_POST['name']));
+            $new_name = isset($_POST['name']) ? trim(sanitize_text_field(wp_unslash($_POST['name']))) : '';
             // Sanitized by wp_filter_post_kses.
             // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-            $new_description = trim(stripslashes(wp_filter_post_kses(strip_tags($_POST['description']))));
+            $new_description = isset($_POST['description']) ? trim(sanitize_textarea_field(wp_unslash($_POST['description']))) : '';
 
             /**
              * Form validation for editing editorial fields term
@@ -1508,12 +1506,12 @@ if (! class_exists('PP_Editorial_Metadata')) {
                     sanitize_key($_GET['nonce']),
                     'make-hidden'
                 )) {
-                wp_die($this->module->messages['nonce-failed']);
+                wp_die(esc_html($this->module->messages['nonce-failed']));
             }
 
             // Only allow users with the proper caps
             if (! current_user_can('manage_options')) {
-                wp_die($this->module->messages['invalid-permissions']);
+                wp_die(esc_html($this->module->messages['invalid-permissions']));
             }
 
             $term_id = (int)$_GET['term-id'];
@@ -1538,7 +1536,7 @@ if (! class_exists('PP_Editorial_Metadata')) {
          */
         public function handle_ajax_update_term_positions()
         {
-            if (! wp_verify_nonce(sanitize_key($_POST['editorial_metadata_sortable_nonce']), 'editorial-metadata-sortable')) {
+            if (!isset($_POST['editorial_metadata_sortable_nonce']) || ! wp_verify_nonce(sanitize_key($_POST['editorial_metadata_sortable_nonce']), 'editorial-metadata-sortable')) {
                 $this->print_ajax_response('error', $this->module->messages['nonce-failed']);
             }
 
@@ -1574,16 +1572,16 @@ if (! class_exists('PP_Editorial_Metadata')) {
                 return;
             }
 
-            if (! wp_verify_nonce(sanitize_key($_GET['nonce']), 'delete-term')) {
-                wp_die($this->module->messages['nonce-failed']);
+            if (!isset($_GET['nonce']) || ! wp_verify_nonce(sanitize_key($_GET['nonce']), 'delete-term')) {
+                wp_die(esc_html($this->module->messages['nonce-failed']));
             }
 
             if (! current_user_can('manage_options')) {
-                wp_die($this->module->messages['invalid-permissions']);
+                wp_die(esc_html($this->module->messages['invalid-permissions']));
             }
 
             if (! $existing_term = $this->get_editorial_metadata_term_by('id', (int)$_GET['term-id'])) {
-                wp_die($this->module->messages['term-missing']);
+                wp_die(esc_html($this->module->messages['term-missing']));
             }
 
             $result = $this->delete_editorial_metadata_term($existing_term->term_id);

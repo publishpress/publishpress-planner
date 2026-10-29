@@ -674,10 +674,10 @@ if (!class_exists('PP_Module')) {
             if ($since > $chunks[2][0] || $original > $today) {
                 $dateFormat = get_option('date_format', 'Y-m-d');
 
-                $print = date($dateFormat, $original);
+                $print = gmdate($dateFormat, $original);
 
                 if ($since > $chunks[0][0]) { // Seconds in a year
-                    $print .= ', ' . date('Y', $original);
+                    $print .= ', ' . gmdate('Y', $original);
                 }
 
                 return $print;
@@ -860,7 +860,8 @@ if (!class_exists('PP_Module')) {
                 'hide_empty' => false,
             ];
 
-            $terms = get_terms($taxonomy, $args);
+            $args['taxonomy'] = $taxonomy;
+            $terms = get_terms($args);
             foreach ($terms as $term) {
                 // If the description already contains structured data, keep it as-is.
                 $unencoded_description = $this->get_unencoded_description($term->description);
@@ -922,7 +923,7 @@ if (!class_exists('PP_Module')) {
         {
             if (!$defined_statuses = apply_filters('publishpress_defined_post_statuses', [], $postType, $post)) {
                 $postStatuses = [];
-                $post_statuses_terms       = get_terms('post_status', ['hide_empty' => false]);
+                $post_statuses_terms       = get_terms(['taxonomy' => 'post_status', 'hide_empty' => false]);
                 $post_statuses_terms_slugs = (!is_wp_error($post_statuses_terms)) ? array_column($post_statuses_terms, 'slug') : [];
                 $defined_statuses = $this->get_post_statuses();
             }

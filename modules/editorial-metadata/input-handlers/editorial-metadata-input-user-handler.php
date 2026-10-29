@@ -50,7 +50,7 @@ if (! class_exists('Editorial_Metadata_Input_User_Handler')) {
                 $input_name
             );
 
-            echo self::generateDescriptionHtml($input_description);
+            echo wp_kses_post(self::generateDescriptionHtml($input_description));
 
             $user_dropdown_args = [
                 'show_option_all' => self::getOptionShowAll(),
@@ -99,7 +99,7 @@ if (! class_exists('Editorial_Metadata_Input_User_Handler')) {
                 $input_name
             );
 
-            echo self::generateDescriptionHtml($input_description);
+            echo wp_kses_post(self::generateDescriptionHtml($input_description));
 
             $user = get_user_by('ID', $value);
             if (is_object($user)) {

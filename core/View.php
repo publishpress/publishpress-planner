@@ -53,7 +53,7 @@ class View
         $view_path = $this->get_view_path($view, $views_path);
 
         if (! is_readable($view_path)) {
-            error_log('PublishPress: View is not readable: ' . $view);
+            error_log('PublishPress: View is not readable: ' . $view); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log -- Record a template loading failure for diagnostics.
 
             return '';
         }
@@ -62,6 +62,14 @@ class View
         include $view_path;
 
         return ob_get_clean();
+    }
+
+    /**
+     * Display a template whose dynamic values are escaped in the template itself.
+     */
+    public function display($view, $context = [], $views_path = null)
+    {
+        echo $this->render($view, $context, $views_path); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaping belongs to each template's output context; filtering here would strip form controls.
     }
 
     protected function get_view_path($view, $views_path)
