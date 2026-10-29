@@ -64,9 +64,17 @@ class Workflow
      */
     public function run($event_args)
     {
+        if (!$this->is_enabled()) {
+            return;
+        }
         $this->event_args = $event_args;
 
         do_action('publishpress_notifications_running_for_post', $this);
+    }
+
+    public function is_enabled()
+    {
+        return get_post_meta($this->workflow_post->ID, '_psppno_enabled', true) !== '0';
     }
 
     private function get_receivers()
