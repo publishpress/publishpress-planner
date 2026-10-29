@@ -50,6 +50,16 @@ class Follower extends Simple_Checkbox implements Receiver_Interface
         if ($this->is_selected($workflow->ID)) {
             $post_id = $args['params']['post_id'];
 
+            // Revisionary supplies both the published post and the revision being changed.
+            // Followers belong to that revision, not to the original published post.
+            if (!empty($args['params']['revision_id'])) {
+                $revision = get_post((int) $args['params']['revision_id']);
+                if (!$revision) {
+                    return $receivers;
+                }
+                $post_id = $revision->ID;
+            }
+
             if (empty($post_id)) {
                 return $receivers;
             }
@@ -62,6 +72,7 @@ class Follower extends Simple_Checkbox implements Receiver_Interface
             $roles  = [];
             $users  = [];
             $emails = [];
+            $groups = [];
 
             $valid_post_request = isset($_POST['_wpnonce']) && wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['_wpnonce'])), 'update-post_' . $post_id);
             $action = $valid_post_request && isset($_POST['action']) ? sanitize_key(wp_unslash($_POST['action'])) : '';
