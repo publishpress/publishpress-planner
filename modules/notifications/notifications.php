@@ -86,6 +86,7 @@ if (! class_exists('PP_Notifications')) {
                     ],
                     'notify_author_by_default' => '1',
                     'notify_current_user_by_default' => '1',
+                    'enable_metabox' => '0',
                     'blacklisted_taxonomies' => '',
                 ],
                 'configure_page_cb' => 'print_configure_view',
@@ -549,6 +550,10 @@ if (! class_exists('PP_Notifications')) {
          */
         public function add_post_meta_box($post_type = null, $post = null)
         {
+            if (empty($this->module->options->enable_metabox)) {
+                return;
+            }
+
             if (! current_user_can($this->edit_post_subscriptions_cap)) {
                 return;
             }
@@ -1751,6 +1756,14 @@ if (! class_exists('PP_Notifications')) {
                 $this->module->options_group_name
             );
             add_settings_field(
+                'enable_metabox',
+                __('Show the Notifications metabox in the post editor:', 'publishpress'),
+                [$this, 'settings_enable_metabox_option'],
+                $this->module->options_group_name,
+                $this->module->options_group_name . '_general'
+            );
+
+            add_settings_field(
                 'post_types',
                 __('Show the "Notify me" and "Stop notifying me" links for these post types:', 'publishpress'),
                 [$this, 'settings_post_types_option'],
@@ -1851,6 +1864,15 @@ if (! class_exists('PP_Notifications')) {
         /**
          * Field to choose between auto select author for notifications.
          */
+        public function settings_enable_metabox_option()
+        {
+            printf(
+                '<input type="checkbox" name="%s[enable_metabox]" value="1" %s />',
+                esc_attr($this->module->options_group_name),
+                checked(!empty($this->module->options->enable_metabox), true, false)
+            );
+        }
+
         public function settings_notify_author_by_default_option()
         {
             $checked = '1';
@@ -1920,6 +1942,8 @@ if (! class_exists('PP_Notifications')) {
          */
         public function settings_validate($new_options)
         {
+            $new_options['enable_metabox'] = empty($new_options['enable_metabox']) ? '0' : '1';
+
             // Whitelist validation for the post type options
             if (! isset($new_options['post_types'])) {
                 $new_options['post_types'] = [];
