@@ -371,6 +371,7 @@ function publishpress_planner_load_plugin() {
                     'theeventscalendar-integration' => PUBLISHPRESS_BASE_PATH,
                     'dashboard' => PUBLISHPRESS_BASE_PATH,
                     'modules-settings' => PUBLISHPRESS_BASE_PATH,
+                    'maintenance' => PUBLISHPRESS_BASE_PATH,
                     'settings' => PUBLISHPRESS_BASE_PATH,
                 ];
 
