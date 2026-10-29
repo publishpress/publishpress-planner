@@ -30,6 +30,7 @@ tests/_support/*
 *.code-workspace
 
 dev-workspace/.cache
+/dev-workspace-cache/
 .env
 version.txt
 .web/
