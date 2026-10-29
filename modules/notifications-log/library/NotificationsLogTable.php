@@ -110,15 +110,12 @@ class NotificationsLogTable extends WP_List_Table
                     $userNicename = (! is_wp_error($user) && is_object($user)) ? $user->user_nicename : '';
                     $actionParams = apply_filters('publishpress_notifications_action_params_for_log', '', $log);
 
-                    $output .= apply_filters('publishpress_notifications_event_label', $log->event, $log->event);
+                    $output .= '<strong>' . $this->wrapInALink(
+                        esc_html($log->workflowTitle),
+                        esc_url(admin_url('post.php?post=' . (int) $log->workflowId . '&action=edit'))
+                    ) . '</strong>';
                     $output .= '<div class="muted">';
-                    $output .= '<div>' . sprintf(
-                            __('Workflow: %s', 'publishpress'),
-                            $this->wrapInALink(
-                                $log->workflowTitle,
-                                admin_url('post.php?post=' . esc_attr($log->workflowId) . '&action=edit')
-                            )
-                        ) . '</div>';
+                    $output .= '<div>' . esc_html(apply_filters('publishpress_notifications_event_label', $log->event, $log->event)) . '</div>';
 
                     if (! empty($actionParams)) {
                         $output .= '<div>' . $actionParams . '</div>';
@@ -501,7 +498,7 @@ class NotificationsLogTable extends WP_List_Table
         return [
             'cb' => '<input type="checkbox" />',
             'date' => __('Date', 'publishpress'),
-            'event' => __('When to notify?', 'publishpress'),
+            'event' => __('Notification', 'publishpress'),
             'content' => __('For which content?', 'publishpress'),
             'receiver' => __('Who to notify?', 'publishpress'),
             'status' => __('Status', 'publishpress'),
