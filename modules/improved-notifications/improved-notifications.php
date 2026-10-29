@@ -139,6 +139,9 @@ if (! class_exists('PP_Improved_Notifications')) {
                 // Workflow form
                 add_filter('get_sample_permalink_html', [$this, 'filter_get_sample_permalink_html_workflow'], 9, 5);
                 add_filter('post_row_actions', [$this, 'filter_row_actions'], 10, 2);
+                add_filter('manage_' . PUBLISHPRESS_NOTIF_POST_TYPE_WORKFLOW . '_posts_columns', [$this, 'workflow_enabled_column']);
+                add_action('manage_' . PUBLISHPRESS_NOTIF_POST_TYPE_WORKFLOW . '_posts_custom_column', [$this, 'render_workflow_enabled_column'], 10, 2);
+                add_action('admin_post_publishpress_toggle_workflow', [$this, 'toggle_workflow']);
                 add_action(
                     'add_meta_boxes_' . PUBLISHPRESS_NOTIF_POST_TYPE_WORKFLOW,
                     [$this, 'action_meta_boxes_workflow']
@@ -1120,6 +1123,45 @@ if (! class_exists('PP_Improved_Notifications')) {
             }
 
             return $return;
+        }
+
+        public function workflow_enabled_column($columns)
+        {
+            $columns['pp_enabled'] = __('Enabled', 'publishpress');
+            return $columns;
+        }
+
+        public function render_workflow_enabled_column($column, $post_id)
+        {
+            if ($column !== 'pp_enabled') {
+                return;
+            }
+            $enabled = get_post_meta($post_id, '_psppno_enabled', true) !== '0';
+            $label = $enabled ? __('Enabled', 'publishpress') : __('Disabled', 'publishpress');
+            if (!current_user_can('edit_post', $post_id)) {
+                echo esc_html($label);
+                return;
+            }
+            $url = wp_nonce_url(add_query_arg([
+                'action' => 'publishpress_toggle_workflow',
+                'workflow_id' => $post_id,
+                'enabled' => $enabled ? '0' : '1',
+            ], admin_url('admin-post.php')), 'publishpress-toggle-workflow');
+            printf('<a class="button" role="switch" aria-checked="%s" href="%s">%s</a>', $enabled ? 'true' : 'false', esc_url($url), esc_html($label));
+        }
+
+        public function toggle_workflow()
+        {
+            check_admin_referer('publishpress-toggle-workflow');
+            $post_id = isset($_GET['workflow_id']) ? absint($_GET['workflow_id']) : 0;
+            $enabled = isset($_GET['enabled']) ? sanitize_key($_GET['enabled']) : '';
+            if (get_post_type($post_id) !== PUBLISHPRESS_NOTIF_POST_TYPE_WORKFLOW
+                || !current_user_can('edit_post', $post_id) || !in_array($enabled, ['0', '1'], true)) {
+                wp_die(esc_html__('You cannot change this notification workflow.', 'publishpress'));
+            }
+            update_post_meta($post_id, '_psppno_enabled', $enabled);
+            wp_safe_redirect(admin_url('edit.php?post_type=' . PUBLISHPRESS_NOTIF_POST_TYPE_WORKFLOW));
+            exit;
         }
 
         public function filter_row_actions($actions, $post)

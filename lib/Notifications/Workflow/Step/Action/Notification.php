@@ -47,6 +47,9 @@ class Notification
      */
     public function send_notifications($workflow, $async = false)
     {
+        if (!$workflow->is_enabled()) {
+            return;
+        }
         // Who will receive the notification?
         $receivers = $workflow->get_receivers_by_channel();
 
