@@ -390,7 +390,10 @@ class Shortcodes
         // Get the post's info
         $info = [];
 
-        foreach ($attrs as $field) {
+        foreach ($attrs as $key => $field) {
+            if (in_array($key, ['separator', 'type', 'format'], true)) {
+                continue;
+            }
             $data = $this->get_post_field($post, $field, $attrs);
 
             if (false !== $data) {
@@ -502,8 +505,18 @@ class Shortcodes
                         }
 
                         $meta = get_post_meta($post->ID, $meta_name, true);
-                        if ($meta && is_scalar($meta)) {
-                            if ('meta-date' == $arr[0]) {
+                        if (is_scalar($meta) && $meta !== '') {
+                            if (($attrs['type'] ?? '') === 'date') {
+                                $timestamp = is_numeric($meta) ? (int) $meta : strtotime($meta);
+                                $result = $timestamp === false ? '' : date_i18n($attrs['format'] ?? get_option('date_format'), $timestamp);
+                            } elseif (($attrs['type'] ?? '') === 'user') {
+                                $user = get_user_by('ID', (int) $meta);
+                                $format = preg_replace('/^user\./', '', $attrs['format'] ?? 'display_name');
+                                $format = $format === 'user_email' ? 'email' : $format;
+                                $result = $user ? $this->get_user_field($user, $format, $attrs) : '';
+                            } elseif (($attrs['type'] ?? '') === 'filter' && !empty($attrs['format'])) {
+                                $result = apply_filters('publishpress_notif_meta_format_' . sanitize_key($attrs['format']), $meta, $post, $meta_name, $attrs);
+                            } elseif ('meta-date' == $arr[0]) {
                                 $result = date_i18n(get_option('date_format'), $meta);
                             } elseif ('meta-relationship' == $arr[0] || 'meta-post' == $arr[0]) {
                                 $rel_post = get_post((int)$meta);
