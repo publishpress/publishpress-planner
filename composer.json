@@ -12,8 +12,7 @@
   ],
   "minimum-stability": "dev",
   "prefer-stable": true,
-  "repositories": [
-  ],
+  "repositories": [],
   "require": {
     "php": ">=8.2"
   },
@@ -32,39 +31,22 @@
     "process-timeout": 7200
   },
   "scripts": {
-    "build": "build zip",
-    "build:dir": "build dir",
-    "build:clean": "build clean",
-    "info:versions": "bash ./dev-workspace/scripts/dependency-versions.sh",
-    "check:longpath": "longpath .",
-    "check:lint": "phplint",
-    "check:phpcs": "phpcs",
-    "gen:mo": "wp i18n make-mo ./languages ./languages --allow-root",
-    "gen:pot": "wp i18n make-pot . languages/publishpress.pot --domain=publishpress --exclude=dev-workspace,.wordpress-org,.github,dist,tests,vendor, --allow-root",
-    "pre-autoload-dump": "composer dumpautoload --working-dir=./lib",
-    "pre-update-cmd": "composer update --working-dir=./lib",
-    "pre-install-cmd": "composer install --working-dir=./lib",
-    "translate": "vendor/bin/publishpress-translate",
-    "translate:dry-run": "vendor/bin/publishpress-translate --dry-run",
-    "translate:download": "vendor/bin/publishpress-translate --download",
-    "translate:upload": "vendor/bin/publishpress-translate --upload",
-    "translate:custom": "vendor/bin/publishpress-translate --languages",
-    "translate:force": "vendor/bin/publishpress-translate --force",
-    "translate:force-custom": "vendor/bin/publishpress-translate --force --languages",
-    "translate:compile": [
-        "@translate:mo",
-        "@translate:json",
-        "@translate:php"
-    ],
-    "translate:pot": "wp i18n make-pot . ./languages/publishpress.pot --domain=publishpress --exclude=dev-workspace,.wordpress-org,.github,dist,tests,lib,tmp,doc,*.js,*.js.map --allow-root",
-    "translate:mo": "wp i18n make-mo ./languages ./languages --allow-root",
-    "translate:json": "bash ./dev-workspace/scripts/lang-make-json.sh",
-    "translate:php": "wp i18n make-php ./languages --allow-root",
-    "translate:repair-plurals": "php vendor/bin/publishpress-translate --repair-plurals"
+    "info:version": "@info:versions",
+    "build:dir": "@pack:dir",
+    "build:clean": "@pack:clean",
+    "check:phpcs": "@lint:phpcs",
+    "pre-autoload-dump": "@composer dumpautoload --working-dir=./lib",
+    "pre-update-cmd": "@composer update --working-dir=./lib",
+    "pre-install-cmd": "@composer install --working-dir=./lib",
+    "term": "bash ./vendor/publishpress/dev-workspace/scripts/run.sh"
   },
   "extra": {
     "plugin-name": "publishpress-planner",
     "plugin-slug": "publishpress",
-    "plugin-folder": "publishpress"
+    "plugin-folder": "publishpress",
+    "version-constant": "PUBLISHPRESS_VERSION",
+    "plugin-lang-domain": "publishpress",
+    "plugin-github-repo": "publishpress/publishpress-planner",
+    "plugin-composer-package": "publishpress/publishpress-planner"
   }
 }

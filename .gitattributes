@@ -13,6 +13,7 @@
 .babelrc export-ignore
 .distignore export-ignore
 .editorconfig export-ignore
+.env export-ignore
 .env.example export-ignore
 .git export-ignore
 .gitattributes export-ignore

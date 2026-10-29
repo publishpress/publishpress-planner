@@ -32,3 +32,6 @@
 
 - .web
 - .ddev
+- .agents
+- .aws
+- .codex
