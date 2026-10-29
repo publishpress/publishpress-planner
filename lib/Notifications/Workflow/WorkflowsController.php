@@ -174,6 +174,7 @@ class WorkflowsController
 
         // Who
         $classes_receiver = [
+            '\\PublishPress\\Notifications\\Workflow\\Step\\Receiver\\Email_Metadata',
             '\\PublishPress\\Notifications\\Workflow\\Step\\Receiver\\Site_Admin',
             '\\PublishPress\\Notifications\\Workflow\\Step\\Receiver\\Author',
             '\\PublishPress\\Notifications\\Workflow\\Step\\Receiver\\RevisionAuthor',
