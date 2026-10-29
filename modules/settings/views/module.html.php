@@ -12,7 +12,7 @@
 
         <form
                 method="GET"
-                action="<?php echo esc_attr($context['form_action']); ?>">
+                action="<?php echo esc_url($context['form_action']); ?>">
 
             <h4><?php echo esc_html($context['title']); ?></h4>
             <p><?php echo esc_html($context['description']); ?></p>

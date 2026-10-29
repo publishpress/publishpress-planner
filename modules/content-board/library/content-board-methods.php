@@ -45,8 +45,8 @@ if (! class_exists('PP_Board_Methods')) {
                 $response['content'] = esc_html__('Invalid form request.', 'publishpress');
             } else {
                 $post_status  = sanitize_text_field($_POST['post_status']);
-                $schedule_number = (int) $_POST['schedule_number'];
-                $schedule_period = sanitize_text_field($_POST['schedule_period']);
+                $schedule_number = isset($_POST['schedule_number']) ? (int) $_POST['schedule_number'] : 1;
+                $schedule_period = isset($_POST['schedule_period']) ? sanitize_text_field(wp_unslash($_POST['schedule_period'])) : 'day';
                 $post_id      = (int) $_POST['post_id'];
                 $post_data    = get_post($post_id);
                 if (!is_object($post_data) || !isset($post_data->post_type)) {
@@ -83,7 +83,7 @@ if (! class_exists('PP_Board_Methods')) {
                             ];
                             $publishpress->update_module_option($this->module->name, 'content_board_scheduled_date', $content_board_scheduled_date);
 
-                            $future_date = date('Y-m-d H:i:s', $timestamp);
+                            $future_date = wp_date('Y-m-d H:i:s', $timestamp);
 
                             $post_args['post_date'] = $future_date;
                             $post_args['post_date_gmt'] = get_gmt_from_date($future_date);
@@ -195,12 +195,12 @@ if (! class_exists('PP_Board_Methods')) {
 
                     // set post date
                     if ( ! empty( $_POST['mm'] ) ) {
-                        $aa = sanitize_text_field($_POST['aa']);
+                        $aa = isset($_POST['aa']) ? (int) $_POST['aa'] : 0;
                         $mm = sanitize_text_field($_POST['mm']);
-                        $jj = sanitize_text_field($_POST['jj']);
-                        $hh = sanitize_text_field($_POST['hh']);
-                        $mn = sanitize_text_field($_POST['mn']);
-                        $ss = sanitize_text_field($_POST['ss']);
+                        $jj = isset($_POST['jj']) ? (int) $_POST['jj'] : 0;
+                        $hh = isset($_POST['hh']) ? (int) $_POST['hh'] : 0;
+                        $mn = isset($_POST['mn']) ? (int) $_POST['mn'] : 0;
+                        $ss = isset($_POST['ss']) ? (int) $_POST['ss'] : 0;
                         $aa = ( $aa <= 0 ) ? gmdate( 'Y' ) : $aa;
                         $mm = ( $mm <= 0 ) ? gmdate( 'n' ) : $mm;
                         $jj = ( $jj > 31 ) ? 31 : $jj;
@@ -299,13 +299,13 @@ if (! class_exists('PP_Board_Methods')) {
 
             $date_format = 'Y-m-d';
             $user_filters['start_date'] = $use_today_as_start_date
-                ? date($date_format, strtotime('-5 weeks'))
-                : date($date_format, strtotime(sanitize_text_field($_REQUEST['pp-content-board-start-date_hidden']))); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+                ? gmdate($date_format, strtotime('-5 weeks'))
+                : gmdate($date_format, strtotime(sanitize_text_field($_REQUEST['pp-content-board-start-date_hidden'])));
 
-            $user_filters['end_date'] = $_REQUEST['pp-content-board-end-date_hidden'];
+            $user_filters['end_date'] = isset($_REQUEST['pp-content-board-end-date_hidden']) ? sanitize_text_field(wp_unslash($_REQUEST['pp-content-board-end-date_hidden'])) : '';
 
             if ($use_today_as_start_date || (empty(trim($user_filters['end_date']))) || (strtotime($user_filters['start_date']) > strtotime($user_filters['end_date']))) {
-                $user_filters['end_date'] = date($date_format, strtotime($user_filters['start_date'] . ' +10 weeks'));
+                $user_filters['end_date'] = gmdate($date_format, strtotime($user_filters['start_date'] . ' +10 weeks'));
             }
 
             $this->update_user_meta($current_user->ID, self::USERMETA_KEY_PREFIX . 'filters', $user_filters);

@@ -12,7 +12,7 @@
                     name="<?php echo esc_attr($context['input_name']); ?>" id="<?php echo esc_attr($context['input_id']); ?>">
                 <?php foreach ($context['groups'] as $group => $group_object) : ?>
                     <?php $selected = isset($group_object->selected) ? $group_object->selected : false; ?>
-                    <option value="<?php echo esc_attr($group); ?>" <?php selected($selected, true); ?>><?php echo $group_object->name; ?></option>
+                    <option value="<?php echo esc_attr($group); ?>" <?php selected($selected, true); ?>><?php echo esc_html($group_object->name); ?></option>
                 <?php endforeach; ?>
             </select>
         <?php endif; ?>

@@ -24,6 +24,7 @@
     "babel-preset-minify": "^0.5.0",
     "cross-env": "^5.2.1",
     "css-loader": "^7.0.0",
+    "deepmerge": "file:tools/deepmerge",
     "ini": "^2.0.0",
     "jest": "^29.7.0",
     "less": "^4.0.0",
@@ -42,9 +43,13 @@
     "build-dev": "cross-env NODE_ENV=development webpack",
     "build": "cross-env NODE_ENV=production webpack",
     "test": "jest",
-    "makepot": "wp i18n make-pot . ./languages/publishpress.pot --domain=publishpress"
+    "makepot": "wp i18n make-pot . ./languages/publishpress.pot --domain=publishpress",
+    "test:security": "node --test tests/security/*.test.cjs"
   },
   "dependencies": {
     "dompurify": "^3.4.17"
+  },
+  "overrides": {
+    "deepmerge": "$deepmerge"
   }
 }

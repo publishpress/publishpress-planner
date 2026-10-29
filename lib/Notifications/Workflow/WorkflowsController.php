@@ -60,6 +60,7 @@ class WorkflowsController
                 }
             }
         } catch (\Exception $e) {
+            // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log -- Log a notification delivery failure for diagnostics.
             error_log(
                 sprintf(
                     '[PublishPress Notifications] Exception: %s, %s',
@@ -89,7 +90,7 @@ class WorkflowsController
 
         // Build the query
         $query_args = [
-            'nopaging'               => true,
+            'nopaging'               => true, // phpcs:ignore WordPressVIPMinimum.Performance.NoPaging.nopaging_nopaging -- Every matching workflow must run; pagination would omit notifications.
             'post_type'              => PUBLISHPRESS_NOTIF_POST_TYPE_WORKFLOW,
             'post_status'            => 'publish',
             'no_found_rows'          => true,
@@ -293,7 +294,7 @@ class WorkflowsController
 
         // Build the query
         $query_args = [
-            'nopaging'      => true,
+            'nopaging'      => true, // phpcs:ignore WordPressVIPMinimum.Performance.NoPaging.nopaging_nopaging -- Return all matching workflow definitions, not a partial page.
             'post_type'     => PUBLISHPRESS_NOTIF_POST_TYPE_WORKFLOW,
             'post_status'   => 'publish',
             'no_found_rows' => true,

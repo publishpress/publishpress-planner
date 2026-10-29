@@ -244,7 +244,7 @@ function publishpress_planner_load_plugin() {
              */
             public function action_init()
             {
-                load_plugin_textdomain('publishpress', null, plugin_basename(PUBLISHPRESS_BASE_PATH) . '/languages/');
+                load_plugin_textdomain('publishpress', false, plugin_basename(PUBLISHPRESS_BASE_PATH) . '/languages/');
 
                 $this->load_modules();
 
@@ -1005,7 +1005,7 @@ function publishpress_planner_load_plugin() {
                         }
                     }
 
-                    $submenu[$parentMenuSlug] = $newSubmenu;
+                    $submenu[$parentMenuSlug] = $newSubmenu; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- WordPress exposes submenu ordering through this global.
                 }
 
                 return $menu_ord;
@@ -1499,7 +1499,7 @@ function publishpress_planner_load_plugin() {
                         esc_html($message)
                     );
 
-                    echo "<div class='notice notice-error is-dismissible' style='color:black'><p>" . $msg . '</p></div>';
+                    echo "<div class='notice notice-error is-dismissible' style='color:black'><p>" . wp_kses_post($msg) . '</p></div>';
                 },
                 5
             );

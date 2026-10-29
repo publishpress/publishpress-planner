@@ -575,7 +575,7 @@ class PP_Content_Board extends PP_Module
         }
 
         if (! $user_filters['end_date']) {
-            $user_filters['end_date'] = date('Y-m-d', strtotime($user_filters['start_date'] . ' +10 weeks'));
+            $user_filters['end_date'] = gmdate('Y-m-d', strtotime($user_filters['start_date'] . ' +10 weeks'));
         }
 
         if (!empty($user_filters['me_mode'])) {
@@ -1061,7 +1061,7 @@ class PP_Content_Board extends PP_Module
                             <p class="description">'. esc_html__("This is the default publish date from today for posts moving to the Scheduled status.", "publishpress") .'</p>
                        
                             <div class="filter-apply">
-                                <input type="submit" id="filter-submit" class="button button-primary" value="'. esc_html__("Apply", "publishpress") .'">
+                                <input type="submit" id="filter-submit" class="button button-primary" value="'. esc_attr__("Apply", "publishpress") .'">
                             </div>
                         </div>
                     </div>';

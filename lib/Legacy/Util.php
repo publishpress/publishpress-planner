@@ -161,7 +161,7 @@ class Util
             }
         }
 
-        if (isset($_POST) && !empty($_POST)) {
+        if (isset($_POST) && !empty($_POST)) { // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Detect the HTTP method only; no request data is processed.
             return 'POST';
         }
 

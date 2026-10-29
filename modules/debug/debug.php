@@ -369,7 +369,7 @@ if (! class_exists('PP_Debug')) {
 
             if ($action === self::ACTION_DELETE_LOG) {
                 if (file_exists($this->path)) {
-                    unlink($this->path); // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_unlink
+                    wp_delete_file($this->path);
                 }
             }
 

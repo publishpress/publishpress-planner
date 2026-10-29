@@ -56,6 +56,13 @@ if (! class_exists('PP_Editorial_Metadata_Utilities')) {
          */
         public static function render_admin_page($args)
         {
+            if (!empty($_POST)) {
+                $nonce = isset($_POST['_wpnonce']) ? sanitize_text_field(wp_unslash($_POST['_wpnonce'])) : '';
+                if (!wp_verify_nonce($nonce, 'editorial-metadata-edit-nonce') && !wp_verify_nonce($nonce, 'edit-publishpress-settings')) {
+                    wp_die(esc_html__('Invalid request.', 'publishpress'));
+                }
+            }
+
             $publishpress           = $args['publishpress'];
             $edited_term            = $args['edited_term'];
             $current_module         = $args['module'];
@@ -105,7 +112,7 @@ if (! class_exists('PP_Editorial_Metadata_Utilities')) {
                 $term_id = (int)$_GET['term-id'];
                 $term = $edited_term;
                 if (! $term) {
-                    echo '<div class="error"><p>' . $current_module->messages['term-missing'] . '</p></div>';
+                    echo '<div class="error"><p>' . esc_html($current_module->messages['term-missing']) . '</p></div>';
                     return;
                 }
                 $type = $term->type;
@@ -133,7 +140,7 @@ if (! class_exists('PP_Editorial_Metadata_Utilities')) {
                 } else {
                     $show_in_calendar_form = 'no';
                 }
-                $show_in_calendar_form = (isset($_POST['show_in_calendar_form'])) ? stripslashes($_POST['show_in_calendar_form']) : $show_in_calendar_form;
+                $show_in_calendar_form = (isset($_POST['show_in_calendar_form'])) ? sanitize_key(wp_unslash($_POST['show_in_calendar_form'])) : $show_in_calendar_form;
                 ?>
 
                 <form method='post' action="<?php
@@ -282,13 +289,13 @@ if (! class_exists('PP_Editorial_Metadata_Utilities')) {
                                                         type="text" 
                                                         name="metadata_select_options[values][]" 
                                                         value="<?php echo esc_attr($value); ?>"
-                                                        placeholder="<?php esc_html_e('Meta Value', 'publishpress'); ?>"
+                                                        placeholder="<?php esc_attr_e('Meta Value', 'publishpress'); ?>"
                                                     />
                                                     <input class="entry-field label-field" 
                                                         autocomplete="off"
                                                         type="text" name="metadata_select_options[labels][]" 
                                                         value="<?php echo esc_attr($option_labels[$index]); ?>"
-                                                        placeholder="<?php esc_html_e('Display Label', 'publishpress'); ?>"
+                                                        placeholder="<?php esc_attr_e('Display Label', 'publishpress'); ?>"
                                                     />
                                                     <label class="select_dropdown_default_label">
                                                         <input type="radio"
@@ -313,13 +320,13 @@ if (! class_exists('PP_Editorial_Metadata_Utilities')) {
                                                     type="text" 
                                                     name="metadata_select_options[values][]" 
                                                     value=""
-                                                    placeholder="<?php esc_html_e('Meta Value', 'publishpress'); ?>"
+                                                    placeholder="<?php esc_attr_e('Meta Value', 'publishpress'); ?>"
                                                 />
                                                 <input class="entry-field label-field" 
                                                     autocomplete="off"
                                                     type="text" name="metadata_select_options[labels][]" 
                                                     value=""
-                                                    placeholder="<?php esc_html_e('Display Label', 'publishpress'); ?>"
+                                                    placeholder="<?php esc_attr_e('Display Label', 'publishpress'); ?>"
                                                 />
                                                 <label class="select_dropdown_default_label">
                                                     <input type="radio"
@@ -593,13 +600,13 @@ if (! class_exists('PP_Editorial_Metadata_Utilities')) {
                                                                     type="text" 
                                                                     name="metadata_select_options[values][]" 
                                                                     value="<?php echo esc_attr($value); ?>"
-                                                                    placeholder="<?php esc_html_e('Meta Value', 'publishpress'); ?>"
+                                                                    placeholder="<?php esc_attr_e('Meta Value', 'publishpress'); ?>"
                                                                 />
                                                                 <input class="entry-field label-field" 
                                                                     autocomplete="off"
                                                                     type="text" name="metadata_select_options[labels][]" 
                                                                     value="<?php echo esc_attr($option_labels[$index]); ?>"
-                                                                    placeholder="<?php esc_html_e('Display Label', 'publishpress'); ?>"
+                                                                    placeholder="<?php esc_attr_e('Display Label', 'publishpress'); ?>"
                                                                 />
                                                                 <label class="select_dropdown_default_label">
                                                                     <input type="radio"
@@ -624,13 +631,13 @@ if (! class_exists('PP_Editorial_Metadata_Utilities')) {
                                                                 type="text" 
                                                                 name="metadata_select_options[values][]" 
                                                                 value=""
-                                                                placeholder="<?php esc_html_e('Meta Value', 'publishpress'); ?>"
+                                                                placeholder="<?php esc_attr_e('Meta Value', 'publishpress'); ?>"
                                                             />
                                                             <input class="entry-field label-field" 
                                                                 autocomplete="off"
                                                                 type="text" name="metadata_select_options[labels][]" 
                                                                 value=""
-                                                                placeholder="<?php esc_html_e('Display Label', 'publishpress'); ?>"
+                                                                placeholder="<?php esc_attr_e('Display Label', 'publishpress'); ?>"
                                                             />
                                                             <label class="select_dropdown_default_label">
                                                                 <input type="radio"
@@ -662,7 +669,7 @@ if (! class_exists('PP_Editorial_Metadata_Utilities')) {
                                         $current_show_in_calendar_form = (isset($_POST['show_in_calendar_form']) && in_array(
                                                 $_POST['show_in_calendar_form'],
                                                 array_keys($show_in_calendar_form_options)
-                                            )) ? $_POST['show_in_calendar_form'] : 'no'; ?>
+                                            )) ? sanitize_key(wp_unslash($_POST['show_in_calendar_form'])) : 'no'; ?>
                                         <?php
                                         echo '<input id="show_in_calendar_form" name="show_in_calendar_form"';
                                         checked($current_show_in_calendar_form, 'yes', true);

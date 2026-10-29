@@ -57,7 +57,7 @@ if (! class_exists('Editorial_Metadata_Input_Location_Handler')) {
             parent::renderInput($inputOptions, $value);
 
             if (! empty($value)) {
-                echo self::generateMapLinkWithLocation($value);
+                echo wp_kses_post(self::generateMapLinkWithLocation($value));
             }
         }
 
@@ -106,7 +106,7 @@ if (! class_exists('Editorial_Metadata_Input_Location_Handler')) {
                 $input_name
             );
 
-            echo self::generateDescriptionHtml($input_description);
+            echo wp_kses_post(self::generateDescriptionHtml($input_description));
 
             if (mb_strlen((string)$value) > 0) {
                 printf(
@@ -114,7 +114,7 @@ if (! class_exists('Editorial_Metadata_Input_Location_Handler')) {
                     esc_html($value)
                 );
 
-                echo self::generateMapLinkWithLocation($value);
+                echo wp_kses_post(self::generateMapLinkWithLocation($value));
             } else {
                 self::renderValuePlaceholder();
             }

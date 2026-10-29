@@ -145,6 +145,6 @@ class Error implements ErrorHandlerInterface
      */
     public function wpDie($code)
     {
-        wp_die($this->getWpError($code), $code);
+        wp_die($this->getWpError($code), esc_html($code)); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- The WP_Error object is handled by WordPress's wp_die error handler.
     }
 }
