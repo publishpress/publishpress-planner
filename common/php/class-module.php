@@ -1092,6 +1092,86 @@ if (!class_exists('PP_Module')) {
             return $return;
         }
 
+        public function get_calendar_modal_fields_html($post, $can_edit_post)
+        {
+            $fields = apply_filters('publishpress_calendar_modal_fields', [], $post);
+            $html = '';
+            foreach ($fields as $name => $field) {
+                $type = $field['type'] ?? 'text';
+                $meta_key = $field['meta_key'] ?? '';
+                $value = $meta_key ? get_post_meta($post->ID, $meta_key, true) : ($field['value'] ?? '');
+                if (!is_scalar($value)) {
+                    continue;
+                }
+                $editable = $can_edit_post && $meta_key && empty($field['readonly'])
+                    && current_user_can('edit_post_meta', $post->ID, $meta_key);
+                $id = 'pp-modal-custom-' . sanitize_key($name);
+                $html .= '<div class="modal-custom-field"><label class="info-item" for="' . esc_attr($id) . '">' . esc_html($field['label'] ?? $name) . '</label><span class="info-item">';
+                $attributes = ' id="' . esc_attr($id) . '" data-pp-modal-field="' . esc_attr($name) . '"';
+                if (!$editable) {
+                    $display = $type === 'select' ? ($field['options'][$value] ?? $value) : $value;
+                    $html .= esc_html((string) $display);
+                } elseif ($type === 'textarea') {
+                    $html .= '<textarea' . $attributes . '>' . esc_textarea($value) . '</textarea>';
+                } elseif ($type === 'select') {
+                    $html .= '<select' . $attributes . '>';
+                    foreach (($field['options'] ?? []) as $option => $label) {
+                        $html .= '<option value="' . esc_attr($option) . '" ' . selected((string) $value, (string) $option, false) . '>' . esc_html($label) . '</option>';
+                    }
+                    $html .= '</select>';
+                } elseif ($type === 'checkbox') {
+                    $html .= '<input type="checkbox"' . $attributes . ' value="1" ' . checked(!empty($value), true, false) . ' />';
+                } else {
+                    $type = $type === 'number' ? 'number' : 'text';
+                    $html .= '<input type="' . esc_attr($type) . '"' . $attributes . ' value="' . esc_attr($value) . '" />';
+                }
+                $html .= '</span></div>';
+            }
+            return $html;
+        }
+
+        public function save_calendar_modal_fields($post_id)
+        {
+            // Only save allowlisted fields during a successful Calendar Pro post update.
+            if (!isset($_POST['nonce'])
+                || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'])), 'publishpress-calendar-get-data')) {
+                return;
+            }
+            if (!wp_doing_ajax()
+                || !isset($_POST['action'])
+                || sanitize_key($_POST['action']) !== 'publishpress_content_calendar_update_post'
+                || !isset($_POST['nonce'], $_POST['post_id'], $_POST['custom_fields'])
+                || !is_array($_POST['custom_fields'])
+                || absint($_POST['post_id']) !== (int) $post_id
+                || !current_user_can('edit_post', $post_id)) {
+                return;
+            }
+            $post = get_post($post_id);
+            $fields = apply_filters('publishpress_calendar_modal_fields', [], $post);
+            // Values are sanitized by field type after rejecting non-scalar inputs below.
+            $submitted = wp_unslash($_POST['custom_fields']); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+            foreach ($fields as $name => $field) {
+                if (empty($field['meta_key']) || !empty($field['readonly'])
+                    || !array_key_exists($name, $submitted) || !is_scalar($submitted[$name])
+                    || !current_user_can('edit_post_meta', $post_id, $field['meta_key'])) {
+                    continue;
+                }
+                $type = $field['type'] ?? 'text';
+                $value = $submitted[$name];
+                if ($type === 'select' && !array_key_exists($value, $field['options'] ?? [])) {
+                    continue;
+                }
+                if ($type === 'number' && $value !== '' && !is_numeric($value)) {
+                    continue;
+                }
+                $value = $type === 'textarea' ? sanitize_textarea_field($value) : sanitize_text_field($value);
+                if ($type === 'checkbox') {
+                    $value = $value === '1' ? '1' : '0';
+                }
+                update_post_meta($post_id, $field['meta_key'], $value);
+            }
+        }
+
         public function localize_post_data($localized_post_data, $post, $can_edit_post) {
             global $publishpress;
 
@@ -1125,6 +1205,7 @@ if (!class_exists('PP_Module')) {
                 'status_options'   => $this->getUserAuthorizedPostStatusOptions($post->post_type, $post),
                 'status_field_label'   => (function_exists('rvy_in_revision_workflow') && rvy_in_revision_workflow($post->ID)) ? esc_html__('Revision Status', 'publishpress') : esc_html__('Post Status', 'publishpress'),
                 'can_edit_post'    => $can_edit_post ? 1 : 0,
+                'custom_fields_html' => $this->get_calendar_modal_fields_html($post, $can_edit_post),
                 'date_markup'      => $can_edit_post ? $this->get_date_markup($post) : get_the_time(get_option("date_format"), $post->ID) . " " . get_the_time(get_option("time_format"), $post->ID),
                 'action_links'     => $this->get_post_action_links($post, $can_edit_post),
                 'author_markup'    => $this->get_author_markup($post, $can_edit_post),

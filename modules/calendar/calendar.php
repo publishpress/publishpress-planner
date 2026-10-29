@@ -341,6 +341,7 @@ if (! class_exists('PP_Calendar')) {
                 add_action('wp_ajax_publishpress_calendar_get_post_data', [$this, 'getPostData']);
                 add_action('wp_ajax_publishpress_calendar_get_post_type_fields', [$this, 'getPostTypeFields']);
                 add_action('wp_ajax_publishpress_calendar_create_item', [$this->content_calendar_methods, 'createItem']);
+                add_action('post_updated', [$this, 'save_calendar_modal_fields']);
 
                 // Action to regenerate the calendar feed secret
                 add_action('admin_init', [$this->content_calendar_methods, 'handle_regenerate_calendar_feed_secret']);
