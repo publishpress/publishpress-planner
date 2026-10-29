@@ -224,6 +224,12 @@ export function updateModalPost(e, button, handleRefreshOnClick) {
         var tax_html = jQuery(this);
         post_taxonomies[tax_html.attr('data-taxonomy')] = tax_html.val();
     });
+    var custom_fields = {};
+    modal_form.find('[data-pp-modal-field]').each(function () {
+        var input = jQuery(this);
+        custom_fields[input.attr('data-pp-modal-field')] = input.is(':checkbox')
+            ? (input.prop('checked') ? '1' : '0') : input.val();
+    });
     var data = {
         action: "publishpress_content_calendar_update_post",
         post_id: post_id,
@@ -232,6 +238,7 @@ export function updateModalPost(e, button, handleRefreshOnClick) {
         post_author: post_author,
         post_status: post_status,
         post_taxonomies: post_taxonomies,
+        custom_fields: custom_fields,
         nonce: publishpressCalendarParams.nonce
     };
     
@@ -421,6 +428,7 @@ export function openPostModal(post_id) {
             };
         }
 
+        popup_content += post.custom_fields_html || '';
         popup_content += '</div>';
 
         popup_content += '<div class="fixed-footer">';
