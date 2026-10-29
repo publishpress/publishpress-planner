@@ -1121,7 +1121,7 @@ if (!class_exists('PP_Module')) {
                 'raw_title'        => $post->post_title,
                 'filtered_title'   => isset($post->filtered_title) ? $post->filtered_title : $post->post_title,
                 'post_status'      => (function_exists('rvy_in_revision_workflow') && rvy_in_revision_workflow($post->ID)) ? $post->post_mime_type : $post->post_status,
-                'status_label'     => $this->get_post_status_friendly_name($post->post_status),
+                'status_label'     => $this->get_post_status_friendly_name($post->post_status, $post),
                 'status_options'   => $this->getUserAuthorizedPostStatusOptions($post->post_type, $post),
                 'status_field_label'   => (function_exists('rvy_in_revision_workflow') && rvy_in_revision_workflow($post->ID)) ? esc_html__('Revision Status', 'publishpress') : esc_html__('Post Status', 'publishpress'),
                 'can_edit_post'    => $can_edit_post ? 1 : 0,

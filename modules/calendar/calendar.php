@@ -1639,19 +1639,6 @@ if (! class_exists('PP_Calendar')) {
             return $postTypeObj->label;
         }
 
-        private function getPostStatusName($postStatusSlug)
-        {
-            $postStatuses = $this->get_post_statuses();
-
-            foreach ($postStatuses as $postStatus) {
-                if ($postStatus->slug === $postStatusSlug) {
-                    return $postStatus->label;
-                }
-            }
-
-            return null;
-        }
-
         private function getPostTerms($postId, $taxonomy)
         {
             $terms = wp_get_post_terms($postId, $taxonomy);
@@ -1697,7 +1684,7 @@ if (! class_exists('PP_Calendar')) {
             $args['post']   = $post;
             $args['type'] = $this->getPostTypeName($post->post_type);
             $args['date'] = get_the_date(get_option('date_format', 'Y-m-d H:i:s'), $post);
-            $args['status'] = $this->getPostStatusName($post->post_status);
+            $args['status'] = $this->get_post_status_friendly_name($post->post_status, $post);
             $args['categories']   = $this->getPostCategoriesNames($id);
             $args['tags']   = $this->getPostTagsNames($id);
 

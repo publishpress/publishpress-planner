@@ -1645,6 +1645,12 @@ class PP_Content_Overview extends PP_Module
         }
 
         switch ($column_name) {
+            case 'revision_status':
+                if (function_exists('rvy_in_revision_workflow') && rvy_in_revision_workflow($post)) {
+                    return esc_html($this->get_post_status_friendly_name($post->post_status, $post));
+                }
+
+                return '&mdash;';
             case 'post_status':
                 $status_name = $this->get_post_status_friendly_name($post->post_status, $post);
 
