@@ -960,8 +960,6 @@ function publishpress_planner_load_plugin() {
                     if (isset($itemsToSort[$menuItemNotificationsLog]) && ! is_null(
                             $itemsToSort[$menuItemNotificationsLog]
                         )) {
-                        $newSubmenu[] = $currentSubmenu[$itemsToSort[$menuItemNotificationsLog]];
-
                         unset($currentSubmenu[$itemsToSort[$menuItemNotificationsLog]]);
                     }
 
