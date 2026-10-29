@@ -50,6 +50,7 @@
         setupFieldFilters('user');
         setupFieldFilters('role');
         setupFieldFilters('group');
+        setupFieldFilters('receiver_user_metadata');
 
         function getEditor() {
             var editor = tinymce.activeEditor;
