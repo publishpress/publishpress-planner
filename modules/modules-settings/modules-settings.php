@@ -72,12 +72,42 @@ if (! class_exists('PP_Modules_Settings')) {
             if (is_admin()) {
                 add_action('admin_init', [$this, 'register_settings']);
                 add_action('admin_enqueue_scripts', [$this, 'add_admin_scripts']);
+                add_action('current_screen', [$this, 'register_post_view_links']);
             }
         }
 
         /**
          * Load any of the admin scripts we need but only on the pages we need them
          */
+        public function register_post_view_links($screen)
+        {
+            if ($screen->base === 'edit' && $screen->post_type !== 'psppnotif_workflow') {
+                add_filter('views_' . $screen->id, [$this, 'post_view_links']);
+            }
+        }
+
+        public function post_view_links($views)
+        {
+            global $publishpress;
+            $post_type = get_current_screen()->post_type;
+            $targets = [
+                'calendar' => ['pp-calendar', 'pp_view_calendar', __('Calendar', 'publishpress')],
+                'content_overview' => ['pp-content-overview', 'pp_view_content_overview', __('Content Overview', 'publishpress')],
+                'content_board' => ['pp-content-board', 'pp_view_content_board', __('Content Board', 'publishpress')],
+            ];
+            foreach ($targets as $name => [$page, $capability, $label]) {
+                $module = $publishpress->modules->$name ?? null;
+                if (!$module || ($module->options->enabled ?? 'off') !== 'on'
+                    || !current_user_can(apply_filters($capability . '_cap', $capability))
+                    || !in_array($post_type, $this->get_post_types_for_module($module), true)) {
+                    continue;
+                }
+                $url = add_query_arg(['page' => $page, 'post_type' => $post_type], admin_url('admin.php'));
+                $views[$page] = '<a href="' . esc_url($url) . '">' . esc_html($label) . '</a>';
+            }
+            return $views;
+        }
+
         public function add_admin_scripts()
         {
             global $pagenow;
