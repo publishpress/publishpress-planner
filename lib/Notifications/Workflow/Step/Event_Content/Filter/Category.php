@@ -55,15 +55,23 @@ class Category extends Base implements Filter_Interface
 
         $metadata = (array)$this->get_metadata(static::META_KEY_CATEGORY);
 
+        $categories_by_id = [];
+        foreach ($categories as $category) {
+            $categories_by_id[$category->term_id] = $category;
+        }
+
         $options = [];
         foreach ($categories as $category) {
             $options[] = [
                 'value'    => esc_attr($category->slug),
-                'label'    => esc_html($category->name),
+                'label'    => esc_html($this->get_term_path($category, $categories_by_id)),
                 'selected' => in_array($category->slug, $metadata),
             ];
         }
 
+        usort($options, static function ($a, $b) {
+            return strnatcasecmp($a['label'], $b['label']);
+        });
         return $options;
     }
 

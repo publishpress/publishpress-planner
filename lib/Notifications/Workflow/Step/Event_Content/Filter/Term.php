@@ -62,11 +62,19 @@ class Term extends Base implements Filter_Interface
 
         $metadata = (array)$this->get_metadata(static::META_KEY_TERM);
 
+        if (is_wp_error($terms)) {
+            return [];
+        }
+        $terms_by_id = [];
+        foreach ($terms as $term) {
+            $terms_by_id[$term->term_id] = $term;
+        }
+
         $options = [];
         foreach ($terms as $term) {
             $options[] = [
                 'value'    => $term->term_id,
-                'label'    => $term->taxonomy . '/' . $term->name,
+                'label'    => $term->taxonomy . '/' . $this->get_term_path($term, $terms_by_id),
                 'selected' => in_array($term->term_id, $metadata),
             ];
         }
