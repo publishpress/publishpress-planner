@@ -44,6 +44,7 @@
 
         setupFieldFilters('event_post_save');
         setupFieldFilters('event_content_post_type');
+        setupFieldFilters('event_content_posts');
         setupFieldFilters('event_content_category');
         setupFieldFilters('event_content_taxonomy');
         setupFieldFilters('event_taxonomy_update');
