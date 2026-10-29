@@ -125,6 +125,8 @@ class WorkflowsController
     {
         // Options
         $classes_options = [
+            '\\PublishPress\\Notifications\\Workflow\\Option\\RequireReadAccess',
+            '\\PublishPress\\Notifications\\Workflow\\Option\\RequireEditAccess',
             '\\PublishPress\\Notifications\\Workflow\\Option\\SkipUser',
         ];
         /**
