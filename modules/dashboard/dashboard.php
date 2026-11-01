@@ -192,12 +192,23 @@ if (! class_exists('PP_Dashboard')) {
          *
          * @todo Support custom post types
          */
+        /** Return the native unpublished status counts used by the dashboard widget. */
+        public function getPostStatusCounts()
+        {
+            $counts = wp_count_posts('post');
+            $items = [];
+            foreach (apply_filters('pp_dashboard_post_status_widget_statuses', $this->get_unpublished_post_statuses()) as $status) {
+                $items[] = ['status' => $status->slug, 'label' => !empty($status->label) ? $status->label : $status->name,
+                    'count' => (int) ($counts->{$status->slug} ?? 0)];
+            }
+            return $items;
+        }
+
         public function post_status_widget()
         {
             global $publishpress;
 
-            $statuses = $this->get_unpublished_post_statuses();
-            $statuses = apply_filters('pp_dashboard_post_status_widget_statuses', $statuses);
+            $statuses = $this->getPostStatusCounts();
 
             // If custom statuses are enabled, we'll output a link to edit the terms just below the post counts
             if ($this->module_enabled('custom_status')) {
@@ -214,31 +225,22 @@ if (! class_exists('PP_Dashboard')) {
                 <table>
                     <tbody>
                     <?php
-                    $post_count = wp_count_posts('post'); ?>
-
-                    <?php
                     foreach ($statuses as $status) : ?>
                         <?php
-                        $filter_link = $this->filter_posts_link($status->slug); ?>
+                        $filter_link = $this->filter_posts_link($status['status']); ?>
                         <tr>
                             <td class="b">
                                 <a href="<?php
                                 echo esc_url($filter_link); ?>">
                                     <?php
-                                    $slug = $status->slug;
-
-                                    if (isset($post_count->$slug)) {
-                                        echo esc_html($post_count->$slug);
-                                    } else {
-                                        echo 0;
-                                    } ?>
+                                    echo esc_html($status['count']); ?>
                                 </a>
                             </td>
                             <td>
                                 <a href="<?php
                                 echo esc_url($filter_link); ?>">
                                     <?php
-                                    echo (!empty($status->label)) ? esc_html($status->label) : esc_html($status->name); ?>
+                                    echo esc_html($status['label']); ?>
                                 </a>
                             </td>
                         </tr>
