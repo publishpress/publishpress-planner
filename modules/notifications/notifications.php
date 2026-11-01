@@ -1268,7 +1268,15 @@ if (! class_exists('PP_Notifications')) {
          *
          * @return true|WP_Error     $response  True on success, WP_Error on failure
          */
-        private function post_set_users_to_notify($post, $users, $append = true)
+        public static function getWorkflowTaxonomies()
+        {
+            $excluded = array_filter(array_map('trim', explode(',', (string) self::getOption('blacklisted_taxonomies'))));
+            return array_filter(get_taxonomies([], 'objects'), static function ($taxonomy) use ($excluded) {
+                return !empty($taxonomy->labels->name) && !in_array($taxonomy->name, $excluded, true);
+            });
+        }
+
+        public function post_set_users_to_notify($post, $users, $append = true)
         {
             $post = get_post($post);
             if (! $post) {
@@ -1320,7 +1328,7 @@ if (! class_exists('PP_Notifications')) {
          *
          * @return true|WP_Error     $response  True on success, WP_Error on failure
          */
-        private function post_set_roles_to_notify($post, $roles, $append = true)
+        public function post_set_roles_to_notify($post, $roles, $append = true)
         {
             $post = get_post($post);
             if (! $post) {
@@ -1366,7 +1374,7 @@ if (! class_exists('PP_Notifications')) {
          *
          * @return true|WP_Error     $response  True on success, WP_Error on failure
          */
-        private function post_set_groups_to_notify($post, $groups, $append = true)
+        public function post_set_groups_to_notify($post, $groups, $append = true)
         {
             $post = get_post($post);
             if (! $post) {
@@ -1417,7 +1425,7 @@ if (! class_exists('PP_Notifications')) {
          *
          * @return true|WP_Error     $response  True on success, WP_Error on failure
          */
-        private function post_set_emails_to_notify($post, $emails, $append = true)
+        public function post_set_emails_to_notify($post, $emails, $append = true)
         {
             $post = get_post($post);
             if (! $post) {
@@ -1730,7 +1738,13 @@ if (! class_exists('PP_Notifications')) {
                 'order' => 'DESC',
                 'post_status' => 'any',
             ];
+            $paging = array_intersect_key((array) $args, ['posts_per_page' => true, 'offset' => true]);
+            $post_args = array_merge($post_args, $paging);
             $post_args = apply_filters('pp_user_to_notify_posts_query_args', $post_args);
+            if ($args !== null) {
+                $post_args['posts_per_page'] = max(1, min(101, (int) ($paging['posts_per_page'] ?? 10)));
+                $post_args['offset'] = max(0, (int) ($paging['offset'] ?? 0));
+            }
             $posts = get_posts($post_args);
 
             return $posts;
@@ -1930,7 +1944,7 @@ if (! class_exists('PP_Notifications')) {
             );
 
             if (isset($new_options['email_from'])) {
-                $new_options['email_from_name'] = filter_var($new_options['email_from_name'], FILTER_SANITIZE_STRING);
+                $new_options['email_from_name'] = sanitize_text_field($new_options['email_from_name'] ?? '');
                 $new_options['email_from'] = filter_var($new_options['email_from'], FILTER_SANITIZE_EMAIL);
             }
 

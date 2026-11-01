@@ -354,25 +354,9 @@ if (! class_exists('PP_Efmigration')) {
                 $this->accessDenied();
             }
 
-            $allowedSteps = ['options', 'usermeta', 'metadata'];
-            $result = (object)[
-                'error' => false,
-                'output' => '',
-            ];
-
-            // Get and validate the step
-            $step = isset($_POST['step']) ? sanitize_text_field(wp_unslash($_POST['step'])) : '';
-            if (! in_array($step, $allowedSteps)) {
-                $result->error = __('Unknown step', self::PLUGIN_NAMESPACE);
-            }
-
-            $methodName = 'migrate_data_' . $step;
-
-            if (! method_exists($this, $methodName)) {
-                $result->error = __('Undefined migration method', self::PLUGIN_NAMESPACE);
-            } else {
-                $this->$methodName();
-            }
+            $step = isset($_POST['step']) ? sanitize_key(wp_unslash($_POST['step'])) : '';
+            $saved = $this->runMigrationStep($step);
+            $result = (object) ['error' => is_wp_error($saved) ? $saved->get_error_message() : false, 'output' => ''];
 
             echo json_encode($result);
             wp_die();
@@ -382,26 +366,72 @@ if (! class_exists('PP_Efmigration')) {
          * Look for options with the prefix: edit_flow_.
          * Ignores the Edit Flow version register
          */
+        public function runMigrationStep($step)
+        {
+            if (!current_user_can('manage_options') || (is_multisite() && !current_user_can('manage_network_options'))) {
+                return new WP_Error('planner_migration_denied', __('You cannot migrate Planner data.', 'publishpress'));
+            }
+            if (!in_array($step, ['options', 'usermeta', 'metadata', 'finish'], true)) { return new WP_Error('planner_migration_step', __('Unknown migration step.', 'publishpress')); }
+            if ($step === 'metadata' && defined('PUBLISHPRESS_PLANNER_DISABLE_EF_METADATA_MIGRATION') && PUBLISHPRESS_PLANNER_DISABLE_EF_METADATA_MIGRATION) {
+                return new WP_Error('planner_migration_locked', __('Editorial metadata migration is disabled by site configuration.', 'publishpress'));
+            }
+            if ($step === 'options') {
+                foreach ($this->migrationOptionNames() as $name) {
+                    $value = get_option('edit_flow_' . $name);
+                    if ($value !== false && !is_array($value) && !is_object($value)) { return new WP_Error('planner_migration_invalid', __('Invalid legacy module options.', 'publishpress')); }
+                }
+            }
+            if ($step === 'finish') { update_site_option(self::OPTION_DISMISS_MIGRATION, 1); }
+            else { $method = 'migrate_data_' . $step; $result = $this->$method(); if (is_wp_error($result)) { return $result; } }
+            return true;
+        }
+
+        private function migrationOptionNames()
+        {
+            return ['calendar_options', 'custom_status_options', 'dashboard_options', 'editorial_comments_options',
+                'editorial_metadata_options', 'notifications_options', 'settings_options', 'story_budget_options', 'user_groups_options'];
+        }
+
+        public function getMigrationUserMetadata($limit = null)
+        {
+            global $wpdb;
+            $limitSql = $limit === null ? '' : $wpdb->prepare(' LIMIT %d', max(1, min(1001, (int) $limit)));
+            return $wpdb->get_results($wpdb->prepare("SELECT user_id, meta_key, meta_value FROM {$wpdb->usermeta} WHERE meta_key LIKE %s ORDER BY umeta_id", $wpdb->esc_like('ef_') . '%') . $limitSql);
+        }
+
+        /** Internal revision snapshot; callers must not return these records to clients. */
+        public function migrationSnapshot($step)
+        {
+            global $wpdb;
+            $snapshot = ['step' => $step, 'flags' => [get_site_option(self::OPTION_MIGRATED_OPTIONS), get_site_option(self::OPTION_MIGRATED_USERMETA), get_site_option(self::OPTION_DISMISS_MIGRATION)]];
+            if ($step === 'options') {
+                foreach ($this->migrationOptionNames() as $name) { $snapshot['options'][$name] = [get_option('edit_flow_' . $name), get_option(self::OPTION_PREFIX . $name)]; }
+            } elseif ($step === 'usermeta') {
+                $snapshot['users'] = $this->getMigrationUserMetadata(1001);
+                foreach ($snapshot['users'] as $row) { $snapshot['destination'][$row->user_id][$row->meta_key] = get_user_meta($row->user_id, preg_replace('/^ef_/', 'pp_', $row->meta_key), true); }
+            } elseif ($step === 'metadata') {
+                $snapshot['metadata'] = $wpdb->get_results($wpdb->prepare("SELECT post_id, meta_key, meta_value FROM {$wpdb->postmeta} WHERE meta_key LIKE %s ORDER BY meta_id LIMIT 1001", $wpdb->esc_like('_ef_editorial_meta') . '%'));
+                foreach ($snapshot['metadata'] as $row) { $snapshot['destination'][$row->post_id][$row->meta_key] = get_post_meta($row->post_id, str_replace('_ef_editorial_meta', PP_Editorial_Metadata::metadata_postmeta_key, $row->meta_key)); }
+                $snapshot['terms'] = $wpdb->get_results($wpdb->prepare("SELECT * FROM {$wpdb->term_taxonomy} WHERE taxonomy IN (%s, %s) ORDER BY term_taxonomy_id LIMIT 1001", 'ef_editorial_meta', PP_Editorial_Metadata::metadata_taxonomy));
+                $snapshot['objects'] = $wpdb->get_col($wpdb->prepare("SELECT DISTINCT r.object_id FROM {$wpdb->term_relationships} r INNER JOIN {$wpdb->term_taxonomy} t ON r.term_taxonomy_id=t.term_taxonomy_id WHERE t.taxonomy=%s ORDER BY r.object_id LIMIT 1001", 'ef_editorial_meta'));
+            }
+            return $snapshot;
+        }
+
         protected function migrate_data_options()
         {
             if (! get_site_option(self::OPTION_MIGRATED_OPTIONS, false)) {
-                $optionsToMigrate = [
-                    'calendar_options',
-                    'custom_status_options',
-                    'dashboard_options',
-                    'editorial_comments_options',
-                    'editorial_metadata_options',
-                    'notifications_options',
-                    'settings_options',
-                    'story_budget_options',
-                    'user_groups_options',
-                ];
+                $optionsToMigrate = $this->migrationOptionNames();
 
                 foreach ($optionsToMigrate as $option) {
                     $efOption = get_option('edit_flow_' . $option);
 
                     // Update the current publishpress settings
-                    update_option(self::OPTION_PREFIX . $option, $efOption, true);
+                    if ($efOption !== false) {
+                        $expected = (object) $efOption;
+                        update_option(self::OPTION_PREFIX . $option, $expected, true);
+                        if (get_option(self::OPTION_PREFIX . $option) != $expected) { return new WP_Error('planner_migration_unconfirmed', __('Some module options could not be confirmed.', 'publishpress')); }
+                    }
                 }
 
                 update_site_option(self::OPTION_MIGRATED_OPTIONS, 1, true);
@@ -414,18 +444,13 @@ if (! class_exists('PP_Efmigration')) {
 
             if (! get_site_option(self::OPTION_MIGRATED_USERMETA, false)) {
                 // Remove PublishPress data
-                $data = $wpdb->get_results(
-                    "
-                    SELECT user_id, meta_key, meta_value
-                    FROM {$wpdb->usermeta}
-                    WHERE meta_key LIKE \"ef_%\"
-                    "
-                );
+                $data = $this->getMigrationUserMetadata();
 
                 if (! empty($data)) {
                     foreach ($data as $meta) {
                         $key = preg_replace('/^ef_/', 'pp_', $meta->meta_key);
-                        update_user_meta($meta->user_id, $key, $meta->meta_value);
+                        update_user_meta($meta->user_id, $key, wp_slash(maybe_unserialize($meta->meta_value)));
+                        if (get_user_meta($meta->user_id, $key, true) !== maybe_unserialize($meta->meta_value)) { return new WP_Error('planner_migration_unconfirmed', __('Some user preferences could not be confirmed.', 'publishpress')); }
                     }
                 }
 
@@ -459,6 +484,8 @@ if (! class_exists('PP_Efmigration')) {
                     $ef_editorial_meta         = 'ef_editorial_meta';
                     $ef_metadata_postmeta_key  = '_ef_editorial_meta';
                 }
+
+                if (!taxonomy_exists($ef_editorial_meta)) { register_taxonomy($ef_editorial_meta, ['post'], ['public' => false, 'show_ui' => false]); }
 
                 /**
                  * Post types are added to each metadata in Planner unlike Edit Flow
@@ -512,7 +539,8 @@ if (! class_exists('PP_Efmigration')) {
                         $term_exists = term_exists($term->slug, $pp_editorial_meta);
                         if ($term_exists) {
                             // Migrate term posts to Planner instead
-                            $this->migrate_posts_between_taxonomies_terms($term->term_id, $ef_editorial_meta, $term_exists['term_id'], $pp_editorial_meta);
+                            $migrated = $this->migrate_posts_between_taxonomies_terms($term->term_id, $ef_editorial_meta, $term_exists['term_id'], $pp_editorial_meta);
+                            if (is_wp_error($migrated)) { return $migrated; }
                             // Mark Edit Flow term as duplicate to be deleted
                             $duplicate_terms[] = $term->term_id;
                             // Replace term ID so Planner's term is updated instead since Edit Flow term will be deleted
@@ -520,7 +548,7 @@ if (! class_exists('PP_Efmigration')) {
                         }
 
                         // Update the taxonomy and description
-                        $wpdb->update(
+                        $updated = $wpdb->update(
                             $wpdb->term_taxonomy,
                             array(
                                 'taxonomy' => $pp_editorial_meta,
@@ -528,20 +556,25 @@ if (! class_exists('PP_Efmigration')) {
                             ),
                             array('term_id' => $term->term_id)
                         );
+                        if ($updated === false) { return new WP_Error('planner_migration_unconfirmed', __('Term migration failed.', 'publishpress')); }
+                        clean_term_cache((int) $term->term_id, $pp_editorial_meta);
+                        clean_term_cache((int) $term->term_id, $ef_editorial_meta);
 
                     }
 
                     // Step 3: Update post meta keys to match Planner's from Edit Flow
-                    $wpdb->query(
+                    $updatedMetadata = $wpdb->query(
                         $wpdb->prepare(
                             "UPDATE {$wpdb->postmeta}
                                     SET meta_key = REPLACE(meta_key, %s, %s)
                                     WHERE meta_key LIKE %s",
                             $ef_metadata_postmeta_key,
                             $pp_metadata_postmeta_key,
-                            $ef_metadata_postmeta_key . '%'
+                            $wpdb->esc_like($ef_metadata_postmeta_key) . '%'
                         )
                     );
+
+                    if ($updatedMetadata === false) { return new WP_Error('planner_migration_unconfirmed', __('Post metadata migration failed.', 'publishpress')); }
 
                     // Step 4: Delete duplicate terms
                     if (!empty($duplicate_terms)) {
@@ -565,34 +598,14 @@ if (! class_exists('PP_Efmigration')) {
          * @return bool
          */
         private function migrate_posts_between_taxonomies_terms($source_term_id, $source_taxonomy, $target_term_id, $target_taxonomy) {
-            global $wpdb;
-        
-            // Step 1: Update term_taxonomy_id for posts in Source Term to Target Term
-            $wpdb->update(
-                $wpdb->term_relationships,
-                ['term_taxonomy_id' => $target_term_id],
-                ['term_taxonomy_id' => $source_term_id],
-                ['%d'],
-                ['%d']
-            );
-        
-            
-            // Step 2: Update term_count for Target Terms
-            $target_term_count = (int) $wpdb->get_var(
-                $wpdb->prepare(
-                    "SELECT COUNT(*) FROM {$wpdb->term_relationships} WHERE term_taxonomy_id = %d",
-                    $target_term_id
-                )
-            );
-
-            $wpdb->update(
-                $wpdb->term_taxonomy,
-                ['count' => $target_term_count],
-                ['term_taxonomy_id' => $target_term_id],
-                ['%d'],
-                ['%d']
-            );
-        
+            $objects = get_objects_in_term((int) $source_term_id, $source_taxonomy);
+            if (is_wp_error($objects)) { return $objects; }
+            foreach ($objects as $id) {
+                $saved = wp_set_object_terms((int) $id, [(int) $target_term_id], $target_taxonomy, true);
+                if (is_wp_error($saved)) { return $saved; }
+                $removed = wp_remove_object_terms((int) $id, [(int) $source_term_id], $source_taxonomy);
+                if (is_wp_error($removed)) { return $removed; }
+            }
             return true;
         }
 

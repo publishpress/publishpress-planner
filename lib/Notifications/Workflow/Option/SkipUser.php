@@ -38,13 +38,20 @@ class SkipUser extends OptionCheckboxAbstract
 
     public function setValue($postId, $post)
     {
-        if (!isset($_POST['publishpress_notif_metabox_events_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['publishpress_notif_metabox_events_nonce'])), 'publishpress_notif_save_metabox')) {
+        if (!isset($_POST['publishpress_notif_metabox_events_nonce'])
+            || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['publishpress_notif_metabox_events_nonce'])), 'publishpress_notif_save_metabox')) {
             return;
         }
+        return $this->save_values($postId, $post, wp_unslash($_POST), true);
+    }
+
+    /** Persist unslashed native workflow values independently of a browser form. */
+    public function save_values($postId, $post, array $data, $fromForm = false)
+    {
 
         $value = 0;
-        if (isset($_POST[$this->getFieldName()])) {
-            $value = sanitize_key(wp_unslash($_POST[$this->getFieldName()]));
+        if (isset($data[$this->getFieldName()])) {
+            $value = sanitize_key($data[$this->getFieldName()]);
         }
 
         update_post_meta(
@@ -52,5 +59,6 @@ class SkipUser extends OptionCheckboxAbstract
             $this->getName(),
             $value
         );
+
     }
 }

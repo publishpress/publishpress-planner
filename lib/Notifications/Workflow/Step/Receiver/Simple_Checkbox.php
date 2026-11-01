@@ -66,18 +66,26 @@ class Simple_Checkbox extends Base implements Receiver_Interface
      */
     public function save_metabox_data($id, $post)
     {
-        if (!isset($_POST['publishpress_notif_metabox_events_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['publishpress_notif_metabox_events_nonce'])), 'publishpress_notif_save_metabox')) {
+        if (!isset($_POST['publishpress_notif_metabox_events_nonce'])
+            || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['publishpress_notif_metabox_events_nonce'])), 'publishpress_notif_save_metabox')) {
             return;
         }
+        return $this->save_values($id, $post, wp_unslash($_POST), true);
+    }
 
-        $publishpress_notif = isset($_POST['publishpress_notif']) && is_array($_POST['publishpress_notif'])
-            ? wp_unslash($_POST['publishpress_notif'])
+    /** Persist unslashed native workflow values independently of a browser form. */
+    public function save_values($id, $post, array $data, $fromForm = false)
+    {
+
+        $publishpress_notif = isset($data['publishpress_notif']) && is_array($data['publishpress_notif'])
+            ? $data['publishpress_notif']
             : [];
 
         $selected = isset($publishpress_notif[$this->option_name])
             && $publishpress_notif[$this->option_name] === static::META_VALUE;
 
         $this->set_selection($id, $selected);
+
     }
 
     /**

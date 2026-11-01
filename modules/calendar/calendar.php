@@ -190,6 +190,86 @@ if (! class_exists('PP_Calendar')) {
          */
         private $terms_options = [];
 
+        public static function getPublishTimeStatusChoices()
+        {
+            $planner = PublishPress();
+            $custom = defined('PUBLISHPRESS_STATUSES_VERSION') ? $planner->getPostStatuses() : $planner->getCustomStatuses();
+            if (empty($custom)) { return ['publish' => __('Publish'), 'future' => __('Scheduled')]; }
+            $statuses = [];
+            foreach ($custom as $status) { $statuses[$status->slug] = ['title' => $status->label, 'status_obj' => $status, 'for_revision' => !empty($status->for_revision)]; }
+            return $statuses;
+        }
+
+        public function createCalendarExport($from, $to)
+        {
+            $calendar = new Sabre\VObject\Component\VCalendar(['PRODID' => '-//PublishPress//PublishPress ' . PUBLISHPRESS_VERSION . '//EN']);
+            $zone = $this->dateUtil->getTimezoneString();
+            PP_Calendar_Utilities::generateVtimezone($calendar, $zone, (int) $from, (int) $to);
+            return [$calendar, new DateTimeZone($zone)];
+        }
+
+        public function getCalendarMetadataOptions() { return $this->terms_options; }
+
+        public function addPostToCalendarExport($vCalendar, $post, $timeZone, $includeDetails = true)
+        {
+            $convert = has_filter('the_title', 'convert_chars');
+            $texturize = has_filter('the_title', 'wptexturize');
+            try {
+                if (empty($post->post_date_gmt) || $post->post_date_gmt == '0000-00-00 00:00:00') {
+                    $calendar_date = get_gmt_from_date($post->post_date);
+                } else {
+                    $calendar_date = $post->post_date_gmt;
+                }
+
+                $start_date = new DateTime($calendar_date);
+                $start_date->setTimezone($timeZone);
+
+                $end_date = new DateTime(date('Y-m-d H:i:s', strtotime($calendar_date) + (5 * 60))); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+                $end_date->setTimezone($timeZone);
+
+                if (empty($post->post_modified_gmt) || $post->post_modified_gmt == '0000-00-00 00:00:00') {
+                    $calendar_modified_date = get_gmt_from_date($post->post_modified);
+                } else {
+                    $calendar_modified_date = $post->post_modified_gmt;
+                }
+
+                $last_modified = new DateTime($calendar_modified_date);
+                $last_modified->setTimezone($timeZone);
+
+                // Remove the convert chars and wptexturize filters from the title
+                remove_filter('the_title', 'convert_chars');
+                remove_filter('the_title', 'wptexturize');
+
+                // Description should include everything visible in the calendar popup
+                $information_fields = $includeDetails ? $this->get_post_information_fields($post) : [];
+                $eventDescription = '';
+                if (! empty($information_fields)) {
+                    foreach ($information_fields as $key => $values) {
+                        $eventDescription .= $values['label'] . ': ' . $values['value'] . "\n";
+                    }
+                    $eventDescription = rtrim($eventDescription);
+                }
+
+                $vCalendar->add(
+                    'VEVENT',
+                    [
+                        'UID' => $post->guid,
+                        'SUMMARY' => PP_Calendar_Utilities::do_ics_escaping(apply_filters('the_title', $post->post_title))
+                            . ' - ' . $this->get_post_status_friendly_name(get_post_status($post->ID)),
+                        'DTSTART' => $start_date,
+                        'DTEND' => $end_date,
+                        'LAST-MODIFIED' => $last_modified,
+                        'URL' => get_post_permalink($post->ID),
+                        'DESCRIPTION' => $eventDescription,
+                    ]
+                );
+            } finally {
+                if ($convert !== false) { add_filter('the_title', 'convert_chars', $convert); }
+                if ($texturize !== false) { add_filter('the_title', 'wptexturize', $texturize); }
+            }
+        }
+
+
         /**
          * Check if PublishPress Revisions is available for revision status fields.
          *
@@ -215,6 +295,12 @@ if (! class_exists('PP_Calendar')) {
          * @var [type]
          */
         private $content_calendar_methods;
+
+        public function getCalendarMethods()
+        {
+            return $this->content_calendar_methods;
+        }
+
 
         /**
          * Construct the PP_Calendar class
@@ -598,22 +684,8 @@ if (! class_exists('PP_Calendar')) {
                 )
             );
 
-            $vCalendar = new Sabre\VObject\Component\VCalendar(
-                [
-                    'PRODID' => '-//PublishPress//PublishPress ' . PUBLISHPRESS_VERSION . '//EN',
-                ]
-            );
-
-            $timezoneString = $this->dateUtil->getTimezoneString();
-
-            PP_Calendar_Utilities::generateVtimezone(
-                $vCalendar,
-                $timezoneString,
-                strtotime($this->start_date),
-                (int)(strtotime($this->start_date) + ($this->total_weeks * 7 * 24 * 60 * 60))
-            );
-
-            $timeZone = new DateTimeZone($timezoneString);
+            [$vCalendar, $timeZone] = $this->createCalendarExport(strtotime($this->start_date),
+                (int) (strtotime($this->start_date) + ($this->total_weeks * 7 * DAY_IN_SECONDS)));
 
             for ($current_week = 1; $current_week <= $this->total_weeks; $current_week++) {
                 // We need to set the object variable for our posts_where filter
@@ -621,54 +693,7 @@ if (! class_exists('PP_Calendar')) {
                 $week_posts = $this->get_calendar_posts_for_week($post_query_args, 'ics_subscription');
                 foreach ($week_posts as $date => $day_posts) {
                     foreach ($day_posts as $num => $post) {
-                        if (empty($post->post_date_gmt) || $post->post_date_gmt == '0000-00-00 00:00:00') {
-                            $calendar_date = get_gmt_from_date($post->post_date);
-                        } else {
-                            $calendar_date = $post->post_date_gmt;
-                        }
-
-                        $start_date = new DateTime($calendar_date);
-                        $start_date->setTimezone($timeZone);
-
-                        $end_date = new DateTime(date('Y-m-d H:i:s', strtotime($calendar_date) + (5 * 60))); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
-                        $end_date->setTimezone($timeZone);
-
-                        if (empty($post->post_modified_gmt) || $post->post_modified_gmt == '0000-00-00 00:00:00') {
-                            $calendar_modified_date = get_gmt_from_date($post->post_modified);
-                        } else {
-                            $calendar_modified_date = $post->post_modified_gmt;
-                        }
-
-                        $last_modified = new DateTime($calendar_modified_date);
-                        $last_modified->setTimezone($timeZone);
-
-                        // Remove the convert chars and wptexturize filters from the title
-                        remove_filter('the_title', 'convert_chars');
-                        remove_filter('the_title', 'wptexturize');
-
-                        // Description should include everything visible in the calendar popup
-                        $information_fields = $this->get_post_information_fields($post);
-                        $eventDescription = '';
-                        if (! empty($information_fields)) {
-                            foreach ($information_fields as $key => $values) {
-                                $eventDescription .= $values['label'] . ': ' . $values['value'] . "\n";
-                            }
-                            $eventDescription = rtrim($eventDescription);
-                        }
-
-                        $vCalendar->add(
-                            'VEVENT',
-                            [
-                                'UID' => $post->guid,
-                                'SUMMARY' => PP_Calendar_Utilities::do_ics_escaping(apply_filters('the_title', $post->post_title))
-                                    . ' - ' . $this->get_post_status_friendly_name(get_post_status($post->ID)),
-                                'DTSTART' => $start_date,
-                                'DTEND' => $end_date,
-                                'LAST-MODIFIED' => $last_modified,
-                                'URL' => get_post_permalink($post->ID),
-                                'DESCRIPTION' => $eventDescription,
-                            ]
-                        );
+                        $this->addPostToCalendarExport($vCalendar, $post, $timeZone);
                     }
                 }
             }
@@ -700,15 +725,17 @@ if (! class_exists('PP_Calendar')) {
          *
          * @return array $filters updated filter
          */
-        public function update_user_filters($request_filter = [])
+        public function update_user_filters($request_filter = false, $persist = true)
         {
             global $pp_calendar_user_filters;
+            $explicitRequest = $request_filter !== false;
 
-            if (is_array($pp_calendar_user_filters)) {
+            if ($request_filter === false && is_array($pp_calendar_user_filters)) {
                 return $pp_calendar_user_filters;
             }
 
-            $user_filters = [
+            if ($request_filter === false) { $request_filter = $_GET; }
+        $user_filters = [
                 'weeks'         => '',
                 'start_date'    => '',
                 'me_mode'       => '',
@@ -718,7 +745,7 @@ if (! class_exists('PP_Calendar')) {
                 'revision_status' => '',
             ];
 
-            if (!empty($_POST['co_form_action']) && !empty($_POST['_nonce']) && $_POST['co_form_action'] == 'reset_filter' && wp_verify_nonce(sanitize_key($_POST['_nonce']), 'content_calendar_filter_rest_nonce')) {
+            if (!$explicitRequest && $persist && !empty($_POST['co_form_action']) && !empty($_POST['_nonce']) && $_POST['co_form_action'] == 'reset_filter' && wp_verify_nonce(sanitize_key($_POST['_nonce']), 'content_calendar_filter_rest_nonce')) {
                 $user_filters['weeks'] = self::DEFAULT_NUM_WEEKS;
                 $user_filters['start_date'] = gmdate('Y-m-d', current_time('timestamp'));
                 return $user_filters;
@@ -821,9 +848,9 @@ if (! class_exists('PP_Calendar')) {
 
             $user_filters = apply_filters('pp_content_calendar_filter_values', $user_filters, $current_user_filters);
 
-            $this->update_user_meta($current_user->ID, self::USERMETA_KEY_PREFIX . 'filters', $user_filters);
+            if ($persist) { $this->update_user_meta($current_user->ID, self::USERMETA_KEY_PREFIX . 'filters', $user_filters); }
 
-            $pp_calendar_user_filters = $user_filters;
+            if ($persist) { $pp_calendar_user_filters = $user_filters; }
 
             return $user_filters;
         }
@@ -921,8 +948,8 @@ if (! class_exists('PP_Calendar')) {
                 // make sure enabled filters are saved in organized order
                 $content_calendar_filters = array_intersect($content_calendar_filters_order, $content_calendar_filters);
     
-                $publishpress->update_module_option($this->module->name, 'content_calendar_filters', $content_calendar_filters);
-                $publishpress->update_module_option($this->module->name, 'content_calendar_custom_filters', $content_calendar_custom_filters);
+                $this->save_view_configuration('filters', $content_calendar_filters, $content_calendar_custom_filters);
+
                 if ($show_notice) {
                     // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                     echo pp_planner_admin_notice(esc_html__('Filter updated successfully.', 'publishpress'));
@@ -1450,14 +1477,14 @@ if (! class_exists('PP_Calendar')) {
          *
          * @since 0.7
          */
-        public function settings_validate($new_options)
+        public function settings_validate($new_options, $show_notices = true)
         {
             $options = (array)$this->module->options;
 
             if (isset($new_options['post_types'])) {
                 // Set post as default
                 $empty = true;
-                foreach ($options['post_types'] as $value) {
+                foreach ($new_options['post_types'] as $value) {
                     if ('on' === $value) {
                         $empty = false;
                         break;
@@ -1469,7 +1496,7 @@ if (! class_exists('PP_Calendar')) {
                     $options['post_types'] = ['post' => 'on'];
 
                     // Add flag to display a warning to the user
-                    set_transient(static::TRANSIENT_SHOW_ONE_POST_TYPE_WARNING, 1, 300);
+                    if ($show_notices) { set_transient(static::TRANSIENT_SHOW_ONE_POST_TYPE_WARNING, 1, 300); }
                 } else {
                     $options['post_types'] = $this->clean_post_type_options(
                         $new_options['post_types'],
@@ -1481,7 +1508,7 @@ if (! class_exists('PP_Calendar')) {
                 $options['post_types'] = ['post' => 'on'];
 
                 // Add flag to display a warning to the user
-                set_transient(static::TRANSIENT_SHOW_ONE_POST_TYPE_WARNING, 1, 300);
+                if ($show_notices) { set_transient(static::TRANSIENT_SHOW_ONE_POST_TYPE_WARNING, 1, 300); }
             }
 
             if ('on' != $new_options['ics_subscription']) {
