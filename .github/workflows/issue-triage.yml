@@ -1,0 +1,40 @@
+name: Issue triage bot
+
+# Phase 1 triage: format validation + optional AI classification + labels.
+# Runs on new issues and on "@bot triage" comments (re-run).
+
+permissions:
+  issues: write
+
+on:
+  issues:
+    types: [opened, reopened]
+  issue_comment:
+    types: [created]
+
+concurrency:
+  group: triage-${{ github.event.issue.number }}
+  cancel-in-progress: true
+
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    # Re-run only via "@bot triage" comment; skip label/assign events.
+    if: >-
+      github.event_name == 'issues' ||
+      (github.event_name == 'issue_comment' &&
+       !github.event.issue.pull_request &&
+       startsWith(github.event.comment.body, '@bot triage'))
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run triage
+        id: triage
+        env:
+          GH_TOKEN_VALUE: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          AI_API_KEY: ${{ secrets.TRIAGE_AI_API_KEY }}
+          AI_BASE_URL: ${{ vars.TRIAGE_AI_BASE_URL }}
+          AI_MODEL: ${{ vars.TRIAGE_AI_MODEL }}
+        run: bash .github/scripts/issue-triage.sh

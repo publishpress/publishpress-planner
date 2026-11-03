@@ -1,0 +1,85 @@
+name: Bot verify fix
+
+# Phase 3 scaffold — DISABLED by default (repo variable BOT_VERIFY_ENABLED).
+# Runs on every PR opened by the fixing bot:
+#   layer 1 (deterministic): run the tagged repro suite; must pass.
+#   layer 2 (agent): review diff vs issue description.
+# Verdict labels the PR: bot-verified / bot-fix-failed, and comments.
+# Loop cap lives in the fixing bot (max 3 fix->verify rounds before
+# escalating to a human maintainer).
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+concurrency:
+  group: bot-verify-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  repro-suite:
+    runs-on: ubuntu-latest
+    if: >-
+      vars.BOT_VERIFY_ENABLED == 'true' &&
+      startsWith(github.event.pull_request.head.ref, 'bot/fix-')
+    services:
+      mysql:
+        image: mariadb:11
+        env:
+          MARIADB_DATABASE: wordpress_test
+          MARIADB_USER: wordpress
+          MARIADB_PASSWORD: wordpress
+          MARIADB_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mariadb-admin ping -uroot -proot"
+          --health-interval=5s --health-timeout=5s --health-retries=10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.3"
+          extensions: mysqli, mbstring, xml, curl, zip, gd, intl
+          tools: wp-cli
+          coverage: none
+
+      # TODO(Stage A): wp-browser + WPLoader provisioning lands with the
+      # first repro Cest. Until then this job cannot run a suite; keep it
+      # honest — it exits with a neutral note instead of a fake pass.
+      - name: Run repro suite (blocked until Stage A)
+        run: |
+          echo "Repro suite not wired yet: requires wp-browser (Stage A)." >&2
+          echo "status=blocked" >> "$GITHUB_ENV"
+
+  review:
+    needs: repro-suite
+    runs-on: ubuntu-latest
+    if: vars.BOT_VERIFY_ENABLED == 'true' && !cancelled()
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Agent review of fix PR
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          prompt: |
+            You are the verification bot. PR: ${{ github.event.pull_request.number }}
+
+            1. `gh pr view` and `gh pr diff` to read the fix.
+            2. Fetch the linked issue (`Fixes #n` in the PR body) with
+               `gh issue view n` and compare: does the diff actually change
+               the reported behavior?
+            3. Read the repro test added by the fixing bot. Does it encode
+               the issue's expected behavior? Would it fail on the pre-fix
+               code?
+            4. Post a verdict comment: PASS or FAIL with specific evidence
+               (file:line references). Never approve your own species'
+               work without evidence — if uncertain, FAIL with questions.
