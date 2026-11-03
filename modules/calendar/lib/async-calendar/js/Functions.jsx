@@ -136,7 +136,7 @@ export function getPostLinksElement(linkData, handleOnClick) {
 }
 
 export async function callAjaxAction(action, args, ajaxUrl) {
-    let dataUrl = ajaxUrl + '?action=' + action;
+    let dataUrl = ajaxUrl + '?action=' + action + '&pll_ajax_backend=1';
 
     for (const argumentName in args) {
         if (!args.hasOwnProperty(argumentName)) {
@@ -151,7 +151,7 @@ export async function callAjaxAction(action, args, ajaxUrl) {
 }
 
 export async function callAjaxPostAction(action, args, ajaxUrl, body) {
-    let dataUrl = ajaxUrl + '?action=' + action;
+    let dataUrl = ajaxUrl + '?action=' + action + '&pll_ajax_backend=1';
 
     for (const argumentName in args) {
         if (!args.hasOwnProperty(argumentName)) {
