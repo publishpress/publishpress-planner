@@ -1,6 +1,10 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[4.9.0] - [Unreleased]
+
+- Added: Private MCP actions for Planner content, editorial collaboration, notifications, view configuration and native maintenance, with capability checks and validated previews.
+
 [4.8.2] - 13 Oct, 2026
 
 - Changed: Image alternative text is now exposed clearly to automated accessibility and security scanners. #2079

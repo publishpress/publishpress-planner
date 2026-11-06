@@ -752,6 +752,66 @@ if (! class_exists('PP_Editorial_Comments')) {
         /**
          * Handles AJAX insert comment
          */
+        /**
+         * Shared native editorial comment persistence for browser and API callers.
+         */
+        public function persistEditorialComment(array $data, $files = '')
+        {
+            $id = (int) ($data['comment_ID'] ?? 0);
+            $old = $id ? get_comment($id) : null;
+            $postId = $old ? (int) $old->comment_post_ID : (int) ($data['comment_post_ID'] ?? 0);
+            if (!current_user_can('edit_post', $postId) || ($id && (!$old || $old->comment_type !== self::comment_type))) {
+                return new WP_Error('planner_comment_denied', __('You cannot edit this editorial comment.', 'publishpress'));
+            }
+            if ($old && !$this->canManageEditorialComment($old, 'edit')) {
+                return new WP_Error('planner_comment_denied', __('You cannot edit this editorial comment.', 'publishpress'));
+            }
+            if ($id) {
+                $data = apply_filters('pp_pre_edit_editorial_comment', $data);
+                if ((int) ($data['comment_ID'] ?? 0) !== $id || !current_user_can('edit_post', (int) ($data['comment_post_ID'] ?? $postId))) { return new WP_Error('planner_comment_denied', __('Comment changes are not authorized.', 'publishpress')); }
+                $saved = wp_update_comment($data, true);
+                if (is_wp_error($saved)) { return $saved; }
+                update_comment_meta($id, '_pp_editorial_comment_files', rtrim($files));
+                if ($saved) { do_action('pp_post_edit_editorial_comment', $id); }
+            } else {
+                $data = apply_filters('pp_pre_insert_editorial_comment', $data);
+                if (!current_user_can('edit_post', (int) ($data['comment_post_ID'] ?? 0))) { return new WP_Error('planner_comment_denied', __('Comment changes are not authorized.', 'publishpress')); }
+                $id = wp_insert_comment($data);
+                if (!$id) { return new WP_Error('planner_comment_failed', __('Comment could not be saved.', 'publishpress')); }
+                if ($files !== '') { update_comment_meta($id, '_pp_editorial_comment_files', rtrim($files)); }
+                do_action('pp_post_insert_editorial_comment', get_comment($id));
+            }
+            return get_comment($id);
+        }
+
+        public function canManageEditorialComment($comment, $operation)
+        {
+            return $comment && $comment->comment_type === self::comment_type
+                && current_user_can('edit_post', $comment->comment_post_ID)
+                && (((int) $comment->user_id === get_current_user_id()
+                    && current_user_can('pp_' . $operation . '_editorial_comment'))
+                    || current_user_can('pp_' . $operation . '_others_editorial_comment'));
+        }
+
+        public function trashEditorialComment($id)
+        {
+            return $this->deleteEditorialComment($id);
+        }
+
+        public function deleteEditorialComment($id, $force = false)
+        {
+            $comment = get_comment($id);
+            if (!$this->canManageEditorialComment($comment, 'delete')) {
+                return new WP_Error('planner_comment_denied', __('You cannot delete this editorial comment.', 'publishpress'));
+            }
+            $replies = pp_get_comments_plus(['post_id' => $comment->comment_post_ID, 'parent' => $id, 'number' => 1, 'type' => self::comment_type, 'status' => self::comment_type]);
+            if (!$force && $replies) { return new WP_Error('planner_comment_replies', __('A comment with replies cannot be deleted.', 'publishpress')); }
+            do_action('pp_pre_delete_editorial_comment', $id);
+            $deleted = $force ? wp_delete_comment($id, true) : wp_trash_comment($id);
+            if ($deleted) { do_action('pp_post_delete_editorial_comment', $id); }
+            return $deleted;
+        }
+
         public function ajax_insert_comment()
         {
             global $current_user, $user_ID;
@@ -844,20 +904,9 @@ if (! class_exists('PP_Editorial_Comments')) {
                     'comment_approved' => esc_sql(self::comment_type),
                 ];
 
-                $data = apply_filters('pp_pre_insert_editorial_comment', $data);
-
-                // Insert Comment
-                $comment_id = wp_insert_comment($data);
-                $comment = get_comment($comment_id);
-                // Add comment files
-                if (!empty(trim($comment_files))) {
-                    update_comment_meta($comment_id, '_pp_editorial_comment_files', rtrim($comment_files));
-                }
-
-                // Register actions -- will be used to set up notifications and other modules can hook into this
-                if ($comment_id) {
-                    do_action('pp_post_insert_editorial_comment', $comment);
-                }
+                $comment = $this->persistEditorialComment($data, $comment_files);
+                if (is_wp_error($comment)) { wp_die(esc_html($comment->get_error_message()), '', ['response' => 400]); }
+                $comment_id = (int) $comment->comment_ID;
 
                 // Prepare response
                 $response = new WP_Ajax_Response();
@@ -985,16 +1034,9 @@ if (! class_exists('PP_Editorial_Comments')) {
                     'comment_content' => $comment_content,
                 ];
 
-                $data = apply_filters('pp_pre_edit_editorial_comment', $data);
-
-                $status = wp_update_comment($data);
-
-                // update comment files
-                update_comment_meta((int)$comment_id, '_pp_editorial_comment_files', rtrim($comment_files));
-
-                if ($status == 1) {
-                    do_action('pp_post_edit_editorial_comment', $comment_id);
-                }
+                $comment = $this->persistEditorialComment($data, $comment_files);
+                if (is_wp_error($comment)) { wp_die(esc_html($comment->get_error_message()), '', ['response' => 400]); }
+                $comment_id = (int) $comment->comment_ID;
 
                 // Prepare response
 
@@ -1103,13 +1145,8 @@ if (! class_exists('PP_Editorial_Comments')) {
                     );
                 }
 
-                do_action('pp_pre_delete_editorial_comment', $comment_id);
-
-                $deleted = wp_trash_comment($comment_id);
-
-                if ($deleted) {
-                    do_action('pp_post_delete_editorial_comment', $comment_id);
-                }
+                $deleted = $this->trashEditorialComment($comment_id);
+                $deleted = !is_wp_error($deleted) && $deleted;
 
                 $response = [
                     'id' => $comment_id,
@@ -1186,12 +1223,12 @@ if (! class_exists('PP_Editorial_Comments')) {
             }
 
             if ($comment_id) {
-                do_action('pp_pre_delete_editorial_comment', $comment_id);
-
-                $deleted = wp_delete_comment($comment_id, true);
-
-                if ($deleted) {
-                    do_action('pp_post_delete_editorial_comment', $comment_id);
+                $deleted = $this->deleteEditorialComment($comment_id, true);
+                if (is_wp_error($deleted) || !$deleted) {
+                    add_action('admin_notices', function () {
+                        echo '<div class="notice error"><p>' . esc_html__('The editorial comment could not be deleted.', 'publishpress') . '</p></div>';
+                    });
+                    return;
                 }
 
                 add_action('admin_notices', function () {
@@ -1402,6 +1439,7 @@ function pp_get_comments_plus($args = '')
         'status' => '',
         'type' => '',
         'user_id' => '',
+        'search' => '',
     ];
 
     $args = wp_parse_args($args, $defaults);
@@ -1497,6 +1535,9 @@ function pp_get_comments_plus($args = '')
     }
     if ('' !== $user_id) {
         $post_where .= $wpdb->prepare('user_id = %d AND ', $user_id);
+    }
+    if ('' !== $search) {
+        $post_where .= $wpdb->prepare('comment_content LIKE %s AND ', '%' . $wpdb->esc_like($search) . '%');
     }
 
     // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared

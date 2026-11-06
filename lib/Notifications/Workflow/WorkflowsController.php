@@ -21,6 +21,9 @@ class WorkflowsController
      */
     protected $sent_notification_signatures = [];
 
+    private $configurationSteps = [];
+    private $stepsLoaded = false;
+
     /**
      * The constructor
      */
@@ -123,6 +126,8 @@ class WorkflowsController
      */
     public function load_workflow_steps()
     {
+        if ($this->stepsLoaded) { return; }
+        $this->stepsLoaded = true;
         // Options
         $classes_options = [
             '\\PublishPress\\Notifications\\Workflow\\Option\\SkipUser',
@@ -245,7 +250,7 @@ class WorkflowsController
         // Instantiate each class
         foreach ($classes as $class) {
             if (class_exists($class)) {
-                new $class;
+                $this->configurationSteps[] = new $class;
             }
         }
     }
@@ -255,6 +260,11 @@ class WorkflowsController
      *
      * @return bool
      */
+    public function getConfigurationSteps(): array
+    {
+        return $this->configurationSteps;
+    }
+
     private function is_editorial_comments_feature_enabled()
     {
         global $publishpress;

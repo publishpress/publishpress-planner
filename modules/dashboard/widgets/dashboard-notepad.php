@@ -89,29 +89,8 @@ class PP_Dashboard_Notepad_Widget
             wp_die(esc_html(PublishPress()->dashboard->messages['invalid-permissions']));
         }
 
-        if (isset($_REQUEST['note'])) {
-            $note_content = wp_filter_nohtml_kses($_REQUEST['note']);
-        } else {
-            $note_content = '';
-        }
-
-        $current_id = (int)$_REQUEST['notepad-id'];
-        $current_notepad = get_post($current_id);
-        $new_note = [
-            'post_content' => $note_content,
-            'post_type' => self::notepad_post_type,
-            'post_status' => 'draft',
-            'post_author' => get_current_user_id(),
-        ];
-
-        if ($current_notepad
-            && self::notepad_post_type == $current_notepad->post_type
-            && ! isset($_REQUEST['create-note'])) {
-            $new_note['ID'] = $current_id;
-            wp_update_post($new_note);
-        } else {
-            wp_insert_post($new_note);
-        }
+        $this->saveNote(isset($_REQUEST['note']) ? wp_unslash($_REQUEST['note']) : '',
+            isset($_REQUEST['create-note']) ? 0 : (int) $_REQUEST['notepad-id']);
 
         wp_safe_redirect(wp_get_referer());
         exit;
@@ -123,6 +102,19 @@ class PP_Dashboard_Notepad_Widget
      *
      * @since 0.8
      */
+    public function saveNote($content, $id = 0)
+    {
+        if (!current_user_can(apply_filters('pp_dashboard_notepad_edit_cap', 'edit_others_posts'))) {
+            return new WP_Error('planner_notepad_denied', __('You cannot update the dashboard note.', 'publishpress'));
+        }
+        $post = $id ? get_post($id) : null;
+        if ($id && (!$post || $post->post_type !== self::notepad_post_type || !current_user_can('edit_post', $id))) {
+            return new WP_Error('planner_notepad_denied', __('You cannot update this dashboard note.', 'publishpress'));
+        }
+        return wp_insert_post(wp_slash(['ID' => $id, 'post_content' => wp_filter_nohtml_kses($content),
+            'post_type' => self::notepad_post_type, 'post_status' => 'draft', 'post_author' => get_current_user_id()]), true);
+    }
+
     public function notepad_widget()
     {
         $args = [

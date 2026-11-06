@@ -35,6 +35,24 @@ if (!class_exists('PP_Module')) {
     class PP_Module
     {
         /**
+         * Persist native ordered view columns/filters and custom labels as one module update.
+         */
+        public function save_view_configuration($kind, array $items, array $custom)
+        {
+            if (!current_user_can('manage_options') || !in_array($kind, ['columns', 'filters'], true)
+                || !in_array($this->module->name, ['calendar', 'content_board', 'content_overview'], true)
+                || ($this->module->name === 'calendar' && $kind !== 'filters')) {
+                return new WP_Error('planner_view_configuration_denied', __('You cannot configure this Planner view.', 'publishpress'));
+            }
+            $prefix = $this->module->name === 'calendar' ? 'content_calendar' : $this->module->name;
+            $values = (array) $this->module->options;
+            $values[$prefix . '_' . $kind] = array_map('sanitize_text_field', $items);
+            $values[$prefix . '_custom_' . $kind] = array_map('sanitize_text_field', $custom);
+            PublishPress()->update_all_module_options($this->module->name, $values);
+            return true;
+        }
+
+        /**
          * @var \PublishPress\Core\ViewInterface
          */
         protected $view;
@@ -1003,7 +1021,7 @@ if (!class_exists('PP_Module')) {
          */
         public function filter_get_param($param, $request_filter = false)
         {
-            if (!$request_filter) {
+            if ($request_filter === false) {
                 $request_filter = $_GET;
             }
 
@@ -1027,7 +1045,7 @@ if (!class_exists('PP_Module')) {
          */
         public function filter_get_param_text($param, $request_filter = false)
         {
-            if (!$request_filter) {
+            if ($request_filter === false) {
                 $request_filter = $_GET;
             }
 
