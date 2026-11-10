@@ -3,7 +3,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 [Unreleased]
 
-- Changed: Development dependencies were updated so Symfony Config, Filesystem, HTTP Client, and YAML match the current security releases.
+- Changed: Development dependencies were updated so Symfony Config, Filesystem, HTTP Client, and YAML match the current security releases. #2140
 
 [4.8.2] - 13 Oct, 2026
 
