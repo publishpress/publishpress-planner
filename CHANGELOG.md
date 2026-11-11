@@ -4,6 +4,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [4.8.3] - 12 Nov, 2026
 
 - Fixed: Notification log text is escaped before it is shown.
+- Fixed: The review banner uses the Planner name. #2095
+- Fixed: Calendar requests keep the Polylang admin language. #1943
+- Fixed: Calendar and Content Board show Scheduled Revision status. #2098
+- Fixed: Editorial Comments are enabled on new installations. #2137
+- Fixed: Profile notification channel values are escaped before they are shown.
+- Changed: The minimum PHP version is 8.2. #2114
 - Changed: Development dependencies were updated so Symfony Config, Filesystem, HTTP Client, and YAML match the current security releases. #2140
 
 [4.8.2] - 13 Oct, 2026

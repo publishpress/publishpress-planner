@@ -57,8 +57,9 @@
                                                     data-channel="<?php echo esc_attr($channel->name); ?>">
                                                 <?php
                                                 $optionHtml = $channelOption->html;
-                                                $optionHtml = str_replace('%workflow_id%', $workflow->ID, $optionHtml);
-                                                $optionHtml = str_replace('%value%', $context['channels_options'][$workflow->ID][$channel->name][$channelOption->name], $optionHtml);
+                                                $optionHtml = str_replace('%workflow_id%', (int) $workflow->ID, $optionHtml);
+                                                $channelValue = $context['channels_options'][$workflow->ID][$channel->name][$channelOption->name] ?? '';
+                                                $optionHtml = str_replace('%value%', esc_attr((string) $channelValue), $optionHtml);
                                                 ?>
                                                 <?php echo $optionHtml; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                                             </div>
