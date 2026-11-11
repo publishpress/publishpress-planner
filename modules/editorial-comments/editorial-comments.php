@@ -67,7 +67,7 @@ if (! class_exists('PP_Editorial_Comments')) {
                 'icon_class' => 'dashicons dashicons-admin-comments',
                 'slug' => 'editorial-comments',
                 'default_options' => [
-                    'enabled' => 'off',
+                    'enabled' => 'on',
                     'post_types' => [
                         'post' => 'on',
                         'page' => 'on',

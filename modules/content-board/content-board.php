@@ -1630,9 +1630,16 @@ class PP_Content_Board extends PP_Module
 
         switch ($column_name) {
             case 'post_status':
-                $status_name = $this->get_post_status_friendly_name($post->post_status);
+                $status_name = $this->get_post_status_friendly_name($post->post_status, $post);
 
                 return $status_name;
+                break;
+            case 'revision_status':
+                if (function_exists('rvy_in_revision_workflow') && rvy_in_revision_workflow($post)) {
+                    return $this->get_post_status_friendly_name($post->post_status, $post);
+                }
+
+                return '';
                 break;
             case 'post_type':
                 $post_type_object = get_post_type_object($post->post_type);
