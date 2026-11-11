@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           repository: publishpress/infra
-          ref: development
+          ref: 61a991585f23a83bd70f2a6b55b6da4dffe50476 # fix(dependency-audit): keep npm scope when a lock path is missing
           token: ${{ secrets.INFRA_READ_TOKEN }}
           path: .infra-audit
           sparse-checkout: .github/actions/dependency-audit
