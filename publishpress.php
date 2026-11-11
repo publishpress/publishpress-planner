@@ -3,7 +3,7 @@
  * Plugin Name: PublishPress Planner Free
  * Plugin URI: https://publishpress.com/
  * Description: PublishPress Planner helps you plan and publish content inside WordPress. Features include a content calendar, kanban board, and notifications.
- * Version: 4.8.2
+ * Version: 4.9.0-beta.1
  * Author: PublishPress
  * Author URI: https://publishpress.com
  * Text Domain: publishpress
@@ -39,7 +39,7 @@
  * @author      PublishPress
  * @copyright   Copyright (C) 2024 PublishPress. All rights reserved.
  * @link        https://publishpress.com/
- * 
+ *
  */
 
 use PPVersionNotices\Module\MenuLink\Module;
@@ -1249,7 +1249,7 @@ function publishpress_planner_load_plugin() {
                     'edit_pp_notif_workflow',
                     'read_pp_notif_workflow',
                 ];
-                
+
                 $pluginCaps['PublishPress Planner'] = $caps;
 
                 return $pluginCaps;
@@ -1305,7 +1305,7 @@ function publishpress_planner_load_plugin() {
             public function getCustomStatuses() {
                 if (class_exists('PublishPress_Statuses')) {
                     $customStatuses = \PublishPress_Statuses::getCustomStatuses(['for_revision' => false], 'object');
-    
+
                     if (defined('PUBLISHPRESS_REVISIONS_VERSION') || defined('PUBLISHPRESS_REVISIONS_PRO_VERSION')) {
                         $customStatuses = array_merge(
                             $customStatuses,
@@ -1350,7 +1350,7 @@ function publishpress_planner_load_plugin() {
                         'position'    => 4,
                     ],
                 ];
-            }     
+            }
 
             /**
             * Redirect user on plugin activation
@@ -1371,18 +1371,9 @@ function publishpress_planner_load_plugin() {
              *
              * @return void
              */
-            public function searchMetaKeys()
+            public function findMetaKeys($queryText)
             {
                 global $wpdb;
-
-                header('Content-type: application/json;');
-
-                if (empty($_GET['nonce']) || ! wp_verify_nonce(sanitize_text_field($_GET['nonce']), 'publishpress-content-get-data')) {
-                    wp_send_json([]);
-                }
-
-                $queryText = isset($_GET['q']) ? sanitize_text_field($_GET['q']) : '';
-
                 $like = '%' . $wpdb->esc_like($queryText) . '%';
 
                 $queryResults = $wpdb->get_col(
@@ -1401,6 +1392,23 @@ function publishpress_planner_load_plugin() {
                         ];
                     }
                 }
+
+                return $results;
+            }
+
+            public function searchMetaKeys()
+            {
+                global $wpdb;
+
+                header('Content-type: application/json;');
+
+                if (empty($_GET['nonce']) || ! wp_verify_nonce(sanitize_text_field($_GET['nonce']), 'publishpress-content-get-data')) {
+                    wp_send_json([]);
+                }
+
+                $queryText = isset($_GET['q']) ? sanitize_text_field($_GET['q']) : '';
+
+                $results = $this->findMetaKeys($queryText);
 
                 wp_send_json($results);
             }
@@ -1505,6 +1513,7 @@ function publishpress_planner_load_plugin() {
             );
         }
     }
+    require_once __DIR__ . '/core/Mcp/bootstrap.php';
     do_action('publishpress_planner_loaded');
 }
 
@@ -1514,7 +1523,7 @@ register_activation_hook(
     __FILE__,
     function () {
         global $wp_roles;
-        
+
         $genericCaps = [
             'pp_view_calendar',
             'pp_view_content_overview',

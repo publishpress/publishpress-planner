@@ -1630,6 +1630,24 @@ if (! class_exists('PP_Improved_Notifications')) {
         }
 
         /**
+         * Save typed, already authorized per-workflow channel preferences for a user.
+         */
+        public function saveNotificationPreferences($userId, array $preferences)
+        {
+            if (!current_user_can('edit_user', $userId) || !current_user_can('pp_set_notification_channel')) {
+                return new WP_Error('planner_preferences_denied', __('You cannot change these notification preferences.', 'publishpress'));
+            }
+            foreach ($preferences as $row) {
+                $key = 'psppno_workflow_channel_' . (int) $row['workflow_id'];
+                update_user_meta($userId, $key, sanitize_key($row['channel']));
+                if (get_user_meta($userId, $key, true) !== $row['channel']) {
+                    return new WP_Error('planner_preferences_unconfirmed', __('Some channel changes could not be confirmed. Read preferences before retrying.', 'publishpress'));
+                }
+            }
+            return apply_filters('publishpress_planner_save_notification_preferences', true, $userId, $preferences);
+        }
+
+        /**
          * Saves the data coming from the user profile
          *
          * @param int $user_id
@@ -1654,13 +1672,11 @@ if (! class_exists('PP_Improved_Notifications')) {
             // Workflow Channels
             if (isset($_POST['psppno_workflow_channel']) && ! empty($_POST['psppno_workflow_channel'])) {
                 $workflow_channels = wp_unslash($_POST['psppno_workflow_channel']);
-                foreach ((array)$workflow_channels as $workflow_id => $channel) {
-                    update_user_meta(
-                        $user_id,
-                        'psppno_workflow_channel_' . (int)$workflow_id,
-                        sanitize_key($channel)
-                    );
+                $preferences = [];
+                foreach ((array) $workflow_channels as $workflow_id => $channel) {
+                    $preferences[] = ['workflow_id' => (int) $workflow_id, 'channel' => sanitize_key($channel)];
                 }
+                $this->saveNotificationPreferences($user_id, $preferences);
             }
 
             do_action('psppno_save_user_profile', $user_id);

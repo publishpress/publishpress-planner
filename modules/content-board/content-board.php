@@ -130,6 +130,8 @@ class PP_Content_Board extends PP_Module
      */
     private $content_board_methods;
 
+    public function getBoardMethods() { return $this->content_board_methods; }
+
     /**
      * Register the module with PublishPress but don't do anything else
      */
@@ -507,21 +509,22 @@ class PP_Content_Board extends PP_Module
      * Update the current user's filters for content board display with the filters in $_GET. The filters
      * in $_GET take precedence over the current users filters if they exist.
      */
-    public function update_user_filters()
+    public function update_user_filters($request_filter = false, $persist = true)
     {
         global $pp_content_board_user_filters;
 
-        if (is_array($pp_content_board_user_filters)) {
+        if ($request_filter === false && is_array($pp_content_board_user_filters)) {
             return $pp_content_board_user_filters;
         }
 
         $current_user = wp_get_current_user();
 
+        if ($request_filter === false) { $request_filter = $_GET; }
         $user_filters = [
-            'start_date' => $this->filter_get_param('start_date'),
-            'end_date' => $this->filter_get_param('end_date'),
-            'me_mode' => $this->filter_get_param('me_mode'),
-            'hide_revision' => $this->filter_get_param('hide_revision'),
+            'start_date' => $this->filter_get_param('start_date', $request_filter),
+            'end_date' => $this->filter_get_param('end_date', $request_filter),
+            'me_mode' => $this->filter_get_param('me_mode', $request_filter),
+            'hide_revision' => $this->filter_get_param('hide_revision', $request_filter),
         ];
 
         $editorial_metadata = $this->terms_options;
@@ -532,30 +535,30 @@ class PP_Content_Board extends PP_Module
                 $meta_term = $editorial_metadata[$filter_key];
                 $meta_term_type = $meta_term['type'];
                 if ($meta_term_type === 'checkbox') {
-                    if (! isset($_GET[$filter_key])) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+                    if (! isset($request_filter[$filter_key])) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
                         $check_value = null;
                     } else {
-                        $check_value = absint($this->filter_get_param($filter_key));
+                        $check_value = absint($this->filter_get_param($filter_key, $request_filter));
                     }
                     $user_filters[$filter_key] = $check_value;
                 } elseif ($meta_term_type === 'date') {
-                    $user_filters[$filter_key]                   = $this->filter_get_param_text($filter_key);
-                    $user_filters[$filter_key . '_start']        = $this->filter_get_param_text($filter_key . '_start');
-                    $user_filters[$filter_key . '_end']          = $this->filter_get_param_text($filter_key . '_end');
-                    $user_filters[$filter_key . '_start_hidden'] = $this->filter_get_param_text($filter_key . '_start_hidden');
-                    $user_filters[$filter_key . '_end_hidden']   = $this->filter_get_param_text($filter_key . '_end_hidden');
+                    $user_filters[$filter_key]                   = $this->filter_get_param_text($filter_key, $request_filter);
+                    $user_filters[$filter_key . '_start']        = $this->filter_get_param_text($filter_key . '_start', $request_filter);
+                    $user_filters[$filter_key . '_end']          = $this->filter_get_param_text($filter_key . '_end', $request_filter);
+                    $user_filters[$filter_key . '_start_hidden'] = $this->filter_get_param_text($filter_key . '_start_hidden', $request_filter);
+                    $user_filters[$filter_key . '_end_hidden']   = $this->filter_get_param_text($filter_key . '_end_hidden', $request_filter);
                 }  elseif ($meta_term_type === 'user') {
                     if (empty($user_filters['me_mode'])) {
-                        $user_filters[$filter_key] = $this->filter_get_param_text($filter_key);
+                        $user_filters[$filter_key] = $this->filter_get_param_text($filter_key, $request_filter);
                     }
                 } else {
-                    $user_filters[$filter_key] = $this->filter_get_param_text($filter_key);
+                    $user_filters[$filter_key] = $this->filter_get_param_text($filter_key, $request_filter);
                 }
             } else {
                 // other filters
-                $user_filters[$filter_key] = $this->filter_get_param_text($filter_key);
+                $user_filters[$filter_key] = $this->filter_get_param_text($filter_key, $request_filter);
                 if (in_array($filter_key, $this->content_board_datas['meta_keys']) || in_array($filter_key, ['ppch_co_yoast_seo__yoast_wpseo_linkdex', 'ppch_co_yoast_seo__yoast_wpseo_content_score'])) {
-                    $user_filters[$filter_key . '_operator'] = $this->filter_get_param_text($filter_key . '_operator');
+                    $user_filters[$filter_key . '_operator'] = $this->filter_get_param_text($filter_key . '_operator', $request_filter);
                 }
             }
         }
@@ -584,9 +587,9 @@ class PP_Content_Board extends PP_Module
 
         $user_filters = apply_filters('PP_Content_Board_filter_values', $user_filters, $current_user_filters);
 
-        $this->update_user_meta($current_user->ID, self::USERMETA_KEY_PREFIX . 'filters', $user_filters);
+        if ($persist) { $this->update_user_meta($current_user->ID, self::USERMETA_KEY_PREFIX . 'filters', $user_filters); }
 
-        $pp_content_board_user_filters = $user_filters;
+        if ($persist) { $pp_content_board_user_filters = $user_filters; }
 
         return $user_filters;
     }
@@ -1317,7 +1320,7 @@ class PP_Content_Board extends PP_Module
      *
      * @return array $term_posts An array of post objects for the term
      */
-    public function getPostsForPostType($postType, $args = null)
+    public function getPostsForPostType($postType, $args = null, $maxItems = null)
     {
         $defaults = [
             'post_status' => null,
@@ -1385,7 +1388,7 @@ class PP_Content_Board extends PP_Module
     
                      $compare = '=';
                     if ($metadata_term['type'] === 'paragraph'
-                        || ($metadata_term['type'] === 'select' && isset($metadata_term->select_type) && $metadata_term['select_type'] === 'multiple')
+                        || ($metadata_term['type'] === 'select' && isset($metadata_term['select_type']) && $metadata_term['select_type'] === 'multiple')
                     ) {
                         $compare = 'LIKE';
                     }
@@ -1521,6 +1524,7 @@ class PP_Content_Board extends PP_Module
         $context = 'default';
         $args = apply_filters('PP_Content_Board_posts_query_args', $args, $context, $enabled_filters, $this->user_filters);
 
+        if ($maxItems !== null) { $args['posts_per_page'] = max(1, min(101, (int) $maxItems)); }
         add_filter('posts_where', [$this, 'posts_where_range']);
         $term_posts_query_results = new WP_Query($args);
         remove_filter('posts_where', [$this, 'posts_where_range']);

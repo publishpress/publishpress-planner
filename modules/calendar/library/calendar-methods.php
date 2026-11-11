@@ -196,20 +196,7 @@ if (! class_exists('PP_Calendar_Methods')) {
 
             $field_name = esc_attr($this->module->options_group_name) . '[show_posts_publish_time]';
 
-            $customStatuses = defined('PUBLISHPRESS_STATUSES_VERSION') ? $publishpress->getPostStatuses() : $publishpress->getCustomStatuses();
-
-            if (empty($customStatuses)) {
-                $statuses = [
-                    'publish' => __('Publish'),
-                    'future' => __('Scheduled'),
-                ];
-            } else {
-                $statuses = [];
-
-                foreach ($customStatuses as $status) {
-                    $statuses[$status->slug] = ['title' => $status->label, 'status_obj' => $status, 'for_revision' => !empty($status->for_revision)];
-                }
-            }
+            $statuses = PP_Calendar::getPublishTimeStatusChoices();
 
             // Add support to the legacy value for this setting, where "on" means post and page selected.
             if ($this->module->options->show_posts_publish_time === 'on') {
@@ -550,7 +537,7 @@ if (! class_exists('PP_Calendar_Methods')) {
 
             // If our secret key doesn't exist, create a new one
             if (empty($this->module->options->ics_secret_key)) {
-                PublishPress()->update_module_option($this->module->name, 'ics_secret_key', wp_generate_password());
+                $this->rotateFeedKey();
             }
         }
 
@@ -685,6 +672,14 @@ if (! class_exists('PP_Calendar_Methods')) {
          *
          * @since 0.8
          */
+        public function rotateFeedKey()
+        {
+            if (!current_user_can('manage_options')) { return new WP_Error('planner_feed_denied', __('You cannot rotate the feed key.', 'publishpress')); }
+            $key = wp_generate_password();
+            PublishPress()->update_module_option($this->module->name, 'ics_secret_key', $key);
+            return PublishPress()->calendar->module->options->ics_secret_key === $key;
+        }
+
         public function handle_regenerate_calendar_feed_secret()
         {
             if (! isset($_GET['action']) || 'pp_calendar_regenerate_calendar_feed_secret' != $_GET['action']) {
@@ -701,7 +696,7 @@ if (! class_exists('PP_Calendar_Methods')) {
                 wp_die(esc_html($this->module->messages['nonce-failed']));
             }
 
-            PublishPress()->update_module_option($this->module->name, 'ics_secret_key', wp_generate_password());
+            $this->rotateFeedKey();
 
             $args = [
                 'page' => PP_Modules_Settings::SETTINGS_SLUG,
@@ -788,50 +783,44 @@ if (! class_exists('PP_Calendar_Methods')) {
                 wp_send_json(['error' => __('Invalid input', 'publishpress')], 400);
             }
 
-            $post = get_post($postId);
-
-            if (empty($post) || is_wp_error($post)) {
-                wp_send_json(['error' => __('Post not found', 'publishpress')], 404);
+            $result = $this->moveItem($postId, $newYear, $newMonth, $newDay);
+            if (is_wp_error($result)) {
+                wp_send_json(['error' => $result->get_error_message()], $result->get_error_data()['status'] ?? 400);
             }
-
-            // Check that the user can modify the post
-            if (! $this->current_user_can_modify_post($post)) {
-                wp_send_json(['error' => __('No enough permissions', 'publishpress')], 403);
-            }
-
-            $oldPostDate = $post->post_date;
-            $postDate = null;
-            try {
-                $postDate = new DateTime($post->post_date);
-                $postDate->setDate($newYear, $newMonth, $newDay);
-            } catch (Exception $e) {
-                wp_send_json(['error' => __('Invalid date', 'publishpress')], 400);
-            }
-
-            $newDate = $postDate->format('Y-m-d H:i:s');
-
-            wp_update_post(
-                [
-                    'ID' => $postId,
-                    'post_date' => $newDate,
-                    'post_date_gmt' => get_gmt_from_date($newDate),
-                    'edit_date' => true,
-
-                ]
-            );
-
-            /**
-             * @param int $postId
-             * @param string $newDate
-             */
-            do_action('publishpress_after_moving_calendar_item', $postId, $newDate, $oldPostDate);
-
-            wp_send_json(
-                true,
-                200
-            );
+            wp_send_json(true, 200);
         }
 
+        /**
+         * Move a calendar item using the native permission, date and notification lifecycle.
+         * The browser handles its nonce before calling this service; non-form callers authorize separately.
+         */
+        public function moveItem($postId, $year, $month, $day, $preview = false)
+        {
+            $post = get_post($postId);
+            if (!$post) {
+                return new WP_Error('planner_missing_post', __('Post not found', 'publishpress'), ['status' => 404]);
+            }
+            if (!current_user_can('edit_post', $postId) || !$this->current_user_can_modify_post($post)) {
+                return new WP_Error('planner_move_denied', __('Not enough permissions', 'publishpress'), ['status' => 403]);
+            }
+            if (!checkdate((int) $month, (int) $day, (int) $year)) {
+                return new WP_Error('planner_invalid_date', __('Invalid date', 'publishpress'), ['status' => 400]);
+            }
+            try {
+                $date = new DateTime($post->post_date);
+                $date->setDate($year, $month, $day);
+            } catch (Exception $error) {
+                return new WP_Error('planner_invalid_date', __('Invalid date', 'publishpress'), ['status' => 400]);
+            }
+            $newDate = $date->format('Y-m-d H:i:s');
+            if (!$preview) {
+                $result = wp_update_post(['ID' => $postId, 'post_date' => $newDate,
+                    'post_date_gmt' => get_gmt_from_date($newDate), 'edit_date' => true], true);
+                if (is_wp_error($result)) { return $result; }
+                do_action('publishpress_after_moving_calendar_item', $postId, $newDate, $post->post_date);
+            }
+            return ['id' => (int) $postId, 'date' => $newDate, 'dry_run' => (bool) $preview];
+        }
         public function getPostTypeFields($post_status_options)
         {
             global $publishpress;
@@ -1387,7 +1376,7 @@ if (! class_exists('PP_Calendar_Methods')) {
          *
          * @return array $posts All of the posts as an array sorted by date
          */
-        public function getCalendarDataForMultipleWeeks($args = [], $context = 'dashboard', $method_args = [])
+        public function getCalendarDataForMultipleWeeks($args = [], $context = 'dashboard', $method_args = [], $maxItems = null)
         {
             $supported_post_types = PublishPress\Legacy\Util::get_post_types_for_module($this->module);
             $defaults = [
@@ -1489,7 +1478,7 @@ if (! class_exists('PP_Calendar_Methods')) {
 
                          $compare = '=';
                         if ($metadata_term['type'] === 'paragraph'
-                            || ($metadata_term['type'] === 'select' && isset($metadata_term->select_type) && $metadata_term['select_type'] === 'multiple')
+                            || ($metadata_term['type'] === 'select' && isset($metadata_term['select_type']) && $metadata_term['select_type'] === 'multiple')
                         ) {
                             $compare = 'LIKE';
                         }
@@ -1628,6 +1617,7 @@ if (! class_exists('PP_Calendar_Methods')) {
                 add_filter('posts_orderby', [$this, 'filterPostsOrderBy'], 10);
             }
 
+            if ($maxItems !== null) { $args['posts_per_page'] = max(1, min(101, (int) $maxItems)); }
             $post_results = new WP_Query($args);
 
             $posts = [];

@@ -3,6 +3,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 [Unreleased]
 
+- Added: Private MCP actions for Planner content, editorial collaboration, notifications, view configuration and native maintenance, with capability checks and validated previews.
 - Changed: Development dependencies were updated so Symfony Config, Filesystem, HTTP Client, and YAML match the current security releases. #2140
 
 [4.8.2] - 13 Oct, 2026
