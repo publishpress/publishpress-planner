@@ -272,11 +272,11 @@ class Email extends Base implements Channel_Interface
                 return $receiverText;
             }
 
-            $receiverText = $user->user_nicename;
+            $receiverText = esc_html($user->user_nicename);
             $receiverText .= sprintf(
                 '<span class="user-details muted">(user_id:%d, email:%s)</span>',
-                $user->ID,
-                $user->user_email
+                (int) $user->ID,
+                esc_html($user->user_email)
             );
         }
 

@@ -1,6 +1,10 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[4.8.3] - 12 Nov, 2026
+
+- Fixed: Notification log text is escaped before it is shown.
+
 [4.8.2] - 13 Oct, 2026
 
 - Changed: Image alternative text is now exposed clearly to automated accessibility and security scanners. #2079

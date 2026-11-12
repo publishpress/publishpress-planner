@@ -85,8 +85,8 @@ class NotificationsLogTable extends WP_List_Table
         return sprintf(
             '<a target="%s" href="%s">%s</a>',
             $blankTarget ? '_blank' : '',
-            $url,
-            $text
+            esc_url($url),
+            esc_html($text)
         );
     }
 
@@ -201,7 +201,7 @@ class NotificationsLogTable extends WP_List_Table
                             ) {
                                 $output .= sprintf(
                                     '<li class="receiver-subgroup"><span>%s</span></li>',
-                                    $receiverData['subgroup']
+                                    esc_html($receiverData['subgroup'])
                                 );
 
                                 $lastSubgroup = $receiverData['subgroup'];
@@ -224,7 +224,14 @@ class NotificationsLogTable extends WP_List_Table
                                 apply_filters('publishpress_notifications_channel_icon_class', $receiverData['channel'])
                             );
 
-                            $output .= $receiverText;
+                            $output .= wp_kses(
+                                $receiverText,
+                                [
+                                    'span' => [
+                                        'class' => true,
+                                    ],
+                                ]
+                            );
                             $output .= '</li>';
 
                             $receiversCount++;
@@ -301,7 +308,7 @@ class NotificationsLogTable extends WP_List_Table
                         }
 
                         if (! empty($log->error)) {
-                            $output .= '<span class="error"> - ' . $log->error . '</span>';
+                            $output .= '<span class="error"> - ' . esc_html($log->error) . '</span>';
                         }
                     }
                 }
