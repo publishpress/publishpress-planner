@@ -538,7 +538,7 @@ if (! class_exists('PP_Calendar_Utilities')) {
                                 <?php if ('revision_status' == $select_id && !empty($user_filters['hide_revision'])) echo ' style="display: none;"';?>><?php echo esc_html($button_label); ?></button>
                             <div id="content_calendar_modal_<?php echo esc_attr($modal_id); ?>" class="content-calendar-modal" style="display: none;">
                                 <div class="content-calendar-modal-content">
-                                    <span class="close">&times;</span>
+                                    <button type="button" class="close" aria-label="<?php esc_attr_e('Close', 'publishpress'); ?>">&times;</button>
                                     <div><?php echo $filter_data['html']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
                                 </div>
                             </div>

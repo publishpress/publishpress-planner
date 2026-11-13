@@ -234,6 +234,8 @@
 }
 
 .content-calendar-modal-content {
+    display: flex;
+    flex-direction: column;
     min-width: 150px;
     max-width: 200px;
     max-height: calc(100vh - 20px);
@@ -244,14 +246,15 @@
 }
 
 .content-calendar-modal .close {
+    align-self: flex-end;
     appearance: none;
     background: transparent !important;
     border: 0 !important;
     box-shadow: none !important;
     cursor: pointer;
     display: flex;
-    justify-content: end;
     font-size: large;
+    justify-content: flex-end;
     margin-bottom: 5px;
     min-height: 0;
     padding: 0;
