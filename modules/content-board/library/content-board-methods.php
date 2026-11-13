@@ -33,8 +33,6 @@ if (! class_exists('PP_Board_Methods')) {
         }
 
         public function updatePostStatus() {
-            global $publishpress;
-
             $response['status']  = 'error';
             $response['content'] = esc_html__('An error occured', 'publishpress');
 
@@ -74,14 +72,11 @@ if (! class_exists('PP_Board_Methods')) {
                             $post_args['post_date'] = $current_date_time;
                             $post_args['post_date_gmt'] = get_gmt_from_date($current_date_time);
                         } elseif ($post_status === 'future') {
-                            // set future date if new status is schedule
+                            // Set this post's date only. The shared default is
+                            // written by updateSchedulePeriod(), which requires
+                            // manage_options.
                             $current_timestamp = time();
                             $timestamp         = strtotime($schedule_number . ' ' . $schedule_period, $current_timestamp);
-                            $content_board_scheduled_date = [
-                                'number' => $schedule_number,
-                                'period' => $schedule_period
-                            ];
-                            $publishpress->update_module_option($this->module->name, 'content_board_scheduled_date', $content_board_scheduled_date);
 
                             $future_date = wp_date('Y-m-d H:i:s', $timestamp);
 
