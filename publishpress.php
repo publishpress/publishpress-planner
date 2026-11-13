@@ -89,6 +89,10 @@ if (! class_exists('ComposerAutoloaderInitPublishPressPlanner')
     require_once $autoloadFilePath;
 }
 
+if (function_exists('publishpress_planner_load_plugin')) {
+    return;
+}
+
 function publishpress_planner_load_plugin() {
 
     require_once 'includes.php';

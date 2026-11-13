@@ -2,6 +2,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 [4.9.0] - 13 Nov, 2026
 
+- Fixed: Planner Free no longer fatals when Planner Pro is active. The second copy skips `publishpress_planner_load_plugin()` when that function is already declared.
 - Added: Private MCP actions for Planner content, editorial collaboration, notifications, view configuration and native maintenance, with capability checks and validated previews.
 - Security: Notification log text is escaped before it is shown.
 - Security: Moving a Content Board card to Scheduled sets that post's date only. It no longer changes the shared schedule default. Saving that default still requires an administrator.
