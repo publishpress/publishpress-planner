@@ -696,21 +696,15 @@ if (! class_exists('PP_Calendar')) {
             $previous_user_id = get_current_user_id();
             wp_set_current_user($subscriber->ID);
             $can_view = current_user_can($this->getViewCapability());
-            wp_set_current_user($previous_user_id);
 
             if (! $can_view || ! $this->ics_token_is_valid($subscriber, $user_key)) {
+                wp_set_current_user($previous_user_id);
                 die(esc_html($this->module->messages['nonce-failed']));
             }
 
-            // The token identifies who read_post is evaluated for. An explicit
-            // post_status list does not apply core post visibility by itself.
-            // Unknown logins stay logged out so the feed is publish-only.
-            $user_obj = get_user_by('login', $user);
-            if ($user_obj instanceof WP_User) {
-                wp_set_current_user($user_obj->ID);
-            } else {
-                wp_set_current_user(0);
-            }
+            // Leave the token user in place. The ICS query lists non-public
+            // statuses explicitly, so read_post is evaluated for this user.
+            // Unknown logins already died above, so the feed is never anonymous.
 
             // Set up the post data to be printed
             $post_query_args = [];
