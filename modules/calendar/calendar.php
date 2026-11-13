@@ -350,7 +350,7 @@ if (! class_exists('PP_Calendar')) {
                 add_filter('pp_calendar_after_form_submission_sanitize_title', [$this, 'sanitize_text_input'], 10, 1);
                 add_filter('pp_calendar_after_form_submission_sanitize_content', [$this, 'sanitize_text_input'], 10, 1);
                 add_filter('pp_calendar_after_form_submission_sanitize_author', [$this, 'sanitize_author_input'], 10, 1);
-                add_filter('pp_calendar_after_form_submission_validate_author', [$this, 'validateAuthorForPost'], 10, 1);
+                add_filter('pp_calendar_after_form_submission_validate_author', [$this, 'validateAuthorForPost'], 10, 2);
                 add_filter('admin_body_class', ['PP_Calendar_Utilities', 'add_admin_body_class']);
             }
 
@@ -1820,18 +1820,26 @@ if (! class_exists('PP_Calendar')) {
 
         /**
          * @param array $postAuthorIds
+         * @param string $postType
          *
          * @return  array
          *
          * @throws  Exception
          */
-        public static function validateAuthorForPost($postAuthorIds = [])
+        public static function validateAuthorForPost($postAuthorIds = [], $postType = 'post')
         {
             if (empty($postAuthorIds)) {
                 return null;
             }
 
+            $postTypeObject = get_post_type_object($postType);
+            $editOthersPosts = (is_object($postTypeObject) && isset($postTypeObject->cap->edit_others_posts))
+                ? $postTypeObject->cap->edit_others_posts
+                : 'edit_others_posts';
+            $currentUserId = (int) get_current_user_id();
+
             foreach ($postAuthorIds as $authorId) {
+                $authorId = (int) $authorId;
                 $user = get_user_by('id', $authorId);
 
                 $isValid = is_object($user) && ! is_wp_error($user) && $user->has_cap('edit_posts');
@@ -1840,6 +1848,15 @@ if (! class_exists('PP_Calendar')) {
                     throw new Exception(
                         esc_html__(
                             "The selected user doesn't have enough permissions to be set as the post author.",
+                            'publishpress'
+                        )
+                    );
+                }
+
+                if ($authorId !== $currentUserId && ! current_user_can($editOthersPosts)) {
+                    throw new Exception(
+                        esc_html__(
+                            'You do not have permission to set another user as the post author.',
                             'publishpress'
                         )
                     );
