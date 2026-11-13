@@ -567,6 +567,16 @@ if (! class_exists('PP_Calendar')) {
                 die(esc_html($this->module->messages['nonce-failed']));
             }
 
+            // The token identifies who read_post is evaluated for. An explicit
+            // post_status list does not apply core post visibility by itself.
+            // Unknown logins stay logged out so the feed is publish-only.
+            $user_obj = get_user_by('login', $user);
+            if ($user_obj instanceof WP_User) {
+                wp_set_current_user($user_obj->ID);
+            } else {
+                wp_set_current_user(0);
+            }
+
             // Set up the post data to be printed
             $post_query_args = [];
             $calendar_filters = PP_Calendar_Utilities::calendar_filters();
@@ -1102,9 +1112,9 @@ if (! class_exists('PP_Calendar')) {
                     '_wpnonce' => wp_create_nonce('publishpress_calendar_ics_sub'),
                 ];
 
-                // Prepare the subscribe link for the feed
+                // Prepare the subscribe link for the feed.
+                // Do not send post_status=unpublish. That value expands to every status.
                 unset($args['action']);
-                $args['post_status'] = 'unpublish';
                 $args['pp_action'] = 'pp_calendar_ics_feed';
                 $subscription_link = add_query_arg($args, site_url());
 
@@ -1353,8 +1363,22 @@ if (! class_exists('PP_Calendar')) {
 
             $args = array_merge($defaults, $args);
 
-            // Unpublished as a status is just an array of everything but 'publish'
-            if ($args['post_status'] == 'unpublish' || $context == 'ics_subscription') {
+            // ICS requests an explicit status list, which bypasses core readable
+            // checks. Ask for non-public statuses only when a token user exists,
+            // then drop rows that user cannot read. Unknown logins stay on publish.
+            // Do not use suppress_filters here; it also skips the week-range clause.
+            if ('ics_subscription' === $context) {
+                if (get_current_user_id()) {
+                    $ics_statuses = wp_list_pluck($this->get_post_statuses(), 'slug');
+                    $ics_statuses[] = 'future';
+                    $ics_statuses[] = 'private';
+                    $ics_statuses[] = 'publish';
+                    $args['post_status'] = array_values(array_unique($ics_statuses));
+                } else {
+                    $args['post_status'] = 'publish';
+                }
+            } elseif ($args['post_status'] == 'unpublish') {
+                // Unpublished as a status is just an array of everything but 'publish'.
                 $args['post_status'] = '';
                 $post_statuses = $this->get_post_statuses();
                 foreach ($post_statuses as $post_status) {
@@ -1365,12 +1389,9 @@ if (! class_exists('PP_Calendar')) {
                 if (apply_filters('pp_show_scheduled_as_unpublished', true)) {
                     $args['post_status'] .= ', future';
                 }
-                if ($context == 'ics_subscription') {
-                    $args['post_status'] .= ', publish';
-                }
 
                 if (isset($this->module->options->ics_subscription_public_visibility) && 'on' === $this->module->options->ics_subscription_public_visibility) {
-                    $args['suppress_filters'] = true; // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.SuppressFilters_suppress_filters -- Public ICS subscriptions explicitly opt out of per-user visibility filters.
+                    $args['suppress_filters'] = true; // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.SuppressFilters_suppress_filters -- Dashboard unpublished queries keep the existing filter opt-out. ICS feeds do not.
                 }
             }
             // The WP functions for printing the category and author assign a value of 0 to the default
@@ -1397,6 +1418,11 @@ if (! class_exists('PP_Calendar')) {
             // Filter for an end user to implement any of their own query args
             $args = apply_filters('pp_calendar_posts_query_args', $args, $context, $this->filters, $this->user_filters);
 
+            // suppress_filters skips posts_where_week_range. It is not a visibility control.
+            if ('ics_subscription' === $context) {
+                unset($args['suppress_filters']);
+            }
+
             add_filter('posts_where', [$this, 'posts_where_week_range']);
             $post_results = new WP_Query($args);
             remove_filter('posts_where', [$this, 'posts_where_week_range']);
@@ -1407,6 +1433,50 @@ if (! class_exists('PP_Calendar')) {
                 global $post;
                 $key_date = gmdate('Y-m-d', strtotime($post->post_date));
                 $posts[$key_date][] = $post;
+            }
+
+            if ('ics_subscription' === $context) {
+                $posts = $this->filter_ics_subscription_posts($posts);
+            }
+
+            return $posts;
+        }
+
+        /**
+         * Remove ICS rows the token user cannot read.
+         *
+         * Published posts stay for every caller. Draft, pending, future, private,
+         * and custom statuses stay only when the resolved user passes read_post.
+         * No resolved user means those rows are omitted without a capability check,
+         * so user 0 does not also drop public posts.
+         *
+         * @param array $posts Posts grouped by Y-m-d.
+         *
+         * @return array
+         */
+        private function filter_ics_subscription_posts($posts)
+        {
+            $check_read_post = get_current_user_id() > 0;
+
+            foreach ($posts as $date => $day_posts) {
+                $visible_posts = [];
+
+                foreach ($day_posts as $calendar_post) {
+                    if (! isset($calendar_post->post_status)) {
+                        continue;
+                    }
+
+                    if ('publish' === $calendar_post->post_status) {
+                        $visible_posts[] = $calendar_post;
+                        continue;
+                    }
+
+                    if ($check_read_post && current_user_can('read_post', $calendar_post->ID)) {
+                        $visible_posts[] = $calendar_post;
+                    }
+                }
+
+                $posts[$date] = $visible_posts;
             }
 
             return $posts;
