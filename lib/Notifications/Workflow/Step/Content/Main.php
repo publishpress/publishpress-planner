@@ -69,15 +69,22 @@ class Main extends Base_Step
      */
     public function save_metabox_data($id, $post)
     {
-        if (!isset($_POST['publishpress_notif_metabox_events_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['publishpress_notif_metabox_events_nonce'])), 'publishpress_notif_save_metabox')) {
+        if (!isset($_POST['publishpress_notif_metabox_events_nonce'])
+            || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['publishpress_notif_metabox_events_nonce'])), 'publishpress_notif_save_metabox')) {
             return;
         }
+        return $this->save_values($id, $post, wp_unslash($_POST), true);
+    }
+
+    /** Persist unslashed native workflow values independently of a browser form. */
+    public function save_values($id, $post, array $data, $fromForm = false)
+    {
 
         $content_main = [];
 
-        if (isset($_POST['publishpress_notif']['content_main'])
-            && is_array($_POST['publishpress_notif']['content_main'])) {
-            $content_main = wp_unslash($_POST['publishpress_notif']['content_main']);
+        if (isset($data['publishpress_notif']['content_main'])
+            && is_array($data['publishpress_notif']['content_main'])) {
+            $content_main = $data['publishpress_notif']['content_main'];
         } else {
             // Assume it is disabled
             update_post_meta($id, static::META_KEY_SUBJECT, false);
@@ -88,8 +95,9 @@ class Main extends Base_Step
         $subject = isset($content_main['subject']) ? sanitize_text_field($content_main['subject']) : '';
         $body    = isset($content_main['body']) ? wp_kses_post($content_main['body']) : '';
 
-        update_post_meta($id, static::META_KEY_SUBJECT, $subject);
-        update_post_meta($id, static::META_KEY_BODY, $body);
+        update_post_meta($id, static::META_KEY_SUBJECT, wp_slash($subject));
+        update_post_meta($id, static::META_KEY_BODY, wp_slash($body));
+
     }
 
     /**

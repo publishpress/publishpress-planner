@@ -44,14 +44,21 @@ class Group extends Simple_Checkbox implements Receiver_Interface
      */
     public function save_metabox_data($id, $post)
     {
-        if (!isset($_POST['publishpress_notif_metabox_events_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['publishpress_notif_metabox_events_nonce'])), 'publishpress_notif_save_metabox')) {
+        if (!isset($_POST['publishpress_notif_metabox_events_nonce'])
+            || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['publishpress_notif_metabox_events_nonce'])), 'publishpress_notif_save_metabox')) {
             return;
         }
+        return $this->save_values($id, $post, wp_unslash($_POST), true);
+    }
 
-        parent::save_metabox_data($id, $post);
+    /** Persist unslashed native workflow values independently of a browser form. */
+    public function save_values($id, $post, array $data, $fromForm = false)
+    {
 
-        $publishpress_notif = isset($_POST['publishpress_notif']) && is_array($_POST['publishpress_notif'])
-            ? wp_unslash($_POST['publishpress_notif'])
+        parent::save_values($id, $post, $data, $fromForm);
+
+        $publishpress_notif = isset($data['publishpress_notif']) && is_array($data['publishpress_notif'])
+            ? $data['publishpress_notif']
             : [];
 
         $values = [];
@@ -60,6 +67,7 @@ class Group extends Simple_Checkbox implements Receiver_Interface
         }
 
         $this->update_metadata_array($id, static::META_LIST_KEY, $values);
+
     }
 
     /**
@@ -81,11 +89,11 @@ class Group extends Simple_Checkbox implements Receiver_Interface
                     if (empty($group->metagroup_id)) {
                         continue;
                     }
-                    
+
                     switch ($group->metagroup_id) {
                         case 'rvy_scheduled_rev_notice':
-                            // Don't offer Scheduled Change Notifications metagroup for standard Planner notifications, or for Revisions notifications related to creation, submission and moderation 
-                            $excludes = ['new-revision-created', 'revision-is-submitted', 'revision-status-changed', 'revision-is-scheduled', 'revision-deferred-or-rejected', 'revision-is-applied', 
+                            // Don't offer Scheduled Change Notifications metagroup for standard Planner notifications, or for Revisions notifications related to creation, submission and moderation
+                            $excludes = ['new-revision-created', 'revision-is-submitted', 'revision-status-changed', 'revision-is-scheduled', 'revision-deferred-or-rejected', 'revision-is-applied',
                             'new-post-is-created-in-draft-status', 'new-post-is-published', 'notify-when-content-is-published', 'existing-post-is-updated', 'notify-on-editorial-comments'];
 
                             foreach ($excludes as $exclude_notif) {
@@ -98,7 +106,7 @@ class Group extends Simple_Checkbox implements Receiver_Interface
                             break;
 
                         case 'rvy_pending_rev_notice':
-                            // Don't offer Change Request Notifications metagroup for standard Planner notifications, or for Revisions notifications related to publication 
+                            // Don't offer Change Request Notifications metagroup for standard Planner notifications, or for Revisions notifications related to publication
                             $excludes = ['scheduled-revision-is-published', 'revision-is-published',
                             'new-post-is-created-in-draft-status', 'new-post-is-published', 'notify-when-content-is-published', 'existing-post-is-updated', 'notify-on-editorial-comments'];
 
@@ -129,7 +137,7 @@ class Group extends Simple_Checkbox implements Receiver_Interface
         if (empty($selected_groups)) {
             $selected_groups = [];
         }
-        
+
         foreach (array_keys($groups) as $group_id) {
             if (in_array($group_id, $selected_groups)) {
                 $groups[$group_id]->selected = true;

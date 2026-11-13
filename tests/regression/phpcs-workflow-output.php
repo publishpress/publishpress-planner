@@ -26,7 +26,7 @@ function checked($actual, $expected)
 
 function wp_unslash($value)
 {
-    return stripslashes($value);
+    return is_array($value) ? array_map('wp_unslash', $value) : (is_string($value) ? stripslashes($value) : $value);
 }
 
 function sanitize_text_field($value)

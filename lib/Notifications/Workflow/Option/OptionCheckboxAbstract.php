@@ -115,6 +115,11 @@ abstract class OptionCheckboxAbstract
         return $this->view->render('workflow_metabox_option_checkbox', $context);
     }
 
+    public function getConfigurationDefinition(): array
+    {
+        return ['name' => $this->getName(), 'field' => $this->getFieldName(), 'label' => $this->getLabel()];
+    }
+
     public function setValue($postId, $post)
     {
     }

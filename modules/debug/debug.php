@@ -335,6 +335,19 @@ if (! class_exists('PP_Debug')) {
             echo $this->view->render('view_log', $context, $this->viewsPath); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
         }
 
+        public function logState()
+        {
+            return ['exists' => file_exists($this->path), 'size' => file_exists($this->path) ? (int) filesize($this->path) : 0,
+                'modified' => file_exists($this->path) ? (int) filemtime($this->path) : 0];
+        }
+
+        public function clearLog()
+        {
+            if (!$this->currentUserCanSeeDebugLog()) { return false; }
+            if (file_exists($this->path)) { wp_delete_file($this->path); }
+            return !file_exists($this->path);
+        }
+
         protected function handle_actions()
         {
             if (! $this->currentUserCanSeeDebugLog()) {
@@ -368,9 +381,7 @@ if (! class_exists('PP_Debug')) {
             }
 
             if ($action === self::ACTION_DELETE_LOG) {
-                if (file_exists($this->path)) {
-                    wp_delete_file($this->path);
-                }
+                $this->clearLog();
             }
 
             wp_redirect(admin_url('admin.php?page=' . self::PAGE_SLUG));

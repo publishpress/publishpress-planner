@@ -282,7 +282,7 @@ if (! class_exists('PP_Editorial_Metadata')) {
          *
          * @return array $supported_metadata_types All of the supported metadata
          */
-        private function get_supported_metadata_types()
+        public function get_supported_metadata_types()
         {
             $supported_metadata_types = [
                 'checkbox' => esc_html__('Checkbox', 'publishpress'),
@@ -645,43 +645,51 @@ if (! class_exists('PP_Editorial_Metadata')) {
             }
 
             // Authentication passed, let's save the data
+            return $this->save_postmeta_values($post, wp_unslash($_POST));
+        }
+
+        /**
+         * Persist editorial field values using the native empty/date/number semantics and hooks.
+         * Callers validate object access and allowed field choices before passing unslashed values.
+         */
+        public function normalize_postmeta_value($term, array $values, $clearAsNull = true)
+        {
+            $key = $this->get_postmeta_key($term);
+            $value = isset($values[$key]) && is_array($values[$key])
+                ? array_map('sanitize_text_field', $values[$key])
+                : (isset($values[$key]) ? sanitize_text_field($values[$key]) : '');
+            if (empty($value)) { return $clearAsNull ? null : $value; }
+            if ($term->type === 'date') {
+                $value = isset($values[$key . '_hidden']) ? sanitize_text_field($values[$key . '_hidden']) : '';
+                $date = DateTime::createFromFormat('Y-m-d H:i', $value);
+                if ($date !== false) { $value = $date->getTimestamp(); }
+            } elseif ($term->type === 'number') { $value = (int) $value; }
+            return is_array($value) ? array_filter($value) : wp_strip_all_tags($value);
+        }
+
+        public function save_postmeta_values($post, array $values, $partial = false)
+        {
             $terms = $this->get_editorial_metadata_terms();
-            $term_slugs = [];
+            $term_slugs = $partial ? wp_get_object_terms($post->ID, self::metadata_taxonomy, ['fields' => 'slugs']) : [];
+            if (is_wp_error($term_slugs)) { return $term_slugs; }
             $post_type = $post->post_type;
             foreach ($terms as $term) {
                 if (isset($term->post_types) && is_array($term->post_types) && in_array($post_type, $term->post_types)) {
-                    // Set up the key for this editorial fields term (same as what's in $_POST)
+                    // Set up the key for this editorial fields term (same as what's in $values)
                     $key = $this->get_postmeta_key($term);
-                    if (isset($_POST[$key]) && is_array($_POST[$key])) {
-                        $new_metadata = array_map('sanitize_text_field', $_POST[$key]);
-                    } else {
-                        $new_metadata = isset($_POST[$key]) ? sanitize_text_field($_POST[$key]) : '';
-                    }
+                    if ($partial && !array_key_exists($key, $values)) { continue; }
+                    $term_slugs = array_values(array_diff($term_slugs, [$term->slug]));
                     $type = $term->type;
-                    if (empty($new_metadata)) {
+                    $new_metadata = $this->normalize_postmeta_value($term, $values);
+                    if ($new_metadata === null) {
                         delete_post_meta($post->ID, $key);
                     } else {
-                        // TODO: Move this to a function
-                        if ($type == 'date') {
-                            $new_metadata = isset($_POST[$key . '_hidden']) ? sanitize_text_field($_POST[$key . '_hidden']) : '';
-                            $date = DateTime::createFromFormat('Y-m-d H:i', $new_metadata);
-                            if (false !== $date) {
-                                $new_metadata = $date->getTimestamp();
-                            }
-                        } elseif ($type == 'number') {
-                            $new_metadata = (int)$new_metadata;
-                        }
-                        if (is_array($new_metadata)) {
-                            $new_metadata = array_filter($new_metadata);
-                        } else {
-                            $new_metadata = wp_strip_all_tags($new_metadata);
-                        }
-                        update_post_meta($post->ID, $key, $new_metadata);
+                        update_post_meta($post->ID, $key, wp_slash($new_metadata));
                         // Add the slugs of the terms with non-empty new metadata to an array
                         $term_slugs[] = $term->slug;
                     }
 
-                    do_action('pp_editorial_metadata_field_updated', $key, $new_metadata, $post->ID, $type);
+                    do_action('pp_editorial_metadata_field_updated', $key, $new_metadata === null ? $this->normalize_postmeta_value($term, $values, false) : $new_metadata, $post->ID, $type);
                 }
             }
 
@@ -1055,7 +1063,7 @@ if (! class_exists('PP_Editorial_Metadata')) {
          * @since 0.7
          *
          */
-        private function update_editorial_metadata_term($term_id, $args)
+        public function update_editorial_metadata_term($term_id, $args)
         {
             $old_args = [];
             $old_term = $this->get_editorial_metadata_term_by('id', $term_id);
@@ -1094,6 +1102,7 @@ if (! class_exists('PP_Editorial_Metadata')) {
             $new_args['description'] = $encoded_description;
 
             $updated_term = wp_update_term($term_id, self::metadata_taxonomy, $new_args);
+            if (is_wp_error($updated_term)) { return $updated_term; }
 
             // Reset the internal object cache
             $this->editorial_metadata_terms_cache = [];
@@ -1109,7 +1118,7 @@ if (! class_exists('PP_Editorial_Metadata')) {
          *
          * @since 0.7
          */
-        private function insert_editorial_metadata_term($args)
+        public function insert_editorial_metadata_term($args)
         {
             // Term is always added to the end of the list
             $default_position = count($this->get_editorial_metadata_terms()) + 2;
@@ -1168,7 +1177,7 @@ if (! class_exists('PP_Editorial_Metadata')) {
          * @since 0.7
          *
          */
-        private function delete_editorial_metadata_term($term_id)
+        public function delete_editorial_metadata_term($term_id)
         {
             $result = wp_delete_term($term_id, self::metadata_taxonomy);
 
@@ -1534,6 +1543,19 @@ if (! class_exists('PP_Editorial_Metadata')) {
          *
          * @since 0.7
          */
+        public function setTermPositions(array $ids)
+        {
+            if (!current_user_can('manage_options') || !current_user_can($this->getEditCapability())) { return new WP_Error('planner_fields_denied', __('You cannot reorder editorial fields.', 'publishpress')); }
+            foreach ($ids as $id) { if (!$this->get_editorial_metadata_term_by('id', (int) $id)) { return new WP_Error('planner_fields_missing', __('Editorial field not found.', 'publishpress')); } }
+            $completed = [];
+            foreach (array_values($ids) as $index => $id) {
+                $result = $this->update_editorial_metadata_term((int) $id, ['position' => $index + 1]);
+                if (is_wp_error($result) || (int) $result->position !== $index + 1) { return new WP_Error('planner_fields_unconfirmed', __('Some field positions could not be confirmed.', 'publishpress'), ['completed_ids' => $completed]); }
+                $completed[] = (int) $id;
+            }
+            return $completed;
+        }
+
         public function handle_ajax_update_term_positions()
         {
             if (!isset($_POST['editorial_metadata_sortable_nonce']) || ! wp_verify_nonce(sanitize_key($_POST['editorial_metadata_sortable_nonce']), 'editorial-metadata-sortable')) {
@@ -1551,14 +1573,8 @@ if (! class_exists('PP_Editorial_Metadata')) {
             // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
             $term_positions = array_map('absint', (array)$_POST['term_positions']);
 
-            foreach ($term_positions as $position => $term_id) {
-                // Have to add 1 to the position because the index started with zero
-                $args = [
-                    'position' => (int)$position + 1,
-                ];
-                $return = $this->update_editorial_metadata_term((int)$term_id, $args);
-                // @todo check that this was a valid return
-            }
+            $result = $this->setTermPositions($term_positions);
+            if (is_wp_error($result)) { $this->print_ajax_response('error', $result->get_error_message()); }
             $this->print_ajax_response('success', $this->module->messages['term-position-updated']);
         }
 

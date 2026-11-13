@@ -45,20 +45,12 @@ class Taxonomies extends Base implements Filter_Interface
     protected function get_options()
     {
 
-        $excluded_taxonomies = [];
-        if (class_exists('\PP_Notifications')) {
-            $blacklisted_taxonomies = PP_Notifications::getOption('blacklisted_taxonomies');
-            if (!empty($blacklisted_taxonomies)) {
-                $excluded_taxonomies = array_filter(explode(',', $blacklisted_taxonomies));
-            }
-        }
-
-        $taxonomies = get_taxonomies([], 'objects', 'and');
+        $taxonomies = \PP_Notifications::getWorkflowTaxonomies();
         $metadata = (array)$this->get_metadata(static::META_KEY_TAXONOMIES_FROM);
         $options  = [];
 
         foreach ($taxonomies as $tax) {
-            if (empty($tax->labels->name) || in_array($tax->labels->name, $excluded_taxonomies)) {
+            if (empty($tax->labels->name)) {
                 continue;
             }
             $options[] = [
@@ -79,20 +71,28 @@ class Taxonomies extends Base implements Filter_Interface
      */
     public function save_metabox_data($id, $post)
     {
-        if (!isset($_POST['publishpress_notif_metabox_events_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['publishpress_notif_metabox_events_nonce'])), 'publishpress_notif_save_metabox')) {
+        if (!isset($_POST['publishpress_notif_metabox_events_nonce'])
+            || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['publishpress_notif_metabox_events_nonce'])), 'publishpress_notif_save_metabox')) {
             return;
         }
+        return $this->save_values($id, $post, wp_unslash($_POST), true);
+    }
 
-        if (!isset($_POST['publishpress_notif']["{$this->step_name}_filters"]['taxonomies'])) {
+    /** Persist unslashed native workflow values independently of a browser form. */
+    public function save_values($id, $post, array $data, $fromForm = false)
+    {
+
+        if (!isset($data['publishpress_notif']["{$this->step_name}_filters"]['taxonomies'])) {
             $values = [];
         } else {
             $values = array_map(
                 'sanitize_key',
-                (array)$_POST['publishpress_notif']["{$this->step_name}_filters"]['taxonomies']
+                (array)$data['publishpress_notif']["{$this->step_name}_filters"]['taxonomies']
             );
         }
 
         $this->update_metadata_array($id, static::META_KEY_TAXONOMIES_FROM, $values);
+
     }
 
     /**

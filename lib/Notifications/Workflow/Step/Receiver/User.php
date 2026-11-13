@@ -39,14 +39,21 @@ class User extends Simple_Checkbox implements Receiver_Interface
      */
     public function save_metabox_data($id, $post)
     {
-        if (!isset($_POST['publishpress_notif_metabox_events_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['publishpress_notif_metabox_events_nonce'])), 'publishpress_notif_save_metabox')) {
+        if (!isset($_POST['publishpress_notif_metabox_events_nonce'])
+            || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['publishpress_notif_metabox_events_nonce'])), 'publishpress_notif_save_metabox')) {
             return;
         }
+        return $this->save_values($id, $post, wp_unslash($_POST), true);
+    }
 
-        parent::save_metabox_data($id, $post);
+    /** Persist unslashed native workflow values independently of a browser form. */
+    public function save_values($id, $post, array $data, $fromForm = false)
+    {
 
-        $publishpress_notif = isset($_POST['publishpress_notif']) && is_array($_POST['publishpress_notif'])
-            ? wp_unslash($_POST['publishpress_notif'])
+        parent::save_values($id, $post, $data, $fromForm);
+
+        $publishpress_notif = isset($data['publishpress_notif']) && is_array($data['publishpress_notif'])
+            ? $data['publishpress_notif']
             : [];
 
         if (!isset($publishpress_notif['receiver_user'])) {
@@ -60,6 +67,7 @@ class User extends Simple_Checkbox implements Receiver_Interface
         }
 
         $this->update_metadata_array($id, static::META_LIST_KEY, $values);
+
     }
 
     /**

@@ -108,32 +108,40 @@ class Post_Status extends Base implements Filter_Interface
      */
     public function save_metabox_data($id, $post)
     {
-        if (!isset($_POST['publishpress_notif_metabox_events_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['publishpress_notif_metabox_events_nonce'])), 'publishpress_notif_save_metabox')) {
+        if (!isset($_POST['publishpress_notif_metabox_events_nonce'])
+            || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['publishpress_notif_metabox_events_nonce'])), 'publishpress_notif_save_metabox')) {
             return;
         }
+        return $this->save_values($id, $post, wp_unslash($_POST), true);
+    }
+
+    /** Persist unslashed native workflow values independently of a browser form. */
+    public function save_values($id, $post, array $data, $fromForm = false)
+    {
 
         // From
-        if (!isset($_POST['publishpress_notif']["{$this->step_name}_filters"]['post_status']['from'])) {
+        if (!isset($data['publishpress_notif']["{$this->step_name}_filters"]['post_status']['from'])) {
             $from = [];
         } else {
             $from = array_map(
                 'sanitize_key',
-                (array)$_POST['publishpress_notif']["{$this->step_name}_filters"]['post_status']['from']
+                (array)$data['publishpress_notif']["{$this->step_name}_filters"]['post_status']['from']
             );
         }
 
         $this->update_metadata_array($id, static::META_KEY_POST_STATUS_FROM, $from);
 
         // To
-        if (!isset($_POST['publishpress_notif']["{$this->step_name}_filters"]['post_status']['to'])) {
+        if (!isset($data['publishpress_notif']["{$this->step_name}_filters"]['post_status']['to'])) {
             $to = [];
         } else {
             $to = array_map(
                 'sanitize_key',
-                (array)$_POST['publishpress_notif']["{$this->step_name}_filters"]['post_status']['to']
+                (array)$data['publishpress_notif']["{$this->step_name}_filters"]['post_status']['to']
             );
         }
         $this->update_metadata_array($id, static::META_KEY_POST_STATUS_TO, $to);
+
     }
 
     /**
