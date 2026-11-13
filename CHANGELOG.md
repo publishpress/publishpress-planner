@@ -1,14 +1,17 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-[Unreleased]
-
-- Fixed: Moving a Content Board card to Scheduled sets that post's date only. It no longer changes the shared schedule default. Saving that default still requires an administrator.
-- Fixed: Workflow shortcodes omit login, email, user ID, profile URL, nickname, editorial comment author email, and comment IP unless the user who last saved the workflow can list users. `[psppno_receiver email]` still prints that recipient. Post meta is limited to editorial metadata keys unless `publishpress_notif_shortcode_meta_keys` allows more. Already-sent log entries keep the body that was stored when they were sent.
-
 [4.8.3] - 12 Nov, 2026
 
 - Fixed: Notification log text is escaped before it is shown.
+- Fixed: Moving a Content Board card to Scheduled sets that post's date only. It no longer changes the shared schedule default. Saving that default still requires an administrator.
+- Fixed: Workflow shortcodes omit login, email, user ID, profile URL, nickname, editorial comment author email, and comment IP unless the user who last saved the workflow can list users. `[psppno_receiver email]` still prints that recipient. Post meta is limited to editorial metadata keys unless `publishpress_notif_shortcode_meta_keys` allows more. Already-sent log entries keep the body that was stored when they were sent.
+- Fixed: Content Board and Content Overview form requests only accept post types the user can edit.
+- Fixed: Saving shared Content Board and Content Overview settings requires an administrator.
+- Fixed: Creating a post from the Calendar, Content Board, or Content Overview checks the publish capability and who may be set as author.
+- Fixed: The calendar subscribe feed only includes posts the subscriber can read.
+- Fixed: Calendar subscribe links use a per-user token. Links from before 4.8.3 no longer work and have to be created again.
+- Fixed: The upgrade that removes duplicate notification workflows uses a prepared query.
 - Fixed: The review banner uses the Planner name. #2095
 - Fixed: Calendar requests keep the Polylang admin language. #1943
 - Fixed: Calendar and Content Board show Scheduled Revision status. #2098
