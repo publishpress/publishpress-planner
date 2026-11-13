@@ -574,10 +574,16 @@ if (! class_exists('PP_Improved_Notifications')) {
             }
 
             if ($trash_post_ids) {
-                $id_in_csv = implode("','", array_map('intval', $trash_post_ids));
+                $ids = array_map('intval', $trash_post_ids);
+                $placeholders = implode(',', array_fill(0, count($ids), '%d'));
 
                 // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-                $wpdb->query("UPDATE $wpdb->posts SET post_status = 'trash' WHERE $wpdb->posts.post_type = 'psppnotif_workflow' AND $wpdb->posts.ID IN ('$id_in_csv')");    //phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+                $wpdb->query(
+                    $wpdb->prepare(
+                        "UPDATE {$wpdb->posts} SET post_status = 'trash' WHERE post_type = %s AND ID IN ($placeholders)",
+                        array_merge(array('psppnotif_workflow'), $ids)
+                    )
+                );
 
                 foreach ($trash_post_ids as $post_id) {
                     clean_post_cache($post_id);
