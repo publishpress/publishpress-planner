@@ -891,22 +891,14 @@ if (! class_exists('PP_Calendar_Utilities')) {
                         $offset = $trans['offset'] / 3600;
 
                         $daylight = $vTimeZone->add(
+                            $calendar->createComponent(
                             'DAYLIGHT',
                             [
                                 'DTSTART' => $dt->format('Ymd\THis'),
-                                'TZOFFSETFROM' => sprintf(
-                                    '%s%02d%02d',
-                                    $tzfrom >= 0 ? '+' : '',
-                                    floor($tzfrom),
-                                    ($tzfrom - floor($tzfrom)) * 60
-                                ),
-                                'TZOFFSETTO' => sprintf(
-                                    '%s%02d%02d',
-                                    $offset >= 0 ? '+' : '',
-                                    floor($offset),
-                                    ($offset - floor($offset)) * 60
-                                ),
+                                'TZOFFSETFROM' => self::format_ics_utc_offset($tzfrom),
+                                'TZOFFSETTO' => self::format_ics_utc_offset($offset),
                             ]
+                            )
                         );
 
                         // add abbreviated timezone name if available
@@ -921,22 +913,14 @@ if (! class_exists('PP_Calendar_Utilities')) {
                         $offset = $trans['offset'] / 3600;
 
                         $standard = $vTimeZone->add(
+                            $calendar->createComponent(
                             'STANDARD',
                             [
                                 'DTSTART' => $dt->format('Ymd\THis'),
-                                'TZOFFSETFROM' => sprintf(
-                                    '%s%02d%02d',
-                                    $tzfrom >= 0 ? '+' : '',
-                                    floor($tzfrom),
-                                    ($tzfrom - floor($tzfrom)) * 60
-                                ),
-                                'TZOFFSETTO' => sprintf(
-                                    '%s%02d%02d',
-                                    $offset >= 0 ? '+' : '',
-                                    floor($offset),
-                                    ($offset - floor($offset)) * 60
-                                ),
+                                'TZOFFSETFROM' => self::format_ics_utc_offset($tzfrom),
+                                'TZOFFSETTO' => self::format_ics_utc_offset($offset),
                             ]
+                            )
                         );
 
                         // add abbreviated timezone name if available
@@ -952,6 +936,23 @@ if (! class_exists('PP_Calendar_Utilities')) {
                         break;
                     }
                 }
+            }
+
+            // Fixed-offset timezones (e.g. "-05:00") have no transitions, but a VTIMEZONE needs at least one definition.
+            if (! $standard && ! $daylight) {
+                $offset = $tz->getOffset(new DateTime('@' . $from)) / 3600;
+                $tzoffset = self::format_ics_utc_offset($offset);
+
+                $vTimeZone->add(
+                    $calendar->createComponent(
+                        'STANDARD',
+                        [
+                            'DTSTART' => '19700101T000000',
+                            'TZOFFSETFROM' => $tzoffset,
+                            'TZOFFSETTO' => $tzoffset,
+                        ]
+                    )
+                );
             }
 
             // add X-MICROSOFT-CDO-TZID if available
@@ -971,6 +972,20 @@ if (! class_exists('PP_Calendar_Utilities')) {
          * @return string The string after escaping for ICS.
          * @since 0.8
          * */
+
+        /**
+         * Formats an offset in hours (e.g. -5 or 5.5) as an iCalendar UTC offset (e.g. -0500 or +0530).
+         *
+         * @param float|int $hours
+         *
+         * @return string
+         */
+        public static function format_ics_utc_offset($hours)
+        {
+            $minutes = (int)round(abs($hours) * 60);
+
+            return sprintf('%s%02d%02d', $hours < 0 ? '-' : '+', intdiv($minutes, 60), $minutes % 60);
+        }
 
         public static function do_ics_escaping($text)
         {

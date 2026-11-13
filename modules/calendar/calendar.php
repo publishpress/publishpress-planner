@@ -254,7 +254,8 @@ if (! class_exists('PP_Calendar')) {
                     'VEVENT',
                     [
                         'UID' => $post->guid,
-                        'SUMMARY' => PP_Calendar_Utilities::do_ics_escaping(apply_filters('the_title', $post->post_title))
+                        // Sabre\VObject escapes text values itself, so escaping here doubled the backslashes.
+                        'SUMMARY' => apply_filters('the_title', $post->post_title, $post->ID)
                             . ' - ' . $this->get_post_status_friendly_name(get_post_status($post->ID)),
                         'DTSTART' => $start_date,
                         'DTEND' => $end_date,
