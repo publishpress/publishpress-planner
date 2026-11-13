@@ -1320,9 +1320,29 @@ if (! class_exists('PP_Calendar_Utilities')) {
                         <?php
                         echo esc_html__('Copy to the clipboard', 'publishpress'); ?>
                     </button>
+                    <?php
+                    $revoke_user_id = get_current_user_id();
+                    if ($revoke_user_id) {
+                        $revoke_url = wp_nonce_url(
+                            add_query_arg(
+                                [
+                                    'action' => PP_Calendar::ICS_TOKEN_REVOKE_ACTION,
+                                    'user_id' => $revoke_user_id,
+                                ],
+                                admin_url('admin.php?page=pp-calendar')
+                            ),
+                            PP_Calendar::ICS_TOKEN_REVOKE_NONCE . '-' . $revoke_user_id
+                        );
+                        ?>
+                        <a href="<?php echo esc_url($revoke_url); ?>" style="margin-left: 20px;">
+                            <?php echo esc_html__('Revoke this subscription link', 'publishpress'); ?>
+                        </a>
+                        <?php
+                    }
+                    ?>
                 </div>
 
-                <a href="#TB_inline?width=550&height=270&inlineId=publishpress-calendar-ics-subs" class="thickbox" aria-label="<?php echo esc_attr__('Subscribe in iCal or Google Calendar', 'publishpress'); ?>">
+                <a href="#TB_inline?width=550&height=340&inlineId=publishpress-calendar-ics-subs" class="thickbox" aria-label="<?php echo esc_attr__('Subscribe in iCal or Google Calendar', 'publishpress'); ?>">
                     <?php
                     echo esc_html__('Click here to subscribe in iCal or Google Calendar', 'publishpress'); ?>
                 </a>

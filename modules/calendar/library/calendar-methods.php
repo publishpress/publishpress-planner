@@ -544,7 +544,7 @@ if (! class_exists('PP_Calendar_Methods')) {
             );
             $regenerate_url = wp_nonce_url($regenerate_url, 'pp-regenerate-ics-key');
             echo '&nbsp;&nbsp;&nbsp;<a href="' . esc_url($regenerate_url) . '">' . esc_html__(
-                    'Regenerate calendar feed secret',
+                    'Revoke all calendar feed tokens',
                     'publishpress'
                 ) . '</a>';
 
@@ -702,6 +702,8 @@ if (! class_exists('PP_Calendar_Methods')) {
             }
 
             PublishPress()->update_module_option($this->module->name, 'ics_secret_key', wp_generate_password());
+            delete_metadata('user', 0, PP_Calendar::USER_META_ICS_TOKEN, '', true);
+            delete_metadata('user', 0, PP_Calendar::USER_META_ICS_TOKEN_EXPIRES, '', true);
 
             $args = [
                 'page' => PP_Modules_Settings::SETTINGS_SLUG,
@@ -713,6 +715,55 @@ if (! class_exists('PP_Calendar_Methods')) {
                     'message',
                     'key-regenerated',
                     add_query_arg($args, admin_url('admin.php'))
+                )
+            );
+
+            exit;
+        }
+
+        /**
+         * Revoke one user's ICS subscribe token.
+         *
+         * The current user may revoke their own token. manage_options may
+         * revoke the user id in the request. Both require the per-user nonce.
+         */
+        public function handle_revoke_user_ics_token()
+        {
+            if (! isset($_GET['action']) || PP_Calendar::ICS_TOKEN_REVOKE_ACTION != $_GET['action']) {
+                return;
+            }
+
+            $raw_user_id = isset($_GET['user_id']) ? wp_unslash($_GET['user_id']) : 0;
+            $user_id = is_scalar($raw_user_id) ? absint($raw_user_id) : 0;
+            if ($user_id < 1) {
+                wp_die(esc_html($this->module->messages['invalid-permissions']));
+            }
+
+            $is_self = $user_id === get_current_user_id();
+
+            if (! $is_self && ! current_user_can('manage_options')) {
+                wp_die(esc_html($this->module->messages['invalid-permissions']));
+            }
+
+            if (! isset($_GET['_wpnonce'])
+                || ! wp_verify_nonce(
+                    sanitize_text_field(wp_unslash($_GET['_wpnonce'])),
+                    PP_Calendar::ICS_TOKEN_REVOKE_NONCE . '-' . $user_id
+                )
+            ) {
+                wp_die(esc_html($this->module->messages['nonce-failed']));
+            }
+
+            delete_user_meta($user_id, PP_Calendar::USER_META_ICS_TOKEN);
+            delete_user_meta($user_id, PP_Calendar::USER_META_ICS_TOKEN_EXPIRES);
+
+            wp_safe_redirect(
+                add_query_arg(
+                    [
+                        'page' => 'pp-calendar',
+                        'message' => 'ics-token-revoked',
+                    ],
+                    admin_url('admin.php')
                 )
             );
 
