@@ -87,6 +87,26 @@ if (! class_exists('PP_Calendar')) {
         const VIEW_CAPABILITY = 'pp_view_calendar';
 
         /**
+         * Per-user ICS subscribe token. Not derived from the login or site secret.
+         */
+        const USER_META_ICS_TOKEN = 'pp_calendar_ics_token';
+
+        /**
+         * Optional unix timestamp after which USER_META_ICS_TOKEN is rejected.
+         */
+        const USER_META_ICS_TOKEN_EXPIRES = 'pp_calendar_ics_token_expires';
+
+        /**
+         * admin_init action for revoking one user's ICS token.
+         */
+        const ICS_TOKEN_REVOKE_ACTION = 'pp_calendar_revoke_ics_token';
+
+        /**
+         * Nonce action prefix. The target user ID is appended.
+         */
+        const ICS_TOKEN_REVOKE_NONCE = 'pp-revoke-ics-token';
+
+        /**
          * [$module description]
          *
          * @var [type]
@@ -261,7 +281,11 @@ if (! class_exists('PP_Calendar')) {
                         'publishpress'
                     ),
                     'key-regenerated' => __(
-                        'iCal secret key regenerated. Please inform all users they will need to resubscribe.',
+                        'Calendar feed tokens revoked. Please inform all users they will need to resubscribe.',
+                        'publishpress'
+                    ),
+                    'ics-token-revoked' => __(
+                        'Your calendar subscription link was revoked. Copy the new link before you subscribe again.',
                         'publishpress'
                     ),
                 ],
@@ -344,6 +368,8 @@ if (! class_exists('PP_Calendar')) {
 
                 // Action to regenerate the calendar feed secret
                 add_action('admin_init', [$this->content_calendar_methods, 'handle_regenerate_calendar_feed_secret']);
+                add_action('admin_init', [$this->content_calendar_methods, 'handle_revoke_user_ics_token']);
+                add_action('admin_notices', [$this, 'action_ics_token_migration_notice']);
 
                 add_filter('post_date_column_status', [$this->content_calendar_methods, 'filter_post_date_column_status'], 12, 4);
 
@@ -492,6 +518,32 @@ if (! class_exists('PP_Calendar')) {
                 // Technically we've run this code before so we don't want to auto-install new data
                 $publishpress->update_module_option($this->module->name, 'loaded_once', true);
             }
+
+            // Subscribe URLs through 4.8.3 were md5(login . secret) and are no longer accepted.
+            if (version_compare($previous_version, '4.8.3', '<=')) {
+                update_option('pp_calendar_ics_token_migration_notice', 1);
+            }
+        }
+
+        /**
+         * Tell admins that existing ICS subscribe URLs stopped working.
+         */
+        public function action_ics_token_migration_notice()
+        {
+            if (! current_user_can('manage_options')) {
+                return;
+            }
+
+            if (! get_option('pp_calendar_ics_token_migration_notice')) {
+                return;
+            }
+
+            echo '<div class="notice notice-warning"><p>';
+            echo esc_html__(
+                'Calendar subscription links from before this update no longer work. Open the Content Calendar and copy a new subscribe link.',
+                'publishpress'
+            );
+            echo '</p></div>';
         }
 
         /**
@@ -541,6 +593,80 @@ if (! class_exists('PP_Calendar')) {
         }
 
         /**
+         * Issue or reuse the user's ICS bearer token.
+         *
+         * A missing token is created. An expired token is replaced so the
+         * subscribe link on screen is one the feed will accept.
+         *
+         * @param WP_User $user User who will subscribe.
+         *
+         * @return string Empty when the user cannot hold a token.
+         */
+        private function get_or_create_ics_token($user)
+        {
+            if (! $user instanceof WP_User || empty($user->ID)) {
+                return '';
+            }
+
+            $token = get_user_meta($user->ID, self::USER_META_ICS_TOKEN, true);
+            $expires = get_user_meta($user->ID, self::USER_META_ICS_TOKEN_EXPIRES, true);
+            $now = time();
+            $has_token = is_string($token) && $token !== '';
+            $is_expired = is_numeric($expires) && (int) $expires > 0 && (int) $expires <= $now;
+
+            if ($has_token && ! $is_expired) {
+                return $token;
+            }
+
+            $token = wp_generate_password(32, false, false);
+            update_user_meta($user->ID, self::USER_META_ICS_TOKEN, $token);
+
+            /**
+             * Unix time when a newly issued ICS token expires.
+             * Return 0 or an empty value to store no expiry.
+             *
+             * @param int $expires_at Default is one year from now.
+             * @param int $user_id
+             */
+            $expires_at = apply_filters(
+                'pp_calendar_ics_token_expires',
+                $now + YEAR_IN_SECONDS,
+                $user->ID
+            );
+
+            if (! is_numeric($expires_at) || (int) $expires_at <= 0) {
+                delete_user_meta($user->ID, self::USER_META_ICS_TOKEN_EXPIRES);
+            } else {
+                update_user_meta($user->ID, self::USER_META_ICS_TOKEN_EXPIRES, (int) $expires_at);
+            }
+
+            return $token;
+        }
+
+        /**
+         * Whether the presented ICS token matches this user and is still valid.
+         *
+         * @param WP_User $user      Feed user.
+         * @param string  $presented Token from the request.
+         *
+         * @return bool
+         */
+        private function ics_token_is_valid($user, $presented)
+        {
+            $stored = get_user_meta($user->ID, self::USER_META_ICS_TOKEN, true);
+            if (! is_string($stored) || $stored === '' || ! is_string($presented) || $presented === '') {
+                return false;
+            }
+
+            $expires = get_user_meta($user->ID, self::USER_META_ICS_TOKEN_EXPIRES, true);
+            if (is_numeric($expires) && (int) $expires > 0 && (int) $expires <= time()) {
+                return false;
+            }
+
+            return hash_equals($stored, $presented);
+        }
+
+        /**
          * After checking that the request is valid, do an .ics file
          *
          * @since 0.8
@@ -559,11 +685,20 @@ if (! class_exists('PP_Calendar')) {
                 die();
             }
 
-            // Confirm this is a valid request
-            $user = sanitize_user($_GET['user']);
-            $user_key = sanitize_user($_GET['user_key']);
-            $ics_secret_key = $this->module->options->ics_secret_key;
-            if (! $ics_secret_key || md5($user . $ics_secret_key) !== $user_key) {
+            // Login and token are alphanumeric. sanitize_user() keeps that alphabet.
+            $user_login = sanitize_user(wp_unslash($_GET['user']));
+            $user_key = sanitize_user(wp_unslash($_GET['user_key']));
+            $subscriber = get_user_by('login', $user_login);
+            if (! $subscriber instanceof WP_User) {
+                die(esc_html($this->module->messages['nonce-failed']));
+            }
+
+            $previous_user_id = get_current_user_id();
+            wp_set_current_user($subscriber->ID);
+            $can_view = current_user_can($this->getViewCapability());
+            wp_set_current_user($previous_user_id);
+
+            if (! $can_view || ! $this->ics_token_is_valid($subscriber, $user_key)) {
                 die(esc_html($this->module->messages['nonce-failed']));
             }
 
@@ -1101,14 +1236,24 @@ if (! class_exists('PP_Calendar')) {
 
             // Get the custom description for this page
             $description = '';
+            $ics_token = '';
+
+            if (current_user_can('manage_options') && get_option('pp_calendar_ics_token_migration_notice')) {
+                delete_option('pp_calendar_ics_token_migration_notice');
+            }
 
             // Should we display the subscribe button?
-            if ('on' == $this->module->options->ics_subscription && $this->module->options->ics_secret_key) {
+            if ('on' == $this->module->options->ics_subscription) {
+                $current_user = wp_get_current_user();
+                $ics_token = $this->get_or_create_ics_token($current_user);
+            }
+
+            if (! empty($ics_token)) {
                 // Prepare the download link
                 $args = [
                     'action' => 'pp_calendar_ics_subscription',
-                    'user' => wp_get_current_user()->user_login,
-                    'user_key' => md5(wp_get_current_user()->user_login . $this->module->options->ics_secret_key),
+                    'user' => $current_user->user_login,
+                    'user_key' => $ics_token,
                     '_wpnonce' => wp_create_nonce('publishpress_calendar_ics_sub'),
                 ];
 
@@ -1133,6 +1278,10 @@ if (! class_exists('PP_Calendar')) {
             $publishpress->settings->print_default_header($publishpress->modules->calendar, $description); ?>
             <div class="wrap">
                 <?php
+                if (isset($_GET['message']) && 'ics-token-revoked' === sanitize_key(wp_unslash($_GET['message']))) {
+                    echo '<div class="notice notice-success is-dismissible"><p>' . esc_html($this->module->messages['ics-token-revoked']) . '</p></div>';
+                }
+
                 // Handle posts that have been trashed or untrashed
                 if (isset($_GET['trashed']) || isset($_GET['untrashed'])) {
                     echo '<div id="trashed-message" class="updated"><p>';
