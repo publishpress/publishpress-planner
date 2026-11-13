@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Fixed: Calendar requests keep the Polylang admin language. #1943
 - Fixed: Calendar and Content Board show Scheduled Revision status. #2098
 - Fixed: Editorial Comments are enabled on new installations. #2137
+- Changed: Planner admin pages leave more space between admin notices and the iCal and Google Calendar subscription controls. #2147
 - Changed: The minimum PHP version is 8.2. #2114
 - Changed: Development dependencies were updated so Symfony Config, Filesystem, HTTP Client, and YAML match the current security releases. #2140
 
