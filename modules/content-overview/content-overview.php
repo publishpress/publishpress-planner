@@ -1039,17 +1039,23 @@ class PP_Content_Overview extends PP_Module
 
         if (!isset($_POST['nonce']) || !wp_verify_nonce(sanitize_key($_POST['nonce']), 'content_overview_filter_nonce')) {
             $response['content'] = esc_html__('Error validating nonce. Please reload this page and try again.', 'publishpress');
-        } elseif (empty($_POST['post_type'])) {
+        } elseif (! $this->currentUserCanViewContentOverview()) {
+            $response['content'] = esc_html__('An error occured', 'publishpress');
+        } elseif (empty($_POST['post_type']) || ! is_string($_POST['post_type'])) {
             $response['content'] = esc_html__('Invalid form request.', 'publishpress');
         } else {
-            $post_type = sanitize_text_field($_POST['post_type']);
-            $form_args = [];
-            $form_args['editable_post_types']    = $this->get_editable_post_types();
-            $form_args['default_post_type']      = $post_type;
-            $form_args['post_status_options']    = $this->getUserAuthorizedPostStatusOptions($post_type);
-            $form_args['publish_date_markup']    = $this->get_publish_date_markup();
-            $response['status']  = 'success';
-            $response['content'] = PP_Content_Overview_Utilities::content_overview_get_post_form($form_args);
+            $post_type            = sanitize_key($_POST['post_type']);
+            $editable_post_types  = $this->get_editable_post_types();
+
+            if (isset($editable_post_types[$post_type]) && null !== get_post_type_object($post_type)) {
+                $form_args = [];
+                $form_args['editable_post_types']    = $editable_post_types;
+                $form_args['default_post_type']      = $post_type;
+                $form_args['post_status_options']    = $this->getUserAuthorizedPostStatusOptions($post_type);
+                $form_args['publish_date_markup']    = $this->get_publish_date_markup();
+                $response['status']  = 'success';
+                $response['content'] = PP_Content_Overview_Utilities::content_overview_get_post_form($form_args);
+            }
         }
 
         wp_send_json($response);
