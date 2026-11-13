@@ -655,41 +655,56 @@ class PP_Content_Overview extends PP_Module
         global $publishpress;
 
         if (!empty($_POST['co_form_action']) && !empty($_POST['_nonce']) && $_POST['co_form_action'] == 'column_form' && wp_verify_nonce(sanitize_key($_POST['_nonce']), 'content_overview_column_form_nonce')) {
-            // Content overview column form
-            $content_overview_columns = !empty($_POST['content_overview_columns']) ? array_map('sanitize_text_field', $_POST['content_overview_columns']) : [];
-            $content_overview_columns_order = !empty($_POST['content_overview_columns_order']) ? array_map('sanitize_text_field', $_POST['content_overview_columns_order']) : [];
-            $content_overview_custom_columns = !empty($_POST['content_overview_custom_columns']) ? map_deep($_POST['content_overview_custom_columns'], 'sanitize_text_field') : [];
+            if (! current_user_can('manage_options')) {
+                // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                echo pp_planner_admin_notice(esc_html__('You do not have permission to update these settings.', 'publishpress'), false);
+            } else {
+                // Content overview column form
+                $content_overview_columns = !empty($_POST['content_overview_columns']) ? array_map('sanitize_text_field', $_POST['content_overview_columns']) : [];
+                $content_overview_columns_order = !empty($_POST['content_overview_columns_order']) ? array_map('sanitize_text_field', $_POST['content_overview_columns_order']) : [];
+                $content_overview_custom_columns = !empty($_POST['content_overview_custom_columns']) ? map_deep($_POST['content_overview_custom_columns'], 'sanitize_text_field') : [];
 
-            // make sure enabled columns are saved in organized order
-            $content_overview_columns = array_intersect($content_overview_columns_order, $content_overview_columns);
+                // make sure enabled columns are saved in organized order
+                $content_overview_columns = array_intersect($content_overview_columns_order, $content_overview_columns);
 
-            $publishpress->update_module_option($this->module->name, 'content_overview_columns', $content_overview_columns);
-            $publishpress->update_module_option($this->module->name, 'content_overview_custom_columns', $content_overview_custom_columns);
+                $publishpress->update_module_option($this->module->name, 'content_overview_columns', $content_overview_columns);
+                $publishpress->update_module_option($this->module->name, 'content_overview_custom_columns', $content_overview_custom_columns);
 
-            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-            echo pp_planner_admin_notice(esc_html__('Column updated successfully.', 'publishpress'));
+                // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                echo pp_planner_admin_notice(esc_html__('Column updated successfully.', 'publishpress'));
+            }
         } elseif (!empty($_POST['co_form_action']) && !empty($_POST['_nonce']) && $_POST['co_form_action'] == 'filter_form' && wp_verify_nonce(sanitize_key($_POST['_nonce']), 'content_overview_filter_form_nonce')) {
-            // Content overview filter form
-            $content_overview_filters = !empty($_POST['content_overview_filters']) ? array_map('sanitize_text_field', $_POST['content_overview_filters']) : [];
-            $content_overview_filters_order = !empty($_POST['content_overview_filters_order']) ? array_map('sanitize_text_field', $_POST['content_overview_filters_order']) : [];
-            $content_overview_custom_filters = !empty($_POST['content_overview_custom_filters']) ? map_deep($_POST['content_overview_custom_filters'], 'sanitize_text_field') : [];
+            if (! current_user_can('manage_options')) {
+                // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                echo pp_planner_admin_notice(esc_html__('You do not have permission to update these settings.', 'publishpress'), false);
+            } else {
+                // Content overview filter form
+                $content_overview_filters = !empty($_POST['content_overview_filters']) ? array_map('sanitize_text_field', $_POST['content_overview_filters']) : [];
+                $content_overview_filters_order = !empty($_POST['content_overview_filters_order']) ? array_map('sanitize_text_field', $_POST['content_overview_filters_order']) : [];
+                $content_overview_custom_filters = !empty($_POST['content_overview_custom_filters']) ? map_deep($_POST['content_overview_custom_filters'], 'sanitize_text_field') : [];
 
-            // make sure enabled filters are saved in organized order
-            $content_overview_filters = array_intersect($content_overview_filters_order, $content_overview_filters);
+                // make sure enabled filters are saved in organized order
+                $content_overview_filters = array_intersect($content_overview_filters_order, $content_overview_filters);
 
-            $publishpress->update_module_option($this->module->name, 'content_overview_filters', $content_overview_filters);
-            $publishpress->update_module_option($this->module->name, 'content_overview_custom_filters', $content_overview_custom_filters);
+                $publishpress->update_module_option($this->module->name, 'content_overview_filters', $content_overview_filters);
+                $publishpress->update_module_option($this->module->name, 'content_overview_custom_filters', $content_overview_custom_filters);
 
-            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-            echo pp_planner_admin_notice(esc_html__('Filter updated successfully.', 'publishpress'));
+                // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                echo pp_planner_admin_notice(esc_html__('Filter updated successfully.', 'publishpress'));
+            }
         } elseif (!empty($_POST['co_form_action']) && !empty($_POST['_nonce']) && $_POST['co_form_action'] == 'settings_form' && wp_verify_nonce(sanitize_key($_POST['_nonce']), 'content_overview_settings_form_nonce')) {
-            // Content Board filter form
-            $posts_per_page = !empty($_POST['posts_per_page']) ? (int) $_POST['posts_per_page'] : 200;
+            if (! current_user_can('manage_options')) {
+                // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                echo pp_planner_admin_notice(esc_html__('You do not have permission to update these settings.', 'publishpress'), false);
+            } else {
+                // Content Board filter form
+                $posts_per_page = !empty($_POST['posts_per_page']) ? (int) $_POST['posts_per_page'] : 200;
 
-            $publishpress->update_module_option($this->module->name, 'posts_per_page', $posts_per_page);
+                $publishpress->update_module_option($this->module->name, 'posts_per_page', $posts_per_page);
 
-            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-            echo pp_planner_admin_notice(esc_html__('Settings updated successfully.', 'publishpress'));
+                // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                echo pp_planner_admin_notice(esc_html__('Settings updated successfully.', 'publishpress'));
+            }
         } elseif (!empty($_POST['co_form_action']) && !empty($_POST['_nonce']) && !empty($_POST['ptype']) && $_POST['co_form_action'] == 'post_form' && wp_verify_nonce(sanitize_key($_POST['_nonce']), 'content_overview_post_form_nonce')) {
             $postType = sanitize_text_field($_POST['ptype']);
             $postTypeObject = get_post_type_object($postType);

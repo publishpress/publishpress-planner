@@ -28,6 +28,7 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                         <span class="dashicons dashicons-admin-users"></span> <?php esc_html_e('Me Mode', 'publishpress'); ?>
                     </div>
                     <?php do_action('pp_content_board_filter_after_me_mode', $user_filters); ?>
+                    <?php if (current_user_can('manage_options')) : ?>
                     <div class="item action co-filter" data-target="#content_board_modal_<?php echo esc_attr($modal_id); ?>">
                         <span class="dashicons dashicons-editor-table"></span> <?php esc_html_e('Customize Card Data', 'publishpress'); ?>
                     </div>
@@ -47,9 +48,11 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                             <?php echo self::content_board_customize_filter_form($args); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                         </div>
                     </div>
+                    <?php endif; ?>
                     <div class="item action" id="print_link">
                         <span class="dashicons dashicons-printer"></span> <?php esc_html_e('Print', 'publishpress'); ?>
                     </div>
+                    <?php if (current_user_can('manage_options')) : ?>
                     <?php $modal_id++; ?>
                     <div data-target="#content_board_modal_<?php echo esc_attr($modal_id); ?>" class="co-filter item action">
                         <span class="dashicons dashicons-admin-generic"></span>
@@ -76,6 +79,7 @@ if (! class_exists('PP_Content_Board_Utilities')) {
                             </div>
                         </div>
                     </div>
+                    <?php endif; ?>
                 </div>
                 <div class="right-items">
                     <?php if (!empty($editable_post_types)) : ?>
