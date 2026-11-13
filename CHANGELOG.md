@@ -1,6 +1,10 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[Unreleased]
+
+- Fixed: Workflow shortcodes omit login, email, user ID, profile URL, nickname, editorial comment author email, and comment IP unless the user who last saved the workflow can list users. `[psppno_receiver email]` still prints that recipient. Post meta is limited to editorial metadata keys unless `publishpress_notif_shortcode_meta_keys` allows more. Already-sent log entries keep the body that was stored when they were sent.
+
 [4.8.3] - 12 Nov, 2026
 
 - Fixed: Notification log text is escaped before it is shown.
