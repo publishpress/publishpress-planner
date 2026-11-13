@@ -21,6 +21,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Fixed: Content Calendar filter popups show the close control on the right. #2148
 - Fixed: The Content Calendar Add content dialog leaves more space above the Save buttons. #2149
 - Fixed: Content Calendar tool and filter popups use even padding on all sides. #2150
+- Fixed: Content Overview and Content Board tool and filter popups match the calendar padding and close placement. #2151
 - Changed: The minimum PHP version is 8.2. #2114
 - Changed: Development dependencies were updated so Symfony Config, Filesystem, HTTP Client, and YAML match the current security releases. #2140
 
