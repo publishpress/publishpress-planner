@@ -215,7 +215,6 @@
     z-index: 999;
     background-color: white;
     border: 1px solid #ccc;
-    padding: 15px;
     top: 0;
     margin: 10px 0;
     box-shadow: 0 1px 10px 0 rgba(0, 0, 0, .25);
@@ -229,8 +228,7 @@
     scrollbar-color: rgb(173, 179, 189) rgb(255, 255, 255);
     scrollbar-width: thin;
     overflow: hidden;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding: 15px;
 }
 
 .content-calendar-modal-content {
@@ -354,6 +352,12 @@
 .customize-customize-item-modal .content-calendar-modal-content {
     min-width: 300px;
     max-width: 300px;
+}
+
+.customize-customize-item-modal .co-cc-content::after {
+    clear: both;
+    content: "";
+    display: block;
 }
 
 .customize-customize-item-modal.new-post-modal .content-calendar-modal-content {
