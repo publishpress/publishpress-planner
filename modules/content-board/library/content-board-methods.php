@@ -175,7 +175,7 @@ if (! class_exists('PP_Board_Methods')) {
             } elseif (!empty($_POST['co_form_action']) && !empty($_POST['_nonce']) && !empty($_POST['ptype']) && $_POST['co_form_action'] == 'post_form' && wp_verify_nonce(sanitize_key($_POST['_nonce']), 'content_board_post_form_nonce')) {
                 $postType = sanitize_text_field($_POST['ptype']);
                 $postTypeObject = get_post_type_object($postType);
-                if (current_user_can($postTypeObject->cap->edit_posts)) {
+                if ($postTypeObject && current_user_can($postTypeObject->cap->edit_posts)) {
                     $status = isset($_POST['status']) ? sanitize_text_field($_POST['status']) : null;
                     $title = isset($_POST['title']) ? sanitize_text_field($_POST['title']) : '';
                     // Sanitized by the wp_filter_post_kses function.
@@ -185,79 +185,89 @@ if (! class_exists('PP_Board_Methods')) {
                     $categories = isset($_POST['category']) ? array_map('sanitize_text_field', $_POST['category']) : [];
                     $tags = isset($_POST['post_tag']) ? array_map('sanitize_text_field', $_POST['post_tag']) : [];
 
-                    $postArgs = [
-                        'post_author' => $authors,
-                        'post_title' => $title,
-                        'post_content' => $content,
-                        'post_type' => $postType,
-                        'post_status' => $status
-                    ];
-
-                    // set post date
-                    if ( ! empty( $_POST['mm'] ) ) {
-                        $aa = isset($_POST['aa']) ? (int) $_POST['aa'] : 0;
-                        $mm = sanitize_text_field($_POST['mm']);
-                        $jj = isset($_POST['jj']) ? (int) $_POST['jj'] : 0;
-                        $hh = isset($_POST['hh']) ? (int) $_POST['hh'] : 0;
-                        $mn = isset($_POST['mn']) ? (int) $_POST['mn'] : 0;
-                        $ss = isset($_POST['ss']) ? (int) $_POST['ss'] : 0;
-                        $aa = ( $aa <= 0 ) ? gmdate( 'Y' ) : $aa;
-                        $mm = ( $mm <= 0 ) ? gmdate( 'n' ) : $mm;
-                        $jj = ( $jj > 31 ) ? 31 : $jj;
-                        $jj = ( $jj <= 0 ) ? gmdate( 'j' ) : $jj;
-                        $hh = ( $hh > 23 ) ? $hh - 24 : $hh;
-                        $mn = ( $mn > 59 ) ? $mn - 60 : $mn;
-                        $ss = ( $ss > 59 ) ? $ss - 60 : $ss;
-
-
-                        $post_date = sprintf( '%04d-%02d-%02d %02d:%02d:%02d', $aa, $mm, $jj, $hh, $mn, $ss );
-                        $valid_date = wp_checkdate( $mm, $jj, $aa, $post_date );
-                        if ($valid_date ) {
-                            $postArgs['post_date'] = $post_date;
-                            $postArgs['post_date_gmt'] = get_gmt_from_date( $post_date );
-                        }
-                    }
-
-                    $postId = wp_insert_post($postArgs);
-
-                    if ($postId) {
-                        if (! empty($categories)) {
-                            $categoriesIdList = [];
-                            foreach ($categories as $categorySlug) {
-                                $category = get_term_by('slug', $categorySlug, 'category');
-
-                                if (! $category || is_wp_error($category)) {
-                                    $category = wp_create_category($categorySlug);
-                                    $category = get_term($category);
-                                }
-
-                                if (! is_wp_error($category)) {
-                                    $categoriesIdList[] = $category->term_id;
-                                }
-                            }
-                            wp_set_post_terms($postId, $categoriesIdList, 'category');
-                        }
-
-                        if (! empty($tags)) {
-                            foreach ($tags as $tagSlug) {
-                                $tag = get_term_by('slug', $tagSlug, 'post_tag');
-
-                                if (! $tag || is_wp_error($tag)) {
-                                    wp_create_tag($tagSlug);
-                                }
-                            }
-                            wp_set_post_terms($postId, $tags);
-                        }
+                    if (! $this->currentUserCanSetCreatePostStatus($status, $postTypeObject)) {
                         // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-                        echo pp_planner_admin_notice(sprintf(__('%s created successfully. <a href="%s" target="_blank">Edit %s</a>', 'publishpress'), esc_html($postTypeObject->labels->singular_name), esc_url(get_edit_post_link($postId)), esc_html($postTypeObject->labels->singular_name)));
+                        echo pp_planner_admin_notice(esc_html__('You do not have permission to create a post with the selected status.', 'publishpress'), false);
                     } else {
-                        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-                        echo pp_planner_admin_notice(sprintf(esc_html__('%s could not be created', 'publishpress'), esc_html($postTypeObject->labels->singular_name)), false);
-                    }
+                        $postArgs = [
+                            'post_title' => $title,
+                            'post_content' => $content,
+                            'post_type' => $postType,
+                            'post_status' => $status
+                        ];
+                        $authorId = $this->getAuthorizedCreatePostAuthor($authors, $postTypeObject);
+                        if (null !== $authorId) {
+                            $postArgs['post_author'] = $authorId;
+                        }
 
+                        // set post date
+                        if ( ! empty( $_POST['mm'] ) ) {
+                            $aa = isset($_POST['aa']) ? (int) $_POST['aa'] : 0;
+                            $mm = sanitize_text_field($_POST['mm']);
+                            $jj = isset($_POST['jj']) ? (int) $_POST['jj'] : 0;
+                            $hh = isset($_POST['hh']) ? (int) $_POST['hh'] : 0;
+                            $mn = isset($_POST['mn']) ? (int) $_POST['mn'] : 0;
+                            $ss = isset($_POST['ss']) ? (int) $_POST['ss'] : 0;
+                            $aa = ( $aa <= 0 ) ? gmdate( 'Y' ) : $aa;
+                            $mm = ( $mm <= 0 ) ? gmdate( 'n' ) : $mm;
+                            $jj = ( $jj > 31 ) ? 31 : $jj;
+                            $jj = ( $jj <= 0 ) ? gmdate( 'j' ) : $jj;
+                            $hh = ( $hh > 23 ) ? $hh - 24 : $hh;
+                            $mn = ( $mn > 59 ) ? $mn - 60 : $mn;
+                            $ss = ( $ss > 59 ) ? $ss - 60 : $ss;
+
+
+                            $post_date = sprintf( '%04d-%02d-%02d %02d:%02d:%02d', $aa, $mm, $jj, $hh, $mn, $ss );
+                            $valid_date = wp_checkdate( $mm, $jj, $aa, $post_date );
+                            if ($valid_date ) {
+                                $postArgs['post_date'] = $post_date;
+                                $postArgs['post_date_gmt'] = get_gmt_from_date( $post_date );
+                            }
+                        }
+
+                        $postId = wp_insert_post($postArgs);
+
+                        if ($postId) {
+                            if (! empty($categories)) {
+                                $categoriesIdList = [];
+                                foreach ($categories as $categorySlug) {
+                                    $category = get_term_by('slug', $categorySlug, 'category');
+
+                                    if (! $category || is_wp_error($category)) {
+                                        $category = wp_create_category($categorySlug);
+                                        $category = get_term($category);
+                                    }
+
+                                    if (! is_wp_error($category)) {
+                                        $categoriesIdList[] = $category->term_id;
+                                    }
+                                }
+                                wp_set_post_terms($postId, $categoriesIdList, 'category');
+                            }
+
+                            if (! empty($tags)) {
+                                foreach ($tags as $tagSlug) {
+                                    $tag = get_term_by('slug', $tagSlug, 'post_tag');
+
+                                    if (! $tag || is_wp_error($tag)) {
+                                        wp_create_tag($tagSlug);
+                                    }
+                                }
+                                wp_set_post_terms($postId, $tags);
+                            }
+                            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                            echo pp_planner_admin_notice(sprintf(__('%s created successfully. <a href="%s" target="_blank">Edit %s</a>', 'publishpress'), esc_html($postTypeObject->labels->singular_name), esc_url(get_edit_post_link($postId)), esc_html($postTypeObject->labels->singular_name)));
+                        } else {
+                            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                            echo pp_planner_admin_notice(sprintf(esc_html__('%s could not be created', 'publishpress'), esc_html($postTypeObject->labels->singular_name)), false);
+                        }
+                    }
                 } else {
+                    $post_type_label = ($postTypeObject && isset($postTypeObject->labels->singular_name))
+                        ? $postTypeObject->labels->singular_name
+                        : __('post', 'publishpress');
                     // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-                    echo pp_planner_admin_notice(sprintf(esc_html__('You do not have permission to add new %s', 'publishpress'), esc_html($postTypeObject->labels->singular_name)), false);
+                    echo pp_planner_admin_notice(sprintf(esc_html__('You do not have permission to add new %s', 'publishpress'), esc_html($post_type_label)), false);
                 }
             }
 

@@ -1711,6 +1711,14 @@ if (! class_exists('PP_Calendar_Methods')) {
                 );
             }
 
+            $postTypeObject = get_post_type_object($postType);
+            if (! $postTypeObject) {
+                $this->print_ajax_response(
+                    'error',
+                    __('The selected post type is not enabled for the calendar.', 'publishpress')
+                );
+            }
+
             $title = apply_filters('pp_calendar_after_form_submission_sanitize_title', $title);
             if (empty($title)) {
                 $title = __('Untitled', 'publishpress');
@@ -1723,7 +1731,7 @@ if (! class_exists('PP_Calendar_Methods')) {
 
             $authors = apply_filters('pp_calendar_after_form_submission_sanitize_author', $authors);
             try {
-                $authors = apply_filters('pp_calendar_after_form_submission_validate_author', $authors);
+                $authors = apply_filters('pp_calendar_after_form_submission_validate_author', $authors, $postType);
             } catch (Exception $e) {
                 $this->print_ajax_response('error', $e->getMessage());
             }
@@ -1738,6 +1746,10 @@ if (! class_exists('PP_Calendar_Methods')) {
 
             if (! $this->isPostStatusValid($status)) {
                 $this->print_ajax_response('error', __('Invalid Status supplied.', 'publishpress'));
+            }
+
+            if (! $this->currentUserCanSetCreatePostStatus($status, $postTypeObject)) {
+                $this->print_ajax_response('error', __('You do not have permission to create a post with the selected status.', 'publishpress'));
             }
 
             $categories = array_map('sanitize_text_field', $categories);
@@ -1767,7 +1779,6 @@ if (! class_exists('PP_Calendar_Methods')) {
 
             // Set new post parameters
             $postPlaceholder = [
-                'post_author' => $authors[0],
                 'post_title' => $title,
                 'post_content' => $content,
                 'post_type' => $postType,
@@ -1776,6 +1787,10 @@ if (! class_exists('PP_Calendar_Methods')) {
                 'post_modified' => current_time('mysql'),
                 'post_modified_gmt' => current_time('mysql', 1),
             ];
+            $authorId = $this->getAuthorizedCreatePostAuthor($authors[0], $postTypeObject);
+            if (null !== $authorId) {
+                $postPlaceholder['post_author'] = $authorId;
+            }
 
             /*
              * By default, adding a post to the calendar will set the timestamp.

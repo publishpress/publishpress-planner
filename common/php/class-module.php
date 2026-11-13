@@ -919,6 +919,61 @@ if (!class_exists('PP_Module')) {
             return apply_filters('publishpress_user_post_status_options', $postStatuses, $postType, $post);
         }
 
+        /**
+         * Whether the current user may create a post in this status.
+         * Caller must already have edit_posts or the calendar create cap.
+         * publish, future, and private require the post type's publish_posts cap.
+         * Any other registered workflow status is allowed. Everything else is rejected.
+         *
+         * @param string|null $status
+         * @param object|null $postTypeObject
+         *
+         * @return bool
+         */
+        public function currentUserCanSetCreatePostStatus($status, $postTypeObject)
+        {
+            if (! is_object($postTypeObject) || ! is_string($status) || $status === '') {
+                return false;
+            }
+
+            if (in_array($status, ['publish', 'future', 'private'], true)) {
+                return current_user_can($postTypeObject->cap->publish_posts);
+            }
+
+            foreach ($this->get_post_statuses() as $postStatus) {
+                if (is_object($postStatus) && isset($postStatus->slug) && $status === $postStatus->slug) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /**
+         * Author id to store on create, or null so wp_insert_post uses the current user.
+         * Another user is assigned only when the current user has the post type's edit_others_posts cap.
+         *
+         * @param int $authorId
+         * @param object|null $postTypeObject
+         *
+         * @return int|null
+         */
+        public function getAuthorizedCreatePostAuthor($authorId, $postTypeObject)
+        {
+            $authorId = (int) $authorId;
+            $currentUserId = (int) get_current_user_id();
+
+            if ($authorId > 0
+                && $authorId !== $currentUserId
+                && is_object($postTypeObject)
+                && current_user_can($postTypeObject->cap->edit_others_posts)
+            ) {
+                return $authorId;
+            }
+
+            return null;
+        }
+
         public function getPostStatusOptions($postType = '', $post = false)
         {
             if (!$defined_statuses = apply_filters('publishpress_defined_post_statuses', [], $postType, $post)) {
