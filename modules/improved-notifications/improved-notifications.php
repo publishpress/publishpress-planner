@@ -575,12 +575,11 @@ if (! class_exists('PP_Improved_Notifications')) {
 
             if ($trash_post_ids) {
                 $ids = array_map('intval', $trash_post_ids);
-                $placeholders = implode(',', array_fill(0, count($ids), '%d'));
 
                 // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
                 $wpdb->query(
                     $wpdb->prepare(
-                        "UPDATE {$wpdb->posts} SET post_status = 'trash' WHERE post_type = %s AND ID IN ($placeholders)",
+                        "UPDATE {$wpdb->posts} SET post_status = 'trash' WHERE post_type = %s AND ID IN (" . implode(',', array_fill(0, count($ids), '%d')) . ')',
                         array_merge(array('psppnotif_workflow'), $ids)
                     )
                 );
