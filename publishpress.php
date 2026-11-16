@@ -11,7 +11,7 @@
  * Requires at least: 5.5
  * Requires PHP: 8.2
  *
- * Copyright (c) 2025 PublishPress
+ * Copyright (c) 2026 PublishPress
  *
  * ------------------------------------------------------------------------------
  * Based on Edit Flow
