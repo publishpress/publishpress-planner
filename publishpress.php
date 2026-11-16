@@ -55,6 +55,13 @@ if (version_compare($wp_version, $min_wp_version, '<')) {
     return;
 }
 
+// If the plugin is already loaded, terminate the plugin execution.
+if (defined('PUBLISHPRESS_LOADED')) {
+    return;
+}
+
+define('PUBLISHPRESS_LOADED', true);
+
 if (! defined('PP_LIB_VENDOR_PATH')) {
     define('PP_LIB_VENDOR_PATH', __DIR__ . '/lib/vendor');
 }
@@ -72,7 +79,8 @@ if (is_file($bundledTranslationsIncPath) && is_readable($bundledTranslationsIncP
 if (class_exists('PublishPressInstanceProtection\\Config')) {
     $pluginCheckerConfig = new PublishPressInstanceProtection\Config();
     $pluginCheckerConfig->pluginSlug    = 'publishpress';
-    $pluginCheckerConfig->pluginName    = 'PublishPress Planner';
+    $pluginCheckerConfig->pluginName    = 'PublishPress Planner Free';
+    $pluginCheckerConfig->pluginFolder  = 'publishpress';
 
     $pluginChecker = new PublishPressInstanceProtection\InstanceChecker($pluginCheckerConfig);
 }
