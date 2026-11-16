@@ -1,3 +1,6 @@
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/less-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./modules/calendar/lib/async-calendar/styles/async-calendar.less ***!
+  \*****************************************************************************************************************************************************************************************************************/
 .publishpress-calendar-wrap .publishpress-calendar-loader {
   display: block;
   height: 500px;
@@ -204,7 +207,7 @@
 }
 .publishpress-calendar-popup-form {
   position: absolute;
-  padding-bottom: 48px;
+  padding-bottom: 58px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -249,6 +252,7 @@
   bottom: 10px;
   width: 98%;
   box-sizing: border-box;
+  padding-top: 10px;
 }
 .publishpress-calendar-popup-form .publishpress-calendar-popup-loading-fields {
   width: 400px;
@@ -259,7 +263,7 @@
 }
 .publishpress-calendar-popup-form .publishpress-calendar-popup-links-hr {
   position: absolute;
-  bottom: 40px;
+  bottom: 52px;
   width: 96%;
 }
 .publishpress-calendar-popup-form .publishpress-calendar-popup-error-message {

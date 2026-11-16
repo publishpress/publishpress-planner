@@ -1,0 +1,25 @@
+name: Build plugin zip
+permissions:
+  contents: read
+
+# Builds the installable plugin zip from a pull request, branch, tag, or commit
+# and attaches it to the run, so support can hand out hotfix builds. Run it from
+# Actions > Build plugin zip, or add the `build-zip` label to a pull request.
+# The build itself lives in publishpress/github-workflows.
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: Pull request number, branch, tag, or commit SHA to build. Leave empty to build the branch selected above.
+        required: false
+        type: string
+        default: ''
+
+  pull_request:
+    types: [ labeled ]
+
+jobs:
+  build-zip:
+    uses: publishpress/github-workflows/.github/workflows/build-zip.yml@v3
+    with:
+      ref: ${{ inputs.ref }}

@@ -15,14 +15,14 @@ class ComposerStaticInitPublishPressPlanner
     );
 
     public static $prefixLengthsPsr4 = array (
-        'S' =>
+        'S' => 
         array (
             'Sabre\\VObject\\' => 14,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Sabre\\VObject\\' =>
+        'Sabre\\VObject\\' => 
         array (
             0 => __DIR__ . '/..' . '/sabre/vobject/lib',
         ),

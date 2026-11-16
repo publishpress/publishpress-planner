@@ -20,6 +20,7 @@
 .idea
 .php-cs-fixer.cache
 .phpcs.xml
+.phpcs-php-compatibility.xml
 .phplint-cache
 .phplint.yml
 .rsync-filters-post-build
@@ -28,6 +29,7 @@
 .vscode
 .wordpress-org
 /dev-workspace
+/dev-workspace-cache
 /dist
 /version.txt
 /webpack.config.js

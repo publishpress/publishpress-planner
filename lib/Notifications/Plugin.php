@@ -343,12 +343,12 @@ class Plugin
         }
 
         if (empty($events)) {
-            echo '<span class="psppno_no_events_warning">' . __(
+            echo '<span class="psppno_no_events_warning">' . esc_html__(
                     'Please select at least one event',
                     'publishpress'
                 ) . '</span>';
         } else {
-            echo implode(', ', $events);
+            echo esc_html(implode(', ', $events));
         }
     }
 
@@ -376,9 +376,9 @@ class Plugin
         }
 
         if (empty($filters)) {
-            echo '<span class="psppno_no_filter_warning">' . __('Not filtered', 'publishpress') . '</span>';
+            echo '<span class="psppno_no_filter_warning">' . esc_html__('Not filtered', 'publishpress') . '</span>';
         } else {
-            echo implode(', ', $filters);
+            echo esc_html(implode(', ', $filters));
         }
     }
 
@@ -400,7 +400,7 @@ class Plugin
         if (empty($values)) {
             echo '-';
         } else {
-            echo implode(', ', $values);
+            echo esc_html(implode(', ', $values));
         }
     }
 }

@@ -24,7 +24,7 @@ class Category extends Base implements Filter_Interface
      */
     public function render()
     {
-        echo $this->get_service('view')->render(
+        $this->get_service('view')->display(
             'workflow_filter_multiple_select',
             [
                 'name'    => esc_attr("publishpress_notif[{$this->step_name}_filters][category]"),
@@ -75,9 +75,20 @@ class Category extends Base implements Filter_Interface
      */
     public function save_metabox_data($id, $post)
     {
-        $filters = isset($_POST['publishpress_notif']["{$this->step_name}_filters"])
-            && is_array($_POST['publishpress_notif']["{$this->step_name}_filters"])
-            ? wp_unslash($_POST['publishpress_notif']["{$this->step_name}_filters"])
+        if (!isset($_POST['publishpress_notif_metabox_events_nonce'])
+            || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['publishpress_notif_metabox_events_nonce'])), 'publishpress_notif_save_metabox')) {
+            return;
+        }
+        return $this->save_values($id, $post, wp_unslash($_POST), true);
+    }
+
+    /** Persist unslashed native workflow values independently of a browser form. */
+    public function save_values($id, $post, array $data, $fromForm = false)
+    {
+
+        $filters = isset($data['publishpress_notif']["{$this->step_name}_filters"])
+            && is_array($data['publishpress_notif']["{$this->step_name}_filters"])
+            ? $data['publishpress_notif']["{$this->step_name}_filters"]
             : [];
 
         if (!isset($filters['category'])) {
@@ -90,6 +101,7 @@ class Category extends Base implements Filter_Interface
         }
 
         $this->update_metadata_array($id, static::META_KEY_CATEGORY, $values);
+
     }
 
     /**

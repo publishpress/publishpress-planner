@@ -509,22 +509,23 @@ class PP_Content_Overview extends PP_Module
      * Update the current user's filters for content overview display with the filters in $_GET. The filters
      * in $_GET take precedence over the current users filters if they exist.
      */
-    public function update_user_filters()
+    public function update_user_filters($request_filter = false, $persist = true)
     {
         global $pp_content_overview_user_filters;
 
-        if (is_array($pp_content_overview_user_filters)) {
+        if ($request_filter === false && is_array($pp_content_overview_user_filters)) {
             return $pp_content_overview_user_filters;
         }
 
         $current_user = wp_get_current_user();
 
+        if ($request_filter === false) { $request_filter = $_GET; }
         $user_filters = [
-            'start_date' => $this->filter_get_param('start_date'),
-            'end_date' => $this->filter_get_param('end_date'),
-            'me_mode' => $this->filter_get_param('me_mode'),
-            'revision_status' => $this->filter_get_param('revision_status'),
-            'hide_revision' => $this->filter_get_param('hide_revision'),
+            'start_date' => $this->filter_get_param('start_date', $request_filter),
+            'end_date' => $this->filter_get_param('end_date', $request_filter),
+            'me_mode' => $this->filter_get_param('me_mode', $request_filter),
+            'revision_status' => $this->filter_get_param('revision_status', $request_filter),
+            'hide_revision' => $this->filter_get_param('hide_revision', $request_filter),
         ];
 
         $editorial_metadata = $this->terms_options;
@@ -535,30 +536,30 @@ class PP_Content_Overview extends PP_Module
                 $meta_term = $editorial_metadata[$filter_key];
                 $meta_term_type = $meta_term['type'];
                 if ($meta_term_type === 'checkbox') {
-                    if (! isset($_GET[$filter_key])) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+                    if (! isset($request_filter[$filter_key])) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
                         $check_value = null;
                     } else {
-                        $check_value = absint($this->filter_get_param($filter_key));
+                        $check_value = absint($this->filter_get_param($filter_key, $request_filter));
                     }
                     $user_filters[$filter_key] = $check_value;
                 } elseif ($meta_term_type === 'date') {
-                    $user_filters[$filter_key]                   = $this->filter_get_param_text($filter_key);
-                    $user_filters[$filter_key . '_start']        = $this->filter_get_param_text($filter_key . '_start');
-                    $user_filters[$filter_key . '_end']          = $this->filter_get_param_text($filter_key . '_end');
-                    $user_filters[$filter_key . '_start_hidden'] = $this->filter_get_param_text($filter_key . '_start_hidden');
-                    $user_filters[$filter_key . '_end_hidden']   = $this->filter_get_param_text($filter_key . '_end_hidden');
+                    $user_filters[$filter_key]                   = $this->filter_get_param_text($filter_key, $request_filter);
+                    $user_filters[$filter_key . '_start']        = $this->filter_get_param_text($filter_key . '_start', $request_filter);
+                    $user_filters[$filter_key . '_end']          = $this->filter_get_param_text($filter_key . '_end', $request_filter);
+                    $user_filters[$filter_key . '_start_hidden'] = $this->filter_get_param_text($filter_key . '_start_hidden', $request_filter);
+                    $user_filters[$filter_key . '_end_hidden']   = $this->filter_get_param_text($filter_key . '_end_hidden', $request_filter);
                 }  elseif ($meta_term_type === 'user') {
                     if (empty($user_filters['me_mode'])) {
-                        $user_filters[$filter_key] = $this->filter_get_param_text($filter_key);
+                        $user_filters[$filter_key] = $this->filter_get_param_text($filter_key, $request_filter);
                     }
                 } else {
-                    $user_filters[$filter_key] = $this->filter_get_param_text($filter_key);
+                    $user_filters[$filter_key] = $this->filter_get_param_text($filter_key, $request_filter);
                 }
             } else {
                 // other filters
-                $user_filters[$filter_key] = $this->filter_get_param_text($filter_key);
+                $user_filters[$filter_key] = $this->filter_get_param_text($filter_key, $request_filter);
                 if (in_array($filter_key, $this->content_overview_datas['meta_keys']) || in_array($filter_key, ['ppch_co_yoast_seo__yoast_wpseo_linkdex', 'ppch_co_yoast_seo__yoast_wpseo_content_score'])) {
-                    $user_filters[$filter_key . '_operator'] = $this->filter_get_param_text($filter_key . '_operator');
+                    $user_filters[$filter_key . '_operator'] = $this->filter_get_param_text($filter_key . '_operator', $request_filter);
                 }
             }
         }
@@ -582,7 +583,7 @@ class PP_Content_Overview extends PP_Module
         }
 
         if (! $user_filters['end_date']) {
-            $user_filters['end_date'] = date('Y-m-d', strtotime($user_filters['start_date'] . ' +10 weeks'));
+            $user_filters['end_date'] = gmdate('Y-m-d', strtotime($user_filters['start_date'] . ' +10 weeks'));
         }
 
         if (!empty($user_filters['me_mode'])) {
@@ -591,9 +592,9 @@ class PP_Content_Overview extends PP_Module
 
         $user_filters = apply_filters('PP_Content_Overview_filter_values', $user_filters, $current_user_filters);
 
-        $this->update_user_meta($current_user->ID, self::USERMETA_KEY_PREFIX . 'filters', $user_filters);
+        if ($persist) { $this->update_user_meta($current_user->ID, self::USERMETA_KEY_PREFIX . 'filters', $user_filters); }
 
-        $pp_content_overview_user_filters = $user_filters;
+        if ($persist) { $pp_content_overview_user_filters = $user_filters; }
 
         return $user_filters;
     }
@@ -634,13 +635,13 @@ class PP_Content_Overview extends PP_Module
 
         $date_format = 'Y-m-d';
         $user_filters['start_date'] = $use_today_as_start_date
-            ? date($date_format, strtotime('-5 weeks'))
+            ? gmdate($date_format, strtotime('-5 weeks'))
             : date($date_format, strtotime(sanitize_text_field($_REQUEST['pp-content-overview-start-date_hidden']))); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
 
-        $user_filters['end_date'] = $_REQUEST['pp-content-overview-end-date_hidden'];
+        $user_filters['end_date'] = isset($_REQUEST['pp-content-overview-end-date_hidden']) ? sanitize_text_field(wp_unslash($_REQUEST['pp-content-overview-end-date_hidden'])) : '';
 
         if ($use_today_as_start_date || (empty(trim($user_filters['end_date']))) || (strtotime($user_filters['start_date']) > strtotime($user_filters['end_date']))) {
-            $user_filters['end_date'] = date($date_format, strtotime($user_filters['start_date'] . ' +10 weeks'));
+            $user_filters['end_date'] = gmdate($date_format, strtotime($user_filters['start_date'] . ' +10 weeks'));
         }
 
         $this->update_user_meta($current_user->ID, self::USERMETA_KEY_PREFIX . 'filters', $user_filters);
@@ -655,45 +656,60 @@ class PP_Content_Overview extends PP_Module
         global $publishpress;
 
         if (!empty($_POST['co_form_action']) && !empty($_POST['_nonce']) && $_POST['co_form_action'] == 'column_form' && wp_verify_nonce(sanitize_key($_POST['_nonce']), 'content_overview_column_form_nonce')) {
-            // Content overview column form
-            $content_overview_columns = !empty($_POST['content_overview_columns']) ? array_map('sanitize_text_field', $_POST['content_overview_columns']) : [];
-            $content_overview_columns_order = !empty($_POST['content_overview_columns_order']) ? array_map('sanitize_text_field', $_POST['content_overview_columns_order']) : [];
-            $content_overview_custom_columns = !empty($_POST['content_overview_custom_columns']) ? map_deep($_POST['content_overview_custom_columns'], 'sanitize_text_field') : [];
+            if (! current_user_can('manage_options')) {
+                // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                echo pp_planner_admin_notice(esc_html__('You do not have permission to update these settings.', 'publishpress'), false);
+            } else {
+                // Content overview column form
+                $content_overview_columns = !empty($_POST['content_overview_columns']) ? array_map('sanitize_text_field', $_POST['content_overview_columns']) : [];
+                $content_overview_columns_order = !empty($_POST['content_overview_columns_order']) ? array_map('sanitize_text_field', $_POST['content_overview_columns_order']) : [];
+                $content_overview_custom_columns = !empty($_POST['content_overview_custom_columns']) ? map_deep($_POST['content_overview_custom_columns'], 'sanitize_text_field') : [];
 
-            // make sure enabled columns are saved in organized order
-            $content_overview_columns = array_intersect($content_overview_columns_order, $content_overview_columns);
+                // make sure enabled columns are saved in organized order
+                $content_overview_columns = array_intersect($content_overview_columns_order, $content_overview_columns);
 
-            $publishpress->update_module_option($this->module->name, 'content_overview_columns', $content_overview_columns);
-            $publishpress->update_module_option($this->module->name, 'content_overview_custom_columns', $content_overview_custom_columns);
+            $this->save_view_configuration('columns', $content_overview_columns, $content_overview_custom_columns);
 
-            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-            echo pp_planner_admin_notice(esc_html__('Column updated successfully.', 'publishpress'));
+
+                // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                echo pp_planner_admin_notice(esc_html__('Column updated successfully.', 'publishpress'));
+            }
         } elseif (!empty($_POST['co_form_action']) && !empty($_POST['_nonce']) && $_POST['co_form_action'] == 'filter_form' && wp_verify_nonce(sanitize_key($_POST['_nonce']), 'content_overview_filter_form_nonce')) {
-            // Content overview filter form
-            $content_overview_filters = !empty($_POST['content_overview_filters']) ? array_map('sanitize_text_field', $_POST['content_overview_filters']) : [];
-            $content_overview_filters_order = !empty($_POST['content_overview_filters_order']) ? array_map('sanitize_text_field', $_POST['content_overview_filters_order']) : [];
-            $content_overview_custom_filters = !empty($_POST['content_overview_custom_filters']) ? map_deep($_POST['content_overview_custom_filters'], 'sanitize_text_field') : [];
+            if (! current_user_can('manage_options')) {
+                // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                echo pp_planner_admin_notice(esc_html__('You do not have permission to update these settings.', 'publishpress'), false);
+            } else {
+                // Content overview filter form
+                $content_overview_filters = !empty($_POST['content_overview_filters']) ? array_map('sanitize_text_field', $_POST['content_overview_filters']) : [];
+                $content_overview_filters_order = !empty($_POST['content_overview_filters_order']) ? array_map('sanitize_text_field', $_POST['content_overview_filters_order']) : [];
+                $content_overview_custom_filters = !empty($_POST['content_overview_custom_filters']) ? map_deep($_POST['content_overview_custom_filters'], 'sanitize_text_field') : [];
 
-            // make sure enabled filters are saved in organized order
-            $content_overview_filters = array_intersect($content_overview_filters_order, $content_overview_filters);
+                // make sure enabled filters are saved in organized order
+                $content_overview_filters = array_intersect($content_overview_filters_order, $content_overview_filters);
 
-            $publishpress->update_module_option($this->module->name, 'content_overview_filters', $content_overview_filters);
-            $publishpress->update_module_option($this->module->name, 'content_overview_custom_filters', $content_overview_custom_filters);
+            $this->save_view_configuration('filters', $content_overview_filters, $content_overview_custom_filters);
 
-            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-            echo pp_planner_admin_notice(esc_html__('Filter updated successfully.', 'publishpress'));
+
+                // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                echo pp_planner_admin_notice(esc_html__('Filter updated successfully.', 'publishpress'));
+            }
         } elseif (!empty($_POST['co_form_action']) && !empty($_POST['_nonce']) && $_POST['co_form_action'] == 'settings_form' && wp_verify_nonce(sanitize_key($_POST['_nonce']), 'content_overview_settings_form_nonce')) {
-            // Content Board filter form
-            $posts_per_page = !empty($_POST['posts_per_page']) ? (int) $_POST['posts_per_page'] : 200;
+            if (! current_user_can('manage_options')) {
+                // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                echo pp_planner_admin_notice(esc_html__('You do not have permission to update these settings.', 'publishpress'), false);
+            } else {
+                // Content Board filter form
+                $posts_per_page = !empty($_POST['posts_per_page']) ? (int) $_POST['posts_per_page'] : 200;
 
-            $publishpress->update_module_option($this->module->name, 'posts_per_page', $posts_per_page);
+                $publishpress->update_module_option($this->module->name, 'posts_per_page', $posts_per_page);
 
-            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-            echo pp_planner_admin_notice(esc_html__('Settings updated successfully.', 'publishpress'));
+                // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                echo pp_planner_admin_notice(esc_html__('Settings updated successfully.', 'publishpress'));
+            }
         } elseif (!empty($_POST['co_form_action']) && !empty($_POST['_nonce']) && !empty($_POST['ptype']) && $_POST['co_form_action'] == 'post_form' && wp_verify_nonce(sanitize_key($_POST['_nonce']), 'content_overview_post_form_nonce')) {
             $postType = sanitize_text_field($_POST['ptype']);
             $postTypeObject = get_post_type_object($postType);
-            if (current_user_can($postTypeObject->cap->edit_posts)) {
+            if ($postTypeObject && current_user_can($postTypeObject->cap->edit_posts)) {
                 $status = isset($_POST['status']) ? sanitize_text_field($_POST['status']) : null;
                 $title = isset($_POST['title']) ? sanitize_text_field($_POST['title']) : '';
                 // Sanitized by the wp_filter_post_kses function.
@@ -703,79 +719,89 @@ class PP_Content_Overview extends PP_Module
                 $categories = isset($_POST['category']) ? array_map('sanitize_text_field', $_POST['category']) : [];
                 $tags = isset($_POST['post_tag']) ? array_map('sanitize_text_field', $_POST['post_tag']) : [];
 
-                $postArgs = [
-                    'post_author' => $authors,
-                    'post_title' => $title,
-                    'post_content' => $content,
-                    'post_type' => $postType,
-                    'post_status' => $status
-                ];
-
-                // set post date
-                if ( ! empty( $_POST['mm'] ) ) {
-                    $aa = sanitize_text_field($_POST['aa']);
-                    $mm = sanitize_text_field($_POST['mm']);
-                    $jj = sanitize_text_field($_POST['jj']);
-                    $hh = sanitize_text_field($_POST['hh']);
-                    $mn = sanitize_text_field($_POST['mn']);
-                    $ss = sanitize_text_field($_POST['ss']);
-                    $aa = ( $aa <= 0 ) ? gmdate( 'Y' ) : $aa;
-                    $mm = ( $mm <= 0 ) ? gmdate( 'n' ) : $mm;
-                    $jj = ( $jj > 31 ) ? 31 : $jj;
-                    $jj = ( $jj <= 0 ) ? gmdate( 'j' ) : $jj;
-                    $hh = ( $hh > 23 ) ? $hh - 24 : $hh;
-                    $mn = ( $mn > 59 ) ? $mn - 60 : $mn;
-                    $ss = ( $ss > 59 ) ? $ss - 60 : $ss;
-
-
-                    $post_date = sprintf( '%04d-%02d-%02d %02d:%02d:%02d', $aa, $mm, $jj, $hh, $mn, $ss );
-                    $valid_date = wp_checkdate( $mm, $jj, $aa, $post_date );
-                    if ($valid_date ) {
-                        $postArgs['post_date'] = $post_date;
-                        $postArgs['post_date_gmt'] = get_gmt_from_date( $post_date );
-                    }
-                }
-
-                $postId = wp_insert_post($postArgs);
-
-                if ($postId) {
-                    if (! empty($categories)) {
-                        $categoriesIdList = [];
-                        foreach ($categories as $categorySlug) {
-                            $category = get_term_by('slug', $categorySlug, 'category');
-
-                            if (! $category || is_wp_error($category)) {
-                                $category = wp_create_category($categorySlug);
-                                $category = get_term($category);
-                            }
-
-                            if (! is_wp_error($category)) {
-                                $categoriesIdList[] = $category->term_id;
-                            }
-                        }
-                        wp_set_post_terms($postId, $categoriesIdList, 'category');
-                    }
-
-                    if (! empty($tags)) {
-                        foreach ($tags as $tagSlug) {
-                            $tag = get_term_by('slug', $tagSlug, 'post_tag');
-
-                            if (! $tag || is_wp_error($tag)) {
-                                wp_create_tag($tagSlug);
-                            }
-                        }
-                        wp_set_post_terms($postId, $tags);
-                    }
+                if (! $this->currentUserCanSetCreatePostStatus($status, $postTypeObject)) {
                     // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-                    echo pp_planner_admin_notice(sprintf(__('%s created successfully. <a href="%s" target="_blank">Edit %s</a>', 'publishpress'), esc_html($postTypeObject->labels->singular_name), esc_url(get_edit_post_link($postId)), esc_html($postTypeObject->labels->singular_name)));
+                    echo pp_planner_admin_notice(esc_html__('You do not have permission to create a post with the selected status.', 'publishpress'), false);
                 } else {
-                    // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-                    echo pp_planner_admin_notice(sprintf(esc_html__('%s could not be created', 'publishpress'), esc_html($postTypeObject->labels->singular_name)), false);
-                }
+                    $postArgs = [
+                        'post_title' => $title,
+                        'post_content' => $content,
+                        'post_type' => $postType,
+                        'post_status' => $status
+                    ];
+                    $authorId = $this->getAuthorizedCreatePostAuthor($authors, $postTypeObject);
+                    if (null !== $authorId) {
+                        $postArgs['post_author'] = $authorId;
+                    }
 
+                    // set post date
+                    if ( ! empty( $_POST['mm'] ) ) {
+                        $aa = isset($_POST['aa']) ? (int) $_POST['aa'] : 0;
+                        $mm = sanitize_text_field($_POST['mm']);
+                        $jj = isset($_POST['jj']) ? (int) $_POST['jj'] : 0;
+                        $hh = isset($_POST['hh']) ? (int) $_POST['hh'] : 0;
+                        $mn = isset($_POST['mn']) ? (int) $_POST['mn'] : 0;
+                        $ss = isset($_POST['ss']) ? (int) $_POST['ss'] : 0;
+                        $aa = ( $aa <= 0 ) ? gmdate( 'Y' ) : $aa;
+                        $mm = ( $mm <= 0 ) ? gmdate( 'n' ) : $mm;
+                        $jj = ( $jj > 31 ) ? 31 : $jj;
+                        $jj = ( $jj <= 0 ) ? gmdate( 'j' ) : $jj;
+                        $hh = ( $hh > 23 ) ? $hh - 24 : $hh;
+                        $mn = ( $mn > 59 ) ? $mn - 60 : $mn;
+                        $ss = ( $ss > 59 ) ? $ss - 60 : $ss;
+
+
+                        $post_date = sprintf( '%04d-%02d-%02d %02d:%02d:%02d', $aa, $mm, $jj, $hh, $mn, $ss );
+                        $valid_date = wp_checkdate( $mm, $jj, $aa, $post_date );
+                        if ($valid_date ) {
+                            $postArgs['post_date'] = $post_date;
+                            $postArgs['post_date_gmt'] = get_gmt_from_date( $post_date );
+                        }
+                    }
+
+                    $postId = wp_insert_post($postArgs);
+
+                    if ($postId) {
+                        if (! empty($categories)) {
+                            $categoriesIdList = [];
+                            foreach ($categories as $categorySlug) {
+                                $category = get_term_by('slug', $categorySlug, 'category');
+
+                                if (! $category || is_wp_error($category)) {
+                                    $category = wp_create_category($categorySlug);
+                                    $category = get_term($category);
+                                }
+
+                                if (! is_wp_error($category)) {
+                                    $categoriesIdList[] = $category->term_id;
+                                }
+                            }
+                            wp_set_post_terms($postId, $categoriesIdList, 'category');
+                        }
+
+                        if (! empty($tags)) {
+                            foreach ($tags as $tagSlug) {
+                                $tag = get_term_by('slug', $tagSlug, 'post_tag');
+
+                                if (! $tag || is_wp_error($tag)) {
+                                    wp_create_tag($tagSlug);
+                                }
+                            }
+                            wp_set_post_terms($postId, $tags);
+                        }
+                        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                        echo pp_planner_admin_notice(sprintf(__('%s created successfully. <a href="%s" target="_blank">Edit %s</a>', 'publishpress'), esc_html($postTypeObject->labels->singular_name), esc_url(get_edit_post_link($postId)), esc_html($postTypeObject->labels->singular_name)));
+                    } else {
+                        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                        echo pp_planner_admin_notice(sprintf(esc_html__('%s could not be created', 'publishpress'), esc_html($postTypeObject->labels->singular_name)), false);
+                    }
+                }
             } else {
+                $post_type_label = ($postTypeObject && isset($postTypeObject->labels->singular_name))
+                    ? $postTypeObject->labels->singular_name
+                    : __('post', 'publishpress');
                 // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-                echo pp_planner_admin_notice(sprintf(esc_html__('You do not have permission to add new %s', 'publishpress'), esc_html($postTypeObject->labels->singular_name)), false);
+                echo pp_planner_admin_notice(sprintf(esc_html__('You do not have permission to add new %s', 'publishpress'), esc_html($post_type_label)), false);
             }
         }
 
@@ -1039,17 +1065,23 @@ class PP_Content_Overview extends PP_Module
 
         if (!isset($_POST['nonce']) || !wp_verify_nonce(sanitize_key($_POST['nonce']), 'content_overview_filter_nonce')) {
             $response['content'] = esc_html__('Error validating nonce. Please reload this page and try again.', 'publishpress');
-        } elseif (empty($_POST['post_type'])) {
+        } elseif (! $this->currentUserCanViewContentOverview()) {
+            $response['content'] = esc_html__('An error occured', 'publishpress');
+        } elseif (empty($_POST['post_type']) || ! is_string($_POST['post_type'])) {
             $response['content'] = esc_html__('Invalid form request.', 'publishpress');
         } else {
-            $post_type = sanitize_text_field($_POST['post_type']);
-            $form_args = [];
-            $form_args['editable_post_types']    = $this->get_editable_post_types();
-            $form_args['default_post_type']      = $post_type;
-            $form_args['post_status_options']    = $this->getUserAuthorizedPostStatusOptions($post_type);
-            $form_args['publish_date_markup']    = $this->get_publish_date_markup();
-            $response['status']  = 'success';
-            $response['content'] = PP_Content_Overview_Utilities::content_overview_get_post_form($form_args);
+            $post_type            = sanitize_key($_POST['post_type']);
+            $editable_post_types  = $this->get_editable_post_types();
+
+            if (isset($editable_post_types[$post_type]) && null !== get_post_type_object($post_type)) {
+                $form_args = [];
+                $form_args['editable_post_types']    = $editable_post_types;
+                $form_args['default_post_type']      = $post_type;
+                $form_args['post_status_options']    = $this->getUserAuthorizedPostStatusOptions($post_type);
+                $form_args['publish_date_markup']    = $this->get_publish_date_markup();
+                $response['status']  = 'success';
+                $response['content'] = PP_Content_Overview_Utilities::content_overview_get_post_form($form_args);
+            }
         }
 
         wp_send_json($response);
@@ -1308,7 +1340,7 @@ class PP_Content_Overview extends PP_Module
      *
      * @return array $term_posts An array of post objects for the term
      */
-    public function getPostsForPostType($postType, $args = null)
+    public function getPostsForPostType($postType, $args = null, $maxItems = null)
     {
         $defaults = [
             'post_status' => null,
@@ -1376,7 +1408,7 @@ class PP_Content_Overview extends PP_Module
 
                      $compare = '=';
                     if ($metadata_term['type'] === 'paragraph'
-                        || ($metadata_term['type'] === 'select' && isset($metadata_term->select_type) && $metadata_term['select_type'] === 'multiple')
+                        || ($metadata_term['type'] === 'select' && isset($metadata_term['select_type']) && $metadata_term['select_type'] === 'multiple')
                     ) {
                         $compare = 'LIKE';
                     }
@@ -1512,6 +1544,7 @@ class PP_Content_Overview extends PP_Module
         $context = 'default';
         $args = apply_filters('PP_Content_Overview_posts_query_args', $args, $context, $enabled_filters, $this->user_filters);
 
+        if ($maxItems !== null) { $args['posts_per_page'] = max(1, min(101, (int) $maxItems)); }
         add_filter('posts_where', [$this, 'posts_where_range']);
         $term_posts_query_results = new WP_Query($args);
         remove_filter('posts_where', [$this, 'posts_where_range']);

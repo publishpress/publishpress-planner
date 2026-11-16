@@ -89,7 +89,7 @@ if (! class_exists('PP_Content_Overview_Utilities')) {
                                                 <div class="items-list-item-name-text"><?php echo esc_html($column_label); ?> <?php if ($column_group === 'custom') : ?><span class="customize-item-info">(<?php echo esc_html($column_name); ?>)</span><?php endif; ?></div>
                                             </div>
                                             <?php if ($column_group === 'custom') : ?>
-                                                <div class="delete-content-overview-item" data-meta="<?php echo esc_html($column_name); ?>">
+                                                <div class="delete-content-overview-item" data-meta="<?php echo esc_attr($column_name); ?>">
                                                     <svg><use xlink:href="<?php echo esc_url(PUBLISHPRESS_URL . 'common/icons/content-icon.svg#svg-sprite-cu2-menu-trash'); ?>"></use></svg>
                                                 </div>
                                             <?php endif; ?>
@@ -235,7 +235,7 @@ if (! class_exists('PP_Content_Overview_Utilities')) {
                                                 <div class="items-list-item-name-text"><?php echo esc_html($filter_label); ?> <?php if ($filter_group === 'custom') : ?><span class="customize-item-info">(<?php echo esc_html($filter_name); ?>)</span><?php endif; ?></div>
                                             </div>
                                             <?php if ($filter_group === 'custom') : ?>
-                                                <div class="delete-content-overview-item" data-meta="<?php echo esc_html($filter_name); ?>">
+                                                <div class="delete-content-overview-item" data-meta="<?php echo esc_attr($filter_name); ?>">
                                                     <svg><use xlink:href="<?php echo esc_url(PUBLISHPRESS_URL . 'common/icons/content-icon.svg#svg-sprite-cu2-menu-trash'); ?>"></use></svg>
                                                 </div>
                                             <?php endif; ?>
@@ -416,7 +416,7 @@ if (! class_exists('PP_Content_Overview_Utilities')) {
                                                         case 'html':
                                                                 ?>
                                                                 <textarea 
-                                                                    name="<?php echo esc_attr($field_key); ?>"><?php echo stripslashes_deep($field_options['value']); ?></textarea>
+                                                                    name="<?php echo esc_attr($field_key); ?>"><?php echo esc_textarea(stripslashes_deep($field_options['value'])); ?></textarea>
                                                                 <?php
                                                         break;
     
@@ -446,7 +446,7 @@ if (! class_exists('PP_Content_Overview_Utilities')) {
                         <div class="save-cc-changes save-new-post-form">
                             <?php echo sprintf(esc_html__('Create %s', 'publishpress'), esc_html($postTypeObject->labels->singular_name)); ?>
                         </div>
-                        <input type="submit" name="submit" class="form-submit-button" value="<?php esc_html_e('Submit', 'publishpress'); ?>" style="display: none;"/>
+                        <input type="submit" name="submit" class="form-submit-button" value="<?php esc_attr_e('Submit', 'publishpress'); ?>" style="display: none;"/>
                     </div>
                 </div>
             </form>
@@ -650,7 +650,7 @@ if (! class_exists('PP_Content_Overview_Utilities')) {
             );
             $output .= '&nbsp;&nbsp;<span class="change-date-buttons">';
             $output .= '<input id="pp-content-overview-range-submit" name="pp-content-overview-range-submit" type="hidden" value="1"';
-            $output .= ' class="button" value="' . esc_html__('Apply', 'publishpress') . '" />';
+            $output .= ' class="button" value="' . esc_attr__('Apply', 'publishpress') . '" />';
             $output .= '&nbsp;';
             $output .= '<input id="pp-content-overview-range-today-btn" name="pp-content-overview-range-today-btn" type="submit"';
             $output .= ' class="button button-secondary hidden" value="' . esc_attr__('Reset', 'publishpress') . '" />';
@@ -660,7 +660,7 @@ if (! class_exists('PP_Content_Overview_Utilities')) {
             $output .= '<a class="change-date hidden" href="#">' . esc_html__('Change', 'publishpress') . '</a>';
             $output .= wp_nonce_field('change-date', 'nonce', 'change-date-nonce', false);
             $output .= '</span>';
-            $output .= '<div class="filter-apply"><input type="submit" id="filter-submit" class="button button-primary" value="' . esc_html__('Apply', 'publishpress') . '"></div>';
+            $output .= '<div class="filter-apply"><input type="submit" id="filter-submit" class="button button-primary" value="' . esc_attr__('Apply', 'publishpress') . '"></div>';
     
             $output .= '</div>';
             $output .= '</div>';
@@ -716,7 +716,7 @@ if (! class_exists('PP_Content_Overview_Utilities')) {
                             echo "<option value='_' " . selected(
                                         '_',
                                         $filters['post_status']
-                                    ) . ">" . $hide_all_label . "</option>";
+                                    ) . ">" . esc_html($hide_all_label) . "</option>";
                         }
  
                         foreach ($post_statuses as $post_status) {

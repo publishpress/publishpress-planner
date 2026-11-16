@@ -1,5 +1,30 @@
-The format is based on [Keep a Changelog](http://keepachangelog.com/)
-and this project adheres to [Semantic Versioning](http://semver.org/).
+The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
+
+[4.9.0] - 13 Nov, 2026
+
+- Added: Private MCP actions for Planner content, editorial collaboration, notifications, view configuration and native maintenance, with capability checks and validated previews.
+- Security: Calendar subscribe links use a per-user token. Links from before 4.9.0 no longer work and have to be created again.
+- Security: Notification log text is escaped before it is shown.
+- Security: Moving a Content Board card to Scheduled sets that post's date only. It no longer changes the shared schedule default. Saving that default still requires an administrator.
+- Security: Workflow shortcodes omit login, email, user ID, profile URL, nickname, editorial comment author email, and comment IP unless the user who last saved the workflow can list users. `[psppno_receiver email]` still prints that recipient. Post meta is limited to editorial metadata keys unless `publishpress_notif_shortcode_meta_keys` allows more. Already-sent log entries keep the body that was stored when they were sent.
+- Security: Content Board and Content Overview form requests only accept post types the user can edit.
+- Security: Saving shared Content Board and Content Overview settings requires an administrator.
+- Security: Creating a post from the Calendar, Content Board, or Content Overview checks the publish capability and who may be set as author.
+- Security: The calendar subscribe feed only includes posts the subscriber can read.
+- Security: The upgrade that removes duplicate notification workflows uses a prepared query.
+- Security: Profile notification channel values are escaped before they are shown.
+- Fixed: Planner Free no longer fatals when Planner Pro is active. #2152
+- Fixed: The review banner uses the Planner name. #2095
+- Fixed: Calendar requests keep the Polylang admin language. #1943
+- Fixed: Calendar and Content Board show Scheduled Revision status. #2098
+- Fixed: Editorial Comments are enabled on new installations. #2137
+- Fixed: Content Calendar filter popups show the close control on the right. #2148
+- Fixed: The Content Calendar Add content dialog leaves more space above the Save buttons. #2149
+- Fixed: Content Calendar tool and filter popups use even padding on all sides. #2150
+- Fixed: Content Overview and Content Board tool and filter popups match the calendar padding and close placement. #2151
+- Changed: Planner admin pages leave more space between admin notices and the iCal and Google Calendar subscription controls. #2147
+- Changed: The minimum PHP version is 8.2. #2114
+- Changed: Development dependencies were updated so Symfony Config, Filesystem, HTTP Client, and YAML match the current security releases. #2140
 
 [4.8.2] - 13 Oct, 2026
 
@@ -13,8 +38,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Changed: GitHub workflows have been refactored by removing outdated code-check and deployment workflow components. #2017
 - Changed: Compatibility and security dependencies have been refreshed, including DOMPurify and brace-expansion. #2091 #2092 #2093
 - Changed: The editorial comment workflow event has been restored for compatibility with existing editorial workflows. #2090
-- Fixed: Security-scanner findings related to administrative output have been addressed to prevent unsafe content from being rendered. #2084
-- Fixed: SQL scanner findings have been resolved by correcting the affected query placeholders. #2076
+- Security: Administrative output is escaped so unsafe content is not rendered. #2084
+- Security: SQL scanner findings have been resolved by correcting the affected query placeholders. #2076
 - Fixed: Notification workflow inputs are now properly unslashed before processing. #2085
 - Fixed: Multisite operations now use WordPress helpers that correctly handle information for the current site. #2086
 - Fixed: Deleted posts are now handled correctly in notification logs. #2089

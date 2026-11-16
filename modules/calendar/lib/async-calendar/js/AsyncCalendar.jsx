@@ -38,7 +38,7 @@ export default function AsyncCalendar(props) {
             query = '';
         }
 
-        return props.ajaxUrl + '?action=' + action + '&nonce=' + props.nonce + query;
+        return props.ajaxUrl + '?action=' + action + '&nonce=' + props.nonce + '&pll_ajax_backend=1' + query;
     }
     
     const onFilterSelectChange = (event) => {
@@ -233,7 +233,7 @@ export default function AsyncCalendar(props) {
             setIsLoading(true);
             setMessage(props.strings.loadingItem);
 
-            const dataUrl = props.ajaxUrl + '?action=' + 'publishpress_calendar_get_post_data' + '&nonce=' + props.nonce + '&id=' + openedItemId;
+            const dataUrl = props.ajaxUrl + '?action=' + 'publishpress_calendar_get_post_data' + '&nonce=' + props.nonce + '&pll_ajax_backend=1&id=' + openedItemId;
             fetch(dataUrl)
                 .then(response => response.json())
                 .then((data) => {

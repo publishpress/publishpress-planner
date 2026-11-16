@@ -209,7 +209,7 @@ if (!class_exists('wsScreenOptions10')) :
             }
 
             // The 'action' argument is in the form "save_settings-panel_id"
-            $action_parts = explode('-', sanitize_text_field($_POST['action']), 2);
+            $action_parts = explode('-', sanitize_text_field(wp_unslash($_POST['action'])), 2); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- The action identifies the nonce verified immediately below.
             $id = end($action_parts);
 
             // Basic security check.

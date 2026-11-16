@@ -173,13 +173,11 @@ class EditorialCommentsTable extends WP_List_Table
         echo '<div class="alignleft actions">';
 
         if ('top' === $which ) {
-            ob_start();
-
             //post filter
             $post_id = isset($_GET['p']) ? (int)$_GET['p'] : 0;
             echo '<label class="screen-reader-text" for="feditorial-comment-filter-posts">' . esc_html__('Filter by post', 'publishpress') . '</label>';
             echo '<select class="editorial-comment-filter-posts" id="feditorial-comment-filter-posts" name="p">';
-            printf("\t<option value=''>%s</option>", __('All Posts', 'publishpress'));
+            printf("\t<option value=''>%s</option>", esc_html__('All Posts', 'publishpress'));
             if (!empty($post_id)) {
                 $post = get_post($post_id);
                 printf(
@@ -195,7 +193,7 @@ class EditorialCommentsTable extends WP_List_Table
             $user_id = isset($_GET['user_id']) ? (int)$_GET['user_id'] : 0;
             echo '<label class="screen-reader-text" for="feditorial-comment-filter-users">' . esc_html__('Filter by user', 'publishpress') . '</label>';
             echo '<select class="editorial-comment-filter-users" id="feditorial-comment-filter-users" name="user_id">';
-            printf("\t<option value=''>%s</option>", __('All Users', 'publishpress'));
+            printf("\t<option value=''>%s</option>", esc_html__('All Users', 'publishpress'));
             if (!empty($user_id)) {
                 $user = get_user_by('ID', $user_id);
                 printf(
@@ -207,8 +205,6 @@ class EditorialCommentsTable extends WP_List_Table
             }
             echo '</select>';
 
-            $output = ob_get_clean();
-            echo $output;
             submit_button(__('Filter', 'publishpress'), '', 'filter_action', false, array( 'id' => 'post-query-submit' ));
         }
 
@@ -323,7 +319,7 @@ class EditorialCommentsTable extends WP_List_Table
             admin_url('admin.php')
         );
         echo '<strong>';
-        echo $avatar;
+        echo wp_kses_post($avatar);
         printf('<a href="%1$s">%2$s</a>', esc_url($author_name_url), esc_html($author_name));
         echo '</strong><br />';
     }
@@ -343,7 +339,7 @@ class EditorialCommentsTable extends WP_List_Table
         );
 
         echo '<div class="submitted-on">';
-        echo $submitted;
+        echo esc_html($submitted);
         echo '</div>';
     }
 
@@ -359,7 +355,7 @@ class EditorialCommentsTable extends WP_List_Table
         }
 
         if (current_user_can('edit_post', $post->ID) ) {
-            $post_link  = "<a href='" . get_edit_post_link($post->ID) . "' class='comments-edit-item-link'>";
+            $post_link  = "<a href='" . esc_url(get_edit_post_link($post->ID)) . "' class='comments-edit-item-link'>";
             $post_link .= esc_html(get_the_title($post->ID)) . '</a>';
         } else {
             $post_link = esc_html(get_the_title($post->ID));
@@ -370,14 +366,14 @@ class EditorialCommentsTable extends WP_List_Table
         if ('attachment' === $post->post_type ) {
             $thumb = wp_get_attachment_image($post->ID, array( 80, 60 ), true);
             if ($thumb ) {
-                echo $thumb;
+                echo wp_kses_post($thumb);
             }
         }
 
-        echo $post_link;
+        echo wp_kses_post($post_link);
 
         $post_type_object = get_post_type_object($post->post_type);
-        echo "<a href='" . get_permalink($post->ID) . "' class='comments-view-item-link'>" . $post_type_object->labels->view_item . '</a>';
+        echo "<a href='" . esc_url(get_permalink($post->ID)) . "' class='comments-view-item-link'>" . esc_html($post_type_object->labels->view_item) . '</a>';
         echo '</div>';
     }
 

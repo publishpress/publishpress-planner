@@ -39,6 +39,15 @@ class Shortcodes
     protected $cache_receiver;
 
     /**
+     * Whether the user who last saved this workflow can list users.
+     *
+     * Null until the first shortcode render for the current workflow.
+     *
+     * @var bool|null
+     */
+    private $can_list_users = null;
+
+    /**
      * Shortcodes constructor.
      */
     public function __construct()
@@ -71,8 +80,9 @@ class Shortcodes
      */
     protected function set_properties($workflow_post, $event_args)
     {
-        $this->workflow_post = $workflow_post;
-        $this->event_args    = $event_args;
+        $this->workflow_post  = $workflow_post;
+        $this->event_args     = $event_args;
+        $this->can_list_users = null;
     }
 
     /**
@@ -161,12 +171,16 @@ class Shortcodes
         return implode($attrs['separator'], $info);
     }
 
-    private function get_user_field($user, $field, $attrs)
+    private function get_user_field($user, $field, $attrs, $allow_email = false)
     {
         $result = false;
 
         if (empty($field)) {
             $field = 'name';
+        }
+
+        if ($this->user_field_is_redacted($field, $allow_email)) {
+            return '';
         }
 
         switch ($field) {
@@ -199,6 +213,10 @@ class Shortcodes
                 $result = $user->user_email;
                 break;
 
+            case 'nickname':
+                $result = $user->nickname;
+                break;
+
             default:
                 if ($custom = apply_filters(
                     'publishpress_notif_shortcode_user_data',
@@ -216,14 +234,84 @@ class Shortcodes
     }
 
     /**
+     * User fields that stay blank unless the workflow's last editor can list users.
+     *
+     * @return string[]
+     */
+    private function get_sensitive_user_fields()
+    {
+        $fields = apply_filters(
+            'publishpress_notif_shortcode_sensitive_user_fields',
+            ['id', 'login', 'url', 'email', 'nickname']
+        );
+
+        if (!is_array($fields)) {
+            return ['id', 'login', 'url', 'email', 'nickname'];
+        }
+
+        return $fields;
+    }
+
+    /**
+     * @param string $field
+     * @param bool   $allow_email Receiver email is already the message To.
+     *
+     * @return bool
+     */
+    private function user_field_is_redacted($field, $allow_email = false)
+    {
+        if ('name' === $field) {
+            $field = 'display_name';
+        }
+
+        if ($allow_email && 'email' === $field) {
+            return false;
+        }
+
+        if (!in_array($field, $this->get_sensitive_user_fields(), true)) {
+            return false;
+        }
+
+        return !$this->workflow_editor_can_list_users();
+    }
+
+    /**
+     * Send often runs from cron, so this checks the last editor, not the current user.
+     *
+     * @return bool
+     */
+    private function workflow_editor_can_list_users()
+    {
+        if (null !== $this->can_list_users) {
+            return $this->can_list_users;
+        }
+
+        $this->can_list_users = false;
+
+        if (empty($this->workflow_post) || empty($this->workflow_post->ID)) {
+            return false;
+        }
+
+        $user_id = (int) get_post_meta($this->workflow_post->ID, '_edit_last', true);
+
+        if ($user_id > 0 && user_can($user_id, 'list_users')) {
+            $this->can_list_users = true;
+        }
+
+        return $this->can_list_users;
+    }
+
+    /**
      * Returns data from the receiver, if available.
      * Available attributes:
      *   - name (display_name - default)
-     *   - email
+     *   - email (always this recipient; it is already the To address)
      *   - first_name
      *   - last_name
      *   - login
      *   - nickname
+     *   - id
+     *   - url
      *
      * [psppno_receiver name]
      *
@@ -235,10 +323,10 @@ class Shortcodes
     {
         $receiver = $this->cache_receiver;
 
-        // Decide what field to display.
-        if (empty($attrs)) {
-            $field = 'name';
-        } else {
+        // Decide what field to display. Only the positional attribute is read.
+        $field = 'name';
+
+        if (!empty($attrs) && isset($attrs[0])) {
             $whitelist = [
                 'name',
                 'email',
@@ -246,12 +334,12 @@ class Shortcodes
                 'last_name',
                 'login',
                 'nickname',
+                'id',
+                'url',
             ];
 
-            if (in_array($attrs[0], $whitelist)) {
+            if (in_array($attrs[0], $whitelist, true)) {
                 $field = $attrs[0];
-            } else {
-                $field = 'name';
             }
         }
 
@@ -260,34 +348,47 @@ class Shortcodes
             $user   = get_user_by('id', $receiver);
             $result = '';
 
-            switch ($field) {
-                case 'name':
+            // Email stays: it is the address already used as To for this receiver.
+            if ($this->user_field_is_redacted($field, 'email' === $field)) {
+                $result = '';
+            } else {
+                switch ($field) {
+                    case 'name':
+                        $result = $user->display_name;
+                        break;
+
+                    case 'first_name':
+                        $result = $user->first_name;
+                        break;
+
+                    case 'last_name':
+                        $result = $user->last_name;
+                        break;
+
+                    case 'login':
+                        $result = $user->user_login;
+                        break;
+
+                    case 'nickname':
+                        $result = $user->nickname;
+                        break;
+
+                    case 'id':
+                        $result = $user->ID;
+                        break;
+
+                    case 'url':
+                        $result = $user->user_url;
+                        break;
+
+                    default:
+                        $result = $user->user_email;
+                        break;
+                }
+
+                if (empty($result)) {
                     $result = $user->display_name;
-                    break;
-
-                case 'first_name':
-                    $result = $user->first_name;
-                    break;
-
-                case 'last_name':
-                    $result = $user->last_name;
-                    break;
-
-                case 'login':
-                    $result = $user->user_login;
-                    break;
-
-                case 'nickname':
-                    $result = $user->nickname;
-                    break;
-
-                default:
-                    $result = $user->user_email;
-                    break;
-            }
-
-            if (empty($result)) {
-                $result = $user->display_name;
+                }
             }
         } else {
             $result = $receiver;
@@ -480,10 +581,20 @@ class Shortcodes
                     'author_login'        => 'user_login',
                 ];
 
+                $gate_map = [
+                    'author_display_name' => 'display_name',
+                    'author_email'        => 'email',
+                    'author_login'        => 'login',
+                ];
+
                 $user_field = $field_map[$field];
                 $data       = $author_data->{$user_field};
 
                 $result = apply_filters('pp_get_author_data', $data, $field, $post);
+
+                if ($this->user_field_is_redacted($gate_map[$field])) {
+                    $result = '';
+                }
                 break;
 
             default:
@@ -499,6 +610,10 @@ class Shortcodes
                         } else {
                             $meta_name      = $arr[1];
                             $meta_sub_field = null;
+                        }
+
+                        if (!$this->is_shortcode_meta_key_allowed($meta_name, $post)) {
+                            break;
                         }
 
                         $meta = get_post_meta($post->ID, $meta_name, true);
@@ -798,7 +913,13 @@ class Shortcodes
                     break;
 
                 case 'author_email':
-                    $info[] = $comment->comment_author_email;
+                    $author_email = $comment->comment_author_email;
+
+                    if ($this->user_field_is_redacted('email')) {
+                        $author_email = '';
+                    }
+
+                    $info[] = $author_email;
                     break;
 
                 case 'author_url':
@@ -807,11 +928,16 @@ class Shortcodes
 
                 case 'author_ip':
                     if (isset($comment->comment_author_ip)) {
-                        $info[] = $comment->comment_author_ip;
+                        $author_ip = $comment->comment_author_ip;
                     } else {
-                        $info[] = $comment->comment_author_IP;
+                        $author_ip = $comment->comment_author_IP;
                     }
 
+                    if (!$this->workflow_editor_can_list_users()) {
+                        $author_ip = '';
+                    }
+
+                    $info[] = $author_ip;
                     break;
 
                 case 'date':
@@ -854,7 +980,74 @@ class Shortcodes
      */
     protected function cleanup()
     {
-        $this->workflow_post = null;
-        $this->event_args    = null;
+        $this->workflow_post  = null;
+        $this->event_args     = null;
+        $this->can_list_users = null;
+    }
+
+    /**
+     * Editorial metadata prefix. Protected, but notifications are meant to print it.
+     *
+     * @return string
+     */
+    private function get_editorial_meta_prefix()
+    {
+        if (class_exists('PP_Editorial_Metadata')) {
+            return PP_Editorial_Metadata::metadata_postmeta_key;
+        }
+
+        return '_pp_editorial_meta';
+    }
+
+    /**
+     * @param string $meta_key
+     *
+     * @return bool
+     */
+    private function is_editorial_meta_key($meta_key)
+    {
+        $prefix = $this->get_editorial_meta_prefix();
+
+        if (!is_string($prefix) || '' === $prefix) {
+            return false;
+        }
+
+        return $meta_key === $prefix || 0 === strpos($meta_key, $prefix . '_');
+    }
+
+    /**
+     * meta:<key> is printed only when the key is allowlisted.
+     *
+     * Editorial metadata keys are allowed. Every other protected key is refused.
+     * Other keys are allowed only through publishpress_notif_shortcode_meta_keys.
+     *
+     * @param string  $meta_key
+     * @param WP_Post $post
+     *
+     * @return bool
+     */
+    private function is_shortcode_meta_key_allowed($meta_key, $post)
+    {
+        $meta_key = (string) $meta_key;
+
+        if ('' === $meta_key) {
+            return false;
+        }
+
+        if ($this->is_editorial_meta_key($meta_key)) {
+            return true;
+        }
+
+        if (is_protected_meta($meta_key, 'post')) {
+            return false;
+        }
+
+        $allowed_keys = apply_filters('publishpress_notif_shortcode_meta_keys', [], $post);
+
+        if (!is_array($allowed_keys)) {
+            return false;
+        }
+
+        return in_array($meta_key, $allowed_keys, true);
     }
 }

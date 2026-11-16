@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<ruleset name="PublishPress PHP compatibility">
+    <description>Check plugin PHP compatibility; the main loader is also scanned separately on older PHP versions.</description>
+
+    <arg name="extensions" value="php"/>
+    <arg value="ps"/>
+
+    <file>.</file>
+    <exclude-pattern>*/.git/*</exclude-pattern>
+    <exclude-pattern>*/.github/*</exclude-pattern>
+    <exclude-pattern>*/.wordpress-org/*</exclude-pattern>
+    <exclude-pattern>*/.web/*</exclude-pattern>
+    <exclude-pattern>*/.ddev/*</exclude-pattern>
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+    <exclude-pattern>*/node_modules/*</exclude-pattern>
+    <exclude-pattern>*/dev-workspace/*</exclude-pattern>
+    <exclude-pattern>*/dev-workspace-cache/*</exclude-pattern>
+    <exclude-pattern>*/dist/*</exclude-pattern>
+    <exclude-pattern>*/tests/*</exclude-pattern>
+
+    <!-- These notification templates contain HTML only, with no PHP to scan. -->
+    <exclude-pattern>*/views/workflow_default_content_*.html.php</exclude-pattern>
+
+    <rule ref="PHPCompatibility"/>
+</ruleset>

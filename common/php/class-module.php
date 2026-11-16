@@ -35,6 +35,24 @@ if (!class_exists('PP_Module')) {
     class PP_Module
     {
         /**
+         * Persist native ordered view columns/filters and custom labels as one module update.
+         */
+        public function save_view_configuration($kind, array $items, array $custom)
+        {
+            if (!current_user_can('manage_options') || !in_array($kind, ['columns', 'filters'], true)
+                || !in_array($this->module->name, ['calendar', 'content_board', 'content_overview'], true)
+                || ($this->module->name === 'calendar' && $kind !== 'filters')) {
+                return new WP_Error('planner_view_configuration_denied', __('You cannot configure this Planner view.', 'publishpress'));
+            }
+            $prefix = $this->module->name === 'calendar' ? 'content_calendar' : $this->module->name;
+            $values = (array) $this->module->options;
+            $values[$prefix . '_' . $kind] = array_map('sanitize_text_field', $items);
+            $values[$prefix . '_custom_' . $kind] = array_map('sanitize_text_field', $custom);
+            PublishPress()->update_all_module_options($this->module->name, $values);
+            return true;
+        }
+
+        /**
          * @var \PublishPress\Core\ViewInterface
          */
         protected $view;
@@ -674,10 +692,10 @@ if (!class_exists('PP_Module')) {
             if ($since > $chunks[2][0] || $original > $today) {
                 $dateFormat = get_option('date_format', 'Y-m-d');
 
-                $print = date($dateFormat, $original);
+                $print = gmdate($dateFormat, $original);
 
                 if ($since > $chunks[0][0]) { // Seconds in a year
-                    $print .= ', ' . date('Y', $original);
+                    $print .= ', ' . gmdate('Y', $original);
                 }
 
                 return $print;
@@ -860,7 +878,8 @@ if (!class_exists('PP_Module')) {
                 'hide_empty' => false,
             ];
 
-            $terms = get_terms($taxonomy, $args);
+            $args['taxonomy'] = $taxonomy;
+            $terms = get_terms($args);
             foreach ($terms as $term) {
                 // If the description already contains structured data, keep it as-is.
                 $unencoded_description = $this->get_unencoded_description($term->description);
@@ -918,11 +937,66 @@ if (!class_exists('PP_Module')) {
             return apply_filters('publishpress_user_post_status_options', $postStatuses, $postType, $post);
         }
 
+        /**
+         * Whether the current user may create a post in this status.
+         * Caller must already have edit_posts or the calendar create cap.
+         * publish, future, and private require the post type's publish_posts cap.
+         * Any other registered workflow status is allowed. Everything else is rejected.
+         *
+         * @param string|null $status
+         * @param object|null $postTypeObject
+         *
+         * @return bool
+         */
+        public function currentUserCanSetCreatePostStatus($status, $postTypeObject)
+        {
+            if (! is_object($postTypeObject) || ! is_string($status) || $status === '') {
+                return false;
+            }
+
+            if (in_array($status, ['publish', 'future', 'private'], true)) {
+                return current_user_can($postTypeObject->cap->publish_posts);
+            }
+
+            foreach ($this->get_post_statuses() as $postStatus) {
+                if (is_object($postStatus) && isset($postStatus->slug) && $status === $postStatus->slug) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /**
+         * Author id to store on create, or null so wp_insert_post uses the current user.
+         * Another user is assigned only when the current user has the post type's edit_others_posts cap.
+         *
+         * @param int $authorId
+         * @param object|null $postTypeObject
+         *
+         * @return int|null
+         */
+        public function getAuthorizedCreatePostAuthor($authorId, $postTypeObject)
+        {
+            $authorId = (int) $authorId;
+            $currentUserId = (int) get_current_user_id();
+
+            if ($authorId > 0
+                && $authorId !== $currentUserId
+                && is_object($postTypeObject)
+                && current_user_can($postTypeObject->cap->edit_others_posts)
+            ) {
+                return $authorId;
+            }
+
+            return null;
+        }
+
         public function getPostStatusOptions($postType = '', $post = false)
         {
             if (!$defined_statuses = apply_filters('publishpress_defined_post_statuses', [], $postType, $post)) {
                 $postStatuses = [];
-                $post_statuses_terms       = get_terms('post_status', ['hide_empty' => false]);
+                $post_statuses_terms       = get_terms(['taxonomy' => 'post_status', 'hide_empty' => false]);
                 $post_statuses_terms_slugs = (!is_wp_error($post_statuses_terms)) ? array_column($post_statuses_terms, 'slug') : [];
                 $defined_statuses = $this->get_post_statuses();
             }
@@ -1002,7 +1076,7 @@ if (!class_exists('PP_Module')) {
          */
         public function filter_get_param($param, $request_filter = false)
         {
-            if (!$request_filter) {
+            if ($request_filter === false) {
                 $request_filter = $_GET;
             }
 
@@ -1026,7 +1100,7 @@ if (!class_exists('PP_Module')) {
          */
         public function filter_get_param_text($param, $request_filter = false)
         {
-            if (!$request_filter) {
+            if ($request_filter === false) {
                 $request_filter = $_GET;
             }
 
@@ -1120,7 +1194,7 @@ if (!class_exists('PP_Module')) {
                 'raw_title'        => $post->post_title,
                 'filtered_title'   => isset($post->filtered_title) ? $post->filtered_title : $post->post_title,
                 'post_status'      => (function_exists('rvy_in_revision_workflow') && rvy_in_revision_workflow($post->ID)) ? $post->post_mime_type : $post->post_status,
-                'status_label'     => $this->get_post_status_friendly_name($post->post_status),
+                'status_label'     => $this->get_post_status_friendly_name($post->post_status, $post),
                 'status_options'   => $this->getUserAuthorizedPostStatusOptions($post->post_type, $post),
                 'status_field_label'   => (function_exists('rvy_in_revision_workflow') && rvy_in_revision_workflow($post->ID)) ? esc_html__('Revision Status', 'publishpress') : esc_html__('Post Status', 'publishpress'),
                 'can_edit_post'    => $can_edit_post ? 1 : 0,

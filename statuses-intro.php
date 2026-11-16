@@ -56,19 +56,23 @@ if (is_admin()) {
 
     // Ensure any user sees one-time display of PublishPress Statuses notice on Posts / Pages screen
     if (!defined('PUBLISHPRESS_STATUSES_VERSION')) {
+        // phpcs:disable WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Recommended
         add_action('upgrader_process_complete', function($package, $extra) {
-            if (!empty($package->skin) && !empty($package->skin->result) && is_array($package->skin->result) && !empty($package->skin->result['destination_name']) 
-            && ('publishpress-statuses' == $package->skin->result['destination_name'])
+            if (!empty($package->skin) && !empty($package->skin->result) && is_array($package->skin->result) && !empty($package->skin->result['destination_name'])
+                && ('publishpress-statuses' == $package->skin->result['destination_name'])
             ) {
-                if (!empty($_REQUEST['action']) && ('install-plugin' == $_REQUEST['action'])  // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Recommended
-                && !empty($_SERVER['HTTP_REFERER'])                                           // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Recommended
-                && false === strpos($_SERVER['HTTP_REFERER'], 'plugins.php')                  // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Recommended
-                && false === strpos($_SERVER['HTTP_REFERER'], 'plugin-install.php')           // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Recommended
+                if (
+                    !empty($_REQUEST['action'])
+                    && ('install-plugin' == $_REQUEST['action'])
+                    && !empty(wp_unslash($_SERVER['HTTP_REFERER']))
+                    && false === strpos(wp_unslash($_SERVER['HTTP_REFERER']), 'plugins.php')
+                    && false === strpos(wp_unslash($_SERVER['HTTP_REFERER']), 'plugin-install.php')
                 ) {
                     activate_plugin('publishpress-statuses/publishpress-statuses.php');
                 }
             }
         }, 10, 2);
+        // phpcs:enable WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Recommended
 
         if ('admin.php' == $pagenow) {
             // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Recommended
@@ -76,14 +80,14 @@ if (is_admin()) {
                 // Display an explanatory caption and install / activation link on Planner > Settings > Features
 
                 $statuses_info = publishpress_statuses_info();
-                
+
                 if (empty($statuses_info['statuses_installed'])) {
                     add_action(
-                        'admin_enqueue_scripts', 
+                        'admin_enqueue_scripts',
                         function() {
                             add_thickbox();
                             wp_enqueue_script('updates');
-                            
+
                             // @todo
                             /*
                             wp_enqueue_script(
@@ -109,16 +113,16 @@ if (is_admin()) {
                         $post_types = maybe_unserialize($status_options->post_types);
 
                         // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Recommended
-                        $type = (!empty($_REQUEST['post_type'])) ? sanitize_key($_REQUEST['post_type']) : 'post';
+                        $requested_post_type = (!empty($_REQUEST['post_type'])) ? sanitize_key($_REQUEST['post_type']) : 'post';
 
-                        if (is_array($post_types) && isset($post_types[$type]) && ('off' != $post_types[$type]) && !get_user_option('publishpress_planner_statuses_notice_done')) {
+                        if (is_array($post_types) && isset($post_types[$requested_post_type]) && ('off' != $post_types[$requested_post_type]) && !get_user_option('publishpress_planner_statuses_notice_done')) {
                             // Also ensure any user sees one-time display of PublishPress Statuses notice on Posts / Pages screen
 
                             $statuses_info = publishpress_statuses_info();
-                            
+
                             if (empty($statuses_info['statuses_installed'])) {
                                 add_action(
-                                    'admin_enqueue_scripts', 
+                                    'admin_enqueue_scripts',
                                     function() {
                                         add_thickbox();
                                         wp_enqueue_script('updates');

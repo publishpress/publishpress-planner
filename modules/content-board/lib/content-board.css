@@ -549,7 +549,6 @@
     z-index: 999;
     background-color: white;
     border: 1px solid #ccc;
-    padding: 15px;
     top: 0;
     margin: 10px 0;
     box-shadow: 0 1px 10px 0 rgba(0, 0, 0, .25);
@@ -563,11 +562,12 @@
     scrollbar-color: rgb(173, 179, 189) rgb(255, 255, 255);
     scrollbar-width: thin;
     overflow: hidden;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding: 15px;
 }
 
 .content-board-modal-content {
+    display: flex;
+    flex-direction: column;
     min-width: 150px;
     max-width: 200px;
     max-height: calc(100vh - 20px);
@@ -578,11 +578,19 @@
 }
 
 .content-board-modal .close {
+    align-self: flex-end;
+    appearance: none;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
     cursor: pointer;
     display: flex;
-    justify-content: end;
     font-size: large;
+    justify-content: flex-end;
     margin-bottom: 5px;
+    min-height: 0;
+    padding: 0;
+    text-shadow: none;
 }
 
 .content-board-modal.schedule-date-modal .schedule-date-options {
@@ -669,6 +677,12 @@
 .customize-customize-item-modal .content-board-modal-content {
     min-width: 300px;
     max-width: 300px;
+}
+
+.customize-customize-item-modal .co-cc-content::after {
+    clear: both;
+    content: "";
+    display: block;
 }
 
 .customize-customize-item-modal.new-post-modal .content-board-modal-content {

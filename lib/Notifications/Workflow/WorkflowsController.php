@@ -21,6 +21,9 @@ class WorkflowsController
      */
     protected $sent_notification_signatures = [];
 
+    private $configurationSteps = [];
+    private $stepsLoaded = false;
+
     /**
      * The constructor
      */
@@ -60,6 +63,7 @@ class WorkflowsController
                 }
             }
         } catch (\Exception $e) {
+            // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log -- Log a notification delivery failure for diagnostics.
             error_log(
                 sprintf(
                     '[PublishPress Notifications] Exception: %s, %s',
@@ -89,7 +93,7 @@ class WorkflowsController
 
         // Build the query
         $query_args = [
-            'nopaging'               => true,
+            'nopaging'               => true, // phpcs:ignore WordPressVIPMinimum.Performance.NoPaging.nopaging_nopaging -- Every matching workflow must run; pagination would omit notifications.
             'post_type'              => PUBLISHPRESS_NOTIF_POST_TYPE_WORKFLOW,
             'post_status'            => 'publish',
             'no_found_rows'          => true,
@@ -122,6 +126,8 @@ class WorkflowsController
      */
     public function load_workflow_steps()
     {
+        if ($this->stepsLoaded) { return; }
+        $this->stepsLoaded = true;
         // Options
         $classes_options = [
             '\\PublishPress\\Notifications\\Workflow\\Option\\SkipUser',
@@ -244,7 +250,7 @@ class WorkflowsController
         // Instantiate each class
         foreach ($classes as $class) {
             if (class_exists($class)) {
-                new $class;
+                $this->configurationSteps[] = new $class;
             }
         }
     }
@@ -254,6 +260,11 @@ class WorkflowsController
      *
      * @return bool
      */
+    public function getConfigurationSteps(): array
+    {
+        return $this->configurationSteps;
+    }
+
     private function is_editorial_comments_feature_enabled()
     {
         global $publishpress;
@@ -293,7 +304,7 @@ class WorkflowsController
 
         // Build the query
         $query_args = [
-            'nopaging'      => true,
+            'nopaging'      => true, // phpcs:ignore WordPressVIPMinimum.Performance.NoPaging.nopaging_nopaging -- Return all matching workflow definitions, not a partial page.
             'post_type'     => PUBLISHPRESS_NOTIF_POST_TYPE_WORKFLOW,
             'post_status'   => 'publish',
             'no_found_rows' => true,

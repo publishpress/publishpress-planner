@@ -12,70 +12,41 @@
   ],
   "minimum-stability": "dev",
   "prefer-stable": true,
-  "repositories": [
-  ],
+  "repositories": [],
   "require": {
-    "php": ">=7.2.5"
+    "php": ">=8.2"
   },
   "require-dev": {
-    "bartlett/php-compatinfo": "^5.2",
-    "overtrue/phplint": "^2.1",
-    "automattic/vipwpcs": "3.0.1",
-    "codeception/module-phpbrowser": "^1.0.0",
-    "codeception/module-asserts": "^1.0.0",
-    "codeception/module-webdriver": "^1.0",
-    "codeception/module-db": "^1.0",
-    "codeception/module-filesystem": "^1.0",
-    "codeception/module-cli": "^1.0",
-    "codeception/util-universalframework": "^1.0",
     "mustache/mustache": "2.14.1",
-    "squizlabs/php_codesniffer": "^3.13.6",
-    "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
-    "phpcompatibility/php-compatibility": "*",
-    "publishpress/translations": "^1.0.0",
-    "szepeviktor/phpstan-wordpress": "^2.0",
-    "wp-coding-standards/wpcs": "^3.4.1"
+    "publishpress/dev-workspace": "^2.1.0"
   },
   "config": {
     "allow-plugins": {
-      "dealerdirect/phpcodesniffer-composer-installer": true
+      "composer/installers": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "php-http/discovery": true,
+      "phpstan/extension-installer": true,
+      "publishpress/dev-workspace": true
     },
     "process-timeout": 7200
   },
   "scripts": {
-    "build": "build zip",
-    "build:dir": "build dir",
-    "build:clean": "build clean",
-    "info:versions": "bash ./dev-workspace/scripts/dependency-versions.sh",
-    "check:longpath": "longpath .",
-    "check:lint": "phplint",
-    "check:phpcs": "phpcs",
-    "gen:mo": "wp i18n make-mo ./languages ./languages --allow-root",
-    "gen:pot": "wp i18n make-pot . languages/publishpress.pot --domain=publishpress --exclude=dev-workspace,.wordpress-org,.github,dist,tests,vendor, --allow-root",
-    "pre-autoload-dump": "composer dumpautoload --working-dir=./lib",
-    "pre-update-cmd": "composer update --working-dir=./lib",
-    "pre-install-cmd": "composer install --working-dir=./lib",
-    "translate": "vendor/bin/publishpress-translate",
-    "translate:dry-run": "vendor/bin/publishpress-translate --dry-run",
-    "translate:download": "vendor/bin/publishpress-translate --download",
-    "translate:upload": "vendor/bin/publishpress-translate --upload",
-    "translate:custom": "vendor/bin/publishpress-translate --languages",
-    "translate:force": "vendor/bin/publishpress-translate --force",
-    "translate:force-custom": "vendor/bin/publishpress-translate --force --languages",
-    "translate:compile": [
-        "@translate:mo",
-        "@translate:json",
-        "@translate:php"
-    ],
-    "translate:pot": "wp i18n make-pot . ./languages/publishpress.pot --domain=publishpress --exclude=dev-workspace,.wordpress-org,.github,dist,tests,lib,tmp,doc,*.js,*.js.map --allow-root",
-    "translate:mo": "wp i18n make-mo ./languages ./languages --allow-root",
-    "translate:json": "bash ./dev-workspace/scripts/lang-make-json.sh",
-    "translate:php": "wp i18n make-php ./languages --allow-root",
-    "translate:repair-plurals": "php vendor/bin/publishpress-translate --repair-plurals"
+    "info:version": "@info:versions",
+    "build:dir": "@pack:dir",
+    "build:clean": "@pack:clean",
+    "check:phpcs": "@lint:phpcs",
+    "pre-autoload-dump": "@composer dumpautoload --working-dir=./lib",
+    "pre-update-cmd": "@composer update --working-dir=./lib",
+    "pre-install-cmd": "@composer install --working-dir=./lib",
+    "term": "bash ./vendor/publishpress/dev-workspace/scripts/run.sh"
   },
   "extra": {
     "plugin-name": "publishpress-planner",
     "plugin-slug": "publishpress",
-    "plugin-folder": "publishpress"
+    "plugin-folder": "publishpress",
+    "version-constant": "PUBLISHPRESS_VERSION",
+    "plugin-lang-domain": "publishpress",
+    "plugin-github-repo": "publishpress/publishpress-planner",
+    "plugin-composer-package": "publishpress/publishpress-planner"
   }
 }

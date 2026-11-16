@@ -37,7 +37,7 @@ trait Metadata
     public function update_metadata_array($post_id, $meta_key, $meta_value = [])
     {
         // Cleanup the metadata
-        $this->delete_metadata($meta_key);
+        $this->delete_metadata($meta_key, '', $post_id);
 
         if (!empty($meta_value)) {
             foreach ($meta_value as $value) {

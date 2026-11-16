@@ -3,7 +3,7 @@
  * @package PublishPress
  * @author  PublishPress
  *
- * Copyright (c) 2025 PublishPress
+ * Copyright (c) 2026 PublishPress
  *
  * ------------------------------------------------------------------------------
  * Based on Edit Flow
@@ -34,7 +34,7 @@ use PublishPress\Legacy\Auto_loader;
 if (! defined('PP_LOADED')) {
     if (! defined('PUBLISHPRESS_VERSION')) {
         // Define constants
-        define('PUBLISHPRESS_VERSION', '4.8.2');
+        define('PUBLISHPRESS_VERSION', '4.9.0');
         define('PUBLISHPRESS_BASE_PATH', __DIR__);
         define('PUBLISHPRESS_VIEWS_PATH', __DIR__ . '/views');
         define('PUBLISHPRESS_FILE_PATH', PUBLISHPRESS_BASE_PATH . '/publishpress.php');
@@ -93,7 +93,7 @@ if (! defined('PP_LOADED')) {
 
         define('PUBLISHPRESS_NOTIF_POST_TYPE_WORKFLOW', 'psppnotif_workflow');
     }
-    
+
     // Register the legacy autoloader
     if (! class_exists('\\PublishPress\\Legacy\\Auto_loader')) {
         require_once PUBLISHPRESS_LIBRARIES_PATH . '/Legacy/Auto_loader.php';
@@ -115,8 +115,8 @@ if (! defined('PP_LOADED')) {
     }
 
     // Load the improved notifications
-    $plugin = new PublishPress\Notifications\Plugin();
-    $plugin->init();
+    $notifications_plugin = new PublishPress\Notifications\Plugin();
+    $notifications_plugin->init();
 
     if (is_admin() && ! defined('PUBLISHPRESS_SKIP_VERSION_NOTICES')) {
         if (current_user_can('install_plugins')) {

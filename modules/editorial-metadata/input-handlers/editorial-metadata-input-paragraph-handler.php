@@ -60,7 +60,7 @@ if (! class_exists('Editorial_Metadata_Input_Paragraph_Handler')) {
                 $input_name
             );
 
-            echo self::generateDescriptionHtml($input_description);
+            echo wp_kses_post(self::generateDescriptionHtml($input_description));
 
             printf(
                 '<textarea
@@ -92,7 +92,7 @@ if (! class_exists('Editorial_Metadata_Input_Paragraph_Handler')) {
                 $input_name
             );
 
-            echo self::generateDescriptionHtml($input_description);
+            echo wp_kses_post(self::generateDescriptionHtml($input_description));
 
             if (mb_strlen((string)$value) > 0) {
                 printf(

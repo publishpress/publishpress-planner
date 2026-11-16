@@ -60,7 +60,7 @@ if (! class_exists('PP_Calendar_Utilities')) {
                             echo "<option value='_' " . selected(
                                         '_',
                                         $filters['post_status']
-                                    ) . ">" . $hide_all_label . "</option>";
+                                    ) . ">" . esc_html($hide_all_label) . "</option>";
                         }
                         
                         foreach ($post_statuses as $post_status) {
@@ -499,8 +499,8 @@ if (! class_exists('PP_Calendar_Utilities')) {
                     $modal_id++;
                     ?>
                     <button data-target="#content_calendar_modal_<?php echo esc_attr($modal_id); ?>" class="co-filter active-filter"
-                    data-label="<?php esc_html_e('Period', 'publishpress'); ?>">
-                        <?php esc_html_e('Period', 'publishpress'); ?>: <?php echo sprintf(esc_html__('%1s weeks', 'publishpress'), $filter_weeks); ?>
+                    data-label="<?php esc_attr_e('Period', 'publishpress'); ?>">
+                        <?php esc_html_e('Period', 'publishpress'); ?>: <?php echo sprintf(esc_html__('%1s weeks', 'publishpress'), (int)$filter_weeks); ?>
                     </button>
                     <div id="content_calendar_modal_<?php echo esc_attr($modal_id); ?>" class="content-calendar-modal" style="display: none;">
                         <div class="content-calendar-modal-content">
@@ -509,9 +509,8 @@ if (! class_exists('PP_Calendar_Utilities')) {
                                 <select name="weeks" id="weeks" class="calendar-weeks-filter">
                                     <?php 
                                         for ($i = 1; $i <= 12; $i++) {
-                                            $selected = ($i == $filter_weeks) ? ' selected' : '';
                                             $week_text = sprintf(_n('%d week', '%d weeks', $i, 'publishpress'), $i);
-                                            echo '<option value="' . $i . '"' . $selected . '>' . $week_text . '</option>';
+                                            echo '<option value="' . (int)$i . '"' . selected($i, $filter_weeks, false) . '>' . esc_html($week_text) . '</option>';
                                         }
                                     ?>
                                 </select>
@@ -539,7 +538,7 @@ if (! class_exists('PP_Calendar_Utilities')) {
                                 <?php if ('revision_status' == $select_id && !empty($user_filters['hide_revision'])) echo ' style="display: none;"';?>><?php echo esc_html($button_label); ?></button>
                             <div id="content_calendar_modal_<?php echo esc_attr($modal_id); ?>" class="content-calendar-modal" style="display: none;">
                                 <div class="content-calendar-modal-content">
-                                    <span class="close">&times;</span>
+                                    <button type="button" class="close" aria-label="<?php esc_attr_e('Close', 'publishpress'); ?>">&times;</button>
                                     <div><?php echo $filter_data['html']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
                                 </div>
                             </div>
@@ -646,7 +645,7 @@ if (! class_exists('PP_Calendar_Utilities')) {
                                                 <div class="items-list-item-name-text"><?php echo esc_html($filter_label); ?> <?php if ($filter_group === 'custom') : ?><span class="customize-item-info">(<?php echo esc_html($filter_name); ?>)</span><?php endif; ?></div>
                                             </div>
                                             <?php if ($filter_group === 'custom') : ?>
-                                                <div class="delete-content-calendar-item" data-meta="<?php echo esc_html($filter_name); ?>">
+                                                <div class="delete-content-calendar-item" data-meta="<?php echo esc_attr($filter_name); ?>">
                                                     <svg><use xlink:href="<?php echo esc_url(PUBLISHPRESS_URL . 'common/icons/content-icon.svg#svg-sprite-cu2-menu-trash'); ?>"></use></svg>
                                                 </div>
                                             <?php endif; ?>
@@ -749,7 +748,7 @@ if (! class_exists('PP_Calendar_Utilities')) {
         {
             header('Content-type: application/json;');
 
-            if (! wp_verify_nonce(sanitize_text_field($_GET['nonce']), 'publishpress-calendar-get-data')) {
+            if (!isset($_GET['nonce']) || ! wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['nonce'])), 'publishpress-calendar-get-data')) {
                 wp_send_json([]);
             }
 
@@ -809,7 +808,7 @@ if (! class_exists('PP_Calendar_Utilities')) {
         {
             header('Content-type: application/json;');
 
-            if (! wp_verify_nonce(sanitize_text_field($_GET['nonce']), 'publishpress-calendar-get-data')) {
+            if (!isset($_GET['nonce']) || ! wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['nonce'])), 'publishpress-calendar-get-data')) {
                 wp_send_json([]);
             }
 
@@ -999,10 +998,10 @@ if (! class_exists('PP_Calendar_Utilities')) {
         {
             $date = strtotime($date);
             $start_of_week = (int)get_option('start_of_week');
-            $day_of_week = date('w', $date);
+            $day_of_week = gmdate('w', $date);
             $date += (($start_of_week - $day_of_week - 7) % 7) * 60 * 60 * 24 * $week;
             $additional = 3600 * 24 * 7 * ($week - 1);
-            $formatted_start_of_week = date($format, $date + $additional);
+            $formatted_start_of_week = gmdate($format, $date + $additional);
 
             return $formatted_start_of_week;
         }
@@ -1023,10 +1022,10 @@ if (! class_exists('PP_Calendar_Utilities')) {
         {
             $date = strtotime($date);
             $end_of_week = (int)get_option('start_of_week') - 1;
-            $day_of_week = date('w', $date);
+            $day_of_week = gmdate('w', $date);
             $date += (($end_of_week - $day_of_week + 7) % 7) * 60 * 60 * 24;
             $additional = 3600 * 24 * 7 * ($week - 1);
-            $formatted_end_of_week = date($format, $date + $additional);
+            $formatted_end_of_week = gmdate($format, $date + $additional);
 
             return $formatted_end_of_week;
         }
@@ -1321,9 +1320,29 @@ if (! class_exists('PP_Calendar_Utilities')) {
                         <?php
                         echo esc_html__('Copy to the clipboard', 'publishpress'); ?>
                     </button>
+                    <?php
+                    $revoke_user_id = get_current_user_id();
+                    if ($revoke_user_id) {
+                        $revoke_url = wp_nonce_url(
+                            add_query_arg(
+                                [
+                                    'action' => PP_Calendar::ICS_TOKEN_REVOKE_ACTION,
+                                    'user_id' => $revoke_user_id,
+                                ],
+                                admin_url('admin.php?page=pp-calendar')
+                            ),
+                            PP_Calendar::ICS_TOKEN_REVOKE_NONCE . '-' . $revoke_user_id
+                        );
+                        ?>
+                        <a href="<?php echo esc_url($revoke_url); ?>" style="margin-left: 20px;">
+                            <?php echo esc_html__('Revoke this subscription link', 'publishpress'); ?>
+                        </a>
+                        <?php
+                    }
+                    ?>
                 </div>
 
-                <a href="#TB_inline?width=550&height=270&inlineId=publishpress-calendar-ics-subs" class="thickbox" aria-label="<?php echo esc_attr__('Subscribe in iCal or Google Calendar', 'publishpress'); ?>">
+                <a href="#TB_inline?width=550&height=340&inlineId=publishpress-calendar-ics-subs" class="thickbox" aria-label="<?php echo esc_attr__('Subscribe in iCal or Google Calendar', 'publishpress'); ?>">
                     <?php
                     echo esc_html__('Click here to subscribe in iCal or Google Calendar', 'publishpress'); ?>
                 </a>

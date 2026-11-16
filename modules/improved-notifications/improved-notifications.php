@@ -574,10 +574,15 @@ if (! class_exists('PP_Improved_Notifications')) {
             }
 
             if ($trash_post_ids) {
-                $id_in_csv = implode("','", array_map('intval', $trash_post_ids));
+                $ids = array_map('intval', $trash_post_ids);
 
                 // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-                $wpdb->query("UPDATE $wpdb->posts SET post_status = 'trash' WHERE $wpdb->posts.post_type = 'psppnotif_workflow' AND $wpdb->posts.ID IN ('$id_in_csv')");    //phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+                $wpdb->query(
+                    $wpdb->prepare(
+                        "UPDATE {$wpdb->posts} SET post_status = 'trash' WHERE post_type = %s AND ID IN (" . implode(',', array_fill(0, count($ids), '%d')) . ')',
+                        array_merge(array('psppnotif_workflow'), $ids)
+                    )
+                );
 
                 foreach ($trash_post_ids as $post_id) {
                     clean_post_cache($post_id);
@@ -669,7 +674,7 @@ if (! class_exists('PP_Improved_Notifications')) {
                 'channels_options' => $channels_options,
             ];
 
-            echo $this->get_service('view')->render('settings_notification_channels', $context);
+            $this->get_service('view')->display('settings_notification_channels', $context);
         }
 
         /**
@@ -1037,15 +1042,9 @@ if (! class_exists('PP_Improved_Notifications')) {
                         PUBLISHPRESS_VERSION
                     );
                     wp_enqueue_script(
-                        'psppno-workflow-tooltip',
-                        plugin_dir_url(__FILE__) . 'libs/opentip/downloads/opentip-jquery.js',
-                        ['jquery'],
-                        PUBLISHPRESS_VERSION
-                    );
-                    wp_enqueue_script(
                         'psppno-workflow-form',
                         plugin_dir_url(__FILE__) . 'assets/js/workflow_form.js',
-                        ['jquery', 'psppno-workflow-tooltip', 'psppno-multiple-select'],
+                        ['jquery', 'psppno-multiple-select'],
                         PUBLISHPRESS_VERSION
                     );
 
@@ -1221,7 +1220,7 @@ if (! class_exists('PP_Improved_Notifications')) {
 
             $main_context['section_channel'] = $view->render('workflow_metabox_section', $context);
 
-            echo $view->render('workflow_metabox', $main_context, $this->viewsPath);
+            $view->display('workflow_metabox', $main_context, $this->viewsPath);
         }
 
         public function publishpress_notif_workflow_options_metabox()
@@ -1234,7 +1233,7 @@ if (! class_exists('PP_Improved_Notifications')) {
                 'options' => apply_filters('publishpress_notif_workflow_options', [], $post, $view),
             ];
 
-            echo $view->render('workflow_metabox_options', $context);
+            $view->display('workflow_metabox_options', $context);
         }
 
         private function getShortcodePostFields()
@@ -1360,7 +1359,7 @@ if (! class_exists('PP_Improved_Notifications')) {
                 'psppno_receiver_fields_list' => esc_html(implode(', ', $this->getShortcodeReceiverFields())),
             ];
 
-            echo $this->get_service('view')->render('workflow_help', $context);
+            $this->get_service('view')->display('workflow_help', $context);
         }
 
         /**
@@ -1526,7 +1525,7 @@ if (! class_exists('PP_Improved_Notifications')) {
                 'channels_options' => $channels_options,
             ];
 
-            echo $this->get_service('view')->render('user_profile_notification_channels', $context);
+            $this->get_service('view')->display('user_profile_notification_channels', $context);
         }
 
         /**
@@ -1636,6 +1635,24 @@ if (! class_exists('PP_Improved_Notifications')) {
         }
 
         /**
+         * Save typed, already authorized per-workflow channel preferences for a user.
+         */
+        public function saveNotificationPreferences($userId, array $preferences)
+        {
+            if (!current_user_can('edit_user', $userId) || !current_user_can('pp_set_notification_channel')) {
+                return new WP_Error('planner_preferences_denied', __('You cannot change these notification preferences.', 'publishpress'));
+            }
+            foreach ($preferences as $row) {
+                $key = 'psppno_workflow_channel_' . (int) $row['workflow_id'];
+                update_user_meta($userId, $key, sanitize_key($row['channel']));
+                if (get_user_meta($userId, $key, true) !== $row['channel']) {
+                    return new WP_Error('planner_preferences_unconfirmed', __('Some channel changes could not be confirmed. Read preferences before retrying.', 'publishpress'));
+                }
+            }
+            return apply_filters('publishpress_planner_save_notification_preferences', true, $userId, $preferences);
+        }
+
+        /**
          * Saves the data coming from the user profile
          *
          * @param int $user_id
@@ -1660,13 +1677,11 @@ if (! class_exists('PP_Improved_Notifications')) {
             // Workflow Channels
             if (isset($_POST['psppno_workflow_channel']) && ! empty($_POST['psppno_workflow_channel'])) {
                 $workflow_channels = wp_unslash($_POST['psppno_workflow_channel']);
-                foreach ((array)$workflow_channels as $workflow_id => $channel) {
-                    update_user_meta(
-                        $user_id,
-                        'psppno_workflow_channel_' . (int)$workflow_id,
-                        sanitize_key($channel)
-                    );
+                $preferences = [];
+                foreach ((array) $workflow_channels as $workflow_id => $channel) {
+                    $preferences[] = ['workflow_id' => (int) $workflow_id, 'channel' => sanitize_key($channel)];
                 }
+                $this->saveNotificationPreferences($user_id, $preferences);
             }
 
             do_action('psppno_save_user_profile', $user_id);

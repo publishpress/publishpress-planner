@@ -87,6 +87,26 @@ if (! class_exists('PP_Calendar')) {
         const VIEW_CAPABILITY = 'pp_view_calendar';
 
         /**
+         * Per-user ICS subscribe token. Not derived from the login or site secret.
+         */
+        const USER_META_ICS_TOKEN = 'pp_calendar_ics_token';
+
+        /**
+         * Optional unix timestamp after which USER_META_ICS_TOKEN is rejected.
+         */
+        const USER_META_ICS_TOKEN_EXPIRES = 'pp_calendar_ics_token_expires';
+
+        /**
+         * admin_init action for revoking one user's ICS token.
+         */
+        const ICS_TOKEN_REVOKE_ACTION = 'pp_calendar_revoke_ics_token';
+
+        /**
+         * Nonce action prefix. The target user ID is appended.
+         */
+        const ICS_TOKEN_REVOKE_NONCE = 'pp-revoke-ics-token';
+
+        /**
          * [$module description]
          *
          * @var [type]
@@ -190,6 +210,86 @@ if (! class_exists('PP_Calendar')) {
          */
         private $terms_options = [];
 
+        public static function getPublishTimeStatusChoices()
+        {
+            $planner = PublishPress();
+            $custom = defined('PUBLISHPRESS_STATUSES_VERSION') ? $planner->getPostStatuses() : $planner->getCustomStatuses();
+            if (empty($custom)) { return ['publish' => __('Publish'), 'future' => __('Scheduled')]; }
+            $statuses = [];
+            foreach ($custom as $status) { $statuses[$status->slug] = ['title' => $status->label, 'status_obj' => $status, 'for_revision' => !empty($status->for_revision)]; }
+            return $statuses;
+        }
+
+        public function createCalendarExport($from, $to)
+        {
+            $calendar = new Sabre\VObject\Component\VCalendar(['PRODID' => '-//PublishPress//PublishPress ' . PUBLISHPRESS_VERSION . '//EN']);
+            $zone = $this->dateUtil->getTimezoneString();
+            PP_Calendar_Utilities::generateVtimezone($calendar, $zone, (int) $from, (int) $to);
+            return [$calendar, new DateTimeZone($zone)];
+        }
+
+        public function getCalendarMetadataOptions() { return $this->terms_options; }
+
+        public function addPostToCalendarExport($vCalendar, $post, $timeZone, $includeDetails = true)
+        {
+            $convert = has_filter('the_title', 'convert_chars');
+            $texturize = has_filter('the_title', 'wptexturize');
+            try {
+                if (empty($post->post_date_gmt) || $post->post_date_gmt == '0000-00-00 00:00:00') {
+                    $calendar_date = get_gmt_from_date($post->post_date);
+                } else {
+                    $calendar_date = $post->post_date_gmt;
+                }
+
+                $start_date = new DateTime($calendar_date);
+                $start_date->setTimezone($timeZone);
+
+                $end_date = new DateTime(date('Y-m-d H:i:s', strtotime($calendar_date) + (5 * 60))); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+                $end_date->setTimezone($timeZone);
+
+                if (empty($post->post_modified_gmt) || $post->post_modified_gmt == '0000-00-00 00:00:00') {
+                    $calendar_modified_date = get_gmt_from_date($post->post_modified);
+                } else {
+                    $calendar_modified_date = $post->post_modified_gmt;
+                }
+
+                $last_modified = new DateTime($calendar_modified_date);
+                $last_modified->setTimezone($timeZone);
+
+                // Remove the convert chars and wptexturize filters from the title
+                remove_filter('the_title', 'convert_chars');
+                remove_filter('the_title', 'wptexturize');
+
+                // Description should include everything visible in the calendar popup
+                $information_fields = $includeDetails ? $this->get_post_information_fields($post) : [];
+                $eventDescription = '';
+                if (! empty($information_fields)) {
+                    foreach ($information_fields as $key => $values) {
+                        $eventDescription .= $values['label'] . ': ' . $values['value'] . "\n";
+                    }
+                    $eventDescription = rtrim($eventDescription);
+                }
+
+                $vCalendar->add(
+                    'VEVENT',
+                    [
+                        'UID' => $post->guid,
+                        'SUMMARY' => PP_Calendar_Utilities::do_ics_escaping(apply_filters('the_title', $post->post_title))
+                            . ' - ' . $this->get_post_status_friendly_name(get_post_status($post->ID)),
+                        'DTSTART' => $start_date,
+                        'DTEND' => $end_date,
+                        'LAST-MODIFIED' => $last_modified,
+                        'URL' => get_post_permalink($post->ID),
+                        'DESCRIPTION' => $eventDescription,
+                    ]
+                );
+            } finally {
+                if ($convert !== false) { add_filter('the_title', 'convert_chars', $convert); }
+                if ($texturize !== false) { add_filter('the_title', 'wptexturize', $texturize); }
+            }
+        }
+
+
         /**
          * Check if PublishPress Revisions is available for revision status fields.
          *
@@ -215,6 +315,12 @@ if (! class_exists('PP_Calendar')) {
          * @var [type]
          */
         private $content_calendar_methods;
+
+        public function getCalendarMethods()
+        {
+            return $this->content_calendar_methods;
+        }
+
 
         /**
          * Construct the PP_Calendar class
@@ -261,7 +367,11 @@ if (! class_exists('PP_Calendar')) {
                         'publishpress'
                     ),
                     'key-regenerated' => __(
-                        'iCal secret key regenerated. Please inform all users they will need to resubscribe.',
+                        'Calendar feed tokens revoked. Please inform all users they will need to resubscribe.',
+                        'publishpress'
+                    ),
+                    'ics-token-revoked' => __(
+                        'Your calendar subscription link was revoked. Copy the new link before you subscribe again.',
                         'publishpress'
                     ),
                 ],
@@ -344,13 +454,15 @@ if (! class_exists('PP_Calendar')) {
 
                 // Action to regenerate the calendar feed secret
                 add_action('admin_init', [$this->content_calendar_methods, 'handle_regenerate_calendar_feed_secret']);
+                add_action('admin_init', [$this->content_calendar_methods, 'handle_revoke_user_ics_token']);
+                add_action('admin_notices', [$this, 'action_ics_token_migration_notice']);
 
                 add_filter('post_date_column_status', [$this->content_calendar_methods, 'filter_post_date_column_status'], 12, 4);
 
                 add_filter('pp_calendar_after_form_submission_sanitize_title', [$this, 'sanitize_text_input'], 10, 1);
                 add_filter('pp_calendar_after_form_submission_sanitize_content', [$this, 'sanitize_text_input'], 10, 1);
                 add_filter('pp_calendar_after_form_submission_sanitize_author', [$this, 'sanitize_author_input'], 10, 1);
-                add_filter('pp_calendar_after_form_submission_validate_author', [$this, 'validateAuthorForPost'], 10, 1);
+                add_filter('pp_calendar_after_form_submission_validate_author', [$this, 'validateAuthorForPost'], 10, 2);
                 add_filter('admin_body_class', ['PP_Calendar_Utilities', 'add_admin_body_class']);
             }
 
@@ -492,6 +604,32 @@ if (! class_exists('PP_Calendar')) {
                 // Technically we've run this code before so we don't want to auto-install new data
                 $publishpress->update_module_option($this->module->name, 'loaded_once', true);
             }
+
+            // Subscribe URLs through 4.8.3 were md5(login . secret) and are no longer accepted.
+            if (version_compare($previous_version, '4.8.3', '<=')) {
+                update_option('pp_calendar_ics_token_migration_notice', 1);
+            }
+        }
+
+        /**
+         * Tell admins that existing ICS subscribe URLs stopped working.
+         */
+        public function action_ics_token_migration_notice()
+        {
+            if (! current_user_can('manage_options')) {
+                return;
+            }
+
+            if (! get_option('pp_calendar_ics_token_migration_notice')) {
+                return;
+            }
+
+            echo '<div class="notice notice-warning"><p>';
+            echo esc_html__(
+                'Calendar subscription links from before this update no longer work. Open the Content Calendar and copy a new subscribe link.',
+                'publishpress'
+            );
+            echo '</p></div>';
         }
 
         /**
@@ -541,6 +679,80 @@ if (! class_exists('PP_Calendar')) {
         }
 
         /**
+         * Issue or reuse the user's ICS bearer token.
+         *
+         * A missing token is created. An expired token is replaced so the
+         * subscribe link on screen is one the feed will accept.
+         *
+         * @param WP_User $user User who will subscribe.
+         *
+         * @return string Empty when the user cannot hold a token.
+         */
+        private function get_or_create_ics_token($user)
+        {
+            if (! $user instanceof WP_User || empty($user->ID)) {
+                return '';
+            }
+
+            $token = get_user_meta($user->ID, self::USER_META_ICS_TOKEN, true);
+            $expires = get_user_meta($user->ID, self::USER_META_ICS_TOKEN_EXPIRES, true);
+            $now = time();
+            $has_token = is_string($token) && $token !== '';
+            $is_expired = is_numeric($expires) && (int) $expires > 0 && (int) $expires <= $now;
+
+            if ($has_token && ! $is_expired) {
+                return $token;
+            }
+
+            $token = wp_generate_password(32, false, false);
+            update_user_meta($user->ID, self::USER_META_ICS_TOKEN, $token);
+
+            /**
+             * Unix time when a newly issued ICS token expires.
+             * Return 0 or an empty value to store no expiry.
+             *
+             * @param int $expires_at Default is one year from now.
+             * @param int $user_id
+             */
+            $expires_at = apply_filters(
+                'pp_calendar_ics_token_expires',
+                $now + YEAR_IN_SECONDS,
+                $user->ID
+            );
+
+            if (! is_numeric($expires_at) || (int) $expires_at <= 0) {
+                delete_user_meta($user->ID, self::USER_META_ICS_TOKEN_EXPIRES);
+            } else {
+                update_user_meta($user->ID, self::USER_META_ICS_TOKEN_EXPIRES, (int) $expires_at);
+            }
+
+            return $token;
+        }
+
+        /**
+         * Whether the presented ICS token matches this user and is still valid.
+         *
+         * @param WP_User $user      Feed user.
+         * @param string  $presented Token from the request.
+         *
+         * @return bool
+         */
+        private function ics_token_is_valid($user, $presented)
+        {
+            $stored = get_user_meta($user->ID, self::USER_META_ICS_TOKEN, true);
+            if (! is_string($stored) || $stored === '' || ! is_string($presented) || $presented === '') {
+                return false;
+            }
+
+            $expires = get_user_meta($user->ID, self::USER_META_ICS_TOKEN_EXPIRES, true);
+            if (is_numeric($expires) && (int) $expires > 0 && (int) $expires <= time()) {
+                return false;
+            }
+
+            return hash_equals($stored, $presented);
+        }
+
+        /**
          * After checking that the request is valid, do an .ics file
          *
          * @since 0.8
@@ -559,13 +771,26 @@ if (! class_exists('PP_Calendar')) {
                 die();
             }
 
-            // Confirm this is a valid request
-            $user = sanitize_user($_GET['user']);
-            $user_key = sanitize_user($_GET['user_key']);
-            $ics_secret_key = $this->module->options->ics_secret_key;
-            if (! $ics_secret_key || md5($user . $ics_secret_key) !== $user_key) {
+            // Login and token are alphanumeric. sanitize_user() keeps that alphabet.
+            $user_login = sanitize_user(wp_unslash($_GET['user']));
+            $user_key = sanitize_user(wp_unslash($_GET['user_key']));
+            $subscriber = get_user_by('login', $user_login);
+            if (! $subscriber instanceof WP_User) {
                 die(esc_html($this->module->messages['nonce-failed']));
             }
+
+            $previous_user_id = get_current_user_id();
+            wp_set_current_user($subscriber->ID);
+            $can_view = current_user_can($this->getViewCapability());
+
+            if (! $can_view || ! $this->ics_token_is_valid($subscriber, $user_key)) {
+                wp_set_current_user($previous_user_id);
+                die(esc_html($this->module->messages['nonce-failed']));
+            }
+
+            // Leave the token user in place. The ICS query lists non-public
+            // statuses explicitly, so read_post is evaluated for this user.
+            // Unknown logins already died above, so the feed is never anonymous.
 
             // Set up the post data to be printed
             $post_query_args = [];
@@ -598,22 +823,8 @@ if (! class_exists('PP_Calendar')) {
                 )
             );
 
-            $vCalendar = new Sabre\VObject\Component\VCalendar(
-                [
-                    'PRODID' => '-//PublishPress//PublishPress ' . PUBLISHPRESS_VERSION . '//EN',
-                ]
-            );
-
-            $timezoneString = $this->dateUtil->getTimezoneString();
-
-            PP_Calendar_Utilities::generateVtimezone(
-                $vCalendar,
-                $timezoneString,
-                strtotime($this->start_date),
-                (int)(strtotime($this->start_date) + ($this->total_weeks * 7 * 24 * 60 * 60))
-            );
-
-            $timeZone = new DateTimeZone($timezoneString);
+            [$vCalendar, $timeZone] = $this->createCalendarExport(strtotime($this->start_date),
+                (int) (strtotime($this->start_date) + ($this->total_weeks * 7 * DAY_IN_SECONDS)));
 
             for ($current_week = 1; $current_week <= $this->total_weeks; $current_week++) {
                 // We need to set the object variable for our posts_where filter
@@ -621,54 +832,7 @@ if (! class_exists('PP_Calendar')) {
                 $week_posts = $this->get_calendar_posts_for_week($post_query_args, 'ics_subscription');
                 foreach ($week_posts as $date => $day_posts) {
                     foreach ($day_posts as $num => $post) {
-                        if (empty($post->post_date_gmt) || $post->post_date_gmt == '0000-00-00 00:00:00') {
-                            $calendar_date = get_gmt_from_date($post->post_date);
-                        } else {
-                            $calendar_date = $post->post_date_gmt;
-                        }
-
-                        $start_date = new DateTime($calendar_date);
-                        $start_date->setTimezone($timeZone);
-
-                        $end_date = new DateTime(date('Y-m-d H:i:s', strtotime($calendar_date) + (5 * 60))); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
-                        $end_date->setTimezone($timeZone);
-
-                        if (empty($post->post_modified_gmt) || $post->post_modified_gmt == '0000-00-00 00:00:00') {
-                            $calendar_modified_date = get_gmt_from_date($post->post_modified);
-                        } else {
-                            $calendar_modified_date = $post->post_modified_gmt;
-                        }
-
-                        $last_modified = new DateTime($calendar_modified_date);
-                        $last_modified->setTimezone($timeZone);
-
-                        // Remove the convert chars and wptexturize filters from the title
-                        remove_filter('the_title', 'convert_chars');
-                        remove_filter('the_title', 'wptexturize');
-
-                        // Description should include everything visible in the calendar popup
-                        $information_fields = $this->get_post_information_fields($post);
-                        $eventDescription = '';
-                        if (! empty($information_fields)) {
-                            foreach ($information_fields as $key => $values) {
-                                $eventDescription .= $values['label'] . ': ' . $values['value'] . "\n";
-                            }
-                            $eventDescription = rtrim($eventDescription);
-                        }
-
-                        $vCalendar->add(
-                            'VEVENT',
-                            [
-                                'UID' => $post->guid,
-                                'SUMMARY' => PP_Calendar_Utilities::do_ics_escaping(apply_filters('the_title', $post->post_title))
-                                    . ' - ' . $this->get_post_status_friendly_name(get_post_status($post->ID)),
-                                'DTSTART' => $start_date,
-                                'DTEND' => $end_date,
-                                'LAST-MODIFIED' => $last_modified,
-                                'URL' => get_post_permalink($post->ID),
-                                'DESCRIPTION' => $eventDescription,
-                            ]
-                        );
+                        $this->addPostToCalendarExport($vCalendar, $post, $timeZone);
                     }
                 }
             }
@@ -676,7 +840,7 @@ if (! class_exists('PP_Calendar')) {
             // Render the .ics template and set the content type
             header('Content-type: text/calendar; charset=utf-8');
             header('Content-Disposition: inline; filename=calendar.ics');
-            echo $vCalendar->serialize();
+            echo $vCalendar->serialize(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- The serializer escapes iCalendar data; HTML escaping would corrupt the feed.
 
             die();
             // phpcs:enable
@@ -700,15 +864,17 @@ if (! class_exists('PP_Calendar')) {
          *
          * @return array $filters updated filter
          */
-        public function update_user_filters($request_filter = [])
+        public function update_user_filters($request_filter = false, $persist = true)
         {
             global $pp_calendar_user_filters;
+            $explicitRequest = $request_filter !== false;
 
-            if (is_array($pp_calendar_user_filters)) {
+            if ($request_filter === false && is_array($pp_calendar_user_filters)) {
                 return $pp_calendar_user_filters;
             }
 
-            $user_filters = [
+            if ($request_filter === false) { $request_filter = $_GET; }
+        $user_filters = [
                 'weeks'         => '',
                 'start_date'    => '',
                 'me_mode'       => '',
@@ -718,9 +884,9 @@ if (! class_exists('PP_Calendar')) {
                 'revision_status' => '',
             ];
 
-            if (!empty($_POST['co_form_action']) && !empty($_POST['_nonce']) && $_POST['co_form_action'] == 'reset_filter' && wp_verify_nonce(sanitize_key($_POST['_nonce']), 'content_calendar_filter_rest_nonce')) {
+            if (!$explicitRequest && $persist && !empty($_POST['co_form_action']) && !empty($_POST['_nonce']) && $_POST['co_form_action'] == 'reset_filter' && wp_verify_nonce(sanitize_key($_POST['_nonce']), 'content_calendar_filter_rest_nonce')) {
                 $user_filters['weeks'] = self::DEFAULT_NUM_WEEKS;
-                $user_filters['start_date'] = date('Y-m-d', current_time('timestamp'));
+                $user_filters['start_date'] = gmdate('Y-m-d', current_time('timestamp'));
                 return $user_filters;
             }
 
@@ -809,7 +975,7 @@ if (! class_exists('PP_Calendar')) {
 
             // Fix start_date, if no specific date was set
             if (empty($user_filters['start_date'])) {
-                $user_filters['start_date'] = date('Y-m-d', current_time('timestamp'));
+                $user_filters['start_date'] = gmdate('Y-m-d', current_time('timestamp'));
             }
 
             // Set the start date as the beginning of the week, according to blog settings
@@ -821,9 +987,9 @@ if (! class_exists('PP_Calendar')) {
 
             $user_filters = apply_filters('pp_content_calendar_filter_values', $user_filters, $current_user_filters);
 
-            $this->update_user_meta($current_user->ID, self::USERMETA_KEY_PREFIX . 'filters', $user_filters);
+            if ($persist) { $this->update_user_meta($current_user->ID, self::USERMETA_KEY_PREFIX . 'filters', $user_filters); }
 
-            $pp_calendar_user_filters = $user_filters;
+            if ($persist) { $pp_calendar_user_filters = $user_filters; }
 
             return $user_filters;
         }
@@ -921,8 +1087,8 @@ if (! class_exists('PP_Calendar')) {
                 // make sure enabled filters are saved in organized order
                 $content_calendar_filters = array_intersect($content_calendar_filters_order, $content_calendar_filters);
     
-                $publishpress->update_module_option($this->module->name, 'content_calendar_filters', $content_calendar_filters);
-                $publishpress->update_module_option($this->module->name, 'content_calendar_custom_filters', $content_calendar_custom_filters);
+                $this->save_view_configuration('filters', $content_calendar_filters, $content_calendar_custom_filters);
+
                 if ($show_notice) {
                     // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                     echo pp_planner_admin_notice(esc_html__('Filter updated successfully.', 'publishpress'));
@@ -1087,24 +1253,34 @@ if (! class_exists('PP_Calendar')) {
             // user's standard
             $this->total_weeks = empty($this->user_filters['weeks']) ? self::DEFAULT_NUM_WEEKS : $this->user_filters['weeks'];
 
-            $this->start_date = empty($this->user_filters['start_date']) ? date('Y-m-d', current_time('timestamp')) :  $this->user_filters['start_date'];
+            $this->start_date = empty($this->user_filters['start_date']) ? gmdate('Y-m-d', current_time('timestamp')) :  $this->user_filters['start_date'];
 
             // Get the custom description for this page
             $description = '';
+            $ics_token = '';
+
+            if (current_user_can('manage_options') && get_option('pp_calendar_ics_token_migration_notice')) {
+                delete_option('pp_calendar_ics_token_migration_notice');
+            }
 
             // Should we display the subscribe button?
-            if ('on' == $this->module->options->ics_subscription && $this->module->options->ics_secret_key) {
+            if ('on' == $this->module->options->ics_subscription) {
+                $current_user = wp_get_current_user();
+                $ics_token = $this->get_or_create_ics_token($current_user);
+            }
+
+            if (! empty($ics_token)) {
                 // Prepare the download link
                 $args = [
                     'action' => 'pp_calendar_ics_subscription',
-                    'user' => wp_get_current_user()->user_login,
-                    'user_key' => md5(wp_get_current_user()->user_login . $this->module->options->ics_secret_key),
+                    'user' => $current_user->user_login,
+                    'user_key' => $ics_token,
                     '_wpnonce' => wp_create_nonce('publishpress_calendar_ics_sub'),
                 ];
 
-                // Prepare the subscribe link for the feed
+                // Prepare the subscribe link for the feed.
+                // Do not send post_status=unpublish. That value expands to every status.
                 unset($args['action']);
-                $args['post_status'] = 'unpublish';
                 $args['pp_action'] = 'pp_calendar_ics_feed';
                 $subscription_link = add_query_arg($args, site_url());
 
@@ -1123,18 +1299,22 @@ if (! class_exists('PP_Calendar')) {
             $publishpress->settings->print_default_header($publishpress->modules->calendar, $description); ?>
             <div class="wrap">
                 <?php
+                if (isset($_GET['message']) && 'ics-token-revoked' === sanitize_key(wp_unslash($_GET['message']))) {
+                    echo '<div class="notice notice-success is-dismissible"><p>' . esc_html($this->module->messages['ics-token-revoked']) . '</p></div>';
+                }
+
                 // Handle posts that have been trashed or untrashed
                 if (isset($_GET['trashed']) || isset($_GET['untrashed'])) {
                     echo '<div id="trashed-message" class="updated"><p>';
                     if (isset($_GET['trashed']) && (int)$_GET['trashed']) {
                         printf(
-                            _n(
+                            esc_html(_n(
                                 'Post moved to the trash.',
                                 '%d posts moved to the trash.',
                                 (int)$_GET['trashed'],
                                 'publishpress'
-                            ),
-                            number_format_i18n((int)$_GET['trashed'])
+                            )),
+                            esc_html(number_format_i18n((int)$_GET['trashed']))
                         );
                         $ids = isset($_GET['ids']) ? sanitize_text_field($_GET['ids']) : 0;
                         $pid = explode(',', $ids);
@@ -1154,13 +1334,13 @@ if (! class_exists('PP_Calendar')) {
 
                     if (isset($_GET['untrashed']) && (int)$_GET['untrashed']) {
                         printf(
-                            _n(
+                            esc_html(_n(
                                 'Post restored from the Trash.',
                                 '%d posts restored from the Trash.',
                                 (int)$_GET['untrashed'],
                                 'publishpress'
-                            ),
-                            number_format_i18n((int)$_GET['untrashed'])
+                            )),
+                            esc_html(number_format_i18n((int)$_GET['untrashed']))
                         );
                         unset($_GET['undeleted']);
                     }
@@ -1186,11 +1366,11 @@ if (! class_exists('PP_Calendar')) {
                                 <div class="sk-cube sk-cube9"></div>
                             </div>
                             <div><?php
-                                echo __('Initializing the calendar. Please wait...', 'publishpress'); ?></div>
+                                echo esc_html__('Initializing the calendar. Please wait...', 'publishpress'); ?></div>
                         </div>
                         <div class="publishpress-calendar-loader-delayed-tip">
                             <?php
-                            echo __(
+                            echo esc_html__(
                                 'It seems like it is taking too long. Please, try reloading the page again and check the browser console looking for errors.',
                                 'publishpress'
                             ); ?>
@@ -1347,14 +1527,28 @@ if (! class_exists('PP_Calendar')) {
                 'tag' => null,
                 'author' => null,
                 'post_type' => $supported_post_types,
-                'posts_per_page' => -1,
+                'posts_per_page' => -1, // phpcs:ignore WordPressVIPMinimum.Performance.NoPaging.posts_per_page_posts_per_page -- The calendar needs every post within the requested date range; pagination would omit scheduled content.
                 'order' => 'ASC',
             ];
 
             $args = array_merge($defaults, $args);
 
-            // Unpublished as a status is just an array of everything but 'publish'
-            if ($args['post_status'] == 'unpublish' || $context == 'ics_subscription') {
+            // ICS requests an explicit status list, which bypasses core readable
+            // checks. Ask for non-public statuses only when a token user exists,
+            // then drop rows that user cannot read. Unknown logins stay on publish.
+            // Do not use suppress_filters here; it also skips the week-range clause.
+            if ('ics_subscription' === $context) {
+                if (get_current_user_id()) {
+                    $ics_statuses = wp_list_pluck($this->get_post_statuses(), 'slug');
+                    $ics_statuses[] = 'future';
+                    $ics_statuses[] = 'private';
+                    $ics_statuses[] = 'publish';
+                    $args['post_status'] = array_values(array_unique($ics_statuses));
+                } else {
+                    $args['post_status'] = 'publish';
+                }
+            } elseif ($args['post_status'] == 'unpublish') {
+                // Unpublished as a status is just an array of everything but 'publish'.
                 $args['post_status'] = '';
                 $post_statuses = $this->get_post_statuses();
                 foreach ($post_statuses as $post_status) {
@@ -1365,12 +1559,9 @@ if (! class_exists('PP_Calendar')) {
                 if (apply_filters('pp_show_scheduled_as_unpublished', true)) {
                     $args['post_status'] .= ', future';
                 }
-                if ($context == 'ics_subscription') {
-                    $args['post_status'] .= ', publish';
-                }
 
                 if (isset($this->module->options->ics_subscription_public_visibility) && 'on' === $this->module->options->ics_subscription_public_visibility) {
-                    $args['suppress_filters'] = true;
+                    $args['suppress_filters'] = true; // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.SuppressFilters_suppress_filters -- Dashboard unpublished queries keep the existing filter opt-out. ICS feeds do not.
                 }
             }
             // The WP functions for printing the category and author assign a value of 0 to the default
@@ -1397,6 +1588,11 @@ if (! class_exists('PP_Calendar')) {
             // Filter for an end user to implement any of their own query args
             $args = apply_filters('pp_calendar_posts_query_args', $args, $context, $this->filters, $this->user_filters);
 
+            // suppress_filters skips posts_where_week_range. It is not a visibility control.
+            if ('ics_subscription' === $context) {
+                unset($args['suppress_filters']);
+            }
+
             add_filter('posts_where', [$this, 'posts_where_week_range']);
             $post_results = new WP_Query($args);
             remove_filter('posts_where', [$this, 'posts_where_week_range']);
@@ -1405,8 +1601,52 @@ if (! class_exists('PP_Calendar')) {
             while ($post_results->have_posts()) {
                 $post_results->the_post();
                 global $post;
-                $key_date = date('Y-m-d', strtotime($post->post_date));
+                $key_date = gmdate('Y-m-d', strtotime($post->post_date));
                 $posts[$key_date][] = $post;
+            }
+
+            if ('ics_subscription' === $context) {
+                $posts = $this->filter_ics_subscription_posts($posts);
+            }
+
+            return $posts;
+        }
+
+        /**
+         * Remove ICS rows the token user cannot read.
+         *
+         * Published posts stay for every caller. Draft, pending, future, private,
+         * and custom statuses stay only when the resolved user passes read_post.
+         * No resolved user means those rows are omitted without a capability check,
+         * so user 0 does not also drop public posts.
+         *
+         * @param array $posts Posts grouped by Y-m-d.
+         *
+         * @return array
+         */
+        private function filter_ics_subscription_posts($posts)
+        {
+            $check_read_post = get_current_user_id() > 0;
+
+            foreach ($posts as $date => $day_posts) {
+                $visible_posts = [];
+
+                foreach ($day_posts as $calendar_post) {
+                    if (! isset($calendar_post->post_status)) {
+                        continue;
+                    }
+
+                    if ('publish' === $calendar_post->post_status) {
+                        $visible_posts[] = $calendar_post;
+                        continue;
+                    }
+
+                    if ($check_read_post && current_user_can('read_post', $calendar_post->ID)) {
+                        $visible_posts[] = $calendar_post;
+                    }
+                }
+
+                $posts[$date] = $visible_posts;
             }
 
             return $posts;
@@ -1426,7 +1666,7 @@ if (! class_exists('PP_Calendar')) {
             $beginning_date = PP_Calendar_Utilities::get_beginning_of_week($this->start_date, 'Y-m-d', $this->current_week);
             $ending_date = PP_Calendar_Utilities::get_ending_of_week($this->start_date, 'Y-m-d', $this->current_week);
             // Adjust the ending date to account for the entire day of the last day of the week
-            $ending_date = date('Y-m-d', strtotime('+1 day', strtotime($ending_date)));
+            $ending_date = gmdate('Y-m-d', strtotime('+1 day', strtotime($ending_date)));
             $where = $where . $wpdb->prepare(
                     " AND ($wpdb->posts.post_date >= %s AND $wpdb->posts.post_date < %s)",
                     $beginning_date,
@@ -1450,14 +1690,14 @@ if (! class_exists('PP_Calendar')) {
          *
          * @since 0.7
          */
-        public function settings_validate($new_options)
+        public function settings_validate($new_options, $show_notices = true)
         {
             $options = (array)$this->module->options;
 
             if (isset($new_options['post_types'])) {
                 // Set post as default
                 $empty = true;
-                foreach ($options['post_types'] as $value) {
+                foreach ($new_options['post_types'] as $value) {
                     if ('on' === $value) {
                         $empty = false;
                         break;
@@ -1469,7 +1709,7 @@ if (! class_exists('PP_Calendar')) {
                     $options['post_types'] = ['post' => 'on'];
 
                     // Add flag to display a warning to the user
-                    set_transient(static::TRANSIENT_SHOW_ONE_POST_TYPE_WARNING, 1, 300);
+                    if ($show_notices) { set_transient(static::TRANSIENT_SHOW_ONE_POST_TYPE_WARNING, 1, 300); }
                 } else {
                     $options['post_types'] = $this->clean_post_type_options(
                         $new_options['post_types'],
@@ -1481,7 +1721,7 @@ if (! class_exists('PP_Calendar')) {
                 $options['post_types'] = ['post' => 'on'];
 
                 // Add flag to display a warning to the user
-                set_transient(static::TRANSIENT_SHOW_ONE_POST_TYPE_WARNING, 1, 300);
+                if ($show_notices) { set_transient(static::TRANSIENT_SHOW_ONE_POST_TYPE_WARNING, 1, 300); }
             }
 
             if ('on' != $new_options['ics_subscription']) {
@@ -1598,11 +1838,15 @@ if (! class_exists('PP_Calendar')) {
 
         public function fetchCalendarDataJson()
         {
-            if (! wp_verify_nonce(sanitize_text_field($_GET['nonce']), 'publishpress-calendar-get-data')) {
+            if (!isset($_GET['nonce']) || ! wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['nonce'])), 'publishpress-calendar-get-data')) {
                 wp_send_json([], 403);
             }
 
-            $beginningDate = PP_Calendar_Utilities::get_beginning_of_week(sanitize_text_field($_GET['start_date']));
+            if (!isset($_GET['start_date'], $_GET['number_of_weeks'])) {
+                wp_send_json([], 400);
+            }
+
+            $beginningDate = PP_Calendar_Utilities::get_beginning_of_week(sanitize_text_field(wp_unslash($_GET['start_date'])));
             $endingDate = PP_Calendar_Utilities::get_ending_of_week($beginningDate, 'Y-m-d', (int)$_GET['number_of_weeks']);
 
             //get and update filters
@@ -1672,11 +1916,11 @@ if (! class_exists('PP_Calendar')) {
 
         public function getPostData()
         {
-            if (! wp_verify_nonce(sanitize_text_field($_GET['nonce']), 'publishpress-calendar-get-data')) {
+            if (!isset($_GET['nonce']) || ! wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['nonce'])), 'publishpress-calendar-get-data')) {
                 wp_send_json([], 403);
             }
 
-            $id = (int)$_GET['id'];
+            $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
             if (empty($id)) {
                 wp_send_json(null, 404);
@@ -1706,7 +1950,7 @@ if (! class_exists('PP_Calendar')) {
         {
             global $publishpress;
 
-            if (! wp_verify_nonce(sanitize_text_field($_GET['nonce']), 'publishpress-calendar-get-data')) {
+            if (!isset($_GET['nonce']) || ! wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['nonce'])), 'publishpress-calendar-get-data')) {
                 wp_send_json([], 403);
             }
 
@@ -1763,7 +2007,7 @@ if (! class_exists('PP_Calendar')) {
                     }
                     break;
                 case 'start_date':
-                    return date('Y-m-d', strtotime($dirty_value));
+                    return gmdate('Y-m-d', strtotime($dirty_value));
                     break;
                 case 'cat':
                 case 'tag':
@@ -1816,18 +2060,26 @@ if (! class_exists('PP_Calendar')) {
 
         /**
          * @param array $postAuthorIds
+         * @param string $postType
          *
          * @return  array
          *
          * @throws  Exception
          */
-        public static function validateAuthorForPost($postAuthorIds = [])
+        public static function validateAuthorForPost($postAuthorIds = [], $postType = 'post')
         {
             if (empty($postAuthorIds)) {
                 return null;
             }
 
+            $postTypeObject = get_post_type_object($postType);
+            $editOthersPosts = (is_object($postTypeObject) && isset($postTypeObject->cap->edit_others_posts))
+                ? $postTypeObject->cap->edit_others_posts
+                : 'edit_others_posts';
+            $currentUserId = (int) get_current_user_id();
+
             foreach ($postAuthorIds as $authorId) {
+                $authorId = (int) $authorId;
                 $user = get_user_by('id', $authorId);
 
                 $isValid = is_object($user) && ! is_wp_error($user) && $user->has_cap('edit_posts');
@@ -1836,6 +2088,15 @@ if (! class_exists('PP_Calendar')) {
                     throw new Exception(
                         esc_html__(
                             "The selected user doesn't have enough permissions to be set as the post author.",
+                            'publishpress'
+                        )
+                    );
+                }
+
+                if ($authorId !== $currentUserId && ! current_user_can($editOthersPosts)) {
+                    throw new Exception(
+                        esc_html__(
+                            'You do not have permission to set another user as the post author.',
                             'publishpress'
                         )
                     );

@@ -9,13 +9,14 @@ jobs: 10
 extensions:
   - php
 exclude:
-  - vendor
-  - lib/vendor
+  - .ddev
+  - .github
+  - .web
   - .wordpress-org
+  - dev-workspace-cache
   - dist
   - languages
-  - .github
+  - lib/vendor
   - tests
-  - .web
-  - .ddev
+  - vendor
 warning: false

@@ -108,6 +108,11 @@ class Base
      * @param int $id
      * @param WP_Post $workflow
      */
+    public function getConfigurationDefinition(): array
+    {
+        return ['name' => $this->name, 'label' => $this->label, 'prefix' => $this->attr_prefix, 'option_name' => $this->option_name ?? null, 'filters' => $this instanceof \PublishPress\Notifications\Workflow\Step\Event\Base ? $this->get_filters() : []];
+    }
+
     public function save_metabox_data($id, $workflow)
     {
         return;

@@ -1,5 +1,5 @@
 <?php
-$plugin_name_markup = "<strong>{$context['plugin_name']}</strong>";
+$plugin_name_markup = '<strong>' . esc_html($context['plugin_name']) . '</strong>';
 $rating_stars_markup = "
         <span class=\"dashicons dashicons-star-filled\"></span>
         <span class=\"dashicons dashicons-star-filled\"></span>
@@ -12,7 +12,7 @@ $rating_stars_markup = "
     <div class="pp-rating">
         <a href="//wordpress.org/support/plugin/<?php echo esc_attr($context['plugin_slug']); ?>/reviews/#new-post"
            target="_blank"
-           rel="noopener noreferrer"><?php echo sprintf($context['rating_message'], $plugin_name_markup, $rating_stars_markup); ?></a>
+           rel="noopener noreferrer"><?php echo wp_kses_post(sprintf($context['rating_message'], $plugin_name_markup, $rating_stars_markup)); ?></a>
     </div>
     <hr>
     <nav>
