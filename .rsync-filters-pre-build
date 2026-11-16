@@ -66,4 +66,5 @@
 - .agents
 - .aws
 - .codex
-- /tools/deepmerge
+- /tools
+- .phpcs-plugin-review.xml
