@@ -993,7 +993,7 @@ class Shortcodes
     private function get_editorial_meta_prefix()
     {
         if (class_exists('PP_Editorial_Metadata')) {
-            return PP_Editorial_Metadata::metadata_postmeta_key;
+            return \PP_Editorial_Metadata::metadata_postmeta_key;
         }
 
         return '_pp_editorial_meta';
