@@ -2,6 +2,7 @@
 title: "PublishPress Planner Can Sometimes Change Publishing Dates"
 order: 2
 doc_category: publishpress
+section: Troubleshooting Planner
 ---
 
 # PublishPress Planner Can Sometimes Change Publishing Dates

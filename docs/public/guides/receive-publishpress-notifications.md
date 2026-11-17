@@ -2,6 +2,7 @@
 title: "Get Planner Notifications by Email or Slack"
 order: 22
 doc_category: publishpress
+section: Notifications
 ---
 
 # Get Planner Notifications by Email or Slack

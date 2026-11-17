@@ -2,6 +2,7 @@
 title: "The Planner Notification Options"
 order: 38
 doc_category: publishpress
+section: Notifications
 ---
 
 # The Planner Notification Options

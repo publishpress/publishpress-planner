@@ -2,6 +2,7 @@
 title: "Shortcodes Aren’t Working in Planner Emails"
 order: 24
 doc_category: publishpress
+section: Troubleshooting Planner
 ---
 
 # Shortcodes Aren’t Working in Planner Emails

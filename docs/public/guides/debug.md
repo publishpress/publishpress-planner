@@ -2,6 +2,7 @@
 title: "How to Use the Debug Feature in PublishPress Planner"
 order: 8
 doc_category: publishpress
+section: Troubleshooting Planner
 ---
 
 # How to Use the Debug Feature in PublishPress Planner

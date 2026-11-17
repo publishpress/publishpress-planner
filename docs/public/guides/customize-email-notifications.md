@@ -2,6 +2,7 @@
 title: "Customize Content in Planner Notifications"
 order: 7
 doc_category: publishpress
+section: Notifications
 ---
 
 # Customize Content in Planner Notifications

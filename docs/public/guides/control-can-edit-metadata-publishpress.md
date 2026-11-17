@@ -2,6 +2,7 @@
 title: "Who Can Edit Fields in PublishPress Planner"
 order: 5
 doc_category: publishpress
+section: Legacy Features
 ---
 
 # Who Can Edit Fields in PublishPress Planner
