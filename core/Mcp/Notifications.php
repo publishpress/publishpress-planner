@@ -55,7 +55,7 @@ class Notifications
             __('Update post notification followers', 'publishpress'),
             __('Patch native user, role, group or email follower lists using expected_hash. Omitted follower selections remain unchanged. Every ID/role is validated before native taxonomy relationship writes. Requires edit_post_subscriptions and object edit/read access. dry_run previews without writing.', 'publishpress'),
             Registry::object(['post_id' => Registry::id(), 'users' => Registry::listOf(Registry::id()),
-                'roles' => Registry::listOf(['type' => 'string', 'enum' => array_keys(wp_roles()->roles)]),
+                'roles' => Registry::listOf(['type' => 'string', 'minLength' => 1, 'maxLength' => 100]),
                 'groups' => Registry::listOf(Registry::id()), 'emails' => Registry::listOf(['type' => 'string', 'format' => 'email']),
                 'expected_hash' => Registry::revision(), 'dry_run' => ['type' => 'boolean']], ['post_id', 'expected_hash']),
             [self::class, 'updateFollowers'],
@@ -263,6 +263,11 @@ class Notifications
         }
         if (!array_intersect(['users', 'roles', 'groups', 'emails'], array_keys($input))) {
             return Registry::error();
+        }
+        foreach ($input['roles'] ?? [] as $role) {
+            if (!get_role($role)) {
+                return Registry::error();
+            }
         }
         foreach ($input['users'] ?? [] as $id) {
             if (!get_userdata($id) || !is_user_member_of_blog($id)) {
