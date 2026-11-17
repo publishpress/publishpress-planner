@@ -2,6 +2,7 @@
 title: "Custom Fields in the Content Calendar Popup"
 order: 6
 doc_category: publishpress
+section: Advanced
 ---
 
 # Custom Fields in the Content Calendar Popup

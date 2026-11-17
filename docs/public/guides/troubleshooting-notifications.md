@@ -2,6 +2,7 @@
 title: "Troubleshooting Email Notifications in PublishPress Planner"
 order: 36
 doc_category: publishpress
+section: Troubleshooting Planner
 ---
 
 # Troubleshooting Email Notifications in PublishPress Planner

@@ -2,6 +2,7 @@
 title: "Hooks and Filters for the Content Calendar"
 order: 17
 doc_category: publishpress
+section: Advanced
 ---
 
 # Hooks and Filters for the Content Calendar

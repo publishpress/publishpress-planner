@@ -2,6 +2,7 @@
 title: "Hooks and Filters for Editorial Comments"
 order: 18
 doc_category: publishpress
+section: Legacy Features
 ---
 
 # Hooks and Filters for Editorial Comments

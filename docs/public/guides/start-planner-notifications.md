@@ -2,6 +2,7 @@
 title: "Getting Started with Planner Notifications"
 order: 30
 doc_category: publishpress
+section: Notifications
 ---
 
 # Getting Started with Planner Notifications

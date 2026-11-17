@@ -2,6 +2,7 @@
 title: "The Planner Notifications Log"
 order: 35
 doc_category: publishpress
+section: Notifications
 ---
 
 # The Planner Notifications Log

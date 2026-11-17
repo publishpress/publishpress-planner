@@ -2,6 +2,7 @@
 title: "Slow Notification Screens in PublishPress Planner"
 order: 28
 doc_category: publishpress
+section: Troubleshooting Planner
 ---
 
 # Slow Notification Screens in PublishPress Planner

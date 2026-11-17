@@ -2,6 +2,7 @@
 title: "How Users Can Control Their Own Slack Notifications (Pro)"
 order: 39
 doc_category: publishpress
+section: Slack Notifications
 ---
 
 # How Users Can Control Their Own Slack Notifications (Pro)

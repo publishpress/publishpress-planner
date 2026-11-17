@@ -2,6 +2,7 @@
 title: "How to Configure Notifications for Slack (Pro)"
 order: 26
 doc_category: publishpress
+section: Slack Notifications
 ---
 
 # How to Configure Notifications for Slack (Pro)

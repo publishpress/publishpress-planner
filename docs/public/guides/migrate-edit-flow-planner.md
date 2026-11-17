@@ -2,6 +2,7 @@
 title: "How to Migrate Edit Flow to PublishPress Planner"
 order: 20
 doc_category: publishpress
+section: Migrate to Planner
 ---
 
 # How to Migrate Edit Flow to PublishPress Planner

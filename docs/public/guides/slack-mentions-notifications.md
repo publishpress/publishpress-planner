@@ -2,6 +2,7 @@
 title: "How to Use Slack Mentions in Notifications (Pro)"
 order: 25
 doc_category: publishpress
+section: Slack Notifications
 ---
 
 # How to Use Slack Mentions in Notifications (Pro)

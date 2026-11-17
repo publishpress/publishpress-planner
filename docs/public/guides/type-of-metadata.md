@@ -2,6 +2,7 @@
 title: "Types of Editorial Fields in PublishPress Planner"
 order: 37
 doc_category: publishpress
+section: Legacy Features
 ---
 
 # Types of Editorial Fields in PublishPress Planner

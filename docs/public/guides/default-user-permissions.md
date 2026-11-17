@@ -2,6 +2,7 @@
 title: "User Permissions in PublishPress Planner"
 order: 9
 doc_category: publishpress
+section: Advanced
 ---
 
 # User Permissions in PublishPress Planner

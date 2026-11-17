@@ -2,6 +2,7 @@
 title: "The Editorial Fields Screen"
 order: 34
 doc_category: publishpress
+section: Legacy Features
 ---
 
 # The Editorial Fields Screen

@@ -2,6 +2,7 @@
 title: "How to Use Reminder Notifications (Pro)"
 order: 23
 doc_category: publishpress
+section: Notifications
 ---
 
 # How to Use Reminder Notifications (Pro)

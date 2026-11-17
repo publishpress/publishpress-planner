@@ -2,6 +2,7 @@
 title: "Notify Me: Add Yourself to Notifications"
 order: 16
 doc_category: publishpress
+section: Notifications
 ---
 
 # Notify Me: Add Yourself to Notifications

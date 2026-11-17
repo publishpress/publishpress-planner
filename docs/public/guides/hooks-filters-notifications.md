@@ -2,6 +2,7 @@
 title: "Hooks and Filters for Notifications"
 order: 19
 doc_category: publishpress
+section: Advanced
 ---
 
 # Hooks and Filters for Notifications

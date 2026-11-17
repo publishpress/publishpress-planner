@@ -2,6 +2,7 @@
 title: "Getting Started with Editorial Comments"
 order: 29
 doc_category: publishpress
+section: Legacy Features
 ---
 
 # Getting Started with Editorial Comments

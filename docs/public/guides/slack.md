@@ -2,6 +2,7 @@
 title: "Getting Started With Slack Notifications (Pro)"
 order: 27
 doc_category: publishpress
+section: Slack Notifications
 ---
 
 # Getting Started With Slack Notifications (Pro)

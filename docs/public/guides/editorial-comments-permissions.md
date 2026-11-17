@@ -2,6 +2,7 @@
 title: "Editorial Comments Permissions"
 order: 10
 doc_category: publishpress
+section: Editorial Comments
 ---
 
 # Editorial Comments Permissions
