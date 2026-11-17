@@ -2,6 +2,7 @@
 title: "Filters in Content Overview"
 order: 13
 doc_category: publishpress
+section: Content Overview
 ---
 
 # Filters in Content Overview

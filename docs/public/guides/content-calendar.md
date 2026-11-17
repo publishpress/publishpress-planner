@@ -2,6 +2,7 @@
 title: "The Content Calendar Screen"
 order: 4
 doc_category: publishpress
+section: Content Calendar
 ---
 
 # The Content Calendar Screen

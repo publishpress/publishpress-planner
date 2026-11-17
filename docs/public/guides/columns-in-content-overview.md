@@ -2,6 +2,7 @@
 title: "Columns in Content Overview"
 order: 3
 doc_category: publishpress
+section: Content Overview
 ---
 
 # Columns in Content Overview

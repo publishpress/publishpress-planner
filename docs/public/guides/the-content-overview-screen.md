@@ -2,6 +2,7 @@
 title: "The Content Overview Screen"
 order: 33
 doc_category: publishpress
+section: Content Overview
 ---
 
 # The Content Overview Screen

@@ -2,6 +2,7 @@
 title: "Feature Overview (Pro Version)"
 order: 12
 doc_category: publishpress
+section: Getting Started
 ---
 
 # Feature Overview (Pro Version)

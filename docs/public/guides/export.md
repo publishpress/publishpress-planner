@@ -2,6 +2,7 @@
 title: "Exporting the Content Calendar to iCal and Google Calendar"
 order: 11
 doc_category: publishpress
+section: Content Calendar
 ---
 
 # Exporting the Content Calendar to iCal and Google Calendar
