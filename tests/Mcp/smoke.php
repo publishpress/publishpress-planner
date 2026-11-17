@@ -2,6 +2,12 @@
 
 /** Run only on an isolated planner_mcp_* database with WordPress and released Adapter installed. */
 
+// Set PUBLISHPRESS_MCP_EARLY_REGISTRY=1 to exercise the same workflows with early registration.
+if (getenv('PUBLISHPRESS_MCP_EARLY_REGISTRY') === '1') {
+    $GLOBALS['wp_filter']['init'][0][] = ['function' => static function () {
+        wp_get_abilities();
+    }, 'accepted_args' => 0];
+}
 require $argv[1];
 if (strpos(DB_NAME, 'planner_mcp_') !== 0) {
     throw new RuntimeException('Isolated Planner database required.');
@@ -79,6 +85,23 @@ check($fixturePost['id'] > 0, 'No content ID');
 $followers = success(callPlanner('get-post-followers', ['post_id' => $fixturePost['id']]), 'Followers');
 $followers = success(callPlanner('update-post-followers', ['post_id' => $fixturePost['id'], 'users' => [1], 'expected_hash' => $followers['expected_hash']]), 'Follower save');
 check(in_array(1, $followers['users'], true), 'Native user follower did not round trip');
+$lateRole = 'mcp_late_follower_fixture';
+add_role($lateRole, 'Late follower role', ['read' => true]);
+try {
+    $roleInput = ['post_id' => $fixturePost['id'], 'roles' => [$lateRole], 'expected_hash' => $followers['expected_hash']];
+    success(callPlanner('update-post-followers', $roleInput + ['dry_run' => true]), 'Preview late follower role');
+    check(callPlanner('get-post-followers', ['post_id' => $fixturePost['id']])['expected_hash'] === $followers['expected_hash'], 'Role preview changed followers');
+    $savedRole = success(callPlanner('update-post-followers', $roleInput), 'Save late follower role');
+    check(in_array($lateRole, $savedRole['roles'], true), 'Late role did not survive native follower read-back');
+    check(is_wp_error(callPlanner('update-post-followers', ['post_id' => $fixturePost['id'], 'roles' => ['not-a-native-role'],
+        'users' => [], 'expected_hash' => $savedRole['expected_hash']])), 'Unknown mixed follower patch accepted');
+    check(callPlanner('get-post-followers', ['post_id' => $fixturePost['id']])['expected_hash'] === $savedRole['expected_hash'], 'Invalid role patch changed followers');
+} finally {
+    $freshRole = success(callPlanner('get-post-followers', ['post_id' => $fixturePost['id']]), 'Restore follower role scope');
+    success(callPlanner('update-post-followers', ['post_id' => $fixturePost['id'], 'roles' => [],
+        'expected_hash' => $freshRole['expected_hash']]), 'Clear synthetic follower role');
+    remove_role($lateRole);
+}
 foreach (['calendar', 'content_board', 'content_overview'] as $view) {
     $kinds = $view === 'calendar' ? ['filters'] : ['columns', 'filters'];
     foreach ($kinds as $kind) {
