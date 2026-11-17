@@ -2,6 +2,7 @@
 title: "First Steps with Tag Groups Pro"
 order: 15
 doc_category: publishpress
+section: Getting Started
 ---
 
 # First Steps with Tag Groups Pro

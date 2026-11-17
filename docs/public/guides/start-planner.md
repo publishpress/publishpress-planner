@@ -2,6 +2,7 @@
 title: "Getting Started with PublishPress Planner"
 order: 31
 doc_category: publishpress
+section: Getting Started
 ---
 
 # Getting Started with PublishPress Planner

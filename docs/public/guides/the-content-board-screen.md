@@ -2,6 +2,7 @@
 title: "The Content Board Screen"
 order: 32
 doc_category: publishpress
+section: Content Board
 ---
 
 # The Content Board Screen

@@ -2,6 +2,7 @@
 title: "Card Data in Content Board"
 order: 1
 doc_category: publishpress
+section: Content Board
 ---
 
 # Card Data in Content Board

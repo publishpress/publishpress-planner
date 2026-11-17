@@ -2,6 +2,7 @@
 title: "Filters in Content Board"
 order: 14
 doc_category: publishpress
+section: Content Board
 ---
 
 # Filters in Content Board

@@ -2,6 +2,7 @@
 title: "Differences Between PublishPress Planner Free and Pro"
 order: 21
 doc_category: publishpress
+section: Getting Started
 ---
 
 # Differences Between PublishPress Planner Free and Pro
