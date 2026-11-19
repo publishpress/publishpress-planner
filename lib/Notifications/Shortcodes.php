@@ -1018,8 +1018,8 @@ class Shortcodes
     /**
      * meta:<key> is printed only when the key is allowlisted.
      *
-     * Editorial metadata keys are allowed. Every other protected key is refused.
-     * Other keys come from the Notifications setting or publishpress_notif_shortcode_meta_keys.
+     * Editorial metadata keys are allowed. Every other key must be named in the
+     * Notifications setting or publishpress_notif_shortcode_meta_keys.
      *
      * @param string  $meta_key
      * @param WP_Post $post
@@ -1036,10 +1036,6 @@ class Shortcodes
 
         if ($this->is_editorial_meta_key($meta_key)) {
             return true;
-        }
-
-        if (is_protected_meta($meta_key, 'post')) {
-            return false;
         }
 
         $allowed_keys = apply_filters(
@@ -1070,7 +1066,7 @@ class Shortcodes
     }
 
     /**
-     * Keep exact key names. Drop blanks, wildcards, and protected keys.
+     * Keep exact key names. Drop blanks and wildcards.
      *
      * @param mixed $raw
      *
@@ -1098,10 +1094,6 @@ class Shortcodes
             }
 
             if (!preg_match('/^[A-Za-z0-9_-]+$/', $key)) {
-                continue;
-            }
-
-            if (function_exists('is_protected_meta') && is_protected_meta($key, 'post')) {
                 continue;
             }
 

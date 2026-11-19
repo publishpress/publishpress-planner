@@ -2,7 +2,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 [4.9.1] - Unreleased
 
-- Added: Notification settings can allow extra post meta keys in the `[psppno_post meta:key]` shortcode. A key that starts with an underscore stays blocked.
+- Added: Notification settings can allow extra post meta keys in the `[psppno_post meta:key]` shortcode, including a key such as `_yoast_wpseo_title`. A key that is not listed stays blank.
 - Fixed: The `[psppno_post meta:key]` shortcode no longer stops when it reads Planner editorial metadata. #2158
 - Fixed: Follower roles are checked against the live role registry. #2157
 

@@ -1961,7 +1961,7 @@ if (! class_exists('PP_Notifications')) {
                 <div style="margin-top: 5px;">
                     <p><?php
                         esc_html_e(
-                            'Enter exact meta keys, separated by commas or line breaks. Use a key in [psppno_post meta:key]. Planner editorial metadata is already allowed. A key that starts with an underscore is not saved.',
+                            'Enter exact meta keys, separated by commas or line breaks. Use a key in [psppno_post meta:key]. Planner editorial metadata is already allowed. A key that is not in this list stays blank.',
                             'publishpress'
                         ); ?></p>
                 </div>
