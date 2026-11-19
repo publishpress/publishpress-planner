@@ -1,5 +1,11 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[4.9.1] - Unreleased
+
+- Added: Notification settings can allow extra post meta keys in the `[psppno_post meta:key]` shortcode. A key that starts with an underscore stays blocked.
+- Fixed: The `[psppno_post meta:key]` shortcode no longer stops when it reads Planner editorial metadata. #2158
+- Fixed: Follower roles are checked against the live role registry. #2157
+
 [4.9.0] - 13 Nov, 2026
 
 - Added: Private MCP actions for Planner content, editorial collaboration, notifications, view configuration and native maintenance, with capability checks and validated previews.
