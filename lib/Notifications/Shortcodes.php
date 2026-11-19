@@ -1019,7 +1019,7 @@ class Shortcodes
      * meta:<key> is printed only when the key is allowlisted.
      *
      * Editorial metadata keys are allowed. Every other protected key is refused.
-     * Other keys are allowed only through publishpress_notif_shortcode_meta_keys.
+     * Other keys come from the Notifications setting or publishpress_notif_shortcode_meta_keys.
      *
      * @param string  $meta_key
      * @param WP_Post $post
@@ -1042,12 +1042,72 @@ class Shortcodes
             return false;
         }
 
-        $allowed_keys = apply_filters('publishpress_notif_shortcode_meta_keys', [], $post);
+        $allowed_keys = apply_filters(
+            'publishpress_notif_shortcode_meta_keys',
+            $this->configured_shortcode_meta_keys(),
+            $post
+        );
 
         if (!is_array($allowed_keys)) {
             return false;
         }
 
         return in_array($meta_key, $allowed_keys, true);
+    }
+
+    /**
+     * Keys saved on the Notifications settings screen.
+     *
+     * @return string[]
+     */
+    private function configured_shortcode_meta_keys()
+    {
+        if (!class_exists('PP_Notifications')) {
+            return [];
+        }
+
+        return self::sanitize_shortcode_meta_keys(\PP_Notifications::getOption('shortcode_meta_keys'));
+    }
+
+    /**
+     * Keep exact key names. Drop blanks, wildcards, and protected keys.
+     *
+     * @param mixed $raw
+     *
+     * @return string[]
+     */
+    public static function sanitize_shortcode_meta_keys($raw)
+    {
+        if (is_array($raw)) {
+            $parts = $raw;
+        } else {
+            $parts = preg_split('/[,\r\n]+/', (string) $raw, -1, PREG_SPLIT_NO_EMPTY);
+        }
+
+        if (!is_array($parts)) {
+            return [];
+        }
+
+        $keys = [];
+
+        foreach ($parts as $part) {
+            $key = trim((string) $part);
+
+            if ('' === $key || false !== strpos($key, '*')) {
+                continue;
+            }
+
+            if (!preg_match('/^[A-Za-z0-9_-]+$/', $key)) {
+                continue;
+            }
+
+            if (function_exists('is_protected_meta') && is_protected_meta($key, 'post')) {
+                continue;
+            }
+
+            $keys[] = $key;
+        }
+
+        return array_values(array_unique($keys));
     }
 }

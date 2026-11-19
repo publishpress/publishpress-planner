@@ -87,6 +87,7 @@ if (! class_exists('PP_Notifications')) {
                     'notify_author_by_default' => '1',
                     'notify_current_user_by_default' => '1',
                     'blacklisted_taxonomies' => '',
+                    'shortcode_meta_keys' => '',
                 ],
                 'configure_page_cb' => 'print_configure_view',
                 'post_type_support' => 'pp_notification',
@@ -1803,6 +1804,14 @@ if (! class_exists('PP_Notifications')) {
                 $this->module->options_group_name,
                 $this->module->options_group_name . '_general'
             );
+
+            add_settings_field(
+                'shortcode_meta_keys',
+                __('Allowed post meta keys for the meta shortcode:', 'publishpress'),
+                [$this, 'settings_shortcode_meta_keys_option'],
+                $this->module->options_group_name,
+                $this->module->options_group_name . '_general'
+            );
         }
 
         /**
@@ -1928,6 +1937,39 @@ if (! class_exists('PP_Notifications')) {
         }
 
         /**
+         * Exact meta keys the [psppno_post meta:key] shortcode may print.
+         */
+        public function settings_shortcode_meta_keys_option()
+        {
+            $shortcode_meta_keys = isset($this->module->options->shortcode_meta_keys)
+                ? $this->module->options->shortcode_meta_keys
+                : '';
+
+            if (is_array($shortcode_meta_keys)) {
+                $shortcode_meta_keys = implode(', ', $shortcode_meta_keys);
+            }
+            ?>
+            <div style="max-width: 400px;">
+                <textarea
+                        id="<?php echo esc_attr($this->module->slug); ?>_shortcode_meta_keys"
+                        name="<?php echo esc_attr($this->module->options_group_name); ?>[shortcode_meta_keys]"
+                        rows="4"
+                        style="width: 100%;"
+                        placeholder="<?php echo esc_attr('ppma_authors_name'); ?>"
+                ><?php echo esc_textarea($shortcode_meta_keys); ?></textarea>
+
+                <div style="margin-top: 5px;">
+                    <p><?php
+                        esc_html_e(
+                            'Enter exact meta keys, separated by commas or line breaks. Use a key in [psppno_post meta:key]. Planner editorial metadata is already allowed. A key that starts with an underscore is not saved.',
+                            'publishpress'
+                        ); ?></p>
+                </div>
+            </div>
+            <?php
+        }
+
+        /**
          * Validate our user input as the settings are being saved
          *
          * @since 0.7
@@ -1960,6 +2002,11 @@ if (! class_exists('PP_Notifications')) {
                 $new_options['notify_current_user_by_default'] = (bool)$new_options['notify_current_user_by_default'] ? '1' : '0';
             } else {
                 $new_options['notify_current_user_by_default'] = '0';
+            }
+
+            if (isset($new_options['shortcode_meta_keys'])) {
+                $meta_keys = \PublishPress\Notifications\Shortcodes::sanitize_shortcode_meta_keys($new_options['shortcode_meta_keys']);
+                $new_options['shortcode_meta_keys'] = implode(', ', $meta_keys);
             }
 
             return $new_options;
